@@ -13,6 +13,9 @@ FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=
          '&family=Golos+Text:wght@400;500;600&family=Oswald:wght@500;600&display=swap">')
 VK = 'https://vk.ru/@moscowserega-russia-'
 SERIES_TITLE = 'Россия: регион за регионом'   # рабочее название серии, меняется здесь
+SITE = 'https://ssveretennikov.github.io/russia/'   # адрес сайта; от него считаются ссылки для пересылки
+INDEX_DESC = 'Цель: побывать в каждом регионе России хотя бы раз. Отчёты по регионам, по федеральным округам.'
+SITE_NAME = 'Россия: регион за регионом'
 SHOW_COUNTS = False   # счётчики «посещено / всего» по округам; включить, когда будут готовы все отчёты
 
 # (код, название, столица, отметка v/h/n, [(подпись, slug)]) ; slug = хвост ссылки ВК
@@ -191,14 +194,39 @@ def region_body(code, prev=None, nxt=None):
     pager = '<nav class="pager" aria-label="Соседние регионы по маршруту">' + pl(prev, 'prev') + pl(nxt, 'next') + '</nav>'
     return f'<div class="page">\n{top}\n{src}\n{pager}\n</div>'
 
-def doc(title, body, depth, inline, reg_color=None):
+def meta_tags(title, desc, path, image):
+    """Ссылки для пересылки (Open Graph) и значок. path — адрес страницы от корня сайта: '' или '49-magadan/'."""
+    url = SITE + path
+    img = SITE + image
+    t = [
+        f'<meta name="description" content="{e(desc)}">',
+        f'<link rel="canonical" href="{e(url)}">',
+        f'<link rel="icon" href="{SITE}favicon.png" type="image/png">',
+        f'<link rel="apple-touch-icon" href="{SITE}apple-touch-icon.png">',
+        '<meta property="og:type" content="article">' if path else '<meta property="og:type" content="website">',
+        f'<meta property="og:site_name" content="{e(SITE_NAME)}">',
+        f'<meta property="og:locale" content="ru_RU">',
+        f'<meta property="og:title" content="{e(title)}">',
+        f'<meta property="og:description" content="{e(desc)}">',
+        f'<meta property="og:url" content="{e(url)}">',
+        f'<meta property="og:image" content="{e(img)}">',
+        '<meta property="og:image:width" content="1200">',
+        '<meta property="og:image:height" content="630">',
+        '<meta name="twitter:card" content="summary_large_image">',
+        f'<meta name="twitter:title" content="{e(title)}">',
+        f'<meta name="twitter:description" content="{e(desc)}">',
+        f'<meta name="twitter:image" content="{e(img)}">',
+    ]
+    return '\n'.join(t)
+
+def doc(title, body, depth, inline, reg_color=None, meta=''):
     up = '../' * depth
     style = f'<style>\n{CSS}\n</style>' if inline else f'<link rel="stylesheet" href="{up}series.css">'
     script = f'<script>\n{JS}\n</script>' if inline else f'<script src="{up}series.js"></script>'
     extra = f'<style>{reg_color}</style>' if reg_color else ''
     return (f'<!doctype html>\n<html lang="ru">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-            f'<title>{e(title)}</title>\n{FONTS}\n{style}\n{extra}\n</head>\n<body>\n{body}\n{script}\n</body>\n</html>\n')
+            f'<title>{e(title)}</title>\n{meta}\n{FONTS}\n{style}\n{extra}\n</head>\n<body>\n{body}\n{script}\n</body>\n</html>\n')
 
 def fragment(title, body):
     """Главная страница артефакта: без doctype/html/head/body."""
@@ -217,24 +245,46 @@ PAGES = [
 def region_style(color):
     return f':root{{--reg:{color[0]};--reg-ink:{color[1]}}}' if color else None
 
+def write_service_files():
+    """404.html, sitemap.xml, robots.txt. На странице 404 пути абсолютные: она открывается по любому адресу."""
+    base = '/' + SITE.split('/', 3)[3]
+    page = (f'<div class="page"><div class="lost">'
+            f'<span class="code">404</span><h1>Такой страницы нет</h1>'
+            f'<p>Адрес мог устареть или в нём опечатка. Отчёты по регионам собраны на главной.</p>'
+            f'<p><a href="{base}">← Все регионы</a></p></div></div>')
+    h = doc('Страница не найдена', page, 0, False, None, f'<link rel="icon" href="{base}favicon.png" type="image/png">\n<meta name="robots" content="noindex">')
+    h = h.replace('href="series.css"', f'href="{base}series.css"').replace('src="series.js"', f'src="{base}series.js"')
+    open(os.path.join(ROOT, '404.html'), 'w', encoding='utf-8').write(h)
+    urls = [SITE] + [SITE + pg['slug'] + '/' for pg in PAGES]
+    open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8').write(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + ''.join(f'  <url><loc>{u}</loc></url>\n' for u in urls) + '</urlset>\n')
+    open(os.path.join(ROOT, 'robots.txt'), 'w', encoding='utf-8').write(f'User-agent: *\nAllow: /\nSitemap: {SITE}sitemap.xml\n')
+
 def build(artifact=False):
     """Без аргументов собирает страницы на месте: index.html и <slug>/index.html рядом со скриптом.
     С ключом --artifact дополнительно кладёт в _artifact/ вариант со вшитыми стилями (для предпросмотра)."""
     ix = index_body()
-    open(os.path.join(ROOT, 'index.html'), 'w', encoding='utf-8').write(doc(SERIES_TITLE, ix, 0, False))
     if artifact:
         os.makedirs(os.path.join(ROOT, '_artifact'), exist_ok=True)
         open(os.path.join(ROOT, '_artifact', 'page.html'), 'w', encoding='utf-8').write(fragment(SERIES_TITLE, ix))
+    open(os.path.join(ROOT, 'index.html'), 'w', encoding='utf-8').write(
+        doc(SERIES_TITLE, ix, 0, False, None, meta_tags(SERIES_TITLE, INDEX_DESC, '', 'og.jpg')))
     for pg in PAGES:
         body = region_body(pg['slug'], pg['prev'], pg['next'])
+        src = open(os.path.join(ROOT, 'src', pg['slug'] + '.html'), encoding='utf-8').read()
+        m = re.search(r'<p class="hook">(.*?)</p>', src, re.S)
+        desc = re.sub(r'<.*?>', '', m.group(1)).strip() if m else INDEX_DESC
+        pg_meta = meta_tags(pg['title'] + ' · ' + SITE_NAME, desc, pg['slug'] + '/', pg['slug'] + '/og.jpg')
         os.makedirs(os.path.join(ROOT, pg['slug']), exist_ok=True)
         open(os.path.join(ROOT, pg['slug'], 'index.html'), 'w', encoding='utf-8').write(
-            doc(pg['title'], body, 1, False, region_style(pg['color'])))
+            doc(pg['title'], body, 1, False, region_style(pg['color']), pg_meta))
         if artifact:
             out = os.path.join(ROOT, '_artifact', pg['slug']); os.makedirs(out, exist_ok=True)
             open(os.path.join(out, 'index.html'), 'w', encoding='utf-8').write(
                 doc(pg['title'], body, 1, True, region_style(pg['color'])))
         print('готово:', pg['slug'] + '/index.html')
+    write_service_files()
     print('готово: index.html')
 
 if __name__ == '__main__':
