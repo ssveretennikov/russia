@@ -157,6 +157,9 @@ def index_body():
     assert total == 89, total
     mp = load_map()
     dates = {r['code']: r['date'] for r in mp['regions']}
+    import json
+    trans = json.load(open(os.path.join(ROOT, 'data', 'transport.json'), encoding='utf-8'))   # код -> car/bus/plane/train/other
+    order = {c: i for i, c in enumerate(sorted(dates, key=lambda c: (dates[c], int(c))))}      # порядок для анимации
     info = {}                                    # код -> (ключ округа, посещён, ссылка на отчёт)
     for short, full, regs in D:
         for code, name, cap, mark, links in regs:
@@ -192,6 +195,7 @@ def index_body():
   <svg class="rumap" viewBox="0 0 {mp['w']} {mp['h']}" role="group" aria-label="Карта России, посещённые регионы">
 {chr(10).join(paths)}
   </svg>
+  <div class="anim"><button type="button" class="play" id="play">▶ Показать путь</button><span class="adate" id="adate" aria-live="polite"></span></div>
   <div class="mcard" id="mcard" aria-live="polite"><p class="mhint">Наведите на регион или нажмите на него.</p></div>
   <ul class="legend"><li><i class="k-v"></i>Побывал</li><li><i class="k-r"></i>Есть отчёт на этом сайте</li></ul>
   <p class="mnote">На карте только посещённые регионы. Остальные пока не нарисованы: они ещё впереди.</p>
@@ -216,7 +220,7 @@ def index_body():
             if mark == 'n': sub.append('впереди')
             small = f'<small>{" · ".join(sub)}</small>' if sub else ''
             d = dates.get(code)
-            attrs = f' data-code="{code}" data-fo="{FOKEY[short]}"' + (f' data-date="{ru_date(d)}" data-year="{d[:4]}"' if d else '')
+            attrs = f' data-code="{code}" data-fo="{FOKEY[short]}"' + (f' data-date="{ru_date(d)}" data-year="{d[:4]}" data-tr="{trans[code]}" data-n="{order[code]}"' if d else '')
             out.append(f'<li class="{cls}"{attrs}>{code_badge(code, main)}<div class="reg-t"><div>{nm}</div>{small}</div></li>')
         out.append('</ul></section>')
     out.append('''<footer class="ix-foot">
