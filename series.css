@@ -211,21 +211,29 @@ body:has(.ix-page){background:var(--sky-bg)}
 [hidden]{display:none!important}
 .rumap .r:focus{outline:none}
 
-.anim{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.play{font:600 .95rem/1 var(--body);padding:.7rem 1.1rem;border:0;border-radius:999px;background:var(--sun);color:#231A00;cursor:pointer}
-.play:hover{filter:brightness(.95)}
-.adate{font-family:var(--sign);font-size:1.15rem;letter-spacing:.04em;color:var(--sky-deep);font-variant-numeric:tabular-nums}
-.rumap .r.off{fill:var(--line);opacity:.55}
-.rumap .r.off.rep{fill:var(--line)}
-.rumap .r.now{animation:pulse .7s ease-out}
-@keyframes pulse{0%{stroke:var(--ink);stroke-width:5}100%{stroke-width:.7}}
-@media (prefers-reduced-motion:reduce){.rumap .r{transition:none}.rumap .r.now{animation:none}}
-.rumap .r.off.tiny{stroke:var(--line)}
+.tl{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"ctl track" "read read" "all all";gap:.7rem 1rem;align-items:center;padding:.8rem;border-radius:.8rem;background:var(--sky-bg)}
+.tl-ctl{grid-area:ctl;display:flex;gap:.4rem}
+.tl-ctl button{width:2.6rem;height:2.6rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:1rem;cursor:pointer}
+.tl-ctl button:disabled{opacity:.4;cursor:not-allowed}
+.tl-ctl .play{background:var(--sky);border-color:var(--sky);color:#fff}
+.tl-track{grid-area:track;position:relative;padding-bottom:1.3rem}
+.tl-track input{width:100%;margin:0;accent-color:var(--sky)}
+.ruler{position:absolute;left:0;right:0;bottom:0;height:1.1rem;font-family:var(--sign);font-size:.8rem;color:var(--soft)}
+.ruler span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.ruler span:first-child{transform:none}
+.tl-read{grid-area:read;display:flex;flex-direction:column;gap:.1rem}
+.tl-read strong{font-family:var(--sign);font-size:1.25rem;letter-spacing:.03em;color:var(--sky-deep);font-variant-numeric:tabular-nums}
+.tl-read span{color:var(--soft);font-size:.9rem}
+.tl-all{grid-area:all;justify-self:start;font:600 .88rem/1 var(--body);padding:.55rem .9rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.rumap .r.later{fill:var(--line);opacity:.55;pointer-events:none}
+.rumap .r.arr{fill:var(--sky-deep);stroke:var(--ink);stroke-width:1.2;animation:arrive .8s ease-out}
+@keyframes arrive{0%{stroke-width:6}100%{stroke-width:1.2}}
+@media (prefers-reduced-motion:reduce){.rumap .r{transition:none}.rumap .r.arr{animation:none}}
 
 .rumap .r.no{fill:var(--line);cursor:default}
 .rumap .r.no:hover,.rumap .r.no.on{fill:var(--soft)}
 .rumap .r.no.tiny{stroke:var(--line)}
 .rumap .r.no.tiny:hover,.rumap .r.no.tiny.on{stroke:var(--soft)}
-.rumap .r.no.off{opacity:.55}
 .k-n{background:var(--line)}
 
+.rumap .r.later.tiny{stroke:var(--line)}

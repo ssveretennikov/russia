@@ -196,7 +196,12 @@ def index_body():
   <svg class="rumap" viewBox="0 0 {mp['w']} {mp['h']}" role="group" aria-label="Карта России, посещённые регионы">
 {chr(10).join(paths)}
   </svg>
-  <div class="anim"><button type="button" class="play" id="play">▶ Показать путь</button><span class="adate" id="adate" aria-live="polite"></span></div>
+  <div class="tl" aria-label="Хронология поездок">
+    <div class="tl-ctl"><button type="button" id="tprev" aria-label="Предыдущая дата">⏮</button><button type="button" class="play" id="play" aria-label="Воспроизвести">▶</button><button type="button" id="tnext" aria-label="Следующая дата">⏭</button></div>
+    <div class="tl-track"><input type="range" id="track" min="0" value="0" aria-label="Дата на временной шкале"><div class="ruler" id="ruler" aria-hidden="true"></div></div>
+    <div class="tl-read"><strong id="tdate">Все даты</strong><span id="tnote" aria-live="polite"></span></div>
+    <button type="button" class="tl-all" id="tall" hidden>Показать весь период</button>
+  </div>
   <div class="mcard" id="mcard" aria-live="polite"><p class="mhint">Наведите на регион или нажмите на него.</p></div>
   <ul class="legend"><li><i class="k-v"></i>Побывал</li><li><i class="k-n"></i>Ещё впереди</li></ul>
   <p class="mnote">Серым показаны регионы, где ещё предстоит побывать.</p>
@@ -221,7 +226,7 @@ def index_body():
             if mark == 'n': sub.append('впереди')
             small = f'<small>{" · ".join(sub)}</small>' if sub else ''
             d = dates.get(code)
-            attrs = f' data-code="{code}" data-fo="{FOKEY[short]}"' + (f' data-date="{ru_date(d)}" data-year="{d[:4]}" data-tr="{trans[code]}" data-n="{order[code]}"' if d else '')
+            attrs = f' data-code="{code}" data-fo="{FOKEY[short]}"' + (f' data-date="{ru_date(d)}" data-year="{d[:4]}" data-iso="{d}" data-tr="{trans[code]}"' if d else '')
             out.append(f'<li class="{cls}"{attrs}>{code_badge(code, main)}<div class="reg-t"><div>{nm}</div>{small}</div></li>')
         out.append('</ul></section>')
     out.append('''<footer class="ix-foot">
