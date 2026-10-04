@@ -210,3 +210,14 @@ body:has(.ix-page){background:var(--sky-bg)}
 .mnote{font-size:.85rem;color:var(--soft)}
 [hidden]{display:none!important}
 .rumap .r:focus{outline:none}
+
+.anim{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.play{font:600 .95rem/1 var(--body);padding:.7rem 1.1rem;border:0;border-radius:999px;background:var(--sun);color:#231A00;cursor:pointer}
+.play:hover{filter:brightness(.95)}
+.adate{font-family:var(--sign);font-size:1.15rem;letter-spacing:.04em;color:var(--sky-deep);font-variant-numeric:tabular-nums}
+.rumap .r.off{fill:var(--line);opacity:.55}
+.rumap .r.off.rep{fill:var(--line)}
+.rumap .r.now{animation:pulse .7s ease-out}
+@keyframes pulse{0%{stroke:var(--ink);stroke-width:5}100%{stroke-width:.7}}
+@media (prefers-reduced-motion:reduce){.rumap .r{transition:none}.rumap .r.now{animation:none}}
+.rumap .r.off.tiny{stroke:var(--line)}

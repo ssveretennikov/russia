@@ -11,6 +11,8 @@
   items.forEach(function (li) { byCode[li.dataset.code] = li; });
   var state = { fo: '', year: '' };
   var picked = null;
+  var TR = { car: { icon: '🚗', text: 'на машине' }, bus: { icon: '🚌', text: 'на автобусе' },
+             plane: { icon: '✈️', text: 'на самолёте' }, train: { icon: '🚆', text: 'на поезде' } };
 
   function linkOf(code) {
     var li = byCode[code], a = li && li.querySelector('a.code');
@@ -25,6 +27,8 @@
     var local = li.classList.contains('new');
     var cap = sub ? sub.textContent.replace(/впереди/, '').trim() : '';
     var date = li.dataset.date ? 'Первый визит: ' + li.dataset.date : '';
+    var tr = TR[li.dataset.tr];
+    if (tr) date += ' · ' + tr.icon + ' ' + tr.text;
     card.innerHTML = '';
     var b = document.createElement('span'); b.className = 'code'; b.textContent = code;
     var t = document.createElement('div'); t.className = 'mt';
@@ -78,5 +82,60 @@
       });
       apply();
     });
+  });
+
+  // анимация: регионы загораются по датам первого визита
+  var playBtn = document.getElementById('play'), adate = document.getElementById('adate');
+  var seq = items.filter(function (li) { return li.dataset.n !== undefined; })
+    .sort(function (a, b) { return a.dataset.n - b.dataset.n; });
+  var pathBy = {};
+  paths.forEach(function (p) { pathBy[p.dataset.code] = p; });
+  var timer = null, pos = 0, STEP = 380;
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function lit(n) {                     // показать первые n регионов
+    var codes = {};
+    for (var i = 0; i < n; i++) codes[seq[i].dataset.code] = 1;
+    paths.forEach(function (p) {
+      p.classList.toggle('off', !codes[p.dataset.code]);
+      p.classList.remove('now');
+    });
+    if (n) {
+      var cur = seq[n - 1];
+      pathBy[cur.dataset.code].classList.add('now');
+      show(cur.dataset.code);
+      adate.textContent = cur.dataset.date;
+    }
+  }
+  function stop(done) {
+    clearInterval(timer); timer = null;
+    playBtn.textContent = done ? '↺ Ещё раз' : '▶ Продолжить';
+    if (done) playBtn.dataset.done = '1';
+  }
+  function reset() {
+    paths.forEach(function (p) { p.classList.remove('off', 'now'); });
+    card.innerHTML = hint; adate.textContent = '';
+    delete playBtn.dataset.done; playBtn.textContent = '▶ Показать путь'; pos = 0;
+  }
+  function tick() {
+    pos++; lit(pos);
+    if (pos >= seq.length) { stop(true); }
+  }
+  playBtn.addEventListener('click', function () {
+    if (timer) { stop(false); return; }                          // пауза
+    if (playBtn.dataset.done) { delete playBtn.dataset.done; pos = 0; }
+    if (pos === 0) {                                             // фильтры на время показа сбрасываем
+      state.fo = ''; state.year = ''; apply();
+      [].forEach.call(document.querySelectorAll('.chip'), function (x) { x.setAttribute('aria-pressed', x.dataset.v === '' ? 'true' : 'false'); });
+    }
+    picked = null;
+    playBtn.textContent = '⏸ Пауза';
+    if (still) { pos = seq.length; lit(pos); stop(true); return; }   // без движения: сразу итог
+    tick();
+    timer = setInterval(tick, STEP);
+  });
+  // выбор фильтра во время показа останавливает его
+  [].forEach.call(document.querySelectorAll('.chip'), function (c) {
+    c.addEventListener('click', function () { if (timer || pos) { clearInterval(timer); timer = null; reset(); } });
   });
 })();
