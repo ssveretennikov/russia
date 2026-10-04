@@ -8,3 +8,7 @@
 - `build.py` — сборка: `python build.py`.
 - `tools/media.py` — подготовка фото и видео из архива.
 - `series.css`, `series.js` — общее оформление.
+
+## Карта на главной
+
+`data/map.json` — контуры регионов для карты (делает `python tools/map.py путь/к/regions_with_dates_updated.geojson`, нужен numpy). Страница собирается в `build.py`, поведение карты и фильтров — в `map.js`. Новый посещённый регион появляется на карте автоматически, если он есть в GeoJSON и в списке `D` в `build.py`.

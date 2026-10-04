@@ -11,6 +11,7 @@
   --road:#1F4FB4;          /* синий дорожного знака: ссылки и навигация */
   --heart:#C2283B;
   --reg:#B87512;           /* цвет региона, по умолчанию охра */
+  --sky:#1F6FE5;--sky-deep:#124A9E;--sky-bg:#EDF4FF;--sun:#FFC83D;   /* главная: «Небо» */
   --reg-ink:#FFFFFF;
   --note-bg:#FFF4C2;
   --note-ink:#4A3A00;
@@ -27,6 +28,7 @@
     --bg:#101315;--surface:#181C1F;--ink:#E8EBE8;--soft:#9BA4A9;--line:#2B3136;
     --road:#8FB2FF;--heart:#FF6B7C;
     --reg:#E3A53A;--reg-ink:#1A1100;--note-bg:#3A3210;--note-ink:#FFE9A0;--note-line:#6B5A16;
+    --sky:#2A63C4;--sky-deep:#A9C8FF;--sky-bg:#0E1726;
     color-scheme:dark;
   }
 }
@@ -34,6 +36,7 @@
   --bg:#101315;--surface:#181C1F;--ink:#E8EBE8;--soft:#9BA4A9;--line:#2B3136;
   --road:#8FB2FF;--heart:#FF6B7C;
   --reg:#E3A53A;--reg-ink:#1A1100;--note-bg:#3A3210;--note-ink:#FFE9A0;--note-line:#6B5A16;
+  --sky:#2A63C4;--sky-deep:#A9C8FF;--sky-bg:#0E1726;
   color-scheme:dark;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -161,3 +164,49 @@ body.clean .note{display:none}
 .lost{max-width:var(--col);margin:clamp(3rem,12vw,7rem) auto 0;display:flex;flex-direction:column;align-items:flex-start;gap:1.2rem}
 .lost .code{font-size:clamp(2.6rem,10vw,4.4rem);background:var(--reg);color:var(--reg-ink)}
 .lost h1{font-size:clamp(1.5rem,5vw,2.4rem)}
+
+/* ---------- главная · «Небо» ---------- */
+body:has(.ix-page){background:var(--sky-bg)}
+.ix-page .ix-head{max-width:none;background:var(--sky);color:#fff;box-shadow:0 0 0 100vmax var(--sky);clip-path:inset(0 -100vmax);padding:clamp(1.5rem,5vw,3rem) 0 clamp(1.6rem,4vw,2.6rem)}
+.ix-page .ix-head>*{max-width:var(--wide)}
+.ix-page .ix-kicker{color:#fff;opacity:.85}
+.ix-page h1::after{content:"";display:block;width:4.5rem;height:.5rem;border-radius:999px;background:var(--sun);margin-top:1rem}
+.ix-page .ix-intro a{color:#fff}
+.ix-page .fo{background:var(--surface);border-radius:1.1rem;padding:clamp(1rem,3vw,1.6rem)}
+.ix-page .fo-h{border-bottom:0;padding-bottom:0}
+.ix-page .fo-h h2{color:var(--sky-deep)}
+.ix-page .code{background:var(--sky);color:#fff;border-radius:999px;min-width:2.3em;height:2.3em;padding:0}
+.ix-page .reg.none .code{background:transparent;color:var(--soft)}
+.ix-page .reg.new{outline-color:var(--sun)}
+.ix-page .reg a.code:hover{background:var(--sky-deep);color:#fff}
+.ix-page .tag{background:var(--sun);color:#231A00;border-radius:999px;padding:.05rem .55rem}
+.ix-page .ix-foot{margin-bottom:0}
+
+.mapbox{max-width:var(--wide);margin:clamp(1.4rem,4vw,2.2rem) auto 0;background:var(--surface);border-radius:1.1rem;padding:clamp(.8rem,2.5vw,1.4rem);display:flex;flex-direction:column;gap:.9rem}
+.filters{display:flex;flex-direction:column;gap:.5rem}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{font:600 .88rem/1 var(--body);padding:.5rem .8rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;cursor:pointer}
+.chip:hover{border-color:var(--sky)}
+.chip[aria-pressed="true"]{background:var(--sky);border-color:var(--sky);color:#fff}
+.rumap{width:100%;height:auto;display:block;touch-action:manipulation}
+.rumap .r{fill:var(--sky);stroke:var(--surface);stroke-width:.7;stroke-linejoin:round;cursor:pointer;transition:opacity .2s,fill .15s}
+.rumap .r.rep{fill:var(--sun)}
+.rumap .r.tiny{stroke:var(--sky);stroke-width:3}
+.rumap .r.tiny.rep{stroke:var(--sun)}
+.rumap .r:hover,.rumap .r.on{fill:var(--sky-deep)}
+.rumap .r.rep:hover,.rumap .r.rep.on{fill:#E0A400}
+.rumap .r.tiny:hover,.rumap .r.tiny.on{stroke:var(--sky-deep)}
+.rumap .r.dim{opacity:.14;pointer-events:none}
+.rumap .r:focus-visible{outline:none;stroke:var(--ink);stroke-width:2.2}
+.mcard{display:flex;align-items:center;gap:.8rem;min-height:3.6rem;padding:.55rem .8rem;border-radius:.8rem;background:var(--sky-bg)}
+.mcard .mt{display:flex;flex-direction:column;min-width:0;flex:1;line-height:1.3}
+.mcard small{color:var(--soft)}
+.mcard .go{font-weight:600;white-space:nowrap}
+.mhint{color:var(--soft);font-size:.95rem}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;list-style:none;margin:0;padding:0;font-size:.9rem;color:var(--soft)}
+.legend li{display:flex;align-items:center;gap:.4rem}
+.legend i{width:.9rem;height:.9rem;border-radius:999px;display:inline-block}
+.k-v{background:var(--sky)}.k-r{background:var(--sun)}
+.mnote{font-size:.85rem;color:var(--soft)}
+[hidden]{display:none!important}
+.rumap .r:focus{outline:none}

@@ -35,7 +35,7 @@ def mask(features, side, pad):
     ox = (side - (x1 - x0) * k) / 2; oy = (side - (y1 - y0) * k) / 2
     m = Image.new('L', (side, side), 0); d = ImageDraw.Draw(m)
     for r in pr:
-        d.polygon([(ox + (x - x0) * k, oy + (y1 - y) * k) for x, y in r], fill=255)
+        d.polygon([(ox + (x - x0) * k, oy + (y - y0) * k) for x, y in r], fill=255)
     return m.filter(ImageFilter.MaxFilter(3)).filter(ImageFilter.MinFilter(3))   # закрывает щели между регионами
 
 def icon(m, side, background=None):
