@@ -199,7 +199,7 @@ def index_body():
   <div class="anim"><button type="button" class="play" id="play">▶ Показать путь</button><span class="adate" id="adate" aria-live="polite"></span></div>
   <div class="mcard" id="mcard" aria-live="polite"><p class="mhint">Наведите на регион или нажмите на него.</p></div>
   <ul class="legend"><li><i class="k-v"></i>Побывал</li><li><i class="k-n"></i>Ещё впереди</li></ul>
-  <p class="mnote">Пунктиром обведены регионы, где ещё предстоит побывать.</p>
+  <p class="mnote">Серым показаны регионы, где ещё предстоит побывать.</p>
 </section>
 ''']
     for short, full, regs in D:
