@@ -6,7 +6,8 @@
   python tools/media.py detail 49-magadan P159 P731 --size 1700
   python tools/media.py detail 49-magadan P622 P623 P002 --sheet cand1   # лист кандидатов 4 в ряд
   python tools/media.py vstrip 49-magadan V46 --n 10    # раскадровка видео, чтобы выбрать фрагмент
-  python tools/media.py export 49-magadan               # по selection.tsv -> <регион>/media/
+  python tools/media.py export 49-magadan               # по selection.tsv -> <регион>/media/ (фото в WebP)
+  python tools/media.py webp 49-magadan                 # перевести уже выгруженные JPEG в WebP
 
 Источник архива: regions/<регион>/source.txt, по одному пути к папке в строке.
 Нужны: Python 3.10+, Pillow (pip install pillow pillow-heif), ffmpeg и ffprobe в PATH.
@@ -27,6 +28,7 @@ except Exception:
 ROOT = Path(__file__).resolve().parent.parent
 PHOTO_EXT = {'.jpg', '.jpeg', '.png'} | ({'.heic'} if HEIC else set())
 VIDEO_EXT = {'.mp4', '.mov', '.m4v'}
+WEBP_Q = 76          # качество фото на сайте; на глаз не отличить от JPEG 80, файлы легче примерно на 25–30%
 TONEMAP = ('zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=hable:desat=0,'
            'zscale=t=bt709:m=bt709:r=tv,format=yuv420p')
 FALLBACK = 'format=yuv420p,eq=contrast=1.5:saturation=1.4:brightness=-0.05'
@@ -260,7 +262,7 @@ def cmd_export(a):
         c = line.split('\t'); name, mid, size = c[0], c[1], int(c[2])
         if mid.startswith('P'):
             path, meta = pidx[mid]; im = ImageOps.exif_transpose(Image.open(path)).convert('RGB')
-            im.thumbnail((size, size), Image.LANCZOS); im.save(out / f'{name}.jpg', quality=80, optimize=True, progressive=True)
+            im.thumbnail((size, size), Image.LANCZOS); im.save(out / f'{name}.webp', 'WEBP', quality=WEBP_Q, method=6)
             rows.append([name, mid, str(im.width), str(im.height), meta[2]])
         else:
             path, meta = vidx[mid]; info = probe(path)
@@ -287,6 +289,23 @@ def cmd_export(a):
     print(f'готово: {len(rows)} файлов, {total:.0f} МБ в {out}')
 
 
+def cmd_webp(a):
+    """Перевод уже выгруженных фото региона из JPEG в WebP (обложки видео v-*.jpg остаются JPEG).
+    Меняет ссылки в src/<регион>.html. Лучше, когда есть архив, заново выполнить export: так нет двойного сжатия."""
+    out = ROOT / a.region / 'media'; n = 0; before = after = 0
+    for f in sorted(out.glob('*.jpg')):
+        if f.name.startswith('v-'): continue
+        dst = f.with_suffix('.webp')
+        Image.open(f).convert('RGB').save(dst, 'WEBP', quality=WEBP_Q, method=6)
+        before += f.stat().st_size; after += dst.stat().st_size; f.unlink(); n += 1
+    page = ROOT / 'src' / f'{a.region}.html'
+    if page.exists():
+        t = page.read_text(encoding='utf-8')
+        t = re.sub(r'(src="media/(?!v-)[^"]+)\.jpg"', r'\1.webp"', t)
+        page.write_text(t, encoding='utf-8')
+    print(f'готово: {n} фото, {before / 2**20:.1f} -> {after / 2**20:.1f} МБ')
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sp = ap.add_subparsers(dest='cmd', required=True)
@@ -296,6 +315,7 @@ def main():
     p.add_argument('--sheet'); p.set_defaults(fn=cmd_detail)
     p = sp.add_parser('vstrip'); p.add_argument('region'); p.add_argument('vid'); p.add_argument('--n', type=int, default=10); p.set_defaults(fn=cmd_vstrip)
     p = sp.add_parser('export'); p.add_argument('region'); p.set_defaults(fn=cmd_export)
+    p = sp.add_parser('webp'); p.add_argument('region'); p.set_defaults(fn=cmd_webp)
     a = ap.parse_args(); a.fn(a)
 
 
