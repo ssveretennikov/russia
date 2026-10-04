@@ -17,6 +17,7 @@ SERIES_TITLE = 'Россия: регион за регионом'   # рабоч
 SITE = 'https://ssveretennikov.github.io/russia/'   # адрес сайта; от него считаются ссылки для пересылки
 INDEX_DESC = 'Цель: побывать в каждом регионе России хотя бы раз. Отчёты по регионам, по федеральным округам.'
 SITE_NAME = 'Россия: регион за регионом'
+THEME_INIT = "<script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>"
 SHOW_COUNTS = False   # счётчики «посещено / всего» по округам; включить, когда будут готовы все отчёты
 
 # (код, название, столица, отметка v/h/n, [(подпись, slug)]) ; slug = хвост ссылки ВК
@@ -181,7 +182,7 @@ def index_body():
         f'<button type="button" class="chip" data-k="year" data-v="{y}" aria-pressed="false">{y}</button>' for y in years)
     out = [f'''<div class="page ix-page">
 <header class="ix-head">
-  <div class="ix-kicker">Сергей Веретенников · отчёты о поездках</div>
+  <div class="ix-top"><div class="ix-kicker">Сергей Веретенников · отчёты о поездках</div><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button></div>
   <h1>{e(SERIES_TITLE)}</h1>
   <div class="ix-intro">
     <p>Цель простая: побывать в каждом регионе страны хотя бы раз. Минимум — столица региона, дальше как получится.</p>
@@ -239,7 +240,8 @@ def region_body(code, prev=None, nxt=None):
     """prev / nxt — соседи ПО МАРШРУТУ ПОЕЗДКИ: (код, название, ссылка, подпись) или None."""
     src = open(os.path.join(ROOT, 'src', f'{code}.html'), encoding='utf-8').read()
     top = ('<nav class="topbar"><a href="../index.html">← Все регионы</a>'
-           '<button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></nav>')
+           '<div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button>'
+           '<button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>')
     def pl(x, cls):
         if not x:
             return '<a class="%s" href="../index.html"><span>Все регионы</span></a>' % cls
@@ -284,7 +286,7 @@ def doc(title, body, depth, inline, reg_color=None, meta=''):
         script += f'\n<script>\n{MAPJS}\n</script>' if inline else f'\n<script src="{up}map.js"></script>'
     return (f'<!doctype html>\n<html lang="ru">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-            f'<title>{e(title)}</title>\n{meta}\n{FONTS}\n{style}\n{extra}\n</head>\n<body>\n{body}\n{script}\n</body>\n</html>\n')
+            f'<title>{e(title)}</title>\n{meta}\n{THEME_INIT}\n{FONTS}\n{style}\n{extra}\n</head>\n<body>\n{body}\n{script}\n</body>\n</html>\n')
 
 def fragment(title, body):
     """Главная страница артефакта: без doctype/html/head/body."""
