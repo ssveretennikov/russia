@@ -221,3 +221,11 @@ body:has(.ix-page){background:var(--sky-bg)}
 @keyframes pulse{0%{stroke:var(--ink);stroke-width:5}100%{stroke-width:.7}}
 @media (prefers-reduced-motion:reduce){.rumap .r{transition:none}.rumap .r.now{animation:none}}
 .rumap .r.off.tiny{stroke:var(--line)}
+
+.rumap .r.no{fill:var(--line);cursor:default}
+.rumap .r.no:hover,.rumap .r.no.on{fill:var(--soft)}
+.rumap .r.no.tiny{stroke:var(--line)}
+.rumap .r.no.tiny:hover,.rumap .r.no.tiny.on{stroke:var(--soft)}
+.rumap .r.no.off{opacity:.55}
+.k-n{background:var(--line)}
+

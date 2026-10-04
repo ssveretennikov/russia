@@ -5,7 +5,7 @@
 
 Проекция коническая (Ламберта), как в tools/favicon.py. Контуры упрощаются (Дуглас — Пекер),
 координаты округляются до десятых долей пикселя в сетке 1000 по ширине. Нужен numpy.
-В JSON: viewBox карты и по каждому региону код, путь (d), дата первого визита, центр.
+В JSON: viewBox карты и по каждому региону код, путь (d), дата первого визита (null, если ещё не был), центр.
 """
 import json, os, sys
 import numpy as np
@@ -14,6 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from favicon import lcc, rings          # та же проекция
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CODE_FIX = {'184': '84', '185': '85'}   # Херсонская и Запорожская в файле идут под кодами 184 и 185, в списке сайта — 84 и 85
 W = 1000.0          # ширина карты в пикселях сетки
 TOL = 0.6           # допуск упрощения, px
 MIN_AREA = 0.5      # мелкие острова (px^2) отбрасываем, кроме единственного контура региона
@@ -71,7 +72,8 @@ def main():
         rs = [dp(r, TOL) for r, a in zip(rs, areas) if a >= MIN_AREA or a == big]
         rs = [r for r in rs if len(r) >= 3]
         main = max(rs, key=area)
-        items.append(dict(code=str(p['vehicle_region_code']), name=p['subject_name_ru'],
+        code = str(p['vehicle_region_code'])
+        items.append(dict(code=CODE_FIX.get(code, code), name=p['subject_name_ru'],
                           date=p['start_date'], area=float(sum(area(r) for r in rs)),
                           cx=round(float(main[:, 0].mean()), 1), cy=round(float(main[:, 1].mean()), 1),
                           d=path(rs)))
