@@ -9,8 +9,9 @@
   function current() { return root.dataset.theme || (mq && mq.matches ? 'dark' : 'light'); }
   function label() {
     var dark = current() === 'dark';
-    btn.textContent = dark ? '☀ Светлая тема' : '☾ Тёмная тема';
-    btn.setAttribute('aria-label', dark ? 'Включить светлую тему' : 'Включить тёмную тему');
+    btn.textContent = dark ? '☀' : '☾';
+    var t = dark ? 'Включить светлую тему' : 'Включить тёмную тему';
+    btn.setAttribute('aria-label', t); btn.title = t;
   }
   btn.hidden = false;
   btn.addEventListener('click', function () {
@@ -111,6 +112,6 @@
     if (x0 === null) return;
     var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0; x0 = null;
     if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(cur + (dx < 0 ? 1 : -1));
-    else if (dy > 90 && Math.abs(dy) > Math.abs(dx)) close();      // свайп вниз закрывает
   }, { passive: true });
+  box.addEventListener('touchmove', function (e) { e.preventDefault(); }, { passive: false });   // страница под окном не прокручивается
 })();
