@@ -156,7 +156,7 @@ def index_body():
     total = sum(len(r) for _, _, r in D)
     assert total == 89, total
     mp = load_map()
-    dates = {r['code']: r['date'] for r in mp['regions']}
+    dates = {r['code']: r['date'] for r in mp['regions'] if r['date']}
     import json
     trans = json.load(open(os.path.join(ROOT, 'data', 'transport.json'), encoding='utf-8'))   # код -> car/bus/plane/train/other
     order = {c: i for i, c in enumerate(sorted(dates, key=lambda c: (dates[c], int(c))))}      # порядок для анимации
@@ -171,9 +171,10 @@ def index_body():
     paths = []
     for r in mp['regions']:
         fo, _, link, local = info[r['code']]
-        cls = 'r' + (' rep' if local else '') + (' tiny' if r['tiny'] else '')
-        label = e(f"{r['code']} · {r['name']}")
-        paths.append(f'<path class="{cls}" data-code="{r["code"]}" data-fo="{fo}" data-year="{r["date"][:4]}" d="{r["d"]}" tabindex="0" role="link" aria-label="{label}"/>')
+        cls = 'r' + (' no' if not r['date'] else '') + (' tiny' if r['tiny'] else '')
+        label = e(f"{r['code']} · {r['name']}" + ('' if r['date'] else ' (впереди)'))
+        yr = f' data-year="{r["date"][:4]}"' if r['date'] else ''
+        paths.append(f'<path class="{cls}" data-code="{r["code"]}" data-fo="{fo}"{yr} d="{r["d"]}" tabindex="0" role="{"link" if link else "img"}" aria-label="{label}"/>')
     chips_fo = '<button type="button" class="chip" data-k="fo" data-v="" aria-pressed="true">Все</button>' + ''.join(
         f'<button type="button" class="chip" data-k="fo" data-v="{FOKEY[s]}" aria-pressed="false" title="{e(f)}">{s}</button>' for s, f, _ in D if s)
     chips_y = '<button type="button" class="chip" data-k="year" data-v="" aria-pressed="true">Все годы</button>' + ''.join(
@@ -197,8 +198,8 @@ def index_body():
   </svg>
   <div class="anim"><button type="button" class="play" id="play">▶ Показать путь</button><span class="adate" id="adate" aria-live="polite"></span></div>
   <div class="mcard" id="mcard" aria-live="polite"><p class="mhint">Наведите на регион или нажмите на него.</p></div>
-  <ul class="legend"><li><i class="k-v"></i>Побывал</li><li><i class="k-r"></i>Есть отчёт на этом сайте</li></ul>
-  <p class="mnote">На карте только посещённые регионы. Остальные пока не нарисованы: они ещё впереди.</p>
+  <ul class="legend"><li><i class="k-v"></i>Побывал</li><li><i class="k-n"></i>Ещё впереди</li></ul>
+  <p class="mnote">Серым показаны регионы, где ещё предстоит побывать.</p>
 </section>
 ''']
     for short, full, regs in D:

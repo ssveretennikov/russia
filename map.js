@@ -25,8 +25,8 @@
     var name = li.querySelector('.nm, a:not(.code)');
     var sub = li.querySelector('small');
     var local = li.classList.contains('new');
-    var cap = sub ? sub.textContent.replace(/впереди/, '').trim() : '';
-    var date = li.dataset.date ? 'Первый визит: ' + li.dataset.date : '';
+    var cap = sub ? sub.textContent.replace(/(\s*·\s*)?впереди/, '').trim() : '';
+    var date = li.dataset.date ? 'Первый визит: ' + li.dataset.date : 'Ещё впереди';
     var tr = TR[li.dataset.tr];
     if (tr) date += ' · ' + tr.icon + ' ' + tr.text;
     card.innerHTML = '';
