@@ -171,7 +171,7 @@ def index_body():
     paths = []
     for r in mp['regions']:
         fo, _, link, local = info[r['code']]
-        cls = 'r' + (' rep' if local else '') + (' no' if not r['date'] else '') + (' tiny' if r['tiny'] else '')
+        cls = 'r' + (' no' if not r['date'] else '') + (' tiny' if r['tiny'] else '')
         label = e(f"{r['code']} · {r['name']}" + ('' if r['date'] else ' (впереди)'))
         yr = f' data-year="{r["date"][:4]}"' if r['date'] else ''
         paths.append(f'<path class="{cls}" data-code="{r["code"]}" data-fo="{fo}"{yr} d="{r["d"]}" tabindex="0" role="{"link" if link else "img"}" aria-label="{label}"/>')
@@ -198,8 +198,8 @@ def index_body():
   </svg>
   <div class="anim"><button type="button" class="play" id="play">▶ Показать путь</button><span class="adate" id="adate" aria-live="polite"></span></div>
   <div class="mcard" id="mcard" aria-live="polite"><p class="mhint">Наведите на регион или нажмите на него.</p></div>
-  <ul class="legend"><li><i class="k-v"></i>Побывал</li><li><i class="k-r"></i>Есть отчёт на этом сайте</li><li><i class="k-n"></i>Ещё впереди</li></ul>
-  <p class="mnote">Серым показаны регионы, где ещё предстоит побывать.</p>
+  <ul class="legend"><li><i class="k-v"></i>Побывал</li><li><i class="k-n"></i>Ещё впереди</li></ul>
+  <p class="mnote">Пунктиром обведены регионы, где ещё предстоит побывать.</p>
 </section>
 ''']
     for short, full, regs in D:
