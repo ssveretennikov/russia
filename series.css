@@ -156,3 +156,8 @@ body.clean .note{display:none}
 .tag{display:inline-block;font-family:var(--sign);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;background:var(--reg);color:var(--reg-ink);padding:.05rem .4rem;margin-left:.4rem;vertical-align:.1em;font-weight:600}
 .ix-foot{max-width:var(--wide);margin:clamp(2.5rem,6vw,4rem) auto 0;color:var(--soft);font-size:.95rem;display:flex;flex-direction:column;gap:.8rem}
 .reg a.code:hover{background:var(--reg);color:var(--reg-ink)}
+
+/* ---------- страница 404 ---------- */
+.lost{max-width:var(--col);margin:clamp(3rem,12vw,7rem) auto 0;display:flex;flex-direction:column;align-items:flex-start;gap:1.2rem}
+.lost .code{font-size:clamp(2.6rem,10vw,4.4rem);background:var(--reg);color:var(--reg-ink)}
+.lost h1{font-size:clamp(1.5rem,5vw,2.4rem)}
