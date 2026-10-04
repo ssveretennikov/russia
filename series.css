@@ -229,11 +229,3 @@ body:has(.ix-page){background:var(--sky-bg)}
 .rumap .r.no.off{opacity:.55}
 .k-n{background:var(--line)}
 
-/* непосещённые: без заливки, пунктирный контур; жёлтого выделения нет */
-.rumap .r.no{fill:transparent;stroke:var(--soft);stroke-width:1.2;stroke-dasharray:4 3}
-.rumap .r.no:hover,.rumap .r.no.on{fill:color-mix(in srgb,var(--soft) 16%,transparent)}
-.rumap .r.no.tiny{stroke:var(--soft);stroke-width:1.2}
-.rumap .r.no.tiny:hover,.rumap .r.no.tiny.on{stroke:var(--soft)}
-.rumap .r.no.off{opacity:1}
-.rumap .r.no.dim{opacity:.25}
-.k-n{background:transparent;border:2px dashed var(--soft)}
