@@ -9,6 +9,7 @@ import os, html, shutil, re
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CSS = open(os.path.join(ROOT, 'series.css'), encoding='utf-8').read()
 JS = open(os.path.join(ROOT, 'series.js'), encoding='utf-8').read()
+MAPJS = open(os.path.join(ROOT, 'map.js'), encoding='utf-8').read()
 FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800'
          '&family=Golos+Text:wght@400;500;600&family=Oswald:wght@500;600&display=swap">')
 VK = 'https://vk.ru/@moscowserega-russia-'
@@ -140,24 +141,67 @@ def code_badge(code, link=None):
         return f'<a class="code" href="{e(link)}" aria-label="Регион {code}">{code}</a>'
     return f'<span class="code">{code}</span>'
 
+FOKEY = {'ЦФО': 'c', 'СЗФО': 'sz', 'ЮФО': 'yu', 'СКФО': 'sk', 'ПФО': 'p', 'УрФО': 'u', 'СФО': 's', 'ДВФО': 'dv', '': 'x'}
+
+def load_map():
+    import json
+    return json.load(open(os.path.join(ROOT, 'data', 'map.json'), encoding='utf-8'))
+
+def ru_date(iso):
+    mon = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря']
+    y, m, d = iso.split('-')
+    return f'{int(d)} {mon[int(m) - 1]} {y}'
+
 def index_body():
     total = sum(len(r) for _, _, r in D)
     assert total == 89, total
-    out = [f'''<div class="page">
+    mp = load_map()
+    dates = {r['code']: r['date'] for r in mp['regions']}
+    info = {}                                    # код -> (ключ округа, посещён, ссылка на отчёт)
+    for short, full, regs in D:
+        for code, name, cap, mark, links in regs:
+            info[code] = (FOKEY[short], mark != 'n', href(links[0][1]) if links else None, bool(links) and links[0][1].startswith('LOCAL:'))
+    visited = {c for c, v in info.items() if v[1]}
+    assert visited == set(dates), (visited ^ set(dates))   # список D и карта должны совпадать
+    years = sorted({d[:4] for d in dates.values()})
+    # ---- карта ----
+    paths = []
+    for r in mp['regions']:
+        fo, _, link, local = info[r['code']]
+        cls = 'r' + (' rep' if local else '') + (' tiny' if r['tiny'] else '')
+        label = e(f"{r['code']} · {r['name']}")
+        paths.append(f'<path class="{cls}" data-code="{r["code"]}" data-fo="{fo}" data-year="{r["date"][:4]}" d="{r["d"]}" tabindex="0" role="link" aria-label="{label}"/>')
+    chips_fo = '<button type="button" class="chip" data-k="fo" data-v="" aria-pressed="true">Все</button>' + ''.join(
+        f'<button type="button" class="chip" data-k="fo" data-v="{FOKEY[s]}" aria-pressed="false" title="{e(f)}">{s}</button>' for s, f, _ in D if s)
+    chips_y = '<button type="button" class="chip" data-k="year" data-v="" aria-pressed="true">Все годы</button>' + ''.join(
+        f'<button type="button" class="chip" data-k="year" data-v="{y}" aria-pressed="false">{y}</button>' for y in years)
+    out = [f'''<div class="page ix-page">
 <header class="ix-head">
   <div class="ix-kicker">Сергей Веретенников · отчёты о поездках</div>
+  <h1>{e(SERIES_TITLE)}</h1>
   <div class="ix-intro">
-    <h1>{e(SERIES_TITLE)}</h1>
     <p>Цель простая: побывать в каждом регионе страны хотя бы раз. Минимум — столица региона, дальше как получится.</p>
-    <p>Регионы идут под своими кодами и собраны по федеральным округам. Нажмите на код или название, чтобы открыть отчёт.</p>
+    <p>Нажмите на регион на карте или выберите его из списка ниже, чтобы открыть отчёт.</p>
   </div>
 </header>
+<section class="mapbox" aria-label="Карта посещённых регионов">
+  <div class="filters">
+    <div class="chips" role="group" aria-label="Федеральный округ">{chips_fo}</div>
+    <div class="chips" role="group" aria-label="Год поездки">{chips_y}</div>
+  </div>
+  <svg class="rumap" viewBox="0 0 {mp['w']} {mp['h']}" role="group" aria-label="Карта России, посещённые регионы">
+{chr(10).join(paths)}
+  </svg>
+  <div class="mcard" id="mcard" aria-live="polite"><p class="mhint">Наведите на регион или нажмите на него.</p></div>
+  <ul class="legend"><li><i class="k-v"></i>Побывал</li><li><i class="k-r"></i>Есть отчёт на этом сайте</li></ul>
+  <p class="mnote">На карте только посещённые регионы. Остальные пока не нарисованы: они ещё впереди.</p>
+</section>
 ''']
     for short, full, regs in D:
         got = sum(1 for x in regs if x[3] != 'n')
         title = f'{short} · {full}' if short else full
         count = f'<span>{got} / {len(regs)}</span>' if SHOW_COUNTS else ''
-        out.append(f'<section class="fo"><div class="fo-h"><h2>{e(title)}</h2>{count}</div><ul class="regs">')
+        out.append(f'<section class="fo" data-fo="{FOKEY[short]}"><div class="fo-h"><h2>{e(title)}</h2>{count}</div><ul class="regs">')
         for code, name, cap, mark, links in regs:
             main = href(links[0][1]) if links else None
             local = bool(links) and links[0][1].startswith('LOCAL:')
@@ -171,7 +215,9 @@ def index_body():
             if code == '87': sub.append(NOTE87)
             if mark == 'n': sub.append('впереди')
             small = f'<small>{" · ".join(sub)}</small>' if sub else ''
-            out.append(f'<li class="{cls}">{code_badge(code, main)}<div class="reg-t"><div>{nm}</div>{small}</div></li>')
+            d = dates.get(code)
+            attrs = f' data-code="{code}" data-fo="{FOKEY[short]}"' + (f' data-date="{ru_date(d)}" data-year="{d[:4]}"' if d else '')
+            out.append(f'<li class="{cls}"{attrs}>{code_badge(code, main)}<div class="reg-t"><div>{nm}</div>{small}</div></li>')
         out.append('</ul></section>')
     out.append('''<footer class="ix-foot">
   <p>Старые отчёты пока открываются во ВКонтакте. Новые выходят в формате, как у Магаданской области.</p>
@@ -224,13 +270,15 @@ def doc(title, body, depth, inline, reg_color=None, meta=''):
     style = f'<style>\n{CSS}\n</style>' if inline else f'<link rel="stylesheet" href="{up}series.css">'
     script = f'<script>\n{JS}\n</script>' if inline else f'<script src="{up}series.js"></script>'
     extra = f'<style>{reg_color}</style>' if reg_color else ''
+    if 'ix-page' in body:                      # главная: карта и фильтры
+        script += f'\n<script>\n{MAPJS}\n</script>' if inline else f'\n<script src="{up}map.js"></script>'
     return (f'<!doctype html>\n<html lang="ru">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
             f'<title>{e(title)}</title>\n{meta}\n{FONTS}\n{style}\n{extra}\n</head>\n<body>\n{body}\n{script}\n</body>\n</html>\n')
 
 def fragment(title, body):
     """Главная страница артефакта: без doctype/html/head/body."""
-    return f'<title>{e(title)}</title>\n{FONTS}\n<style>\n{CSS}\n</style>\n{body}\n<script>\n{JS}\n</script>\n'
+    return f'<title>{e(title)}</title>\n{FONTS}\n<style>\n{CSS}\n</style>\n{body}\n<script>\n{JS}\n</script>\n<script>\n{MAPJS}\n</script>\n'
 
 # Страницы регионов в новом формате. Чтобы добавить регион:
 #   1) положить текст в src/<slug>.html, медиа — в <slug>/media/ (tools/media.py export);
