@@ -1,0 +1,158 @@
+/* Серия отчётов по регионам России.
+   Layout: одна колонка чтения 42rem, фото выходят за неё на 62rem.
+   Код региона — простая плашка с числом. У каждого региона свой цвет --reg,
+   взятый из его главного кадра (у Магадана охра). */
+:root{
+  --bg:#F1F2EE;
+  --surface:#FFFFFF;
+  --ink:#15181B;
+  --soft:#596069;
+  --line:#D3D7D0;
+  --road:#1F4FB4;          /* синий дорожного знака: ссылки и навигация */
+  --heart:#C2283B;
+  --reg:#B87512;           /* цвет региона, по умолчанию охра */
+  --reg-ink:#FFFFFF;
+  --note-bg:#FFF4C2;
+  --note-ink:#4A3A00;
+  --note-line:#E3C64A;
+  --display:"Unbounded","Arial Black","Segoe UI",system-ui,sans-serif;
+  --body:"Golos Text","Segoe UI",Roboto,system-ui,sans-serif;
+  --sign:"Oswald","Arial Narrow","Roboto Condensed",Impact,sans-serif;
+  --col:42rem;
+  --wide:62rem;
+  --gutter:clamp(16px,4vw,40px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#101315;--surface:#181C1F;--ink:#E8EBE8;--soft:#9BA4A9;--line:#2B3136;
+    --road:#8FB2FF;--heart:#FF6B7C;
+    --reg:#E3A53A;--reg-ink:#1A1100;--note-bg:#3A3210;--note-ink:#FFE9A0;--note-line:#6B5A16;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101315;--surface:#181C1F;--ink:#E8EBE8;--soft:#9BA4A9;--line:#2B3136;
+  --road:#8FB2FF;--heart:#FF6B7C;
+  --reg:#E3A53A;--reg-ink:#1A1100;--note-bg:#3A3210;--note-ink:#FFE9A0;--note-line:#6B5A16;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%;height:auto}
+p{margin:0;text-wrap:pretty}
+a{color:var(--road);text-underline-offset:.18em}
+:focus-visible{outline:3px solid var(--road);outline-offset:3px}
+.page{padding-inline:var(--gutter);padding-block:0 4.5rem}
+
+/* ---------- код региона ---------- */
+.code{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:var(--bg);font-family:var(--sign);font-weight:600;line-height:1;font-size:1.25rem;min-width:2.1em;padding:.32em .3em .36em;text-decoration:none;font-variant-numeric:tabular-nums;letter-spacing:.01em}
+
+/* ---------- верхняя полоса ---------- */
+.topbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem 1.2rem;padding-block:1rem;font-family:var(--sign);font-size:.95rem;letter-spacing:.05em;text-transform:uppercase;max-width:var(--wide);margin-inline:auto}
+.topbar a{text-decoration:none}
+.topbar a:hover{text-decoration:underline}
+.draft-toggle{font:inherit;letter-spacing:inherit;text-transform:inherit;background:var(--note-bg);color:var(--note-ink);border:1px solid var(--note-line);padding:.3rem .7rem;cursor:pointer}
+
+/* ---------- шапка региона ---------- */
+.reg-head{max-width:var(--wide);margin-inline:auto;display:flex;flex-direction:column;gap:1.4rem;padding-top:clamp(1rem,3vw,2.2rem)}
+.reg-id{display:flex;align-items:center;gap:clamp(1rem,3vw,1.8rem);flex-wrap:wrap}
+.reg-id .code{font-size:clamp(2.6rem,8vw,4.4rem);background:var(--reg);color:var(--reg-ink)}
+.reg-name{display:flex;flex-direction:column;gap:.35rem;min-width:0}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,5.2vw,3.4rem);line-height:1.05;letter-spacing:-.02em;margin:0;text-wrap:balance;overflow-wrap:anywhere}
+.reg-places{font-family:var(--sign);font-size:1.05rem;letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+.hook{font-size:clamp(1.25rem,2.6vw,1.6rem);line-height:1.35;max-width:36ch;font-weight:500}
+.hook::before{content:"";display:block;width:3.2rem;height:.4rem;background:var(--reg);margin-bottom:.9rem}
+.passport{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;margin:0;padding:.8rem 0;border-block:1px solid var(--line);font-family:var(--sign);font-size:1rem;letter-spacing:.04em;text-transform:uppercase}
+.passport div{display:flex;gap:.45rem;align-items:baseline}
+.passport dt{color:var(--soft)}
+.passport dd{margin:0;font-weight:600}
+.passport .heart{color:var(--heart)}
+
+.route{display:flex;flex-wrap:wrap;gap:.3rem .6rem;font-family:var(--sign);font-size:1rem;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);margin:0;padding:0;list-style:none}
+.route li + li::before{content:"→";margin-right:.6rem;color:var(--soft)}
+.route .here{color:var(--ink);font-weight:600;border-bottom:.2rem solid var(--reg)}
+
+/* ---------- текст ---------- */
+.story{display:flex;flex-direction:column;gap:clamp(3rem,7vw,5rem);margin-top:clamp(2rem,5vw,3rem)}
+.sec{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,var(--col)) minmax(0,1fr);row-gap:1.15rem}
+.sec > *{grid-column:2;min-width:0}
+.day{font-family:var(--sign);font-size:1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--reg);font-weight:600}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(1.45rem,3.8vw,2.2rem);line-height:1.1;letter-spacing:-.015em;margin:0 0 .2rem;text-wrap:balance}
+.lead{font-size:1.2rem;line-height:1.5}
+.rubric{display:inline-block;align-self:start;justify-self:start;font-family:var(--sign);font-weight:600;font-size:.9rem;letter-spacing:.09em;text-transform:uppercase;background:var(--ink);color:var(--bg);padding:.2rem .6rem}
+.facts{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.facts li{padding-left:1.25rem;position:relative}
+.facts li::before{content:"";position:absolute;left:0;top:.62em;width:.55rem;height:.55rem;background:var(--reg)}
+
+/* ---------- медиа ---------- */
+figure{margin:0}
+.sec > .wide{grid-column:1/-1;width:100%;max-width:var(--wide);margin-inline:auto;margin-block:.5rem}
+.sec > .mid{grid-column:1/-1;width:100%;max-width:var(--col);margin-inline:auto}
+.sec > .tall{grid-column:1/-1;width:100%;max-width:26rem;margin-inline:auto;margin-block:.5rem}
+.sec > .row{grid-column:1/-1;width:100%;max-width:var(--wide);margin-inline:auto;margin-block:.5rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;align-items:start}
+.sec > .row.r3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sec > .row.narrow{max-width:46rem}
+@media (max-width:640px){.sec > .row,.sec > .row.r3{grid-template-columns:minmax(0,1fr)}.sec > .row figure{max-width:30rem}}
+.ph{background:var(--surface);overflow:hidden}
+.ph img,.ph video{width:100%}
+figcaption{padding-top:.5rem;font-size:.95rem;line-height:1.45;color:var(--ink)}
+figcaption time{font-family:var(--sign);font-size:.85rem;letter-spacing:.06em;color:var(--soft);margin-right:.5rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+figcaption .credit{color:var(--soft)}
+.hero-ph img{aspect-ratio:16/9;object-fit:cover;object-position:50% 45%}
+@media (max-width:640px){.hero-ph img{aspect-ratio:4/3}}
+
+/* ---------- чек и счёт ---------- */
+.bill{background:var(--surface);border:1px solid var(--line);padding:1.1rem 1.2rem;font-family:var(--sign);font-size:1.02rem;letter-spacing:.02em;display:flex;flex-direction:column;gap:.35rem;margin:0;font-variant-numeric:tabular-nums}
+.bill .bill-h{text-transform:uppercase;letter-spacing:.08em;color:var(--soft);font-size:.85rem;padding-bottom:.4rem;border-bottom:1px dashed var(--line);margin-bottom:.3rem}
+.bill div{display:flex;align-items:baseline;gap:.5rem}
+.bill dt{min-width:0}
+.bill div::after{content:"";order:1;flex:1 1 1rem;border-bottom:1px dotted var(--soft);transform:translateY(-.25em)}
+.bill dd{order:2;margin:0;white-space:nowrap;font-weight:600}
+.bill .total{border-top:1px dashed var(--line);margin-top:.4rem;padding-top:.6rem;font-size:1.25rem}
+.bill .total dt{text-transform:uppercase;letter-spacing:.06em}
+
+.verdict{background:var(--reg);color:var(--reg-ink);padding:1.3rem 1.4rem;display:flex;flex-direction:column;gap:.5rem}
+.verdict .v-mark{font-family:var(--display);font-weight:800;font-size:1.5rem;line-height:1.15}
+.ask{font-size:1.2rem;line-height:1.45;font-weight:500}
+.sources{font-size:.85rem;color:var(--soft);line-height:1.5}
+.sources a{color:inherit}
+
+/* ---------- пометки для автора ---------- */
+.note{background:var(--note-bg);color:var(--note-ink);border-left:4px solid var(--note-line);padding:.55rem .8rem;font-size:.95rem;line-height:1.45}
+.note::before{content:"✎ уточнить: ";font-family:var(--sign);font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+body.clean .note{display:none}
+
+/* ---------- навигация по серии ---------- */
+.pager{max-width:var(--wide);margin:clamp(3rem,7vw,5rem) auto 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;border-top:1px solid var(--line);padding-top:1.4rem;font-family:var(--sign);letter-spacing:.04em;text-transform:uppercase}
+.pager .code{font-size:1rem}
+.pager a{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--ink);min-width:0}
+.pager a span{min-width:0;overflow-wrap:anywhere;font-size:.95rem}
+.pager small{display:block;color:var(--soft);font-size:.8rem;letter-spacing:.06em}
+.pager a:hover span{text-decoration:underline}
+.pager .next{justify-content:flex-end;text-align:right}
+@media (max-width:560px){.pager{grid-template-columns:minmax(0,1fr)}.pager .next{justify-content:flex-start;text-align:left}}
+
+/* ---------- общий пост ---------- */
+.ix-head{max-width:var(--wide);margin-inline:auto;padding-top:clamp(1.5rem,5vw,3.5rem);display:flex;flex-direction:column;gap:1.5rem}
+.ix-kicker{font-family:var(--sign);font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.ix-intro{display:flex;flex-direction:column;gap:1rem;max-width:var(--col)}
+.fo{max-width:var(--wide);margin:clamp(2.5rem,6vw,4rem) auto 0;display:flex;flex-direction:column;gap:1.1rem}
+.fo-h{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:.5rem}
+.fo-h h2{margin:0;font-size:clamp(1.15rem,2.8vw,1.5rem)}
+.fo-h span{font-family:var(--sign);font-size:1.15rem;letter-spacing:.05em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.regs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));gap:.9rem 1.4rem}
+.reg{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.85rem;align-items:center;min-width:0}
+
+.reg-t{display:flex;flex-direction:column;gap:.1rem;min-width:0;line-height:1.3}
+.reg-t a,.reg-t .nm{font-weight:600;color:var(--ink);text-decoration:none;overflow-wrap:anywhere}
+.reg-t a:hover{text-decoration:underline}
+.reg-t small{color:var(--soft);font-size:.88rem;overflow-wrap:anywhere}
+.reg-t small a{font-weight:400;color:var(--road)}
+.reg .hrt{color:var(--heart)}
+.reg.none .code{background:transparent;color:var(--soft);outline:1px dashed var(--soft);outline-offset:-1px}
+.reg.none .nm{color:var(--soft);font-weight:500}
+.reg.new{outline:2px solid var(--reg);outline-offset:.5rem}
+.tag{display:inline-block;font-family:var(--sign);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;background:var(--reg);color:var(--reg-ink);padding:.05rem .4rem;margin-left:.4rem;vertical-align:.1em;font-weight:600}
+.ix-foot{max-width:var(--wide);margin:clamp(2.5rem,6vw,4rem) auto 0;color:var(--soft);font-size:.95rem;display:flex;flex-direction:column;gap:.8rem}
+.reg a.code:hover{background:var(--reg);color:var(--reg-ink)}

@@ -1,0 +1,13 @@
+# Рабочие материалы остаются на диске автора и в репозиторий не попадают
+regions/
+_artifact/
+__pycache__/
+*.pyc
+/*.md
+!/README.md
+агенты/
+.claude/
+*/cards/
+*/platform.html
+makety.*
+макеты-главной.html
