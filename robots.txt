@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ssveretennikov.github.io/russia/sitemap.xml
