@@ -201,7 +201,8 @@ def meta_tags(title, desc, path, image):
     t = [
         f'<meta name="description" content="{e(desc)}">',
         f'<link rel="canonical" href="{e(url)}">',
-        '<link rel="icon" href="' + SITE + 'favicon.svg" type="image/svg+xml">',
+        f'<link rel="icon" href="{SITE}favicon.png" type="image/png">',
+        f'<link rel="apple-touch-icon" href="{SITE}apple-touch-icon.png">',
         '<meta property="og:type" content="article">' if path else '<meta property="og:type" content="website">',
         f'<meta property="og:site_name" content="{e(SITE_NAME)}">',
         f'<meta property="og:locale" content="ru_RU">',
@@ -251,7 +252,7 @@ def write_service_files():
             f'<span class="code">404</span><h1>Такой страницы нет</h1>'
             f'<p>Адрес мог устареть или в нём опечатка. Отчёты по регионам собраны на главной.</p>'
             f'<p><a href="{base}">← Все регионы</a></p></div></div>')
-    h = doc('Страница не найдена', page, 0, False, None, f'<link rel="icon" href="{base}favicon.svg" type="image/svg+xml">\n<meta name="robots" content="noindex">')
+    h = doc('Страница не найдена', page, 0, False, None, f'<link rel="icon" href="{base}favicon.png" type="image/png">\n<meta name="robots" content="noindex">')
     h = h.replace('href="series.css"', f'href="{base}series.css"').replace('src="series.js"', f'src="{base}series.js"')
     open(os.path.join(ROOT, '404.html'), 'w', encoding='utf-8').write(h)
     urls = [SITE] + [SITE + pg['slug'] + '/' for pg in PAGES]
