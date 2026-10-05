@@ -216,7 +216,7 @@ def index_body():
     <p class="ix-big"><b>{len(visited)}</b> из {total} <span>регионов</span></p>
     <div class="ix-bar" role="progressbar" aria-label="Посещено регионов" aria-valuemin="0" aria-valuemax="{total}" aria-valuenow="{len(visited)}"><i style="width:{len(visited) / total * 100:.1f}%"></i></div>
     <dl class="ix-facts">
-      <div><dt>В пути</dt><dd>с {since}</dd></div>
+      <div><dt>Счёт веду</dt><dd>с {since}</dd></div>
       <div><dt>Последний новый регион</dt><dd>{ru_date(last_iso)} · {e(last_txt)}</dd></div>
       <div><dt>Впереди</dt><dd>{left} {plural(left, "регион", "региона", "регионов")}</dd></div>
     </dl>
