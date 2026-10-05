@@ -165,6 +165,15 @@ def plural(n, one, few, many):
     if 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14: return few
     return many
 
+def month_year(iso):
+    mon = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь']
+    y, m, _ = iso.split('-')
+    return f'{mon[int(m) - 1]} {y}'
+
+def find_key(s):
+    """Строка для поиска на главной: строчные, ё = е — «орел» находит «Орёл»."""
+    return s.lower().replace('ё', 'е')
+
 def ru_date(iso):
     mon = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря']
     y, m, d = iso.split('-')
@@ -248,30 +257,45 @@ def index_body():
   </div>
 </section>
 ''']
+    def reg_li(short, code, name, cap, mark, links):
+        main = href(links[0][1]) if links else None
+        cls = 'reg' + (' none' if mark == 'n' else '')
+        nm = f'<a href="{e(main)}">{e(name)}</a>' if main else f'<span class="nm">{e(name)}</span>'
+        if mark == 'h': nm += ' <span class="hrt" title="Понравилось" role="img" aria-label="понравилось">❤</span>'
+        d = trips.get(code)
+        sub = [e(cap)] if cap else []
+        if d: sub.append(month_year(d))
+        if code == HOME: sub.append('дом')
+        for lab, slug in links[1:]:   # вторые части отчёта: «2» → «часть 2»
+            sub.append(f'<a href="{e(href(slug))}">{e("часть " + lab if lab.isdigit() else lab)}</a>')
+        small = f'<small>{" · ".join(sub)}</small>' if sub else ''
+        attrs = f' data-code="{code}" data-fo="{FOKEY[short]}" data-cap="{e(cap)}" data-q="{e(find_key(name + " " + cap))}"'
+        if d: attrs += f' data-date="{ru_date(d)}" data-year="{d[:4]}" data-iso="{d}" data-tr="{trans[code]}"'
+        if code == HOME: attrs += f' data-home="1" data-iso="{first_iso}"'   # в хронологии горит с первой даты
+        # миниатюра — tools/thumbs.py; грузится по мере прокрутки, карточка на карте берёт её же
+        th = main and main.split('/')[0] + '/thumb.webp'
+        img = (f'<img class="th" src="{th}" alt="" width="360" height="270" loading="lazy" decoding="async">'
+               if th and os.path.exists(os.path.join(ROOT, th)) else '')
+        return f'<li class="{cls}"{attrs}>{code_badge(code, main)}<div class="reg-t"><div>{nm}</div>{small}</div>{img}</li>'
+
+    out.append('''<div class="ix-find">
+  <input type="search" id="find" placeholder="Найти регион или город" aria-label="Найти регион или город" autocomplete="off">
+  <span class="hrt-key"><span class="hrt" aria-hidden="true">❤</span> — понравилось</span>
+</div>
+<p class="ix-none" id="none" hidden>Ничего не нашлось.</p>''')
+    # шесть оставшихся — отдельным блоком наверху: серыми строками внутри округов они терялись
+    ahead = [(s, r) for s, _, regs in D for r in regs if r[3] == 'n']
+    out.append(f'<section class="fo ahead" data-fo="ahead"><div class="fo-h"><h2>Впереди · {len(ahead)} '
+               f'{plural(len(ahead), "регион", "региона", "регионов")}</h2></div><ul class="regs">')
+    out += [reg_li(s, *r) for s, r in ahead]
+    out.append('</ul></section>')
     for short, full, regs in D:
-        got = sum(1 for x in regs if x[3] != 'n')
+        been = [r for r in regs if r[3] != 'n']
+        if not been: continue
         title = f'{short} · {full}' if short else full
-        count = f'<span>{got} / {len(regs)}</span>' if SHOW_COUNTS else ''
+        count = f'<span>{len(been)} / {len(regs)}</span>' if SHOW_COUNTS else ''
         out.append(f'<section class="fo" data-fo="{FOKEY[short]}"><div class="fo-h"><h2>{e(title)}</h2>{count}</div><ul class="regs">')
-        for code, name, cap, mark, links in regs:
-            main = href(links[0][1]) if links else None
-            local = bool(links) and links[0][1].startswith('LOCAL:')
-            cls = 'reg' + (' none' if mark == 'n' else '') + (' new' if local else '')
-            nm = f'<a href="{e(main)}">{e(name)}</a>' if main else f'<span class="nm">{e(name)}</span>'
-            if mark == 'h': nm += ' <span class="hrt">❤</span>'
-            sub = [e(cap)] if cap else []
-            for lab, slug in links[1:]:
-                sub.append(f'<a href="{e(href(slug))}">{e(lab)}</a>')
-            if mark == 'n': sub.append('впереди')
-            small = f'<small>{" · ".join(sub)}</small>' if sub else ''
-            d = trips.get(code)
-            attrs = f' data-code="{code}" data-fo="{FOKEY[short]}"' + (f' data-date="{ru_date(d)}" data-year="{d[:4]}" data-iso="{d}" data-tr="{trans[code]}"' if d else '')
-            if code == HOME: attrs += f' data-home="1" data-iso="{first_iso}"'   # в хронологии горит с первой даты
-            # миниатюра — tools/thumbs.py; грузится по мере прокрутки, карточка на карте берёт её же
-            th = main and main.split('/')[0] + '/thumb.webp'
-            img = (f'<img class="th" src="{th}" alt="" width="360" height="270" loading="lazy" decoding="async">'
-                   if th and os.path.exists(os.path.join(ROOT, th)) else '')
-            out.append(f'<li class="{cls}"{attrs}>{code_badge(code, main)}<div class="reg-t"><div>{nm}</div>{small}</div>{img}</li>')
+        out += [reg_li(short, *r) for r in been]
         out.append('</ul></section>')
     out.append('<a class="totop" id="totop" href="#karta" hidden>↑ К карте</a>\n</div>')
     return '\n'.join(out)
