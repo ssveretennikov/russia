@@ -146,6 +146,8 @@ def code_badge(code, link=None):
         return f'<a class="code" href="{e(link)}" aria-label="Регион {code}">{code}</a>'
     return f'<span class="code">{code}</span>'
 
+HOME = '77'   # Москва — дом автора, начало и конец большинства поездок; решение автора 05.10.2026
+
 FOKEY = {'ЦФО': 'c', 'СЗФО': 'sz', 'ЮФО': 'yu', 'СКФО': 'sk', 'ПФО': 'p', 'УрФО': 'u', 'СФО': 's', 'ДВФО': 'dv', '': 'x'}
 
 # значки кнопок хронологии: рисунок, а не символ — символы ⏮ ▶ ⏭ телефоны подменяют цветными эмодзи
@@ -182,11 +184,14 @@ def index_body():
             info[code] = (FOKEY[short], mark != 'n', href(links[0][1]) if links else None, bool(links) and links[0][1].startswith('LOCAL:'))
     visited = {c for c, v in info.items() if v[1]}
     assert visited == set(dates), (visited ^ set(dates))   # список D и карта должны совпадать
-    years = sorted({d[:4] for d in dates.values()})
+    # Дом не поездка: дата у Москвы в данных условная, поэтому в годах, хронологии и «последнем новом регионе»
+    # она не участвует, а на карте горит с первой даты — отсюда поездки начинаются.
+    trips = {c: d for c, d in dates.items() if c != HOME}
+    years = sorted({d[:4] for d in trips.values()})
     # ---- прогресс для шапки: считается из тех же дат, что и карта, руками не правится ----
     names = {code: name for _, _, regs in D for code, name, *_ in regs}
-    first_iso, last_iso = min(dates.values()), max(dates.values())
-    last = [names[c] for c in sorted(dates, key=int) if dates[c] == last_iso]
+    first_iso, last_iso = min(trips.values()), max(trips.values())
+    last = [names[c] for c in sorted(trips, key=int) if trips[c] == last_iso]
     last_txt = last[0] + (f' и ещё {len(last) - 1}' if len(last) > 1 else '')
     since = ru_date(first_iso).split(' ', 1)[1]          # «февраля 2022» — для «с февраля 2022»
     left = total - len(visited)
@@ -205,7 +210,7 @@ def index_body():
         fo, _, link, local = info[r['code']]
         cls = 'r' + (' no' if not r['date'] else '') + (' tiny' if r['tiny'] else '')
         label = e(f"{r['code']} · {r['name']}" + ('' if r['date'] else ' (впереди)'))
-        yr = f' data-year="{r["date"][:4]}"' if r['date'] else ''
+        yr = f' data-year="{trips[r["code"]][:4]}"' if r['code'] in trips else ''
         paths.append(f'<path class="{cls}" data-code="{r["code"]}" data-fo="{fo}"{yr} d="{r["d"]}" tabindex="0" role="{"link" if link else "img"}" aria-label="{label}"/>')
     chips_fo = '<button type="button" class="chip" data-k="fo" data-v="" aria-pressed="true">Все</button>' + ''.join(
         f'<button type="button" class="chip" data-k="fo" data-v="{FOKEY[s]}" aria-pressed="false" title="{e(f)}">{s}</button>' for s, f, _ in D if s)
@@ -259,8 +264,9 @@ def index_body():
                 sub.append(f'<a href="{e(href(slug))}">{e(lab)}</a>')
             if mark == 'n': sub.append('впереди')
             small = f'<small>{" · ".join(sub)}</small>' if sub else ''
-            d = dates.get(code)
+            d = trips.get(code)
             attrs = f' data-code="{code}" data-fo="{FOKEY[short]}"' + (f' data-date="{ru_date(d)}" data-year="{d[:4]}" data-iso="{d}" data-tr="{trans[code]}"' if d else '')
+            if code == HOME: attrs += f' data-home="1" data-iso="{first_iso}"'   # в хронологии горит с первой даты
             # миниатюра — tools/thumbs.py; грузится по мере прокрутки, карточка на карте берёт её же
             th = main and main.split('/')[0] + '/thumb.webp'
             img = (f'<img class="th" src="{th}" alt="" width="360" height="270" loading="lazy" decoding="async">'

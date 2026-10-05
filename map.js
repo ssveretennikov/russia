@@ -28,7 +28,8 @@
     var cap = sub ? [].filter.call(sub.childNodes, function (x) { return x.nodeType === 3; })
       .map(function (x) { return x.textContent; }).join(' ').replace(/·|впереди/g, ' ').replace(/\s+/g, ' ').trim() : '';
     var parts = sub ? [].slice.call(sub.querySelectorAll('a')) : [];
-    var date = li.dataset.date ? 'Первый визит: ' + li.dataset.date : 'Ещё впереди';
+    var date = li.dataset.home ? 'Дом — отсюда начинаются поездки'
+      : li.dataset.date ? 'Первый визит: ' + li.dataset.date : 'Ещё впереди';
     var tr = TR[li.dataset.tr];
     if (tr) date += ' · ' + tr.icon + ' ' + tr.text;
     card.innerHTML = '';
@@ -199,14 +200,14 @@
     t.style.left = d / DMAX * 100 + '%';
     ruler.appendChild(t);
   });
-  var total = paths.filter(function (p) { return p.dataset.year; }).length;
+  var total = items.filter(function (li) { return li.dataset.iso; }).length;   // по списку: у дома (Москвы) нет года, но он посещён
 
   function draw() {
     var cur = idx < N ? dates[idx] : null;
     paths.forEach(function (p) {
       var iso = byCode[p.dataset.code] && byCode[p.dataset.code].dataset.iso;
       p.classList.toggle('later', !!(cur && iso && iso > cur));
-      p.classList.toggle('arr', !!(cur && iso === cur));
+      p.classList.toggle('arr', !!(cur && iso === cur && !byCode[p.dataset.code].dataset.home));
     });
     items.forEach(function (li) { li.hidden = !!(cur && li.dataset.iso && li.dataset.iso > cur) || !okFilter(li); });
     secs.forEach(function (s) { s.hidden = !s.querySelector('li.reg:not([hidden])'); });
@@ -215,7 +216,7 @@
     document.getElementById('tnext').disabled = idx >= N;
     if (!cur) { tdate.textContent = 'Все даты'; tnote.textContent = 'На карте все посещённые регионы.'; if (!picked) card.innerHTML = hint; return; }
     var shown = items.filter(function (li) { return li.dataset.iso && li.dataset.iso <= cur; }).length;
-    var arrived = items.filter(function (li) { return li.dataset.iso === cur; });
+    var arrived = items.filter(function (li) { return li.dataset.iso === cur && !li.dataset.home; });
     tdate.textContent = fmt(cur);
     tnote.textContent = 'Показано ' + shown + ' из ' + total + ' регионов, накопительно.';
     show(arrived[0].dataset.code);
