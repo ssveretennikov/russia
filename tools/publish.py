@@ -6,6 +6,7 @@
   python tools/publish.py --no-push             # всё то же, но без git
 
 Делает по каждому региону: tools/media.py export <slug>; затем tools/og.py, build.py;
+затем отправляет ролики в репозиторий russia-video (папка russia-video/, ветка main),
 затем git add <slug>/ regions/<slug>/media.tsv, коммит «Медиа: …» и push в текущую ветку.
 """
 import os, subprocess, sys
@@ -41,6 +42,24 @@ def main():
         empty = [f for f in (ROOT / s / 'media').iterdir() if f.stat().st_size == 0]
         if empty: print(f'!! {s}: пустые файлы: {", ".join(f.name for f in empty)}')
     if not push: return
+    # ролики — в отдельном репозитории russia-video: их надо отправить раньше страниц, иначе страница сошлётся на файл, которого ещё нет
+    vid = ROOT / 'russia-video'
+    vdirs = [s for s in done if (vid / s).is_dir()]
+    if vdirs:
+        if not (vid / '.git').exists():
+            sys.exit('ошибка: папка russia-video не связана со своим репозиторием — ролики некуда отправить, страницы не трогаю')
+        bad = [f'{s}/{f.name}' for s in vdirs for f in (vid / s).iterdir() if f.stat().st_size == 0]
+        if bad: sys.exit('ошибка: пустые ролики в russia-video: ' + ', '.join(bad))
+        subprocess.run(['git', 'add', *vdirs], cwd=vid, check=True)
+        if subprocess.run(['git', 'diff', '--cached', '--quiet'], cwd=vid).returncode:
+            subprocess.run(['git', 'commit', '-q', '-m', 'Ролики: ' + ', '.join(vdirs)], cwd=vid, check=True)
+        # пуш — всегда, а не только после нового коммита: прошлый запуск мог закоммитить ролики и упасть на отправке
+        print('> git push (russia-video)'); sys.stdout.flush()
+        if subprocess.run(['git', 'push', 'origin', 'main'], cwd=vid).returncode: sys.exit('ошибка: ролики не отправлены, страницы не трогаю')
+        ahead = subprocess.run(['git', 'rev-list', '--count', 'origin/main..main'], cwd=vid, capture_output=True, text=True).stdout.strip()
+        if ahead not in ('0', ''): sys.exit('ошибка: в russia-video остались неотправленные коммиты, страницы не трогаю')
+        size = sum(f.stat().st_size for f in vid.glob('*/*.mp4')) / 2 ** 20
+        print(f'ролики на сайте russia-video: {size:.0f} МБ из 1024' + (' — БЛИЗКО К ПРЕДЕЛУ GitHub Pages, скажите автору' if size > 950 else ''))
     paths = [p for s in done for p in (s, f'regions/{s}/media.tsv')] + ['index.html', 'sitemap.xml', '404.html']
     paths += [str(p.relative_to(ROOT)) for p in ROOT.glob('*/index.html') if (ROOT / 'src' / (p.parent.name + '.html')).exists()]
     run('git', 'add', *paths)
