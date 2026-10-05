@@ -56,7 +56,7 @@ D = [
   ('51','Мурманская область','Мурманск','v',[('', 'LOCAL:51-murmansk/index.html')]),
   ('53','Новгородская область','Великий Новгород','v',[('', 'LOCAL:53-novgorod/index.html')]),
   ('60','Псковская область','Псков','v',[('', 'LOCAL:60-pskov/index.html')]),
-  ('78','Санкт-Петербург','город федерального значения','h',[('', 'LOCAL:78-spb/index.html'),('часть 2','78-2'),('часть 3','78-3'),('часть 4','78-4')]),
+  ('78','Санкт-Петербург','город федерального значения','h',[('', 'LOCAL:78-spb/index.html'),('месяц в Питере','LOCAL:78-spb-month/index.html')]),
   ('83','Ненецкий автономный округ','Нарьян-Мар','v',[('', 'LOCAL:83-nenets/index.html')]),
  ]),
  ('ЮФО', 'Южный федеральный округ', [
@@ -468,7 +468,8 @@ PAGES = [
     dict(slug='74-chelyabinsk', title='74 · Челябинская область', prev=None, next=None, color=None),
     dict(slug='75-zabaykalsky', title='75 · Забайкальский край', prev=None, next=None, color=None),
     dict(slug='76-yaroslavl', title='76 · Ярославская область', prev=None, next=None, color=None),
-    dict(slug='78-spb', title='78 · Санкт-Петербург', prev=None, next=None, color=None),
+    dict(slug='78-spb', title='78 · Санкт-Петербург · три дня в июне', prev=None, next=('78', 'Месяц в Питере', '../78-spb-month/index.html', 'Дальше по маршруту'), color=None),
+    dict(slug='78-spb-month', title='78 · Санкт-Петербург · месяц в Питере', prev=('78', 'Три дня в июне', '../78-spb/index.html', 'Раньше по маршруту'), next=None, color=None),
     dict(slug='79-jewish-ao', title='79 · Еврейская автономная область', prev=None, next=None, color=None),
     dict(slug='83-nenets', title='83 · Ненецкий автономный округ', prev=None, next=None, color=None),
     dict(slug='86-khanty-mansi', title='86 · Ханты-Мансийский АО — Югра', prev=None, next=None, color=None),
