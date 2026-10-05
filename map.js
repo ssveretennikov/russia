@@ -25,7 +25,10 @@
     var name = li.querySelector('.nm, a:not(.code)');
     var sub = li.querySelector('small');
     var local = li.classList.contains('new');
-    var cap = sub ? sub.textContent.replace(/(\s*·\s*)?впереди/, '').trim() : '';
+    // в <small> столица текстом и ссылки на части отчёта; в подпись карточки идёт только текст
+    var cap = sub ? [].filter.call(sub.childNodes, function (x) { return x.nodeType === 3; })
+      .map(function (x) { return x.textContent; }).join(' ').replace(/·|впереди/g, ' ').replace(/\s+/g, ' ').trim() : '';
+    var parts = sub ? [].slice.call(sub.querySelectorAll('a')) : [];
     var date = li.dataset.date ? 'Первый визит: ' + li.dataset.date : 'Ещё впереди';
     var tr = TR[li.dataset.tr];
     if (tr) date += ' · ' + tr.icon + ' ' + tr.text;
@@ -41,7 +44,30 @@
       a.textContent = local ? 'Открыть отчёт →' : 'Отчёт во ВКонтакте →';
       card.appendChild(a);
     }
+    if (parts.length) {
+      var ps = document.createElement('small'); ps.className = 'parts';
+      ps.appendChild(document.createTextNode('Части: '));
+      parts.forEach(function (x, i) {
+        if (i) ps.appendChild(document.createTextNode(' · '));
+        var pa = document.createElement('a'); pa.href = x.getAttribute('href'); pa.textContent = x.textContent;
+        ps.appendChild(pa);
+      });
+      t.appendChild(ps);
+    }
   }
+  // Наведение с задержкой: карточка остаётся на последнем регионе, пока мышь идёт к её ссылкам
+  // через соседние регионы, и меняется, только если задержаться на другом регионе.
+  var hovered = null, hoverTimer = null;
+  function hoverTo(code) {
+    clearTimeout(hoverTimer);
+    if (hovered === null) { hovered = code; show(code); mark(code); return; }
+    hoverTimer = setTimeout(function () { hovered = code; show(code); mark(code); }, 250);
+  }
+  var box = svg.closest('.mapbox') || svg.parentNode;
+  box.addEventListener('pointerleave', function (ev) {
+    if (ev.pointerType !== 'mouse' || picked) return;
+    clearTimeout(hoverTimer); hovered = null; card.innerHTML = hint; mark('');
+  });
   function mark(code) {
     paths.forEach(function (p) { p.classList.toggle('on', p.dataset.code === code); });
   }
@@ -52,8 +78,8 @@
 
   paths.forEach(function (p) {
     var code = p.dataset.code;
-    p.addEventListener('pointerenter', function (ev) { if (ev.pointerType === 'mouse' && !picked) { show(code); mark(code); } });
-    p.addEventListener('pointerleave', function (ev) { if (ev.pointerType === 'mouse' && !picked) { card.innerHTML = hint; mark(''); } });
+    p.addEventListener('pointerenter', function (ev) { if (ev.pointerType === 'mouse' && !picked) hoverTo(code); });
+    p.addEventListener('pointerleave', function (ev) { if (ev.pointerType === 'mouse') clearTimeout(hoverTimer); });
     p.addEventListener('focus', function () { show(code); mark(code); });
     p.addEventListener('click', function (ev) {
       if (ev.pointerType === 'touch' || ev.pointerType === 'pen') { picked = code; show(code); mark(code); return; }
