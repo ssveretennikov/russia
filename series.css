@@ -210,11 +210,8 @@ body:has(.ix-page){background:var(--sky-bg)}
 .rumap{width:100%;height:auto;display:block;touch-action:manipulation}
 /* толщина обводки — в точках экрана, а не в единицах карты: при увеличении округа границы не толстеют */
 .rumap .r{fill:var(--sky);stroke:var(--surface);stroke-width:.7;stroke-linejoin:round;cursor:pointer;transition:opacity .2s,fill .15s;vector-effect:non-scaling-stroke}
-.rumap .r.rep{fill:var(--sun)}
 .rumap .r.tiny{stroke:var(--sky);stroke-width:3}
-.rumap .r.tiny.rep{stroke:var(--sun)}
 .rumap .r:hover,.rumap .r.on{fill:var(--sky-deep)}
-.rumap .r.rep:hover,.rumap .r.rep.on{fill:#E0A400}
 .rumap .r.tiny:hover,.rumap .r.tiny.on{stroke:var(--sky-deep)}
 .rumap .r.dim{opacity:.14;pointer-events:none}
 .rumap .r:focus-visible{outline:none;stroke:var(--ink);stroke-width:2.2}
@@ -252,7 +249,7 @@ body:has(.ix-page){background:var(--sky-bg)}
 .legend{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;list-style:none;margin:0;padding:0;font-size:.9rem;color:var(--soft)}
 .legend li{display:flex;align-items:center;gap:.4rem}
 .legend i{width:.9rem;height:.9rem;border-radius:999px;display:inline-block}
-.k-v{background:var(--sky)}.k-r{background:var(--sun)}
+.k-v{background:var(--sky)}
 .mapbar{display:flex;justify-content:space-between;align-items:center;gap:.5rem 1rem;flex-wrap:wrap}
 .zoom{font:600 .88rem/1 var(--body);padding:.55rem .9rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
 .zoom:hover{border-color:var(--sky)}
