@@ -1,5 +1,5 @@
 # имя	ID	размер	отрезки видео (сек)
-hero	P014	2200
+hero	V05	2200	frame=10
 smeshariki	P001	1600
 ksenia	P003	1400
 derevo	P005	1400
@@ -8,6 +8,7 @@ rynok	P009	1600
 teatr	P010	1600
 v-stul	V02	1280	1-13
 kalancha	P012	1600
+korma	P014	1400
 v-dron-korabl	V05	1280	8-32
 korabl	P016	1400
 pushki	P017	1400

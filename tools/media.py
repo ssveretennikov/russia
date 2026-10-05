@@ -8,6 +8,7 @@
   python tools/media.py vstrip 49-magadan V46 --n 10    # раскадровка видео, чтобы выбрать фрагмент
   python tools/media.py cands 49-magadan                # все фото из candidates.md листами по 5 в ряд -> work/detail/cands-01.jpg…
   python tools/media.py export 49-magadan               # по selection.tsv -> <регион>/media/ (фото в WebP)
+  # кадр из видео как фото: строка selection.tsv «hero<TAB>V05<TAB>2200<TAB>frame=10» (секунда)
   python tools/media.py webp 49-magadan                 # перевести уже выгруженные JPEG в WebP
 
 Источник архива: regions/<регион>/source.txt, по одному пути к папке в строке.
@@ -301,7 +302,13 @@ def cmd_export(a):
     for line in (rdir(a.region) / 'selection.tsv').read_text(encoding='utf-8').splitlines():
         if not line.strip() or line.startswith('#'): continue
         c = line.split('\t'); name, mid, size = c[0], c[1], int(c[2])
-        if mid.startswith('P'):
+        if mid.startswith('V') and len(c) > 3 and c[3].startswith('frame='):   # кадр из видео как фото: hero<TAB>V05<TAB>2200<TAB>frame=10
+            path, meta = vidx[mid]; tmp = out / f'_{name}.jpg'
+            ff(['-ss', c[3][6:], '-i', path, '-frames:v', '1', '-q:v', '2', str(tmp)])
+            im = Image.open(tmp).convert('RGB'); im.thumbnail((size, size), Image.LANCZOS)
+            im.save(out / f'{name}.webp', 'WEBP', quality=WEBP_Q, method=6); tmp.unlink()
+            rows.append([name, mid, str(im.width), str(im.height), meta[2]])
+        elif mid.startswith('P'):
             path, meta = pidx[mid]; im = ImageOps.exif_transpose(Image.open(path)).convert('RGB')
             im.thumbnail((size, size), Image.LANCZOS); im.save(out / f'{name}.webp', 'WEBP', quality=WEBP_Q, method=6)
             rows.append([name, mid, str(im.width), str(im.height), meta[2]])
