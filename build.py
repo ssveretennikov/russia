@@ -21,7 +21,15 @@ def fonts(up):
                    for f in ('golos-text', 'unbounded'))
 SERIES_TITLE = 'Россия: регион за регионом'   # рабочее название серии, меняется здесь
 SITE = 'https://ssveretennikov.github.io/russia/'   # адрес сайта; от него считаются ссылки для пересылки
-INDEX_DESC = 'Цель: побывать в каждом регионе России хотя бы раз. Отчёты по регионам, по федеральным округам.'
+# Ролики лежат на отдельном сайте (репозиторий russia-video): GitHub Pages даёт 1 ГБ на сайт, а видео одно весит почти столько.
+# В src/<slug>.html адрес ролика по-прежнему пишется как media/имя.mp4; при сборке он заменяется на адрес ниже.
+# python build.py --local-video — проверка до выкладки: рядом с каждой страницей пишется index.local.html (в git не идёт),
+# где ролики берутся из папки russia-video. Сами страницы сайта (index.html) этот ключ не трогает: адрес ../russia-video/
+# на сайте не существует, и закоммиченная с ним страница осталась бы без роликов.
+VIDEO_SITE = 'https://ssveretennikov.github.io/russia-video/'
+VIDEO_BASE = VIDEO_SITE
+VIDEO_USED = []      # (slug, имя.mp4) — все ролики, на которые сослались страницы; сверяется с папкой russia-video в конце сборки
+INDEX_DESC ='Цель: побывать в каждом регионе России хотя бы раз. Отчёты по регионам, по федеральным округам.'
 SITE_NAME = 'Россия: регион за регионом'
 THEME_INIT = "<script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>"
 SHOW_COUNTS = False   # счётчики «посещено / всего» по округам; включить, когда будут готовы все отчёты
@@ -414,6 +422,11 @@ def inject_data(slug, src):
                 w, h = dims[name]; return f'{m.group(1)}width="{w}" height="{h}"'
             return m.group(0)
         src = re.sub(r'(src="media/([^"]+)" )width="\d+" height="\d+"', fix, src)
+    # ролик — с отдельного сайта; обложка (poster) остаётся в media/ рядом со страницей
+    def video(m):
+        VIDEO_USED.append((slug, m.group(1)))
+        return f'src="{VIDEO_BASE}{slug}/{m.group(1)}"'
+    src = re.sub(r'src="media/([^"]+\.mp4)"', video, src)
     return src
 
 def region_body(code, prev=None, nxt=None):
@@ -621,12 +634,15 @@ def write_service_files():
 def build(artifact=False):
     """Без аргументов собирает страницы на месте: index.html и <slug>/index.html рядом со скриптом.
     С ключом --artifact дополнительно кладёт в _artifact/ вариант со вшитыми стилями (для предпросмотра)."""
+    local = VIDEO_BASE != VIDEO_SITE            # --local-video: пишем только index.local.html, страницы сайта не трогаем
+    page_name = 'index.local.html' if local else 'index.html'
     ix = index_body()
-    if artifact:
+    if artifact and not local:
         os.makedirs(os.path.join(ROOT, '_artifact'), exist_ok=True)
         open(os.path.join(ROOT, '_artifact', 'page.html'), 'w', encoding='utf-8').write(fragment(SERIES_TITLE, ix))
-    open(os.path.join(ROOT, 'index.html'), 'w', encoding='utf-8').write(
-        doc(SERIES_TITLE, ix, 0, False, None, meta_tags(SERIES_TITLE, INDEX_DESC, '', 'og.jpg')))
+    if not local:
+        open(os.path.join(ROOT, 'index.html'), 'w', encoding='utf-8').write(
+            doc(SERIES_TITLE, ix, 0, False, None, meta_tags(SERIES_TITLE, INDEX_DESC, '', 'og.jpg')))
     for pg in PAGES:
         body = region_body(pg['slug'], pg['prev'], pg['next'])
         src = open(os.path.join(ROOT, 'src', pg['slug'] + '.html'), encoding='utf-8').read()
@@ -634,16 +650,44 @@ def build(artifact=False):
         desc = re.sub(r'<.*?>', '', m.group(1)).strip() if m else INDEX_DESC
         pg_meta = meta_tags(pg['title'] + ' · ' + SITE_NAME, desc, pg['slug'] + '/', pg['slug'] + '/og.jpg')
         os.makedirs(os.path.join(ROOT, pg['slug']), exist_ok=True)
-        open(os.path.join(ROOT, pg['slug'], 'index.html'), 'w', encoding='utf-8').write(
+        open(os.path.join(ROOT, pg['slug'], page_name), 'w', encoding='utf-8').write(
             doc(pg['title'], body, 1, False, region_style(pg['color']), pg_meta))
-        if artifact:
+        if artifact and not local:
             out = os.path.join(ROOT, '_artifact', pg['slug']); os.makedirs(out, exist_ok=True)
             open(os.path.join(out, 'index.html'), 'w', encoding='utf-8').write(
                 doc(pg['title'], body, 1, True, region_style(pg['color'])))
-        print('готово:', pg['slug'] + '/index.html')
-    write_service_files()
-    print('готово: index.html')
+        print('готово:', pg['slug'] + '/' + page_name)
+    if not local:
+        write_service_files()
+        print('готово: index.html')
+    return check_video()
+
+
+def check_video():
+    """Сверка: у каждого ролика, на который ссылается страница, есть файл в папке russia-video.
+    Страница без ролика — это пустой чёрный прямоугольник на сайте, а старой копии в media/ больше нет.
+    Если папки russia-video рядом нет (свежий клон, облачная сессия), проверить нечем — только предупреждение."""
+    vdir = os.path.join(ROOT, 'russia-video')
+    used = sorted(set(VIDEO_USED))
+    if not os.path.isdir(vdir):
+        print(f'внимание: папки russia-video рядом нет, {len(used)} роликов не проверены'); return True
+    missing = [f'{s}/{n}' for s, n in used if not os.path.isfile(os.path.join(vdir, s, n)) or os.path.getsize(os.path.join(vdir, s, n)) == 0]
+    stray = [p for p in (os.path.join(ROOT, s, 'media') for s in sorted({s for s, _ in used})) if os.path.isdir(p)
+             and any(f.endswith('.mp4') for f in os.listdir(p))]
+    if stray:
+        print(f'внимание: в {len(stray)} папках media/ лежат ролики (например {os.path.relpath(stray[0], ROOT)}); их место — russia-video/, в основной репозиторий они не идут')
+    if missing:
+        print(f'ОШИБКА: {len(missing)} роликов нет в russia-video: ' + ', '.join(missing[:8]) + (' …' if len(missing) > 8 else ''))
+        print('Выгрузите их (python tools/media.py export <регион> --video-only) или уберите со страницы.')
+        return False
+    print(f'ролики: {len(used)} ссылок, все файлы на месте в russia-video')
+    return True
+
 
 if __name__ == '__main__':
     import sys
-    build('--artifact' in sys.argv)
+    if '--local-video' in sys.argv:
+        VIDEO_BASE = '../russia-video/'
+    ok = build('--artifact' in sys.argv)
+    if not ok and '--allow-missing-video' not in sys.argv:
+        sys.exit(1)
