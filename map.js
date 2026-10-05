@@ -170,6 +170,10 @@
   var track = document.getElementById('track'), tdate = document.getElementById('tdate'), tnote = document.getElementById('tnote');
   var playBtn = document.getElementById('play'), tall = document.getElementById('tall');
   var idx = N, playing = false, timer = null, STEP = 1050;
+  var MON1 = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+  // «Путь по годам» под картой — та же кнопка воспроизведения, что в хронологии: та под карточкой, её не замечали
+  var story = document.getElementById('story'), mapdate = document.getElementById('mapdate');
+  story.addEventListener('click', function () { playBtn.click(); });
   var MON = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
   function fmt(iso) { var a = iso.split('-'); return +a[2] + ' ' + MON[a[1] - 1] + ' ' + a[0]; }
   // Шкала по календарю: каждому году равная доля полосы, ползунок считает дни. Шаги ‹ › и воспроизведение
@@ -214,6 +218,15 @@
     items.forEach(function (li) { li.hidden = !!(cur && li.dataset.iso && li.dataset.iso > cur) || !okFilter(li); });
     secs.forEach(function (s) { s.hidden = !s.querySelector('li.reg:not([hidden])'); });
     track.value = posOf(idx); tall.hidden = idx >= N; playBtn.classList.toggle('playing', playing); playBtn.setAttribute('aria-label', playing ? 'Пауза' : 'Воспроизвести');
+    story.classList.toggle('playing', playing);
+    mapdate.hidden = !cur;
+    if (cur) {
+      var a = cur.split('-');
+      mapdate.textContent = MON1[a[1] - 1] + ' ' + a[0];
+      var sm = document.createElement('small');
+      sm.textContent = items.filter(function (li) { return li.dataset.iso && li.dataset.iso <= cur; }).length + ' из ' + total + ' регионов';
+      mapdate.appendChild(sm);
+    }
     document.getElementById('tprev').disabled = idx <= 0;
     document.getElementById('tnext').disabled = idx >= N;
     if (!cur) { tdate.textContent = 'Все даты'; tnote.textContent = 'На карте все посещённые регионы.'; if (!picked) card.innerHTML = hint; return; }
