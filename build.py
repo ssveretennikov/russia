@@ -196,10 +196,10 @@ def index_body():
   <h1>{e(SERIES_TITLE)}</h1>
   <div class="ix-intro">
     <p>Цель простая: побывать в каждом регионе страны хотя бы раз. Минимум — столица региона, дальше как получится.</p>
-    <p>Нажмите на регион на карте или выберите его из списка ниже, чтобы открыть отчёт.</p>
+    <p class="ix-how">Нажмите на регион на карте или выберите его из списка ниже, чтобы открыть отчёт.</p>
   </div>
 </header>
-<section class="mapbox" aria-label="Карта посещённых регионов">
+<section class="mapbox" id="karta" aria-label="Карта посещённых регионов">
   <div class="filters">
     <div class="chips" role="group" aria-label="Федеральный округ">{chips_fo}</div>
     <div class="chips" role="group" aria-label="Год поездки">{chips_y}</div>
@@ -208,14 +208,17 @@ def index_body():
 <defs><pattern id="hatch" class="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7"/><line x1="0" y1="0" x2="0" y2="7"/></pattern></defs>
 {chr(10).join(paths)}
   </svg>
+  <div class="mapbar">
+    <ul class="legend"><li><i class="k-v"></i>Побывал</li><li><i class="k-n"></i>Ещё впереди</li></ul>
+    <button type="button" class="zoom" id="zoom">Европейская часть</button>
+  </div>
+  <div class="mcard" id="mcard" aria-live="polite"><p class="mhint"><span class="h-mouse">Наведите на регион или нажмите на него.</span><span class="h-touch">Нажмите на регион — появится ссылка на отчёт.</span></p></div>
   <div class="tl" aria-label="Хронология поездок">
     <div class="tl-ctl"><button type="button" id="tprev" aria-label="Предыдущая дата">{ICON['prev']}</button><button type="button" class="play" id="play" aria-label="Воспроизвести">{ICON['play']}{ICON['pause']}</button><button type="button" id="tnext" aria-label="Следующая дата">{ICON['next']}</button></div>
     <div class="tl-track"><input type="range" id="track" min="0" value="0" aria-label="Дата на временной шкале"><div class="ruler" id="ruler" aria-hidden="true"></div></div>
     <div class="tl-read"><strong id="tdate">Все даты</strong><span id="tnote" aria-live="polite"></span></div>
     <button type="button" class="tl-all" id="tall" hidden>Показать весь период</button>
   </div>
-  <div class="mcard" id="mcard" aria-live="polite"><p class="mhint"><span class="h-mouse">Наведите на регион или нажмите на него.</span><span class="h-touch">Нажмите на регион — появится ссылка на отчёт.</span></p></div>
-  <ul class="legend"><li><i class="k-v"></i>Побывал</li><li><i class="k-n"></i>Ещё впереди</li></ul>
 </section>
 ''']
     for short, full, regs in D:
@@ -238,7 +241,7 @@ def index_body():
             attrs = f' data-code="{code}" data-fo="{FOKEY[short]}"' + (f' data-date="{ru_date(d)}" data-year="{d[:4]}" data-iso="{d}" data-tr="{trans[code]}"' if d else '')
             out.append(f'<li class="{cls}"{attrs}>{code_badge(code, main)}<div class="reg-t"><div>{nm}</div>{small}</div></li>')
         out.append('</ul></section>')
-    out.append('</div>')
+    out.append('<a class="totop" id="totop" href="#karta" hidden>↑ К карте</a>\n</div>')
     return '\n'.join(out)
 
 # ---- Карта дня и профиль высоты: строятся из GPS снимков (regions/<slug>/index.tsv) и отбора (selection.tsv).
