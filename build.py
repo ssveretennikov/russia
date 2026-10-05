@@ -240,9 +240,105 @@ def index_body():
 </div>''')
     return '\n'.join(out)
 
+# ---- Карта дня и профиль высоты: строятся из GPS снимков (regions/<slug>/index.tsv) и отбора (selection.tsv).
+#   В тексте страницы: <!--daymap: 44.608,40.098 Майкоп; 44.237,40.157 Смотровая--> и <!--profile-->.
+#   Точки отобранных фото — ссылки на <figure id="P016">. Если данных нет, метки просто убираются.
+import math, csv
+
+def _gps_rows(slug):
+    f = os.path.join(ROOT, 'regions', slug, 'index.tsv')
+    if not os.path.exists(f): return [], {}
+    rows = []
+    for r in csv.DictReader(open(f, encoding='utf-8'), delimiter='\t'):
+        if r['lat'] and r['lon'] and r['taken']:
+            rows.append(dict(id=r['id'], t=r['taken'], lat=float(r['lat']), lon=float(r['lon']), alt=float(r['alt'] or 0)))
+    rows.sort(key=lambda r: r['t'])
+    sel = {}
+    sf = os.path.join(ROOT, 'regions', slug, 'selection.tsv')
+    if os.path.exists(sf):
+        for line in open(sf, encoding='utf-8'):
+            c = line.rstrip('\n').split('\t')
+            if len(c) > 1 and c[1].startswith('P'): sel[c[1]] = c[0]
+    return rows, sel
+
+def _tmin(t):
+    return int(t[11:13]) * 60 + int(t[14:16])
+
+def daymap_svg(slug, labels):
+    rows, sel = _gps_rows(slug)
+    if len(rows) < 2: return ''
+    W, H, pad = 640, 420, 28
+    lat0 = sum(r['lat'] for r in rows) / len(rows); k = math.cos(math.radians(lat0))
+    xs = [r['lon'] * k for r in rows]; ys = [r['lat'] for r in rows]
+    for la, lo, _ in labels: xs.append(lo * k); ys.append(la)
+    x0, x1, y0, y1 = min(xs), max(xs), min(ys), max(ys)
+    span = max(x1 - x0, (y1 - y0) * W / H, 1e-6)
+    cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+    def P(la, lo):
+        return (pad + (W - 2 * pad) * (0.5 + (lo * k - cx) / span), pad + (H - 2 * pad) * (0.5 - (la - cy) / span * W / H))
+    pts = ' '.join(f'{x:.1f},{y:.1f}' for x, y in (P(r['lat'], r['lon']) for r in rows))
+    out = [f'<svg class="daymap-svg" viewBox="0 0 {W} {H}" role="img" aria-label="Маршрут дня по точкам съёмки">',
+           f'<polyline class="dm-route" points="{pts}"/>']
+    for la, lo, name in labels:
+        x, y = P(la, lo)
+        out.append(f'<g class="dm-label"><circle cx="{x:.1f}" cy="{y:.1f}" r="4"/><text x="{x + 8:.1f}" y="{y + 4:.1f}">{e(name)}</text></g>')
+    for r in rows:
+        if r['id'] in sel:
+            x, y = P(r['lat'], r['lon'])
+            out.append(f'<a href="#{r["id"]}" class="dm-pt"><circle cx="{x:.1f}" cy="{y:.1f}" r="6"><title>{r["t"][11:16]}</title></circle></a>')
+    out.append('</svg>')
+    return '\n'.join(out)
+
+def profile_svg(slug):
+    rows, sel = _gps_rows(slug)
+    rows = [r for r in rows if r['alt'] > 0]
+    if len(rows) < 2: return ''
+    W, H, pl, pb, pt = 640, 220, 60, 26, 14
+    t0 = min(_tmin(r['t']) for r in rows) - 15; t1 = max(_tmin(r['t']) for r in rows) + 15
+    a0 = max(0, min(r['alt'] for r in rows) - 50); a1 = max(r['alt'] for r in rows) + 50
+    def P(r):
+        return (pl + (W - pl - 10) * (_tmin(r['t']) - t0) / (t1 - t0), pt + (H - pt - pb) * (1 - (r['alt'] - a0) / (a1 - a0)))
+    pts = ' '.join(f'{x:.1f},{y:.1f}' for x, y in map(P, rows))
+    out = [f'<svg class="profile-svg" viewBox="0 0 {W} {H}" role="img" aria-label="Высота по времени дня">']
+    for h in range((t0 // 60) + 1, (t1 // 60) + 1):
+        x = pl + (W - pl - 10) * (h * 60 - t0) / (t1 - t0)
+        out.append(f'<line class="pf-grid" x1="{x:.1f}" y1="{pt}" x2="{x:.1f}" y2="{H - pb}"/><text class="pf-ax" x="{x:.1f}" y="{H - 8}" text-anchor="middle">{h}:00</text>')
+    for a in (a0 + 50, a1 - 50):
+        y = pt + (H - pt - pb) * (1 - (a - a0) / (a1 - a0))
+        out.append(f'<text class="pf-ax" x="{pl - 6}" y="{y + 4:.1f}" text-anchor="end">{int(round(a, -1))} м</text>')
+    out.append(f'<polyline class="pf-line" points="{pts}"/>')
+    for r in rows:
+        if r['id'] in sel:
+            x, y = P(r)
+            out.append(f'<a href="#{r["id"]}" class="dm-pt"><circle cx="{x:.1f}" cy="{y:.1f}" r="5"><title>{r["t"][11:16]} · {int(r["alt"])} м</title></circle></a>')
+    out.append('</svg>')
+    return '\n'.join(out)
+
+def inject_data(slug, src):
+    """Подставляет карту дня, профиль высоты и реальные размеры картинок из regions/<slug>/media.tsv."""
+    def dm(m):
+        labels = []
+        for part in (m.group(1) or '').split(';'):
+            part = part.strip()
+            mm = re.match(r'(-?\d+\.?\d*),\s*(-?\d+\.?\d*)\s+(.+)', part)
+            if mm: labels.append((float(mm[1]), float(mm[2]), mm[3].strip()))
+        return daymap_svg(slug, labels)
+    src = re.sub(r'<!--daymap:?(.*?)-->', dm, src, flags=re.S)
+    src = re.sub(r'<!--profile-->', lambda m: profile_svg(slug), src)
+    mt = os.path.join(ROOT, 'regions', slug, 'media.tsv')
+    if os.path.exists(mt):
+        dims = {r['name']: (r['w'], r['h']) for r in csv.DictReader(open(mt, encoding='utf-8'), delimiter='\t')}
+        def fix(m):
+            name = m.group(2).rsplit('.', 1)[0]
+            if name in dims:
+                w, h = dims[name]; return f'{m.group(1)}width="{w}" height="{h}"'
+            return m.group(0)
+        src = re.sub(r'(src="media/([^"]+)" )width="\d+" height="\d+"', fix, src)
+    return src
+
 def region_body(code, prev=None, nxt=None):
     """prev / nxt — соседи ПО МАРШРУТУ ПОЕЗДКИ: (код, название, ссылка, подпись) или None."""
-    src = open(os.path.join(ROOT, 'src', f'{code}.html'), encoding='utf-8').read()
+    src = inject_data(code, open(os.path.join(ROOT, 'src', f'{code}.html'), encoding='utf-8').read())
     top = ('<nav class="topbar"><a href="../index.html">← Все регионы</a>'
            '<div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button>'
            '<button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>')
@@ -302,6 +398,7 @@ def fragment(title, body):
 # prev / next — соседи по маршруту поездки: (код, название, ссылка, подпись) или None.
 # color — цвет региона (CSS-переменные --reg и --reg-ink для светлой темы); None = охра по умолчанию.
 PAGES = [
+    dict(slug='01-adygeya', title='1 · Республика Адыгея', prev=None, next=None, color=None),
     dict(slug='87-chukotka', title='87 · Чукотский автономный округ',
          prev=None, next=('41', 'Камчатский край', '../41-kamchatka/index.html', 'Дальше по маршруту'), color=None),
     dict(slug='49-magadan', title='49 · Магаданская область',
