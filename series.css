@@ -188,7 +188,8 @@ body:has(.ix-page){background:var(--sky-bg)}
 .chip:hover{border-color:var(--sky)}
 .chip[aria-pressed="true"]{background:var(--sky);border-color:var(--sky);color:#fff}
 .rumap{width:100%;height:auto;display:block;touch-action:manipulation}
-.rumap .r{fill:var(--sky);stroke:var(--surface);stroke-width:.7;stroke-linejoin:round;cursor:pointer;transition:opacity .2s,fill .15s}
+/* толщина обводки — в точках экрана, а не в единицах карты: при увеличении округа границы не толстеют */
+.rumap .r{fill:var(--sky);stroke:var(--surface);stroke-width:.7;stroke-linejoin:round;cursor:pointer;transition:opacity .2s,fill .15s;vector-effect:non-scaling-stroke}
 .rumap .r.rep{fill:var(--sun)}
 .rumap .r.tiny{stroke:var(--sky);stroke-width:3}
 .rumap .r.tiny.rep{stroke:var(--sun)}
@@ -206,6 +207,25 @@ body:has(.ix-page){background:var(--sky-bg)}
 .legend li{display:flex;align-items:center;gap:.4rem}
 .legend i{width:.9rem;height:.9rem;border-radius:999px;display:inline-block}
 .k-v{background:var(--sky)}.k-r{background:var(--sun)}
+.mapbar{display:flex;justify-content:space-between;align-items:center;gap:.5rem 1rem;flex-wrap:wrap}
+.zoom{font:600 .88rem/1 var(--body);padding:.55rem .9rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.zoom:hover{border-color:var(--sky)}
+.totop{position:fixed;right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));z-index:20;padding:.75rem 1.05rem;border-radius:999px;background:var(--sky);color:#fff;font:600 .9rem/1 var(--body);text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+/* телефон: карта должна попасть на первый экран — шапка короче, фильтры в одну строку с прокруткой вбок */
+@media (max-width:640px){
+  .ix-page .ix-top{flex-wrap:nowrap;align-items:flex-start}
+  .mapbar{gap:.5rem}
+  .legend{gap:.3rem .8rem;font-size:.85rem}
+  .zoom{font-size:.82rem;padding:.5rem .75rem}
+  .ix-page .ix-kicker{font-size:.85rem}
+  .ix-page .ix-head{gap:.9rem;padding-block:1.1rem 1.3rem}
+  .ix-page h1::after{margin-top:.6rem;height:.4rem}
+  .ix-how{display:none}
+  .mapbox{margin-top:1rem}
+  .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-.8rem;padding-inline:.8rem}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:none}
+}
 .h-touch{display:none}
 @media (hover:none){.h-mouse{display:none}.h-touch{display:inline}}
 [hidden]{display:none!important}

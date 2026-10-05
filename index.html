@@ -25,7 +25,7 @@
 <meta name="theme-color" content="#2A63C4" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Golos+Text:wght@400;500;600&family=Oswald:wght@500;600&display=swap">
-<link rel="stylesheet" href="series.css?v=5347cf86">
+<link rel="stylesheet" href="series.css?v=30e70469">
 
 </head>
 <body>
@@ -35,10 +35,10 @@
   <h1>Россия: регион за регионом</h1>
   <div class="ix-intro">
     <p>Цель простая: побывать в каждом регионе страны хотя бы раз. Минимум — столица региона, дальше как получится.</p>
-    <p>Нажмите на регион на карте или выберите его из списка ниже, чтобы открыть отчёт.</p>
+    <p class="ix-how">Нажмите на регион на карте или выберите его из списка ниже, чтобы открыть отчёт.</p>
   </div>
 </header>
-<section class="mapbox" aria-label="Карта посещённых регионов">
+<section class="mapbox" id="karta" aria-label="Карта посещённых регионов">
   <div class="filters">
     <div class="chips" role="group" aria-label="Федеральный округ"><button type="button" class="chip" data-k="fo" data-v="" aria-pressed="true">Все</button><button type="button" class="chip" data-k="fo" data-v="c" aria-pressed="false" title="Центральный федеральный округ">ЦФО</button><button type="button" class="chip" data-k="fo" data-v="sz" aria-pressed="false" title="Северо-Западный федеральный округ">СЗФО</button><button type="button" class="chip" data-k="fo" data-v="yu" aria-pressed="false" title="Южный федеральный округ">ЮФО</button><button type="button" class="chip" data-k="fo" data-v="sk" aria-pressed="false" title="Северо-Кавказский федеральный округ">СКФО</button><button type="button" class="chip" data-k="fo" data-v="p" aria-pressed="false" title="Приволжский федеральный округ">ПФО</button><button type="button" class="chip" data-k="fo" data-v="u" aria-pressed="false" title="Уральский федеральный округ">УрФО</button><button type="button" class="chip" data-k="fo" data-v="s" aria-pressed="false" title="Сибирский федеральный округ">СФО</button><button type="button" class="chip" data-k="fo" data-v="dv" aria-pressed="false" title="Дальневосточный федеральный округ">ДВФО</button></div>
     <div class="chips" role="group" aria-label="Год поездки"><button type="button" class="chip" data-k="year" data-v="" aria-pressed="true">Все годы</button><button type="button" class="chip" data-k="year" data-v="2022" aria-pressed="false">2022</button><button type="button" class="chip" data-k="year" data-v="2023" aria-pressed="false">2023</button><button type="button" class="chip" data-k="year" data-v="2024" aria-pressed="false">2024</button><button type="button" class="chip" data-k="year" data-v="2025" aria-pressed="false">2025</button><button type="button" class="chip" data-k="year" data-v="2026" aria-pressed="false">2026</button></div>
@@ -135,14 +135,17 @@
 <path class="r tiny" data-code="77" data-fo="c" data-year="2026" d="M147.7 220.7l-0.8 4.1l-3.3 -0.9l-0.9 0.6l1.1 -2.3l-0.7 -0.5l0.8 0.2l0.5 -1.3l1.5 -0.3l0.7 -1.1l-0.5 1.2l1.6 0.3zM146.6 217.9l-0.7 0.6l0.7 -0.6z" tabindex="0" role="link" aria-label="77 · Город федерального значения Москва"/>
 <path class="r tiny" data-code="92" data-fo="yu" data-year="2024" d="M4 280.6l-0.8 0l0.6 1.4l-2.1 0.3l0.9 1.7l-0.7 1.1l-1.5 -0.7l0.1 -5l1.2 1.1l2.8 -1.5l-0.5 1.6z" tabindex="0" role="link" aria-label="92 · Город федерального значения Севастополь"/>
   </svg>
+  <div class="mapbar">
+    <ul class="legend"><li><i class="k-v"></i>Побывал</li><li><i class="k-n"></i>Ещё впереди</li></ul>
+    <button type="button" class="zoom" id="zoom">Европейская часть</button>
+  </div>
+  <div class="mcard" id="mcard" aria-live="polite"><p class="mhint"><span class="h-mouse">Наведите на регион или нажмите на него.</span><span class="h-touch">Нажмите на регион — появится ссылка на отчёт.</span></p></div>
   <div class="tl" aria-label="Хронология поездок">
     <div class="tl-ctl"><button type="button" id="tprev" aria-label="Предыдущая дата"><svg class="i-prev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button><button type="button" class="play" id="play" aria-label="Воспроизвести"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><button type="button" id="tnext" aria-label="Следующая дата"><svg class="i-next" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button></div>
     <div class="tl-track"><input type="range" id="track" min="0" value="0" aria-label="Дата на временной шкале"><div class="ruler" id="ruler" aria-hidden="true"></div></div>
     <div class="tl-read"><strong id="tdate">Все даты</strong><span id="tnote" aria-live="polite"></span></div>
     <button type="button" class="tl-all" id="tall" hidden>Показать весь период</button>
   </div>
-  <div class="mcard" id="mcard" aria-live="polite"><p class="mhint"><span class="h-mouse">Наведите на регион или нажмите на него.</span><span class="h-touch">Нажмите на регион — появится ссылка на отчёт.</span></p></div>
-  <ul class="legend"><li><i class="k-v"></i>Побывал</li><li><i class="k-n"></i>Ещё впереди</li></ul>
 </section>
 
 <section class="fo" data-fo="c"><div class="fo-h"><h2>ЦФО · Центральный федеральный округ</h2></div><ul class="regs">
@@ -252,8 +255,9 @@
 <li class="reg none" data-code="84" data-fo="x"><span class="code">84</span><div class="reg-t"><div><span class="nm">Херсонская область</span></div><small>впереди</small></div></li>
 <li class="reg none" data-code="85" data-fo="x"><span class="code">85</span><div class="reg-t"><div><span class="nm">Запорожская область</span></div><small>впереди</small></div></li>
 </ul></section>
+<a class="totop" id="totop" href="#karta" hidden>↑ К карте</a>
 </div>
 <script src="series.js?v=491ada4f"></script>
-<script src="map.js?v=e1588a4f"></script>
+<script src="map.js?v=46f8eb05"></script>
 </body>
 </html>

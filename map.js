@@ -75,6 +75,48 @@
     if (href) location.href = href;
   }
 
+  // Увеличение. На телефоне регионы центра и Кавказа мельче пальца, поэтому выбор округа
+  // приближает карту к нему, а кнопка — к европейской части. Пропорции окна не меняются: страница не прыгает.
+  var vb0 = svg.viewBox.baseVal, W = vb0.width, H = vb0.height, FULL = [0, 0, W, H];
+  var EUROPE = [0, 100, 340, 330];             // x, y, ширина, высота; арктические острова Архангельской области не в счёт
+  var zoomBtn = document.getElementById('zoom'), view = FULL.slice(), zoomed = false, anim = 0;
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function fit(b) {
+    var pad = Math.max(b[2], b[3]) * 0.06, x = b[0] - pad, y = b[1] - pad, w = b[2] + 2 * pad, h = b[3] + 2 * pad;
+    if (w / h < W / H) { x -= (h * W / H - w) / 2; w = h * W / H; } else { y -= (w * H / W - h) / 2; h = w * H / W; }
+    return w >= W ? FULL : [x, y, w, h];
+  }
+  function foBox(fo) {
+    var x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    paths.forEach(function (p) {
+      if (p.dataset.fo !== fo) return;
+      var b = p.getBBox();
+      x0 = Math.min(x0, b.x); y0 = Math.min(y0, b.y); x1 = Math.max(x1, b.x + b.width); y1 = Math.max(y1, b.y + b.height);
+    });
+    return [x0, y0, x1 - x0, y1 - y0];
+  }
+  function setView(v) { view = v; svg.setAttribute('viewBox', v.join(' ')); }
+  function zoomTo(target) {
+    cancelAnimationFrame(anim);
+    zoomed = target !== FULL;
+    zoomBtn.textContent = zoomed ? 'Вся страна' : 'Европейская часть';
+    if (still) { setView(target); return; }
+    var from = view.slice(), t0 = null;
+    anim = requestAnimationFrame(function step(ts) {
+      if (t0 === null) t0 = ts;
+      var k = Math.min(1, (ts - t0) / 350), e = 1 - Math.pow(1 - k, 3);
+      setView(from.map(function (a, i) { return a + (target[i] - a) * e; }));
+      if (k < 1) anim = requestAnimationFrame(step);
+    });
+  }
+  zoomBtn.addEventListener('click', function () { zoomTo(zoomed ? FULL : fit(EUROPE)); });
+
+  // «К карте»: список длинный, на телефоне — несколько тысяч точек; кнопка видна, когда карта ушла за верх экрана
+  var totop = document.getElementById('totop');
+  function onScroll() { totop.hidden = box.getBoundingClientRect().bottom > 0; }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
   paths.forEach(function (p) {
     var code = p.dataset.code;
     p.addEventListener('pointerenter', function (ev) { if (ev.pointerType === 'mouse' && !picked) hoverTo(code); });
@@ -106,6 +148,7 @@
         x.setAttribute('aria-pressed', x === c ? 'true' : 'false');
       });
       apply();
+      if (c.dataset.k === 'fo') zoomTo(c.dataset.v ? fit(foBox(c.dataset.v)) : FULL);
     });
   });
 
@@ -191,9 +234,11 @@
   document.getElementById('tnext').addEventListener('click', function () { stopPlay(); resetFilters(); setIdx(idx + 1); });
   tall.addEventListener('click', function () { stopPlay(); setIdx(N); });
   function resetFilters() {
+    var hadFo = state.fo;
     state.fo = ''; state.year = '';
     [].forEach.call(document.querySelectorAll('.chip'), function (x) { x.setAttribute('aria-pressed', x.dataset.v === '' ? 'true' : 'false'); });
     paths.forEach(function (p) { p.classList.remove('dim'); });
+    if (hadFo) zoomTo(FULL);   // округ снят — снимается и его увеличение; «Европейскую часть» хронология не трогает
   }
   // выбор фильтра сбрасывает хронологию
   [].forEach.call(document.querySelectorAll('.chip'), function (c) {
