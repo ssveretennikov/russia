@@ -168,8 +168,28 @@ body.clean .note{display:none}
 /* ---------- главная · «Небо» ---------- */
 body:has(.ix-page){background:var(--sky-bg)}
 .ix-page .ix-head{max-width:none;background:var(--sky);color:#fff;box-shadow:0 0 0 100vmax var(--sky);clip-path:inset(0 -100vmax);padding:clamp(1.5rem,5vw,3rem) 0 clamp(1.6rem,4vw,2.6rem)}
-.ix-page .ix-head>*{max-width:var(--wide)}
-.ix-page .ix-kicker{color:#fff;opacity:.85}
+/* содержимое шапки — по той же колонке, что карта и список: без отступа текст прижимался к левому краю широкого экрана */
+.ix-page .ix-head{padding-inline:max(0px,calc((100% - var(--wide)) / 2))}
+.ix-page .ix-kicker{color:#fff}   /* без прозрачности: белый .85 на синем — 3,75:1, мелкий капс не читался */
+/* прогресс: главная — о том, сколько регионов пройдено */
+.ix-stats{display:flex;flex-direction:column;gap:.75rem}
+.ix-big{font-family:var(--display);font-weight:600;font-size:1.15rem;display:flex;align-items:baseline;gap:.2rem .5rem;flex-wrap:wrap;line-height:1}
+.ix-big b{font-weight:800;font-size:clamp(3rem,7vw,4.6rem);letter-spacing:-.03em}
+.ix-big span{font-family:var(--body);font-weight:500}
+.ix-bar{height:.6rem;border-radius:999px;background:rgba(255,255,255,.3);overflow:hidden}
+.ix-bar i{display:block;height:100%;border-radius:inherit;background:var(--sun)}
+.ix-facts{margin:0;display:flex;flex-direction:column;gap:.35rem;font-size:.95rem;line-height:1.35}
+.ix-facts div{display:flex;flex-wrap:wrap;gap:.1rem .6rem;align-items:baseline}
+.ix-facts dt{font-family:var(--sign);font-size:.88rem;letter-spacing:.08em;text-transform:uppercase}
+.ix-facts dd{margin:0;font-weight:500}
+@media (min-width:900px){
+  .ix-page .ix-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(16rem,21rem);column-gap:clamp(2rem,5vw,4.5rem);
+    grid-template-areas:"top top" "title stats" "intro stats";align-items:start}
+  .ix-page .ix-top{grid-area:top}
+  .ix-page .ix-head h1{grid-area:title}
+  .ix-page .ix-intro{grid-area:intro}
+  .ix-stats{grid-area:stats;align-self:end}
+}
 .ix-page h1::after{content:"";display:block;width:4.5rem;height:.5rem;border-radius:999px;background:var(--sun);margin-top:1rem}
 .ix-page .ix-intro a{color:#fff}
 .ix-page .fo{background:var(--surface);border-radius:1.1rem;padding:clamp(1rem,3vw,1.6rem)}
@@ -214,13 +234,17 @@ body:has(.ix-page){background:var(--sky-bg)}
 /* телефон: карта должна попасть на первый экран — шапка короче, фильтры в одну строку с прокруткой вбок */
 @media (max-width:640px){
   .ix-page .ix-top{flex-wrap:nowrap;align-items:flex-start}
-  .mapbar{gap:.5rem}
-  .legend{gap:.3rem .8rem;font-size:.85rem}
+  .mapbar{gap:.5rem;flex-wrap:nowrap}   /* в строку легенда и кнопка не входят (201 + 150 точек на 332) — легенда столбиком */
+  .legend{flex-direction:column;gap:.15rem;font-size:.85rem}
   .zoom{font-size:.82rem;padding:.5rem .75rem}
   .ix-page .ix-kicker{font-size:.85rem}
   .ix-page .ix-head{gap:.9rem;padding-block:1.1rem 1.3rem}
   .ix-page h1::after{margin-top:.6rem;height:.4rem}
   .ix-how{display:none}
+  .ix-stats{gap:.55rem}
+  .ix-big b{font-size:2.6rem}
+  .ix-facts{font-size:.88rem;gap:.15rem}
+  .ix-facts dt{font-size:.8rem}
   .mapbox{margin-top:1rem}
   .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-.8rem;padding-inline:.8rem}
   .chips::-webkit-scrollbar{display:none}
