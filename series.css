@@ -266,3 +266,21 @@ img.zoomable{cursor:zoom-in}
 .lb-prev{left:.6rem}.lb-next{right:.6rem}
 .lb-c{position:absolute;top:max(1.1rem,env(safe-area-inset-top));left:1rem;color:#C9CED2;font-family:var(--sign);letter-spacing:.06em}
 @media (max-width:640px){.lb-n{top:auto;bottom:.8rem;transform:none}}
+
+/* ---- Карта дня и профиль высоты: строятся из GPS снимков (build.py). Точки — отобранные фото, клик ведёт к ним. */
+.daymap{background:var(--surface);border:1px solid var(--line);padding:.6rem}
+.daymap-svg,.profile-svg{display:block;width:100%;height:auto;font-family:var(--sign)}
+.dm-route{fill:none;stroke:var(--reg);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round;opacity:.85}
+.dm-label circle{fill:var(--ink)}
+.dm-label text{fill:var(--ink);font-size:14px;letter-spacing:.03em;paint-order:stroke;stroke:var(--surface);stroke-width:4px;stroke-linejoin:round}
+.dm-pt circle{fill:var(--surface);stroke:var(--ink);stroke-width:2;transition:fill .15s,r .15s}
+.dm-pt:hover circle,.dm-pt:focus circle{fill:var(--reg);stroke:var(--reg)}
+.pf-line{fill:none;stroke:var(--reg);stroke-width:2.5;stroke-linejoin:round}
+.pf-grid{stroke:var(--line);stroke-width:1}
+.pf-ax{fill:var(--soft);font-size:12px;letter-spacing:.04em}
+.daymap figcaption,.sec > .daymap-cap{font-size:.9rem;color:var(--soft)}
+figure:target .ph{outline:.25rem solid var(--reg);outline-offset:.25rem}
+figure[id]{scroll-margin-top:4rem}
+details.more{border-top:1px solid var(--line);padding-top:.6rem}
+details.more summary{cursor:pointer;font-family:var(--sign);letter-spacing:.06em;text-transform:uppercase;font-size:.9rem;color:var(--soft)}
+details.more[open] summary{margin-bottom:.6rem}
