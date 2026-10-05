@@ -1,0 +1,44 @@
+# имя	ID	размер (длинная сторона, px)	[для видео: отрезки в секундах]
+# Все фото — телефон автора. P345 (посадочный с фамилией) не брать.
+hero	P128	2200
+dym	P001	1400
+stolb	P007	1400
+aeroport	P009	1600
+zemletryasenie	P011	1400
+vezdehod	P018	1600
+idoly	P026	1400
+medved	P053	1600
+kanyon	P077	1400
+vodopad	P083	1400
+zapret	P087	1400
+pryzhok	P106	1600
+led	P113	1600
+peshchera	P142	1600
+svet	P147	1600
+lava	P152	1600
+strizhka	P166	1400
+pushki	P187	1600
+mukhomor	P196	1400
+bukvy	P203	1600
+vulkany	P204	1400
+bukhta	P212	1600
+kupol	P237	1600
+kultuchnoe	P251	1600
+pirozhok	P252	1050
+raft	P269	1400
+ryba	P276	1600
+ulov	P284	1400
+razdelka	P288	1600
+koster	P296	1400
+ikra	P303	1400
+buterbrod	P309	1600
+malki	P330	1600
+goryachaya	P332	1600
+kamni	P338	1050
+koordinaty	P340	1600
+voda	P344	1600
+salon	P347	1600
+v-vulkan	V01	1280	2-13
+v-medved	V03	1280	8-21
+v-ikra	V45	1280	8-22
+v-koster	V51	1280	0-13
