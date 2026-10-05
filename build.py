@@ -10,6 +10,10 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 CSS = open(os.path.join(ROOT, 'series.css'), encoding='utf-8').read()
 JS = open(os.path.join(ROOT, 'series.js'), encoding='utf-8').read()
 MAPJS = open(os.path.join(ROOT, 'map.js'), encoding='utf-8').read()
+import hashlib
+# метка версии в ссылках на общие файлы: GitHub Pages разрешает браузеру держать их в кэше 10 минут,
+# а с новой меткой после выкладки браузер берёт новый файл сразу
+VER = {n: hashlib.md5(t.encode('utf-8')).hexdigest()[:8] for n, t in (('css', CSS), ('js', JS), ('map', MAPJS))}
 FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800'
          '&family=Golos+Text:wght@400;500;600&family=Oswald:wght@500;600&display=swap">')
 VK = 'https://vk.ru/@moscowserega-russia-'
@@ -62,8 +66,8 @@ D = [
   ('30','Астраханская область','Астрахань','v',[('', '30')]),
   ('34','Волгоградская область','Волгоград','v',[('', '34')]),
   ('61','Ростовская область','Ростов-на-Дону','h',[('', '61')]),
-  ('82','Республика Крым','Симферополь','h',[('', '82')]),
-  ('92','Севастополь','город федерального значения','v',[('', '92')]),
+  ('91','Республика Крым','Симферополь','h',[('', 'LOCAL:91-krym/index.html')]),
+  ('92','Севастополь','город федерального значения','v',[('', 'LOCAL:92-sevastopol/index.html')]),
  ]),
  ('СКФО', 'Северо-Кавказский федеральный округ', [
   ('5','Республика Дагестан','Махачкала','h',[('', '5')]),
@@ -116,12 +120,12 @@ D = [
   ('25','Приморский край','Владивосток','h',[('', '25')]),
   ('27','Хабаровский край','Хабаровск','v',[('', '27')]),
   ('28','Амурская область','Благовещенск','v',[('', '28')]),
-  ('41','Камчатский край','Петропавловск-Камчатский','v',[('', '41')]),
+  ('41','Камчатский край','Петропавловск-Камчатский','v',[('', 'LOCAL:41-kamchatka/index.html'),('старый отчёт', '41')]),
   ('49','Магаданская область','Магадан','h',[('', 'LOCAL:49-magadan/index.html')]),
   ('65','Сахалинская область','Южно-Сахалинск','h',[('', '65')]),
   ('75','Забайкальский край','Чита','v',[('', '75')]),
   ('79','Еврейская автономная область','Биробиджан','v',[('', '79')]),
-  ('87','Чукотский автономный округ','Анадырь','v',[]),
+  ('87','Чукотский автономный округ','Анадырь','v',[('', 'LOCAL:87-chukotka/index.html')]),
  ]),
  ('', 'Пока вне федеральных округов', [
   ('80','Донецкая Народная Республика','','n',[]),
@@ -223,7 +227,7 @@ def index_body():
             sub = [e(cap)] if cap else []
             for lab, slug in links[1:]:
                 sub.append(f'<a href="{e(href(slug))}">{e(lab)}</a>')
-            if code == '87': sub.append(NOTE87)
+            if code == '87' and not local: sub.append(NOTE87)
             if mark == 'n': sub.append('впереди')
             small = f'<small>{" · ".join(sub)}</small>' if sub else ''
             d = dates.get(code)
@@ -279,11 +283,11 @@ def meta_tags(title, desc, path, image):
 
 def doc(title, body, depth, inline, reg_color=None, meta=''):
     up = '../' * depth
-    style = f'<style>\n{CSS}\n</style>' if inline else f'<link rel="stylesheet" href="{up}series.css">'
-    script = f'<script>\n{JS}\n</script>' if inline else f'<script src="{up}series.js"></script>'
+    style = f'<style>\n{CSS}\n</style>' if inline else f'<link rel="stylesheet" href="{up}series.css?v={VER["css"]}">'
+    script = f'<script>\n{JS}\n</script>' if inline else f'<script src="{up}series.js?v={VER["js"]}"></script>'
     extra = f'<style>{reg_color}</style>' if reg_color else ''
     if 'ix-page' in body:                      # главная: карта и фильтры
-        script += f'\n<script>\n{MAPJS}\n</script>' if inline else f'\n<script src="{up}map.js"></script>'
+        script += f'\n<script>\n{MAPJS}\n</script>' if inline else f'\n<script src="{up}map.js?v={VER["map"]}"></script>'
     return (f'<!doctype html>\n<html lang="ru">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
             f'<title>{e(title)}</title>\n{meta}\n{THEME_INIT}\n{FONTS}\n{style}\n{extra}\n</head>\n<body>\n{body}\n{script}\n</body>\n</html>\n')
@@ -298,8 +302,18 @@ def fragment(title, body):
 # prev / next — соседи по маршруту поездки: (код, название, ссылка, подпись) или None.
 # color — цвет региона (CSS-переменные --reg и --reg-ink для светлой темы); None = охра по умолчанию.
 PAGES = [
+    dict(slug='87-chukotka', title='87 · Чукотский автономный округ',
+         prev=None, next=('41', 'Камчатский край', '../41-kamchatka/index.html', 'Дальше по маршруту'), color=None),
     dict(slug='49-magadan', title='49 · Магаданская область',
-         prev=('41', 'Камчатский край', VK + '41', 'Раньше по маршруту'), next=None, color=None),
+         prev=('41', 'Камчатский край', '../41-kamchatka/index.html', 'Раньше по маршруту'), next=None, color=None),
+    dict(slug='41-kamchatka', title='41 · Камчатский край',
+         prev=('87', 'Чукотский автономный округ', '../87-chukotka/index.html', 'Раньше по маршруту'),
+         next=('49', 'Магаданская область', '../49-magadan/index.html', 'Дальше по маршруту'), color=None),
+    dict(slug='91-krym', title='91 · Республика Крым',
+         prev=None, next=('92', 'Севастополь', '../92-sevastopol/index.html', 'Дальше по маршруту'), color=None),
+    dict(slug='92-sevastopol', title='92 · Севастополь',
+         prev=('91', 'Республика Крым', '../91-krym/index.html', 'Раньше по маршруту'),
+         next=('91', 'Республика Крым · Карадаг', '../91-krym/index.html', 'Дальше по маршруту'), color=None),
 ]
 
 def region_style(color):
@@ -313,7 +327,7 @@ def write_service_files():
             f'<p>Адрес мог устареть или в нём опечатка. Отчёты по регионам собраны на главной.</p>'
             f'<p><a href="{base}">← Все регионы</a></p></div></div>')
     h = doc('Страница не найдена', page, 0, False, None, f'<link rel="icon" href="{base}favicon.png" type="image/png">\n<meta name="robots" content="noindex">')
-    h = h.replace('href="series.css"', f'href="{base}series.css"').replace('src="series.js"', f'src="{base}series.js"')
+    h = h.replace('href="series.css', f'href="{base}series.css').replace('src="series.js', f'src="{base}series.js')
     open(os.path.join(ROOT, '404.html'), 'w', encoding='utf-8').write(h)
     urls = [SITE] + [SITE + pg['slug'] + '/' for pg in PAGES]
     open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8').write(
