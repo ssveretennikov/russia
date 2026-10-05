@@ -97,7 +97,7 @@ D = [
  ('УрФО', 'Уральский федеральный округ', [
   ('45','Курганская область','Курган','v',[('', 'LOCAL:45-kurgan/index.html')]),
   ('66','Свердловская область','Екатеринбург','v',[('', 'LOCAL:66-sverdlovsk/index.html')]),
-  ('72','Тюменская область','Тюмень','v',[('', 'LOCAL:72-tyumen/index.html'),('Тобольск','72-2')]),
+  ('72','Тюменская область','Тюмень','v',[('', 'LOCAL:72-tyumen/index.html'),('Тобольск','LOCAL:72-tobolsk/index.html')]),
   ('74','Челябинская область','Челябинск','v',[('', 'LOCAL:74-chelyabinsk/index.html')]),
   ('86','Ханты-Мансийский АО — Югра','Ханты-Мансийск','h',[('', 'LOCAL:86-khanty-mansi/index.html')]),
   ('89','Ямало-Ненецкий АО','Салехард','v',[('', 'LOCAL:89-yamal/index.html')]),
@@ -116,7 +116,7 @@ D = [
  ]),
  ('ДВФО', 'Дальневосточный федеральный округ', [
   ('3','Республика Бурятия','Улан-Удэ','v',[('', 'LOCAL:03-buryatia/index.html')]),
-  ('14','Республика Саха (Якутия)','Якутск','v',[('', 'LOCAL:14-yakutia/index.html')]),
+  ('14','Республика Саха (Якутия)','Якутск','v',[('', 'LOCAL:14-yakutia/index.html'),('Мирный','LOCAL:14-mirny/index.html')]),
   ('25','Приморский край','Владивосток','h',[('', 'LOCAL:25-primorye/index.html')]),
   ('27','Хабаровский край','Хабаровск','v',[('', 'LOCAL:27-khabarovsk/index.html')]),
   ('28','Амурская область','Благовещенск','v',[('', 'LOCAL:28-amur/index.html')]),
@@ -408,7 +408,8 @@ def fragment(title, body):
 # color — цвет региона (CSS-переменные --reg и --reg-ink для светлой темы); None = охра по умолчанию.
 PAGES = [
     dict(slug='13-mordovia', title='13 · Республика Мордовия', prev=None, next=None, color=None),
-    dict(slug='14-yakutia', title='14 · Республика Саха (Якутия)', prev=None, next=None, color=None),
+    dict(slug='14-yakutia', title='14 · Республика Саха (Якутия)', prev=None, next=('14', 'Мирный', '../14-mirny/index.html', 'Дальше по маршруту'), color=None),
+    dict(slug='14-mirny', title='14 · Мирный', prev=('14', 'Республика Саха (Якутия)', '../14-yakutia/index.html', 'Раньше по маршруту'), next=None, color=None),
     dict(slug='15-north-ossetia', title='15 · Северная Осетия — Алания', prev=None, next=None, color=None),
     dict(slug='16-tatarstan', title='16 · Республика Татарстан', prev=None, next=None, color=None),
     dict(slug='17-tuva', title='17 · Республика Тыва', prev=None, next=None, color=None),
@@ -461,7 +462,8 @@ PAGES = [
     dict(slug='69-tver', title='69 · Тверская область', prev=None, next=None, color=None),
     dict(slug='70-tomsk', title='70 · Томская область', prev=None, next=None, color=None),
     dict(slug='71-tula', title='71 · Тульская область', prev=None, next=None, color=None),
-    dict(slug='72-tyumen', title='72 · Тюменская область', prev=None, next=None, color=None),
+    dict(slug='72-tyumen', title='72 · Тюменская область', prev=None, next=('72', 'Тобольск', '../72-tobolsk/index.html', 'Дальше по маршруту'), color=None),
+    dict(slug='72-tobolsk', title='72 · Тобольск', prev=('72', 'Тюменская область', '../72-tyumen/index.html', 'Раньше по маршруту'), next=None, color=None),
     dict(slug='73-ulyanovsk', title='73 · Ульяновская область', prev=None, next=None, color=None),
     dict(slug='74-chelyabinsk', title='74 · Челябинская область', prev=None, next=None, color=None),
     dict(slug='75-zabaykalsky', title='75 · Забайкальский край', prev=None, next=None, color=None),

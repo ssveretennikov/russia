@@ -14,7 +14,6 @@ nerpochka	P214	1600
 okno	P199	1400
 polovinnaya	P206	1600
 nos	P208	1600
-v-okno	V15	1280	66-82,92-104
 dron-poezd	P044	2000
 slyudyanka	P218	1600
 vokzal	P050	1600
@@ -36,6 +35,7 @@ dom-nalichniki	P101	1600
 zheny	P103	1600
 lestnica	P107	1600
 dron-sobor	P117	2000
+v-dron-kolokolnya	V04	1280	1-21
 osnovateli	P126	1400
 aleksandr	P133	1400
 dramteatr	P142	1600

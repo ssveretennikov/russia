@@ -1,5 +1,5 @@
 # имя	ID	размер	отрезки видео (сек)
-hero	P093	2200
+hero	P107	2200
 avtobus-312	P004	1600
 zoopark-vhod	P012	1600
 mandril	P015	1400
@@ -20,6 +20,7 @@ foye	P076	1600
 zal	P081	2000
 orkestr	P083	1600
 zerkalo	P091	1400
+dron-opera	P093	2000
 nomerok	P092	1400
 teatr-vecher	P094	1600
 dron-koleso	P098	2000
@@ -28,7 +29,6 @@ dron-fiolet	P100	2000
 vokzal-noch	P101	1400
 plyazh-vhod	P102	1400
 kacheli-1	P103	1600
-kacheli-ya	P107	2000
 dron-kacheli	P113	2000
 v-dron-plyazh	V23	1280	1-19
 most	P117	1400

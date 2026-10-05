@@ -1,5 +1,5 @@
 # имя	ID	размер	отрезки видео (сек)
-hero	P092	2200
+hero	P065	2200
 vokzal-noch	P002	2000
 kot	P003	1600
 ekspresso	P004	1600
@@ -19,7 +19,6 @@ v-kukly	V01	1280	3-28
 gardner	P046	2000
 motocikly	P045	1600
 queen	P057	1600
-monro	P065	1400
 pingvin	P052	1400
 ulica	P069	2000
 oka	P076	2000
@@ -27,6 +26,7 @@ loshad	P086	1600
 serdce	P087	1600
 amfiteatr	P088	2000
 zont	P083	1600
+kanal	P092	2000
 most	P097	2000
 most-opory	P098	1400
 grozny	P101	1400

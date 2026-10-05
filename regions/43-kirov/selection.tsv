@@ -1,6 +1,7 @@
 # имя	ID	размер	отрезки видео (сек)
-hero	P008	2200
+hero	P096	2200
 vokzal	P002	1600
+sobaka	P008	1600
 teplo-svet	P006	1400
 kvas	P007	1400
 assol	P010	1600
@@ -28,7 +29,6 @@ medved	P085	1400
 baran	P086	1400
 morozhenoe	P090	1400
 spassky	P093	1400
-bulychev	P096	1400
 serafim	P102	2000
 zaycy	P103	1400
 uspensky	P106	1400
