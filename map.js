@@ -120,20 +120,35 @@
   var idx = N, playing = false, timer = null, STEP = 1050;
   var MON = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
   function fmt(iso) { var a = iso.split('-'); return +a[2] + ' ' + MON[a[1] - 1] + ' ' + a[0]; }
-  track.max = N; track.value = N;
-  var ruler = document.getElementById('ruler'), firstOf = {};
-  dates.forEach(function (d, i) { var y = d.slice(0, 4); if (!(y in firstOf)) firstOf[y] = i; });
-  var ys = Object.keys(firstOf), groups = [];
-  ys.forEach(function (y) {                   // годы, которые идут почти подряд, сливаем в одну подпись («2025–26»)
-    var pos = firstOf[y] / N * 100, g = groups[groups.length - 1];
-    if (g && pos - g.pos < 12) { g.end = y; } else { groups.push({ start: y, end: y, pos: pos }); }
-  });
-  groups.forEach(function (g) {
-    var s = document.createElement('span');
-    s.textContent = g.start === g.end ? g.start : g.start + '–' + g.end.slice(2);
-    s.style.left = g.pos + '%';
-    if (g.pos > 90) s.style.transform = 'translateX(-100%)';
+  // Шкала по календарю: каждому году равная доля полосы, ползунок считает дни. Шаги ‹ › и воспроизведение
+  // по-прежнему идут от поездки к поездке. По числу поездок 2024–2026 сжимались в край под одной подписью.
+  function dayNum(iso) { var a = iso.split('-'); return Date.UTC(+a[0], a[1] - 1, +a[2]) / 864e5; }
+  var Y0 = +dates[0].slice(0, 4), Y1 = +dates[N - 1].slice(0, 4);
+  var D0 = dayNum(Y0 + '-01-01'), DMAX = dayNum(Y1 + '-12-31') - D0;
+  var dayOf = dates.map(function (d) { return dayNum(d) - D0; });
+  function posOf(i) { return i < N ? dayOf[i] : DMAX; }
+  function idxAt(v) {                        // последняя поездка не позже выбранного дня; конец полосы — «все даты»
+    if (v >= DMAX) return N;
+    var i = 0;
+    while (i + 1 < N && dayOf[i + 1] <= v) i++;
+    return i;
+  }
+  track.min = 0; track.max = DMAX; track.step = 1; track.value = DMAX;
+  var ruler = document.getElementById('ruler');
+  for (var y = Y0; y <= Y1; y++) {
+    var s = document.createElement('span'), c = document.createElement('b');
+    c.textContent = String(y).slice(0, 2);   // «20» прячется на узком экране: остаётся «’22»
+    s.appendChild(c); s.appendChild(document.createTextNode(String(y).slice(2)));
+    s.style.left = (dayNum(y + '-01-01') - D0) / DMAX * 100 + '%';
     ruler.appendChild(s);
+  }
+  function fitRuler() { ruler.classList.toggle('short', ruler.clientWidth / (Y1 - Y0 + 1) < 48); }
+  fitRuler();
+  window.addEventListener('resize', fitRuler);
+  dayOf.forEach(function (d) {               // засечка на каждую дату поездки
+    var t = document.createElement('i');
+    t.style.left = d / DMAX * 100 + '%';
+    ruler.appendChild(t);
   });
   var total = paths.filter(function (p) { return p.dataset.year; }).length;
 
@@ -146,7 +161,7 @@
     });
     items.forEach(function (li) { li.hidden = !!(cur && li.dataset.iso && li.dataset.iso > cur) || !okFilter(li); });
     secs.forEach(function (s) { s.hidden = !s.querySelector('li.reg:not([hidden])'); });
-    track.value = idx; tall.hidden = idx >= N; playBtn.textContent = playing ? '⏸' : '▶';
+    track.value = posOf(idx); tall.hidden = idx >= N; playBtn.textContent = playing ? '⏸' : '▶';
     document.getElementById('tprev').disabled = idx <= 0;
     document.getElementById('tnext').disabled = idx >= N;
     if (!cur) { tdate.textContent = 'Все даты'; tnote.textContent = 'На карте все посещённые регионы.'; if (!picked) card.innerHTML = hint; return; }
@@ -172,7 +187,7 @@
     resetFilters(); picked = null; mark('');
     playing = true; draw(); loop();
   });
-  track.addEventListener('input', function () { stopPlay(); resetFilters(); picked = null; mark(''); setIdx(+track.value); });
+  track.addEventListener('input', function () { stopPlay(); resetFilters(); picked = null; mark(''); setIdx(idxAt(+track.value)); });
   document.getElementById('tprev').addEventListener('click', function () { stopPlay(); resetFilters(); setIdx(idx - 1); });
   document.getElementById('tnext').addEventListener('click', function () { stopPlay(); resetFilters(); setIdx(idx + 1); });
   tall.addEventListener('click', function () { stopPlay(); setIdx(N); });
