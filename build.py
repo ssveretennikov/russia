@@ -197,6 +197,11 @@ def index_body():
     # она не участвует, а на карте горит с первой даты — отсюда поездки начинаются.
     trips = {c: d for c, d in dates.items() if c != HOME}
     years = sorted({d[:4] for d in trips.values()})
+    # Цвет на карте — по «возрасту» года первой поездки: 0 — последний год, 3 — третий с конца и раньше.
+    # Привязка к возрасту, а не к самому году: новый год сам станет самым заметным, стили править не нужно.
+    def age(y): return min(3, len(years) - 1 - years.index(y))
+    legend = (''.join(f'<li><i class="k-a{age(y)}"></i>{y}</li>' for y in years)
+              + '<li><i class="k-n"></i>Ещё впереди</li>')
     # ---- прогресс для шапки: считается из тех же дат, что и карта, руками не правится ----
     names = {code: name for _, _, regs in D for code, name, *_ in regs}
     first_iso, last_iso = min(trips.values()), max(trips.values())
@@ -219,7 +224,7 @@ def index_body():
         fo, _, link, local = info[r['code']]
         cls = 'r' + (' no' if not r['date'] else '') + (' tiny' if r['tiny'] else '')
         label = e(f"{r['code']} · {r['name']}" + ('' if r['date'] else ' (впереди)'))
-        yr = f' data-year="{trips[r["code"]][:4]}"' if r['code'] in trips else ''
+        yr = f' data-year="{trips[r["code"]][:4]}" data-age="{age(trips[r["code"]][:4])}"' if r['code'] in trips else ''
         paths.append(f'<path class="{cls}" data-code="{r["code"]}" data-fo="{fo}"{yr} d="{r["d"]}" tabindex="0" role="{"link" if link else "img"}" aria-label="{label}"/>')
     chips_fo = '<button type="button" class="chip" data-k="fo" data-v="" aria-pressed="true">Все</button>' + ''.join(
         f'<button type="button" class="chip" data-k="fo" data-v="{FOKEY[s]}" aria-pressed="false" title="{e(f)}">{s}</button>' for s, f, _ in D if s)
@@ -240,13 +245,16 @@ def index_body():
     <div class="chips" role="group" aria-label="Федеральный округ">{chips_fo}</div>
     <div class="chips" role="group" aria-label="Год поездки">{chips_y}</div>
   </div>
+  <div class="mapwrap">
   <svg class="rumap" viewBox="0 0 {mp['w']} {mp['h']}" role="group" aria-label="Карта России, посещённые регионы">
 <defs><pattern id="hatch" class="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7"/><line x1="0" y1="0" x2="0" y2="7"/></pattern></defs>
 {chr(10).join(paths)}
   </svg>
+  <p class="mapdate" id="mapdate" aria-hidden="true" hidden></p>
+  </div>
   <div class="mapbar">
-    <ul class="legend"><li><i class="k-v"></i>Побывал</li><li><i class="k-n"></i>Ещё впереди</li></ul>
-    <button type="button" class="zoom" id="zoom">Европейская часть</button>
+    <ul class="legend" aria-label="Год первой поездки">{legend}</ul>
+    <div class="mapbtns"><button type="button" class="zoom mstory" id="story">{ICON['play']}{ICON['pause']}<span>Путь по годам</span></button><button type="button" class="zoom" id="zoom">Европейская часть</button></div>
   </div>
   <div class="mcard" id="mcard" aria-live="polite"><p class="mhint"><span class="h-mouse">Наведите на регион или нажмите на него.</span><span class="h-touch">Нажмите на регион — появится ссылка на отчёт.</span></p></div>
   <div class="tl" aria-label="Хронология поездок">
