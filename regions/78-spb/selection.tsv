@@ -1,15 +1,17 @@
 # имя	ID	размер	отрезки видео (сек)
 hero	P684	2200
+bar	P004	1400
 sobor-noch	P016	1400
 annenkirche	P046	1400
 mikhailovsky	P095	1400
 russky-lestnica	P123	1600
 devyaty-val	P184	1600
 fontanka	P297	2000
-v-fontanka	V05	1280	0-9
-krysha	P347	2000
+krysha	P347	1600
+kabriolet	P392	1600
 shtiglitz	P440	1400
 shtiglitz-selfie	P444	1600
+v-fontanka	V05	1280	0-9
 lift	P549	1400
 svinoe-rylo	P552	1400
 kaban	P613	1600
@@ -19,46 +21,12 @@ petropavlovka	P699	2000
 v-neva-noch	V12	1280	0-20
 v-muzykanty	V13	1280	17-40
 spas-na-krovi	P764	2000
-isaakiy	P813	1600
+isaakiy	P813	2000
 lahta-selfie	P872	1600
 burya	P900	1600
 v-burya	V17	1280	2-30
 grand-maket-karta	P920	2000
 maket-biatlon	P1031	1600
-maket-rodina	P1046	1600
+maket-rodina	P1046	1400
+narodnosti	P1058	1600
 nevsky	P1065	2000
-dvorcovaya-den	P1190	2000
-vaza	P1495	1600
-vaza-selfie	P1497	1600
-iordanskaya	P1572	1600
-rycari	P1579	1600
-rembrandt	P1630	1600
-zimny-zakat	P1193	1600
-rostralnaya	P1199	1600
-shtab-atrium	P1360	1600
-kvadrat	P1457	1600
-matiss	P1463	1600
-yusupov-dvor	P1635	2000
-belokolonny	P1653	1600
-mavritanskaya	P1692	1600
-v-teatr	V48	1280	4-17
-mariinka	P1184	1600
-erarta-manifest	P1335	1600
-kover-samolet	P1352	1600
-stiralki	P1708	1600
-salamandra	P1166	1600
-oleni	P1174	1600
-v-petuh	V30	1280	0-20
-naberezhnaya	P1249	2000
-avrora	P1069	2000
-korabli-flagi	P1083	1600
-most-tolpa	P1097	1600
-kater-selfie	P1104	1600
-fregat	P1121	2000
-v-fregat	V26	1280	0-16
-vantovy	P1219	2000
-medny-vsadnik	P1232	1600
-troickiy	P1284	2000
-vitebsky-zal	P1305	1600
-bolsheohtinsky	P1318	2000
-v-most	V38	1280	0-17
