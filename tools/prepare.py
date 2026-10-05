@@ -6,6 +6,7 @@
   python tools/prepare.py --inventory     # + inventory для регионов, где ещё нет timeline.md
   python tools/prepare.py --only 23 78    # ограничить кодами регионов
   python tools/prepare.py --force         # перезаписать source.txt
+  python tools/prepare.py --inventory --redo   # inventory заново и там, где timeline.md уже есть (миниатюры не пересчитываются)
 """
 import argparse, subprocess, sys
 from pathlib import Path
@@ -24,7 +25,7 @@ def rows():
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--inventory', action='store_true'); ap.add_argument('--force', action='store_true')
-    ap.add_argument('--only', nargs='*', default=None); ap.add_argument('--jobs', type=int, default=3)
+    ap.add_argument('--redo', action='store_true'); ap.add_argument('--only', nargs='*', default=None); ap.add_argument('--jobs', type=int, default=3)
     a = ap.parse_args()
     todo, missing = [], []
     for code, slug, folders, note in rows():
@@ -35,7 +36,7 @@ def main():
             f.write_text(('# ' + note + '\n' if note else '') + '\n'.join(folders) + '\n', encoding='utf-8')
         absent = [p for p in folders if not Path(p).is_dir()]
         if absent: missing.append((slug, absent)); continue
-        if a.inventory and not (d / 'timeline.md').exists(): todo.append(slug)
+        if a.inventory and (a.redo or not (d / 'timeline.md').exists()): todo.append(slug)
     print(f'source.txt готовы: {len(list(rows()))} регионов в regions/')
     for slug, absent in missing: print(f'  {slug}: папка не найдена: {"; ".join(absent)}')
     for i, slug in enumerate(todo, 1):
