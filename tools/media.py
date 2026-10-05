@@ -120,11 +120,13 @@ def sheet(items, dst, cols, cell, label_h=26, fsize=19):
 
 def probe(path):
     r = subprocess.run(['ffprobe', '-v', 'error', '-show_entries',
-                        'format=duration,size:stream=width,height,codec_name,r_frame_rate,color_transfer',
+                        'format=duration,size:format_tags=creation_time:stream=width,height,codec_name,r_frame_rate,color_transfer',
                         '-of', 'json', path], capture_output=True, text=True)
     j = json.loads(r.stdout or '{}'); v = next((s for s in j.get('streams', []) if s.get('width')), {})
+    ct = (j.get('format', {}).get('tags', {}) or {}).get('creation_time', '')   # 2022-07-06T14:47:10.000000Z (UTC)
     return dict(dur=float(j.get('format', {}).get('duration', 0) or 0), size=int(j.get('format', {}).get('size', 0) or 0),
-                w=v.get('width', 0), h=v.get('height', 0), hdr=v.get('color_transfer') in ('smpte2084', 'arib-std-b67'))
+                w=v.get('width', 0), h=v.get('height', 0), hdr=v.get('color_transfer') in ('smpte2084', 'arib-std-b67'),
+                taken=ct[:19].replace('T', ' ') if len(ct) >= 19 else '')
 
 
 def ff(args):
@@ -182,7 +184,7 @@ def cmd_inventory(a):
     vrows = []
     for i, (si, rel, path) in enumerate(videos):
         vid = f'V{i + 1:02d}'; m = vmeta[vid]
-        vrows.append([vid, rel, name_time(os.path.basename(rel)), f'{m["dur"]:.1f}', f'{m["w"]}x{m["h"]}', 'hdr' if m['hdr'] else '', str(m['size'] // 2 ** 20)])
+        vrows.append([vid, rel, name_time(os.path.basename(rel)) or m.get('taken', ''), f'{m["dur"]:.1f}', f'{m["w"]}x{m["h"]}', 'hdr' if m['hdr'] else '', str(m['size'] // 2 ** 20)])
     (rdir(a.region) / 'vindex.tsv').write_text('id\tfile\ttaken\tseconds\tsize\thdr\tmb\n' + '\n'.join('\t'.join(r) for r in vrows), encoding='utf-8')
     for old in sh.glob('v*.jpg'): old.unlink()
     f = font(18)
@@ -204,6 +206,8 @@ def cmd_inventory(a):
     tl = [f'# Хронология архива: {a.region}', '', f'Фото: {len(rows)}, видео: {len(vrows)}. Листы: work/sheets/ (p01… фото, v01… видео).', '']
     subs = sorted({r[1].rsplit('/', 1)[0] for r in rows + vrows if '/' in r[1]})
     if subs: tl += ['Подпапки (часто чужие кадры — проверить авторство): ' + '; '.join(subs), '']
+    if any(not name_time(os.path.basename(v[1])) and v[2] for v in vrows):
+        tl += ['Время видео взято из метаданных файла: оно может быть в UTC и отличаться от времени фото на часовой пояс.', '']
     for day in sorted(days):
         rs = sorted(days[day], key=lambda r: r[2]); tl.append(f'## {day} — {len(rs)} фото, {rs[0][2][11:16]}–{rs[-1][2][11:16]} ({rs[0][0]}…{rs[-1][0]})')
         last = None
