@@ -32,12 +32,19 @@
     var tr = TR[li.dataset.tr];
     if (tr) date += ' · ' + tr.icon + ' ' + tr.text;
     card.innerHTML = '';
-    var b = document.createElement('span'); b.className = 'code'; b.textContent = code;
+    var th = li.querySelector('img.th');
+    if (th) {
+      var im = document.createElement('img'); im.className = 'mth'; im.alt = ''; im.src = th.getAttribute('src');
+      card.appendChild(im);
+    }
     var t = document.createElement('div'); t.className = 'mt';
+    var h = document.createElement('div'); h.className = 'mh';     // номер рядом с названием: на телефоне рядом с фото отдельной колонке нет места
+    var b = document.createElement('span'); b.className = 'code'; b.textContent = code;
     var n = document.createElement('strong'); n.textContent = name ? name.textContent : code;
     var s = document.createElement('small'); s.textContent = [cap, date].filter(Boolean).join(' · ');
-    t.appendChild(n); t.appendChild(s);
-    card.appendChild(b); card.appendChild(t);
+    h.appendChild(b); h.appendChild(n);
+    t.appendChild(h); t.appendChild(s);
+    card.appendChild(t);
     if (href) {
       var a = document.createElement('a'); a.className = 'go'; a.href = href;
       a.textContent = 'Открыть отчёт →';
