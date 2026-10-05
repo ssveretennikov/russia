@@ -120,11 +120,13 @@ def sheet(items, dst, cols, cell, label_h=26, fsize=19):
 
 def probe(path):
     r = subprocess.run(['ffprobe', '-v', 'error', '-show_entries',
-                        'format=duration,size:stream=width,height,codec_name,r_frame_rate,color_transfer',
+                        'format=duration,size:format_tags=creation_time:stream=width,height,codec_name,r_frame_rate,color_transfer',
                         '-of', 'json', path], capture_output=True, text=True)
     j = json.loads(r.stdout or '{}'); v = next((s for s in j.get('streams', []) if s.get('width')), {})
+    ct = (j.get('format', {}).get('tags', {}) or {}).get('creation_time', '')   # 2022-07-06T14:47:10.000000Z (UTC)
     return dict(dur=float(j.get('format', {}).get('duration', 0) or 0), size=int(j.get('format', {}).get('size', 0) or 0),
-                w=v.get('width', 0), h=v.get('height', 0), hdr=v.get('color_transfer') in ('smpte2084', 'arib-std-b67'))
+                w=v.get('width', 0), h=v.get('height', 0), hdr=v.get('color_transfer') in ('smpte2084', 'arib-std-b67'),
+                taken=ct[:19].replace('T', ' ') if len(ct) >= 19 else '')
 
 
 def ff(args):
@@ -179,10 +181,22 @@ def cmd_inventory(a):
         sheet(items, sh / f'p{p // 30 + 1:02d}.jpg', 6, 360)
     vjobs = [(f'V{i + 1:02d}', path, str(vf)) for i, (_, rel, path) in enumerate(videos)]
     with ProcessPoolExecutor(max(1, a.jobs - 1)) as ex: vmeta = dict(ex.map(_vframes, vjobs))
+    # время видео без даты: по ближайшему по номеру фото в той же папке (нумерация камеры сквозная), помечается «≈»
+    def num(rel):
+        mm = re.match(r'(\d+)', os.path.basename(rel)); return int(mm[1]) if mm else None
+    bynum = {}
+    for r in rows:
+        n = num(r[1])
+        if n is not None and r[2]: bynum.setdefault(r[1].rsplit('/', 1)[0] if '/' in r[1] else '', []).append((n, r[2]))
+    def near_time(rel):
+        n = num(rel); cand = bynum.get(rel.rsplit('/', 1)[0] if '/' in rel else '', [])
+        if n is None or not cand: return ''
+        return '≈' + min(cand, key=lambda c: abs(c[0] - n))[1]
     vrows = []
     for i, (si, rel, path) in enumerate(videos):
         vid = f'V{i + 1:02d}'; m = vmeta[vid]
-        vrows.append([vid, rel, name_time(os.path.basename(rel)), f'{m["dur"]:.1f}', f'{m["w"]}x{m["h"]}', 'hdr' if m['hdr'] else '', str(m['size'] // 2 ** 20)])
+        tk = name_time(os.path.basename(rel)) or m.get('taken', '') or near_time(rel)
+        vrows.append([vid, rel, tk, f'{m["dur"]:.1f}', f'{m["w"]}x{m["h"]}', 'hdr' if m['hdr'] else '', str(m['size'] // 2 ** 20)])
     (rdir(a.region) / 'vindex.tsv').write_text('id\tfile\ttaken\tseconds\tsize\thdr\tmb\n' + '\n'.join('\t'.join(r) for r in vrows), encoding='utf-8')
     for old in sh.glob('v*.jpg'): old.unlink()
     f = font(18)
@@ -191,7 +205,8 @@ def cmd_inventory(a):
         im = Image.new('RGB', (6 * W, ((len(chunk) + 1) // 2) * (W + L)), (20, 20, 20)); d = ImageDraw.Draw(im)
         for k, r in enumerate(chunk):
             col, row = (k % 2) * 3, k // 2
-            d.text((col * W + 4, row * (W + L) + 3), f'{r[0]} {r[2][8:10]}.{r[2][5:7]} {r[2][11:16]} {float(r[3]):.0f}s {r[4]}', fill=(255, 230, 80), font=f)
+            t = r[2].lstrip('≈'); ap = '≈' if r[2].startswith('≈') else ''
+            d.text((col * W + 4, row * (W + L) + 3), f'{r[0]} {ap}{t[8:10]}.{t[5:7]} {t[11:16]} {float(r[3]):.0f}s {r[4]}', fill=(255, 230, 80), font=f)
             for i in range(3):
                 fp = vf / f'{r[0]}_{i}.jpg'
                 if fp.exists():
@@ -204,6 +219,10 @@ def cmd_inventory(a):
     tl = [f'# Хронология архива: {a.region}', '', f'Фото: {len(rows)}, видео: {len(vrows)}. Листы: work/sheets/ (p01… фото, v01… видео).', '']
     subs = sorted({r[1].rsplit('/', 1)[0] for r in rows + vrows if '/' in r[1]})
     if subs: tl += ['Подпапки (часто чужие кадры — проверить авторство): ' + '; '.join(subs), '']
+    if any(v[2].startswith('≈') for v in vrows):
+        tl += ['Время видео со знаком ≈ взято у ближайшего по номеру фото (в файле видео даты нет); точность — минуты.', '']
+    elif any(not name_time(os.path.basename(v[1])) and v[2] for v in vrows):
+        tl += ['Время видео взято из метаданных файла: оно может быть в UTC и отличаться от времени фото на часовой пояс.', '']
     for day in sorted(days):
         rs = sorted(days[day], key=lambda r: r[2]); tl.append(f'## {day} — {len(rs)} фото, {rs[0][2][11:16]}–{rs[-1][2][11:16]} ({rs[0][0]}…{rs[-1][0]})')
         last = None
@@ -211,8 +230,8 @@ def cmd_inventory(a):
             if not r[3]: continue
             key = (round(float(r[3]), 2), round(float(r[4]), 2))
             if key != last: tl.append(f'- {r[2][11:16]} {r[0]} — {r[3]}, {r[4]}, высота {r[5]} м'); last = key
-        vs = [v for v in vrows if v[2][:10] == day]
-        if vs: tl.append('- видео: ' + ', '.join(f'{v[0]} {v[2][11:16]} {float(v[3]):.0f}с' for v in vs))
+        vs = [v for v in vrows if v[2].lstrip('≈')[:10] == day]
+        if vs: tl.append('- видео: ' + ', '.join(f'{v[0]} {"≈" if v[2].startswith("≈") else ""}{v[2].lstrip("≈")[11:16]} {float(v[3]):.0f}с' for v in vs))
         tl.append('')
     nodate = [r[0] for r in rows if not r[2]]
     if nodate: tl.append(f'Без даты: {nodate[0]}…{nodate[-1]} ({len(nodate)} шт.)')
