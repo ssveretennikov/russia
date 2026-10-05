@@ -24,8 +24,11 @@ def run(*cmd, check=True):
 
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith('--')]; push = '--no-push' not in sys.argv
-    slugs = args or sorted(d.name for d in (ROOT / 'regions').iterdir() if (d / 'selection.tsv').exists()
-                           and (not (d / 'media.tsv').exists() or (d / 'selection.tsv').stat().st_mtime > (d / 'media.tsv').stat().st_mtime))
+    def needs(d):   # есть отбор, и медиа ещё не выгружены (или отбор новее выгрузки)
+        if not (d / 'selection.tsv').exists(): return False
+        if (d / 'media.tsv').exists(): return (d / 'selection.tsv').stat().st_mtime > (d / 'media.tsv').stat().st_mtime
+        return not (ROOT / d.name / 'media' / 'hero.webp').exists()   # выгружено в другой сессии без media.tsv — пропускаем
+    slugs = args or sorted(d.name for d in (ROOT / 'regions').iterdir() if d.is_dir() and needs(d))
     if not slugs: sys.exit('нечего экспортировать: нет регионов с новым selection.tsv')
     print('регионы:', ', '.join(slugs))
     done = []
