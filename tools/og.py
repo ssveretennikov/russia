@@ -68,7 +68,7 @@ def main():
         code = re.search(r'<span class="code"[^>]*>(\d+)</span>', src).group(1)
         name = re.sub(r'<.*?>', '', re.search(r'<h1>(.*?)</h1>', src).group(1))
         places = re.sub(r'<.*?>', '', re.search(r'<div class="reg-places">(.*?)</div>', src).group(1))
-        hero = re.search(r'<figure class="hero-ph"[^>]*>.*?<img src="([^"]+)"', src, re.S).group(1)
+        hero = pg.get('og') or re.search(r'<figure class="hero-ph"[^>]*>.*?<img src="([^"]+)"', src, re.S).group(1)
         cover(os.path.join(ROOT, pg['slug'], hero), code, name, places, os.path.join(ROOT, pg['slug'], 'og.jpg'))
     if only: return
     # главная: кадр последнего готового региона и название серии

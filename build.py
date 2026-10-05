@@ -103,10 +103,10 @@ D = [
   ('89','Ямало-Ненецкий АО','Салехард','v',[('', 'LOCAL:89-yamal/index.html')]),
  ]),
  ('СФО', 'Сибирский федеральный округ', [
-  ('4','Республика Алтай','Горно-Алтайск','h',[('', '4')]),
+  ('4','Республика Алтай','Горно-Алтайск','h',[('', 'LOCAL:04-altai-republic/index.html')]),
   ('17','Республика Тыва','Кызыл','h',[('', 'LOCAL:17-tuva/index.html')]),
   ('19','Республика Хакасия','Абакан','h',[('', 'LOCAL:19-khakassia/index.html')]),
-  ('22','Алтайский край','Барнаул','v',[('', '22')]),
+  ('22','Алтайский край','Барнаул','v',[('', 'LOCAL:22-altai-krai/index.html')]),
   ('24','Красноярский край','Красноярск','h',[('', 'LOCAL:24-krasnoyarsk/index.html')]),
   ('38','Иркутская область','Иркутск','v',[('', 'LOCAL:38-irkutsk/index.html'),('часть 2','38-2')]),
   ('42','Кемеровская область','Кемерово','v',[('', 'LOCAL:42-kemerovo/index.html')]),
@@ -405,6 +405,7 @@ def fragment(title, body):
 #   1) положить текст в src/<slug>.html, медиа — в <slug>/media/ (tools/media.py export);
 #   2) добавить запись сюда; 3) в списке D выше заменить ссылку региона на 'LOCAL:<slug>/index.html'.
 # prev / next — соседи по маршруту поездки: (код, название, ссылка, подпись) или None.
+# og — кадр для обложки ссылки (tools/og.py), если главный кадр для неё не годится, например вертикальный; по умолчанию hero.
 # color — цвет региона (CSS-переменные --reg и --reg-ink для светлой темы); None = охра по умолчанию.
 PAGES = [
     dict(slug='13-mordovia', title='13 · Республика Мордовия', prev=None, next=None, color=None),
@@ -514,6 +515,11 @@ PAGES = [
     dict(slug='92-sevastopol', title='92 · Севастополь',
          prev=('91', 'Республика Крым', '../91-krym/index.html', 'Раньше по маршруту'),
          next=('91', 'Республика Крым · Карадаг', '../91-krym/index.html', 'Дальше по маршруту'), color=None),
+    dict(slug='22-altai-krai', title='22 · Алтайский край',
+         prev=None, next=('4', 'Республика Алтай', '../04-altai-republic/index.html', 'Дальше по маршруту'), color=None,
+         og='media/most.webp'),
+    dict(slug='04-altai-republic', title='4 · Республика Алтай',
+         prev=('22', 'Алтайский край', '../22-altai-krai/index.html', 'Раньше по маршруту'), next=None, color=None),
 ]
 
 def region_style(color):
