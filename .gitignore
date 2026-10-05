@@ -1,5 +1,8 @@
 # Рабочие материалы остаются на диске автора и в репозиторий не попадают
-regions/
+# из regions/ в git идут только тексты, таблицы и листы detail; тяжёлое пересоздаётся командой inventory
+regions/*/work/thumbs/
+regions/*/work/sheets/
+regions/*/work/vframes/
 _artifact/
 __pycache__/
 *.pyc
