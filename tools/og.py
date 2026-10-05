@@ -60,17 +60,21 @@ def cover(photo, code, title, sub, out):
     print('готово:', os.path.relpath(out, ROOT))
 
 def main():
+    # python tools/og.py 23-krasnodar 50-moscow-oblast — только эти страницы: у регионов из другой сессии медиа может ещё не быть
+    only = set(sys.argv[1:])
     for pg in B.PAGES:
+        if only and pg['slug'] not in only: continue
         src = open(os.path.join(ROOT, 'src', pg['slug'] + '.html'), encoding='utf-8').read()
         code = re.search(r'<span class="code"[^>]*>(\d+)</span>', src).group(1)
         name = re.sub(r'<.*?>', '', re.search(r'<h1>(.*?)</h1>', src).group(1))
         places = re.sub(r'<.*?>', '', re.search(r'<div class="reg-places">(.*?)</div>', src).group(1))
-        hero = pg.get('og') or re.search(r'<figure class="hero-ph">.*?<img src="([^"]+)"', src, re.S).group(1)
+        hero = pg.get('og') or re.search(r'<figure class="hero-ph"[^>]*>.*?<img src="([^"]+)"', src, re.S).group(1)
         cover(os.path.join(ROOT, pg['slug'], hero), code, name, places, os.path.join(ROOT, pg['slug'], 'og.jpg'))
+    if only: return
     # главная: кадр последнего готового региона и название серии
     pg = B.PAGES[-1]
     src = open(os.path.join(ROOT, 'src', pg['slug'] + '.html'), encoding='utf-8').read()
-    hero = re.search(r'<figure class="hero-ph">.*?<img src="([^"]+)"', src, re.S).group(1)
+    hero = re.search(r'<figure class="hero-ph"[^>]*>.*?<img src="([^"]+)"', src, re.S).group(1)
     cover(os.path.join(ROOT, pg['slug'], hero), None, B.SERIES_TITLE, 'Отчёты о поездках по регионам России', os.path.join(ROOT, 'og.jpg'))
 
 if __name__ == '__main__':

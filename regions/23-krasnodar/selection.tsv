@@ -1,0 +1,36 @@
+# имя	ID	размер	отрезки видео (сек)
+hero	P050	2200
+cerkov	P001	1600
+sobor	P004	1400
+ekaterina	P006	1400
+gruppa	P067	2000
+para	P009	1600
+mozaika	P010	1600
+stadion-2022	P011	2000
+zerkalo	P021	1400
+derevo	P023	1400
+prud	P032	2000
+relef	P038	1600
+vagon	P077	1400
+rassvet	P084	1600
+ya-stadion	P088	1600
+voda	P094	2000
+v-koi	V04	1280	0-12
+v-cherepaha	V05	1280	0-10
+fonar	P113	1600
+shary	P126	2000
+dozhd	P138	1400
+stend	P144	1400
+sad-kamney	P160	2000
+samuray	P175	1400
+stupa	P218	1400
+torii	P180	2000
+v-sad	V11	1280	1-16
+prud-sad	P234	2000
+pagoda	P271	1400
+fonari	P304	1400
+v-ruchey	V13	1280	40-52
+magnoliya	P334	1400
+koi	P358	1400
+dzizo	P362	1400
+alleya	P367	2000

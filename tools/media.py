@@ -6,7 +6,9 @@
   python tools/media.py detail 49-magadan P159 P731 --size 1700
   python tools/media.py detail 49-magadan P622 P623 P002 --sheet cand1   # лист кандидатов 4 в ряд
   python tools/media.py vstrip 49-magadan V46 --n 10    # раскадровка видео, чтобы выбрать фрагмент
+  python tools/media.py cands 49-magadan                # все фото из candidates.md листами по 5 в ряд -> work/detail/cands-01.jpg…
   python tools/media.py export 49-magadan               # по selection.tsv -> <регион>/media/ (фото в WebP)
+  # кадр из видео как фото: строка selection.tsv «hero<TAB>V05<TAB>2200<TAB>frame=10» (секунда)
   python tools/media.py webp 49-magadan                 # перевести уже выгруженные JPEG в WebP
 
 Источник архива: regions/<регион>/source.txt, по одному пути к папке в строке.
@@ -120,12 +122,13 @@ def sheet(items, dst, cols, cell, label_h=26, fsize=19):
 
 def probe(path):
     r = subprocess.run(['ffprobe', '-v', 'error', '-show_entries',
-                        'format=duration,size:format_tags=creation_time:stream=width,height,codec_name,r_frame_rate,color_transfer',
+                        'format=duration,size:format_tags=creation_time:stream=codec_type,width,height,codec_name,r_frame_rate,color_transfer',
                         '-of', 'json', path], capture_output=True, text=True)
     j = json.loads(r.stdout or '{}'); v = next((s for s in j.get('streams', []) if s.get('width')), {})
+    audio = any(s.get('codec_type') == 'audio' for s in j.get('streams', []))
     ct = (j.get('format', {}).get('tags', {}) or {}).get('creation_time', '')   # 2022-07-06T14:47:10.000000Z (UTC)
     return dict(dur=float(j.get('format', {}).get('duration', 0) or 0), size=int(j.get('format', {}).get('size', 0) or 0),
-                w=v.get('width', 0), h=v.get('height', 0), hdr=v.get('color_transfer') in ('smpte2084', 'arib-std-b67'),
+                w=v.get('width', 0), h=v.get('height', 0), hdr=v.get('color_transfer') in ('smpte2084', 'arib-std-b67'), audio=audio,
                 taken=ct[:19].replace('T', ' ') if len(ct) >= 19 else '')
 
 
@@ -263,6 +266,26 @@ def cmd_detail(a):
         for _, t in items: os.remove(t)
 
 
+def cmd_cands(a):
+    """Листы всех фото-кандидатов из candidates.md (id в первом столбце таблиц), 5 в ряд, 480 px.
+    Таблиц «Фото» может быть несколько (регион из частей или тем), поэтому берутся строки из всего файла."""
+    text = (rdir(a.region) / 'candidates.md').read_text(encoding='utf-8')
+    ids = list(dict.fromkeys(re.findall(r'^\|\s*(P\d{3,4})\s*\|', text, re.M)))
+    if not ids: sys.exit('В candidates.md не найдено строк вида | P001 | …')
+    idx = load_index(a.region); out = wdir(a.region, 'detail')
+    for old in out.glob('cands-*.jpg'): old.unlink()
+    per = 20
+    for p in range(0, len(ids), per):
+        items = []
+        for pid in ids[p:p + per]:
+            if pid not in idx: print(f'нет в index.tsv: {pid}'); continue
+            im = ImageOps.exif_transpose(Image.open(idx[pid][0])).convert('RGB'); im.thumbnail((480, 480))
+            tmp = out / f'_{pid}.jpg'; im.save(tmp, quality=82); items.append((f'{pid} {idx[pid][1][2][11:16]}', str(tmp)))
+        dst = out / f'cands-{p // per + 1:02d}.jpg'; sheet(items, dst, 5, 480, 28, 21); print(dst)
+        for _, t in items: os.remove(t)
+    print(f'кандидатов {len(ids)}, листов {(len(ids) + per - 1) // per}')
+
+
 def cmd_vstrip(a):
     idx = load_index(a.region, 'vindex.tsv'); out = wdir(a.region, 'detail'); path = idx[a.vid][0]; info = probe(path); items = []
     for i in range(a.n):
@@ -279,7 +302,13 @@ def cmd_export(a):
     for line in (rdir(a.region) / 'selection.tsv').read_text(encoding='utf-8').splitlines():
         if not line.strip() or line.startswith('#'): continue
         c = line.split('\t'); name, mid, size = c[0], c[1], int(c[2])
-        if mid.startswith('P'):
+        if mid.startswith('V') and len(c) > 3 and c[3].startswith('frame='):   # кадр из видео как фото: hero<TAB>V05<TAB>2200<TAB>frame=10
+            path, meta = vidx[mid]; tmp = out / f'_{name}.jpg'
+            ff(['-ss', c[3][6:], '-i', path, '-frames:v', '1', '-q:v', '2', str(tmp)])
+            im = Image.open(tmp).convert('RGB'); im.thumbnail((size, size), Image.LANCZOS)
+            im.save(out / f'{name}.webp', 'WEBP', quality=WEBP_Q, method=6); tmp.unlink()
+            rows.append([name, mid, str(im.width), str(im.height), meta[2]])
+        elif mid.startswith('P'):
             path, meta = pidx[mid]; im = ImageOps.exif_transpose(Image.open(path)).convert('RGB')
             im.thumbnail((size, size), Image.LANCZOS); im.save(out / f'{name}.webp', 'WEBP', quality=WEBP_Q, method=6)
             rows.append([name, mid, str(im.width), str(im.height), meta[2]])
@@ -289,14 +318,17 @@ def cmd_export(a):
             t0, t1 = segs[0][0], segs[-1][1]
             sc = f"scale='if(gt(iw,ih),{size},-2)':'if(gt(iw,ih),-2,{size})',fps=30"
             dst = out / f'{name}.mp4'
+            au = info.get('audio', True)   # у видео с дрона звука нет: фильтр и вывод только по видео
             for tone in ([TONEMAP, FALLBACK] if info['hdr'] else ['format=yuv420p']):
                 fc = f'[0:v]{sc},{tone},split={len(segs)}' + ''.join(f'[v{i}]' for i in range(len(segs))) + ';'
-                fc += f'[0:a]asplit={len(segs)}' + ''.join(f'[a{i}]' for i in range(len(segs))) + ';'
+                if au: fc += f'[0:a]asplit={len(segs)}' + ''.join(f'[a{i}]' for i in range(len(segs))) + ';'
                 for i, (s, e) in enumerate(segs):
-                    fc += f'[v{i}]trim={s - t0}:{e - t0},setpts=PTS-STARTPTS[x{i}];[a{i}]atrim={s - t0}:{e - t0},asetpts=PTS-STARTPTS[y{i}];'
-                fc += ''.join(f'[x{i}][y{i}]' for i in range(len(segs))) + f'concat=n={len(segs)}:v=1:a=1[v][a]'
-                r = ff(['-ss', str(t0), '-t', str(t1 - t0), '-i', path, '-filter_complex', fc, '-map', '[v]', '-map', '[a]',
-                        '-c:v', 'libx264', '-preset', 'medium', '-crf', '26', '-c:a', 'aac', '-b:a', '96k', '-movflags', '+faststart', str(dst)])
+                    fc += f'[v{i}]trim={s - t0}:{e - t0},setpts=PTS-STARTPTS[x{i}];'
+                    if au: fc += f'[a{i}]atrim={s - t0}:{e - t0},asetpts=PTS-STARTPTS[y{i}];'
+                fc += ''.join(f'[x{i}]' + (f'[y{i}]' if au else '') for i in range(len(segs))) + f'concat=n={len(segs)}:v=1:a={int(au)}[v]' + ('[a]' if au else '')
+                r = ff(['-ss', str(t0), '-t', str(t1 - t0), '-i', path, '-filter_complex', fc, '-map', '[v]'] + (['-map', '[a]'] if au else [])
+                       + ['-c:v', 'libx264', '-preset', 'medium', '-crf', '26'] + (['-c:a', 'aac', '-b:a', '96k'] if au else ['-an'])
+                       + ['-movflags', '+faststart', str(dst)])
                 if r.returncode == 0 and dst.exists(): break
             else:
                 print('НЕ УДАЛОСЬ:', name, r.stderr[-300:]); continue
@@ -333,6 +365,7 @@ def main():
     p = sp.add_parser('detail'); p.add_argument('region'); p.add_argument('ids', nargs='+'); p.add_argument('--size', type=int, default=1100)
     p.add_argument('--sheet'); p.set_defaults(fn=cmd_detail)
     p = sp.add_parser('vstrip'); p.add_argument('region'); p.add_argument('vid'); p.add_argument('--n', type=int, default=10); p.set_defaults(fn=cmd_vstrip)
+    p = sp.add_parser('cands'); p.add_argument('region'); p.set_defaults(fn=cmd_cands)
     p = sp.add_parser('export'); p.add_argument('region'); p.set_defaults(fn=cmd_export)
     p = sp.add_parser('webp'); p.add_argument('region'); p.set_defaults(fn=cmd_webp)
     a = ap.parse_args(); a.fn(a)

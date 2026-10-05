@@ -29,102 +29,102 @@ D = [
  ('ЦФО', 'Центральный федеральный округ', [
   ('31','Белгородская область','Белгород','n',[]),
   ('32','Брянская область','Брянск','n',[]),
-  ('33','Владимирская область','Владимир','h',[('', '33')]),
-  ('36','Воронежская область','Воронеж','h',[('', '36')]),
-  ('37','Ивановская область','Иваново','v',[('', '37')]),
-  ('40','Калужская область','Калуга','v',[('', '40')]),
-  ('44','Костромская область','Кострома','v',[('', '44')]),
-  ('46','Курская область','Курск','v',[('', '46')]),
-  ('48','Липецкая область','Липецк','v',[('', '48')]),
-  ('50','Московская область','Подольск','v',[('', '50')]),
-  ('57','Орловская область','Орёл','v',[('', '57')]),
-  ('62','Рязанская область','Рязань','v',[('', '62')]),
-  ('67','Смоленская область','Смоленск','v',[('', '67')]),
-  ('68','Тамбовская область','Тамбов','h',[('', '68')]),
-  ('69','Тверская область','Тверь','v',[('', '69')]),
-  ('71','Тульская область','Тула','v',[('', '71')]),
-  ('76','Ярославская область','Ярославль','h',[('', '76')]),
-  ('77','Москва','город федерального значения','h',[('', '77-1')]),
+  ('33','Владимирская область','Владимир','h',[('', 'LOCAL:33-vladimir/index.html')]),
+  ('36','Воронежская область','Воронеж','h',[('', 'LOCAL:36-voronezh/index.html')]),
+  ('37','Ивановская область','Иваново','v',[('', 'LOCAL:37-ivanovo/index.html')]),
+  ('40','Калужская область','Калуга','v',[('', 'LOCAL:40-kaluga/index.html')]),
+  ('44','Костромская область','Кострома','v',[('', 'LOCAL:44-kostroma/index.html')]),
+  ('46','Курская область','Курск','v',[('', 'LOCAL:46-kursk/index.html')]),
+  ('48','Липецкая область','Липецк','v',[('', 'LOCAL:48-lipetsk/index.html')]),
+  ('50','Московская область','Подольск','v',[('', 'LOCAL:50-moscow-oblast/index.html'),('2','LOCAL:50-moscow-oblast-2/index.html')]),
+  ('57','Орловская область','Орёл','v',[('', 'LOCAL:57-oryol/index.html')]),
+  ('62','Рязанская область','Рязань','v',[('', 'LOCAL:62-ryazan/index.html')]),
+  ('67','Смоленская область','Смоленск','v',[('', 'LOCAL:67-smolensk/index.html')]),
+  ('68','Тамбовская область','Тамбов','h',[('', 'LOCAL:68-tambov/index.html')]),
+  ('69','Тверская область','Тверь','v',[('', 'LOCAL:69-tver/index.html')]),
+  ('71','Тульская область','Тула','v',[('', 'LOCAL:71-tula/index.html')]),
+  ('76','Ярославская область','Ярославль','h',[('', 'LOCAL:76-yaroslavl/index.html')]),
+  ('77','Москва','город федерального значения','h',[('', 'LOCAL:77-moscow-1/index.html'),('2','LOCAL:77-moscow-2/index.html'),('3','LOCAL:77-moscow-3/index.html'),('4','LOCAL:77-moscow-4/index.html')]),
  ]),
  ('СЗФО', 'Северо-Западный федеральный округ', [
-  ('10','Республика Карелия','Петрозаводск','v',[('', '10'),('Рускеала, водопады','10-2')]),
-  ('11','Республика Коми','Сыктывкар','v',[('', '11')]),
-  ('29','Архангельская область','Архангельск','h',[('', '29')]),
-  ('35','Вологодская область','Вологда','h',[('', '35')]),
-  ('39','Калининградская область','Калининград','h',[('', '39-1'),('2','39-2'),('3','39-3'),('4','39-4'),('5','39-5'),('6','39-6'),('7','39-7')]),
-  ('47','Ленинградская область','Гатчина','v',[('', '47-2'),('Выборг','47-1')]),
-  ('51','Мурманская область','Мурманск','v',[('', '51')]),
-  ('53','Новгородская область','Великий Новгород','v',[('', '53')]),
-  ('60','Псковская область','Псков','v',[('', '60')]),
-  ('78','Санкт-Петербург','город федерального значения','h',[('', '78-1'),('часть 2','78-2'),('часть 3','78-3'),('часть 4','78-4')]),
-  ('83','Ненецкий автономный округ','Нарьян-Мар','v',[('', '83')]),
+  ('10','Республика Карелия','Петрозаводск','v',[('', 'LOCAL:10-karelia/index.html'),('Рускеала, водопады','10-2')]),
+  ('11','Республика Коми','Сыктывкар','v',[('', 'LOCAL:11-komi/index.html')]),
+  ('29','Архангельская область','Архангельск','h',[('', 'LOCAL:29-arkhangelsk/index.html')]),
+  ('35','Вологодская область','Вологда','h',[('', 'LOCAL:35-vologda/index.html')]),
+  ('39','Калининградская область','Калининград','h',[('', 'LOCAL:39-kaliningrad/index.html'),('2','39-2'),('3','39-3'),('4','39-4'),('5','39-5'),('6','39-6'),('7','39-7')]),
+  ('47','Ленинградская область','Гатчина','v',[('', 'LOCAL:47-leningrad/index.html'),('Выборг','47-1')]),
+  ('51','Мурманская область','Мурманск','v',[('', 'LOCAL:51-murmansk/index.html')]),
+  ('53','Новгородская область','Великий Новгород','v',[('', 'LOCAL:53-novgorod/index.html')]),
+  ('60','Псковская область','Псков','v',[('', 'LOCAL:60-pskov/index.html')]),
+  ('78','Санкт-Петербург','город федерального значения','h',[('', 'LOCAL:78-spb/index.html'),('месяц в Питере','LOCAL:78-spb-month/index.html')]),
+  ('83','Ненецкий автономный округ','Нарьян-Мар','v',[('', 'LOCAL:83-nenets/index.html')]),
  ]),
  ('ЮФО', 'Южный федеральный округ', [
-  ('1','Республика Адыгея','Майкоп','h',[('', '1')]),
-  ('8','Республика Калмыкия','Элиста','v',[('', '8')]),
-  ('23','Краснодарский край','Краснодар','v',[('', '23')]),
-  ('30','Астраханская область','Астрахань','v',[('', '30')]),
-  ('34','Волгоградская область','Волгоград','v',[('', '34')]),
-  ('61','Ростовская область','Ростов-на-Дону','h',[('', '61')]),
+  ('1','Республика Адыгея','Майкоп','h',[('', 'LOCAL:01-adygeya/index.html')]),
+  ('8','Республика Калмыкия','Элиста','v',[('', 'LOCAL:08-kalmykia/index.html')]),
+  ('23','Краснодарский край','Краснодар','v',[('', 'LOCAL:23-krasnodar/index.html')]),
+  ('30','Астраханская область','Астрахань','v',[('', 'LOCAL:30-astrakhan/index.html')]),
+  ('34','Волгоградская область','Волгоград','v',[('', 'LOCAL:34-volgograd/index.html')]),
+  ('61','Ростовская область','Ростов-на-Дону','h',[('', 'LOCAL:61-rostov/index.html')]),
   ('91','Республика Крым','Симферополь','h',[('', 'LOCAL:91-krym/index.html')]),
   ('92','Севастополь','город федерального значения','v',[('', 'LOCAL:92-sevastopol/index.html')]),
  ]),
  ('СКФО', 'Северо-Кавказский федеральный округ', [
-  ('5','Республика Дагестан','Махачкала','h',[('', '5')]),
-  ('6','Республика Ингушетия','Магас','h',[('', '6')]),
-  ('7','Кабардино-Балкария','Нальчик','v',[('', '7-2'),('Эльбрус','7')]),
-  ('9','Карачаево-Черкесия','Черкесск','v',[('', '9')]),
-  ('15','Северная Осетия — Алания','Владикавказ','v',[('', '15')]),
-  ('20','Чеченская Республика','Грозный · код 95','v',[('', '20')]),
-  ('26','Ставропольский край','Ставрополь','h',[('', '26'),('Пятигорск','26-2')]),
+  ('5','Республика Дагестан','Махачкала','h',[('', 'LOCAL:05-dagestan/index.html')]),
+  ('6','Республика Ингушетия','Магас','h',[('', 'LOCAL:06-ingushetia/index.html')]),
+  ('7','Кабардино-Балкария','Нальчик','v',[('', 'LOCAL:07-kabardino-balkaria/index.html'),('Эльбрус','7')]),
+  ('9','Карачаево-Черкесия','Черкесск','v',[('', 'LOCAL:09-karachay-cherkessia/index.html')]),
+  ('15','Северная Осетия — Алания','Владикавказ','v',[('', 'LOCAL:15-north-ossetia/index.html')]),
+  ('20','Чеченская Республика','Грозный · код 95','v',[('', 'LOCAL:20-chechnya/index.html')]),
+  ('26','Ставропольский край','Ставрополь','h',[('', 'LOCAL:26-stavropol/index.html'),('Пятигорск','26-2')]),
  ]),
  ('ПФО', 'Приволжский федеральный округ', [
-  ('2','Республика Башкортостан','Уфа','v',[('', '2')]),
-  ('12','Республика Марий Эл','Йошкар-Ола','h',[('', '12')]),
-  ('13','Республика Мордовия','Саранск','v',[('', '13')]),
-  ('16','Республика Татарстан','Казань','v',[('', '16')]),
-  ('18','Удмуртская Республика','Ижевск','v',[('', '18')]),
-  ('21','Чувашская Республика','Чебоксары','h',[('', '21')]),
-  ('43','Кировская область','Киров','v',[('', '43')]),
-  ('52','Нижегородская область','Нижний Новгород','h',[('', '52')]),
-  ('56','Оренбургская область','Оренбург','v',[('', '56')]),
-  ('58','Пензенская область','Пенза','v',[('', '58')]),
-  ('59','Пермский край','Пермь','v',[('', '59')]),
-  ('63','Самарская область','Самара','h',[('', '63')]),
-  ('64','Саратовская область','Саратов','v',[('', '64')]),
-  ('73','Ульяновская область','Ульяновск','v',[('', '73')]),
+  ('2','Республика Башкортостан','Уфа','v',[('', 'LOCAL:02-bashkortostan/index.html')]),
+  ('12','Республика Марий Эл','Йошкар-Ола','h',[('', 'LOCAL:12-mari-el/index.html')]),
+  ('13','Республика Мордовия','Саранск','v',[('', 'LOCAL:13-mordovia/index.html')]),
+  ('16','Республика Татарстан','Казань','v',[('', 'LOCAL:16-tatarstan/index.html')]),
+  ('18','Удмуртская Республика','Ижевск','v',[('', 'LOCAL:18-udmurtia/index.html')]),
+  ('21','Чувашская Республика','Чебоксары','h',[('', 'LOCAL:21-chuvashia/index.html')]),
+  ('43','Кировская область','Киров','v',[('', 'LOCAL:43-kirov/index.html')]),
+  ('52','Нижегородская область','Нижний Новгород','h',[('', 'LOCAL:52-nizhny-novgorod/index.html')]),
+  ('56','Оренбургская область','Оренбург','v',[('', 'LOCAL:56-orenburg/index.html')]),
+  ('58','Пензенская область','Пенза','v',[('', 'LOCAL:58-penza/index.html')]),
+  ('59','Пермский край','Пермь','v',[('', 'LOCAL:59-perm/index.html')]),
+  ('63','Самарская область','Самара','h',[('', 'LOCAL:63-samara/index.html')]),
+  ('64','Саратовская область','Саратов','v',[('', 'LOCAL:64-saratov/index.html')]),
+  ('73','Ульяновская область','Ульяновск','v',[('', 'LOCAL:73-ulyanovsk/index.html')]),
  ]),
  ('УрФО', 'Уральский федеральный округ', [
-  ('45','Курганская область','Курган','v',[('', '45')]),
-  ('66','Свердловская область','Екатеринбург','v',[('', '66')]),
-  ('72','Тюменская область','Тюмень','v',[('', '72'),('Тобольск','72-2')]),
-  ('74','Челябинская область','Челябинск','v',[('', '74')]),
-  ('86','Ханты-Мансийский АО — Югра','Ханты-Мансийск','h',[('', '86')]),
-  ('89','Ямало-Ненецкий АО','Салехард','v',[('', '89')]),
+  ('45','Курганская область','Курган','v',[('', 'LOCAL:45-kurgan/index.html')]),
+  ('66','Свердловская область','Екатеринбург','v',[('', 'LOCAL:66-sverdlovsk/index.html')]),
+  ('72','Тюменская область','Тюмень','v',[('', 'LOCAL:72-tyumen/index.html'),('Тобольск','LOCAL:72-tobolsk/index.html')]),
+  ('74','Челябинская область','Челябинск','v',[('', 'LOCAL:74-chelyabinsk/index.html')]),
+  ('86','Ханты-Мансийский АО — Югра','Ханты-Мансийск','h',[('', 'LOCAL:86-khanty-mansi/index.html')]),
+  ('89','Ямало-Ненецкий АО','Салехард','v',[('', 'LOCAL:89-yamal/index.html')]),
  ]),
  ('СФО', 'Сибирский федеральный округ', [
   ('4','Республика Алтай','Горно-Алтайск','h',[('', 'LOCAL:04-altai-republic/index.html')]),
-  ('17','Республика Тыва','Кызыл','h',[('', '17')]),
-  ('19','Республика Хакасия','Абакан','h',[('', '19')]),
+  ('17','Республика Тыва','Кызыл','h',[('', 'LOCAL:17-tuva/index.html')]),
+  ('19','Республика Хакасия','Абакан','h',[('', 'LOCAL:19-khakassia/index.html')]),
   ('22','Алтайский край','Барнаул','v',[('', 'LOCAL:22-altai-krai/index.html')]),
-  ('24','Красноярский край','Красноярск','h',[('', '24')]),
-  ('38','Иркутская область','Иркутск','v',[('', '38-1'),('часть 2','38-2')]),
-  ('42','Кемеровская область','Кемерово','v',[('', '42')]),
-  ('54','Новосибирская область','Новосибирск','v',[('', '54'),('часть 2','54-2')]),
-  ('55','Омская область','Омск','h',[('', '55')]),
-  ('70','Томская область','Томск','v',[('', '70')]),
+  ('24','Красноярский край','Красноярск','h',[('', 'LOCAL:24-krasnoyarsk/index.html')]),
+  ('38','Иркутская область','Иркутск','v',[('', 'LOCAL:38-irkutsk/index.html'),('часть 2','38-2')]),
+  ('42','Кемеровская область','Кемерово','v',[('', 'LOCAL:42-kemerovo/index.html')]),
+  ('54','Новосибирская область','Новосибирск','v',[('', 'LOCAL:54-novosibirsk/index.html'),('часть 2','54-2')]),
+  ('55','Омская область','Омск','h',[('', 'LOCAL:55-omsk/index.html')]),
+  ('70','Томская область','Томск','v',[('', 'LOCAL:70-tomsk/index.html')]),
  ]),
  ('ДВФО', 'Дальневосточный федеральный округ', [
-  ('3','Республика Бурятия','Улан-Удэ','v',[('', '3')]),
-  ('14','Республика Саха (Якутия)','Якутск','v',[('', '14')]),
-  ('25','Приморский край','Владивосток','h',[('', '25')]),
-  ('27','Хабаровский край','Хабаровск','v',[('', '27')]),
-  ('28','Амурская область','Благовещенск','v',[('', '28')]),
+  ('3','Республика Бурятия','Улан-Удэ','v',[('', 'LOCAL:03-buryatia/index.html')]),
+  ('14','Республика Саха (Якутия)','Якутск','v',[('', 'LOCAL:14-yakutia/index.html'),('Мирный','LOCAL:14-mirny/index.html')]),
+  ('25','Приморский край','Владивосток','h',[('', 'LOCAL:25-primorye/index.html')]),
+  ('27','Хабаровский край','Хабаровск','v',[('', 'LOCAL:27-khabarovsk/index.html')]),
+  ('28','Амурская область','Благовещенск','v',[('', 'LOCAL:28-amur/index.html')]),
   ('41','Камчатский край','Петропавловск-Камчатский','v',[('', 'LOCAL:41-kamchatka/index.html'),('старый отчёт', '41')]),
   ('49','Магаданская область','Магадан','h',[('', 'LOCAL:49-magadan/index.html')]),
-  ('65','Сахалинская область','Южно-Сахалинск','h',[('', '65')]),
-  ('75','Забайкальский край','Чита','v',[('', '75')]),
-  ('79','Еврейская автономная область','Биробиджан','v',[('', '79')]),
+  ('65','Сахалинская область','Южно-Сахалинск','h',[('', 'LOCAL:65-sakhalin/index.html')]),
+  ('75','Забайкальский край','Чита','v',[('', 'LOCAL:75-zabaykalsky/index.html')]),
+  ('79','Еврейская автономная область','Биробиджан','v',[('', 'LOCAL:79-jewish-ao/index.html')]),
   ('87','Чукотский автономный округ','Анадырь','v',[('', 'LOCAL:87-chukotka/index.html')]),
  ]),
  ('', 'Пока вне федеральных округов', [
@@ -240,9 +240,114 @@ def index_body():
 </div>''')
     return '\n'.join(out)
 
+# ---- Карта дня и профиль высоты: строятся из GPS снимков (regions/<slug>/index.tsv) и отбора (selection.tsv).
+#   В тексте страницы: <!--daymap: 44.608,40.098 Майкоп; 44.237,40.157 Смотровая--> и <!--profile-->.
+#   Точки отобранных фото — ссылки на <figure id="P016">. Если данных нет, метки просто убираются.
+import math, csv
+
+def _gps_rows(slug):
+    f = os.path.join(ROOT, 'regions', slug, 'index.tsv')
+    if not os.path.exists(f): return [], {}
+    rows = []
+    for r in csv.DictReader(open(f, encoding='utf-8'), delimiter='\t'):
+        if r['lat'] and r['lon'] and r['taken']:
+            rows.append(dict(id=r['id'], t=r['taken'], lat=float(r['lat']), lon=float(r['lon']), alt=float(r['alt'] or 0)))
+    rows.sort(key=lambda r: r['t'])
+    sel = {}
+    sf = os.path.join(ROOT, 'regions', slug, 'selection.tsv')
+    if os.path.exists(sf):
+        for line in open(sf, encoding='utf-8'):
+            c = line.rstrip('\n').split('\t')
+            if len(c) > 1 and c[1].startswith('P'): sel[c[1]] = c[0]
+    return rows, sel
+
+def _tmin(t):
+    return int(t[11:13]) * 60 + int(t[14:16])
+
+def daymap_svg(slug, labels):
+    rows, sel = _gps_rows(slug)
+    if len(rows) < 2: return ''
+    W, pad = 640, 120   # боковой запас под подписи; высота блока подбирается по форме маршрута
+    lat0 = sum(r['lat'] for r in rows) / len(rows); k = math.cos(math.radians(lat0))
+    xs = [r['lon'] * k for r in rows]; ys = [r['lat'] for r in rows]
+    for la, lo, _ in labels: xs.append(lo * k); ys.append(la)
+    x0, x1, y0, y1 = min(xs), max(xs), min(ys), max(ys)
+    dx, dy = max(x1 - x0, 1e-6), max(y1 - y0, 1e-6)
+    inner_w = W - 2 * pad; inner_h = max(140, min(400, inner_w * dy / dx)); H = int(inner_h + 56)
+    span = max(dx, dy * inner_w / inner_h)
+    cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+    def P(la, lo):
+        return (pad + inner_w * (0.5 + (lo * k - cx) / span), 28 + inner_h * (0.5 - (la - cy) / span * inner_w / inner_h))
+    pts = ' '.join(f'{x:.1f},{y:.1f}' for x, y in (P(r['lat'], r['lon']) for r in rows))
+    out = [f'<svg class="daymap-svg" viewBox="0 0 {W} {H}" role="img" aria-label="Маршрут дня по точкам съёмки">',
+           f'<polyline class="dm-route" points="{pts}"/>']
+    placed = []   # подписи: справа от точки, у правого края — слева; наложения по вертикали разводятся вниз
+    for la, lo, name in sorted(labels, key=lambda l: P(l[0], l[1])[1]):
+        x, y = P(la, lo); right = x > W * 0.62
+        tw = 7.5 * len(name); ty = y + 4
+        lx0, lx1 = (x - 8 - tw, x - 8) if right else (x + 8, x + 8 + tw)
+        for px0, px1, py in placed:
+            if px0 < lx1 and lx0 < px1 and abs(py - ty) < 18: ty = py + 18
+        placed.append((lx0, lx1, ty))
+        anchor = ' text-anchor="end"' if right else ''; tx = x - 8 if right else x + 8
+        out.append(f'<g class="dm-label"><circle cx="{x:.1f}" cy="{y:.1f}" r="4"/><text x="{tx:.1f}" y="{ty:.1f}"{anchor}>{e(name)}</text></g>')
+    for r in rows:
+        if r['id'] in sel:
+            x, y = P(r['lat'], r['lon'])
+            out.append(f'<a href="#{r["id"]}" class="dm-pt"><circle cx="{x:.1f}" cy="{y:.1f}" r="6"><title>{r["t"][11:16]}</title></circle></a>')
+    out.append('</svg>')
+    return '\n'.join(out)
+
+def profile_svg(slug):
+    rows, sel = _gps_rows(slug)
+    rows = [r for r in rows if r['alt'] > 0]
+    if len(rows) < 2: return ''
+    W, H, pl, pb, pt = 640, 220, 60, 26, 14
+    t0 = min(_tmin(r['t']) for r in rows) - 15; t1 = max(_tmin(r['t']) for r in rows) + 15
+    a0 = max(0, min(r['alt'] for r in rows) - 50); a1 = max(r['alt'] for r in rows) + 50
+    def P(r):
+        return (pl + (W - pl - 10) * (_tmin(r['t']) - t0) / (t1 - t0), pt + (H - pt - pb) * (1 - (r['alt'] - a0) / (a1 - a0)))
+    pts = ' '.join(f'{x:.1f},{y:.1f}' for x, y in map(P, rows))
+    out = [f'<svg class="profile-svg" viewBox="0 0 {W} {H}" role="img" aria-label="Высота по времени дня">']
+    for h in range((t0 // 60) + 1, (t1 // 60) + 1):
+        x = pl + (W - pl - 10) * (h * 60 - t0) / (t1 - t0)
+        out.append(f'<line class="pf-grid" x1="{x:.1f}" y1="{pt}" x2="{x:.1f}" y2="{H - pb}"/><text class="pf-ax" x="{x:.1f}" y="{H - 8}" text-anchor="middle">{h}:00</text>')
+    for a in (a0 + 50, a1 - 50):
+        y = pt + (H - pt - pb) * (1 - (a - a0) / (a1 - a0))
+        out.append(f'<text class="pf-ax" x="{pl - 6}" y="{y + 4:.1f}" text-anchor="end">{int(round(a, -1))} м</text>')
+    out.append(f'<polyline class="pf-line" points="{pts}"/>')
+    for r in rows:
+        if r['id'] in sel:
+            x, y = P(r)
+            out.append(f'<a href="#{r["id"]}" class="dm-pt"><circle cx="{x:.1f}" cy="{y:.1f}" r="5"><title>{r["t"][11:16]} · {int(r["alt"])} м</title></circle></a>')
+    out.append('</svg>')
+    return '\n'.join(out)
+
+def inject_data(slug, src):
+    """Подставляет карту дня, профиль высоты и реальные размеры картинок из regions/<slug>/media.tsv."""
+    def dm(m):
+        labels = []
+        for part in (m.group(1) or '').split(';'):
+            part = part.strip()
+            mm = re.match(r'(-?\d+\.?\d*),\s*(-?\d+\.?\d*)\s+(.+)', part)
+            if mm: labels.append((float(mm[1]), float(mm[2]), mm[3].strip()))
+        return daymap_svg(slug, labels)
+    src = re.sub(r'<!--daymap:?(.*?)-->', dm, src, flags=re.S)
+    src = re.sub(r'<!--profile-->', lambda m: profile_svg(slug), src)
+    mt = os.path.join(ROOT, 'regions', slug, 'media.tsv')
+    if os.path.exists(mt):
+        dims = {r['name']: (r['w'], r['h']) for r in csv.DictReader(open(mt, encoding='utf-8'), delimiter='\t')}
+        def fix(m):
+            name = m.group(2).rsplit('.', 1)[0]
+            if name in dims:
+                w, h = dims[name]; return f'{m.group(1)}width="{w}" height="{h}"'
+            return m.group(0)
+        src = re.sub(r'(src="media/([^"]+)" )width="\d+" height="\d+"', fix, src)
+    return src
+
 def region_body(code, prev=None, nxt=None):
     """prev / nxt — соседи ПО МАРШРУТУ ПОЕЗДКИ: (код, название, ссылка, подпись) или None."""
-    src = open(os.path.join(ROOT, 'src', f'{code}.html'), encoding='utf-8').read()
+    src = inject_data(code, open(os.path.join(ROOT, 'src', f'{code}.html'), encoding='utf-8').read())
     top = ('<nav class="topbar"><a href="../index.html">← Все регионы</a>'
            '<div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button>'
            '<button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>')
@@ -303,6 +408,101 @@ def fragment(title, body):
 # og — кадр для обложки ссылки (tools/og.py), если главный кадр для неё не годится, например вертикальный; по умолчанию hero.
 # color — цвет региона (CSS-переменные --reg и --reg-ink для светлой темы); None = охра по умолчанию.
 PAGES = [
+    dict(slug='13-mordovia', title='13 · Республика Мордовия', prev=None, next=None, color=None),
+    dict(slug='14-yakutia', title='14 · Республика Саха (Якутия)', prev=None, next=('14', 'Мирный', '../14-mirny/index.html', 'Дальше по маршруту'), color=None),
+    dict(slug='14-mirny', title='14 · Мирный', prev=('14', 'Республика Саха (Якутия)', '../14-yakutia/index.html', 'Раньше по маршруту'), next=None, color=None),
+    dict(slug='15-north-ossetia', title='15 · Северная Осетия — Алания', prev=None, next=None, color=None),
+    dict(slug='16-tatarstan', title='16 · Республика Татарстан', prev=None, next=None, color=None),
+    dict(slug='17-tuva', title='17 · Республика Тыва', prev=None, next=None, color=None),
+    dict(slug='18-udmurtia', title='18 · Удмуртская Республика', prev=None, next=None, color=None),
+    dict(slug='19-khakassia', title='19 · Республика Хакасия', prev=None, next=None, color=None),
+    dict(slug='20-chechnya', title='20 · Чеченская Республика', prev=None, next=None, color=None),
+    dict(slug='21-chuvashia', title='21 · Чувашская Республика', prev=None, next=None, color=None),
+    dict(slug='23-krasnodar', title='23 · Краснодарский край',
+         prev=None, next=('1', 'Республика Адыгея', '../01-adygeya/index.html', 'Дальше по маршруту'), color=None),
+    dict(slug='24-krasnoyarsk', title='24 · Красноярский край', prev=None, next=None, color=None),
+    dict(slug='25-primorye', title='25 · Приморский край', prev=None, next=None, color=None),
+    dict(slug='26-stavropol', title='26 · Ставропольский край', prev=None, next=None, color=None),
+    dict(slug='27-khabarovsk', title='27 · Хабаровский край', prev=None, next=None, color=None),
+    dict(slug='28-amur', title='28 · Амурская область', prev=None, next=None, color=None),
+    dict(slug='29-arkhangelsk', title='29 · Архангельская область', prev=None, next=None, color=None),
+    dict(slug='30-astrakhan', title='30 · Астраханская область', prev=None, next=None, color=None),
+    dict(slug='33-vladimir', title='33 · Владимирская область', prev=None, next=None, color=None),
+    dict(slug='34-volgograd', title='34 · Волгоградская область', prev=None, next=None, color=None),
+    dict(slug='35-vologda', title='35 · Вологодская область', prev=None, next=None, color=None),
+    dict(slug='36-voronezh', title='36 · Воронежская область', prev=None, next=None, color=None),
+    dict(slug='37-ivanovo', title='37 · Ивановская область', prev=None, next=None, color=None),
+    dict(slug='38-irkutsk', title='38 · Иркутская область', prev=None, next=None, color=None),
+    dict(slug='39-kaliningrad', title='39 · Калининградская область', prev=None, next=None, color=None),
+    dict(slug='40-kaluga', title='40 · Калужская область', prev=None, next=None, color=None),
+    dict(slug='42-kemerovo', title='42 · Кемеровская область', prev=None, next=None, color=None),
+    dict(slug='43-kirov', title='43 · Кировская область', prev=None, next=None, color=None),
+    dict(slug='44-kostroma', title='44 · Костромская область', prev=None, next=None, color=None),
+    dict(slug='45-kurgan', title='45 · Курганская область', prev=None, next=None, color=None),
+    dict(slug='46-kursk', title='46 · Курская область', prev=None, next=None, color=None),
+    dict(slug='47-leningrad', title='47 · Ленинградская область', prev=None, next=None, color=None),
+    dict(slug='48-lipetsk', title='48 · Липецкая область', prev=None, next=None, color=None),
+    dict(slug='51-murmansk', title='51 · Мурманская область', prev=None, next=None, color=None),
+    dict(slug='52-nizhny-novgorod', title='52 · Нижегородская область', prev=None, next=None, color=None),
+    dict(slug='53-novgorod', title='53 · Новгородская область', prev=None, next=None, color=None),
+    dict(slug='54-novosibirsk', title='54 · Новосибирская область', prev=None, next=None, color=None),
+    dict(slug='55-omsk', title='55 · Омская область', prev=None, next=None, color=None),
+    dict(slug='56-orenburg', title='56 · Оренбургская область', prev=None, next=None, color=None),
+    dict(slug='57-oryol', title='57 · Орловская область', prev=None, next=None, color=None),
+    dict(slug='58-penza', title='58 · Пензенская область', prev=None, next=None, color=None),
+    dict(slug='59-perm', title='59 · Пермский край', prev=None, next=None, color=None),
+    dict(slug='60-pskov', title='60 · Псковская область', prev=None, next=None, color=None),
+    dict(slug='61-rostov', title='61 · Ростовская область', prev=None, next=None, color=None),
+    dict(slug='62-ryazan', title='62 · Рязанская область', prev=None, next=None, color=None),
+    dict(slug='63-samara', title='63 · Самарская область', prev=None, next=None, color=None),
+    dict(slug='64-saratov', title='64 · Саратовская область', prev=None, next=None, color=None),
+    dict(slug='65-sakhalin', title='65 · Сахалинская область', prev=None, next=None, color=None),
+    dict(slug='66-sverdlovsk', title='66 · Свердловская область', prev=None, next=None, color=None),
+    dict(slug='67-smolensk', title='67 · Смоленская область', prev=None, next=None, color=None),
+    dict(slug='68-tambov', title='68 · Тамбовская область', prev=None, next=None, color=None),
+    dict(slug='69-tver', title='69 · Тверская область', prev=None, next=None, color=None),
+    dict(slug='70-tomsk', title='70 · Томская область', prev=None, next=None, color=None),
+    dict(slug='71-tula', title='71 · Тульская область', prev=None, next=None, color=None),
+    dict(slug='72-tyumen', title='72 · Тюменская область', prev=None, next=('72', 'Тобольск', '../72-tobolsk/index.html', 'Дальше по маршруту'), color=None),
+    dict(slug='72-tobolsk', title='72 · Тобольск', prev=('72', 'Тюменская область', '../72-tyumen/index.html', 'Раньше по маршруту'), next=None, color=None),
+    dict(slug='73-ulyanovsk', title='73 · Ульяновская область', prev=None, next=None, color=None),
+    dict(slug='74-chelyabinsk', title='74 · Челябинская область', prev=None, next=None, color=None),
+    dict(slug='75-zabaykalsky', title='75 · Забайкальский край', prev=None, next=None, color=None),
+    dict(slug='76-yaroslavl', title='76 · Ярославская область', prev=None, next=None, color=None),
+    dict(slug='78-spb', title='78 · Санкт-Петербург · три дня в июне', prev=None, next=('78', 'Месяц в Питере', '../78-spb-month/index.html', 'Дальше по маршруту'), color=None),
+    dict(slug='78-spb-month', title='78 · Санкт-Петербург · месяц в Питере', prev=('78', 'Три дня в июне', '../78-spb/index.html', 'Раньше по маршруту'), next=None, color=None),
+    dict(slug='79-jewish-ao', title='79 · Еврейская автономная область', prev=None, next=None, color=None),
+    dict(slug='83-nenets', title='83 · Ненецкий автономный округ', prev=None, next=None, color=None),
+    dict(slug='86-khanty-mansi', title='86 · Ханты-Мансийский АО — Югра', prev=None, next=None, color=None),
+    dict(slug='89-yamal', title='89 · Ямало-Ненецкий АО', prev=None, next=None, color=None),
+    dict(slug='01-adygeya', title='1 · Республика Адыгея',
+         prev=('23', 'Краснодарский край', '../23-krasnodar/index.html', 'Раньше по маршруту'), next=None, color=None),
+    dict(slug='02-bashkortostan', title='2 · Республика Башкортостан', prev=None, next=None, color=None),
+    dict(slug='03-buryatia', title='3 · Республика Бурятия', prev=None, next=None, color=None),
+    dict(slug='05-dagestan', title='5 · Республика Дагестан', prev=None, next=None, color=None),
+    dict(slug='06-ingushetia', title='6 · Республика Ингушетия', prev=None, next=None, color=None),
+    dict(slug='07-kabardino-balkaria', title='7 · Кабардино-Балкарская Республика', prev=None, next=None, color=None),
+    dict(slug='08-kalmykia', title='8 · Республика Калмыкия', prev=None, next=None, color=None),
+    dict(slug='09-karachay-cherkessia', title='9 · Карачаево-Черкесия', prev=None, next=None, color=None),
+    dict(slug='10-karelia', title='10 · Республика Карелия', prev=None, next=None, color=None),
+    dict(slug='11-komi', title='11 · Республика Коми', prev=None, next=None, color=None),
+    dict(slug='12-mari-el', title='12 · Республика Марий Эл', prev=None, next=None, color=None),
+    dict(slug='50-moscow-oblast', title='50 · Московская область · Подольск',
+         prev=None, next=('50', 'Московская область · парк «Патриот»', '../50-moscow-oblast-2/index.html', 'Следующая часть'), color=None),
+    dict(slug='50-moscow-oblast-2', title='50 · Московская область · парк «Патриот»',
+         prev=('50', 'Московская область · Подольск', '../50-moscow-oblast/index.html', 'Предыдущая часть'), next=None, color=None),
+    dict(slug='77-moscow-1', title='77 · Москва · Выходные в мае 2023',
+         prev=None,
+         next=('77', 'Москва · Центр и вода', '../77-moscow-2/index.html', 'Следующая часть'), color=None),
+    dict(slug='77-moscow-2', title='77 · Москва · Центр и вода',
+         prev=('77', 'Москва · Выходные в мае 2023', '../77-moscow-1/index.html', 'Предыдущая часть'),
+         next=('77', 'Москва · События', '../77-moscow-3/index.html', 'Следующая часть'), color=None),
+    dict(slug='77-moscow-3', title='77 · Москва · События',
+         prev=('77', 'Москва · Центр и вода', '../77-moscow-2/index.html', 'Предыдущая часть'),
+         next=('77', 'Москва · «Россия» на ВДНХ и Новый год', '../77-moscow-4/index.html', 'Следующая часть'), color=None),
+    dict(slug='77-moscow-4', title='77 · Москва · «Россия» на ВДНХ и Новый год',
+         prev=('77', 'Москва · События', '../77-moscow-3/index.html', 'Предыдущая часть'),
+         next=None, color=None),
     dict(slug='87-chukotka', title='87 · Чукотский автономный округ',
          prev=None, next=('41', 'Камчатский край', '../41-kamchatka/index.html', 'Дальше по маршруту'), color=None),
     dict(slug='49-magadan', title='49 · Магаданская область',
