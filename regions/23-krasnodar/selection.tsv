@@ -1,0 +1,27 @@
+# имя	ID	размер	отрезки видео (сек)
+hero	P050	2200
+cerkov	P001	1400
+reklama	P002	1400
+sobor	P004	1400
+gruppa-sobor	P062	1400
+ekaterina	P006	2000
+gruppa	P067	2000
+repin	P007	1400
+krasnaya	P008	1400
+sobachki	P009	1600
+graffiti	P010	2000
+stadion	P011	2000
+vodopad	P020	2000
+derevo	P023	1400
+ya-stupeni	P026	1400
+zerkalo	P022	2000
+prohod	P028	1600
+prud	P032	1600
+kolonny	P035	2000
+relyef	P038	1600
+baobab	P040	1600
+sosna	P044	1400
+labirint	P048	1600
+pole	P052	1600
+krysha	P055	2000
+v-avtobus	V01	1280	0-8
