@@ -158,6 +158,11 @@ def load_map():
     import json
     return json.load(open(os.path.join(ROOT, 'data', 'map.json'), encoding='utf-8'))
 
+def plural(n, one, few, many):
+    if n % 10 == 1 and n % 100 != 11: return one
+    if 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14: return few
+    return many
+
 def ru_date(iso):
     mon = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря']
     y, m, d = iso.split('-')
@@ -178,6 +183,22 @@ def index_body():
     visited = {c for c, v in info.items() if v[1]}
     assert visited == set(dates), (visited ^ set(dates))   # список D и карта должны совпадать
     years = sorted({d[:4] for d in dates.values()})
+    # ---- прогресс для шапки: считается из тех же дат, что и карта, руками не правится ----
+    names = {code: name for _, _, regs in D for code, name, *_ in regs}
+    first_iso, last_iso = min(dates.values()), max(dates.values())
+    last = [names[c] for c in sorted(dates, key=int) if dates[c] == last_iso]
+    last_txt = last[0] + (f' и ещё {len(last) - 1}' if len(last) > 1 else '')
+    since = ru_date(first_iso).split(' ', 1)[1]          # «февраля 2022» — для «с февраля 2022»
+    left = total - len(visited)
+    stats = f'''<div class="ix-stats">
+    <p class="ix-big"><b>{len(visited)}</b> из {total} <span>регионов</span></p>
+    <div class="ix-bar" role="progressbar" aria-label="Посещено регионов" aria-valuemin="0" aria-valuemax="{total}" aria-valuenow="{len(visited)}"><i style="width:{len(visited) / total * 100:.1f}%"></i></div>
+    <dl class="ix-facts">
+      <div><dt>В пути</dt><dd>с {since}</dd></div>
+      <div><dt>Последний новый регион</dt><dd>{ru_date(last_iso)} · {e(last_txt)}</dd></div>
+      <div><dt>Впереди</dt><dd>{left} {plural(left, "регион", "региона", "регионов")}</dd></div>
+    </dl>
+  </div>'''
     # ---- карта ----
     paths = []
     for r in mp['regions']:
@@ -198,6 +219,7 @@ def index_body():
     <p>Цель простая: побывать в каждом регионе страны хотя бы раз. Минимум — столица региона, дальше как получится.</p>
     <p class="ix-how">Нажмите на регион на карте или выберите его из списка ниже, чтобы открыть отчёт.</p>
   </div>
+  {stats}
 </header>
 <section class="mapbox" id="karta" aria-label="Карта посещённых регионов">
   <div class="filters">
