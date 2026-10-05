@@ -24,7 +24,6 @@
     var href = linkOf(code);
     var name = li.querySelector('.nm, a:not(.code)');
     var sub = li.querySelector('small');
-    var local = li.classList.contains('new');
     // в <small> столица текстом и ссылки на части отчёта; в подпись карточки идёт только текст
     var cap = sub ? [].filter.call(sub.childNodes, function (x) { return x.nodeType === 3; })
       .map(function (x) { return x.textContent; }).join(' ').replace(/·|впереди/g, ' ').replace(/\s+/g, ' ').trim() : '';
@@ -41,7 +40,7 @@
     card.appendChild(b); card.appendChild(t);
     if (href) {
       var a = document.createElement('a'); a.className = 'go'; a.href = href;
-      a.textContent = local ? 'Открыть отчёт →' : 'Отчёт во ВКонтакте →';
+      a.textContent = 'Открыть отчёт →';
       card.appendChild(a);
     }
     if (parts.length) {
