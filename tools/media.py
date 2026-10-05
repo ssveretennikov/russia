@@ -121,12 +121,13 @@ def sheet(items, dst, cols, cell, label_h=26, fsize=19):
 
 def probe(path):
     r = subprocess.run(['ffprobe', '-v', 'error', '-show_entries',
-                        'format=duration,size:format_tags=creation_time:stream=width,height,codec_name,r_frame_rate,color_transfer',
+                        'format=duration,size:format_tags=creation_time:stream=codec_type,width,height,codec_name,r_frame_rate,color_transfer',
                         '-of', 'json', path], capture_output=True, text=True)
     j = json.loads(r.stdout or '{}'); v = next((s for s in j.get('streams', []) if s.get('width')), {})
+    audio = any(s.get('codec_type') == 'audio' for s in j.get('streams', []))
     ct = (j.get('format', {}).get('tags', {}) or {}).get('creation_time', '')   # 2022-07-06T14:47:10.000000Z (UTC)
     return dict(dur=float(j.get('format', {}).get('duration', 0) or 0), size=int(j.get('format', {}).get('size', 0) or 0),
-                w=v.get('width', 0), h=v.get('height', 0), hdr=v.get('color_transfer') in ('smpte2084', 'arib-std-b67'),
+                w=v.get('width', 0), h=v.get('height', 0), hdr=v.get('color_transfer') in ('smpte2084', 'arib-std-b67'), audio=audio,
                 taken=ct[:19].replace('T', ' ') if len(ct) >= 19 else '')
 
 
@@ -310,14 +311,17 @@ def cmd_export(a):
             t0, t1 = segs[0][0], segs[-1][1]
             sc = f"scale='if(gt(iw,ih),{size},-2)':'if(gt(iw,ih),-2,{size})',fps=30"
             dst = out / f'{name}.mp4'
+            au = info.get('audio', True)   # у видео с дрона звука нет: фильтр и вывод только по видео
             for tone in ([TONEMAP, FALLBACK] if info['hdr'] else ['format=yuv420p']):
                 fc = f'[0:v]{sc},{tone},split={len(segs)}' + ''.join(f'[v{i}]' for i in range(len(segs))) + ';'
-                fc += f'[0:a]asplit={len(segs)}' + ''.join(f'[a{i}]' for i in range(len(segs))) + ';'
+                if au: fc += f'[0:a]asplit={len(segs)}' + ''.join(f'[a{i}]' for i in range(len(segs))) + ';'
                 for i, (s, e) in enumerate(segs):
-                    fc += f'[v{i}]trim={s - t0}:{e - t0},setpts=PTS-STARTPTS[x{i}];[a{i}]atrim={s - t0}:{e - t0},asetpts=PTS-STARTPTS[y{i}];'
-                fc += ''.join(f'[x{i}][y{i}]' for i in range(len(segs))) + f'concat=n={len(segs)}:v=1:a=1[v][a]'
-                r = ff(['-ss', str(t0), '-t', str(t1 - t0), '-i', path, '-filter_complex', fc, '-map', '[v]', '-map', '[a]',
-                        '-c:v', 'libx264', '-preset', 'medium', '-crf', '26', '-c:a', 'aac', '-b:a', '96k', '-movflags', '+faststart', str(dst)])
+                    fc += f'[v{i}]trim={s - t0}:{e - t0},setpts=PTS-STARTPTS[x{i}];'
+                    if au: fc += f'[a{i}]atrim={s - t0}:{e - t0},asetpts=PTS-STARTPTS[y{i}];'
+                fc += ''.join(f'[x{i}]' + (f'[y{i}]' if au else '') for i in range(len(segs))) + f'concat=n={len(segs)}:v=1:a={int(au)}[v]' + ('[a]' if au else '')
+                r = ff(['-ss', str(t0), '-t', str(t1 - t0), '-i', path, '-filter_complex', fc, '-map', '[v]'] + (['-map', '[a]'] if au else [])
+                       + ['-c:v', 'libx264', '-preset', 'medium', '-crf', '26'] + (['-c:a', 'aac', '-b:a', '96k'] if au else ['-an'])
+                       + ['-movflags', '+faststart', str(dst)])
                 if r.returncode == 0 and dst.exists(): break
             else:
                 print('НЕ УДАЛОСЬ:', name, r.stderr[-300:]); continue
