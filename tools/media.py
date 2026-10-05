@@ -266,10 +266,10 @@ def cmd_detail(a):
 
 
 def cmd_cands(a):
-    """Листы всех фото-кандидатов из candidates.md (id в первом столбце таблицы «## Фото»), 5 в ряд, 480 px."""
+    """Листы всех фото-кандидатов из candidates.md (id в первом столбце таблиц), 5 в ряд, 480 px.
+    Таблиц «Фото» может быть несколько (регион из частей или тем), поэтому берутся строки из всего файла."""
     text = (rdir(a.region) / 'candidates.md').read_text(encoding='utf-8')
-    body = text.split('## Фото', 1)[1].split('## Видео', 1)[0] if '## Фото' in text else text
-    ids = [m for m in re.findall(r'^\|\s*(P\d{3})\s*\|', body, re.M)]
+    ids = list(dict.fromkeys(re.findall(r'^\|\s*(P\d{3,4})\s*\|', text, re.M)))
     if not ids: sys.exit('В candidates.md не найдено строк вида | P001 | …')
     idx = load_index(a.region); out = wdir(a.region, 'detail')
     for old in out.glob('cands-*.jpg'): old.unlink()
