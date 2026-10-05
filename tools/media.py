@@ -7,7 +7,8 @@
   python tools/media.py detail 49-magadan P622 P623 P002 --sheet cand1   # лист кандидатов 4 в ряд
   python tools/media.py vstrip 49-magadan V46 --n 10    # раскадровка видео, чтобы выбрать фрагмент
   python tools/media.py cands 49-magadan                # все фото из candidates.md листами по 5 в ряд -> work/detail/cands-01.jpg…
-  python tools/media.py export 49-magadan               # по selection.tsv -> <регион>/media/ (фото в WebP)
+  python tools/media.py export 49-magadan               # по selection.tsv -> <регион>/media/ (фото в WebP), ролики -> russia-video/<регион>/
+  python tools/media.py export 49-magadan --video-only  # заново выгрузить только ролики
   # кадр из видео как фото: строка selection.tsv «hero<TAB>V05<TAB>2200<TAB>frame=10» (секунда)
   python tools/media.py webp 49-magadan                 # перевести уже выгруженные JPEG в WebP
 
@@ -31,6 +32,11 @@ ROOT = Path(__file__).resolve().parent.parent
 PHOTO_EXT = {'.jpg', '.jpeg', '.png'} | ({'.heic'} if HEIC else set())
 VIDEO_EXT = {'.mp4', '.mov', '.m4v'}
 WEBP_Q = 76          # качество фото на сайте; на глаз не отличить от JPEG 80, файлы легче примерно на 25–30%
+# Ролики лежат не на основном сайте, а в отдельном репозитории russia-video (папка рядом со скриптами, в git основного
+# сайта не идёт): GitHub Pages даёт 1 ГБ на сайт, а одно видео весит почти столько же. Обложки роликов остаются в <регион>/media/.
+VIDEO_DIR = ROOT / 'russia-video'
+VIDEO_CRF = '28'     # было 26: при 28 и медленном пресете ролики легче примерно на четверть (решение автора 06.10.2026; замер 06.10: 76% прежнего веса)
+VIDEO_PRESET = 'slow'
 TONEMAP = ('zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=hable:desat=0,'
            'zscale=t=bt709:m=bt709:r=tv,format=yuv420p')
 FALLBACK = 'format=yuv420p,eq=contrast=1.5:saturation=1.4:brightness=-0.05'
@@ -169,6 +175,18 @@ def cmd_check(a):
 
 def cmd_inventory(a):
     photos, videos = scan(a.region); th = wdir(a.region, 'thumbs'); sh = wdir(a.region, 'sheets'); vf = wdir(a.region, 'vframes')
+    # Номера P… и V… держат selection.tsv, досье и id на готовых страницах. Если архив с тех пор переставили или пополнили
+    # (так случилось с Краснодаром и Камчаткой при переезде папок 06.10.2026), новая нумерация молча указала бы на чужие кадры.
+    if not getattr(a, 'force', False):
+        for name, items, pref in (('index.tsv', photos, 'P'), ('vindex.tsv', videos, 'V')):
+            f = rdir(a.region) / name
+            if not f.exists(): continue
+            old = [l.split('\t')[1] for l in f.read_text(encoding='utf-8').splitlines()[1:] if '\t' in l]
+            new = [rel for _, rel, _ in items]
+            if old != new[:len(old)]:
+                k = next((i for i, (x, y) in enumerate(zip(old, new)) if x != y), min(len(old), len(new)))
+                sys.exit(f'{name} уже есть, и новая нумерация разошлась бы со старой начиная с {pref}{k + 1:03d}: '
+                         f'папки архива переставлены или пополнены. Перезапись сломает отбор, досье и страницы. Если это осознанно — --force.')
     jobs = [(f'P{i + 1:03d}', path, str(th / f'P{i + 1:03d}.jpg')) for i, (_, rel, path) in enumerate(photos)]
     with ProcessPoolExecutor(a.jobs) as ex: meta = list(ex.map(_thumb, jobs, chunksize=4))
     rows = []
@@ -296,12 +314,21 @@ def cmd_vstrip(a):
 
 
 def cmd_export(a):
-    """selection.tsv: имя<TAB>ID<TAB>размер[<TAB>отрезки видео «3-11,24-32» в секундах]"""
+    """selection.tsv: имя<TAB>ID<TAB>размер[<TAB>отрезки видео «3-11,24-32» в секундах]
+    Фото и обложки роликов — в <регион>/media/, сами ролики — в russia-video/<регион>/ (отдельный репозиторий).
+    С ключом --video-only заново выгружаются только ролики: фото, обложки и media.tsv не трогаются."""
+    only_video = getattr(a, 'video_only', False)
     pidx = load_index(a.region); vidx = load_index(a.region, 'vindex.tsv') if (rdir(a.region) / 'vindex.tsv').exists() else {}
-    out = ROOT / a.region / 'media'; out.mkdir(parents=True, exist_ok=True); rows = []
+    out = ROOT / a.region / 'media'; out.mkdir(parents=True, exist_ok=True); rows = []; failed = []
+    vout = VIDEO_DIR / a.region
+    sel = (rdir(a.region) / 'selection.tsv').read_text(encoding='utf-8')
+    if re.search(r'^[^#\t]+\t(V\d+)\t\d+(\t(?!frame=)|$)', sel, re.M) and not (VIDEO_DIR / '.git').exists():
+        # в копии без папки russia-video (worktree, свежий клон) ролики некуда класть: они не попали бы ни в один репозиторий
+        sys.exit(f'Папка {VIDEO_DIR} не связана с репозиторием russia-video: склонируйте его туда, иначе роликам некуда ложиться.')
     for line in (rdir(a.region) / 'selection.tsv').read_text(encoding='utf-8').splitlines():
         if not line.strip() or line.startswith('#'): continue
         c = line.split('\t'); name, mid, size = c[0], c[1], int(c[2])
+        if only_video and (mid.startswith('P') or (len(c) > 3 and c[3].startswith('frame='))): continue
         if mid.startswith('V') and len(c) > 3 and c[3].startswith('frame='):   # кадр из видео как фото: hero<TAB>V05<TAB>2200<TAB>frame=10
             path, meta = vidx[mid]; tmp = out / f'_{name}.jpg'
             ff(['-ss', c[3][6:], '-i', path, '-frames:v', '1', '-q:v', '2', str(tmp)])
@@ -317,7 +344,8 @@ def cmd_export(a):
             segs = [tuple(map(float, s.split('-'))) for s in c[3].split(',')] if len(c) > 3 and c[3] else [(0, min(info['dur'], 15))]
             t0, t1 = segs[0][0], segs[-1][1]
             sc = f"scale='if(gt(iw,ih),{size},-2)':'if(gt(iw,ih),-2,{size})',fps=30"
-            dst = out / f'{name}.mp4'
+            vout.mkdir(parents=True, exist_ok=True)
+            dst = vout / f'{name}.mp4'
             au = info.get('audio', True)   # у видео с дрона звука нет: фильтр и вывод только по видео
             for tone in ([TONEMAP, FALLBACK] if info['hdr'] else ['format=yuv420p']):
                 fc = f'[0:v]{sc},{tone},split={len(segs)}' + ''.join(f'[v{i}]' for i in range(len(segs))) + ';'
@@ -327,17 +355,23 @@ def cmd_export(a):
                     if au: fc += f'[a{i}]atrim={s - t0}:{e - t0},asetpts=PTS-STARTPTS[y{i}];'
                 fc += ''.join(f'[x{i}]' + (f'[y{i}]' if au else '') for i in range(len(segs))) + f'concat=n={len(segs)}:v=1:a={int(au)}[v]' + ('[a]' if au else '')
                 r = ff(['-ss', str(t0), '-t', str(t1 - t0), '-i', path, '-filter_complex', fc, '-map', '[v]'] + (['-map', '[a]'] if au else [])
-                       + ['-c:v', 'libx264', '-preset', 'medium', '-crf', '26'] + (['-c:a', 'aac', '-b:a', '96k'] if au else ['-an'])
+                       + ['-c:v', 'libx264', '-preset', VIDEO_PRESET, '-crf', VIDEO_CRF] + (['-c:a', 'aac', '-b:a', '96k'] if au else ['-an'])
                        + ['-movflags', '+faststart', str(dst)])
-                if r.returncode == 0 and dst.exists(): break
+                if r.returncode == 0 and dst.exists() and dst.stat().st_size > 0: break
+                if dst.exists(): dst.unlink()        # недописанный файл не должен уйти в коммит
             else:
-                print('НЕ УДАЛОСЬ:', name, r.stderr[-300:]); continue
-            ff(['-ss', '2', '-i', str(dst), '-frames:v', '1', '-q:v', '3', str(out / f'{name}.jpg')])
+                print('НЕ УДАЛОСЬ:', name, r.stderr[-300:]); failed.append(name); continue
+            poster = out / f'{name}.jpg'
+            if not (only_video and poster.exists()):   # при повторной выгрузке роликов обложки не перезаписываются: кадр тот же
+                ff(['-ss', '2', '-i', str(dst), '-frames:v', '1', '-q:v', '3', str(poster)])
             p = probe(str(dst)); rows.append([name, mid, str(p['w']), str(p['h']), meta[2]])
         print(*rows[-1])
-    (rdir(a.region) / 'media.tsv').write_text('name\tid\tw\th\ttaken\n' + '\n'.join('\t'.join(r) for r in rows), encoding='utf-8')
+    if not only_video:
+        (rdir(a.region) / 'media.tsv').write_text('name\tid\tw\th\ttaken\n' + '\n'.join('\t'.join(r) for r in rows), encoding='utf-8')
     total = sum(f.stat().st_size for f in out.iterdir()) / 2 ** 20
-    print(f'готово: {len(rows)} файлов, {total:.0f} МБ в {out}')
+    vtotal = sum(f.stat().st_size for f in vout.iterdir()) / 2 ** 20 if vout.is_dir() else 0
+    print(f'готово: {len(rows)} файлов, {total:.0f} МБ в {out}' + (f', ролики {vtotal:.0f} МБ в {vout}' if vtotal else ''))
+    if failed: sys.exit('не выгружены ролики: ' + ', '.join(failed))   # ненулевой код: publish.py не станет выкладывать страницу без роликов
 
 
 def cmd_webp(a):
@@ -361,12 +395,13 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sp = ap.add_subparsers(dest='cmd', required=True)
     sp.add_parser('check').set_defaults(fn=cmd_check)
-    p = sp.add_parser('inventory'); p.add_argument('region'); p.add_argument('--jobs', type=int, default=3); p.set_defaults(fn=cmd_inventory)
+    p = sp.add_parser('inventory'); p.add_argument('region'); p.add_argument('--jobs', type=int, default=3)
+    p.add_argument('--force', action='store_true', help='перезаписать index.tsv и vindex.tsv, даже если нумерация кадров изменится'); p.set_defaults(fn=cmd_inventory)
     p = sp.add_parser('detail'); p.add_argument('region'); p.add_argument('ids', nargs='+'); p.add_argument('--size', type=int, default=1100)
     p.add_argument('--sheet'); p.set_defaults(fn=cmd_detail)
     p = sp.add_parser('vstrip'); p.add_argument('region'); p.add_argument('vid'); p.add_argument('--n', type=int, default=10); p.set_defaults(fn=cmd_vstrip)
     p = sp.add_parser('cands'); p.add_argument('region'); p.set_defaults(fn=cmd_cands)
-    p = sp.add_parser('export'); p.add_argument('region'); p.set_defaults(fn=cmd_export)
+    p = sp.add_parser('export'); p.add_argument('region'); p.add_argument('--video-only', action='store_true'); p.set_defaults(fn=cmd_export)
     p = sp.add_parser('webp'); p.add_argument('region'); p.set_defaults(fn=cmd_webp)
     a = ap.parse_args(); a.fn(a)
 
