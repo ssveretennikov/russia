@@ -225,6 +225,20 @@ body:has(.ix-page){background:var(--sky-bg)}
 .mth{width:6rem;aspect-ratio:4/3;object-fit:cover;border-radius:.55rem;flex:none;background:var(--line)}
 .ix-page .reg{grid-template-columns:auto minmax(0,1fr) auto}
 .reg .th{width:4rem;aspect-ratio:4/3;height:auto;object-fit:cover;border-radius:.45rem;background:var(--sky-bg)}
+/* поиск и подсказка к сердечку — над списком */
+.ix-find{max-width:var(--wide);margin:clamp(2rem,5vw,3rem) auto 0;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem}
+.ix-find input{flex:1 1 16rem;font:inherit;font-size:1rem;padding:.7rem 1rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);min-width:0}
+.ix-find input:focus-visible{outline:3px solid var(--sky);outline-offset:1px}
+.hrt-key{font-size:.9rem;color:var(--soft);white-space:nowrap}
+.hrt-key .hrt{color:var(--heart)}
+.ix-none{max-width:var(--wide);margin:1.5rem auto 0;color:var(--soft)}
+.ix-page .ix-find + .ix-none + .fo{margin-top:1.2rem}
+.ix-page .fo.ahead{background:transparent;border:2px dashed var(--line)}
+.ix-page .fo.ahead .fo-h h2{color:var(--soft)}
+@media (max-width:640px){
+  .ix-page .regs{gap:.7rem}
+  .reg .th{width:3.4rem}
+}
 .mcard .mh{display:flex;align-items:center;gap:.55rem;min-width:0}
 .mcard .mh .code{font-size:.95rem;flex:none}
 .mcard .mt{gap:.25rem}

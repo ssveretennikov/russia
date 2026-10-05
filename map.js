@@ -9,7 +9,7 @@
   var secs = [].slice.call(document.querySelectorAll('section.fo'));
   var byCode = {};
   items.forEach(function (li) { byCode[li.dataset.code] = li; });
-  var state = { fo: '', year: '' };
+  var state = { fo: '', year: '', q: '' };
   var picked = null;
   var TR = { car: { icon: '🚗', text: 'на машине' }, bus: { icon: '🚌', text: 'на автобусе' },
              plane: { icon: '✈️', text: 'на самолёте' }, train: { icon: '🚆', text: 'на поезде' } };
@@ -24,9 +24,7 @@
     var href = linkOf(code);
     var name = li.querySelector('.nm, a:not(.code)');
     var sub = li.querySelector('small');
-    // в <small> столица текстом и ссылки на части отчёта; в подпись карточки идёт только текст
-    var cap = sub ? [].filter.call(sub.childNodes, function (x) { return x.nodeType === 3; })
-      .map(function (x) { return x.textContent; }).join(' ').replace(/·|впереди/g, ' ').replace(/\s+/g, ' ').trim() : '';
+    var cap = li.dataset.cap || '';
     var parts = sub ? [].slice.call(sub.querySelectorAll('a')) : [];
     var date = li.dataset.home ? 'Дом — отсюда начинаются поездки'
       : li.dataset.date ? 'Первый визит: ' + li.dataset.date : 'Ещё впереди';
@@ -53,7 +51,7 @@
     }
     if (parts.length) {
       var ps = document.createElement('small'); ps.className = 'parts';
-      ps.appendChild(document.createTextNode('Части: '));
+      ps.appendChild(document.createTextNode('Ещё: '));
       parts.forEach(function (x, i) {
         if (i) ps.appendChild(document.createTextNode(' · '));
         var pa = document.createElement('a'); pa.href = x.getAttribute('href'); pa.textContent = x.textContent;
@@ -142,13 +140,17 @@
 
   // фильтры
   function apply() {
-    function ok(el) {
-      return (!state.fo || el.dataset.fo === state.fo) && (!state.year || el.dataset.year === state.year);
-    }
-    paths.forEach(function (p) { p.classList.toggle('dim', !ok(p)); });
-    items.forEach(function (li) { li.hidden = !ok(li); });
+    paths.forEach(function (p) { p.classList.toggle('dim', !okFilter(p)); });
+    items.forEach(function (li) { li.hidden = !okFilter(li); });
     secs.forEach(function (s) { s.hidden = !s.querySelector('li.reg:not([hidden])'); });
+    none.hidden = items.some(function (li) { return !li.hidden; });
   }
+  // поиск по названию и столице; строка поиска в атрибуте data-q уже строчная и с «е» вместо «ё»
+  var find = document.getElementById('find'), none = document.getElementById('none');
+  find.addEventListener('input', function () {
+    state.q = find.value.trim().toLowerCase().replace(/ё/g, 'е');
+    stopPlay(); idx = N; draw(); apply();
+  });
   [].forEach.call(document.querySelectorAll('.chip'), function (c) {
     c.addEventListener('click', function () {
       state[c.dataset.k] = c.dataset.v;
@@ -223,7 +225,11 @@
     var extra = arrived.slice(1).map(function (li) { return li.querySelector('.nm, a:not(.code)').textContent; });
     if (extra.length) { var s = card.querySelector('small'); if (s) s.textContent += ' · ещё: ' + extra.join(', '); }
   }
-  function okFilter(el) { return (!state.fo || el.dataset.fo === state.fo) && (!state.year || el.dataset.year === state.year); }
+  function okFilter(el) {
+    var li = byCode[el.dataset.code];          // у контура на карте строки поиска нет — берётся из строки списка
+    return (!state.fo || el.dataset.fo === state.fo) && (!state.year || el.dataset.year === state.year)
+      && (!state.q || (li && li.dataset.q.indexOf(state.q) >= 0));
+  }
   function setIdx(n) { idx = Math.max(0, Math.min(N, n)); draw(); }
   function stopPlay() { playing = false; clearTimeout(timer); }
   function loop() {
