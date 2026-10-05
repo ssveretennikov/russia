@@ -177,9 +177,8 @@ body:has(.ix-page){background:var(--sky-bg)}
 .ix-page .fo-h h2{color:var(--sky-deep)}
 .ix-page .code{background:var(--sky);color:#fff;border-radius:999px;min-width:2.3em;height:2.3em;padding:0}
 .ix-page .reg.none .code{background:transparent;color:var(--soft)}
-.ix-page .reg.new{outline-color:var(--sun)}
+.ix-page .reg.new{outline:0}   /* рамка отмечала отчёты на сайте, пока их было мало; теперь они почти все здесь */
 .ix-page .reg a.code:hover{background:var(--sky-deep);color:#fff}
-.ix-page .tag{background:var(--sun);color:#231A00;border-radius:999px;padding:.05rem .55rem}
 .ix-page .ix-foot{margin-bottom:0}
 
 .mapbox{max-width:var(--wide);margin:clamp(1.4rem,4vw,2.2rem) auto 0;background:var(--surface);border-radius:1.1rem;padding:clamp(.8rem,2.5vw,1.4rem);display:flex;flex-direction:column;gap:.9rem}
@@ -207,13 +206,17 @@ body:has(.ix-page){background:var(--sky-bg)}
 .legend li{display:flex;align-items:center;gap:.4rem}
 .legend i{width:.9rem;height:.9rem;border-radius:999px;display:inline-block}
 .k-v{background:var(--sky)}.k-r{background:var(--sun)}
-.mnote{font-size:.85rem;color:var(--soft)}
+.h-touch{display:none}
+@media (hover:none){.h-mouse{display:none}.h-touch{display:inline}}
 [hidden]{display:none!important}
 .rumap .r:focus{outline:none}
 
 .tl{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"ctl track" "read read" "all all";gap:.7rem 1rem;align-items:center;padding:.8rem;border-radius:.8rem;background:var(--sky-bg)}
 .tl-ctl{grid-area:ctl;display:flex;gap:.4rem}
-.tl-ctl button{width:2.6rem;height:2.6rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:1rem;cursor:pointer}
+.tl-ctl button{width:2.6rem;height:2.6rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
+.tl-ctl svg{width:1.15rem;height:1.15rem;fill:currentColor}
+.tl-ctl .i-pause,.tl-ctl .playing .i-play{display:none}
+.tl-ctl .playing .i-pause{display:block}
 .tl-ctl button:disabled{opacity:.4;cursor:not-allowed}
 .tl-ctl .play{background:var(--sky);border-color:var(--sky);color:#fff}
 .tl-track{grid-area:track;position:relative;padding-bottom:1.6rem}
@@ -229,18 +232,22 @@ body:has(.ix-page){background:var(--sky-bg)}
 .tl-read strong{font-family:var(--sign);font-size:1.25rem;letter-spacing:.03em;color:var(--sky-deep);font-variant-numeric:tabular-nums}
 .tl-read span{color:var(--soft);font-size:.9rem}
 .tl-all{grid-area:all;justify-self:start;font:600 .88rem/1 var(--body);padding:.55rem .9rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
-.rumap .r.later{fill:var(--line);opacity:.55;pointer-events:none}
+/* «ещё не доехал» в хронологии: смесь, а не прозрачный --line — в тёмной теме тот сливался с фоном, и страна пропадала */
+.rumap .r.later{fill:color-mix(in srgb,var(--soft) 35%,var(--surface));pointer-events:none}
 .rumap .r.arr{fill:var(--sky-deep);stroke:var(--ink);stroke-width:1.2;animation:arrive .8s ease-out}
 @keyframes arrive{0%{stroke-width:6}100%{stroke-width:1.2}}
 @media (prefers-reduced-motion:reduce){.rumap .r{transition:none}.rumap .r.arr{animation:none}}
 
-.rumap .r.no{fill:var(--line);cursor:default}
+/* «ещё впереди» — штриховка, а не просто серый: ровная серая заливка сливалась с фоном карты (контраст 1,5:1) */
+.hatch rect{fill:var(--line)}
+.hatch line{stroke:var(--soft);stroke-width:3.2}
+.rumap .r.no{fill:url(#hatch);cursor:default}
 .rumap .r.no:hover,.rumap .r.no.on{fill:var(--soft)}
-.rumap .r.no.tiny{stroke:var(--line)}
-.rumap .r.no.tiny:hover,.rumap .r.no.tiny.on{stroke:var(--soft)}
-.k-n{background:var(--line)}
+.rumap .r.no.tiny{stroke:var(--soft)}
+.rumap .r.no.tiny:hover,.rumap .r.no.tiny.on{stroke:var(--ink)}
+.k-n{background:repeating-linear-gradient(45deg,var(--soft) 0 2px,var(--line) 2px 4.5px)}
 
-.rumap .r.later.tiny{stroke:var(--line)}
+.rumap .r.later.tiny{stroke:color-mix(in srgb,var(--soft) 35%,var(--surface))}
 
 /* ---------- переключатель темы ---------- */
 .theme-btn{font:inherit;font-size:1.1rem;line-height:1;width:2.4rem;height:2.4rem;display:inline-flex;align-items:center;justify-content:center;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:0;cursor:pointer}

@@ -161,7 +161,7 @@
     });
     items.forEach(function (li) { li.hidden = !!(cur && li.dataset.iso && li.dataset.iso > cur) || !okFilter(li); });
     secs.forEach(function (s) { s.hidden = !s.querySelector('li.reg:not([hidden])'); });
-    track.value = posOf(idx); tall.hidden = idx >= N; playBtn.textContent = playing ? '⏸' : '▶';
+    track.value = posOf(idx); tall.hidden = idx >= N; playBtn.classList.toggle('playing', playing); playBtn.setAttribute('aria-label', playing ? 'Пауза' : 'Воспроизвести');
     document.getElementById('tprev').disabled = idx <= 0;
     document.getElementById('tnext').disabled = idx >= N;
     if (!cur) { tdate.textContent = 'Все даты'; tnote.textContent = 'На карте все посещённые регионы.'; if (!picked) card.innerHTML = hint; return; }

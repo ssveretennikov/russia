@@ -148,6 +148,12 @@ def code_badge(code, link=None):
 
 FOKEY = {'ЦФО': 'c', 'СЗФО': 'sz', 'ЮФО': 'yu', 'СКФО': 'sk', 'ПФО': 'p', 'УрФО': 'u', 'СФО': 's', 'ДВФО': 'dv', '': 'x'}
 
+# значки кнопок хронологии: рисунок, а не символ — символы ⏮ ▶ ⏭ телефоны подменяют цветными эмодзи
+def _icon(name, d):
+    return f'<svg class="i-{name}" viewBox="0 0 24 24" aria-hidden="true"><path d="{d}"/></svg>'
+ICON = {'prev': _icon('prev', 'M6 5h2v14H6zM20 5v14L9 12z'), 'next': _icon('next', 'M16 5h2v14h-2zM4 5v14l11-7z'),
+        'play': _icon('play', 'M8 5v14l11-7z'), 'pause': _icon('pause', 'M7 5h4v14H7zM13 5h4v14h-4z')}
+
 def load_map():
     import json
     return json.load(open(os.path.join(ROOT, 'data', 'map.json'), encoding='utf-8'))
@@ -199,17 +205,17 @@ def index_body():
     <div class="chips" role="group" aria-label="Год поездки">{chips_y}</div>
   </div>
   <svg class="rumap" viewBox="0 0 {mp['w']} {mp['h']}" role="group" aria-label="Карта России, посещённые регионы">
+<defs><pattern id="hatch" class="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7"/><line x1="0" y1="0" x2="0" y2="7"/></pattern></defs>
 {chr(10).join(paths)}
   </svg>
   <div class="tl" aria-label="Хронология поездок">
-    <div class="tl-ctl"><button type="button" id="tprev" aria-label="Предыдущая дата">⏮</button><button type="button" class="play" id="play" aria-label="Воспроизвести">▶</button><button type="button" id="tnext" aria-label="Следующая дата">⏭</button></div>
+    <div class="tl-ctl"><button type="button" id="tprev" aria-label="Предыдущая дата">{ICON['prev']}</button><button type="button" class="play" id="play" aria-label="Воспроизвести">{ICON['play']}{ICON['pause']}</button><button type="button" id="tnext" aria-label="Следующая дата">{ICON['next']}</button></div>
     <div class="tl-track"><input type="range" id="track" min="0" value="0" aria-label="Дата на временной шкале"><div class="ruler" id="ruler" aria-hidden="true"></div></div>
     <div class="tl-read"><strong id="tdate">Все даты</strong><span id="tnote" aria-live="polite"></span></div>
     <button type="button" class="tl-all" id="tall" hidden>Показать весь период</button>
   </div>
-  <div class="mcard" id="mcard" aria-live="polite"><p class="mhint">Наведите на регион или нажмите на него.</p></div>
+  <div class="mcard" id="mcard" aria-live="polite"><p class="mhint"><span class="h-mouse">Наведите на регион или нажмите на него.</span><span class="h-touch">Нажмите на регион — появится ссылка на отчёт.</span></p></div>
   <ul class="legend"><li><i class="k-v"></i>Побывал</li><li><i class="k-n"></i>Ещё впереди</li></ul>
-  <p class="mnote">Серым показаны регионы, где ещё предстоит побывать.</p>
 </section>
 ''']
     for short, full, regs in D:
@@ -223,7 +229,6 @@ def index_body():
             cls = 'reg' + (' none' if mark == 'n' else '') + (' new' if local else '')
             nm = f'<a href="{e(main)}">{e(name)}</a>' if main else f'<span class="nm">{e(name)}</span>'
             if mark == 'h': nm += ' <span class="hrt">❤</span>'
-            if local: nm += '<span class="tag">новый формат</span>'
             sub = [e(cap)] if cap else []
             for lab, slug in links[1:]:
                 sub.append(f'<a href="{e(href(slug))}">{e(lab)}</a>')
@@ -235,7 +240,7 @@ def index_body():
             out.append(f'<li class="{cls}"{attrs}>{code_badge(code, main)}<div class="reg-t"><div>{nm}</div>{small}</div></li>')
         out.append('</ul></section>')
     out.append('''<footer class="ix-foot">
-  <p>Старые отчёты пока открываются во ВКонтакте. Новые выходят в формате, как у Магаданской области.</p>
+  <p>Несколько старых отчётов — вторые части и отдельные города — пока открываются во ВКонтакте.</p>
 </footer>
 </div>''')
     return '\n'.join(out)
@@ -391,6 +396,10 @@ def doc(title, body, depth, inline, reg_color=None, meta=''):
     style = f'<style>\n{CSS}\n</style>' if inline else f'<link rel="stylesheet" href="{up}series.css?v={VER["css"]}">'
     script = f'<script>\n{JS}\n</script>' if inline else f'<script src="{up}series.js?v={VER["js"]}"></script>'
     extra = f'<style>{reg_color}</style>' if reg_color else ''
+    # цвет адресной строки телефона: на главной — синяя шапка, на страницах регионов — фон страницы
+    light, dark = ('#1F6FE5', '#2A63C4') if 'ix-page' in body else ('#F1F2EE', '#101315')
+    meta += (f'\n<meta name="theme-color" content="{light}" media="(prefers-color-scheme: light)">'
+             f'\n<meta name="theme-color" content="{dark}" media="(prefers-color-scheme: dark)">')
     if 'ix-page' in body:                      # главная: карта и фильтры
         script += f'\n<script>\n{MAPJS}\n</script>' if inline else f'\n<script src="{up}map.js?v={VER["map"]}"></script>'
     return (f'<!doctype html>\n<html lang="ru">\n<head>\n<meta charset="utf-8">\n'
