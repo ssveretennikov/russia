@@ -16,7 +16,6 @@ import hashlib
 VER = {n: hashlib.md5(t.encode('utf-8')).hexdigest()[:8] for n, t in (('css', CSS), ('js', JS), ('map', MAPJS))}
 FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800'
          '&family=Golos+Text:wght@400;500;600&family=Oswald:wght@500;600&display=swap">')
-VK = 'https://vk.ru/@moscowserega-russia-'
 SERIES_TITLE = 'Россия: регион за регионом'   # рабочее название серии, меняется здесь
 SITE = 'https://ssveretennikov.github.io/russia/'   # адрес сайта; от него считаются ссылки для пересылки
 INDEX_DESC = 'Цель: побывать в каждом регионе России хотя бы раз. Отчёты по регионам, по федеральным округам.'
@@ -24,7 +23,7 @@ SITE_NAME = 'Россия: регион за регионом'
 THEME_INIT = "<script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>"
 SHOW_COUNTS = False   # счётчики «посещено / всего» по округам; включить, когда будут готовы все отчёты
 
-# (код, название, столица, отметка v/h/n, [(подпись, slug)]) ; slug = хвост ссылки ВК
+# (код, название, столица, отметка v/h/n, [(подпись, 'LOCAL:<папка>/index.html')]) ; h = понравилось (сердечко), n = ещё не был
 D = [
  ('ЦФО', 'Центральный федеральный округ', [
   ('31','Белгородская область','Белгород','n',[]),
@@ -47,12 +46,12 @@ D = [
   ('77','Москва','город федерального значения','h',[('', 'LOCAL:77-moscow-1/index.html'),('2','LOCAL:77-moscow-2/index.html'),('3','LOCAL:77-moscow-3/index.html'),('4','LOCAL:77-moscow-4/index.html')]),
  ]),
  ('СЗФО', 'Северо-Западный федеральный округ', [
-  ('10','Республика Карелия','Петрозаводск','v',[('', 'LOCAL:10-karelia/index.html'),('Рускеала, водопады','10-2')]),
+  ('10','Республика Карелия','Петрозаводск','v',[('', 'LOCAL:10-karelia/index.html')]),
   ('11','Республика Коми','Сыктывкар','v',[('', 'LOCAL:11-komi/index.html')]),
   ('29','Архангельская область','Архангельск','h',[('', 'LOCAL:29-arkhangelsk/index.html')]),
   ('35','Вологодская область','Вологда','h',[('', 'LOCAL:35-vologda/index.html')]),
-  ('39','Калининградская область','Калининград','h',[('', 'LOCAL:39-kaliningrad/index.html'),('2','39-2'),('3','39-3'),('4','39-4'),('5','39-5'),('6','39-6'),('7','39-7')]),
-  ('47','Ленинградская область','Гатчина','v',[('', 'LOCAL:47-leningrad/index.html'),('Выборг','47-1')]),
+  ('39','Калининградская область','Калининград','h',[('', 'LOCAL:39-kaliningrad/index.html')]),
+  ('47','Ленинградская область','Гатчина','v',[('', 'LOCAL:47-leningrad/index.html')]),
   ('51','Мурманская область','Мурманск','v',[('', 'LOCAL:51-murmansk/index.html')]),
   ('53','Новгородская область','Великий Новгород','v',[('', 'LOCAL:53-novgorod/index.html')]),
   ('60','Псковская область','Псков','v',[('', 'LOCAL:60-pskov/index.html')]),
@@ -72,11 +71,11 @@ D = [
  ('СКФО', 'Северо-Кавказский федеральный округ', [
   ('5','Республика Дагестан','Махачкала','h',[('', 'LOCAL:05-dagestan/index.html')]),
   ('6','Республика Ингушетия','Магас','h',[('', 'LOCAL:06-ingushetia/index.html')]),
-  ('7','Кабардино-Балкария','Нальчик','v',[('', 'LOCAL:07-kabardino-balkaria/index.html'),('Эльбрус','7')]),
+  ('7','Кабардино-Балкария','Нальчик','v',[('', 'LOCAL:07-kabardino-balkaria/index.html')]),
   ('9','Карачаево-Черкесия','Черкесск','v',[('', 'LOCAL:09-karachay-cherkessia/index.html')]),
   ('15','Северная Осетия — Алания','Владикавказ','v',[('', 'LOCAL:15-north-ossetia/index.html')]),
   ('20','Чеченская Республика','Грозный · код 95','v',[('', 'LOCAL:20-chechnya/index.html')]),
-  ('26','Ставропольский край','Ставрополь','h',[('', 'LOCAL:26-stavropol/index.html'),('Пятигорск','26-2')]),
+  ('26','Ставропольский край','Ставрополь','h',[('', 'LOCAL:26-stavropol/index.html')]),
  ]),
  ('ПФО', 'Приволжский федеральный округ', [
   ('2','Республика Башкортостан','Уфа','v',[('', 'LOCAL:02-bashkortostan/index.html')]),
@@ -108,9 +107,9 @@ D = [
   ('19','Республика Хакасия','Абакан','h',[('', 'LOCAL:19-khakassia/index.html')]),
   ('22','Алтайский край','Барнаул','v',[('', 'LOCAL:22-altai-krai/index.html')]),
   ('24','Красноярский край','Красноярск','h',[('', 'LOCAL:24-krasnoyarsk/index.html')]),
-  ('38','Иркутская область','Иркутск','v',[('', 'LOCAL:38-irkutsk/index.html'),('часть 2','38-2')]),
+  ('38','Иркутская область','Иркутск','v',[('', 'LOCAL:38-irkutsk/index.html')]),
   ('42','Кемеровская область','Кемерово','v',[('', 'LOCAL:42-kemerovo/index.html')]),
-  ('54','Новосибирская область','Новосибирск','v',[('', 'LOCAL:54-novosibirsk/index.html'),('часть 2','54-2')]),
+  ('54','Новосибирская область','Новосибирск','v',[('', 'LOCAL:54-novosibirsk/index.html')]),
   ('55','Омская область','Омск','h',[('', 'LOCAL:55-omsk/index.html')]),
   ('70','Томская область','Томск','v',[('', 'LOCAL:70-tomsk/index.html')]),
  ]),
@@ -120,7 +119,7 @@ D = [
   ('25','Приморский край','Владивосток','h',[('', 'LOCAL:25-primorye/index.html')]),
   ('27','Хабаровский край','Хабаровск','v',[('', 'LOCAL:27-khabarovsk/index.html')]),
   ('28','Амурская область','Благовещенск','v',[('', 'LOCAL:28-amur/index.html')]),
-  ('41','Камчатский край','Петропавловск-Камчатский','v',[('', 'LOCAL:41-kamchatka/index.html'),('старый отчёт', '41')]),
+  ('41','Камчатский край','Петропавловск-Камчатский','v',[('', 'LOCAL:41-kamchatka/index.html')]),
   ('49','Магаданская область','Магадан','h',[('', 'LOCAL:49-magadan/index.html')]),
   ('65','Сахалинская область','Южно-Сахалинск','h',[('', 'LOCAL:65-sakhalin/index.html')]),
   ('75','Забайкальский край','Чита','v',[('', 'LOCAL:75-zabaykalsky/index.html')]),
@@ -134,12 +133,13 @@ D = [
   ('85','Запорожская область','','n',[]),
  ]),
 ]
-NOTE87 = 'отчёт ещё не опубликован'
 
 def e(s): return html.escape(s, quote=True)
 
 def href(slug):
-    return slug[6:] if slug.startswith('LOCAL:') else VK + slug
+    # все отчёты — на сайте; ссылки во ВКонтакте убраны по решению автора 05.10.2026
+    assert slug.startswith('LOCAL:'), f'ссылка не на страницу сайта: {slug}'
+    return slug[6:]
 
 def code_badge(code, link=None):
     if link:
@@ -232,17 +232,13 @@ def index_body():
             sub = [e(cap)] if cap else []
             for lab, slug in links[1:]:
                 sub.append(f'<a href="{e(href(slug))}">{e(lab)}</a>')
-            if code == '87' and not local: sub.append(NOTE87)
             if mark == 'n': sub.append('впереди')
             small = f'<small>{" · ".join(sub)}</small>' if sub else ''
             d = dates.get(code)
             attrs = f' data-code="{code}" data-fo="{FOKEY[short]}"' + (f' data-date="{ru_date(d)}" data-year="{d[:4]}" data-iso="{d}" data-tr="{trans[code]}"' if d else '')
             out.append(f'<li class="{cls}"{attrs}>{code_badge(code, main)}<div class="reg-t"><div>{nm}</div>{small}</div></li>')
         out.append('</ul></section>')
-    out.append('''<footer class="ix-foot">
-  <p>Несколько старых отчётов — вторые части и отдельные города — пока открываются во ВКонтакте.</p>
-</footer>
-</div>''')
+    out.append('</div>')
     return '\n'.join(out)
 
 # ---- Карта дня и профиль высоты: строятся из GPS снимков (regions/<slug>/index.tsv) и отбора (selection.tsv).
