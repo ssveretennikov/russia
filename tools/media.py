@@ -6,6 +6,7 @@
   python tools/media.py detail 49-magadan P159 P731 --size 1700
   python tools/media.py detail 49-magadan P622 P623 P002 --sheet cand1   # лист кандидатов 4 в ряд
   python tools/media.py vstrip 49-magadan V46 --n 10    # раскадровка видео, чтобы выбрать фрагмент
+  python tools/media.py cands 49-magadan                # все фото из candidates.md листами по 5 в ряд -> work/detail/cands-01.jpg…
   python tools/media.py export 49-magadan               # по selection.tsv -> <регион>/media/ (фото в WebP)
   python tools/media.py webp 49-magadan                 # перевести уже выгруженные JPEG в WebP
 
@@ -263,6 +264,26 @@ def cmd_detail(a):
         for _, t in items: os.remove(t)
 
 
+def cmd_cands(a):
+    """Листы всех фото-кандидатов из candidates.md (id в первом столбце таблицы «## Фото»), 5 в ряд, 480 px."""
+    text = (rdir(a.region) / 'candidates.md').read_text(encoding='utf-8')
+    body = text.split('## Фото', 1)[1].split('## Видео', 1)[0] if '## Фото' in text else text
+    ids = [m for m in re.findall(r'^\|\s*(P\d{3})\s*\|', body, re.M)]
+    if not ids: sys.exit('В candidates.md не найдено строк вида | P001 | …')
+    idx = load_index(a.region); out = wdir(a.region, 'detail')
+    for old in out.glob('cands-*.jpg'): old.unlink()
+    per = 20
+    for p in range(0, len(ids), per):
+        items = []
+        for pid in ids[p:p + per]:
+            if pid not in idx: print(f'нет в index.tsv: {pid}'); continue
+            im = ImageOps.exif_transpose(Image.open(idx[pid][0])).convert('RGB'); im.thumbnail((480, 480))
+            tmp = out / f'_{pid}.jpg'; im.save(tmp, quality=82); items.append((f'{pid} {idx[pid][1][2][11:16]}', str(tmp)))
+        dst = out / f'cands-{p // per + 1:02d}.jpg'; sheet(items, dst, 5, 480, 28, 21); print(dst)
+        for _, t in items: os.remove(t)
+    print(f'кандидатов {len(ids)}, листов {(len(ids) + per - 1) // per}')
+
+
 def cmd_vstrip(a):
     idx = load_index(a.region, 'vindex.tsv'); out = wdir(a.region, 'detail'); path = idx[a.vid][0]; info = probe(path); items = []
     for i in range(a.n):
@@ -333,6 +354,7 @@ def main():
     p = sp.add_parser('detail'); p.add_argument('region'); p.add_argument('ids', nargs='+'); p.add_argument('--size', type=int, default=1100)
     p.add_argument('--sheet'); p.set_defaults(fn=cmd_detail)
     p = sp.add_parser('vstrip'); p.add_argument('region'); p.add_argument('vid'); p.add_argument('--n', type=int, default=10); p.set_defaults(fn=cmd_vstrip)
+    p = sp.add_parser('cands'); p.add_argument('region'); p.set_defaults(fn=cmd_cands)
     p = sp.add_parser('export'); p.add_argument('region'); p.set_defaults(fn=cmd_export)
     p = sp.add_parser('webp'); p.add_argument('region'); p.set_defaults(fn=cmd_webp)
     a = ap.parse_args(); a.fn(a)
