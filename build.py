@@ -14,8 +14,11 @@ import hashlib
 # метка версии в ссылках на общие файлы: GitHub Pages разрешает браузеру держать их в кэше 10 минут,
 # а с новой меткой после выкладки браузер берёт новый файл сразу
 VER = {n: hashlib.md5(t.encode('utf-8')).hexdigest()[:8] for n, t in (('css', CSS), ('js', JS), ('map', MAPJS))}
-FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800'
-         '&family=Golos+Text:wght@400;500;600&family=Oswald:wght@500;600&display=swap">')
+# Шрифты — в fonts/ на сайте, правила @font-face в series.css. Здесь только предзагрузка двух файлов, нужных
+# с первого экрана (кириллица текста и заголовков): браузер начнёт качать их, не дожидаясь разбора стилей.
+def fonts(up):
+    return ''.join(f'<link rel="preload" href="{up}fonts/{f}-cyrillic.woff2" as="font" type="font/woff2" crossorigin>'
+                   for f in ('golos-text', 'unbounded'))
 SERIES_TITLE = 'Россия: регион за регионом'   # рабочее название серии, меняется здесь
 SITE = 'https://ssveretennikov.github.io/russia/'   # адрес сайта; от него считаются ссылки для пересылки
 INDEX_DESC = 'Цель: побывать в каждом регионе России хотя бы раз. Отчёты по регионам, по федеральным округам.'
@@ -467,11 +470,11 @@ def doc(title, body, depth, inline, reg_color=None, meta=''):
         script += f'\n<script>\n{MAPJS}\n</script>' if inline else f'\n<script src="{up}map.js?v={VER["map"]}"></script>'
     return (f'<!doctype html>\n<html lang="ru">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-            f'<title>{e(title)}</title>\n{meta}\n{THEME_INIT}\n{FONTS}\n{style}\n{extra}\n</head>\n<body>\n{body}\n{script}\n</body>\n</html>\n')
+            f'<title>{e(title)}</title>\n{meta}\n{THEME_INIT}\n{fonts(up)}\n{style}\n{extra}\n</head>\n<body>\n{body}\n{script}\n</body>\n</html>\n')
 
 def fragment(title, body):
     """Главная страница артефакта: без doctype/html/head/body."""
-    return f'<title>{e(title)}</title>\n{FONTS}\n<style>\n{CSS}\n</style>\n{body}\n<script>\n{JS}\n</script>\n<script>\n{MAPJS}\n</script>\n'
+    return f'<title>{e(title)}</title>\n<style>\n{CSS}\n</style>\n{body}\n<script>\n{JS}\n</script>\n<script>\n{MAPJS}\n</script>\n'
 
 # Страницы регионов в новом формате. Чтобы добавить регион:
 #   1) положить текст в src/<slug>.html, медиа — в <slug>/media/ (tools/media.py export);
@@ -606,7 +609,8 @@ def write_service_files():
             f'<p>Адрес мог устареть или в нём опечатка. Отчёты по регионам собраны на главной.</p>'
             f'<p><a href="{base}">← Все регионы</a></p></div></div>')
     h = doc('Страница не найдена', page, 0, False, None, f'<link rel="icon" href="{base}favicon.png" type="image/png">\n<meta name="robots" content="noindex">')
-    h = h.replace('href="series.css', f'href="{base}series.css').replace('src="series.js', f'src="{base}series.js')
+    h = (h.replace('href="series.css', f'href="{base}series.css').replace('src="series.js', f'src="{base}series.js')
+          .replace('href="fonts/', f'href="{base}fonts/'))
     open(os.path.join(ROOT, '404.html'), 'w', encoding='utf-8').write(h)
     urls = [SITE] + [SITE + pg['slug'] + '/' for pg in PAGES]
     open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8').write(
