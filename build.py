@@ -122,12 +122,12 @@ D = [
   ('25','Приморский край','Владивосток','h',[('', 'LOCAL:25-primorye/index.html')]),
   ('27','Хабаровский край','Хабаровск','v',[('', 'LOCAL:27-khabarovsk/index.html')]),
   ('28','Амурская область','Благовещенск','v',[('', 'LOCAL:28-amur/index.html')]),
-  ('41','Камчатский край','Петропавловск-Камчатский','v',[('', 'LOCAL:41-kamchatka/index.html')]),
+  ('41','Камчатский край','Петропавловск-Камчатский','h',[('', 'LOCAL:41-kamchatka/index.html')]),
   ('49','Магаданская область','Магадан','h',[('', 'LOCAL:49-magadan/index.html')]),
   ('65','Сахалинская область','Южно-Сахалинск','h',[('', 'LOCAL:65-sakhalin/index.html')]),
   ('75','Забайкальский край','Чита','v',[('', 'LOCAL:75-zabaykalsky/index.html')]),
   ('79','Еврейская автономная область','Биробиджан','v',[('', 'LOCAL:79-jewish-ao/index.html')]),
-  ('87','Чукотский автономный округ','Анадырь','v',[('', 'LOCAL:87-chukotka/index.html')]),
+  ('87','Чукотский автономный округ','Анадырь','h',[('', 'LOCAL:87-chukotka/index.html')]),
  ]),
  ('', 'Пока вне федеральных округов', [
   ('80','Донецкая Народная Республика','','n',[]),
@@ -216,7 +216,7 @@ def index_body():
     <p class="ix-big"><b>{len(visited)}</b> из {total} <span>регионов</span></p>
     <div class="ix-bar" role="progressbar" aria-label="Посещено регионов" aria-valuemin="0" aria-valuemax="{total}" aria-valuenow="{len(visited)}"><i style="width:{len(visited) / total * 100:.1f}%"></i></div>
     <dl class="ix-facts">
-      <div><dt>Счёт веду</dt><dd>с {since}</dd></div>
+      <div><dt>В пути</dt><dd>с {since}</dd></div>
       <div><dt>Последний новый регион</dt><dd>{ru_date(last_iso)} · {e(last_txt)}</dd></div>
       <div><dt>Впереди</dt><dd>{left} {plural(left, "регион", "региона", "регионов")}</dd></div>
     </dl>
