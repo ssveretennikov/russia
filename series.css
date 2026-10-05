@@ -2,6 +2,17 @@
    Layout: одна колонка чтения 42rem, фото выходят за неё на 62rem.
    Код региона — простая плашка с числом. У каждого региона свой цвет --reg,
    взятый из его главного кадра (у Магадана охра). */
+
+/* Шрифты лежат на сайте (fonts/, лицензии OFL там же), а не грузятся с Google Fonts: оттуда они доходят не всегда,
+   и без них страница вставала на Arial. Файлы переменные — один на все начертания; только кириллица и латиница.
+   Пути — от этого файла стилей, поэтому подходят и страницам регионов, и 404. */
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/golos-text-cyrillic.woff2) format("woff2");unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/golos-text-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Oswald";font-style:normal;font-weight:500 600;font-display:swap;src:url(fonts/oswald-cyrillic.woff2) format("woff2");unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:"Oswald";font-style:normal;font-weight:500 600;font-display:swap;src:url(fonts/oswald-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Unbounded";font-style:normal;font-weight:600 800;font-display:swap;src:url(fonts/unbounded-cyrillic.woff2) format("woff2");unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:"Unbounded";font-style:normal;font-weight:600 800;font-display:swap;src:url(fonts/unbounded-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+
 :root{
   --bg:#F1F2EE;
   --surface:#FFFFFF;
@@ -12,6 +23,7 @@
   --heart:#C2283B;
   --reg:#B87512;           /* цвет региона, по умолчанию охра */
   --sky:#1F6FE5;--sky-deep:#124A9E;--sky-bg:#EDF4FF;--sun:#FFC83D;   /* главная: «Небо» */
+  --a0:#0E3F8C;--a1:#2264D6;--a2:#5592EE;--a3:#93BBF7;   /* карта по годам: 0 — последний год, самый насыщенный */
   --reg-ink:#FFFFFF;
   --note-bg:#FFF4C2;
   --note-ink:#4A3A00;
@@ -29,6 +41,7 @@
     --road:#8FB2FF;--heart:#FF6B7C;
     --reg:#E3A53A;--reg-ink:#1A1100;--note-bg:#3A3210;--note-ink:#FFE9A0;--note-line:#6B5A16;
     --sky:#2A63C4;--sky-deep:#A9C8FF;--sky-bg:#0E1726;
+    --a0:#A9C8FF;--a1:#5C9BFF;--a2:#2D6FD6;--a3:#1E4C99;   /* на тёмном заметнее светлое: последний год — самый светлый */
     color-scheme:dark;
   }
 }
@@ -37,6 +50,7 @@
   --road:#8FB2FF;--heart:#FF6B7C;
   --reg:#E3A53A;--reg-ink:#1A1100;--note-bg:#3A3210;--note-ink:#FFE9A0;--note-line:#6B5A16;
   --sky:#2A63C4;--sky-deep:#A9C8FF;--sky-bg:#0E1726;
+  --a0:#A9C8FF;--a1:#5C9BFF;--a2:#2D6FD6;--a3:#1E4C99;
   color-scheme:dark;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -168,8 +182,28 @@ body.clean .note{display:none}
 /* ---------- главная · «Небо» ---------- */
 body:has(.ix-page){background:var(--sky-bg)}
 .ix-page .ix-head{max-width:none;background:var(--sky);color:#fff;box-shadow:0 0 0 100vmax var(--sky);clip-path:inset(0 -100vmax);padding:clamp(1.5rem,5vw,3rem) 0 clamp(1.6rem,4vw,2.6rem)}
-.ix-page .ix-head>*{max-width:var(--wide)}
-.ix-page .ix-kicker{color:#fff;opacity:.85}
+/* содержимое шапки — по той же колонке, что карта и список: без отступа текст прижимался к левому краю широкого экрана */
+.ix-page .ix-head{padding-inline:max(0px,calc((100% - var(--wide)) / 2))}
+.ix-page .ix-kicker{color:#fff}   /* без прозрачности: белый .85 на синем — 3,75:1, мелкий капс не читался */
+/* прогресс: главная — о том, сколько регионов пройдено */
+.ix-stats{display:flex;flex-direction:column;gap:.75rem}
+.ix-big{font-family:var(--display);font-weight:600;font-size:1.15rem;display:flex;align-items:baseline;gap:.2rem .5rem;flex-wrap:wrap;line-height:1}
+.ix-big b{font-weight:800;font-size:clamp(3rem,7vw,4.6rem);letter-spacing:-.03em}
+.ix-big span{font-family:var(--body);font-weight:500}
+.ix-bar{height:.6rem;border-radius:999px;background:rgba(255,255,255,.3);overflow:hidden}
+.ix-bar i{display:block;height:100%;border-radius:inherit;background:var(--sun)}
+.ix-facts{margin:0;display:flex;flex-direction:column;gap:.35rem;font-size:.95rem;line-height:1.35}
+.ix-facts div{display:flex;flex-wrap:wrap;gap:.1rem .6rem;align-items:baseline}
+.ix-facts dt{font-family:var(--sign);font-size:.88rem;letter-spacing:.08em;text-transform:uppercase}
+.ix-facts dd{margin:0;font-weight:500}
+@media (min-width:900px){
+  .ix-page .ix-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(16rem,21rem);column-gap:clamp(2rem,5vw,4.5rem);
+    grid-template-areas:"top top" "title stats" "intro stats";align-items:start}
+  .ix-page .ix-top{grid-area:top}
+  .ix-page .ix-head h1{grid-area:title}
+  .ix-page .ix-intro{grid-area:intro}
+  .ix-stats{grid-area:stats;align-self:end}
+}
 .ix-page h1::after{content:"";display:block;width:4.5rem;height:.5rem;border-radius:999px;background:var(--sun);margin-top:1rem}
 .ix-page .ix-intro a{color:#fff}
 .ix-page .fo{background:var(--surface);border-radius:1.1rem;padding:clamp(1rem,3vw,1.6rem)}
@@ -177,9 +211,8 @@ body:has(.ix-page){background:var(--sky-bg)}
 .ix-page .fo-h h2{color:var(--sky-deep)}
 .ix-page .code{background:var(--sky);color:#fff;border-radius:999px;min-width:2.3em;height:2.3em;padding:0}
 .ix-page .reg.none .code{background:transparent;color:var(--soft)}
-.ix-page .reg.new{outline-color:var(--sun)}
+.ix-page .reg.new{outline:0}   /* рамка отмечала отчёты на сайте, пока их было мало; теперь они почти все здесь */
 .ix-page .reg a.code:hover{background:var(--sky-deep);color:#fff}
-.ix-page .tag{background:var(--sun);color:#231A00;border-radius:999px;padding:.05rem .55rem}
 .ix-page .ix-foot{margin-bottom:0}
 
 .mapbox{max-width:var(--wide);margin:clamp(1.4rem,4vw,2.2rem) auto 0;background:var(--surface);border-radius:1.1rem;padding:clamp(.8rem,2.5vw,1.4rem);display:flex;flex-direction:column;gap:.9rem}
@@ -189,31 +222,96 @@ body:has(.ix-page){background:var(--sky-bg)}
 .chip:hover{border-color:var(--sky)}
 .chip[aria-pressed="true"]{background:var(--sky);border-color:var(--sky);color:#fff}
 .rumap{width:100%;height:auto;display:block;touch-action:manipulation}
-.rumap .r{fill:var(--sky);stroke:var(--surface);stroke-width:.7;stroke-linejoin:round;cursor:pointer;transition:opacity .2s,fill .15s}
-.rumap .r.rep{fill:var(--sun)}
-.rumap .r.tiny{stroke:var(--sky);stroke-width:3}
-.rumap .r.tiny.rep{stroke:var(--sun)}
-.rumap .r:hover,.rumap .r.on{fill:var(--sky-deep)}
-.rumap .r.rep:hover,.rumap .r.rep.on{fill:#E0A400}
-.rumap .r.tiny:hover,.rumap .r.tiny.on{stroke:var(--sky-deep)}
+/* толщина обводки — в точках экрана, а не в единицах карты: при увеличении округа границы не толстеют */
+/* цвет — по году первой поездки (data-age: 0 — последний год). Свежие годы заметнее: в них всего 8 регионов из 83,
+   ровной заливкой они терялись. Без года (Москва, дом) — как самый ранний. Выбранный регион — жёлтый, не путается с годами. */
+.rumap .r{--c:var(--a3);fill:var(--c);stroke:var(--surface);stroke-width:.7;stroke-linejoin:round;cursor:pointer;transition:opacity .2s,fill .15s;vector-effect:non-scaling-stroke}
+.rumap .r[data-age="0"]{--c:var(--a0)}
+.rumap .r[data-age="1"]{--c:var(--a1)}
+.rumap .r[data-age="2"]{--c:var(--a2)}
+.rumap .r.tiny{stroke:var(--c);stroke-width:3}
+.rumap .r:hover,.rumap .r.on{--c:var(--sun)}
 .rumap .r.dim{opacity:.14;pointer-events:none}
 .rumap .r:focus-visible{outline:none;stroke:var(--ink);stroke-width:2.2}
 .mcard{display:flex;align-items:center;gap:.8rem;min-height:3.6rem;padding:.55rem .8rem;border-radius:.8rem;background:var(--sky-bg)}
 .mcard .mt{display:flex;flex-direction:column;min-width:0;flex:1;line-height:1.3}
 .mcard small{color:var(--soft)}
 .mcard .go{font-weight:600;white-space:nowrap}
+.mth{width:6rem;aspect-ratio:4/3;object-fit:cover;border-radius:.55rem;flex:none;background:var(--line)}
+.ix-page .reg{grid-template-columns:auto minmax(0,1fr) auto}
+.reg .th{width:4rem;aspect-ratio:4/3;height:auto;object-fit:cover;border-radius:.45rem;background:var(--sky-bg)}
+/* поиск и подсказка к сердечку — над списком */
+.ix-find{max-width:var(--wide);margin:clamp(2rem,5vw,3rem) auto 0;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem}
+.ix-find input{flex:1 1 16rem;font:inherit;font-size:1rem;padding:.7rem 1rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);min-width:0}
+.ix-find input:focus-visible{outline:3px solid var(--sky);outline-offset:1px}
+.hrt-key{font-size:.9rem;color:var(--soft);white-space:nowrap}
+.hrt-key .hrt{color:var(--heart)}
+.ix-none{max-width:var(--wide);margin:1.5rem auto 0;color:var(--soft)}
+.ix-page .ix-find + .ix-none + .fo{margin-top:1.2rem}
+.ix-page .fo.ahead{background:transparent;border:2px dashed var(--line)}
+.ix-page .fo.ahead .fo-h h2{color:var(--soft)}
+@media (max-width:640px){
+  .ix-page .regs{gap:.7rem}
+  .reg .th{width:3.4rem}
+}
+.mcard .mh{display:flex;align-items:center;gap:.55rem;min-width:0}
+.mcard .mh .code{font-size:.95rem;flex:none}
+.mcard .mt{gap:.25rem}
+/* телефон: фото слева, справа название, подпись и ссылка — в строку всё не входит */
+@media (max-width:640px){
+  .mcard:has(.mth){display:grid;grid-template-columns:5.5rem minmax(0,1fr);column-gap:.75rem;row-gap:.4rem;align-items:start}
+  .mcard .mth{width:100%;height:auto;grid-row:span 2;align-self:start}
+  .mcard .go{justify-self:start}
+}
 .mhint{color:var(--soft);font-size:.95rem}
 .legend{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;list-style:none;margin:0;padding:0;font-size:.9rem;color:var(--soft)}
 .legend li{display:flex;align-items:center;gap:.4rem}
 .legend i{width:.9rem;height:.9rem;border-radius:999px;display:inline-block}
-.k-v{background:var(--sky)}.k-r{background:var(--sun)}
-.mnote{font-size:.85rem;color:var(--soft)}
+.k-a0{background:var(--a0)}.k-a1{background:var(--a1)}.k-a2{background:var(--a2)}.k-a3{background:var(--a3)}
+.mapwrap{position:relative}
+/* дата хронологии прямо на карте: внизу слева под Кавказом пусто, а табло под картой на телефоне за экраном */
+.mapdate{position:absolute;left:0;bottom:0;margin:0;pointer-events:none;font-family:var(--sign);font-size:clamp(1rem,3.4vw,1.8rem);letter-spacing:.03em;line-height:1.1;color:var(--sky-deep);text-shadow:0 0 4px var(--surface),0 0 8px var(--surface)}
+.mapdate small{display:block;font-family:var(--body);font-size:.55em;letter-spacing:0;color:var(--soft)}
+.mapbtns{display:flex;gap:.4rem;flex-wrap:wrap}
+.mapbar{display:flex;justify-content:space-between;align-items:center;gap:.5rem 1rem;flex-wrap:wrap}
+.zoom{font:600 .88rem/1 var(--body);padding:.55rem .9rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.zoom:hover{border-color:var(--sky)}
+/* «Путь по годам»; не .story — это имя занято столбцом текста на страницах регионов */
+.zoom.mstory{display:inline-flex;align-items:center;gap:.35rem;background:var(--sky);border-color:var(--sky);color:#fff}
+.zoom.mstory:hover{border-color:var(--sky-deep)}
+.mstory svg{width:.95rem;height:.95rem;fill:currentColor;flex:none}
+.mstory .i-pause,.mstory.playing .i-play{display:none}
+.mstory.playing .i-pause{display:block}
+.totop{position:fixed;right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));z-index:20;padding:.75rem 1.05rem;border-radius:999px;background:var(--sky);color:#fff;font:600 .9rem/1 var(--body);text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+/* телефон: карта должна попасть на первый экран — шапка короче, фильтры в одну строку с прокруткой вбок */
+@media (max-width:640px){
+  .ix-page .ix-top{flex-wrap:nowrap;align-items:flex-start}
+  .legend{gap:.25rem .8rem;font-size:.85rem}
+  .zoom{font-size:.82rem;padding:.5rem .75rem}
+  .ix-page .ix-kicker{font-size:.85rem}
+  .ix-page .ix-head{gap:.9rem;padding-block:1.1rem 1.3rem}
+  .ix-page h1::after{margin-top:.6rem;height:.4rem}
+  .ix-how{display:none}
+  .ix-stats{gap:.55rem}
+  .ix-big b{font-size:2.6rem}
+  .ix-facts{font-size:.88rem;gap:.15rem}
+  .ix-facts dt{font-size:.8rem}
+  .mapbox{margin-top:1rem}
+  .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-.8rem;padding-inline:.8rem}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:none}
+}
+.h-touch{display:none}
+@media (hover:none){.h-mouse{display:none}.h-touch{display:inline}}
 [hidden]{display:none!important}
 .rumap .r:focus{outline:none}
 
 .tl{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"ctl track" "read read" "all all";gap:.7rem 1rem;align-items:center;padding:.8rem;border-radius:.8rem;background:var(--sky-bg)}
 .tl-ctl{grid-area:ctl;display:flex;gap:.4rem}
-.tl-ctl button{width:2.6rem;height:2.6rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:1rem;cursor:pointer}
+.tl-ctl button{width:2.6rem;height:2.6rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
+.tl-ctl svg{width:1.15rem;height:1.15rem;fill:currentColor}
+.tl-ctl .i-pause,.tl-ctl .playing .i-play{display:none}
+.tl-ctl .playing .i-pause{display:block}
 .tl-ctl button:disabled{opacity:.4;cursor:not-allowed}
 .tl-ctl .play{background:var(--sky);border-color:var(--sky);color:#fff}
 .tl-track{grid-area:track;position:relative;padding-bottom:1.6rem}
@@ -229,18 +327,22 @@ body:has(.ix-page){background:var(--sky-bg)}
 .tl-read strong{font-family:var(--sign);font-size:1.25rem;letter-spacing:.03em;color:var(--sky-deep);font-variant-numeric:tabular-nums}
 .tl-read span{color:var(--soft);font-size:.9rem}
 .tl-all{grid-area:all;justify-self:start;font:600 .88rem/1 var(--body);padding:.55rem .9rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
-.rumap .r.later{fill:var(--line);opacity:.55;pointer-events:none}
-.rumap .r.arr{fill:var(--sky-deep);stroke:var(--ink);stroke-width:1.2;animation:arrive .8s ease-out}
+/* «ещё не доехал» в хронологии: смесь, а не прозрачный --line — в тёмной теме тот сливался с фоном, и страна пропадала */
+.rumap .r.later{fill:color-mix(in srgb,var(--soft) 35%,var(--surface));pointer-events:none}
+.rumap .r.arr{--c:var(--sun);stroke:var(--ink);stroke-width:1.2;animation:arrive .8s ease-out}
 @keyframes arrive{0%{stroke-width:6}100%{stroke-width:1.2}}
 @media (prefers-reduced-motion:reduce){.rumap .r{transition:none}.rumap .r.arr{animation:none}}
 
-.rumap .r.no{fill:var(--line);cursor:default}
+/* «ещё впереди» — штриховка, а не просто серый: ровная серая заливка сливалась с фоном карты (контраст 1,5:1) */
+.hatch rect{fill:var(--line)}
+.hatch line{stroke:var(--soft);stroke-width:3.2}
+.rumap .r.no{fill:url(#hatch);cursor:default}
 .rumap .r.no:hover,.rumap .r.no.on{fill:var(--soft)}
-.rumap .r.no.tiny{stroke:var(--line)}
-.rumap .r.no.tiny:hover,.rumap .r.no.tiny.on{stroke:var(--soft)}
-.k-n{background:var(--line)}
+.rumap .r.no.tiny{stroke:var(--soft)}
+.rumap .r.no.tiny:hover,.rumap .r.no.tiny.on{stroke:var(--ink)}
+.k-n{background:repeating-linear-gradient(45deg,var(--soft) 0 2px,var(--line) 2px 4.5px)}
 
-.rumap .r.later.tiny{stroke:var(--line)}
+.rumap .r.later.tiny{stroke:color-mix(in srgb,var(--soft) 35%,var(--surface))}
 
 /* ---------- переключатель темы ---------- */
 .theme-btn{font:inherit;font-size:1.1rem;line-height:1;width:2.4rem;height:2.4rem;display:inline-flex;align-items:center;justify-content:center;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:0;cursor:pointer}
