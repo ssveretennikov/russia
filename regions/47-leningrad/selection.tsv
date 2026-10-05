@@ -1,0 +1,51 @@
+# имя	ID	размер	отрезки видео (сек)
+hero	P146	2200
+zamok-s-mosta	P008	2000
+vorota	P012	1600
+rotonda	P016	1600
+v-dron-rotonda	V01	1280	10-25
+dron-ruiny	P021	1600
+na-kamne	P020	1600
+v-sneg	V02	1280	0-17
+berezy	P031	1400
+gruppa-vorota	P038	1400
+zamok-noch	P045	1400
+drakkary	P046	2000
+stariy-dom	P049	1600
+kostyumy	P061	1400
+tron	P063	1400
+chasovaya	P066	1600
+vokzal	P109	1600
+zamok-reka	P121	2000
+fonar	P131	1400
+tupla	P154	1400
+dron-kryshi	P136	1600
+dron-bashnya	P138	1600
+v-dron-bashnya	V05	1280	14-36
+dron-zaliv	P147	2000
+v-dron-zamok	V07	1280	12-26
+obed	P157	1600
+maket	P161	1600
+usadba	P173	1600
+lysuha	P179	1600
+priorat	P184	2000
+skulptura	P195	1600
+obezyana	P198	1600
+kotiki	P201	1600
+zabroshka	P209	1600
+lyuteranskaya	P227	1600
+pokrovskiy	P246	1600
+dvorets-fasad	P273	2000
+klumba	P279	1400
+ostrovok	P290	1400
+v-utyata	V10	1280	0-12
+dvorets-plac	P295	2000
+pavel	P298	1400
+venera	P311	1400
+venera-vnutri	P316	2000
+v-podzemniy-hod	V13	1280	5-19
+hod	P346	1400
+tron-pavla	P384	1400
+beliy-zal	P396	2000
+submarina	P408	1600
+farman	P410	1600
