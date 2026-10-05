@@ -222,6 +222,18 @@ body:has(.ix-page){background:var(--sky-bg)}
 .mcard .mt{display:flex;flex-direction:column;min-width:0;flex:1;line-height:1.3}
 .mcard small{color:var(--soft)}
 .mcard .go{font-weight:600;white-space:nowrap}
+.mth{width:6rem;aspect-ratio:4/3;object-fit:cover;border-radius:.55rem;flex:none;background:var(--line)}
+.ix-page .reg{grid-template-columns:auto minmax(0,1fr) auto}
+.reg .th{width:4rem;aspect-ratio:4/3;height:auto;object-fit:cover;border-radius:.45rem;background:var(--sky-bg)}
+.mcard .mh{display:flex;align-items:center;gap:.55rem;min-width:0}
+.mcard .mh .code{font-size:.95rem;flex:none}
+.mcard .mt{gap:.25rem}
+/* телефон: фото слева, справа название, подпись и ссылка — в строку всё не входит */
+@media (max-width:640px){
+  .mcard:has(.mth){display:grid;grid-template-columns:5.5rem minmax(0,1fr);column-gap:.75rem;row-gap:.4rem;align-items:start}
+  .mcard .mth{width:100%;height:auto;grid-row:span 2;align-self:start}
+  .mcard .go{justify-self:start}
+}
 .mhint{color:var(--soft);font-size:.95rem}
 .legend{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;list-style:none;margin:0;padding:0;font-size:.9rem;color:var(--soft)}
 .legend li{display:flex;align-items:center;gap:.4rem}

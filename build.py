@@ -261,7 +261,11 @@ def index_body():
             small = f'<small>{" · ".join(sub)}</small>' if sub else ''
             d = dates.get(code)
             attrs = f' data-code="{code}" data-fo="{FOKEY[short]}"' + (f' data-date="{ru_date(d)}" data-year="{d[:4]}" data-iso="{d}" data-tr="{trans[code]}"' if d else '')
-            out.append(f'<li class="{cls}"{attrs}>{code_badge(code, main)}<div class="reg-t"><div>{nm}</div>{small}</div></li>')
+            # миниатюра — tools/thumbs.py; грузится по мере прокрутки, карточка на карте берёт её же
+            th = main and main.split('/')[0] + '/thumb.webp'
+            img = (f'<img class="th" src="{th}" alt="" width="360" height="270" loading="lazy" decoding="async">'
+                   if th and os.path.exists(os.path.join(ROOT, th)) else '')
+            out.append(f'<li class="{cls}"{attrs}>{code_badge(code, main)}<div class="reg-t"><div>{nm}</div>{small}</div>{img}</li>')
         out.append('</ul></section>')
     out.append('<a class="totop" id="totop" href="#karta" hidden>↑ К карте</a>\n</div>')
     return '\n'.join(out)
@@ -433,7 +437,8 @@ def fragment(title, body):
 
 # Страницы регионов в новом формате. Чтобы добавить регион:
 #   1) положить текст в src/<slug>.html, медиа — в <slug>/media/ (tools/media.py export);
-#   2) добавить запись сюда; 3) в списке D выше заменить ссылку региона на 'LOCAL:<slug>/index.html'.
+#   2) добавить запись сюда; 3) в списке D выше заменить ссылку региона на 'LOCAL:<slug>/index.html';
+#   4) python tools/og.py <slug> и python tools/thumbs.py — обложка для ссылок и миниатюра для главной.
 # prev / next — соседи по маршруту поездки: (код, название, ссылка, подпись) или None.
 # og — кадр для обложки ссылки (tools/og.py), если главный кадр для неё не годится, например вертикальный; по умолчанию hero.
 # color — цвет региона (CSS-переменные --reg и --reg-ink для светлой темы); None = охра по умолчанию.
