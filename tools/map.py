@@ -70,7 +70,9 @@ def main():
         areas = [area(r) for r in rs]
         big = max(areas)
         rs = [dp(r, TOL) for r, a in zip(rs, areas) if a >= MIN_AREA or a == big]
-        rs = [r for r in rs if len(r) >= 3]
+        # после упрощения часть островов вырождается в отрезок туда-обратно нулевой площади: на карте их не видно,
+        # а в файле было 62 таких кольца (05.10.2026) — площадь проверяется ещё раз уже после упрощения
+        rs = [r for r in rs if len(r) >= 3 and (area(r) >= MIN_AREA or area(r) == max(map(area, rs)))]
         main = max(rs, key=area)
         code = str(p['vehicle_region_code'])
         items.append(dict(code=CODE_FIX.get(code, code), name=p['subject_name_ru'],

@@ -14,9 +14,11 @@ import hashlib
 # метка версии в ссылках на общие файлы: GitHub Pages разрешает браузеру держать их в кэше 10 минут,
 # а с новой меткой после выкладки браузер берёт новый файл сразу
 VER = {n: hashlib.md5(t.encode('utf-8')).hexdigest()[:8] for n, t in (('css', CSS), ('js', JS), ('map', MAPJS))}
-FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800'
-         '&family=Golos+Text:wght@400;500;600&family=Oswald:wght@500;600&display=swap">')
-VK = 'https://vk.ru/@moscowserega-russia-'
+# Шрифты — в fonts/ на сайте, правила @font-face в series.css. Здесь только предзагрузка двух файлов, нужных
+# с первого экрана (кириллица текста и заголовков): браузер начнёт качать их, не дожидаясь разбора стилей.
+def fonts(up):
+    return ''.join(f'<link rel="preload" href="{up}fonts/{f}-cyrillic.woff2" as="font" type="font/woff2" crossorigin>'
+                   for f in ('golos-text', 'unbounded'))
 SERIES_TITLE = 'Россия: регион за регионом'   # рабочее название серии, меняется здесь
 SITE = 'https://ssveretennikov.github.io/russia/'   # адрес сайта; от него считаются ссылки для пересылки
 INDEX_DESC = 'Цель: побывать в каждом регионе России хотя бы раз. Отчёты по регионам, по федеральным округам.'
@@ -24,7 +26,7 @@ SITE_NAME = 'Россия: регион за регионом'
 THEME_INIT = "<script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>"
 SHOW_COUNTS = False   # счётчики «посещено / всего» по округам; включить, когда будут готовы все отчёты
 
-# (код, название, столица, отметка v/h/n, [(подпись, slug)]) ; slug = хвост ссылки ВК
+# (код, название, столица, отметка v/h/n, [(подпись, 'LOCAL:<папка>/index.html')]) ; h = понравилось (сердечко), n = ещё не был
 D = [
  ('ЦФО', 'Центральный федеральный округ', [
   ('31','Белгородская область','Белгород','n',[]),
@@ -47,12 +49,12 @@ D = [
   ('77','Москва','город федерального значения','h',[('', 'LOCAL:77-moscow-1/index.html'),('2','LOCAL:77-moscow-2/index.html'),('3','LOCAL:77-moscow-3/index.html'),('4','LOCAL:77-moscow-4/index.html')]),
  ]),
  ('СЗФО', 'Северо-Западный федеральный округ', [
-  ('10','Республика Карелия','Петрозаводск','v',[('', 'LOCAL:10-karelia/index.html'),('Рускеала, водопады','10-2')]),
+  ('10','Республика Карелия','Петрозаводск','v',[('', 'LOCAL:10-karelia/index.html')]),
   ('11','Республика Коми','Сыктывкар','v',[('', 'LOCAL:11-komi/index.html')]),
   ('29','Архангельская область','Архангельск','h',[('', 'LOCAL:29-arkhangelsk/index.html')]),
   ('35','Вологодская область','Вологда','h',[('', 'LOCAL:35-vologda/index.html')]),
-  ('39','Калининградская область','Калининград','h',[('', 'LOCAL:39-kaliningrad/index.html'),('2','39-2'),('3','39-3'),('4','39-4'),('5','39-5'),('6','39-6'),('7','39-7')]),
-  ('47','Ленинградская область','Гатчина','v',[('', 'LOCAL:47-leningrad/index.html'),('Выборг','47-1')]),
+  ('39','Калининградская область','Калининград','h',[('', 'LOCAL:39-kaliningrad/index.html')]),
+  ('47','Ленинградская область','Гатчина','v',[('', 'LOCAL:47-leningrad/index.html')]),
   ('51','Мурманская область','Мурманск','v',[('', 'LOCAL:51-murmansk/index.html')]),
   ('53','Новгородская область','Великий Новгород','v',[('', 'LOCAL:53-novgorod/index.html')]),
   ('60','Псковская область','Псков','v',[('', 'LOCAL:60-pskov/index.html')]),
@@ -72,11 +74,11 @@ D = [
  ('СКФО', 'Северо-Кавказский федеральный округ', [
   ('5','Республика Дагестан','Махачкала','h',[('', 'LOCAL:05-dagestan/index.html')]),
   ('6','Республика Ингушетия','Магас','h',[('', 'LOCAL:06-ingushetia/index.html')]),
-  ('7','Кабардино-Балкария','Нальчик','v',[('', 'LOCAL:07-kabardino-balkaria/index.html'),('Эльбрус','7')]),
+  ('7','Кабардино-Балкария','Нальчик','v',[('', 'LOCAL:07-kabardino-balkaria/index.html')]),
   ('9','Карачаево-Черкесия','Черкесск','v',[('', 'LOCAL:09-karachay-cherkessia/index.html')]),
   ('15','Северная Осетия — Алания','Владикавказ','v',[('', 'LOCAL:15-north-ossetia/index.html')]),
   ('20','Чеченская Республика','Грозный · код 95','v',[('', 'LOCAL:20-chechnya/index.html')]),
-  ('26','Ставропольский край','Ставрополь','h',[('', 'LOCAL:26-stavropol/index.html'),('Пятигорск','26-2')]),
+  ('26','Ставропольский край','Ставрополь','h',[('', 'LOCAL:26-stavropol/index.html')]),
  ]),
  ('ПФО', 'Приволжский федеральный округ', [
   ('2','Республика Башкортостан','Уфа','v',[('', 'LOCAL:02-bashkortostan/index.html')]),
@@ -108,9 +110,9 @@ D = [
   ('19','Республика Хакасия','Абакан','h',[('', 'LOCAL:19-khakassia/index.html')]),
   ('22','Алтайский край','Барнаул','v',[('', 'LOCAL:22-altai-krai/index.html')]),
   ('24','Красноярский край','Красноярск','h',[('', 'LOCAL:24-krasnoyarsk/index.html')]),
-  ('38','Иркутская область','Иркутск','v',[('', 'LOCAL:38-irkutsk/index.html'),('часть 2','38-2')]),
+  ('38','Иркутская область','Иркутск','v',[('', 'LOCAL:38-irkutsk/index.html')]),
   ('42','Кемеровская область','Кемерово','v',[('', 'LOCAL:42-kemerovo/index.html')]),
-  ('54','Новосибирская область','Новосибирск','v',[('', 'LOCAL:54-novosibirsk/index.html'),('часть 2','54-2')]),
+  ('54','Новосибирская область','Новосибирск','v',[('', 'LOCAL:54-novosibirsk/index.html')]),
   ('55','Омская область','Омск','h',[('', 'LOCAL:55-omsk/index.html')]),
   ('70','Томская область','Томск','v',[('', 'LOCAL:70-tomsk/index.html')]),
  ]),
@@ -120,7 +122,7 @@ D = [
   ('25','Приморский край','Владивосток','h',[('', 'LOCAL:25-primorye/index.html')]),
   ('27','Хабаровский край','Хабаровск','v',[('', 'LOCAL:27-khabarovsk/index.html')]),
   ('28','Амурская область','Благовещенск','v',[('', 'LOCAL:28-amur/index.html')]),
-  ('41','Камчатский край','Петропавловск-Камчатский','v',[('', 'LOCAL:41-kamchatka/index.html'),('старый отчёт', '41')]),
+  ('41','Камчатский край','Петропавловск-Камчатский','v',[('', 'LOCAL:41-kamchatka/index.html')]),
   ('49','Магаданская область','Магадан','h',[('', 'LOCAL:49-magadan/index.html')]),
   ('65','Сахалинская область','Южно-Сахалинск','h',[('', 'LOCAL:65-sakhalin/index.html')]),
   ('75','Забайкальский край','Чита','v',[('', 'LOCAL:75-zabaykalsky/index.html')]),
@@ -134,23 +136,46 @@ D = [
   ('85','Запорожская область','','n',[]),
  ]),
 ]
-NOTE87 = 'отчёт ещё не опубликован'
 
 def e(s): return html.escape(s, quote=True)
 
 def href(slug):
-    return slug[6:] if slug.startswith('LOCAL:') else VK + slug
+    # все отчёты — на сайте; ссылки во ВКонтакте убраны по решению автора 05.10.2026
+    assert slug.startswith('LOCAL:'), f'ссылка не на страницу сайта: {slug}'
+    return slug[6:]
 
 def code_badge(code, link=None):
     if link:
         return f'<a class="code" href="{e(link)}" aria-label="Регион {code}">{code}</a>'
     return f'<span class="code">{code}</span>'
 
+HOME = '77'   # Москва — дом автора, начало и конец большинства поездок; решение автора 05.10.2026
+
 FOKEY = {'ЦФО': 'c', 'СЗФО': 'sz', 'ЮФО': 'yu', 'СКФО': 'sk', 'ПФО': 'p', 'УрФО': 'u', 'СФО': 's', 'ДВФО': 'dv', '': 'x'}
+
+# значки кнопок хронологии: рисунок, а не символ — символы ⏮ ▶ ⏭ телефоны подменяют цветными эмодзи
+def _icon(name, d):
+    return f'<svg class="i-{name}" viewBox="0 0 24 24" aria-hidden="true"><path d="{d}"/></svg>'
+ICON = {'prev': _icon('prev', 'M6 5h2v14H6zM20 5v14L9 12z'), 'next': _icon('next', 'M16 5h2v14h-2zM4 5v14l11-7z'),
+        'play': _icon('play', 'M8 5v14l11-7z'), 'pause': _icon('pause', 'M7 5h4v14H7zM13 5h4v14h-4z')}
 
 def load_map():
     import json
     return json.load(open(os.path.join(ROOT, 'data', 'map.json'), encoding='utf-8'))
+
+def plural(n, one, few, many):
+    if n % 10 == 1 and n % 100 != 11: return one
+    if 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14: return few
+    return many
+
+def month_year(iso):
+    mon = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь']
+    y, m, _ = iso.split('-')
+    return f'{mon[int(m) - 1]} {y}'
+
+def find_key(s):
+    """Строка для поиска на главной: строчные, ё = е — «орел» находит «Орёл»."""
+    return s.lower().replace('ё', 'е')
 
 def ru_date(iso):
     mon = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря']
@@ -171,14 +196,38 @@ def index_body():
             info[code] = (FOKEY[short], mark != 'n', href(links[0][1]) if links else None, bool(links) and links[0][1].startswith('LOCAL:'))
     visited = {c for c, v in info.items() if v[1]}
     assert visited == set(dates), (visited ^ set(dates))   # список D и карта должны совпадать
-    years = sorted({d[:4] for d in dates.values()})
+    # Дом не поездка: дата у Москвы в данных условная, поэтому в годах, хронологии и «последнем новом регионе»
+    # она не участвует, а на карте горит с первой даты — отсюда поездки начинаются.
+    trips = {c: d for c, d in dates.items() if c != HOME}
+    years = sorted({d[:4] for d in trips.values()})
+    # Цвет на карте — по «возрасту» года первой поездки: 0 — последний год, 3 — третий с конца и раньше.
+    # Привязка к возрасту, а не к самому году: новый год сам станет самым заметным, стили править не нужно.
+    def age(y): return min(3, len(years) - 1 - years.index(y))
+    legend = (''.join(f'<li><i class="k-a{age(y)}"></i>{y}</li>' for y in years)
+              + '<li><i class="k-n"></i>Ещё впереди</li>')
+    # ---- прогресс для шапки: считается из тех же дат, что и карта, руками не правится ----
+    names = {code: name for _, _, regs in D for code, name, *_ in regs}
+    first_iso, last_iso = min(trips.values()), max(trips.values())
+    last = [names[c] for c in sorted(trips, key=int) if trips[c] == last_iso]
+    last_txt = last[0] + (f' и ещё {len(last) - 1}' if len(last) > 1 else '')
+    since = ru_date(first_iso).split(' ', 1)[1]          # «февраля 2022» — для «с февраля 2022»
+    left = total - len(visited)
+    stats = f'''<div class="ix-stats">
+    <p class="ix-big"><b>{len(visited)}</b> из {total} <span>регионов</span></p>
+    <div class="ix-bar" role="progressbar" aria-label="Посещено регионов" aria-valuemin="0" aria-valuemax="{total}" aria-valuenow="{len(visited)}"><i style="width:{len(visited) / total * 100:.1f}%"></i></div>
+    <dl class="ix-facts">
+      <div><dt>В пути</dt><dd>с {since}</dd></div>
+      <div><dt>Последний новый регион</dt><dd>{ru_date(last_iso)} · {e(last_txt)}</dd></div>
+      <div><dt>Впереди</dt><dd>{left} {plural(left, "регион", "региона", "регионов")}</dd></div>
+    </dl>
+  </div>'''
     # ---- карта ----
     paths = []
     for r in mp['regions']:
         fo, _, link, local = info[r['code']]
         cls = 'r' + (' no' if not r['date'] else '') + (' tiny' if r['tiny'] else '')
         label = e(f"{r['code']} · {r['name']}" + ('' if r['date'] else ' (впереди)'))
-        yr = f' data-year="{r["date"][:4]}"' if r['date'] else ''
+        yr = f' data-year="{trips[r["code"]][:4]}" data-age="{age(trips[r["code"]][:4])}"' if r['code'] in trips else ''
         paths.append(f'<path class="{cls}" data-code="{r["code"]}" data-fo="{fo}"{yr} d="{r["d"]}" tabindex="0" role="{"link" if link else "img"}" aria-label="{label}"/>')
     chips_fo = '<button type="button" class="chip" data-k="fo" data-v="" aria-pressed="true">Все</button>' + ''.join(
         f'<button type="button" class="chip" data-k="fo" data-v="{FOKEY[s]}" aria-pressed="false" title="{e(f)}">{s}</button>' for s, f, _ in D if s)
@@ -190,54 +239,76 @@ def index_body():
   <h1>{e(SERIES_TITLE)}</h1>
   <div class="ix-intro">
     <p>Цель простая: побывать в каждом регионе страны хотя бы раз. Минимум — столица региона, дальше как получится.</p>
-    <p>Нажмите на регион на карте или выберите его из списка ниже, чтобы открыть отчёт.</p>
+    <p class="ix-how">Нажмите на регион на карте или выберите его из списка ниже, чтобы открыть отчёт.</p>
   </div>
+  {stats}
 </header>
-<section class="mapbox" aria-label="Карта посещённых регионов">
+<section class="mapbox" id="karta" aria-label="Карта посещённых регионов">
   <div class="filters">
     <div class="chips" role="group" aria-label="Федеральный округ">{chips_fo}</div>
     <div class="chips" role="group" aria-label="Год поездки">{chips_y}</div>
   </div>
+  <div class="mapwrap">
   <svg class="rumap" viewBox="0 0 {mp['w']} {mp['h']}" role="group" aria-label="Карта России, посещённые регионы">
+<defs><pattern id="hatch" class="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7"/><line x1="0" y1="0" x2="0" y2="7"/></pattern></defs>
 {chr(10).join(paths)}
   </svg>
+  <p class="mapdate" id="mapdate" aria-hidden="true" hidden></p>
+  </div>
+  <div class="mapbar">
+    <ul class="legend" aria-label="Год первой поездки">{legend}</ul>
+    <div class="mapbtns"><button type="button" class="zoom mstory" id="story">{ICON['play']}{ICON['pause']}<span>Путь по годам</span></button><button type="button" class="zoom" id="zoom">Европейская часть</button></div>
+  </div>
+  <div class="mcard" id="mcard" aria-live="polite"><p class="mhint"><span class="h-mouse">Наведите на регион или нажмите на него.</span><span class="h-touch">Нажмите на регион — появится ссылка на отчёт.</span></p></div>
   <div class="tl" aria-label="Хронология поездок">
-    <div class="tl-ctl"><button type="button" id="tprev" aria-label="Предыдущая дата">⏮</button><button type="button" class="play" id="play" aria-label="Воспроизвести">▶</button><button type="button" id="tnext" aria-label="Следующая дата">⏭</button></div>
+    <div class="tl-ctl"><button type="button" id="tprev" aria-label="Предыдущая дата">{ICON['prev']}</button><button type="button" class="play" id="play" aria-label="Воспроизвести">{ICON['play']}{ICON['pause']}</button><button type="button" id="tnext" aria-label="Следующая дата">{ICON['next']}</button></div>
     <div class="tl-track"><input type="range" id="track" min="0" value="0" aria-label="Дата на временной шкале"><div class="ruler" id="ruler" aria-hidden="true"></div></div>
     <div class="tl-read"><strong id="tdate">Все даты</strong><span id="tnote" aria-live="polite"></span></div>
     <button type="button" class="tl-all" id="tall" hidden>Показать весь период</button>
   </div>
-  <div class="mcard" id="mcard" aria-live="polite"><p class="mhint">Наведите на регион или нажмите на него.</p></div>
-  <ul class="legend"><li><i class="k-v"></i>Побывал</li><li><i class="k-n"></i>Ещё впереди</li></ul>
-  <p class="mnote">Серым показаны регионы, где ещё предстоит побывать.</p>
 </section>
 ''']
+    def reg_li(short, code, name, cap, mark, links):
+        main = href(links[0][1]) if links else None
+        cls = 'reg' + (' none' if mark == 'n' else '')
+        nm = f'<a href="{e(main)}">{e(name)}</a>' if main else f'<span class="nm">{e(name)}</span>'
+        if mark == 'h': nm += ' <span class="hrt" title="Понравилось" role="img" aria-label="понравилось">❤</span>'
+        d = trips.get(code)
+        sub = [e(cap)] if cap else []
+        if d: sub.append(month_year(d))
+        if code == HOME: sub.append('дом')
+        for lab, slug in links[1:]:   # вторые части отчёта: «2» → «часть 2»
+            sub.append(f'<a href="{e(href(slug))}">{e("часть " + lab if lab.isdigit() else lab)}</a>')
+        small = f'<small>{" · ".join(sub)}</small>' if sub else ''
+        attrs = f' data-code="{code}" data-fo="{FOKEY[short]}" data-cap="{e(cap)}" data-q="{e(find_key(name + " " + cap))}"'
+        if d: attrs += f' data-date="{ru_date(d)}" data-year="{d[:4]}" data-iso="{d}" data-tr="{trans[code]}"'
+        if code == HOME: attrs += f' data-home="1" data-iso="{first_iso}"'   # в хронологии горит с первой даты
+        # миниатюра — tools/thumbs.py; грузится по мере прокрутки, карточка на карте берёт её же
+        th = main and main.split('/')[0] + '/thumb.webp'
+        img = (f'<img class="th" src="{th}" alt="" width="360" height="270" loading="lazy" decoding="async">'
+               if th and os.path.exists(os.path.join(ROOT, th)) else '')
+        return f'<li class="{cls}"{attrs}>{code_badge(code, main)}<div class="reg-t"><div>{nm}</div>{small}</div>{img}</li>'
+
+    out.append('''<div class="ix-find">
+  <input type="search" id="find" placeholder="Найти регион или город" aria-label="Найти регион или город" autocomplete="off">
+  <span class="hrt-key"><span class="hrt" aria-hidden="true">❤</span> — понравилось</span>
+</div>
+<p class="ix-none" id="none" hidden>Ничего не нашлось.</p>''')
+    # шесть оставшихся — отдельным блоком наверху: серыми строками внутри округов они терялись
+    ahead = [(s, r) for s, _, regs in D for r in regs if r[3] == 'n']
+    out.append(f'<section class="fo ahead" data-fo="ahead"><div class="fo-h"><h2>Впереди · {len(ahead)} '
+               f'{plural(len(ahead), "регион", "региона", "регионов")}</h2></div><ul class="regs">')
+    out += [reg_li(s, *r) for s, r in ahead]
+    out.append('</ul></section>')
     for short, full, regs in D:
-        got = sum(1 for x in regs if x[3] != 'n')
+        been = [r for r in regs if r[3] != 'n']
+        if not been: continue
         title = f'{short} · {full}' if short else full
-        count = f'<span>{got} / {len(regs)}</span>' if SHOW_COUNTS else ''
+        count = f'<span>{len(been)} / {len(regs)}</span>' if SHOW_COUNTS else ''
         out.append(f'<section class="fo" data-fo="{FOKEY[short]}"><div class="fo-h"><h2>{e(title)}</h2>{count}</div><ul class="regs">')
-        for code, name, cap, mark, links in regs:
-            main = href(links[0][1]) if links else None
-            local = bool(links) and links[0][1].startswith('LOCAL:')
-            cls = 'reg' + (' none' if mark == 'n' else '') + (' new' if local else '')
-            nm = f'<a href="{e(main)}">{e(name)}</a>' if main else f'<span class="nm">{e(name)}</span>'
-            if mark == 'h': nm += ' <span class="hrt">❤</span>'
-            if local: nm += '<span class="tag">новый формат</span>'
-            sub = [e(cap)] if cap else []
-            for lab, slug in links[1:]:
-                sub.append(f'<a href="{e(href(slug))}">{e(lab)}</a>')
-            if code == '87' and not local: sub.append(NOTE87)
-            if mark == 'n': sub.append('впереди')
-            small = f'<small>{" · ".join(sub)}</small>' if sub else ''
-            d = dates.get(code)
-            attrs = f' data-code="{code}" data-fo="{FOKEY[short]}"' + (f' data-date="{ru_date(d)}" data-year="{d[:4]}" data-iso="{d}" data-tr="{trans[code]}"' if d else '')
-            out.append(f'<li class="{cls}"{attrs}>{code_badge(code, main)}<div class="reg-t"><div>{nm}</div>{small}</div></li>')
+        out += [reg_li(short, *r) for r in been]
         out.append('</ul></section>')
-    out.append('''<footer class="ix-foot">
-  <p>Старые отчёты пока открываются во ВКонтакте. Новые выходят в формате, как у Магаданской области.</p>
-</footer>
-</div>''')
+    out.append('<a class="totop" id="totop" href="#karta" hidden>↑ К карте</a>\n</div>')
     return '\n'.join(out)
 
 # ---- Карта дня и профиль высоты: строятся из GPS снимков (regions/<slug>/index.tsv) и отбора (selection.tsv).
@@ -391,19 +462,24 @@ def doc(title, body, depth, inline, reg_color=None, meta=''):
     style = f'<style>\n{CSS}\n</style>' if inline else f'<link rel="stylesheet" href="{up}series.css?v={VER["css"]}">'
     script = f'<script>\n{JS}\n</script>' if inline else f'<script src="{up}series.js?v={VER["js"]}"></script>'
     extra = f'<style>{reg_color}</style>' if reg_color else ''
+    # цвет адресной строки телефона: на главной — синяя шапка, на страницах регионов — фон страницы
+    light, dark = ('#1F6FE5', '#2A63C4') if 'ix-page' in body else ('#F1F2EE', '#101315')
+    meta += (f'\n<meta name="theme-color" content="{light}" media="(prefers-color-scheme: light)">'
+             f'\n<meta name="theme-color" content="{dark}" media="(prefers-color-scheme: dark)">')
     if 'ix-page' in body:                      # главная: карта и фильтры
         script += f'\n<script>\n{MAPJS}\n</script>' if inline else f'\n<script src="{up}map.js?v={VER["map"]}"></script>'
     return (f'<!doctype html>\n<html lang="ru">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-            f'<title>{e(title)}</title>\n{meta}\n{THEME_INIT}\n{FONTS}\n{style}\n{extra}\n</head>\n<body>\n{body}\n{script}\n</body>\n</html>\n')
+            f'<title>{e(title)}</title>\n{meta}\n{THEME_INIT}\n{fonts(up)}\n{style}\n{extra}\n</head>\n<body>\n{body}\n{script}\n</body>\n</html>\n')
 
 def fragment(title, body):
     """Главная страница артефакта: без doctype/html/head/body."""
-    return f'<title>{e(title)}</title>\n{FONTS}\n<style>\n{CSS}\n</style>\n{body}\n<script>\n{JS}\n</script>\n<script>\n{MAPJS}\n</script>\n'
+    return f'<title>{e(title)}</title>\n<style>\n{CSS}\n</style>\n{body}\n<script>\n{JS}\n</script>\n<script>\n{MAPJS}\n</script>\n'
 
 # Страницы регионов в новом формате. Чтобы добавить регион:
 #   1) положить текст в src/<slug>.html, медиа — в <slug>/media/ (tools/media.py export);
-#   2) добавить запись сюда; 3) в списке D выше заменить ссылку региона на 'LOCAL:<slug>/index.html'.
+#   2) добавить запись сюда; 3) в списке D выше заменить ссылку региона на 'LOCAL:<slug>/index.html';
+#   4) python tools/og.py <slug> и python tools/thumbs.py — обложка для ссылок и миниатюра для главной.
 # prev / next — соседи по маршруту поездки: (код, название, ссылка, подпись) или None.
 # og — кадр для обложки ссылки (tools/og.py), если главный кадр для неё не годится, например вертикальный; по умолчанию hero.
 # color — цвет региона (CSS-переменные --reg и --reg-ink для светлой темы); None = охра по умолчанию.
@@ -533,7 +609,8 @@ def write_service_files():
             f'<p>Адрес мог устареть или в нём опечатка. Отчёты по регионам собраны на главной.</p>'
             f'<p><a href="{base}">← Все регионы</a></p></div></div>')
     h = doc('Страница не найдена', page, 0, False, None, f'<link rel="icon" href="{base}favicon.png" type="image/png">\n<meta name="robots" content="noindex">')
-    h = h.replace('href="series.css', f'href="{base}series.css').replace('src="series.js', f'src="{base}series.js')
+    h = (h.replace('href="series.css', f'href="{base}series.css').replace('src="series.js', f'src="{base}series.js')
+          .replace('href="fonts/', f'href="{base}fonts/'))
     open(os.path.join(ROOT, '404.html'), 'w', encoding='utf-8').write(h)
     urls = [SITE] + [SITE + pg['slug'] + '/' for pg in PAGES]
     open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8').write(
