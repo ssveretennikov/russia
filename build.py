@@ -47,8 +47,8 @@ D = [
   ('77','Москва','город федерального значения','h',[('', '77-1')]),
  ]),
  ('СЗФО', 'Северо-Западный федеральный округ', [
-  ('10','Республика Карелия','Петрозаводск','v',[('', '10'),('Рускеала, водопады','10-2')]),
-  ('11','Республика Коми','Сыктывкар','v',[('', '11')]),
+  ('10','Республика Карелия','Петрозаводск','v',[('', 'LOCAL:10-karelia/index.html'),('Рускеала, водопады','10-2')]),
+  ('11','Республика Коми','Сыктывкар','v',[('', 'LOCAL:11-komi/index.html')]),
   ('29','Архангельская область','Архангельск','h',[('', '29')]),
   ('35','Вологодская область','Вологда','h',[('', '35')]),
   ('39','Калининградская область','Калининград','h',[('', '39-1'),('2','39-2'),('3','39-3'),('4','39-4'),('5','39-5'),('6','39-6'),('7','39-7')]),
@@ -61,7 +61,7 @@ D = [
  ]),
  ('ЮФО', 'Южный федеральный округ', [
   ('1','Республика Адыгея','Майкоп','h',[('', 'LOCAL:01-adygeya/index.html')]),
-  ('8','Республика Калмыкия','Элиста','v',[('', '8')]),
+  ('8','Республика Калмыкия','Элиста','v',[('', 'LOCAL:08-kalmykia/index.html')]),
   ('23','Краснодарский край','Краснодар','v',[('', '23')]),
   ('30','Астраханская область','Астрахань','v',[('', '30')]),
   ('34','Волгоградская область','Волгоград','v',[('', '34')]),
@@ -70,17 +70,17 @@ D = [
   ('92','Севастополь','город федерального значения','v',[('', 'LOCAL:92-sevastopol/index.html')]),
  ]),
  ('СКФО', 'Северо-Кавказский федеральный округ', [
-  ('5','Республика Дагестан','Махачкала','h',[('', '5')]),
-  ('6','Республика Ингушетия','Магас','h',[('', '6')]),
-  ('7','Кабардино-Балкария','Нальчик','v',[('', '7-2'),('Эльбрус','7')]),
-  ('9','Карачаево-Черкесия','Черкесск','v',[('', '9')]),
+  ('5','Республика Дагестан','Махачкала','h',[('', 'LOCAL:05-dagestan/index.html')]),
+  ('6','Республика Ингушетия','Магас','h',[('', 'LOCAL:06-ingushetia/index.html')]),
+  ('7','Кабардино-Балкария','Нальчик','v',[('', 'LOCAL:07-kabardino-balkaria/index.html'),('Эльбрус','7')]),
+  ('9','Карачаево-Черкесия','Черкесск','v',[('', 'LOCAL:09-karachay-cherkessia/index.html')]),
   ('15','Северная Осетия — Алания','Владикавказ','v',[('', '15')]),
   ('20','Чеченская Республика','Грозный · код 95','v',[('', '20')]),
   ('26','Ставропольский край','Ставрополь','h',[('', '26'),('Пятигорск','26-2')]),
  ]),
  ('ПФО', 'Приволжский федеральный округ', [
-  ('2','Республика Башкортостан','Уфа','v',[('', '2')]),
-  ('12','Республика Марий Эл','Йошкар-Ола','h',[('', '12')]),
+  ('2','Республика Башкортостан','Уфа','v',[('', 'LOCAL:02-bashkortostan/index.html')]),
+  ('12','Республика Марий Эл','Йошкар-Ола','h',[('', 'LOCAL:12-mari-el/index.html')]),
   ('13','Республика Мордовия','Саранск','v',[('', '13')]),
   ('16','Республика Татарстан','Казань','v',[('', '16')]),
   ('18','Удмуртская Республика','Ижевск','v',[('', '18')]),
@@ -115,7 +115,7 @@ D = [
   ('70','Томская область','Томск','v',[('', '70')]),
  ]),
  ('ДВФО', 'Дальневосточный федеральный округ', [
-  ('3','Республика Бурятия','Улан-Удэ','v',[('', '3')]),
+  ('3','Республика Бурятия','Улан-Удэ','v',[('', 'LOCAL:03-buryatia/index.html')]),
   ('14','Республика Саха (Якутия)','Якутск','v',[('', '14')]),
   ('25','Приморский край','Владивосток','h',[('', '25')]),
   ('27','Хабаровский край','Хабаровск','v',[('', '27')]),
@@ -267,21 +267,30 @@ def _tmin(t):
 def daymap_svg(slug, labels):
     rows, sel = _gps_rows(slug)
     if len(rows) < 2: return ''
-    W, H, pad = 640, 420, 28
+    W, pad = 640, 120   # боковой запас под подписи; высота блока подбирается по форме маршрута
     lat0 = sum(r['lat'] for r in rows) / len(rows); k = math.cos(math.radians(lat0))
     xs = [r['lon'] * k for r in rows]; ys = [r['lat'] for r in rows]
     for la, lo, _ in labels: xs.append(lo * k); ys.append(la)
     x0, x1, y0, y1 = min(xs), max(xs), min(ys), max(ys)
-    span = max(x1 - x0, (y1 - y0) * W / H, 1e-6)
+    dx, dy = max(x1 - x0, 1e-6), max(y1 - y0, 1e-6)
+    inner_w = W - 2 * pad; inner_h = max(140, min(400, inner_w * dy / dx)); H = int(inner_h + 56)
+    span = max(dx, dy * inner_w / inner_h)
     cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
     def P(la, lo):
-        return (pad + (W - 2 * pad) * (0.5 + (lo * k - cx) / span), pad + (H - 2 * pad) * (0.5 - (la - cy) / span * W / H))
+        return (pad + inner_w * (0.5 + (lo * k - cx) / span), 28 + inner_h * (0.5 - (la - cy) / span * inner_w / inner_h))
     pts = ' '.join(f'{x:.1f},{y:.1f}' for x, y in (P(r['lat'], r['lon']) for r in rows))
     out = [f'<svg class="daymap-svg" viewBox="0 0 {W} {H}" role="img" aria-label="Маршрут дня по точкам съёмки">',
            f'<polyline class="dm-route" points="{pts}"/>']
-    for la, lo, name in labels:
-        x, y = P(la, lo)
-        out.append(f'<g class="dm-label"><circle cx="{x:.1f}" cy="{y:.1f}" r="4"/><text x="{x + 8:.1f}" y="{y + 4:.1f}">{e(name)}</text></g>')
+    placed = []   # подписи: справа от точки, у правого края — слева; наложения по вертикали разводятся вниз
+    for la, lo, name in sorted(labels, key=lambda l: P(l[0], l[1])[1]):
+        x, y = P(la, lo); right = x > W * 0.62
+        tw = 7.5 * len(name); ty = y + 4
+        lx0, lx1 = (x - 8 - tw, x - 8) if right else (x + 8, x + 8 + tw)
+        for px0, px1, py in placed:
+            if px0 < lx1 and lx0 < px1 and abs(py - ty) < 18: ty = py + 18
+        placed.append((lx0, lx1, ty))
+        anchor = ' text-anchor="end"' if right else ''; tx = x - 8 if right else x + 8
+        out.append(f'<g class="dm-label"><circle cx="{x:.1f}" cy="{y:.1f}" r="4"/><text x="{tx:.1f}" y="{ty:.1f}"{anchor}>{e(name)}</text></g>')
     for r in rows:
         if r['id'] in sel:
             x, y = P(r['lat'], r['lon'])
@@ -399,6 +408,16 @@ def fragment(title, body):
 # color — цвет региона (CSS-переменные --reg и --reg-ink для светлой темы); None = охра по умолчанию.
 PAGES = [
     dict(slug='01-adygeya', title='1 · Республика Адыгея', prev=None, next=None, color=None),
+    dict(slug='02-bashkortostan', title='2 · Республика Башкортостан', prev=None, next=None, color=None),
+    dict(slug='03-buryatia', title='3 · Республика Бурятия', prev=None, next=None, color=None),
+    dict(slug='05-dagestan', title='5 · Республика Дагестан', prev=None, next=None, color=None),
+    dict(slug='06-ingushetia', title='6 · Республика Ингушетия', prev=None, next=None, color=None),
+    dict(slug='07-kabardino-balkaria', title='7 · Кабардино-Балкарская Республика', prev=None, next=None, color=None),
+    dict(slug='08-kalmykia', title='8 · Республика Калмыкия', prev=None, next=None, color=None),
+    dict(slug='09-karachay-cherkessia', title='9 · Карачаево-Черкесия', prev=None, next=None, color=None),
+    dict(slug='10-karelia', title='10 · Республика Карелия', prev=None, next=None, color=None),
+    dict(slug='11-komi', title='11 · Республика Коми', prev=None, next=None, color=None),
+    dict(slug='12-mari-el', title='12 · Республика Марий Эл', prev=None, next=None, color=None),
     dict(slug='87-chukotka', title='87 · Чукотский автономный округ',
          prev=None, next=('41', 'Камчатский край', '../41-kamchatka/index.html', 'Дальше по маршруту'), color=None),
     dict(slug='49-magadan', title='49 · Магаданская область',
