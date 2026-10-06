@@ -25,10 +25,10 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=690f2df7">
+<link rel="stylesheet" href="../series.css?v=5b3a898d">
 <style>:root{--reg:#228639;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#65D77F;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#65D77F;--reg-ink:#14100A}</style>
 </head>
-<body>
+<body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
 <header class="reg-head cover-head">
@@ -62,9 +62,23 @@
 <section class="sec">
   <p class="lead">Якутия — самый большой регион России и самая большая административная единица в мире, а живёт здесь около миллиона человек. В аэропорту первая неожиданность: сервисов Яндекса тут нет. Транспорт показывает неактуальную ерунду, такси не вызывается, только индрайвер и что-то ещё. Дальше всё было в том же духе: странные дома, странные магазины, остановки в автобусе объявляют на двух языках, город пыльный, а в половине третьего ночи светло.</p>
   <p class="lead">Перелёт до Благовещенска по акции шёл раз или два в неделю, так что в Якутии у меня оказалось несколько дней. Экскурсии дорогие даже с учётом их уникальности; самая популярная — Ленские столбы, но на Красноярских я уже был, а тут по сути то же самое, только побольше. В итоге на Якутск ушёл один день: ледник под горой, холм над рекой и кафе, которое разрослось в музей. Остальные дни ушли на спонтанную поездку в Мирный, алмазную столицу России.</p>
-  <figure class="wide daymap">
-    
-    <figcaption>Точки съёмки за день: центр, институт, ледник под горой, холм и «Чочур Муран». Кружки — фото из этого отчёта, по ним можно кликать.</figcaption>
+  <figure class="daymap">
+    <svg class="daymap-svg" viewBox="0 0 360 242" role="img" aria-label="Карта мест — Республика Саха (Якутия): 5 мест по порядку, названия — списком под картой">
+<line class="dm-route" x1="334.0" y1="107.2" x2="149.7" y2="199.0"/>
+<line class="dm-route" x1="149.7" y1="199.0" x2="71.6" y2="26.0"/>
+<line class="dm-route" x1="71.6" y1="26.0" x2="26.0" y2="44.2"/>
+<line class="dm-route" x1="26.0" y1="44.2" x2="54.0" y2="32.4"/>
+<line class="dm-lead" x1="71.6" y1="26.0" x2="74.5" y2="24.9"/><circle class="dm-dot" cx="71.6" cy="26.0" r="2.5"/>
+<line class="dm-lead" x1="54.0" y1="32.4" x2="51.1" y2="33.5"/><circle class="dm-dot" cx="54.0" cy="32.4" r="2.5"/>
+<g class="dm-num"><circle cx="334.0" cy="107.2" r="11"/><text x="334.0" y="111.7" text-anchor="middle">1</text></g>
+<g class="dm-num"><circle cx="149.7" cy="199.0" r="11"/><text x="149.7" y="203.5" text-anchor="middle">2</text></g>
+<g class="dm-num"><circle cx="74.5" cy="24.9" r="11"/><text x="74.5" y="29.4" text-anchor="middle">3</text></g>
+<g class="dm-num"><circle cx="26.0" cy="44.2" r="11"/><text x="26.0" y="48.7" text-anchor="middle">4</text></g>
+<g class="dm-num"><circle cx="51.1" cy="33.5" r="11"/><text x="51.1" y="38.0" text-anchor="middle">5</text></g>
+<g class="dm-scale"><path d="M26,228 v-5 h48.0 v5"/><text x="80.0" y="229">1 км</text></g>
+</svg>
+<ol class="dm-list"><li>Якутск <span class="dm-n">· 1 фото</span></li><li><a href="#P006">Институт мерзлотоведения</a> <span class="dm-n">· 1 фото</span></li><li><a href="#P016">Музей вечной мерзлоты</a> <span class="dm-n">· 125 фото</span></li><li><a href="#P128">Холм</a> <span class="dm-n">· 1 фото</span></li><li><a href="#P010">Чочур Муран</a> <span class="dm-n">· 18 фото</span></li></ol>
+    <figcaption>Точки съёмки за день: центр, институт, ледник под горой, холм и «Чочур Муран». Номера — места из списка под картой; ссылки ведут к кадрам.</figcaption>
   </figure>
 </section>
 
@@ -98,11 +112,11 @@
   <p>Кто бы мог подумать, что в Якутии тоже белые ночи. Самолёт садился в начале третьего, и за окном был рассвет, а не ночь. Днём поехал в музей вечной мерзлоты, но попал в институт Мерзлотоведения, который оказался закрыт. Сфоткал мамонта и поехал обратно.</p>
   <div class="row narrow">
     <figure id="P001">
-      <div class="ph"><img src="media/krylo.webp" width="1400" height="1867" loading="lazy" alt="Крыло самолёта над зелёной равниной с озёрами на рассвете"></div>
+      <div class="ph"><img src="media/krylo.webp" width="1050" height="1400" loading="lazy" alt="Крыло самолёта над зелёной равниной с озёрами на рассвете"></div>
       <figcaption><time>02:20</time>Время 2:30, под крылом озёра и рассвет. Якутия начинается с того, что ночи нет.</figcaption>
     </figure>
     <figure id="P010">
-      <div class="ph"><img src="media/bashnya.webp" width="1400" height="1867" loading="lazy" alt="Деревянная смотровая башня и резные фигуры у дороги на фоне холма"></div>
+      <div class="ph"><img src="media/bashnya.webp" width="1050" height="1400" loading="lazy" alt="Деревянная смотровая башня и резные фигуры у дороги на фоне холма"></div>
       <figcaption><time>17:00</time>Деревянная башня у дороги к леднику. Со второй попытки адрес был правильный.</figcaption>
     </figure>
   </div>
@@ -121,12 +135,12 @@
       <figcaption><time>17:13</time>Первый тоннель. Рельсы по полу настоящие, подсветка тоже, но к ней привыкаешь не сразу.</figcaption>
     </figure>
     <figure id="P026">
-      <div class="ph"><img src="media/ya-kapyushon.webp" width="1400" height="1867" loading="lazy" alt="Сергей в тёмном плаще с капюшоном на фоне заиндевелой стены"></div>
+      <div class="ph"><img src="media/ya-kapyushon.webp" width="1050" height="1400" loading="lazy" alt="Сергей в тёмном плаще с капюшоном на фоне заиндевелой стены"></div>
       <figcaption><time>17:15</time>Я в выданном плаще. Снаружи июль, здесь минус десять, и это не фигура речи.</figcaption>
     </figure>
   </div>
   <figure class="tall" id="P027">
-    <div class="ph"><img src="media/zal.webp" width="1400" height="1867" loading="lazy" alt="Сводчатый ледяной зал с ажурными скульптурами в розовой и зелёной подсветке"></div>
+    <div class="ph"><img src="media/zal.webp" width="1050" height="1400" loading="lazy" alt="Сводчатый ледяной зал с ажурными скульптурами в розовой и зелёной подсветке"></div>
     <figcaption><time>17:17</time>Главный зал. Подсветка перебирает цвета по кругу, так что одна и та же скульптура за минуту успевает побыть всем.</figcaption>
   </figure>
   <figure class="wide">
@@ -135,21 +149,21 @@
   </figure>
   <div class="row narrow">
     <figure id="P035">
-      <div class="ph"><img src="media/figura.webp" width="1400" height="1867" loading="lazy" alt="Ледяная фигура в национальном наряде в фиолетовой подсветке"></div>
+      <div class="ph"><img src="media/figura.webp" width="1050" height="1400" loading="lazy" alt="Ледяная фигура в национальном наряде в фиолетовой подсветке"></div>
       <figcaption><time>17:20</time>Фигура в национальном наряде. Узор на платье вырезан во льду, и он прозрачный.</figcaption>
     </figure>
     <figure id="P042">
-      <div class="ph"><img src="media/rezidencia.webp" width="1400" height="1867" loading="lazy" alt="Ледяная арка с надписью «Резиденция Деда Мороза», в проёме стоят люди"></div>
+      <div class="ph"><img src="media/rezidencia.webp" width="1050" height="1400" loading="lazy" alt="Ледяная арка с надписью «Резиденция Деда Мороза», в проёме стоят люди"></div>
       <figcaption><time>17:23</time>Резиденция Деда Мороза. В июле, под горой, при минус десяти. Логично.</figcaption>
     </figure>
   </div>
   <div class="row narrow">
     <figure id="P068">
-      <div class="ph"><img src="media/drevo.webp" width="1400" height="1867" loading="lazy" alt="Ледяная скульптура дерева с фигурами в синей подсветке"></div>
+      <div class="ph"><img src="media/drevo.webp" width="1050" height="1400" loading="lazy" alt="Ледяная скульптура дерева с фигурами в синей подсветке"></div>
       <figcaption><time>17:30</time>Древо жизни Аал Луук Мас. Из льда, как и всё остальное здесь.</figcaption>
     </figure>
     <figure id="P098">
-      <div class="ph"><img src="media/tron-serdca.webp" width="1400" height="1867" loading="lazy" alt="Ледяной трон с сердцами на спинке и неоновым сердцем над ним"></div>
+      <div class="ph"><img src="media/tron-serdca.webp" width="1050" height="1400" loading="lazy" alt="Ледяной трон с сердцами на спинке и неоновым сердцем над ним"></div>
       <figcaption><time>17:46</time>Трон с сердцами. Некоторые скульптуры инкрустированы монетами, этот обошёлся неоном.</figcaption>
     </figure>
   </div>
@@ -174,7 +188,7 @@
       <figcaption><time>17:47</time>Розетка в вечной мерзлоте. Работает ли, проверять не стал.</figcaption>
     </figure>
     <figure id="P109">
-      <div class="ph"><img src="media/butylka.webp" width="1400" height="1867" loading="lazy" alt="Тёмная бутылка, вмороженная в блок льда, в розовой подсветке"></div>
+      <div class="ph"><img src="media/butylka.webp" width="1050" height="1400" loading="lazy" alt="Тёмная бутылка, вмороженная в блок льда, в розовой подсветке"></div>
       <figcaption><time>17:48</time>Йети-бар. Бутылка во льду, и это единственный бар, где лёд не кончается.</figcaption>
     </figure>
   </div>
@@ -197,7 +211,7 @@
       <figcaption><time>19:25</time>Вертолёт у входа. Хозяин собирает интересные вещи, и вертолёт, видимо, подошёл под определение.</figcaption>
     </figure>
     <figure id="P136">
-      <div class="ph"><img src="media/los.webp" width="1400" height="1867" loading="lazy" alt="Голова лося с рогами и шкуры на бревенчатой стене"></div>
+      <div class="ph"><img src="media/los.webp" width="1050" height="1400" loading="lazy" alt="Голова лося с рогами и шкуры на бревенчатой стене"></div>
       <figcaption><time>19:31</time>Лось на стене сруба. Внутри дальше кости мамонта, шерстистого носорога и благородного оленя.</figcaption>
     </figure>
   </div>
@@ -237,8 +251,9 @@
 
 </article>
 
-<nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../14-mirny/index.html"><span><small>Дальше по маршруту</small>Мирный</span><span class="code">14</span></a></nav>
+<nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../75-zabaykalsky/index.html"><span class="code">75</span><span><small>Раньше по маршруту</small>Забайкальский край</span></a><a class="next" href="../14-mirny/index.html"><span><small>Дальше по маршруту</small>Мирный</span><span class="code">14</span></a></nav>
 </div>
+<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
 <script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>

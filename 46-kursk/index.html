@@ -25,10 +25,10 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=690f2df7">
+<link rel="stylesheet" href="../series.css?v=5b3a898d">
 <style>:root{--reg:#1975CC;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#5FA2E3;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#5FA2E3;--reg-ink:#14100A}</style>
 </head>
-<body>
+<body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
 <header class="reg-head cover-head">
@@ -62,9 +62,21 @@
 <section class="sec">
   <p class="lead">Путешествие в Курск началось интересно: я был уверен, что поезд опаздывает, а оказалось, что меня обманывали собственные глаза. Приехал в темноте, в пятом часу утра, и первое, что снял в регионе, это рельсы через стекло.</p>
   <p class="lead">Перед поездкой мне подсказали, что Курск — это город торговых центров. Я отнёсся к этому как к шутке, а к вечеру шёл по длинному изогнутому коридору самого большого из них и думал, что шутки в этом не было. Между вокзалом и торговым центром уместились соборы, Красная площадь, Ленин, Невский, Жуков и дрон, который в городе ловил больше помех, чем кадров.</p>
-  <figure class="wide daymap">
-    
-    <figcaption>Маршрут дня по точкам съёмки. Кружки — фото из этого отчёта, по ним можно кликать.</figcaption>
+  <figure class="daymap">
+    <svg class="daymap-svg" viewBox="0 0 360 370" role="img" aria-label="Карта мест — Курская область: 5 мест по порядку, названия — списком под картой">
+<line class="dm-route" x1="106.4" y1="216.2" x2="73.2" y2="326.0"/>
+<line class="dm-route" x1="73.2" y1="326.0" x2="85.0" y2="52.8"/>
+<line class="dm-route" x1="85.0" y1="52.8" x2="95.0" y2="26.0"/>
+<line class="dm-route" x1="95.0" y1="26.0" x2="286.8" y2="93.0"/>
+<g class="dm-num"><circle cx="106.4" cy="216.2" r="11"/><text x="106.4" y="220.7" text-anchor="middle">1</text></g>
+<g class="dm-num"><circle cx="73.2" cy="326.0" r="11"/><text x="73.2" y="330.5" text-anchor="middle">2</text></g>
+<g class="dm-num"><circle cx="85.0" cy="52.8" r="11"/><text x="85.0" y="57.3" text-anchor="middle">3</text></g>
+<g class="dm-num"><circle cx="95.0" cy="26.0" r="11"/><text x="95.0" y="30.5" text-anchor="middle">4</text></g>
+<g class="dm-num"><circle cx="286.8" cy="93.0" r="11"/><text x="286.8" y="97.5" text-anchor="middle">5</text></g>
+<g class="dm-scale"><path d="M26,356 v-5 h70.9 v5"/><text x="102.9" y="357">500 м</text></g>
+</svg>
+<ol class="dm-list"><li><a href="#P015">Сергиево-Казанский собор</a> <span class="dm-n">· 1 фото</span></li><li><a href="#P022">Знаменский собор</a> <span class="dm-n">· 7 фото</span></li><li><a href="#P030">Центр, Центральный банк</a> <span class="dm-n">· 1 фото</span></li><li><a href="#P039">Вывеска «КУРСК»</a> <span class="dm-n">· 4 фото</span></li><li><a href="#P046">Парк Боёвка</a> <span class="dm-n">· 1 фото</span></li></ol>
+    <figcaption>Маршрут дня по точкам съёмки. Номера — места из списка под картой; ссылки ведут к кадрам.</figcaption>
   </figure>
 </section>
 
@@ -90,11 +102,11 @@
   <p>Вокзал в Курске красный, с белой лепниной, и в одиннадцать утра перед ним стоят маршрутки. Я их не выбрал и, как выяснилось позже, зря.</p>
   <div class="row narrow">
     <figure id="P001">
-      <div class="ph"><img src="media/relsy.webp" width="1400" height="1867" loading="lazy" alt="Рельсы и снег между путями, снятые через стекло вагона в сумерках"></div>
+      <div class="ph"><img src="media/relsy.webp" width="1050" height="1400" loading="lazy" alt="Рельсы и снег между путями, снятые через стекло вагона в сумерках"></div>
       <figcaption><time>04:39</time>Первый кадр региона. Глаза уже обманули меня насчёт расписания, так что доверять я им перестал.</figcaption>
     </figure>
     <figure id="P002">
-      <div class="ph"><img src="media/vokzal.webp" width="1400" height="1867" loading="lazy" alt="Красное здание вокзала с белой лепниной, перед ним маршрутки и легковые машины"></div>
+      <div class="ph"><img src="media/vokzal.webp" width="1050" height="1400" loading="lazy" alt="Красное здание вокзала с белой лепниной, перед ним маршрутки и легковые машины"></div>
       <figcaption><time>11:05</time>Вокзал при свете дня. Вечером он будет выглядеть совсем иначе, подождите.</figcaption>
     </figure>
   </div>
@@ -110,16 +122,16 @@
   <p>В центре красиво. Снежинки на фасадах ещё висят с Нового года, а павлин из гирлянд стоит перед круглым домом так, будто его никто не собирается убирать. Торговый центр, разумеется, тоже в кадре, вот он справа на заднем плане.</p>
   <div class="row">
     <figure id="P004">
-      <div class="ph"><img src="media/snezhinki.webp" width="1600" height="1200" loading="lazy" alt="Белое здание с тремя арками, на фасаде новогодние снежинки, перед ним скамья в виде рояля"></div>
+      <div class="ph"><img src="media/snezhinki.webp" width="1200" height="1600" loading="lazy" alt="Белое здание с тремя арками, на фасаде новогодние снежинки, перед ним скамья в виде рояля"></div>
       <figcaption><time>13:10</time>Конец февраля, снежинки на месте. Скамья-рояль тоже.</figcaption>
     </figure>
     <figure id="P005">
-      <div class="ph"><img src="media/pavlin.webp" width="1600" height="1200" loading="lazy" alt="Павлин из гирлянд с раскрытым хвостом перед круглым зданием с балконами"></div>
+      <div class="ph"><img src="media/pavlin.webp" width="1200" height="1600" loading="lazy" alt="Павлин из гирлянд с раскрытым хвостом перед круглым зданием с балконами"></div>
       <figcaption><time>13:18</time>Павлин из гирлянд. За ним круглый дом, за домом — торговый центр. Я предупреждал.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P010">
-    <div class="ph"><img src="media/sobor-provoda.webp" width="1600" height="1200" loading="lazy" alt="Белая церковь с синими куполами и колокольней на перекрёстке, над улицей провода"></div>
+    <div class="ph"><img src="media/sobor-provoda.webp" width="1200" height="1600" loading="lazy" alt="Белая церковь с синими куполами и колокольней на перекрёстке, над улицей провода"></div>
     <figcaption><time>13:42</time>Сергиево-Казанский кафедральный собор. Это та самая соседняя улица: провода вернулись.</figcaption>
   </figure>
   <figure class="wide">
@@ -127,7 +139,7 @@
     <figcaption><time>≈13:53</time>Облёт собора и спуск вдоль колокольни к табличке с названием. Сверху проводов не видно, в этом и смысл дрона.</figcaption>
   </figure>
   <figure class="mid" id="P013">
-    <div class="ph"><img src="media/arka-sobora.webp" width="1400" height="1867" loading="lazy" alt="Вид через белую арку с кованными воротами на церковь с синим куполом"></div>
+    <div class="ph"><img src="media/arka-sobora.webp" width="1050" height="1400" loading="lazy" alt="Вид через белую арку с кованными воротами на церковь с синим куполом"></div>
     <figcaption><time>13:45</time>Собор через ворота. С земли он помещается в кадр только по частям.</figcaption>
   </figure>
 </section>
@@ -141,12 +153,12 @@
       <figcaption><time>14:13</time>Дом советов. Розовый, с колоннами, как и полагается дому советов.</figcaption>
     </figure>
     <figure id="P019">
-      <div class="ph"><img src="media/lenin.webp" width="1600" height="1200" loading="lazy" alt="Памятник Ленину с поднятой рукой перед зданием с колоннами"></div>
+      <div class="ph"><img src="media/lenin.webp" width="1200" height="1600" loading="lazy" alt="Памятник Ленину с поднятой рукой перед зданием с колоннами"></div>
       <figcaption><time>14:14</time>Ленин показывает в сторону торгового центра. Не уверен, что осознанно.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P020">
-    <div class="ph"><img src="media/ulitsa.webp" width="1400" height="1867" loading="lazy" alt="Широкая пустая улица с троллейбусными проводами, вдали одна маршрутка"></div>
+    <div class="ph"><img src="media/ulitsa.webp" width="1050" height="1400" loading="lazy" alt="Широкая пустая улица с троллейбусными проводами, вдали одна маршрутка"></div>
     <figcaption><time>14:15</time>Единственная маршрутка в кадре. Гоняют они быстрее липецких, проверено чуть позже и пешком.</figcaption>
   </figure>
   <figure class="wide" id="P022">
@@ -155,11 +167,11 @@
   </figure>
   <div class="row">
     <figure id="P023">
-      <div class="ph"><img src="media/dron-ploshchad.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона на городскую площадь с административным зданием и широкой дорогой"></div>
+      <div class="ph"><img src="media/dron-ploshchad.webp" width="1600" height="900" loading="lazy" alt="Вид с дрона на городскую площадь с административным зданием и широкой дорогой"></div>
       <figcaption><time>14:27</time>Красная площадь с высоты. Ленина отсюда не разглядеть, Дом советов — вполне.</figcaption>
     </figure>
     <figure id="P024">
-      <div class="ph"><img src="media/dron-kvartal.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона на квартал с новыми высокими домами и перекрёстком"></div>
+      <div class="ph"><img src="media/dron-kvartal.webp" width="1600" height="900" loading="lazy" alt="Вид с дрона на квартал с новыми высокими домами и перекрёстком"></div>
       <figcaption><time>14:27</time>Тот же дрон, повернулся на сто восемьдесят градусов. Новые дома, старые провода.</figcaption>
     </figure>
   </div>
@@ -174,16 +186,16 @@
   <p>«Не в силе Бог, а в правде». Александр Невский стоит на высоком постаменте и смотрит поверх снега. Дальше по маршруту Центральный банк в жёлтом доме, мединститут с колоннами и Триумфальная арка с Жуковым — для неё я снова поднял дрон, и он снял самый длинный ролик дня.</p>
   <div class="row narrow">
     <figure id="P029">
-      <div class="ph"><img src="media/nevskiy.webp" width="1400" height="1867" loading="lazy" alt="Памятник воину со знаменем на высоком постаменте, у подножия снег"></div>
+      <div class="ph"><img src="media/nevskiy.webp" width="1050" height="1400" loading="lazy" alt="Памятник воину со знаменем на высоком постаменте, у подножия снег"></div>
       <figcaption><time>14:19</time>Александр Невский. Цитата на постаменте выбрана не для туристов, но туристам тоже подходит.</figcaption>
     </figure>
     <figure id="P030">
-      <div class="ph"><img src="media/bank.webp" width="1400" height="1867" loading="lazy" alt="Жёлтое здание с башенками и стрельчатыми окнами на пустом перекрёстке"></div>
+      <div class="ph"><img src="media/bank.webp" width="1050" height="1400" loading="lazy" alt="Жёлтое здание с башенками и стрельчатыми окнами на пустом перекрёстке"></div>
       <figcaption><time>15:07</time>Центральный банк. Самый нарядный дом на перекрёстке, и самый пустой перекрёсток.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P032">
-    <div class="ph"><img src="media/arka.webp" width="1400" height="1867" loading="lazy" alt="Триумфальная арка с колоннами и барельефами, вид снизу, у основания фигура солдата"></div>
+    <div class="ph"><img src="media/arka.webp" width="1050" height="1400" loading="lazy" alt="Триумфальная арка с колоннами и барельефами, вид снизу, у основания фигура солдата"></div>
     <figcaption><time>15:28</time>Триумфальная арка снизу. Чтобы увидеть Георгия Победоносца наверху, нужен дрон.</figcaption>
   </figure>
   <figure class="wide">
@@ -198,11 +210,11 @@
   <p>Самый большой торговый центр в городе. По ощущениям побольше и чем-то даже круче «Европейского» в Москве: под ажурным куполом парк аттракционов с пальмами, у входа Мэрилин Монро, в холле медведи с гитарами. Было ещё видео, как я иду по длинному изогнутому коридору в туалет. Эффект покруче исторического туалета в ГУМе, но инстаграм не запаковал мне его в архив, так что верьте на слово.</p>
   <div class="row narrow">
     <figure id="P035">
-      <div class="ph"><img src="media/merilin.webp" width="1400" height="1867" loading="lazy" alt="Скульптура женщины в белом платье с поднятым подолом у стеклянного входа с надписью Central Park"></div>
+      <div class="ph"><img src="media/merilin.webp" width="1050" height="1400" loading="lazy" alt="Скульптура женщины в белом платье с поднятым подолом у стеклянного входа с надписью Central Park"></div>
       <figcaption><time>16:19</time>Мэрилин у входа. В феврале в таком платье смело.</figcaption>
     </figure>
     <figure id="P036">
-      <div class="ph"><img src="media/kupol.webp" width="1400" height="1867" loading="lazy" alt="Парк аттракционов с пальмами и красными колоннами под белым ажурным куполом внутри торгового центра"></div>
+      <div class="ph"><img src="media/kupol.webp" width="1050" height="1400" loading="lazy" alt="Парк аттракционов с пальмами и красными колоннами под белым ажурным куполом внутри торгового центра"></div>
       <figcaption><time>16:27</time>Под куполом пальмы, аттракционы и робот. Снаружи минус и серое небо.</figcaption>
     </figure>
   </div>
@@ -211,7 +223,7 @@
     <figcaption><time>≈16:28</time>Проход по парку аттракционов. Суббота, вечер, и почти никого: половина ограждена лентой.</figcaption>
   </figure>
   <figure class="mid" id="P039">
-    <div class="ph"><img src="media/medvedi.webp" width="1600" height="1200" loading="lazy" alt="Игрушечные медведи с гитарами и барабаном на сцене за красным ограждением в холле торгового центра"></div>
+    <div class="ph"><img src="media/medvedi.webp" width="1200" height="1600" loading="lazy" alt="Игрушечные медведи с гитарами и барабаном на сцене за красным ограждением в холле торгового центра"></div>
     <figcaption><time>17:10</time>Медведи-музыканты за красной лентой. Концерт, видимо, по расписанию.</figcaption>
   </figure>
 </section>
@@ -221,26 +233,26 @@
   <p>От торгового центра до парка Боёвка полчаса пешком, и по дороге Курск успевает показать себя буквами: звезда «КУРСК» на доме, сидящий Носов, которого я записал себе почитать, сердце «КУРСК» на снегу и надпись «БОЁВКА» у ёлок. Под конец голубой «Запорожец» на платформе, и это лучшее, что я видел в этом парке.</p>
   <div class="row">
     <figure id="P040">
-      <div class="ph"><img src="media/zvezda.webp" width="1600" height="1200" loading="lazy" alt="Вход в здание с вывеской «КУРСК» и красной звездой над ней, рядом вывеска о займах"></div>
+      <div class="ph"><img src="media/zvezda.webp" width="1200" height="1600" loading="lazy" alt="Вход в здание с вывеской «КУРСК» и красной звездой над ней, рядом вывеска о займах"></div>
       <figcaption><time>17:17</time>Звезда города и быстрые деньги под ней. Так выглядит центр не на Красной площади.</figcaption>
     </figure>
     <figure id="P041">
-      <div class="ph"><img src="media/nosov.webp" width="1600" height="1200" loading="lazy" alt="Бронзовый памятник сидящему человеку с подписью «Е. И. Носов» на постаменте"></div>
+      <div class="ph"><img src="media/nosov.webp" width="1200" height="1600" loading="lazy" alt="Бронзовый памятник сидящему человеку с подписью «Е. И. Носов» на постаменте"></div>
       <figcaption><time>17:22</time>Е. И. Носов. Пометка в блокноте: почитать. Пометка пока в силе.</figcaption>
     </figure>
   </div>
   <div class="row">
     <figure id="P043">
-      <div class="ph"><img src="media/serdce.webp" width="1600" height="1200" loading="lazy" alt="Зелёно-красное декоративное сердце с надписью «КУРСК» на снегу среди деревьев"></div>
+      <div class="ph"><img src="media/serdce.webp" width="1200" height="1600" loading="lazy" alt="Зелёно-красное декоративное сердце с надписью «КУРСК» на снегу среди деревьев"></div>
       <figcaption><time>17:37</time>Сердце «КУРСК». Вторая надпись с названием города за двадцать минут, и не последняя.</figcaption>
     </figure>
     <figure id="P044">
-      <div class="ph"><img src="media/boevka.webp" width="1600" height="1200" loading="lazy" alt="Надпись «БОЁВКА» на снегу перед елями, вдали дети"></div>
+      <div class="ph"><img src="media/boevka.webp" width="1200" height="1600" loading="lazy" alt="Надпись «БОЁВКА» на снегу перед елями, вдали дети"></div>
       <figcaption><time>17:41</time>Парк Боёвка. Дети у букв — единственные, кому в этом парке в феврале весело.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P046">
-    <div class="ph"><img src="media/zaporozhec.webp" width="1600" height="1200" loading="lazy" alt="Голубой «Запорожец» на деревянной платформе среди снега и деревьев"></div>
+    <div class="ph"><img src="media/zaporozhec.webp" width="1200" height="1600" loading="lazy" alt="Голубой «Запорожец» на деревянной платформе среди снега и деревьев"></div>
     <figcaption><time>17:47</time>Голубой «Запорожец» на пьедестале. Единственная машина в Курске, которая никуда не гоняет.</figcaption>
   </figure>
 </section>
@@ -249,7 +261,7 @@
   <div class="day">26 февраля · 18:57</div>
   <h2>Вокзал вечером</h2>
   <figure class="tall" id="P049">
-    <div class="ph"><img src="media/vokzal-noch.webp" width="1400" height="1867" loading="lazy" alt="Центральная арка вокзала с часами в вечерней подсветке, над ней герб"></div>
+    <div class="ph"><img src="media/vokzal-noch.webp" width="1050" height="1400" loading="lazy" alt="Центральная арка вокзала с часами в вечерней подсветке, над ней герб"></div>
     <figcaption><time>18:57</time>Вокзал в подсветке. Вот зачем надо было ждать вечера: утром это был просто красный дом с маршрутками.</figcaption>
   </figure>
   <div class="verdict">
@@ -271,8 +283,9 @@
 
 </article>
 
-<nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../index.html"><span>Все регионы</span></a></nav>
+<nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../69-tver/index.html"><span><small>Дальше по маршруту</small>Тверская область</span><span class="code">69</span></a></nav>
 </div>
+<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
 <script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>

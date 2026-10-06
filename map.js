@@ -129,7 +129,7 @@
     p.addEventListener('pointerleave', function (ev) { if (ev.pointerType === 'mouse') clearTimeout(hoverTimer); });
     p.addEventListener('focus', function () { show(code); mark(code); });
     p.addEventListener('click', function (ev) {
-      if (ev.pointerType === 'touch' || ev.pointerType === 'pen') { picked = code; show(code); mark(code); return; }
+      if (ev.pointerType === 'touch' || ev.pointerType === 'pen') { picked = code; show(code); mark(code); card.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); return; }
       go(code);
     });
     p.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); go(code); } });
