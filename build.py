@@ -4,7 +4,7 @@
 Тексты регионов лежат в src/<код>-<имя>.html, общие стили — series.css, скрипт — series.js.
 Список регионов, отметок и ссылок — в переменной D ниже.
 """
-import os, html, shutil, re
+import os, html, shutil, re, json
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CSS = open(os.path.join(ROOT, 'series.css'), encoding='utf-8').read()
@@ -611,8 +611,20 @@ PAGES = [
          prev=('22', 'Алтайский край', '../22-altai-krai/index.html', 'Раньше по маршруту'), next=None, color=None),
 ]
 
-def region_style(color):
-    return f':root{{--reg:{color[0]};--reg-ink:{color[1]}}}' if color else None
+COLORS = json.load(open(os.path.join(ROOT, 'data', 'colors.json'), encoding='utf-8')) if os.path.exists(os.path.join(ROOT, 'data', 'colors.json')) else {}
+
+def region_style(color, slug=None):
+    """Свой цвет региона — по главному кадру (tools/regcolor.py -> data/colors.json), если в PAGES не задан явно.
+    Пара на каждую тему: в светлой — тёмный цвет с белым текстом, в тёмной — светлый с тёмным текстом.
+    Тёмные правила повторяют селекторы series.css, иначе её тёмная тема перебьёт цвет региона."""
+    if color:
+        return f':root{{--reg:{color[0]};--reg-ink:{color[1]}}}'
+    c = COLORS.get(slug)
+    if not c: return None
+    dark = f'--reg:{c["dark"]};--reg-ink:#14100A'
+    return (f':root{{--reg:{c["light"]};--reg-ink:#FFFFFF}}'
+            f'@media (prefers-color-scheme:dark){{:root:not([data-theme="light"]){{{dark}}}}}'
+            f':root[data-theme="dark"]{{{dark}}}')
 
 def write_service_files():
     """404.html, sitemap.xml, robots.txt. На странице 404 пути абсолютные: она открывается по любому адресу."""
@@ -651,11 +663,11 @@ def build(artifact=False):
         pg_meta = meta_tags(pg['title'] + ' · ' + SITE_NAME, desc, pg['slug'] + '/', pg['slug'] + '/og.jpg')
         os.makedirs(os.path.join(ROOT, pg['slug']), exist_ok=True)
         open(os.path.join(ROOT, pg['slug'], page_name), 'w', encoding='utf-8').write(
-            doc(pg['title'], body, 1, False, region_style(pg['color']), pg_meta))
+            doc(pg['title'], body, 1, False, region_style(pg['color'], pg['slug']), pg_meta))
         if artifact and not local:
             out = os.path.join(ROOT, '_artifact', pg['slug']); os.makedirs(out, exist_ok=True)
             open(os.path.join(out, 'index.html'), 'w', encoding='utf-8').write(
-                doc(pg['title'], body, 1, True, region_style(pg['color'])))
+                doc(pg['title'], body, 1, True, region_style(pg['color'], pg['slug'])))
         print('готово:', pg['slug'] + '/' + page_name)
     if not local:
         write_service_files()
