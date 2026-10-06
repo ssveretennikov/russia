@@ -308,7 +308,10 @@ def index_body():
         if d: sub.append(month_year(d))
         if code == HOME: sub.append('дом')
         for lab, slug in links[1:]:   # вторые части отчёта: «2» → «часть 2»
-            sub.append(f'<a href="{e(href(slug))}">{e("часть " + lab if lab.isdigit() else lab)}</a>')
+            # название второй страницы из PAGES («Центр и вода») без кода и региона; нет его — «часть N»
+            t = next((pg['title'] for pg in PAGES if pg['slug'] == href(slug).split('/')[0]), '')
+            sname = t.rsplit(' · ', 1)[1] if t.count(' · ') >= 2 else ('часть ' + lab if lab.isdigit() else lab)
+            sub.append(f'<a href="{e(href(slug))}">{e(sname)}</a>')
         small = f'<small>{" · ".join(sub)}</small>' if sub else ''
         # строка крючка из отчёта (у региона с несколькими страницами — с первой), серым с многоточием
         hook = main and hook_of(main.split('/')[0])
@@ -402,39 +405,82 @@ def _gps_rows(slug):
 def _tmin(t):
     return int(t[11:13]) * 60 + int(t[14:16])
 
-def daymap_svg(slug, labels):
+
+def _km(la1, lo1, la2, lo2):
+    k = math.cos(math.radians((la1 + la2) / 2))
+    return 111.2 * math.hypot(la1 - la2, (lo1 - lo2) * k)
+
+def daymap_svg(slug, labels, ids=()):
+    """Карта мест дня: только названные места из метки, пронумерованные и соединённые линией по порядку.
+    Снимки архива не рисуются — каждый относится к ближайшему месту (не дальше 15 км) и даёт число «N фото».
+    Названия — под картой списком со ссылкой на первый кадр места на странице: на телефоне подписи в SVG
+    становились мельче 7 px, а сотни ссылок внутри картинки мешали читалкам."""
+    if not labels: return ''
     rows, sel = _gps_rows(slug)
-    if len(rows) < 2: return ''
-    W, pad = 640, 120   # боковой запас под подписи; высота блока подбирается по форме маршрута
-    lat0 = sum(r['lat'] for r in rows) / len(rows); k = math.cos(math.radians(lat0))
-    xs = [r['lon'] * k for r in rows]; ys = [r['lat'] for r in rows]
-    for la, lo, _ in labels: xs.append(lo * k); ys.append(la)
-    x0, x1, y0, y1 = min(xs), max(xs), min(ys), max(ys)
-    dx, dy = max(x1 - x0, 1e-6), max(y1 - y0, 1e-6)
-    inner_w = W - 2 * pad; inner_h = max(140, min(400, inner_w * dy / dx)); H = int(inner_h + 56)
-    span = max(dx, dy * inner_w / inner_h)
-    cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
-    def P(la, lo):
-        return (pad + inner_w * (0.5 + (lo * k - cx) / span), 28 + inner_h * (0.5 - (la - cy) / span * inner_w / inner_h))
-    pts = ' '.join(f'{x:.1f},{y:.1f}' for x, y in (P(r['lat'], r['lon']) for r in rows))
-    out = [f'<svg class="daymap-svg" viewBox="0 0 {W} {H}" role="img" aria-label="Маршрут дня по точкам съёмки">',
-           f'<polyline class="dm-route" points="{pts}"/>']
-    placed = []   # подписи: справа от точки, у правого края — слева; наложения по вертикали разводятся вниз
-    for la, lo, name in sorted(labels, key=lambda l: P(l[0], l[1])[1]):
-        x, y = P(la, lo); right = x > W * 0.62
-        tw = 7.5 * len(name); ty = y + 4
-        lx0, lx1 = (x - 8 - tw, x - 8) if right else (x + 8, x + 8 + tw)
-        for px0, px1, py in placed:
-            if px0 < lx1 and lx0 < px1 and abs(py - ty) < 18: ty = py + 18
-        placed.append((lx0, lx1, ty))
-        anchor = ' text-anchor="end"' if right else ''; tx = x - 8 if right else x + 8
-        out.append(f'<g class="dm-label"><circle cx="{x:.1f}" cy="{y:.1f}" r="4"/><text x="{tx:.1f}" y="{ty:.1f}"{anchor}>{e(name)}</text></g>')
-    for r in rows:
-        if r['id'] in sel:
-            x, y = P(r['lat'], r['lon'])
-            out.append(f'<a href="#{r["id"]}" class="dm-pt"><circle cx="{x:.1f}" cy="{y:.1f}" r="6"><title>{r["t"][11:16]}</title></circle></a>')
+    n = len(labels)
+    counts = [0] * n; first = [None] * n
+    for r in rows:   # строки уже по времени: первый попавший кадр — самый ранний
+        d = [_km(r['lat'], r['lon'], la, lo) for la, lo, _ in labels]
+        i = min(range(n), key=d.__getitem__)
+        if d[i] > 15: continue
+        counts[i] += 1
+        if first[i] is None and r['id'] in ids: first[i] = r['id']
+    W, pad = 360, 26   # ширина как у колонки текста на телефоне: номер 13 px читается без увеличения
+    lat0 = sum(l[0] for l in labels) / n; k = math.cos(math.radians(lat0))
+    xs = [lo * k for _, lo, _ in labels]; ys = [la for la, _, _ in labels]
+    dx, dy = max(max(xs) - min(xs), 1e-4), max(max(ys) - min(ys), 1e-4)
+    iw = W - 2 * pad; ih = max(120, min(300, iw * dy / dx)); H = int(ih + 2 * pad + 18)
+    span = max(dx, dy * iw / ih)
+    cx, cy = (max(xs) + min(xs)) / 2, (max(ys) + min(ys)) / 2
+    P = lambda la, lo: (pad + iw * (0.5 + (lo * k - cx) / span), pad + ih * (0.5 - (la - cy) / span * iw / ih))
+    true = [P(la, lo) for la, lo, _ in labels]
+    # близкие места раздвигаются, к настоящему положению ведёт тонкая линия
+    R, gap = 11, 25
+    pos = [list(p) for p in true]
+    for _ in range(200):
+        moved = False
+        for a in range(n):
+            for b in range(a + 1, n):
+                vx, vy = pos[b][0] - pos[a][0], pos[b][1] - pos[a][1]; d = math.hypot(vx, vy)
+                if d < gap:
+                    if d < 1e-6: vx, vy, d = 1.0, 0.3 * (b - a), math.hypot(1.0, 0.3 * (b - a))
+                    s = (gap - d) / 2 / d
+                    pos[a][0] -= vx * s; pos[a][1] -= vy * s; pos[b][0] += vx * s; pos[b][1] += vy * s; moved = True
+        for p in pos:
+            p[0] = min(max(p[0], R + 2), W - R - 2); p[1] = min(max(p[1], R + 2), H - 28)
+        if not moved: break
+    for a in range(n):
+        for b in range(a + 1, n):
+            if math.hypot(pos[a][0] - pos[b][0], pos[a][1] - pos[b][1]) < 2 * R + 1:
+                print(f'ВНИМАНИЕ: {slug}: номера {a + 1} и {b + 1} на карте мест накладываются')
+    name = next((nm for _, _, regs in D for _, nm, _, _, links in regs for _, sl in links
+                 if href(sl).split('/')[0] == slug), '')
+    out = [f'<svg class="daymap-svg" viewBox="0 0 {W} {H}" role="img" aria-label="Карта мест{(" — " + e(name)) if name else ""}: '
+           f'{n} {plural(n, "место", "места", "мест")} по порядку, названия — списком под картой">']
+    for i in range(n - 1):   # переезд дальше 50 км — пунктир: между точками не шли, а ехали
+        far = _km(labels[i][0], labels[i][1], labels[i + 1][0], labels[i + 1][1]) > 50
+        (x1, y1), (x2, y2) = true[i], true[i + 1]
+        out.append(f'<line class="dm-route{" dm-far" if far else ""}" x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}"/>')
+    for i in range(n):
+        (tx, ty), (x, y) = true[i], pos[i]
+        if math.hypot(tx - x, ty - y) > 1:
+            out.append(f'<line class="dm-lead" x1="{tx:.1f}" y1="{ty:.1f}" x2="{x:.1f}" y2="{y:.1f}"/><circle class="dm-dot" cx="{tx:.1f}" cy="{ty:.1f}" r="2.5"/>')
+    for i in range(n):
+        x, y = pos[i]
+        out.append(f'<g class="dm-num"><circle cx="{x:.1f}" cy="{y:.1f}" r="{R}"/><text x="{x:.1f}" y="{y + 4.5:.1f}" text-anchor="middle">{i + 1}</text></g>')
+    # линейка: круглое число километров не длиннее четверти ширины
+    km_px = iw / (span * 111.2)
+    step = next((v for v in (1000, 500, 200, 100, 50, 20, 10, 5, 2, 1, .5, .2, .1) if v * km_px <= iw / 4), .1)
+    L = step * km_px; lab = f'{step:g} км' if step >= 1 else f'{int(step * 1000)} м'
+    out.append(f'<g class="dm-scale"><path d="M{pad},{H - 14} v-5 h{L:.1f} v5"/><text x="{pad + L + 6:.1f}" y="{H - 13}">{lab}</text></g>')
     out.append('</svg>')
-    return '\n'.join(out)
+    li = []
+    for i, (_, _, nm) in enumerate(labels):
+        t = f'<a href="#{first[i]}">{e(nm)}</a>' if first[i] else e(nm)
+        c = f' <span class="dm-n">· {counts[i]} фото</span>' if counts[i] else ''
+        li.append(f'<li>{t}{c}</li>')
+    return '\n'.join(out) + '\n<ol class="dm-list">' + ''.join(li) + '</ol>'
+
 
 def profile_svg(slug):
     rows, sel = _gps_rows(slug)
@@ -469,7 +515,9 @@ def inject_data(slug, src):
             part = part.strip()
             mm = re.match(r'(-?\d+\.?\d*),\s*(-?\d+\.?\d*)\s+(.+)', part)
             if mm: labels.append((float(mm[1]), float(mm[2]), mm[3].strip()))
-        return daymap_svg(slug, labels)
+        return daymap_svg(slug, labels, ids)
+    ids = set(re.findall(r'<figure[^>]* id="(P[0-9]+)"', src))
+    src = src.replace('<figure class="wide daymap">', '<figure class="daymap">')   # в ширину колонки текста
     src = re.sub(r'<!--daymap:?(.*?)-->', dm, src, flags=re.S)
     src = re.sub(r'<!--profile-->', lambda m: profile_svg(slug), src)
     mt = os.path.join(ROOT, 'regions', slug, 'media.tsv')
@@ -525,12 +573,56 @@ def cover_head(src):
             f'</header>')
     return src[:m.start()] + head + src[m.end():]
 
+def _page_code(slug):
+    return slug.split('-')[0].lstrip('0')
+
+def _page_name(slug):
+    """Название страницы из PAGES без кода: «77 · Москва · Центр и вода» -> «Москва · Центр и вода»."""
+    t = next((pg['title'] for pg in PAGES if pg['slug'] == slug), slug)
+    return t.split(' · ', 1)[1] if ' · ' in t else t
+
+def _ref(slug, label):
+    return (_page_code(slug), _page_name(slug), f'../{slug}/index.html', label)
+
+def read_next(slug, prev, nxt):
+    """Соседи внизу страницы. Порядок: prev/next из PAGES (расставлял автор) -> соседи в той же поездке
+    из data/trips.json -> «Следующий отчёт» (ближайший по дате первой поездки в регион, у Москвы и Подмосковья —
+    по коду: их в trips.json нет намеренно). Пустое место слева занимает «Все регионы» — только слева,
+    чтобы на странице не стояли две одинаковые ссылки подряд."""
+    slugs = [pg['slug'] for pg in PAGES]
+    if not (prev and nxt):
+        for t in TRIPS:
+            rs = [r for r in t['regions'] if r in slugs]
+            if slug in rs and len(rs) > 1:
+                i = rs.index(slug)
+                if not prev and i > 0: prev = _ref(rs[i - 1], 'Раньше по маршруту')
+                if not nxt and i < len(rs) - 1: nxt = _ref(rs[i + 1], 'Дальше по маршруту')
+                break
+    aria = 'Соседние регионы по маршруту'
+    if not nxt:
+        dates = {r['code']: r.get('date') or '' for r in load_map()['regions']}
+        code = _page_code(slug)
+        if code in ('77', '50') or not dates.get(code):
+            order = sorted(slugs, key=lambda s: (int(_page_code(s)), s))
+        else:
+            order = sorted([s for s in slugs if dates.get(_page_code(s)) and _page_code(s) not in ('77', '50')],
+                           key=lambda s: (dates[_page_code(s)], s))
+        i = order.index(slug)
+        taken = {prev and prev[2], f'../{slug}/index.html'}
+        for k in range(1, len(order)):
+            cand = order[(i + k) % len(order)]
+            if f'../{cand}/index.html' not in taken:
+                nxt = _ref(cand, 'Следующий отчёт'); break
+        aria = 'Читать дальше'
+    return prev, nxt, aria
+
 def region_body(code, prev=None, nxt=None):
     """prev / nxt — соседи ПО МАРШРУТУ ПОЕЗДКИ: (код, название, ссылка, подпись) или None."""
     src = cover_head(inject_data(code, open(os.path.join(ROOT, 'src', f'{code}.html'), encoding='utf-8').read()))
     top = ('<nav class="topbar"><a href="../index.html">← Все регионы</a>'
            '<div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button>'
            '<button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>')
+    prev, nxt, aria = read_next(code, prev, nxt)
     def pl(x, cls):
         if not x:
             return '<a class="%s" href="../index.html"><span>Все регионы</span></a>' % cls
@@ -538,7 +630,7 @@ def region_body(code, prev=None, nxt=None):
         txt = f'<span><small>{e(label)}</small>{e(name)}</span>'
         b = code_badge(c)
         return f'<a class="{cls}" href="{e(link)}">' + (b + txt if cls == 'prev' else txt + b) + '</a>'
-    pager = '<nav class="pager" aria-label="Соседние регионы по маршруту">' + pl(prev, 'prev') + pl(nxt, 'next') + '</nav>'
+    pager = f'<nav class="pager" aria-label="{aria}">' + pl(prev, 'prev') + pl(nxt, 'next') + '</nav>'
     return f'<div class="page page-cover">\n{top}\n{src}\n{pager}\n</div>'
 
 def meta_tags(title, desc, path, image):
@@ -566,8 +658,19 @@ def meta_tags(title, desc, path, image):
     ]
     return '\n'.join(t)
 
+def footer(up, home):
+    """Общий подвал. На главной название без ссылки (она и есть главная). Контактов автор не давал —
+    если появятся, им место строкой после .ft-who."""
+    name = f'<span class="ft-name">{e(SERIES_TITLE)}</span>' if home else f'<a class="ft-name" href="{up}index.html">{e(SERIES_TITLE)}</a>'
+    return (f'<footer class="site-foot{" ft-home" if home else ""}" role="contentinfo"><div class="ft-in">'
+            f'<div class="ft-t">{name}<p class="ft-who">Сергей Веретенников · отчёты о поездках</p>'
+            f'<p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div>'
+            f'<a class="ft-top" href="#top">Наверх ↑</a></div></footer>')
+
 def doc(title, body, depth, inline, reg_color=None, meta=''):
     up = '../' * depth
+    if 'class="lost"' not in body:   # на 404 подвала нет: её пути относительные, а открывается она по любому адресу
+        body += '\n' + footer(up, 'ix-page' in body)
     style = f'<style>\n{CSS}\n</style>' if inline else f'<link rel="stylesheet" href="{up}series.css?v={VER["css"]}">'
     script = f'<script>\n{JS}\n</script>' if inline else f'<script src="{up}series.js?v={VER["js"]}"></script>'
     extra = f'<style>{reg_color}</style>' if reg_color else ''
@@ -579,7 +682,7 @@ def doc(title, body, depth, inline, reg_color=None, meta=''):
         script += f'\n<script>\n{MAPJS}\n</script>' if inline else f'\n<script src="{up}map.js?v={VER["map"]}"></script>'
     return (f'<!doctype html>\n<html lang="ru">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-            f'<title>{e(title)}</title>\n{meta}\n{THEME_INIT}\n{fonts(up)}\n{style}\n{extra}\n</head>\n<body>\n{body}\n{script}\n</body>\n</html>\n')
+            f'<title>{e(title)}</title>\n{meta}\n{THEME_INIT}\n{fonts(up)}\n{style}\n{extra}\n</head>\n<body id="top">\n{body}\n{script}\n</body>\n</html>\n')
 
 def fragment(title, body):
     """Главная страница артефакта: без doctype/html/head/body."""
@@ -706,6 +809,8 @@ PAGES = [
     dict(slug='04-altai-republic', title='4 · Республика Алтай',
          prev=('22', 'Алтайский край', '../22-altai-krai/index.html', 'Раньше по маршруту'), next=None, color=None),
 ]
+
+TRIPS = json.load(open(os.path.join(ROOT, 'data', 'trips.json'), encoding='utf-8')) if os.path.exists(os.path.join(ROOT, 'data', 'trips.json')) else []
 
 COLORS = json.load(open(os.path.join(ROOT, 'data', 'colors.json'), encoding='utf-8')) if os.path.exists(os.path.join(ROOT, 'data', 'colors.json')) else {}
 

@@ -25,10 +25,10 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=690f2df7">
+<link rel="stylesheet" href="../series.css?v=5b3a898d">
 <style>:root{--reg:#3373B8;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#6FA2D7;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#6FA2D7;--reg-ink:#14100A}</style>
 </head>
-<body>
+<body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
 <header class="reg-head cover-head">
@@ -62,8 +62,22 @@
 <section class="sec">
   <p class="lead">Обычно маршрут я собираю сам: куда, на сколько и что успеть. С Крымом вышло иначе. Эту поездку я выиграл в конкурсе «Россия — страна возможностей», и в комплекте шли группа, автобус и готовая программа: обсерватория в горах, ханский дворец в Бахчисарае, монастырь в скале, потом Севастополь, о нём <a href="../92-sevastopol/index.html">отдельный пост</a>, и под конец потухший вулкан над морем.</p>
   <p class="lead">От себя я добавил к программе одно. 16 августа встал до шести и, пока группа никуда не ехала, обошёл Симферополь: ботанический сад, холм над городом и белку, которая завтракала раньше меня. Всё остальное мне показали. Жаловаться не на что: сам бы я телескоп с роботом и кактусы с плодами в один маршрут не уложил.</p>
-  <figure class="wide daymap">
-    
+  <figure class="daymap">
+    <svg class="daymap-svg" viewBox="0 0 360 190" role="img" aria-label="Карта мест — Республика Крым: 5 мест по порядку, названия — списком под картой">
+<line class="dm-route" x1="81.7" y1="54.6" x2="56.1" y2="123.7"/>
+<line class="dm-route" x1="56.1" y1="123.7" x2="26.0" y2="117.7"/>
+<line class="dm-route dm-far" x1="26.0" y1="117.7" x2="317.2" y2="55.9"/>
+<line class="dm-route" x1="317.2" y1="55.9" x2="334.0" y2="48.3"/>
+<line class="dm-lead" x1="317.2" y1="55.9" x2="314.2" y2="57.2"/><circle class="dm-dot" cx="317.2" cy="55.9" r="2.5"/>
+<line class="dm-lead" x1="334.0" y1="48.3" x2="337.0" y2="46.9"/><circle class="dm-dot" cx="334.0" cy="48.3" r="2.5"/>
+<g class="dm-num"><circle cx="81.7" cy="54.6" r="11"/><text x="81.7" y="59.1" text-anchor="middle">1</text></g>
+<g class="dm-num"><circle cx="56.1" cy="123.7" r="11"/><text x="56.1" y="128.2" text-anchor="middle">2</text></g>
+<g class="dm-num"><circle cx="26.0" cy="117.7" r="11"/><text x="26.0" y="122.2" text-anchor="middle">3</text></g>
+<g class="dm-num"><circle cx="314.2" cy="57.2" r="11"/><text x="314.2" y="61.7" text-anchor="middle">4</text></g>
+<g class="dm-num"><circle cx="337.0" cy="46.9" r="11"/><text x="337.0" y="51.4" text-anchor="middle">5</text></g>
+<g class="dm-scale"><path d="M26,176 v-5 h57.0 v5"/><text x="89.0" y="177">20 км</text></g>
+</svg>
+<ol class="dm-list"><li><a href="#P002">Симферополь</a> <span class="dm-n">· 16 фото</span></li><li><a href="#P046">Научный</a> <span class="dm-n">· 11 фото</span></li><li><a href="#P059">Бахчисарай</a> <span class="dm-n">· 55 фото</span></li><li><a href="#P129">Карадаг</a> <span class="dm-n">· 70 фото</span></li><li><a href="#P203">Коктебель</a> <span class="dm-n">· 4 фото</span></li></ol>
     <figcaption>Точки съёмки за три крымских дня. Севастополя здесь нет: он между Бахчисараем и Карадагом и живёт на своей странице.</figcaption>
   </figure>
 </section>
@@ -334,6 +348,7 @@
 
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../92-sevastopol/index.html"><span><small>Дальше по маршруту</small>Севастополь</span><span class="code">92</span></a></nav>
 </div>
+<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
 <script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>

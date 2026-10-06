@@ -25,10 +25,10 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=690f2df7">
+<link rel="stylesheet" href="../series.css?v=5b3a898d">
 <style>:root{--reg:#2C6DBE;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#72A2DE;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#72A2DE;--reg-ink:#14100A}</style>
 </head>
-<body>
+<body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
 <header class="reg-head cover-head">
@@ -62,8 +62,24 @@
 <section class="sec">
   <p class="lead">Скорее всего, если вы что-то слышали о Забайкальском крае, то это были криминальные сводки. Регион с репутацией, родина движения, которое теперь нельзя называть, и слухи, что девяностые тут до сих пор процветают. Я ехал проверить.</p>
   <p class="lead">Чита оказалась в середине маршрута не по любви, а по арифметике: из Москвы сюда билеты от десяти тысяч и никогда не бывает распродаж, зато из Улан-Удэ ходит удобный ночной поезд, а дальше, в Якутск, «Аврора» везла за две тысячи. Для Дальнего Востока это недорого. За два дня в городе я увидел дацан, кандалы декабристов, кафе с названием из общажного жаргона и очередь за буузами. Сводок не увидел.</p>
-  <figure class="wide daymap">
-    
+  <figure class="daymap">
+    <svg class="daymap-svg" viewBox="0 0 360 370" role="img" aria-label="Карта мест — Забайкальский край: 6 мест по порядку, названия — списком под картой">
+<line class="dm-route" x1="129.7" y1="262.4" x2="213.6" y2="26.0"/>
+<line class="dm-route" x1="213.6" y1="26.0" x2="202.4" y2="189.6"/>
+<line class="dm-route" x1="202.4" y1="189.6" x2="230.3" y2="326.0"/>
+<line class="dm-route" x1="230.3" y1="326.0" x2="185.6" y2="235.1"/>
+<line class="dm-route" x1="185.6" y1="235.1" x2="185.6" y2="198.7"/>
+<line class="dm-lead" x1="202.4" y1="189.6" x2="205.0" y2="188.2"/><circle class="dm-dot" cx="202.4" cy="189.6" r="2.5"/>
+<line class="dm-lead" x1="185.6" y1="198.7" x2="183.0" y2="200.1"/><circle class="dm-dot" cx="185.6" cy="198.7" r="2.5"/>
+<g class="dm-num"><circle cx="129.7" cy="262.4" r="11"/><text x="129.7" y="266.9" text-anchor="middle">1</text></g>
+<g class="dm-num"><circle cx="213.6" cy="26.0" r="11"/><text x="213.6" y="30.5" text-anchor="middle">2</text></g>
+<g class="dm-num"><circle cx="205.0" cy="188.2" r="11"/><text x="205.0" y="192.7" text-anchor="middle">3</text></g>
+<g class="dm-num"><circle cx="230.3" cy="326.0" r="11"/><text x="230.3" y="330.5" text-anchor="middle">4</text></g>
+<g class="dm-num"><circle cx="185.6" cy="235.1" r="11"/><text x="185.6" y="239.6" text-anchor="middle">5</text></g>
+<g class="dm-num"><circle cx="183.0" cy="200.1" r="11"/><text x="183.0" y="204.6" text-anchor="middle">6</text></g>
+<g class="dm-scale"><path d="M26,356 v-5 h40.9 v5"/><text x="72.9" y="357">500 м</text></g>
+</svg>
+<ol class="dm-list"><li><a href="#P002">Вокзал и собор</a> <span class="dm-n">· 10 фото</span></li><li><a href="#P010">Дацан</a> <span class="dm-n">· 5 фото</span></li><li><a href="#P019">Выставка</a> <span class="dm-n">· 4 фото</span></li><li><a href="#P020">Церковь декабристов</a> <span class="dm-n">· 25 фото</span></li><li><a href="#P049">Театр и площадь</a> <span class="dm-n">· 7 фото</span></li><li><a href="#P053">Скульптуры</a> <span class="dm-n">· 7 фото</span></li></ol>
     <figcaption>Два дня по точкам съёмки. Весь маршрут — пешком и на такси, в котором по эконом-тарифу приезжает старый «Ленд Крузер».</figcaption>
   </figure>
 </section>
@@ -97,12 +113,12 @@
       <figcaption><time>09:37</time>Вокзал. Здесь же выяснилось про оператора, здесь же куплена симка.</figcaption>
     </figure>
     <figure id="P005">
-      <div class="ph"><img src="media/sera.webp" width="1400" height="1867" loading="lazy" alt="Рука держит кусочек серы в прозрачном пакете и обёртку с надписью «Сера»"></div>
+      <div class="ph"><img src="media/sera.webp" width="1050" height="1400" loading="lazy" alt="Рука держит кусочек серы в прозрачном пакете и обёртку с надписью «Сера»"></div>
       <figcaption><time>09:41</time>Впервые попробовал серу, её ещё называют жвачкой. Довольно интересная вещь, но второй раз не купил.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P006">
-    <div class="ph"><img src="media/sobor-pamyatnik.webp" width="1400" height="1867" loading="lazy" alt="Памятник со знаменем на постаменте перед собором с золотыми куполами"></div>
+    <div class="ph"><img src="media/sobor-pamyatnik.webp" width="1200" height="1600" loading="lazy" alt="Памятник со знаменем на постаменте перед собором с золотыми куполами"></div>
     <figcaption><time>09:42</time>Памятник перед собором. Чья это фигура, на месте не выяснил.</figcaption>
   </figure>
 </section>
@@ -139,11 +155,11 @@
   <p>Главный музей города — «Церковь декабристов», деревянная, на улице Декабристов, 3б. Внутри — путь ссыльных в Сибирь на карте, кандалы на бревенчатой стене, портреты и письма. Одним из ссыльных был близкий друг Пушкина Кюхельбекер. Провёл здесь полтора часа, и это больше, чем я думал потратить на музей в городе, куда приехал транзитом.</p>
   <div class="row narrow">
     <figure id="P020">
-      <div class="ph"><img src="media/cerkov.webp" width="1400" height="1867" loading="lazy" alt="Деревянная бревенчатая церковь с колокольней за кованой оградой"></div>
+      <div class="ph"><img src="media/cerkov.webp" width="1050" height="1400" loading="lazy" alt="Деревянная бревенчатая церковь с колокольней за кованой оградой"></div>
       <figcaption><time>15:29</time>Снаружи — бревно и крест, внутри — музей. Табличка с адресом на ограде, чтобы не перепутать.</figcaption>
     </figure>
     <figure id="P025">
-      <div class="ph"><img src="media/put.webp" width="1600" height="1200" loading="lazy" alt="Старая карта «Путь следования декабристов в Сибирь» в витрине"></div>
+      <div class="ph"><img src="media/put.webp" width="1400" height="1050" loading="lazy" alt="Старая карта «Путь следования декабристов в Сибирь» в витрине"></div>
       <figcaption><time>16:10</time>Путь следования декабристов. Я ехал примерно тем же маршрутом, только с востока и на поезде.</figcaption>
     </figure>
   </div>
@@ -162,16 +178,16 @@
   <p>Дальше неторопливо гулял: ночлег забронирован, город небольшой, времени достаточно. Выражение «чёкаво» я впервые услышал в 2010 году в общаге от соседей из Бурятии. Жаргон гопников, означать может любой вопрос, но ближе всего — «как дела?». По-моему, оно проскакивало даже в озвучке «Во все тяжкие». А в Чите под него открыли кафе.</p>
   <div class="row">
     <figure id="P042">
-      <div class="ph"><img src="media/baptisty.webp" width="1400" height="1867" loading="lazy" alt="Серое здание с башней и крестом, вид снизу вверх"></div>
+      <div class="ph"><img src="media/baptisty.webp" width="1200" height="1600" loading="lazy" alt="Серое здание с башней и крестом, вид снизу вверх"></div>
       <figcaption><time>17:11</time>Баптистская церковь. Третья конфессия за день, впереди четвёртая.</figcaption>
     </figure>
     <figure id="P044">
-      <div class="ph"><img src="media/mechet.webp" width="1600" height="1200" loading="lazy" alt="Кирпичное здание мечети с минаретом под облачным небом"></div>
+      <div class="ph"><img src="media/mechet.webp" width="1200" height="1600" loading="lazy" alt="Кирпичное здание мечети с минаретом под облачным небом"></div>
       <figcaption><time>17:17</time>Читинская соборная мечеть. Кирпичная, старая, небо к вечеру уже затянуло.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P045">
-    <div class="ph"><img src="media/chekavo.webp" width="1400" height="1867" loading="lazy" alt="Вход в кафе с вывеской CHE KAVO, ступени и скамьи"></div>
+    <div class="ph"><img src="media/chekavo.webp" width="1200" height="1600" loading="lazy" alt="Вход в кафе с вывеской CHE KAVO, ступени и скамьи"></div>
     <figcaption><time>17:35</time>Кафе «Чёкаво». Зашёл бы, но в поезде мне уже посоветовали другое место.</figcaption>
   </figure>
   <div class="row">
@@ -180,7 +196,7 @@
       <figcaption><time>17:39</time>Лавки у кинотеатра. Точнее, кинокамеры и кресло режиссёра, сесть можно только на последнее.</figcaption>
     </figure>
     <figure id="P049">
-      <div class="ph"><img src="media/beketov.webp" width="1400" height="1867" loading="lazy" alt="Памятник мужчине в казачьей одежде рядом с фигурой рабочего, вокруг зелень"></div>
+      <div class="ph"><img src="media/beketov.webp" width="1200" height="1600" loading="lazy" alt="Памятник мужчине в казачьей одежде рядом с фигурой рабочего, вокруг зелень"></div>
       <figcaption><time>17:42</time>Пётр Бекетов, основатель Читы. А заодно Якутска, куда я лечу завтра. Человек явно опережал мой маршрут.</figcaption>
     </figure>
   </div>
@@ -190,7 +206,7 @@
   </figure>
   <p>Попутчицы в поезде посоветовали кафе «Аян». Соглашусь: место очень достойное, людей идёт столько, что у дверей стоят до получаса. И стоят.</p>
   <figure class="mid" id="P052">
-    <div class="ph"><img src="media/buuzy.webp" width="1600" height="1200" loading="lazy" alt="Чёрная и белая буузы на тарелке, рука берёт чёрную"></div>
+    <div class="ph"><img src="media/buuzy.webp" width="1200" height="1600" loading="lazy" alt="Чёрная и белая буузы на тарелке, рука берёт чёрную"></div>
     <figcaption><time>21:16</time>Чёрная бууза и бууза с сыром. Полчаса очереди окупились на первой.</figcaption>
   </figure>
 </section>
@@ -219,7 +235,7 @@
   </figure>
   <div class="row">
     <figure id="P063">
-      <div class="ph"><img src="media/sobor-2.webp" width="1400" height="1867" loading="lazy" alt="Собор с золотыми куполами за чёрными коваными воротами под серым небом"></div>
+      <div class="ph"><img src="media/sobor-2.webp" width="1200" height="1600" loading="lazy" alt="Собор с золотыми куполами за чёрными коваными воротами под серым небом"></div>
       <figcaption><time>13:51</time>Тот же собор, что на обложке, сутки спустя. Разница — только небо.</figcaption>
     </figure>
     <figure id="P064">
@@ -257,8 +273,9 @@
 
 </article>
 
-<nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../index.html"><span>Все регионы</span></a></nav>
+<nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../03-buryatia/index.html"><span class="code">3</span><span><small>Раньше по маршруту</small>Республика Бурятия</span></a><a class="next" href="../14-yakutia/index.html"><span><small>Дальше по маршруту</small>Республика Саха (Якутия)</span><span class="code">14</span></a></nav>
 </div>
+<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
 <script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>

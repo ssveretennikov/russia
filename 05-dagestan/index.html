@@ -25,15 +25,15 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=690f2df7">
+<link rel="stylesheet" href="../series.css?v=5b3a898d">
 <style>:root{--reg:#8A7138;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C7AE75;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C7AE75;--reg-ink:#14100A}</style>
 </head>
-<body>
+<body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P086">
-    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Сергей в белой футболке стоит с раскинутыми руками на краю скалы, за ним каньон и бирюзовая река далеко внизу"></div>
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1239" alt="Сергей в белой футболке стоит с раскинутыми руками на краю скалы, за ним каньон и бирюзовая река далеко внизу"></div>
     <div class="reg-id" style="--nw:10">
       <span class="code" aria-label="Код региона 5">5</span>
       <h1>Республика Дагестан</h1>
@@ -62,8 +62,18 @@
 <section class="sec">
   <p class="lead">В Дагестан я приехал из Грозного, и разница была видна с первого километра. На дороге все ездят так, будто правил нет. Или будто есть общая договорённость, как тут надо ездить, просто она не совпадает с ПДД. Мой водитель был опытный: умело уворачивался от подрезающих и сам подрезал очень активно. Единственное отличие от остальных — по обочине он не обгонял.</p>
   <p class="lead">Потом я понял, что это не про дороги, а про всё. Чужие дроны над барханом летают, не глядя по сторонам. На пляже купаться запрещено, и все купаются. Охранник у мечети сначала нервничает из-за моей сумки, а через минуту приглашает в ислам. К этому просто надо привыкнуть, и за два дня я почти успел.</p>
-  <figure class="wide daymap">
-    
+  <figure class="daymap">
+    <svg class="daymap-svg" viewBox="0 0 360 190" role="img" aria-label="Карта мест — Республика Дагестан: 3 места по порядку, названия — списком под картой">
+<line class="dm-route" x1="26.0" y1="80.8" x2="26.8" y2="83.9"/>
+<line class="dm-route" x1="26.8" y1="83.9" x2="334.0" y2="91.2"/>
+<line class="dm-lead" x1="26.0" y1="80.8" x2="23.4" y2="70.2"/><circle class="dm-dot" cx="26.0" cy="80.8" r="2.5"/>
+<line class="dm-lead" x1="26.8" y1="83.9" x2="29.3" y2="94.5"/><circle class="dm-dot" cx="26.8" cy="83.9" r="2.5"/>
+<g class="dm-num"><circle cx="23.4" cy="70.2" r="11"/><text x="23.4" y="74.7" text-anchor="middle">1</text></g>
+<g class="dm-num"><circle cx="29.3" cy="94.5" r="11"/><text x="29.3" y="99.0" text-anchor="middle">2</text></g>
+<g class="dm-num"><circle cx="334.0" cy="91.2" r="11"/><text x="334.0" y="95.7" text-anchor="middle">3</text></g>
+<g class="dm-scale"><path d="M26,176 v-5 h46.9 v5"/><text x="78.9" y="177">5 км</text></g>
+</svg>
+<ol class="dm-list"><li><a href="#P097">Сулакский каньон</a> <span class="dm-n">· 4 фото</span></li><li>Смотровая над каньоном <span class="dm-n">· 2 фото</span></li><li><a href="#P212">Бархан Сарыкум</a> <span class="dm-n">· 4 фото</span></li></ol>
     <figcaption>Точки поездки по GPS. Координаты писал только дрон, поэтому на карте те места, где он летал: каньон и бархан. Махачкала восточнее, у моря.</figcaption>
   </figure>
   <p>Первый день — групповой тур на автобусе из Махачкалы: водохранилище, катер, каньон, подвесной мост, бархан. Второй — город пешком и море. Названия мест, кроме Сулакского каньона и бархана, я успел позабыть ещё тогда, так что где не уверен, там будет только фото.</p>
@@ -92,11 +102,11 @@
   <p>Группу собирали с утра, и у меня был час на город. Хватило на филиал МАДИ, карту Дагестана на стене и хлеб. Хлеб тут овальный, и я на это смотрел дольше, чем на карту.</p>
   <div class="row narrow">
     <figure id="P001">
-      <div class="ph"><img src="media/karta.webp" width="1400" height="2489" loading="lazy" alt="Рисованная туристическая карта Дагестана на стене, внизу кувшин и сувениры"></div>
+      <div class="ph"><img src="media/karta.webp" width="788" height="1400" loading="lazy" alt="Рисованная туристическая карта Дагестана на стене, внизу кувшин и сувениры"></div>
       <figcaption><time>07:19</time>Туристическая карта Дагестана. На ней всё, куда я сегодня не доеду.</figcaption>
     </figure>
     <figure id="P003">
-      <div class="ph"><img src="media/hleb.webp" width="1600" height="900" loading="lazy" alt="Ряд свежих овальных буханок хлеба на деревянной полке"></div>
+      <div class="ph"><img src="media/hleb.webp" width="1600" height="901" loading="lazy" alt="Ряд свежих овальных буханок хлеба на деревянной полке"></div>
       <figcaption><time>07:52</time>Овальная форма буханок. Цитата из оригинала целиком.</figcaption>
     </figure>
   </div>
@@ -106,16 +116,16 @@
   <h2>Озеро, которого я не запомнил</h2>
   <p>Первая остановка — пофоткаться возле озера. Вода бирюзовая, на дальнем берегу плотина, по дороге уже успели увидеть огромную отару барашек и козликов. Как озеро называется, я не записал, а потом было поздно.</p>
   <figure class="wide" id="P004">
-    <div class="ph"><img src="media/ozero.webp" width="2000" height="1125" loading="lazy" alt="Бирюзовое водохранилище между сухими холмами, над ним облака"></div>
+    <div class="ph"><img src="media/ozero.webp" width="2000" height="1126" loading="lazy" alt="Бирюзовое водохранилище между сухими холмами, над ним облака"></div>
     <figcaption><time>09:16</time>Цвет воды не фильтр. Фильтр я подбирать так и не научился, это дальше будет видно.</figcaption>
   </figure>
   <div class="row">
     <figure id="P007">
-      <div class="ph"><img src="media/plotina.webp" width="1600" height="900" loading="lazy" alt="Бетонная плотина в скальном берегу над бирюзовой водой"></div>
+      <div class="ph"><img src="media/plotina.webp" width="1600" height="901" loading="lazy" alt="Бетонная плотина в скальном берегу над бирюзовой водой"></div>
       <figcaption><time>09:16</time>Плотина на том берегу. Это наша следующая точка маршрута.</figcaption>
     </figure>
     <figure id="P017">
-      <div class="ph"><img src="media/otara.webp" width="1600" height="900" loading="lazy" alt="Пастух ведёт отару овец и коз по дороге под скальным срезом, сзади белый микроавтобус"></div>
+      <div class="ph"><img src="media/otara.webp" width="1600" height="901" loading="lazy" alt="Пастух ведёт отару овец и коз по дороге под скальным срезом, сзади белый микроавтобус"></div>
       <figcaption><time>09:26</time>Отара заняла дорогу, микроавтобус ждёт. Здесь это тоже часть договорённости.</figcaption>
     </figure>
   </div>
@@ -130,11 +140,11 @@
   <p>Всем выдали оранжевые жилеты и посадили на катер. Лавируем между скал: каньон узкий, стены слоистые, навстречу идут такие же катера, и один из них с надписью «AMG». Кто-то очень хотел, чтобы это знали.</p>
   <div class="row">
     <figure id="P032">
-      <div class="ph"><img src="media/kater.webp" width="1600" height="900" loading="lazy" alt="Сергей в оранжевом спасательном жилете сидит на носу синего катера, за ним скалы и зелёная вода"></div>
+      <div class="ph"><img src="media/kater.webp" width="1600" height="901" loading="lazy" alt="Сергей в оранжевом спасательном жилете сидит на носу синего катера, за ним скалы и зелёная вода"></div>
       <figcaption><time>10:09</time>На носу катера. Жилет обязателен, поза нет.</figcaption>
     </figure>
     <figure id="P042">
-      <div class="ph"><img src="media/amg.webp" width="1600" height="900" loading="lazy" alt="Жёлтый катер с надписью AMG идёт по зелёной воде между скальными стенами"></div>
+      <div class="ph"><img src="media/amg.webp" width="1600" height="901" loading="lazy" alt="Жёлтый катер с надписью AMG идёт по зелёной воде между скальными стенами"></div>
       <figcaption><time>10:15</time>Встречный. Про культуру вождения я уже говорил, на воде она та же.</figcaption>
     </figure>
   </div>
@@ -145,16 +155,16 @@
   <h2>Сулакский каньон</h2>
   <p>Дальше на очереди впечатляющий Сулакский каньон. Очень высоко. На другом берегу внизу можно разглядеть поселение, а на смотровой — всё, что положено: ограда, табличка «Осторожно обрыв!», вращающаяся камера для 360, платья напрокат для инстаграмных фоточек и конь для тех, кто хочет побыть джигитом. Можно пофоткаться и без этого всего, что я и сделал.</p>
   <figure class="wide" id="P046">
-    <div class="ph"><img src="media/kanyon.webp" width="2000" height="1125" loading="lazy" alt="Глубокий каньон с бирюзовой рекой на дне, по склонам серпантины дорог"></div>
+    <div class="ph"><img src="media/kanyon.webp" width="2000" height="1126" loading="lazy" alt="Глубокий каньон с бирюзовой рекой на дне, по склонам серпантины дорог"></div>
     <figcaption><time>11:08</time>Внизу река, по склонам дороги. Что там за посёлок, мне сказали, но я не запомнил.</figcaption>
   </figure>
   <div class="row">
     <figure id="P066">
-      <div class="ph"><img src="media/obryv.webp" width="1600" height="900" loading="lazy" alt="Красная табличка «Осторожно обрыв!» на краю каньона, внизу река"></div>
+      <div class="ph"><img src="media/obryv.webp" width="1600" height="901" loading="lazy" alt="Красная табличка «Осторожно обрыв!» на краю каньона, внизу река"></div>
       <figcaption><time>11:15</time>Табличка честная. Ограда здесь скорее для вида.</figcaption>
     </figure>
     <figure id="P055">
-      <div class="ph"><img src="media/platye.webp" width="1600" height="900" loading="lazy" alt="Девушка в красном платье стоит на склоне и держит развевающуюся ткань, рядом фотограф"></div>
+      <div class="ph"><img src="media/platye.webp" width="1600" height="901" loading="lazy" alt="Девушка в красном платье стоит на склоне и держит развевающуюся ткань, рядом фотограф"></div>
       <figcaption><time>11:10</time>Аренда платьев работает. Фотограф тоже в комплекте.</figcaption>
     </figure>
   </div>
@@ -175,7 +185,7 @@
   </div>
   <span class="rubric">Местные</span>
   <figure class="mid" id="P093">
-    <div class="ph"><img src="media/dzhigit.webp" width="1600" height="900" loading="lazy" alt="Всадник в белой папахе на чёрной лошади на зелёном плато над каньоном"></div>
+    <div class="ph"><img src="media/dzhigit.webp" width="1600" height="901" loading="lazy" alt="Всадник в белой папахе на чёрной лошади на зелёном плато над каньоном"></div>
     <figcaption><time>11:41</time>А можно почувствовать себя джигитом. Фото следа, который конь оставил на тропе, я вам пощажу.</figcaption>
   </figure>
 </section>
@@ -185,21 +195,21 @@
   <p>Ну ладно, едем дальше. По пути — памятник Ленину в ушанке, единственный в своём роде. Следующая точка — пещера Нохъо: при входе стихи Расула Гамзатова, за входом каньон и ГЭС внизу, два моста через каньон, один подвесной, другой нет. Над всем этим зиплайн, бейсджампинг и качельки. Из аттракционов зиплайн выглядит менее устрашающим, но это всё равно риск, и, на мой взгляд, совсем неоправданный. Я выбрал мост и каску.</p>
   <div class="row narrow">
     <figure id="P107">
-      <div class="ph"><img src="media/lenin.webp" width="1400" height="2489" loading="lazy" alt="Памятник у фасада здания, рядом машина прикована цепью к зелёному флагу-ленте"></div>
+      <div class="ph"><img src="media/lenin.webp" width="788" height="1400" loading="lazy" alt="Памятник у фасада здания, рядом машина прикована цепью к зелёному флагу-ленте"></div>
       <figcaption><time>11:58</time>Ленин в ушанке. Машина у постамента прикована цепью к флагу, и это тут никого не удивляет.</figcaption>
     </figure>
     <figure id="P111">
-      <div class="ph"><img src="media/ges.webp" width="1600" height="900" loading="lazy" alt="Долина с бирюзовой рекой и зданием ГЭС среди гор"></div>
+      <div class="ph"><img src="media/ges.webp" width="1600" height="901" loading="lazy" alt="Долина с бирюзовой рекой и зданием ГЭС среди гор"></div>
       <figcaption><time>12:23</time>Вид на каньон и ГЭС от входа в пещеру. Вода внизу того же цвета, что утром.</figcaption>
     </figure>
   </div>
   <div class="row narrow">
     <figure id="P116">
-      <div class="ph"><img src="media/most-skala.webp" width="1400" height="2489" loading="lazy" alt="Подвесной мост и мостки вдоль отвесной скалы в узком каньоне, на них люди в касках"></div>
+      <div class="ph"><img src="media/most-skala.webp" width="788" height="1400" loading="lazy" alt="Подвесной мост и мостки вдоль отвесной скалы в узком каньоне, на них люди в касках"></div>
       <figcaption><time>12:37</time>Мостки вдоль скалы и подвесной мост. Каски выдают всем, и это правильно.</figcaption>
     </figure>
     <figure id="P122">
-      <div class="ph"><img src="media/kafe-skala.webp" width="1600" height="900" loading="lazy" alt="Кафе под нависающей скалой, площадка с туристами и подвесной мост через каньон"></div>
+      <div class="ph"><img src="media/kafe-skala.webp" width="1600" height="901" loading="lazy" alt="Кафе под нависающей скалой, площадка с туристами и подвесной мост через каньон"></div>
       <figcaption><time>12:40</time>Кафе под скалой, площадка и мост. Там, где скала нависает, стоять приятнее всего.</figcaption>
     </figure>
   </div>
@@ -212,7 +222,7 @@
     <figcaption><time>≈12:43</time>Зиплайн. Инструктор пристёгивает девочку, девочка улетает через каньон. Я остался на этой стороне.</figcaption>
   </figure>
   <figure class="mid" id="P143">
-    <div class="ph"><img src="media/kaska.webp" width="1600" height="900" loading="lazy" alt="Сергей в белой каске стоит на подвесном мосту, за ним тросы и скалы каньона"></div>
+    <div class="ph"><img src="media/kaska.webp" width="1600" height="1200" loading="lazy" alt="Сергей в белой каске стоит на подвесном мосту, за ним тросы и скалы каньона"></div>
     <figcaption><time>12:58</time>Вид с более устойчивой точки. Насколько устойчивой, видно по лицу.</figcaption>
   </figure>
 </section>
@@ -222,11 +232,11 @@
   <p>Заехали в крутую кафешку. Работает пока не в полную силу, идёт ремонт, но еда, кофе и виды уже на месте. Собака у бочки, судя по позе, с этим согласна.</p>
   <div class="row narrow">
     <figure id="P153">
-      <div class="ph"><img src="media/kofe.webp" width="1400" height="2489" loading="lazy" alt="Сергей сидит в плетёном кресле на веранде кафе с маленькой чашкой кофе, за ним долина и горы"></div>
+      <div class="ph"><img src="media/kofe.webp" width="788" height="1400" loading="lazy" alt="Сергей сидит в плетёном кресле на веранде кафе с маленькой чашкой кофе, за ним долина и горы"></div>
       <figcaption><time>14:26</time>Кофе из маленькой чашки на веранде. Первая еда с семи утра.</figcaption>
     </figure>
     <figure id="P160">
-      <div class="ph"><img src="media/sobaka.webp" width="1600" height="900" loading="lazy" alt="Собака лежит на плитке у серой бочки с надписью Rakh"></div>
+      <div class="ph"><img src="media/sobaka.webp" width="1600" height="901" loading="lazy" alt="Собака лежит на плитке у серой бочки с надписью Rakh"></div>
       <figcaption><time>14:30</time>Собака у бочки. Ремонт ей не мешает.</figcaption>
     </figure>
   </div>
@@ -237,16 +247,16 @@
   <p>Последняя точка маршрута — бархан Сарыкум. Часть пути оборудована металлическим трапом, другая часть пока только строится, дальше пешком. По песку приятно босиком, если бы не табличка у входа. Ну ладно, никого не укусили и не съели, только песчаные ящерки пробегали мимо и закапывались в песок. Совсем немного вверх — и добрались. Кто-то фоткается, кто-то ловит дзен. Можно представить, что ты в настоящей огромной пустыне.</p>
   <div class="row narrow">
     <figure id="P163">
-      <div class="ph"><img src="media/sarykum.webp" width="1600" height="900" loading="lazy" alt="Информационная табличка у металлического трапа в зарослях с надписью Сарыкум"></div>
+      <div class="ph"><img src="media/sarykum.webp" width="1600" height="901" loading="lazy" alt="Информационная табличка у металлического трапа в зарослях с надписью Сарыкум"></div>
       <figcaption><time>15:51</time>Табличка у начала трапа. Не та, после которой босиком ходить расхотелось, та была страшнее.</figcaption>
     </figure>
     <figure id="P203">
-      <div class="ph"><img src="media/bosikom.webp" width="1400" height="2489" loading="lazy" alt="Ноги в джинсах и босые ступни на песке бархана, вдали горы и посёлок"></div>
+      <div class="ph"><img src="media/bosikom.webp" width="788" height="1400" loading="lazy" alt="Ноги в джинсах и босые ступни на песке бархана, вдали горы и посёлок"></div>
       <figcaption><time>16:25</time>Босиком. Решение принято до того, как я прочитал табличку, и отменять его было поздно.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P171">
-    <div class="ph"><img src="media/barhan-ya.webp" width="1600" height="900" loading="lazy" alt="Сергей крупно на фоне песчаного склона, по склону идут люди"></div>
+    <div class="ph"><img src="media/barhan-ya.webp" width="1600" height="1200" loading="lazy" alt="Сергей крупно на фоне песчаного склона, по склону идут люди"></div>
     <figcaption><time>16:01</time>На бархане. Люди на склоне ловят дзен, я ловлю дрон.</figcaption>
   </figure>
   <p>Экскурсионных групп было несколько, и некоторые организаторы тоже снимали на дрон. Операторы вообще не парились ни с управлением, ни с тем, что в воздухе могут быть другие коптеры. Один раз в меня чуть не влепились на высокой скорости. На Сахалине у маяка Анива мы с другими пилотами договаривались: разные стороны, разная высота, по очереди. Здесь договорённости не вышло, так что по правилу ДДД я отлетел на уровень ниже и снимал оттуда.</p>
@@ -265,11 +275,11 @@
   <span class="rubric">Местные</span>
   <div class="row">
     <figure id="P216">
-      <div class="ph"><img src="media/yashcherica.webp" width="1600" height="900" loading="lazy" alt="Песчаная ящерица на светлом песке, крупно"></div>
+      <div class="ph"><img src="media/yashcherica.webp" width="1600" height="901" loading="lazy" alt="Песчаная ящерица на светлом песке, крупно"></div>
       <figcaption><time>16:37</time>Песчаная ящерка. Через секунду закопалась, так что это ещё удача.</figcaption>
     </figure>
     <figure id="P217">
-      <div class="ph"><img src="media/kot.webp" width="1600" height="900" loading="lazy" alt="Кот лежит на лавке у каменного домика, рядом дерево"></div>
+      <div class="ph"><img src="media/kot.webp" width="1600" height="901" loading="lazy" alt="Кот лежит на лавке у каменного домика, рядом дерево"></div>
       <figcaption><time>16:45</time>Кот у домика на выходе. Дзен поймал раньше всех групп.</figcaption>
     </figure>
   </div>
@@ -280,19 +290,19 @@
   <h2>Махачкала с холма</h2>
   <p>Как ни странно, вернулись засветло, и я ещё успел побродить по городу. Смотровая возле кафе «Тарковский»: вид вполне себе обычный, но зато видно море. Потом Центральная соборная мечеть, дагестанский хинкал в ближайшем кафе и хостел.</p>
   <figure class="wide" id="P220">
-    <div class="ph"><img src="media/gorod.webp" width="2000" height="1125" loading="lazy" alt="Вид с холма на низкоэтажную Махачкалу под облачным небом"></div>
+    <div class="ph"><img src="media/gorod.webp" width="2000" height="1126" loading="lazy" alt="Вид с холма на низкоэтажную Махачкалу под облачным небом"></div>
     <figcaption><time>18:48</time>Город с холма. Низкоэтажный, без плана, до горизонта. Если долго смотреть, за горизонтом море.</figcaption>
   </figure>
   <figure class="mid" id="P227">
-    <div class="ph"><img src="media/more-izdali.webp" width="1600" height="900" loading="lazy" alt="Дымка над городом, у воды ряд высотных домов, за ними серое море"></div>
+    <div class="ph"><img src="media/more-izdali.webp" width="1600" height="901" loading="lazy" alt="Дымка над городом, у воды ряд высотных домов, за ними серое море"></div>
     <figcaption><time>18:50</time>Вот оно, море. Между мной и им ещё весь город.</figcaption>
   </figure>
   <figure class="wide" id="P242">
-    <div class="ph"><img src="media/mechet.webp" width="2000" height="1125" loading="lazy" alt="Фасад большой мечети с арками и двумя минаретами в зелёной подсветке, на площади люди"></div>
+    <div class="ph"><img src="media/mechet.webp" width="2000" height="1126" loading="lazy" alt="Фасад большой мечети с арками и двумя минаретами в зелёной подсветке, на площади люди"></div>
     <figcaption><time>19:26</time>Центральная соборная мечеть. Подсветка зелёная, через три минуты станет розовой.</figcaption>
   </figure>
   <figure class="tall" id="P246">
-    <div class="ph"><img src="media/mechet-rozovaya.webp" width="1400" height="2489" loading="lazy" alt="Мечеть с минаретами в розовой подсветке, мокрая плитка площади, идут люди"></div>
+    <div class="ph"><img src="media/mechet-rozovaya.webp" width="788" height="1400" loading="lazy" alt="Мечеть с минаретами в розовой подсветке, мокрая плитка площади, идут люди"></div>
     <figcaption><time>19:29</time>Стала розовой. На мокрой плитке подсветка видна дважды.</figcaption>
   </figure>
 </section>
@@ -303,22 +313,22 @@
   <p>Меня тянуло в Дербент, к экраноплану «Лунь», в Гамсутль. Но был риск не успеть к поезду в Ростов, а главное, не хватило бы времени на саму столицу, и я остался в городе. Если Грозный, как говорят, отстроили заново, то Махачкала выглядит как стихийная низкоэтажная застройка без всякого плана: узкие петляющие улицы, в которых легко запутаться. Достопримечательностей для меня оказалось немного, а те, что казались интересными, таковыми не явились.</p>
   <div class="row">
     <figure id="P251">
-      <div class="ph"><img src="media/ak-gel.webp" width="1600" height="900" loading="lazy" alt="Набережная с белой балюстрадой и кирпичной башенкой, за водой город"></div>
+      <div class="ph"><img src="media/ak-gel.webp" width="1600" height="901" loading="lazy" alt="Набережная с белой балюстрадой и кирпичной башенкой, за водой город"></div>
       <figcaption><time>12:40</time>Озеро Ак-Гёль. Балюстрада есть, вода есть, людей нет.</figcaption>
     </figure>
     <figure id="P254">
-      <div class="ph"><img src="media/uchitelnica.webp" width="1600" height="900" loading="lazy" alt="Бронзовая статуя женщины с кувшином под высокими бетонными арками"></div>
+      <div class="ph"><img src="media/uchitelnica.webp" width="1600" height="901" loading="lazy" alt="Бронзовая статуя женщины с кувшином под высокими бетонными арками"></div>
       <figcaption><time>12:43</time>Памятник русской учительнице. QR-код на табличке ведёт в никуда, и это обидно.</figcaption>
     </figure>
   </div>
   <p>Рядом музей истории города, вход свободный. От экспозиции я ожидал большего, честно говоря. Дальше мечеть Али-Хаджи Акушинского. Сумку оставил у входа, а на обратном пути смотрю: вокруг неё ходит и нервничает охранник. Подошёл, говорю «это моя». Спросил, намаз я читать приходил или так, пригласил в ислам, я отказался, постояли, поговорили, и я пошёл на пляж.</p>
   <div class="row">
     <figure id="P257">
-      <div class="ph"><img src="media/akushinskogo.webp" width="1600" height="900" loading="lazy" alt="Мечеть с золотистым куполом у дороги, за ней строящиеся многоэтажки и кран"></div>
+      <div class="ph"><img src="media/akushinskogo.webp" width="1600" height="901" loading="lazy" alt="Мечеть с золотистым куполом у дороги, за ней строящиеся многоэтажки и кран"></div>
       <figcaption><time>13:30</time>Мечеть Али-Хаджи Акушинского. Вокруг стройка, внутри тишина.</figcaption>
     </figure>
     <figure id="P260">
-      <div class="ph"><img src="media/zal.webp" width="1600" height="900" loading="lazy" alt="Зал мечети: зелёный ковёр, круглая люстра, расписной купол"></div>
+      <div class="ph"><img src="media/zal.webp" width="1600" height="901" loading="lazy" alt="Зал мечети: зелёный ковёр, круглая люстра, расписной купол"></div>
       <figcaption><time>14:01</time>Зал пустой. Охранник в это время сторожил мою сумку.</figcaption>
     </figure>
   </div>
@@ -328,7 +338,7 @@
   <h2>Каспийское море</h2>
   <p>Пляж не оборудован. Если приглядеться, справа стоят несколько кресел мягкой мебели, и это весь сервис. С одной стороны берег неудобный для захода в воду, дальше получше, но негде переодеться. Ещё чуть дальше нашёл, где, хотя цивилизованным это назвать сложно. В итоге и переоделся, и искупался, и лимонад купил. Народа было мало и на берегу, и в воде. Про пробы 2022 года я прочитал уже потом.</p>
   <figure class="wide" id="P262">
-    <div class="ph"><img src="media/plyazh.webp" width="2000" height="1125" loading="lazy" alt="Песчаный берег моря, вдоль него новая дорожка, справа многоэтажки"></div>
+    <div class="ph"><img src="media/plyazh.webp" width="2000" height="1126" loading="lazy" alt="Песчаный берег моря, вдоль него новая дорожка, справа многоэтажки"></div>
     <figcaption><time>14:29</time>Дорожку вдоль берега положили, пляж к ней пока не прилагается.</figcaption>
   </figure>
   <figure class="wide">
@@ -337,11 +347,11 @@
   </figure>
   <div class="row">
     <figure id="P268">
-      <div class="ph"><img src="media/volny.webp" width="1600" height="900" loading="lazy" alt="Волны накатывают на плоские каменные плиты берега"></div>
+      <div class="ph"><img src="media/volny.webp" width="1600" height="901" loading="lazy" alt="Волны накатывают на плоские каменные плиты берега"></div>
       <figcaption><time>14:51</time>С этой стороны заходить в воду неудобно. Заходил с другой.</figcaption>
     </figure>
     <figure id="P273">
-      <div class="ph"><img src="media/krugloe.webp" width="1600" height="900" loading="lazy" alt="Недостроенное круглое бетонное здание у берега"></div>
+      <div class="ph"><img src="media/krugloe.webp" width="1600" height="901" loading="lazy" alt="Недостроенное круглое бетонное здание у берега"></div>
       <figcaption><time>14:58</time>Круглое здание, не подписанное ни на одной карте. Местные о нём не знают. Больше похоже на разбирающееся, чем на строящееся.</figcaption>
     </figure>
   </div>
@@ -352,7 +362,7 @@
   <h2>Телепорт в Москву</h2>
   <p>Беру такси до вокзала. На вокзале обнаружился телепорт в Москву, а рядом во дворах недорогая и неплохая столовая. Подкрепляюсь и иду ждать поезд в Ростов-на-Дону. Там должна исполниться одна из моих мечт.</p>
   <figure class="tall" id="P275">
-    <div class="ph"><img src="media/pereulok.webp" width="1400" height="2489" loading="lazy" alt="Узкий переулок между домами с трубами и кондиционерами на стенах, в конце видна мечеть"></div>
+    <div class="ph"><img src="media/pereulok.webp" width="788" height="1400" loading="lazy" alt="Узкий переулок между домами с трубами и кондиционерами на стенах, в конце видна мечеть"></div>
     <figcaption><time>16:39</time>Переулок на пути к вокзалу. Таких тут сотни, и каждый заканчивается не там, где ждёшь.</figcaption>
   </figure>
   <div class="verdict">
@@ -375,8 +385,9 @@
 
 </article>
 
-<nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../index.html"><span>Все регионы</span></a></nav>
+<nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../20-chechnya/index.html"><span class="code">20</span><span><small>Раньше по маршруту</small>Чеченская Республика</span></a><a class="next" href="../61-rostov/index.html"><span><small>Дальше по маршруту</small>Ростовская область</span><span class="code">61</span></a></nav>
 </div>
+<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
 <script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>

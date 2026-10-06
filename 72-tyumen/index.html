@@ -25,15 +25,15 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=690f2df7">
+<link rel="stylesheet" href="../series.css?v=5b3a898d">
 <style>:root{--reg:#451C3B;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#CE88BD;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#CE88BD;--reg-ink:#14100A}</style>
 </head>
-<body>
+<body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P351">
-    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Ночная набережная Туры, подсвеченный вантовый мост отражается в реке"></div>
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1239" alt="Ночная набережная Туры, подсвеченный вантовый мост отражается в реке"></div>
     <div class="reg-id" style="--nw:9">
       <span class="code" aria-label="Код региона 72">72</span>
       <h1>Тюменская область</h1>
@@ -62,9 +62,21 @@
 <section class="sec">
   <p class="lead">Тюмень вроде хороший город, но тут я впервые столкнулся с тем, что не мог выбрать превью. Нет доминанты: нет одного вида, который говорил бы «это Тюмень». Есть длинная набережная, десяток скульптур, пара монастырей и отель, где каждый этаж оформлен под свою тему. Всё ровно хорошо, и это, похоже, местный стиль.</p>
   <p class="lead">Поездку я совмещал с работой: разница с Москвой в два часа была мне на руку, утро на дела, день на город. Три дня так и прошли, а на четвёртый уехал в Тобольск, но это уже отдельная история.</p>
-  <figure class="wide daymap">
-    
-    <figcaption>Три дня по точкам съёмки, всё в Тюмени. Кружки — фото из этого отчёта, по ним можно кликать.</figcaption>
+  <figure class="daymap">
+    <svg class="daymap-svg" viewBox="0 0 360 370" role="img" aria-label="Карта мест — Тюменская область: 5 мест по порядку, названия — списком под картой">
+<line class="dm-route" x1="34.1" y1="26.0" x2="99.3" y2="119.7"/>
+<line class="dm-route" x1="99.3" y1="119.7" x2="145.9" y2="163.6"/>
+<line class="dm-route" x1="145.9" y1="163.6" x2="200.8" y2="165.0"/>
+<line class="dm-route" x1="200.8" y1="165.0" x2="325.9" y2="326.0"/>
+<g class="dm-num"><circle cx="34.1" cy="26.0" r="11"/><text x="34.1" y="30.5" text-anchor="middle">1</text></g>
+<g class="dm-num"><circle cx="99.3" cy="119.7" r="11"/><text x="99.3" y="124.2" text-anchor="middle">2</text></g>
+<g class="dm-num"><circle cx="145.9" cy="163.6" r="11"/><text x="145.9" y="168.1" text-anchor="middle">3</text></g>
+<g class="dm-num"><circle cx="200.8" cy="165.0" r="11"/><text x="200.8" y="169.5" text-anchor="middle">4</text></g>
+<g class="dm-num"><circle cx="325.9" cy="326.0" r="11"/><text x="325.9" y="330.5" text-anchor="middle">5</text></g>
+<g class="dm-scale"><path d="M26,356 v-5 h40.5 v5"/><text x="72.5" y="357">500 м</text></g>
+</svg>
+<ol class="dm-list"><li><a href="#P218">Троицкий монастырь</a> <span class="dm-n">· 14 фото</span></li><li><a href="#P236">Набережная Туры</a> <span class="dm-n">· 62 фото</span></li><li><a href="#P284">Сквер сибирских кошек</a> <span class="dm-n">· 29 фото</span></li><li><a href="#P296">«Россия — моя история»</a> <span class="dm-n">· 61 фото</span></li><li><a href="#P209">Гостиница «Восток»</a> <span class="dm-n">· 25 фото</span></li></ol>
+    <figcaption>Три дня по точкам съёмки, всё в Тюмени. Номера — места из списка под картой; ссылки ведут к кадрам.</figcaption>
   </figure>
   <p>Сюда из Москвы бывают дешёвые билеты, до 2 500 рублей. Тюмень ассоциируется с нефтью, ещё я слышал про горячие источники. До источников не доехал, до нефти тоже, но об этом ниже.</p>
 </section>
@@ -90,7 +102,7 @@
   <h2>Отель с темами</h2>
   <p>Прилетел уже вечером. Отель оказался интересный: каждый этаж оформлен по-своему, от зоны отдыха до названий номеров. На одном этаже эпоха СССР, на другом библиотека с прудиком, в пруду живые рыбы, и большие.</p>
   <figure class="mid" id="P209">
-    <div class="ph"><img src="media/otel.webp" width="1600" height="900" loading="lazy" alt="Многоэтажная гостиница с вывеской Vostok и фонтаном перед входом вечером"></div>
+    <div class="ph"><img src="media/otel.webp" width="1600" height="901" loading="lazy" alt="Многоэтажная гостиница с вывеской Vostok и фонтаном перед входом вечером"></div>
     <figcaption><time>20:49</time>Гостиница «Восток». Снаружи обычная коробка, внутри по этажу на тему.</figcaption>
   </figure>
   <figure class="wide">
@@ -105,41 +117,41 @@
   <p>Начал с Троицкого монастыря, рядом духовное училище и памятник Филофею Лещинскому. Оттуда начинается набережная. Она длинная, вся благоустроенная, и знаков на ней больше, чем людей.</p>
   <div class="row narrow">
     <figure id="P218">
-      <div class="ph"><img src="media/troickij.webp" width="1400" height="2489" loading="lazy" alt="Белый Троицкий собор с золотыми куполами, перед ним ель"></div>
+      <div class="ph"><img src="media/troickij.webp" width="788" height="1400" loading="lazy" alt="Белый Троицкий собор с золотыми куполами, перед ним ель"></div>
       <figcaption><time>10:38</time>Свято-Троицкий мужской монастырь. Белое с золотом на синем, так тут принято.</figcaption>
     </figure>
     <figure id="P227">
-      <div class="ph"><img src="media/most.webp" width="1600" height="900" loading="lazy" alt="Вантовый пешеходный мост через Туру, набережная и стройка на другом берегу"></div>
+      <div class="ph"><img src="media/most.webp" width="1600" height="901" loading="lazy" alt="Вантовый пешеходный мост через Туру, набережная и стройка на другом берегу"></div>
       <figcaption><time>10:49</time>Мост влюблённых. Справа по пути заросшие зеленью овраги, слева стройка.</figcaption>
     </figure>
   </div>
   <figure class="wide" id="P236">
-    <div class="ph"><img src="media/naberezhnaya.webp" width="2000" height="1125" loading="lazy" alt="Многоярусная набережная Туры сверху, дорожки, зелёный склон, вдали дома"></div>
+    <div class="ph"><img src="media/naberezhnaya.webp" width="2000" height="1126" loading="lazy" alt="Многоярусная набережная Туры сверху, дорожки, зелёный склон, вдали дома"></div>
     <figcaption><time>10:59</time>Начало длинной набережной. Ярусов несколько, людей в понедельник утром почти нет.</figcaption>
   </figure>
   <div class="row">
     <figure id="P252">
-      <div class="ph"><img src="media/gitarist.webp" width="1600" height="900" loading="lazy" alt="Бронзовый памятник человеку с гитарой на набережной, за ним река и мост"></div>
+      <div class="ph"><img src="media/gitarist.webp" width="1600" height="901" loading="lazy" alt="Бронзовый памятник человеку с гитарой на набережной, за ним река и мост"></div>
       <figcaption><time>11:26</time>Высоцкий. Стоит лицом к реке, спиной к стройке.</figcaption>
     </figure>
     <figure id="P255">
-      <div class="ph"><img src="media/derevo.webp" width="1600" height="900" loading="lazy" alt="Дерево из разноцветных металлических лепестков в белой колоннаде"></div>
+      <div class="ph"><img src="media/derevo.webp" width="1600" height="901" loading="lazy" alt="Дерево из разноцветных металлических лепестков в белой колоннаде"></div>
       <figcaption><time>11:28</time>Дерево желаний или любви. Я так и не понял.</figcaption>
     </figure>
   </div>
   <p>В Тюмени живут мастера рекламы. Это заметно по витринам, по надписям на асфальте и даже по туалету на набережной, где реклама была агрессивнее, чем нужно туалету. Возможно, все эти витрины придумывает один человек.</p>
   <div class="row narrow">
     <figure id="P260">
-      <div class="ph"><img src="media/cvety.webp" width="1400" height="2489" loading="lazy" alt="Торец кирпичного дома расписан крупными цветами, внизу белый фургон"></div>
+      <div class="ph"><img src="media/cvety.webp" width="788" height="1400" loading="lazy" alt="Торец кирпичного дома расписан крупными цветами, внизу белый фургон"></div>
       <figcaption><time>11:40</time>Торец дома в цветах. В городе ещё встречаются деревянные дома с наличниками, но этот перекричал всех.</figcaption>
     </figure>
     <figure id="P272">
-      <div class="ph"><img src="media/znamenskij.webp" width="1400" height="2489" loading="lazy" alt="Бело-голубой Знаменский собор с колокольней на фоне облаков"></div>
+      <div class="ph"><img src="media/znamenskij.webp" width="788" height="1400" loading="lazy" alt="Бело-голубой Знаменский собор с колокольней на фоне облаков"></div>
       <figcaption><time>12:21</time>Знаменский собор. Голубой здесь второй цвет после золотого.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P284">
-    <div class="ph"><img src="media/koty.webp" width="1600" height="900" loading="lazy" alt="Золотые фигуры кошек на гранитных постаментах в сквере"></div>
+    <div class="ph"><img src="media/koty.webp" width="1600" height="901" loading="lazy" alt="Золотые фигуры кошек на гранитных постаментах в сквере"></div>
     <figcaption><time>12:42</time>Сквер сибирских кошек. Те самые, что спасли Эрмитаж. Позолота за заслуги.</figcaption>
   </figure>
 </section>
@@ -150,46 +162,46 @@
   <p>Ничего заранее не планировал, но попал на день рождения города. Выступали «Иванушки International». Долго их не слушал, пошёл гулять по вечернему городу: оказалось, у Тюмени после заката появляется то, чего не хватает днём.</p>
   <div class="row narrow">
     <figure id="P296">
-      <div class="ph"><img src="media/ivanushki.webp" width="1400" height="2489" loading="lazy" alt="Певец с микрофоном на сцене на фоне красного экрана"></div>
+      <div class="ph"><img src="media/ivanushki.webp" width="788" height="1400" loading="lazy" alt="Певец с микрофоном на сцене на фоне красного экрана"></div>
       <figcaption><time>20:46</time>«Иванушки». Подарок городу на 437 лет. Я послушал две песни и ушёл.</figcaption>
     </figure>
     <figure id="P305">
-      <div class="ph"><img src="media/smotri.webp" width="1600" height="900" loading="lazy" alt="Надпись «Смотри дважды!» на асфальте перед пешеходным переходом"></div>
+      <div class="ph"><img src="media/smotri.webp" width="1600" height="901" loading="lazy" alt="Надпись «Смотри дважды!» на асфальте перед пешеходным переходом"></div>
       <figcaption><time>21:25</time>Переходы здесь с надписями, и у каждого своя. Мне понравилось.</figcaption>
     </figure>
   </div>
   <div class="row">
     <figure id="P309">
-      <div class="ph"><img src="media/fontan.webp" width="1600" height="900" loading="lazy" alt="Подсвеченный фонтан под ажурным металлическим куполом вечером"></div>
+      <div class="ph"><img src="media/fontan.webp" width="1600" height="901" loading="lazy" alt="Подсвеченный фонтан под ажурным металлическим куполом вечером"></div>
       <figcaption><time>21:33</time>Фонтан под зонтом. Вечером у него больше зрителей, чем у сцены.</figcaption>
     </figure>
     <figure id="P315">
-      <div class="ph"><img src="media/malchik.webp" width="1600" height="900" loading="lazy" alt="Силуэт скульптуры мальчика с собакой на ночной площади"></div>
+      <div class="ph"><img src="media/malchik.webp" width="1600" height="901" loading="lazy" alt="Силуэт скульптуры мальчика с собакой на ночной площади"></div>
       <figcaption><time>21:42</time>Одна из уличных скульптур. Ночью они читаются только силуэтом, и так даже лучше.</figcaption>
     </figure>
   </div>
   <div class="row">
     <figure id="P321">
-      <div class="ph"><img src="media/lyublyu.webp" width="1600" height="900" loading="lazy" alt="Светящаяся надпись «Я люблю Тюмень» на набережной, рядом ряд самокатов"></div>
+      <div class="ph"><img src="media/lyublyu.webp" width="1600" height="901" loading="lazy" alt="Светящаяся надпись «Я люблю Тюмень» на набережной, рядом ряд самокатов"></div>
       <figcaption><time>22:42</time>Обязательная надпись. Самокаты поставлены ровнее, чем буквы.</figcaption>
     </figure>
     <figure id="P333">
-      <div class="ph"><img src="media/mama.webp" width="1600" height="900" loading="lazy" alt="Золотая скульптура женщины с детьми на постаменте с надписью «Мама», вокруг цветы"></div>
+      <div class="ph"><img src="media/mama.webp" width="901" height="1600" loading="lazy" alt="Золотая скульптура женщины с детьми на постаменте с надписью «Мама», вокруг цветы"></div>
       <figcaption><time>22:52</time>Скульптура «Мама». Рядом «Нежность», почтальон и три клоуна: в Тюмени памятников больше, чем тем для них.</figcaption>
     </figure>
   </div>
   <div class="row">
     <figure id="P338">
-      <div class="ph"><img src="media/girlyanda.webp" width="1600" height="900" loading="lazy" alt="Пешеходная аллея под гирляндой из лампочек ночью"></div>
+      <div class="ph"><img src="media/girlyanda.webp" width="1600" height="901" loading="lazy" alt="Пешеходная аллея под гирляндой из лампочек ночью"></div>
       <figcaption><time>23:00</time>Пешеходная улица под гирляндой. В одиннадцать вечера в понедельник тут гуляют.</figcaption>
     </figure>
     <figure id="P343">
-      <div class="ph"><img src="media/437.webp" width="1600" height="900" loading="lazy" alt="Объёмные буквы «Тюмень 437» на ночной площади"></div>
+      <div class="ph"><img src="media/437.webp" width="1600" height="901" loading="lazy" alt="Объёмные буквы «Тюмень 437» на ночной площади"></div>
       <figcaption><time>23:32</time>Цифра дня. К утру её, видимо, разберут.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P349">
-    <div class="ph"><img src="media/memorial.webp" width="1600" height="900" loading="lazy" alt="Бронзовая фигура среди стены с фотографиями людей"></div>
+    <div class="ph"><img src="media/memorial.webp" width="1600" height="901" loading="lazy" alt="Бронзовая фигура среди стены с фотографиями людей"></div>
     <figcaption><time>23:50</time>Мемориал «Во имя правды». Фотографии настоящие, их много, и в полночь на них смотреть тяжелее, чем днём.</figcaption>
   </figure>
   <figure class="wide">
@@ -203,16 +215,16 @@
   <h2>Музеи и буклет вместо буровой</h2>
   <p>Стоит упомянуть неудавшуюся экскурсию на буровую установку с дегустацией ухи с нефтью. В этот месяц её не проводили, так что от нефти на память остался только буклет. Вместо буровой пошёл в «Россия — моя история»: вход бесплатный, три или четыре мультимедийные выставки, и быстро пробежаться не получилось, завис на двух этажах. Потом музейный комплекс Словцова, тоже модный и большой, но там почти каждая экспозиция платная, и на каждую отдельный билет. Лучшее там — очки виртуальной реальности: ты оказываешься в комнате с бывшим царём и слугами и можешь крутить головой.</p>
   <figure class="wide" id="P366">
-    <div class="ph"><img src="media/istoriya.webp" width="2000" height="1125" loading="lazy" alt="Белый перфорированный фасад здания с надписью «Россия — моя история»"></div>
+    <div class="ph"><img src="media/istoriya.webp" width="1600" height="901" loading="lazy" alt="Белый перфорированный фасад здания с надписью «Россия — моя история»"></div>
     <figcaption><time>14:49</time>«Россия — моя история». Такие павильоны теперь во многих городах, в этот зашёл впервые. Внутри есть зал про девяностые, вдруг кто-то скучает.</figcaption>
   </figure>
   <div class="row narrow">
     <figure id="P397">
-      <div class="ph"><img src="media/koleso.webp" width="1600" height="900" loading="lazy" alt="Колесо обозрения над клумбой с красными и жёлтыми цветами днём"></div>
+      <div class="ph"><img src="media/koleso.webp" width="1600" height="901" loading="lazy" alt="Колесо обозрения над клумбой с красными и жёлтыми цветами днём"></div>
       <figcaption><time>18:27</time>Колесо обозрения при дневном свете. Накануне оно было в огнях, сегодня в цветах.</figcaption>
     </figure>
     <figure id="P398">
-      <div class="ph"><img src="media/arka.webp" width="1400" height="2489" loading="lazy" alt="Арка из тёмного металла с колоколом и датами 1941–1945"></div>
+      <div class="ph"><img src="media/arka.webp" width="788" height="1400" loading="lazy" alt="Арка из тёмного металла с колоколом и датами 1941–1945"></div>
       <figcaption><time>18:36</time>Арка с колоколом у мемориала. Последний кадр Тюмени: завтра дальше по области.</figcaption>
     </figure>
   </div>
@@ -239,8 +251,9 @@
 
 </article>
 
-<nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../72-tobolsk/index.html"><span><small>Дальше по маршруту</small>Тобольск</span><span class="code">72</span></a></nav>
+<nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../89-yamal/index.html"><span class="code">89</span><span><small>Раньше по маршруту</small>Ямало-Ненецкий АО</span></a><a class="next" href="../72-tobolsk/index.html"><span><small>Дальше по маршруту</small>Тобольск</span><span class="code">72</span></a></nav>
 </div>
+<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
 <script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>
