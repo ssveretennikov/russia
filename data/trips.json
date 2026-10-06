@@ -3,7 +3,7 @@
   "id": "2022-02-19",
   "start": "2022-02-19",
   "end": "2022-02-20",
-  "checked": false,
+  "checked": true,
   "regions": [
    "48-lipetsk",
    "36-voronezh"
@@ -13,7 +13,7 @@
   "id": "2022-02-26",
   "start": "2022-02-26",
   "end": "2022-02-27",
-  "checked": false,
+  "checked": true,
   "regions": [
    "46-kursk",
    "69-tver"
@@ -34,7 +34,7 @@
   "id": "2022-03-12",
   "start": "2022-03-12",
   "end": "2022-03-13",
-  "checked": false,
+  "checked": true,
   "regions": [
    "10-karelia",
    "51-murmansk"
@@ -44,7 +44,7 @@
   "id": "2022-03-19",
   "start": "2022-03-19",
   "end": "2022-03-20",
-  "checked": false,
+  "checked": true,
   "regions": [
    "44-kostroma",
    "37-ivanovo",
@@ -55,7 +55,7 @@
   "id": "2022-04-07",
   "start": "2022-04-07",
   "end": "2022-04-11",
-  "checked": false,
+  "checked": true,
   "regions": [
    "39-kaliningrad"
   ]
@@ -64,7 +64,7 @@
   "id": "2022-04-16",
   "start": "2022-04-16",
   "end": "2022-04-17",
-  "checked": false,
+  "checked": true,
   "regions": [
    "53-novgorod",
    "60-pskov",
@@ -109,7 +109,7 @@
   "id": "2022-06-17",
   "start": "2022-06-17",
   "end": "2022-06-21",
-  "checked": false,
+  "checked": true,
   "regions": [
    "23-krasnodar",
    "01-adygeya",
@@ -121,7 +121,7 @@
   "id": "2022-07-04",
   "start": "2022-07-04",
   "end": "2022-07-23",
-  "checked": false,
+  "checked": true,
   "regions": [
    "38-irkutsk",
    "03-buryatia",
@@ -139,7 +139,7 @@
   "id": "2022-08-13",
   "start": "2022-08-13",
   "end": "2022-08-14",
-  "checked": false,
+  "checked": true,
   "regions": [
    "52-nizhny-novgorod",
    "43-kirov"
@@ -156,7 +156,7 @@
   "id": "2022-12-17",
   "start": "2022-12-17",
   "end": "2022-12-18",
-  "checked": false,
+  "checked": true,
   "regions": [
    "47-leningrad"
   ]
@@ -165,7 +165,7 @@
   "id": "2023-05-31",
   "start": "2023-05-31",
   "end": "2023-06-17",
-  "checked": false,
+  "checked": true,
   "regions": [
    "29-arkhangelsk",
    "35-vologda",
@@ -188,7 +188,7 @@
   "id": "2023-07-16",
   "start": "2023-07-16",
   "end": "2023-07-16",
-  "checked": false,
+  "checked": true,
   "regions": [
    "10-karelia"
   ]
@@ -197,7 +197,7 @@
   "id": "2023-08-12",
   "start": "2023-08-12",
   "end": "2023-08-19",
-  "checked": false,
+  "checked": true,
   "regions": [
    "89-yamal",
    "72-tyumen",
@@ -209,7 +209,7 @@
   "id": "2023-09-03",
   "start": "2023-09-03",
   "end": "2023-09-13",
-  "checked": false,
+  "checked": true,
   "regions": [
    "11-komi",
    "83-nenets",
@@ -224,7 +224,7 @@
   "id": "2023-09-30",
   "start": "2023-09-30",
   "end": "2023-09-30",
-  "checked": false,
+  "checked": true,
   "regions": [
    "67-smolensk"
   ]
@@ -233,7 +233,7 @@
   "id": "2024-01-01",
   "start": "2024-01-01",
   "end": "2024-01-05",
-  "checked": false,
+  "checked": true,
   "regions": [
    "22-altai-krai",
    "04-altai-republic"
@@ -243,7 +243,7 @@
   "id": "2024-03-23",
   "start": "2024-03-23",
   "end": "2024-03-30",
-  "checked": false,
+  "checked": true,
   "regions": [
    "23-krasnodar"
   ]
@@ -252,7 +252,7 @@
   "id": "2024-08-15",
   "start": "2024-08-15",
   "end": "2024-08-18",
-  "checked": false,
+  "checked": true,
   "regions": [
    "91-krym",
    "92-sevastopol"
@@ -262,7 +262,7 @@
   "id": "2025-07-30",
   "start": "2025-07-30",
   "end": "2025-08-12",
-  "checked": false,
+  "checked": true,
   "regions": [
    "87-chukotka",
    "41-kamchatka",
