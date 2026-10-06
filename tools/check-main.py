@@ -38,11 +38,11 @@ def run(page, width):
     page.click('.chip[data-k="fo"][data-v=""]'); page.wait_for_timeout(100)
     check(fav_shown(), 'сброс округа: лента вернулась')
     # фильтр года
-    page.click('.chip[data-k="year"][data-v="2025"]'); page.wait_for_timeout(100)
-    check(visible('li.reg[data-code]') == visible('li.reg[data-year="2025"]') and visible('li.reg[data-year="2025"]') > 0, 'фильтр года: видны только строки 2025')
+    page.click('.ychip[data-v="2025"]'); page.wait_for_timeout(100)
+    check(visible('li.reg[data-code]') == visible('li.reg[data-year="2025"]') and visible('li.reg[data-year="2025"]') > 0, 'фильтр года по легенде: видны только строки 2025')
     check(not fav_shown(), 'фильтр года: лента скрыта')
-    page.click('.chip[data-k="year"][data-v=""]'); page.wait_for_timeout(100)
-    check(fav_shown(), 'сброс года: лента вернулась')
+    page.click('.ychip[data-v="2025"]'); page.wait_for_timeout(100)
+    check(fav_shown(), 'повторное нажатие года: лента вернулась')
     # поиск
     page.fill('#find', 'магадан'); page.wait_for_timeout(100)
     check(visible('li.reg[data-code]') == 1 and visible('li.reg[data-code="49"]') == 1, 'поиск «магадан» находит один регион — 49')
@@ -50,12 +50,12 @@ def run(page, width):
     page.fill('#find', ''); page.wait_for_timeout(100)
     check(fav_shown() and visible('li.reg[data-code]') == 89, 'сброс поиска: лента вернулась, все 89 строк на месте')
     # «Путь по годам»
-    page.click('#story'); page.wait_for_timeout(300)
-    check(page.evaluate('document.getElementById("story").classList.contains("playing")'), '«Путь по годам» запустился')
+    page.click('#play'); page.wait_for_timeout(300)
+    check(page.evaluate('document.getElementById("play").classList.contains("playing")'), '«Путь по годам» запустился')
     check(not page.evaluate('document.getElementById("mapdate").hidden'), 'над картой показана дата')
     check(not fav_shown(), 'хронология: лента скрыта')
-    page.click('#story'); page.wait_for_timeout(100)
-    check(not page.evaluate('document.getElementById("story").classList.contains("playing")'), '«Путь по годам» остановился')
+    page.click('#play'); page.wait_for_timeout(100)
+    check(not page.evaluate('document.getElementById("play").classList.contains("playing")'), '«Путь по годам» остановился')
     page.click('#tall'); page.wait_for_timeout(100)
     check(fav_shown(), '«Показать весь период»: лента вернулась')
     # ссылки
@@ -66,6 +66,41 @@ def run(page, width):
     missing = sorted({s for s in imgs if not os.path.exists(os.path.join(ROOT, s))})
     check(not missing, f'все {len(imgs)} картинок карточек и миниатюр есть на диске' + (f': нет {missing}' if missing else ''))
 
+def phone(b):
+    # телефон с касаниями: «Европейская часть» увеличивает карту, касание Московской области открывает карточку
+    ctx = b.new_context(viewport={'width': 375, 'height': 812}, has_touch=True, is_mobile=True, device_scale_factor=1)
+    page = ctx.new_page()
+    page.goto('file:///' + INDEX.replace('\\', '/')); page.wait_for_timeout(500)
+    print('--- телефон 375 px, касания')
+    size = lambda: page.evaluate('''(() => { const r = document.querySelector('.rumap path[data-code="50"]').getBoundingClientRect(); return Math.min(r.width, r.height); })()''')
+    before = size()
+    page.click('#zoom'); page.wait_for_timeout(600)
+    after = size()
+    check(after >= 24 and after / before >= 2.5, f'«Европейская часть»: Московская область {before:.0f} → {after:.0f} px')
+    page.locator('.rumap path[data-code="50"]').scroll_into_view_if_needed(); page.wait_for_timeout(200)
+    box = page.evaluate('''(() => { const r = document.querySelector('.rumap path[data-code="50"]').getBoundingClientRect(); 
+        // посередине области — Москва, поэтому ищем точку, где сверху именно Подмосковье
+        for (let fy = .3; fy <= .7; fy += .05) for (let fx = .2; fx <= .8; fx += .05) {
+          const x = r.x + r.width * fx, y = r.y + r.height * fy, el = document.elementFromPoint(x, y);
+          if (el && el.dataset && el.dataset.code === '50') return [x, y];
+        }
+        return [r.x + r.width / 2, r.y + r.height / 2]; })()''')
+    page.touchscreen.tap(box[0], box[1]); page.wait_for_timeout(300)
+    check(page.evaluate('(document.querySelector("#mcard .code") || {}).textContent') == '50', 'касание Московской области после увеличения: карточка с кодом 50')
+    page.click('#zoom'); page.wait_for_timeout(600)
+    check(abs(size() - before) < 1, '«Вся страна» возвращает карту целиком')
+    ctx.close()
+
+def player(page):
+    # проигрыватель проходит все поездки и сам останавливается на полной карте
+    n = page.evaluate('JSON.parse(document.getElementById("karta").dataset.trips).length')
+    check(n == 23, f'шагов «Пути по годам» — поездок: {n}')
+    page.click('#play'); page.wait_for_timeout(200)
+    check(page.evaluate('document.getElementById("track").value') == '0', 'проигрыватель начал с первой поездки')
+    page.wait_for_timeout(n * 1500 + 1500)
+    check(not page.evaluate('document.getElementById("play").classList.contains("playing")')
+          and page.evaluate('document.getElementById("track").value') == str(n), 'проигрыватель прошёл все поездки и остановился')
+
 with sync_playwright() as p:
     b = p.chromium.launch(args=['--allow-file-access-from-files'])
     ctx = b.new_context(device_scale_factor=1)
@@ -74,6 +109,8 @@ with sync_playwright() as p:
     page.on('pageerror', lambda e: errors.append(str(e)))
     for w in (375, 1440):
         run(page, w)
+    player(page)
+    phone(b)
     check(not errors, 'ошибок скрипта на странице нет' + (f': {errors[:3]}' if errors else ''))
     b.close()
 print('\nИТОГ:', 'всё в порядке' if not fails else f'ошибок {len(fails)}')

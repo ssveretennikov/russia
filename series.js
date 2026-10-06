@@ -242,3 +242,40 @@
   }
   pick();
 })();
+
+/* Возврат к списку и прочитанное */
+(function () {
+  var m = location.pathname.match(/\/(\d+)-[^\/]*\/(?:index(?:\.local)?\.html)?$/);
+  var code = m ? String(parseInt(m[1], 10)) : null;
+  function norm(v) { return String(parseInt(v, 10)); }
+  function readList() { try { return JSON.parse(localStorage.getItem('read') || '[]') || []; } catch (e) { return []; } }
+  if (code) {
+    try { var l = readList(); if (l.indexOf(code) < 0) { l.push(code); localStorage.setItem('read', JSON.stringify(l)); } } catch (e) {}
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href$="../index.html"]');
+      if (!a) return;
+      try { sessionStorage.setItem('backTo', code); } catch (err) {}
+    });
+    return;
+  }
+  var rows = document.querySelectorAll('li.reg[data-code]');
+  if (!rows.length) return;
+  var done = readList().map(norm);
+  rows.forEach(function (li) { if (done.indexOf(norm(li.getAttribute('data-code'))) >= 0) li.classList.add('read'); });
+  document.querySelectorAll('.fc a[href]').forEach(function (a) {
+    var h = a.getAttribute('href').match(/^(\d+)-/);
+    if (h && done.indexOf(norm(h[1])) >= 0) a.closest('.fc').classList.add('read');
+  });
+  var back = null;
+  try { back = sessionStorage.getItem('backTo'); sessionStorage.removeItem('backTo'); } catch (e) {}
+  if (!back || location.hash) return;
+  var row = document.querySelector('li.reg[data-code="' + back + '"]');
+  if (!row) return;
+  var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function go() {
+    row.scrollIntoView({ block: 'center', behavior: calm ? 'auto' : 'smooth' });
+    row.classList.add('back-hl');
+    setTimeout(function () { row.classList.remove('back-hl'); }, 2600);
+  }
+  if (document.readyState === 'complete') go(); else window.addEventListener('load', go);
+})();
