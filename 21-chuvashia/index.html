@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#3A78B0;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#71A2D0;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#71A2D0;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P050">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1239" alt="Пустая площадь у залива, справа колесо обозрения, вдали на холме памятник с раскинутыми руками"></div>
@@ -84,8 +85,22 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Чувашию</span></a></li>
+    <li><a href="#g2"><span class="toc-d">12 сентября · вторник · утро</span><span class="toc-t">От будки до сфинкса</span></a></li>
+    <li><a href="#g3"><span class="toc-t">Бульвар Ефремова и Красная площадь</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Залив и Волга-опера</span></a></li>
+    <li><a href="#g5"><span class="toc-d">12 сентября · день</span><span class="toc-t">Мать-покровительница и старый город</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Парк Победы, 114 метров</span></a></li>
+    <li><a href="#g7"><span class="toc-d">12 сентября · 13:36</span><span class="toc-t">Музей трактора</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Чувашию</h2>
+  <h2 id="g1">Три вещи про Чувашию</h2>
   <ul class="facts">
     <li>Шупашкар — старое название Чебоксар, и на гербе города оно стоит рядом с русским. На том же стекле: «Основан в 1469 году»</li>
     <li>СИЗО №1 в Чебоксарах считается самой старой тюрьмой России: построена по личному указу Ивана Грозного. Рядом стоит ему мини-памятник в стеклянной витрине</li>
@@ -103,7 +118,7 @@
 
 <section class="sec">
   <div class="day">12 сентября · вторник · утро</div>
-  <h2>От будки до сфинкса</h2>
+  <h2 id="g2">От будки до сфинкса</h2>
   <p>Вышел в восемь. Музей в такое время закрыт, но по территории прогуляться можно, и возле художественного музея меня встретил сфинкс. Чебоксары — вторая родина египтян, если кто не знал.</p>
   <div class="row">
     <figure id="P001">
@@ -128,7 +143,7 @@
 </section>
 
 <section class="sec">
-  <h2>Бульвар Ефремова и Красная площадь</h2>
+  <h2 id="g3">Бульвар Ефремова и Красная площадь</h2>
   <p>По мосту над оврагом, состояние которого оставляет желать лучшего, вышел на пешеходный бульвар купца Ефремова. Под мостом какие-то непонятные длинные тропы, но ими пользуются: видел там людей. На бульваре стоят Остап Бендер с Кисой, камни любви и выставка плакатов, а дальше открывается площадь у залива.</p>
   <div class="row">
     <figure id="P027">
@@ -171,7 +186,7 @@
 </section>
 
 <section class="sec">
-  <h2>Залив и Волга-опера</h2>
+  <h2 id="g4">Залив и Волга-опера</h2>
   <p>На другой берег залива ведёт пешеходный мост с гербами на решётке. Там новая набережная, цветочные фигуры и театр оперы и балета, который все зовут Волга-оперой. Бетонный, угловатый, и даже не в пасмурную погоду выглядит круто. Смотровая с этого берега поинтереснее.</p>
   <figure class="wide" id="P074">
     <div class="ph"><img src="media/lestnica-gerb.webp" width="2000" height="1126" loading="lazy" alt="Зелёный склон с белой лестницей и гербом города, внизу вода залива, наверху жилые дома"></div>
@@ -195,7 +210,7 @@
 
 <section class="sec">
   <div class="day">12 сентября · день</div>
-  <h2>Мать-покровительница и старый город</h2>
+  <h2 id="g5">Мать-покровительница и старый город</h2>
   <p>К памятнику на холме поднялся к одиннадцати. Снизу она закрывает полнеба. Рядом Введенский собор, иностранные колокола, мини-Иван Грозный в витрине и «Ворота в подземный замок». Набережная Волги тут выглядит некупабельно, зато рядом бесплатный общественный туалет, и это я отмечаю как плюс.</p>
   <div class="row">
     <figure id="P113">
@@ -249,7 +264,7 @@
 </section>
 
 <section class="sec">
-  <h2>Парк Победы, 114 метров</h2>
+  <h2 id="g6">Парк Победы, 114 метров</h2>
   <p>От речного вокзала поднялся по лестнице через лес к парку Победы. Ещё несколько ступенек, и, наверное, самая высокая точка в городе. В парке, как положено, военная техника, а на входе пограничный столб с номером региона. Подписано, как и всё здесь.</p>
   <div class="row">
     <figure id="P162">
@@ -265,7 +280,7 @@
 
 <section class="sec">
   <div class="day">12 сентября · 13:36</div>
-  <h2>Музей трактора</h2>
+  <h2 id="g7">Музей трактора</h2>
   <p>Напоследок оставил себе музей трактора. Здание тоже в форме трактора, во дворе ещё с десяток, и на большинство можно залазить. В моём детстве в моей деревне была большая свалка всякой сельхозтехники, в том числе тракторы, так что тут я немного поностальгировал. Внутри — бульдозер в разрезе, паровой трактор Блинова, трактор из лего, деревянный, и песочница, в которой можно поиграться.</p>
   <figure class="wide" id="P172">
     <div class="ph"><img src="media/traktor-stariy.webp" width="2000" height="1126" loading="lazy" alt="Чёрный старинный трактор на металлических колёсах во дворе музея"></div>
@@ -303,6 +318,11 @@
     <div class="ph"><img src="media/muzey.webp" width="1600" height="901" loading="lazy" alt="Трёхэтажное здание музея с вывеской «Музей истории трактора»"></div>
     <figcaption><time>14:17</time>Последний кадр. Дальше мчу в Йошкар-Олу: на три оставшихся региона у меня всего двое суток.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>Шесть часов пешком, залив по кругу, Волга-опера и музей, в котором можно залезть на трактор: для небогатого города это хороший день. Не хватило Волги вблизи и целой набережной, к которой можно пройти, а не продираться.</p>
@@ -326,6 +346,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../12-mari-el/index.html"><span class="code">12</span><span><small>Раньше по маршруту</small>Республика Марий Эл</span></a><a class="next" href="../13-mordovia/index.html"><span><small>Дальше по маршруту</small>Республика Мордовия</span><span class="code">13</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

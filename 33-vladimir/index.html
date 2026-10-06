@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#2B78BA;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#66A5DC;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#66A5DC;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P005">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: белый Успенский собор с золотыми куполами на заснеженном холме, за ним город и река"></div>
@@ -82,8 +83,23 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Владимир</span></a></li>
+    <li><a href="#g2"><span class="toc-d">20 марта · воскресенье · утро</span><span class="toc-t">Улица как музей</span></a></li>
+    <li><a href="#g3"><span class="toc-t">Собор сверху</span></a></li>
+    <li><a href="#g4"><span class="toc-d">20 марта · день</span><span class="toc-t">Кузница Бородиных</span></a></li>
+    <li><a href="#g5"><span class="toc-t">Георгиевская и вокруг</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Музей ложки</span></a></li>
+    <li><a href="#g7"><span class="toc-d">20 марта · вечер</span><span class="toc-t">Колокольня с дрона</span></a></li>
+    <li><a href="#g8"><span class="toc-t">Пельмени и политик</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Владимир</h2>
+  <h2 id="g1">Три вещи про Владимир</h2>
   <ul class="facts">
     <li>в кузнице-музее Бородиных можно не только смотреть, но и ковать. Гвоздь, который я сделал сам, лежит у меня до сих пор</li>
     <li>в городе есть музей ложки. У них коллекция со всей страны, и не хватает ложки из Южно-Сахалинска. Я обещал постараться привезти</li>
@@ -102,7 +118,7 @@
 
 <section class="sec">
   <div class="day">20 марта · воскресенье · утро</div>
-  <h2>Улица как музей</h2>
+  <h2 id="g2">Улица как музей</h2>
   <p>День начался с кофе в «Гостиной муке»: цены вполне московские, зато проснулся. Первое, что замечаешь во Владимире: скульптуры стоят не на площадях, а у дверей. Аптекарь у старой аптеки, художник у мольберта на смотровой. Ходишь по центру, и на каждом углу кто-то бронзовый уже занят делом.</p>
   <figure class="wide" id="P002">
     <div class="ph"><img src="media/rozovyj-dom.webp" width="1600" height="1200" loading="lazy" alt="Розовое кирпичное двухэтажное здание с подстриженными деревьями на фоне синего неба"></div>
@@ -121,7 +137,7 @@
 </section>
 
 <section class="sec">
-  <h2>Собор сверху</h2>
+  <h2 id="g3">Собор сверху</h2>
   <p>Со смотровой у собора поднял дрон. Внизу площадка с памятником князю Владимиру, люди на ней размером с запятые, а собор рядом белый и спокойный, как на всех фотографиях, только мой.</p>
   <figure class="wide" id="P007">
     <div class="ph"><img src="media/dron-knyaz.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: круглая площадка с конным памятником на краю холма, вдали Успенский собор"></div>
@@ -135,7 +151,7 @@
 
 <section class="sec">
   <div class="day">20 марта · день</div>
-  <h2>Кузница Бородиных</h2>
+  <h2 id="g4">Кузница Бородиных</h2>
   <p>Обязательна к посещению, и это не фигура речи. Это настоящая кузница с горном, углём и стеной инструментов, и в ней дают мастер-класс. Сначала показывают, потом ставят к наковальне тебя. Мальчик лет шести бил молотом с таким серьёзным лицом, что я понял: надо тоже.</p>
   <div class="row narrow">
     <figure id="P010">
@@ -162,7 +178,7 @@
 </section>
 
 <section class="sec">
-  <h2>Георгиевская и вокруг</h2>
+  <h2 id="g5">Георгиевская и вокруг</h2>
   <p>Дальше пешком по старым улицам. Шалопай из композиции «Филёр и шалопай», пожарный, каменная вишня. В сувенирной лавке на полке сидели коты с именами, и среди них «Серёжа». Не каждый день город знает, как тебя зовут.</p>
   <div class="row narrow">
     <figure id="P018">
@@ -195,7 +211,7 @@
 </section>
 
 <section class="sec">
-  <h2>Музей ложки</h2>
+  <h2 id="g6">Музей ложки</h2>
   <p>Ещё одно классное место. На входе «Ложка погоды»: если ложка мокрая, идёт дождь, если ложки нет, музей закрыт. Внутри показывают, как из полена получается ложка, и коллекцию ложек со всей страны. У них нет ложки из Южно-Сахалинска. Я обещал постараться привезти.</p>
   <div class="row">
     <figure id="P032">
@@ -211,7 +227,7 @@
 
 <section class="sec">
   <div class="day">20 марта · вечер</div>
-  <h2>Колокольня с дрона</h2>
+  <h2 id="g7">Колокольня с дрона</h2>
   <p>Ближе к вечеру снова поднял дрон, на этот раз у старой колокольни. Вблизи она вся в облупленной штукатурке и кирпиче, в окнах колокола, а над ней город, который отсюда весь помещается в кадр.</p>
   <figure class="wide" id="P042">
     <div class="ph"><img src="media/dron-kryshi.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: крыши старого города в снегу, вдали река и равнина"></div>
@@ -228,7 +244,7 @@
 </section>
 
 <section class="sec">
-  <h2>Пельмени и политик</h2>
+  <h2 id="g8">Пельмени и политик</h2>
   <p>Ужинать пошёл в кафе «Тоня и её пельмени». В туалете висит табличка с просьбой не выбрасывать в унитаз рыбок, слёзы бывших, важные улики и обручальные кольца. За это прощаешь.</p>
   <div class="row">
     <figure id="P039">
@@ -248,6 +264,11 @@
     <div class="ph"><img src="media/sobor-zakat.webp" width="1050" height="1400" loading="lazy" alt="Успенский собор и колокольня с золотыми куполами на фоне розового закатного неба, дорожка в снегу"></div>
     <figcaption><time>18:39</time>Собор на закате, последний кадр дня. Утром он был белый на синем, вечером белый на розовом.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>За день я выковал гвоздь, пообещал музею ложку, нашёл на прилавке кота со своим именем и дважды полетал над соборами. Не хватило только времени на Суздаль и Гусь-Хрустальный, откуда эти петухи, и второго дня, чтобы его не хватало меньше.</p>
@@ -269,6 +290,6 @@
 <nav class="pager" aria-label="Читать дальше"><a class="prev" href="../37-ivanovo/index.html"><span class="code">37</span><span><small>Раньше по маршруту</small>Ивановская область</span></a><a class="next" href="../39-kaliningrad/index.html"><span><small>Следующий отчёт</small>Калининградская область</span><span class="code">39</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

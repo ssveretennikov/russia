@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#4162AA;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#89A0D2;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#89A0D2;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P160">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Песчаные дюны с кустами под синим небом с облаками, вдали полоса залива"></div>
@@ -84,8 +85,25 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про область</span></a></li>
+    <li><a href="#g2"><span class="toc-d">7 апреля · четверг</span><span class="toc-t">Прилёт</span></a></li>
+    <li><a href="#g3"><span class="toc-d">8 апреля · пятница</span><span class="toc-t">Калининград в сумерках</span></a></li>
+    <li><a href="#g4"><span class="toc-d">9 апреля · суббота</span><span class="toc-t">Куршская коса</span></a></li>
+    <li><a href="#g5"><span class="toc-d">9 апреля · суббота · вечер</span><span class="toc-t">Зеленоградск, он же Кранц</span></a></li>
+    <li><a href="#g6"><span class="toc-d">10 апреля · воскресенье · утро</span><span class="toc-t">Зоопарк: бегемот есть, носорога нет</span></a></li>
+    <li><a href="#g7"><span class="toc-d">10 апреля · воскресенье · день</span><span class="toc-t">Музей Мирового океана</span></a></li>
+    <li><a href="#g8"><span class="toc-t">Форт № 11 «Дёнхофф»</span></a></li>
+    <li><a href="#g9"><span class="toc-d">10 апреля · воскресенье · вечер</span><span class="toc-t">Орган и вода</span></a></li>
+    <li><a href="#g10"><span class="toc-d">11 апреля · понедельник</span><span class="toc-t">Музей Канта</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про область</h2>
+  <h2 id="g1">Три вещи про область</h2>
   <ul class="facts">
     <li>в Зеленоградске 17 тысяч жителей и культ котов посильнее стамбульского. Музей кошек «Мурариум» занимает несколько этажей водонапорной башни, на улицах стоят вендинг для котов и домики для бездомных хвостатых</li>
     <li>в зоопарке есть памятник «Последним»: бегемот, лань, осёл и барсук — единственные, кто пережил штурм Кёнигсберга в 1945 году</li>
@@ -104,7 +122,7 @@
 
 <section class="sec">
   <div class="day">7 апреля · четверг</div>
-  <h2>Прилёт</h2>
+  <h2 id="g2">Прилёт</h2>
   <p>Аэропорт носит имя императрицы Елизаветы Петровны, и это первая табличка, на которой город рассказывает о себе. Дальше их будет много.</p>
   <figure class="mid" id="P002">
     <div class="ph"><img src="media/aeroport.webp" width="1600" height="1200" loading="lazy" alt="Белая стена аэропорта с надписью «Аэропорт Калининград имени императрицы Елизаветы Петровны» и портретом в круглой раме"></div>
@@ -114,7 +132,7 @@
 
 <section class="sec">
   <div class="day">8 апреля · пятница</div>
-  <h2>Калининград в сумерках</h2>
+  <h2 id="g3">Калининград в сумерках</h2>
   <p>Утро началось с кафе «О, компот». Оформление интересное, еда не понравилась. Зато если хочется поесть по-настоящему, советую «Штайндамм 99»: свиные рёбрышки, вкуснее я нигде не ел.</p>
   <figure class="mid" id="P007">
     <div class="ph"><img src="media/chehly.webp" width="1050" height="1400" loading="lazy" alt="Красные чехлы на спинках стульев с вышитыми надписями, рядом батарея и окно"></div>
@@ -147,7 +165,7 @@
 
 <section class="sec">
   <div class="day">9 апреля · суббота</div>
-  <h2>Куршская коса</h2>
+  <h2 id="g4">Куршская коса</h2>
   <p>Коса — заповедник, и всё здесь благоустроено для перемещения: дощатые тропы, кормушки для животных, деревянные фигуры тех, кто тут живёт. Настоящие обитатели показываться не торопились, кроме лебедей.</p>
   <div class="row">
     <figure id="P088">
@@ -205,7 +223,7 @@
 
 <section class="sec">
   <div class="day">9 апреля · суббота · вечер</div>
-  <h2>Зеленоградск, он же Кранц</h2>
+  <h2 id="g5">Зеленоградск, он же Кранц</h2>
   <p>После косы я хотел ехать в Светлогорск: его рекомендовали, и там ждал школьный товарищ. Но город по пути меня зацепил, влюбил в себя и заставил остаться с ночёвкой. Городок на 17 тысяч человек, и коты здесь главные. Не исключаю коммерческую составляющую, ведь все любят котиков, но работает.</p>
   <div class="row narrow">
     <figure id="P173">
@@ -254,7 +272,7 @@
 
 <section class="sec">
   <div class="day">10 апреля · воскресенье · утро</div>
-  <h2>Зоопарк: бегемот есть, носорога нет</h2>
+  <h2 id="g6">Зоопарк: бегемот есть, носорога нет</h2>
   <p>Пришёл за десять минут до открытия, я ж любитель животных. Ехал сюда ради бегемота. Женщины с экскурсии по косе обещали ещё и носорога. Прощаю им незнание такого редкого животного: никакого носорога тут не было, он ждёт меня в Ростове. В приложении iziTravel есть бесплатный аудиогид по зоопарку голосом Николая Дроздова, и это лучшее, что можно включить у вольера.</p>
   <div class="row narrow">
     <figure id="P304">
@@ -293,7 +311,7 @@
 
 <section class="sec">
   <div class="day">10 апреля · воскресенье · день</div>
-  <h2>Музей Мирового океана</h2>
+  <h2 id="g7">Музей Мирового океана</h2>
   <p>Некоторые популярные музеи меня не привлекают. К янтарю я равнодушен, в музей янтаря не пошёл, и на освободившееся время сходил сюда. На стенде с ракушками залип, наверное, на полчаса: они чудесны. В аквариумах ничто не декоративно, всё живое.</p>
   <div class="row narrow">
     <figure id="P454">
@@ -322,7 +340,7 @@
 </section>
 
 <section class="sec">
-  <h2>Форт № 11 «Дёнхофф»</h2>
+  <h2 id="g8">Форт № 11 «Дёнхофф»</h2>
   <p>Форт взяли в 1945-м практически без боя, в отличие от четвёртого и пятого. Благодаря этому он дошёл до нас почти невредимым. С 2015 года это музей в аренде у частного лица: экспонатов мало, работы идут, но экскурсия интересная, в подземный ход водят, и лазать можно везде.</p>
   <div class="row narrow">
     <figure id="P364">
@@ -365,7 +383,7 @@
 
 <section class="sec">
   <div class="day">10 апреля · воскресенье · вечер</div>
-  <h2>Орган и вода</h2>
+  <h2 id="g9">Орган и вода</h2>
   <p>На органном концерте я не был никогда, и решил начать с мини-концерта на сорок минут в Кафедральном соборе. Понравилось. Не зря детей с раннего возраста водят на такие концерты: прививают вкус.</p>
   <figure class="wide" id="P386">
     <div class="ph"><img src="media/organ.webp" width="2000" height="1500" loading="lazy" alt="Орган собора с золочёной резьбой и фигурами ангелов под сводчатым потолком"></div>
@@ -406,7 +424,7 @@
 
 <section class="sec">
   <div class="day">11 апреля · понедельник</div>
-  <h2>Музей Канта</h2>
+  <h2 id="g10">Музей Канта</h2>
   <p>Музей находится в том же соборе, на нескольких этажах и даже за часами на башне. Главное тут — макет Кнайпхофа, островной части старого Кёнигсберга. Теперь это остров Канта, и на нём стоит только собор. Макет объясняет, сколько всего стояло раньше. Ещё я подзалип на стенде с купюрами и монетами: всё давно просчитано.</p>
   <div class="row narrow">
     <figure id="P394">
@@ -418,6 +436,11 @@
       <figcaption><time>18:08</time>Костюм Канта. Рост философа ниже, чем ожидаешь от философа. До встречи!</figcaption>
     </figure>
   </div>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>Пять дней, семь мест, и ни одно не было лишним: коса с ветром, Зеленоградск, который заставил остаться, форт с кроликами и орган в соборе. Не хватило Светлогорска и Балтийска, и бегемота всё-таки хочется побольше, а носорога — хотя бы одного.</p>
@@ -441,6 +464,6 @@
 <nav class="pager" aria-label="Читать дальше"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../53-novgorod/index.html"><span><small>Следующий отчёт</small>Новгородская область</span><span class="code">53</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

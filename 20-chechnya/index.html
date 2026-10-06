@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#7F7234;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C7B975;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C7B975;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P033">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1239" alt="Мечеть с четырьмя минаретами на площади, за ней стеклянные башни Грозный-Сити под облачным небом"></div>
@@ -68,8 +69,23 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Чечню</span></a></li>
+    <li><a href="#g2"><span class="toc-d">14 июня · среда · утро</span><span class="toc-t">Гостиница без соломки</span></a></li>
+    <li><a href="#g3"><span class="toc-d">14 июня · день</span><span class="toc-t">Проспект Путина и мемориал</span></a></li>
+    <li><a href="#g4"><span class="toc-t">«Сердце Чечни» и кофе с энергетиком</span></a></li>
+    <li><a href="#g5"><span class="toc-t">Смотровая, куда нельзя смотреть</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Цветочный парк и церковь</span></a></li>
+    <li><a href="#g7"><span class="toc-d">14 июня · вечер</span><span class="toc-t">Лестница в небо</span></a></li>
+    <li><a href="#g8"><span class="toc-t">Песочные часы и арка</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Чечню</h2>
+  <h2 id="g1">Три вещи про Чечню</h2>
   <ul class="facts">
     <li>числовой код региона 20, а на номерах 95. От двадцатки отказались, чтобы все перерегистрировали машины и угнанные в военные и довоенные годы автомобили отсеялись</li>
     <li>на смотровой Грозный-Сити нельзя снимать сторону, которая выходит на резиденцию главы республики. Стоят люди и строго следят</li>
@@ -87,7 +103,7 @@
 
 <section class="sec">
   <div class="day">14 июня · среда · утро</div>
-  <h2>Гостиница без соломки</h2>
+  <h2 id="g2">Гостиница без соломки</h2>
   <p>Коридоры в гостинице широченные, номер простой, но по площади больше всех, где я жил до этого. А вот привычного сервиса, где всё расспросят, сделают как лучше и постелят соломку, тут пока нет. Отдали ключи и до свидания. Спать долго нельзя, быстро позавтракал и вышел.</p>
   <div class="row">
     <figure id="P006">
@@ -113,7 +129,7 @@
 
 <section class="sec">
   <div class="day">14 июня · день</div>
-  <h2>Проспект Путина и мемориал</h2>
+  <h2 id="g3">Проспект Путина и мемориал</h2>
   <p>От библиотеки пошёл к мемориалу с золотым обелиском: аллея, всадник с саблей, вечный огонь. Пусто, чисто, всё отполировано так, что обелиск отражается в граните. Дальше по табличкам: проспект В.В. Путина, он здесь главный.</p>
   <figure class="wide" id="P014">
     <div class="ph"><img src="media/memorial.webp" width="2000" height="1126" loading="lazy" alt="Длинная аллея вдоль газона, вдали золотой обелиск и белые здания"></div>
@@ -142,7 +158,7 @@
 </section>
 
 <section class="sec">
-  <h2>«Сердце Чечни» и кофе с энергетиком</h2>
+  <h2 id="g4">«Сердце Чечни» и кофе с энергетиком</h2>
   <p>Площадь перед мечетью огромная, мечеть на ней одна, и вокруг неё стеклянные башни Грозный-Сити. ЖК «Шайба» по соседству, круглый, и его я тоже не понял, но снял. Внутрь мечети пускают: ковёр, люстры, красно-белые арки до самого купола.</p>
   <div class="row">
     <figure id="P030">
@@ -186,7 +202,7 @@
 </section>
 
 <section class="sec">
-  <h2>Смотровая, куда нельзя смотреть</h2>
+  <h2 id="g5">Смотровая, куда нельзя смотреть</h2>
   <p>Подъём на башню Грозный-Сити стоил 200 или 300 рублей. Наверху особенность: сторону, которая выходит на резиденцию главы республики, снимать нельзя. Стоят люди и следят. Поэтому вот другая сторона: Грозный Молл, площадь, с которой я пришёл, и мечеть размером с игрушку.</p>
   <figure class="wide" id="P066">
     <div class="ph"><img src="media/sverhu-mechet.webp" width="2000" height="1126" loading="lazy" alt="Вид с высоты на площадь с мечетью и проспект, уходящий к горизонту"></div>
@@ -213,7 +229,7 @@
 </section>
 
 <section class="sec">
-  <h2>Цветочный парк и церковь</h2>
+  <h2 id="g6">Цветочный парк и церковь</h2>
   <p>Рядом с башнями цветочный парк: арки из подвесных горшков, пирамиды из цветов, вишня с надписью «Грозный» и снова башенки, на этот раз с водопадом. На входе щит с рекомендациями по внешнему виду для гостей, два силуэта, мужской и женский, и много мелкого текста.</p>
   <div class="row narrow">
     <figure id="P072">
@@ -243,7 +259,7 @@
 
 <section class="sec">
   <div class="day">14 июня · вечер</div>
-  <h2>Лестница в небо</h2>
+  <h2 id="g7">Лестница в небо</h2>
   <p>Вторая смотровая на холме за городом называется «Лестница в небо». Сам город отсюда видно не очень: площадка далековато. Зато видно, как спортсмены бегают в гору и с горы по несколько раз, а в тучах над Грозным открылась дырка с лучами. Такси обратно я еле дождался.</p>
   <figure class="wide" id="P097">
     <div class="ph"><img src="media/luchi.webp" width="2000" height="1126" loading="lazy" alt="Лучи солнца сквозь тучи над равниной с городом вдали, на переднем плане деревья"></div>
@@ -266,7 +282,7 @@
 </section>
 
 <section class="sec">
-  <h2>Песочные часы и арка</h2>
+  <h2 id="g8">Песочные часы и арка</h2>
   <p>По дороге обратно стоят золотые песочные часы, внутри макет Грозный-Сити. Ещё башенки, строящаяся мечеть, скульптура, которой я не нашёл имени. Для знакомства с Грозным одного дня достаточно, но есть, что посмотреть в будущем: туров на природу тут множество, да и по городу зашёл бы ещё в несколько мест.</p>
   <div class="row">
     <figure id="P122">
@@ -292,6 +308,11 @@
     <div class="ph"><img src="media/arka-ahmat.webp" width="2000" height="1126" loading="lazy" alt="Ночная дорога, над ней подсвеченная арка с надписью «Ахмат сила»"></div>
     <figcaption><time>21:11</time>Выезд в сторону Махачкалы. Сразу за аркой нас начали обгонять одновременно слева и справа: правила города кончились, начался другой регион.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Новый, чистый, просторный город, где всё отполировано и всё по правилам, а парень в кафе бегает за энергетиком ради одного гостя. Не хватило солнца, людей на площадях и ещё хотя бы дня на туры в горы, которые тут явно главное.</p>
@@ -314,6 +335,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../06-ingushetia/index.html"><span class="code">6</span><span><small>Раньше по маршруту</small>Республика Ингушетия</span></a><a class="next" href="../05-dagestan/index.html"><span><small>Дальше по маршруту</small>Республика Дагестан</span><span class="code">5</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>
