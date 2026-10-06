@@ -717,3 +717,12 @@ li.reg.read .reg-t>div>a::after,.fc.read .fc-nm::after{content:"\00a0\2713";colo
 .dms-here{fill:none;stroke:var(--reg);stroke-width:2}
 .dms-legend{margin:.5rem 0 0;font:600 .9rem/1.4 var(--sign);color:var(--ink)}
 .dms-osm{font-weight:400;color:var(--soft)}
+/* Две схемы (город и регион): на компьютере — в ряд, одного размера (у обеих viewBox 360×330), подпись и список — под обеими;
+   рисунок выходит из колонки текста в широкую, чтобы каждая схема была не мельче одиночной. */
+.dms-pair .dms + .dms{margin-top:.6rem}
+@media (min-width:900px){
+  .sec > .daymap:has(.dms-pair){grid-column:1/-1;width:100%;max-width:var(--wide);margin-inline:auto}
+  .dms-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;align-items:start}
+  .dms-pair .dms{max-width:none;margin:0}
+  .dms-pair .dms + .dms{margin-top:0}
+}
