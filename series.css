@@ -444,3 +444,71 @@ details.more[open] summary{margin-bottom:.6rem}
   .ix-page .fo:not(.ahead) .reg{column-gap:.75rem}
   .ix-page .fo:not(.ahead) .reg-t > div{font-size:1rem}
 }
+
+/* ===== Шапка-обложка страницы региона (решение автора 06.10.2026, вариант А) =====
+   Собирается в build.py (cover_head): главный кадр первым во всю ширину экрана, код и название поверх нижней
+   части кадра на затемнении, места, крючок, паспорт и маршрут — под кадром. Цвет региона — --reg / --reg-ink. */
+.page-cover{position:relative;--inner:calc(var(--wide) + 2 * var(--gutter))}
+/* верхняя полоса лежит на кадре: ссылка и кнопка темы — на тёмных подложках, чтобы читались на любом небе */
+.page-cover .topbar{position:absolute;z-index:3;top:0;left:0;right:0;max-width:var(--inner);padding-inline:var(--gutter);padding-block:.8rem}
+.page-cover .topbar a{color:#fff;background:rgba(10,12,16,.62);padding:.5rem .75rem .55rem;line-height:1}
+.page-cover .topbar a:hover{text-decoration:none;background:rgba(10,12,16,.85)}
+.page-cover .theme-btn{background:rgba(10,12,16,.62);color:#fff;border-color:rgba(255,255,255,.45)}
+.page-cover .theme-btn:hover{border-color:#fff}
+.page-cover .topbar :focus-visible{outline-color:#fff}
+/* шапка: кадр от края до края экрана, остальное — по общей колонке страницы */
+.cover-head{max-width:none;margin-inline:calc(-1 * var(--gutter));padding-top:0;gap:0}
+.cover{display:grid;grid-template-columns:minmax(0,1fr)}
+/* высота полосы: на телефоне почти квадрат, но не выше ~2/3 экрана; на компьютере — так, чтобы под кадром
+   на экране 1440×900 поместились места, крючок, паспорт и маршрут */
+.cover .ph{grid-area:1/1;position:relative;width:100%;max-width:120rem;margin-inline:auto;background:#1B2430;
+  height:max(17rem,min(125vw,64vh,46rem));height:max(17rem,min(125vw,64svh,46rem))}
+/* общее правило обрезки для 90 разных кадров: середина кадра; ручных точек нет */
+.cover .ph img{position:relative;z-index:1;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:50% 50%}
+/* вертикальный кадр в полосу не режется: он целиком, поля по бокам — его же размытая копия (img.cover-bg ставит сборка) */
+.cover.portrait .ph img{object-fit:contain}
+.cover .ph img.cover-bg{position:absolute;inset:0;z-index:0;object-fit:cover;filter:blur(1.4rem) brightness(.55);transform:scale(1.12)}
+/* затемнение: сверху лёгкое под полосу навигации, снизу плотное под название */
+.cover .ph::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:
+  linear-gradient(to bottom,rgba(8,10,14,.24) 0,rgba(8,10,14,0) 5.5rem),
+  linear-gradient(to top,rgba(8,10,14,.88) 0,rgba(8,10,14,.62) 5rem,rgba(8,10,14,0) 64%)}
+/* плашка с кодом и название — поверх нижней части кадра; щелчок проходит сквозь них к фото (лайтбокс) */
+.cover .reg-id{grid-area:1/1;align-self:end;z-index:3;pointer-events:none;width:100%;max-width:var(--inner);margin-inline:auto;
+  padding:0 var(--gutter) clamp(1rem,2.4vw,1.7rem);display:flex;flex-direction:column;align-items:flex-start;flex-wrap:nowrap;gap:clamp(.6rem,1.3vw,.9rem)}
+.cover .reg-id .code{font-size:clamp(2.2rem,5vw,3.2rem);box-shadow:0 2px 16px rgba(0,0,0,.35)}
+.cover h1{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.55),0 2px 24px rgba(0,0,0,.5)}
+/* узкий телефон (320–400 px): длинное слово («Калининградская») рвалось посреди — кегль уменьшается, чтобы самое
+   длинное слово названия (--nw букв, ставит сборка; ≈.83 em на букву в Unbounded) встало в строку целиком */
+@media (max-width:400px){.cover h1{font-size:min(1.7rem,calc((100vw - 2 * var(--gutter)) / (var(--nw,10) * .83)))}}
+.cover figcaption{grid-row:2;width:100%;max-width:var(--inner);margin-inline:auto;padding:.55rem var(--gutter) 0}
+.cover:target .ph{outline-offset:-.25rem}
+/* под кадром: места, крючок, паспорт, маршрут */
+.under{width:100%;max-width:var(--inner);margin-inline:auto;padding:1.15rem var(--gutter) 0;display:grid;grid-template-columns:minmax(0,1fr);gap:1rem}
+.under .hook::before{margin-bottom:.8rem}
+/* компьютер: слева места и крючок, справа паспорт столбиком — всё помещается на первый экран */
+@media (min-width:900px){
+  .cover .ph{height:max(20rem,min(56vh,44rem));height:max(20rem,min(56svh,44rem))}
+  .under{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"places pass" "hook pass" "route route";column-gap:clamp(2rem,5vw,4rem);row-gap:.9rem;padding-top:1.5rem}
+  .under .reg-places{grid-area:places}
+  .under .hook{grid-area:hook}
+  .under .route{grid-area:route;padding-top:.9rem;border-top:1px solid var(--line)}
+  /* паспорт не шире 22rem: длинное «как» (Карелия) иначе отжимало крючок в узкий столбик на шесть строк */
+  .under .passport{grid-area:pass;max-width:22rem;display:grid;grid-template-columns:auto auto;align-content:start;gap:.3rem 1.1rem;border-block:0;border-left:1px solid var(--line);padding:.15rem 0 .15rem clamp(1.2rem,2.4vw,2rem)}
+  .under .passport div{display:contents}
+}
+/* телефон: паспорт плотнее, маршрут — одной строкой с прокруткой вбок; прозрачный край строки значит «там есть ещё» */
+@media (max-width:640px){
+  .under{padding-top:.95rem;gap:.85rem}
+  .under .reg-places{font-size:.95rem;line-height:1.35}
+  .under .passport{font-size:.95rem;gap:.25rem 1.3rem;padding:.6rem 0}
+  .under .route{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;
+    margin-inline:calc(-1 * var(--gutter));padding:.1rem var(--gutter) .3rem;scroll-padding-inline:var(--gutter);
+    --fl:#000;--fr:transparent;
+    -webkit-mask-image:linear-gradient(to right,var(--fl) 0,#000 2rem,#000 calc(100% - 3rem),var(--fr) 100%);
+    mask-image:linear-gradient(to right,var(--fl) 0,#000 2rem,#000 calc(100% - 3rem),var(--fr) 100%)}
+  .under .route::-webkit-scrollbar{display:none}
+  .under .route li{flex:none;white-space:nowrap}
+  .under .route.scrolled{--fl:transparent}
+  .under .route.at-end{--fr:#000}
+  .under .route:focus-visible{outline-offset:-3px}
+}

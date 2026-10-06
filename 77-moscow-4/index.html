@@ -25,22 +25,25 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=88797b1d">
+<link rel="stylesheet" href="../series.css?v=690f2df7">
 <style>:root{--reg:#D11A1C;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#E98182;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#E98182;--reg-ink:#14100A}</style>
 </head>
 <body>
-<div class="page">
+<div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
-<header class="reg-head">
-  <div class="reg-id">
-    <span class="code" aria-label="Код региона 77">77</span>
-    <div class="reg-name">
+<header class="reg-head cover-head">
+  <figure class="hero-ph cover" id="P585">
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Сергей в красном свитере сидит за дикторским столом в студии с красно-синим экраном"></div>
+    <div class="reg-id" style="--nw:6">
+      <span class="code" aria-label="Код региона 77">77</span>
       <h1>Москва</h1>
-      <div class="reg-places">ВДНХ · каток под гирляндой · Никольская · зимний город</div>
     </div>
-  </div>
-  <p class="hook">Вся страна в павильонах, ёлка под куполом из огней, жёлтый тигр на Никольской и вагон метро в гирляндах.</p>
-  <dl class="passport">
+    <figcaption><time>21:35</time>Студия «Первого канала» на выставке «Россия». Я за дикторским столом.</figcaption>
+  </figure>
+  <div class="under">
+    <div class="reg-places">ВДНХ · каток под гирляндой · Никольская · зимний город</div>
+    <p class="hook">Вся страна в павильонах, ёлка под куполом из огней, жёлтый тигр на Никольской и вагон метро в гирляндах.</p>
+    <dl class="passport">
     <div><dt>Когда</dt><dd>3 декабря 2023 — 30 января 2025</dd></div>
     <div><dt>Сколько</dt><dd>несколько вечеров и дней</dd></div>
     <div><dt>Время</dt><dd>МСК</dd></div>
@@ -48,13 +51,10 @@
     <div><dt>Снято</dt><dd>354 фото, 24 видео</dd></div>
     <div><dt>Оценка</dt><dd class="heart">❤</dd></div>
   </dl>
-  <ol class="route" aria-label="Четыре страницы Москвы">
+    <ol class="route" aria-label="Четыре страницы Москвы">
     <li>Выходные в мае 2023</li><li>Центр и вода</li><li>События</li><li class="here">«Россия» на ВДНХ и Новый год</li>
   </ol>
-  <figure class="hero-ph" id="P585">
-    <div class="ph"><img src="media/hero.webp" width="2200" height="1238" alt="Сергей в красном свитере сидит за дикторским столом в студии с красно-синим экраном"></div>
-    <figcaption><time>21:35</time>Студия «Первого канала» на выставке «Россия». Я за дикторским столом.</figcaption>
-  </figure>
+  </div>
 </header>
 
 <article class="story">
@@ -300,6 +300,6 @@
 
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../77-moscow-3/index.html"><span class="code">77</span><span><small>Предыдущая часть</small>Москва · События</span></a><a class="next" href="../index.html"><span>Все регионы</span></a></nav>
 </div>
-<script src="../series.js?v=491ada4f"></script>
+<script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>
