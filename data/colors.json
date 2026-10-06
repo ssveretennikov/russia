@@ -1,0 +1,597 @@
+{
+ "01-adygeya": {
+  "light": "#5E7E33",
+  "dark": "#A4C775",
+  "hue": 86,
+  "contrast_light": 4.68,
+  "contrast_dark": 9.91
+ },
+ "02-bashkortostan": {
+  "light": "#926C12",
+  "dark": "#E2BA5A",
+  "hue": 42,
+  "contrast_light": 4.8,
+  "contrast_dark": 10.28
+ },
+ "03-buryatia": {
+  "light": "#A2653E",
+  "dark": "#C99473",
+  "hue": 23,
+  "contrast_light": 4.72,
+  "contrast_dark": 7.2
+ },
+ "04-altai-republic": {
+  "light": "#101C30",
+  "dark": "#82A1D4",
+  "hue": 217,
+  "contrast_light": 17.01,
+  "contrast_dark": 7.24
+ },
+ "05-dagestan": {
+  "light": "#8A7138",
+  "dark": "#C7AE75",
+  "hue": 42,
+  "contrast_light": 4.68,
+  "contrast_dark": 8.79
+ },
+ "06-ingushetia": {
+  "light": "#505F27",
+  "dark": "#B1C775",
+  "hue": 76,
+  "contrast_light": 6.96,
+  "contrast_dark": 10.19
+ },
+ "07-kabardino-balkaria": {
+  "light": "#275F4A",
+  "dark": "#75C7A8",
+  "hue": 158,
+  "contrast_light": 7.43,
+  "contrast_dark": 9.46
+ },
+ "08-kalmykia": {
+  "light": "#4E5E18",
+  "dark": "#BED765",
+  "hue": 73,
+  "contrast_light": 7.16,
+  "contrast_dark": 11.83
+ },
+ "09-karachay-cherkessia": {
+  "light": "#4478A7",
+  "dark": "#79A3C8",
+  "hue": 208,
+  "contrast_light": 4.66,
+  "contrast_dark": 7.13
+ },
+ "10-karelia": {
+  "light": "#417A9F",
+  "dark": "#75A6C7",
+  "hue": 204,
+  "contrast_light": 4.66,
+  "contrast_dark": 7.29
+ },
+ "11-komi": {
+  "light": "#946C3D",
+  "dark": "#C7A175",
+  "hue": 32,
+  "contrast_light": 4.7,
+  "contrast_dark": 7.93
+ },
+ "12-mari-el": {
+  "light": "#966C31",
+  "dark": "#CFA76D",
+  "hue": 35,
+  "contrast_light": 4.67,
+  "contrast_dark": 8.47
+ },
+ "13-mordovia": {
+  "light": "#867231",
+  "dark": "#CBB671",
+  "hue": 46,
+  "contrast_light": 4.68,
+  "contrast_dark": 9.44
+ },
+ "14-yakutia": {
+  "light": "#228639",
+  "dark": "#65D77F",
+  "hue": 134,
+  "contrast_light": 4.63,
+  "contrast_dark": 10.49
+ },
+ "15-north-ossetia": {
+  "light": "#3D79A4",
+  "dark": "#72A6CB",
+  "hue": 205,
+  "contrast_light": 4.7,
+  "contrast_dark": 7.22
+ },
+ "16-tatarstan": {
+  "light": "#292B12",
+  "dark": "#BEC775",
+  "hue": 67,
+  "contrast_light": 14.45,
+  "contrast_dark": 10.46
+ },
+ "17-tuva": {
+  "light": "#9B692C",
+  "dark": "#D4A368",
+  "hue": 33,
+  "contrast_light": 4.73,
+  "contrast_dark": 8.36
+ },
+ "18-udmurtia": {
+  "light": "#986B3E",
+  "dark": "#C79E75",
+  "hue": 30,
+  "contrast_light": 4.65,
+  "contrast_dark": 7.74
+ },
+ "19-khakassia": {
+  "light": "#1A63D1",
+  "dark": "#709FE6",
+  "hue": 216,
+  "contrast_light": 5.63,
+  "contrast_dark": 7.01
+ },
+ "20-chechnya": {
+  "light": "#7F7234",
+  "dark": "#C7B975",
+  "hue": 50,
+  "contrast_light": 4.81,
+  "contrast_dark": 9.6
+ },
+ "21-chuvashia": {
+  "light": "#3A78B0",
+  "dark": "#71A2D0",
+  "hue": 209,
+  "contrast_light": 4.69,
+  "contrast_dark": 7.05
+ },
+ "22-altai-krai": {
+  "light": "#238528",
+  "dark": "#66D66B",
+  "hue": 123,
+  "contrast_light": 4.71,
+  "contrast_dark": 10.31
+ },
+ "23-krasnodar": {
+  "light": "#8C6E2B",
+  "dark": "#D1B16B",
+  "hue": 41,
+  "contrast_light": 4.79,
+  "contrast_dark": 9.25
+ },
+ "24-krasnoyarsk": {
+  "light": "#565018",
+  "dark": "#D5CA67",
+  "hue": 54,
+  "contrast_light": 8.19,
+  "contrast_dark": 11.3
+ },
+ "25-primorye": {
+  "light": "#1F314D",
+  "dark": "#84A0CD",
+  "hue": 217,
+  "contrast_light": 13.09,
+  "contrast_dark": 7.13
+ },
+ "26-stavropol": {
+  "light": "#5E6F2E",
+  "dark": "#B1C775",
+  "hue": 76,
+  "contrast_light": 5.51,
+  "contrast_dark": 10.18
+ },
+ "27-khabarovsk": {
+  "light": "#202B12",
+  "dark": "#A2C775",
+  "hue": 87,
+  "contrast_light": 14.77,
+  "contrast_dark": 9.87
+ },
+ "28-amur": {
+  "light": "#446EA7",
+  "dark": "#80A0CB",
+  "hue": 214,
+  "contrast_light": 5.19,
+  "contrast_dark": 7.08
+ },
+ "29-arkhangelsk": {
+  "light": "#8D713A",
+  "dark": "#C7AB75",
+  "hue": 39,
+  "contrast_light": 4.62,
+  "contrast_dark": 8.58
+ },
+ "30-astrakhan": {
+  "light": "#3566B6",
+  "dark": "#7CA0D9",
+  "hue": 217,
+  "contrast_light": 5.63,
+  "contrast_dark": 7.12
+ },
+ "33-vladimir": {
+  "light": "#2B78BA",
+  "dark": "#66A5DC",
+  "hue": 208,
+  "contrast_light": 4.65,
+  "contrast_dark": 7.21
+ },
+ "34-volgograd": {
+  "light": "#225EC9",
+  "dark": "#79A0E7",
+  "hue": 218,
+  "contrast_light": 5.98,
+  "contrast_dark": 7.24
+ },
+ "35-vologda": {
+  "light": "#162B12",
+  "dark": "#83C775",
+  "hue": 110,
+  "contrast_light": 15.05,
+  "contrast_dark": 9.36
+ },
+ "36-voronezh": {
+  "light": "#3954B2",
+  "dark": "#8B9DDA",
+  "hue": 227,
+  "contrast_light": 6.83,
+  "contrast_dark": 7.14
+ },
+ "37-ivanovo": {
+  "light": "#314979",
+  "dark": "#879FCE",
+  "hue": 220,
+  "contrast_light": 8.9,
+  "contrast_dark": 7.12
+ },
+ "39-kaliningrad": {
+  "light": "#4162AA",
+  "dark": "#89A0D2",
+  "hue": 221,
+  "contrast_light": 5.93,
+  "contrast_dark": 7.23
+ },
+ "40-kaluga": {
+  "light": "#727932",
+  "dark": "#BFC775",
+  "hue": 66,
+  "contrast_light": 4.65,
+  "contrast_dark": 10.49
+ },
+ "42-kemerovo": {
+  "light": "#3A74B0",
+  "dark": "#75A2D1",
+  "hue": 211,
+  "contrast_light": 4.88,
+  "contrast_dark": 7.08
+ },
+ "43-kirov": {
+  "light": "#C34F18",
+  "dark": "#E2865A",
+  "hue": 19,
+  "contrast_light": 4.7,
+  "contrast_dark": 7.03
+ },
+ "44-kostroma": {
+  "light": "#111B31",
+  "dark": "#879FD4",
+  "hue": 222,
+  "contrast_light": 17.14,
+  "contrast_dark": 7.13
+ },
+ "45-kurgan": {
+  "light": "#916F3B",
+  "dark": "#C7A675",
+  "hue": 36,
+  "contrast_light": 4.65,
+  "contrast_dark": 8.26
+ },
+ "46-kursk": {
+  "light": "#1975CC",
+  "dark": "#5FA2E3",
+  "hue": 209,
+  "contrast_light": 4.71,
+  "contrast_dark": 7.02
+ },
+ "48-lipetsk": {
+  "light": "#1A60D1",
+  "dark": "#74A0E7",
+  "hue": 217,
+  "contrast_light": 5.77,
+  "contrast_dark": 7.16
+ },
+ "49-magadan": {
+  "light": "#8D6F3A",
+  "dark": "#C7AA75",
+  "hue": 38,
+  "contrast_light": 4.69,
+  "contrast_dark": 8.48
+ },
+ "50-moscow-oblast": {
+  "light": "#1A6FD1",
+  "dark": "#67A1E4",
+  "hue": 212,
+  "contrast_light": 4.96,
+  "contrast_dark": 7.07
+ },
+ "50-moscow-oblast-2": {
+  "light": "#8A6E38",
+  "dark": "#C7AC75",
+  "hue": 40,
+  "contrast_light": 4.79,
+  "contrast_dark": 8.62
+ },
+ "51-murmansk": {
+  "light": "#2277B9",
+  "dark": "#5CA6E1",
+  "hue": 206,
+  "contrast_light": 4.76,
+  "contrast_dark": 7.23
+ },
+ "52-nizhny-novgorod": {
+  "light": "#A46723",
+  "dark": "#DDA15F",
+  "hue": 32,
+  "contrast_light": 4.62,
+  "contrast_dark": 8.46
+ },
+ "53-novgorod": {
+  "light": "#12292C",
+  "dark": "#75BDC7",
+  "hue": 188,
+  "contrast_light": 15.26,
+  "contrast_dark": 8.87
+ },
+ "54-novosibirsk": {
+  "light": "#43351C",
+  "dark": "#C7A975",
+  "hue": 38,
+  "contrast_light": 11.91,
+  "contrast_dark": 8.43
+ },
+ "55-omsk": {
+  "light": "#9E682E",
+  "dark": "#D3A069",
+  "hue": 31,
+  "contrast_light": 4.71,
+  "contrast_dark": 8.11
+ },
+ "56-orenburg": {
+  "light": "#696A2C",
+  "dark": "#C4C775",
+  "hue": 62,
+  "contrast_light": 5.66,
+  "contrast_dark": 10.61
+ },
+ "57-oryol": {
+  "light": "#60161C",
+  "dark": "#E3828A",
+  "hue": 355,
+  "contrast_light": 12.89,
+  "contrast_dark": 7.07
+ },
+ "58-penza": {
+  "light": "#46441D",
+  "dark": "#C7C275",
+  "hue": 56,
+  "contrast_light": 9.99,
+  "contrast_dark": 10.29
+ },
+ "59-perm": {
+  "light": "#885237",
+  "dark": "#C89379",
+  "hue": 20,
+  "contrast_light": 6.37,
+  "contrast_dark": 7.14
+ },
+ "60-pskov": {
+  "light": "#644E29",
+  "dark": "#C7A975",
+  "hue": 38,
+  "contrast_light": 7.87,
+  "contrast_dark": 8.41
+ },
+ "61-rostov": {
+  "light": "#867137",
+  "dark": "#C7B175",
+  "hue": 44,
+  "contrast_light": 4.75,
+  "contrast_dark": 9.0
+ },
+ "62-ryazan": {
+  "light": "#AA543A",
+  "dark": "#D28E7A",
+  "hue": 14,
+  "contrast_light": 5.19,
+  "contrast_dark": 7.13
+ },
+ "63-samara": {
+  "light": "#996B1A",
+  "dark": "#E2B15A",
+  "hue": 38,
+  "contrast_light": 4.71,
+  "contrast_dark": 9.6
+ },
+ "64-saratov": {
+  "light": "#3A69B1",
+  "dark": "#7C9FD4",
+  "hue": 216,
+  "contrast_light": 5.49,
+  "contrast_dark": 7.02
+ },
+ "65-sakhalin": {
+  "light": "#8A6B39",
+  "dark": "#C7A775",
+  "hue": 37,
+  "contrast_light": 4.95,
+  "contrast_dark": 8.33
+ },
+ "66-sverdlovsk": {
+  "light": "#435BA8",
+  "dark": "#8E9ED2",
+  "hue": 226,
+  "contrast_light": 6.39,
+  "contrast_dark": 7.19
+ },
+ "67-smolensk": {
+  "light": "#996833",
+  "dark": "#CFA06D",
+  "hue": 31,
+  "contrast_light": 4.79,
+  "contrast_dark": 8.02
+ },
+ "68-tambov": {
+  "light": "#7F7234",
+  "dark": "#C7B975",
+  "hue": 50,
+  "contrast_light": 4.81,
+  "contrast_dark": 9.6
+ },
+ "69-tver": {
+  "light": "#162237",
+  "dark": "#88A1CE",
+  "hue": 218,
+  "contrast_light": 15.93,
+  "contrast_dark": 7.24
+ },
+ "70-tomsk": {
+  "light": "#1C2B12",
+  "dark": "#96C775",
+  "hue": 96,
+  "contrast_light": 14.89,
+  "contrast_dark": 9.66
+ },
+ "71-tula": {
+  "light": "#286AC3",
+  "dark": "#6FA0E1",
+  "hue": 215,
+  "contrast_light": 5.36,
+  "contrast_dark": 7.02
+ },
+ "72-tobolsk": {
+  "light": "#1A70D1",
+  "dark": "#67A2E4",
+  "hue": 212,
+  "contrast_light": 4.91,
+  "contrast_dark": 7.11
+ },
+ "72-tyumen": {
+  "light": "#451C3B",
+  "dark": "#CE88BD",
+  "hue": 314,
+  "contrast_light": 14.16,
+  "contrast_dark": 7.09
+ },
+ "73-ulyanovsk": {
+  "light": "#1B5BCF",
+  "dark": "#79A0E7",
+  "hue": 219,
+  "contrast_light": 6.1,
+  "contrast_dark": 7.19
+ },
+ "74-chelyabinsk": {
+  "light": "#1A66D1",
+  "dark": "#70A1E6",
+  "hue": 215,
+  "contrast_light": 5.45,
+  "contrast_dark": 7.14
+ },
+ "75-zabaykalsky": {
+  "light": "#2C6DBE",
+  "dark": "#72A2DE",
+  "hue": 213,
+  "contrast_light": 5.2,
+  "contrast_dark": 7.17
+ },
+ "76-yaroslavl": {
+  "light": "#45291C",
+  "dark": "#C89279",
+  "hue": 19,
+  "contrast_light": 13.24,
+  "contrast_dark": 7.09
+ },
+ "77-moscow-1": {
+  "light": "#8F5C3B",
+  "dark": "#C79675",
+  "hue": 24,
+  "contrast_light": 5.57,
+  "contrast_dark": 7.23
+ },
+ "77-moscow-2": {
+  "light": "#2176C9",
+  "dark": "#63A4E3",
+  "hue": 210,
+  "contrast_light": 4.66,
+  "contrast_dark": 7.17
+ },
+ "77-moscow-3": {
+  "light": "#8C4439",
+  "dark": "#CE9188",
+  "hue": 8,
+  "contrast_light": 7.02,
+  "contrast_dark": 7.22
+ },
+ "77-moscow-4": {
+  "light": "#D11A1C",
+  "dark": "#E98182",
+  "hue": 359,
+  "contrast_light": 5.43,
+  "contrast_dark": 7.16
+ },
+ "78-spb": {
+  "light": "#1A69D1",
+  "dark": "#6CA0E5",
+  "hue": 214,
+  "contrast_light": 5.28,
+  "contrast_dark": 7.03
+ },
+ "78-spb-month": {
+  "light": "#9F6919",
+  "dark": "#E2AB5A",
+  "hue": 36,
+  "contrast_light": 4.67,
+  "contrast_dark": 9.22
+ },
+ "83-nenets": {
+  "light": "#827535",
+  "dark": "#C7B975",
+  "hue": 50,
+  "contrast_light": 4.6,
+  "contrast_dark": 9.58
+ },
+ "86-khanty-mansi": {
+  "light": "#897038",
+  "dark": "#C7AD75",
+  "hue": 41,
+  "contrast_light": 4.73,
+  "contrast_dark": 8.72
+ },
+ "87-chukotka": {
+  "light": "#4475A7",
+  "dark": "#7DA3CA",
+  "hue": 210,
+  "contrast_light": 4.82,
+  "contrast_dark": 7.19
+ },
+ "89-yamal": {
+  "light": "#1A6BD1",
+  "dark": "#6CA2E5",
+  "hue": 213,
+  "contrast_light": 5.16,
+  "contrast_dark": 7.13
+ },
+ "91-krym": {
+  "light": "#3373B8",
+  "dark": "#6FA2D7",
+  "hue": 211,
+  "contrast_light": 4.89,
+  "contrast_dark": 7.04
+ },
+ "92-sevastopol": {
+  "light": "#8D6D3A",
+  "dark": "#C7A775",
+  "hue": 37,
+  "contrast_light": 4.79,
+  "contrast_dark": 8.34
+ }
+}
