@@ -159,6 +159,17 @@ def code_badge(code, link=None):
 
 HOME = '77'   # Москва — дом автора, начало и конец большинства поездок; решение автора 05.10.2026
 
+# Лента «Любимые» на главной (макет Б, 06.10.2026): шесть регионов с сердечком, с запада на восток.
+# Набор и порядок — заготовка из макета, уточняет автор. У каждого должен быть card.webp (tools/thumbs.py).
+FAV = ['39-kaliningrad', '91-krym', '05-dagestan', '04-altai-republic', '65-sakhalin', '41-kamchatka']
+
+def hook_of(slug):
+    """Крючок отчёта (<p class="hook"> в src/<slug>.html) как чистый текст: для строки списка и карточки ленты."""
+    f = os.path.join(ROOT, 'src', slug + '.html')
+    if not os.path.exists(f): return ''
+    m = re.search(r'<p class="hook"[^>]*>(.*?)</p>', open(f, encoding='utf-8').read(), re.S)
+    return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', '', m.group(1)))).strip() if m else ''
+
 FOKEY = {'ЦФО': 'c', 'СЗФО': 'sz', 'ЮФО': 'yu', 'СКФО': 'sk', 'ПФО': 'p', 'УрФО': 'u', 'СФО': 's', 'ДВФО': 'dv', '': 'x'}
 
 # значки кнопок хронологии: рисунок, а не символ — символы ⏮ ▶ ⏭ телефоны подменяют цветными эмодзи
@@ -280,7 +291,8 @@ def index_body():
         main = href(links[0][1]) if links else None
         cls = 'reg' + (' none' if mark == 'n' else '')
         nm = f'<a href="{e(main)}">{e(name)}</a>' if main else f'<span class="nm">{e(name)}</span>'
-        if mark == 'h': nm += ' <span class="hrt" title="Понравилось" role="img" aria-label="понравилось">❤</span>'
+        # сердечко читателю не объясняется (решение автора): без всплывающей подсказки; &nbsp; — чтобы не отрывалось от названия
+        if mark == 'h': nm += '&nbsp;<span class="hrt" role="img" aria-label="понравилось">❤</span>'
         d = trips.get(code)
         sub = [e(cap)] if cap else []
         if d: sub.append(month_year(d))
@@ -288,26 +300,24 @@ def index_body():
         for lab, slug in links[1:]:   # вторые части отчёта: «2» → «часть 2»
             sub.append(f'<a href="{e(href(slug))}">{e("часть " + lab if lab.isdigit() else lab)}</a>')
         small = f'<small>{" · ".join(sub)}</small>' if sub else ''
+        # строка крючка из отчёта (у региона с несколькими страницами — с первой), серым с многоточием
+        hook = main and hook_of(main.split('/')[0])
+        hk = f'<span class="hk">{e(hook)}</span>' if hook else ''
         attrs = f' data-code="{code}" data-fo="{FOKEY[short]}" data-cap="{e(cap)}" data-q="{e(find_key(name + " " + cap))}"'
         if d: attrs += f' data-date="{ru_date(d)}" data-year="{d[:4]}" data-iso="{d}" data-tr="{trans[code]}"'
         if code == HOME: attrs += f' data-home="1" data-iso="{first_iso}"'   # в хронологии горит с первой даты
-        # миниатюра — tools/thumbs.py; грузится по мере прокрутки, карточка на карте берёт её же
+        # миниатюра — tools/thumbs.py; грузится по мере прокрутки, карточка на карте берёт её же; нажимается — ведёт на отчёт
         th = main and main.split('/')[0] + '/thumb.webp'
-        img = (f'<img class="th" src="{th}" alt="" width="360" height="270" loading="lazy" decoding="async">'
+        img = (f'<a class="th-a" href="{e(main)}" tabindex="-1" aria-hidden="true"><img class="th" src="{th}" alt="" width="360" height="270" loading="lazy" decoding="async"></a>'
                if th and os.path.exists(os.path.join(ROOT, th)) else '')
-        return f'<li class="{cls}"{attrs}>{code_badge(code, main)}<div class="reg-t"><div>{nm}</div>{small}</div>{img}</li>'
+        return f'<li class="{cls}"{attrs}>{code_badge(code, main)}<div class="reg-t"><div>{nm}</div>{small}{hk}</div>{img}</li>'
 
+    # подписи «❤ — понравилось» у поиска нет: сердечко читателю не объясняется (решение автора)
     out.append('''<div class="ix-find">
   <input type="search" id="find" placeholder="Найти регион или город" aria-label="Найти регион или город" autocomplete="off">
-  <span class="hrt-key"><span class="hrt" aria-hidden="true">❤</span> — понравилось</span>
 </div>
 <p class="ix-none" id="none" hidden>Ничего не нашлось.</p>''')
-    # шесть оставшихся — отдельным блоком наверху: серыми строками внутри округов они терялись
-    ahead = [(s, r) for s, _, regs in D for r in regs if r[3] == 'n']
-    out.append(f'<section class="fo ahead" data-fo="ahead"><div class="fo-h"><h2>Впереди · {len(ahead)} '
-               f'{plural(len(ahead), "регион", "региона", "регионов")}</h2></div><ul class="regs">')
-    out += [reg_li(s, *r) for s, r in ahead]
-    out.append('</ul></section>')
+    out.append(fav_section(trips))
     for short, full, regs in D:
         been = [r for r in regs if r[3] != 'n']
         if not been: continue
@@ -316,8 +326,45 @@ def index_body():
         out.append(f'<section class="fo" data-fo="{FOKEY[short]}"><div class="fo-h"><h2>{e(title)}</h2>{count}</div><ul class="regs">')
         out += [reg_li(short, *r) for r in been]
         out.append('</ul></section>')
+    # шесть оставшихся — отдельным блоком в конце (макет Б): серыми строками внутри округов они терялись,
+    # а наверху отодвигали посещённые регионы от карты
+    ahead = [(s, r) for s, _, regs in D for r in regs if r[3] == 'n']
+    out.append(f'<section class="fo ahead" data-fo="ahead"><div class="fo-h"><h2>Впереди · {len(ahead)} '
+               f'{plural(len(ahead), "регион", "региона", "регионов")}</h2></div><ul class="regs">')
+    out += [reg_li(s, *r) for s, r in ahead]
+    out.append('</ul></section>')
     out.append('<a class="totop" id="totop" href="#karta" hidden>↑ К карте</a>\n</div>')
     return '\n'.join(out)
+
+def fav_section(trips):
+    """Лента «Любимые» (макет Б): карточки регионов из FAV — card.webp, код, название, столица · дата, крючок, ссылка.
+    Скрипт map.js прячет её, пока работает поиск, фильтр или хронология."""
+    rows = {}
+    for short, full, regs in D:
+        for code, name, cap, mark, links in regs:
+            if links: rows[href(links[0][1]).split('/')[0]] = (code, name, cap, mark)
+    cards = []
+    for slug in FAV:
+        code, name, cap, mark = rows[slug]
+        assert mark == 'h', f'{slug}: в ленте «Любимые» только регионы с сердечком'
+        img = slug + '/card.webp'
+        assert os.path.exists(os.path.join(ROOT, img)), f'нет {img}: запустите python tools/thumbs.py'
+        meta = [e(cap)] if cap else []
+        if code in trips: meta.append(month_year(trips[code]))
+        cards.append(
+            f'<li class="fc"><a href="{slug}/index.html">'
+            f'<span class="fc-ph"><img src="{img}" alt="" width="800" height="600" decoding="async">'
+            f'<span class="code">{code}</span></span>'
+            f'<span class="fc-t"><strong class="fc-nm">{e(name)}</strong>'
+            f'<span class="fc-meta">{" · ".join(meta)}</span>'
+            f'<span class="fc-hook">{e(hook_of(slug))}</span>'
+            f'<span class="fc-go">Открыть отчёт →</span></span></a></li>')
+    arrow = lambda d: f'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="{d}"/></svg>'
+    return ('<section class="fav" id="fav" aria-labelledby="fav-h">\n'
+            '  <div class="fav-h"><h2 id="fav-h">Любимые</h2><div class="fav-nav" id="favNav">'
+            f'<button type="button" id="favPrev" aria-label="Предыдущие">{arrow("M15 5l-7 7 7 7")}</button>'
+            f'<button type="button" id="favNext" aria-label="Следующие">{arrow("M9 5l7 7-7 7")}</button>'
+            '</div></div>\n  <ul class="fav-row" id="favRow">\n' + '\n'.join(cards) + '\n  </ul>\n</section>')
 
 # ---- Карта дня и профиль высоты: строятся из GPS снимков (regions/<slug>/index.tsv) и отбора (selection.tsv).
 #   В тексте страницы: <!--daymap: 44.608,40.098 Майкоп; 44.237,40.157 Смотровая--> и <!--profile-->.
