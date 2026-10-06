@@ -235,7 +235,7 @@ def index_body():
     # Привязка к возрасту, а не к самому году: новый год сам станет самым заметным, стили править не нужно.
     def age(y): return min(3, len(years) - 1 - years.index(y))
     # Легенда годов — она же фильтр по году: отдельные кнопки годов повторяли её второй раз.
-    legend = (''.join(f'<li><button type="button" class="ychip" data-k="year" data-v="{y}" aria-pressed="false"><i class="k-a{age(y)}"></i>{y}</button></li>' for y in years)
+    legend = (''.join(f'<li><button type="button" class="ychip" data-k="year" data-v="{y}" aria-pressed="false" data-age="{age(y)}"><i class="k-a{age(y)}"></i>{y}</button></li>' for y in years)
               + '<li class="k-ahead"><i class="k-n"></i>Ещё впереди</li>')
     # Шаги «Пути по годам» — поездки из data/trips.json: [начало, конец, [коды]]. Код — число в начале slug;
     # Москвы и Подмосковья там нет намеренно (дом), они горят с первого шага.
@@ -346,6 +346,7 @@ def index_body():
 </div>
 <p class="ix-none" id="none" hidden>Ничего не нашлось.</p>''')
     out.append(fav_section(trips))
+    out.append('<div class="fnote" id="fnote" role="status" hidden><span id="fnoteText"></span> <button type="button" id="fnoteBtn"></button></div>')
     for short, full, regs in D:
         been = [r for r in regs if r[3] != 'n']
         if not been: continue

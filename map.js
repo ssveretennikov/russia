@@ -198,6 +198,7 @@
     secs.forEach(function (s) { s.hidden = !s.querySelector('li.reg:not([hidden])'); });
     none.hidden = items.some(function (li) { return !li.hidden; });
     syncFav();
+    syncNote();
   }
 
   // Лента «Любимые» — для первого взгляда на всю страну. Когда читатель что-то ищет, выбрал округ или год
@@ -230,6 +231,23 @@
     favRow.addEventListener('scroll', favSyncNav, { passive: true });
     window.addEventListener('resize', favSyncNav);
   }
+  // Уведомление об активном фильтре или остановленном проигрывателе: без него отфильтрованный список выглядит как потеря регионов
+  var fnote = document.getElementById('fnote'), fnoteText = document.getElementById('fnoteText'), fnoteBtn = document.getElementById('fnoteBtn');
+  function syncNote() {
+    if (!fnote) return;
+    var msg = '', btn = 'Сбросить';
+    if (idx < N) { msg = 'Показаны регионы до поездки ' + (idx + 1) + ' из ' + N; btn = 'Показать все'; }
+    else if (state.year) msg = 'Показаны регионы ' + state.year + ' года';
+    else if (state.fo) {
+      var fb = document.querySelector('.chip[data-v="' + state.fo + '"]');
+      msg = 'Показан округ ' + (fb ? fb.textContent : state.fo);
+    }
+    fnote.hidden = !msg;
+    if (msg) { fnoteText.textContent = msg; fnoteBtn.textContent = btn; }
+  }
+  if (fnote) fnoteBtn.addEventListener('click', function () {
+    stopPlay(); resetFilters(); picked = null; mark(''); idx = N; draw(); apply();
+  });
   // поиск по названию и столице; строка поиска в атрибуте data-q уже строчная и с «е» вместо «ё»
   var find = document.getElementById('find'), none = document.getElementById('none');
   find.addEventListener('input', function () {
@@ -301,6 +319,7 @@
     items.forEach(function (li) { li.hidden = (cur !== null && !!li.dataset.iso && !isOn(li, cur)) || !okFilter(li); });
     secs.forEach(function (s) { s.hidden = !s.querySelector('li.reg:not([hidden])'); });
     syncFav();
+    syncNote();
     track.value = idx; tall.hidden = idx >= N;
     playBtn.classList.toggle('playing', playing);
     playBtn.setAttribute('aria-label', playing ? 'Посмотреть маршрут: пауза' : 'Посмотреть маршрут: воспроизвести');
