@@ -23,8 +23,9 @@
 <meta name="twitter:image" content="https://ssveretennikov.github.io/russia/44-kostroma/og.jpg">
 <meta name="theme-color" content="#F1F2EE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
+<link rel="preload" as="image" href="media/hero.webp" fetchpriority="high" imagesrcset="media/hero.m.webp 1080w, media/hero.webp 2200w" imagesizes="100vw">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/oswald-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../series.css?v=866b6051">
 <style>:root{--reg:#111B31;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#879FD4;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#879FD4;--reg-ink:#14100A}</style>
 </head>
@@ -34,7 +35,7 @@
 <div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P014">
-    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: белый монастырь с золотыми и зелёными куполами на берегу замёрзшей реки, вокруг снег"></div>
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" srcset="media/hero.m.webp 1080w, media/hero.webp 2200w" sizes="100vw" width="2200" height="1238" alt="Вид с дрона: белый монастырь с золотыми и зелёными куполами на берегу замёрзшей реки, вокруг снег"></div>
     <div class="reg-id" style="--nw:11">
       <span class="code" aria-label="Код региона 44">44</span>
       <h1>Костромская область</h1>
@@ -124,7 +125,7 @@
     </figure>
   </div>
   <figure class="mid" id="P006">
-    <div class="ph"><img src="media/kolokolnya-utro.webp" width="1200" height="1600" loading="lazy" alt="Белая колокольня и золотые купола церкви за кирпичной оградой, низкое утреннее солнце"></div>
+    <div class="ph"><img src="media/kolokolnya-utro.webp" srcset="media/kolokolnya-utro.m.webp 1080w, media/kolokolnya-utro.webp 1200w" sizes="(max-width: 640px) 100vw, 672px" width="1200" height="1600" loading="lazy" alt="Белая колокольня и золотые купола церкви за кирпичной оградой, низкое утреннее солнце"></div>
     <figcaption><time>07:15</time>Первые купола дня. Их будет много, и все на солнце.</figcaption>
   </figure>
 </section>
@@ -148,25 +149,25 @@
   <h2 id="g4">Ипатьевский монастырь, вид сверху</h2>
   <p>Свято-Троицкий Ипатьевский мужской монастырь — колыбель дома Романовых. Он стоит на берегу Волги, и в марте берег с рекой не различить: всё белое. Я запустил дрон, и это был лучший момент дня. Внизу стены, золотые и зелёные купола, за ними город с трубой, а вокруг — плоский лёд до горизонта.</p>
   <figure class="mid" id="P011">
-    <div class="ph"><img src="media/chasovnya.webp" width="1200" height="1600" loading="lazy" alt="Ворота-часовня с бронзовым барельефом в арке и золотым куполом на фоне синего неба"></div>
+    <div class="ph"><img src="media/chasovnya.webp" srcset="media/chasovnya.m.webp 1080w, media/chasovnya.webp 1200w" sizes="(max-width: 640px) 100vw, 672px" width="1200" height="1600" loading="lazy" alt="Ворота-часовня с бронзовым барельефом в арке и золотым куполом на фоне синего неба"></div>
     <figcaption><time>08:09</time>Часовня царственных страстотерпцев. Барельеф в арке, купол сверху, восемь утра.</figcaption>
   </figure>
   <figure class="wide">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-monastyr.jpg" src="https://ssveretennikov.github.io/russia-video/44-kostroma/v-dron-monastyr.mp4" width="1280" height="720"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-dron-monastyr.jpg" src="https://ssveretennikov.github.io/russia-video/44-kostroma/v-dron-monastyr.mp4" width="1280" height="720"></video></div>
     <figcaption><time>≈08:09</time>Облёт монастыря. От стены у реки дрон поднимается, и за белыми башнями появляются золотые купола. Ради этого и летел.</figcaption>
   </figure>
   <div class="row">
     <figure id="P012">
-      <div class="ph"><img src="media/dron-monastyr.webp" width="1600" height="900" loading="lazy" alt="Вид с дрона: монастырь с белыми стенами, зелёными шатрами башен и золотыми куполами, вокруг заснеженный город"></div>
+      <div class="ph"><img src="media/dron-monastyr.webp" srcset="media/dron-monastyr.m.webp 1080w, media/dron-monastyr.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="900" loading="lazy" alt="Вид с дрона: монастырь с белыми стенами, зелёными шатрами башен и золотыми куполами, вокруг заснеженный город"></div>
       <figcaption><time>08:19</time>Монастырь целиком. С земли его не охватить, с воздуха он умещается в кадр и остаётся место для города.</figcaption>
     </figure>
     <figure id="P013">
-      <div class="ph"><img src="media/dron-most.webp" width="1600" height="900" loading="lazy" alt="Вид с дрона: автомобильный мост через замёрзшую реку, на дальнем берегу город и дымящая труба"></div>
+      <div class="ph"><img src="media/dron-most.webp" srcset="media/dron-most.m.webp 1080w, media/dron-most.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="900" loading="lazy" alt="Вид с дрона: автомобильный мост через замёрзшую реку, на дальнем берегу город и дымящая труба"></div>
       <figcaption><time>08:19</time>Мост через Волгу. Лёд, мост, труба с дымом. Зимняя Волга выглядит как поле.</figcaption>
     </figure>
   </div>
   <figure class="wide">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-volga.jpg" src="https://ssveretennikov.github.io/russia-video/44-kostroma/v-dron-volga.mp4" width="1280" height="720"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-dron-volga.jpg" src="https://ssveretennikov.github.io/russia-video/44-kostroma/v-dron-volga.mp4" width="1280" height="720"></video></div>
     <figcaption><time>≈08:23</time>Дрон идёт над льдом к мосту, и за ним открывается монастырь на берегу. Машины на мосту — единственное, что движется.</figcaption>
   </figure>
 </section>
@@ -186,7 +187,7 @@
     </figure>
   </div>
   <figure class="mid" id="P017">
-    <div class="ph"><img src="media/vorota.webp" width="1200" height="1600" loading="lazy" alt="Высокие кованые ворота с растительным орнаментом перед каменным зданием"></div>
+    <div class="ph"><img src="media/vorota.webp" srcset="media/vorota.m.webp 1080w, media/vorota.webp 1200w" sizes="(max-width: 640px) 100vw, 672px" width="1200" height="1600" loading="lazy" alt="Высокие кованые ворота с растительным орнаментом перед каменным зданием"></div>
     <figcaption><time>10:57</time>Кованые ворота. Ювелирный город и ворота делает как брошь.</figcaption>
   </figure>
   <div class="row narrow">
@@ -200,7 +201,7 @@
     </figure>
   </div>
   <figure class="wide" id="P020">
-    <div class="ph"><img src="media/dron-sobor.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: белый храмовый комплекс с золотыми куполами, заснеженный двор, за ним город"></div>
+    <div class="ph"><img src="media/dron-sobor.webp" srcset="media/dron-sobor.m.webp 1080w, media/dron-sobor.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="2000" height="1125" loading="lazy" alt="Вид с дрона: белый храмовый комплекс с золотыми куполами, заснеженный двор, за ним город"></div>
     <figcaption><time>11:08</time>Он же с дрона. Двор под снегом, купола на солнце. Лететь над центром было спокойнее, чем над Волгой.</figcaption>
   </figure>
 </section>
@@ -246,11 +247,11 @@
     </figure>
   </div>
   <figure class="mid" id="P036">
-    <div class="ph"><img src="media/vitrina.webp" width="1200" height="1600" loading="lazy" alt="Витрина на красной ткани: ажурная филигранная тарелка, чайник, шкатулки с эмалью"></div>
+    <div class="ph"><img src="media/vitrina.webp" srcset="media/vitrina.m.webp 1080w, media/vitrina.webp 1200w" sizes="(max-width: 640px) 100vw, 672px" width="1200" height="1600" loading="lazy" alt="Витрина на красной ткани: ажурная филигранная тарелка, чайник, шкатулки с эмалью"></div>
     <figcaption><time>12:14</time>Тарелка из серебряного кружева. Есть из неё нельзя, да и не надо.</figcaption>
   </figure>
   <figure class="mid" id="P038">
-    <div class="ph"><img src="media/yuvelir.webp" width="1200" height="1600" loading="lazy" alt="Бронзовая скульптура ювелира в очках, работающего за верстаком на тротуаре, рядом припаркованная машина"></div>
+    <div class="ph"><img src="media/yuvelir.webp" srcset="media/yuvelir.m.webp 1080w, media/yuvelir.webp 1200w" sizes="(max-width: 640px) 100vw, 672px" width="1200" height="1600" loading="lazy" alt="Бронзовая скульптура ювелира в очках, работающего за верстаком на тротуаре, рядом припаркованная машина"></div>
     <figcaption><time>12:22</time>Скульптура «Ювелир-кустарь». Работает на улице в минус, за столом, лицом к машине. Настоящий кустарь.</figcaption>
   </figure>
   
@@ -281,6 +282,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../37-ivanovo/index.html"><span><small>Дальше по маршруту</small>Ивановская область</span><span class="code">37</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=9328f84d"></script>
+<script src="../series.js?v=b28c6248"></script>
 </body>
 </html>
