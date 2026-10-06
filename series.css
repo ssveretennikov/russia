@@ -512,3 +512,15 @@ details.more[open] summary{margin-bottom:.6rem}
   .under .route.at-end{--fr:#000}
   .under .route:focus-visible{outline-offset:-3px}
 }
+
+/* ===== Подвал и «читать дальше» ===== */
+.site-foot{margin-top:0;border-top:1px solid var(--line);background:var(--surface);color:var(--soft);font-family:var(--body);padding:1.6rem var(--gutter) calc(1.6rem + env(safe-area-inset-bottom,0px))}
+.site-foot .ft-in{max-width:var(--wide);margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1rem 2rem}
+.site-foot .ft-t{min-width:0}
+.site-foot .ft-name{display:inline-block;font-family:var(--sign);text-transform:uppercase;letter-spacing:.05em;font-size:1rem;color:var(--ink);text-decoration:none}
+.site-foot a.ft-name:hover{text-decoration:underline}
+.site-foot p{margin:.35rem 0 0;font-size:.9rem;line-height:1.45}
+.site-foot .ft-top{font-family:var(--sign);text-transform:uppercase;letter-spacing:.06em;font-size:.9rem;color:var(--road);text-decoration:none;padding:.6rem 0;white-space:nowrap}
+.site-foot .ft-top:hover{text-decoration:underline}
+.site-foot.ft-home{background:var(--sky-bg);border-top-color:var(--sky)}
+.site-foot.ft-home .ft-name,.site-foot.ft-home .ft-top{color:var(--sky-deep)}

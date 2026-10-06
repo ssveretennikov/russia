@@ -308,7 +308,10 @@ def index_body():
         if d: sub.append(month_year(d))
         if code == HOME: sub.append('дом')
         for lab, slug in links[1:]:   # вторые части отчёта: «2» → «часть 2»
-            sub.append(f'<a href="{e(href(slug))}">{e("часть " + lab if lab.isdigit() else lab)}</a>')
+            # название второй страницы из PAGES («Центр и вода») без кода и региона; нет его — «часть N»
+            t = next((pg['title'] for pg in PAGES if pg['slug'] == href(slug).split('/')[0]), '')
+            sname = t.rsplit(' · ', 1)[1] if t.count(' · ') >= 2 else ('часть ' + lab if lab.isdigit() else lab)
+            sub.append(f'<a href="{e(href(slug))}">{e(sname)}</a>')
         small = f'<small>{" · ".join(sub)}</small>' if sub else ''
         # строка крючка из отчёта (у региона с несколькими страницами — с первой), серым с многоточием
         hook = main and hook_of(main.split('/')[0])
@@ -525,12 +528,56 @@ def cover_head(src):
             f'</header>')
     return src[:m.start()] + head + src[m.end():]
 
+def _page_code(slug):
+    return slug.split('-')[0].lstrip('0')
+
+def _page_name(slug):
+    """Название страницы из PAGES без кода: «77 · Москва · Центр и вода» -> «Москва · Центр и вода»."""
+    t = next((pg['title'] for pg in PAGES if pg['slug'] == slug), slug)
+    return t.split(' · ', 1)[1] if ' · ' in t else t
+
+def _ref(slug, label):
+    return (_page_code(slug), _page_name(slug), f'../{slug}/index.html', label)
+
+def read_next(slug, prev, nxt):
+    """Соседи внизу страницы. Порядок: prev/next из PAGES (расставлял автор) -> соседи в той же поездке
+    из data/trips.json -> «Следующий отчёт» (ближайший по дате первой поездки в регион, у Москвы и Подмосковья —
+    по коду: их в trips.json нет намеренно). Пустое место слева занимает «Все регионы» — только слева,
+    чтобы на странице не стояли две одинаковые ссылки подряд."""
+    slugs = [pg['slug'] for pg in PAGES]
+    if not (prev and nxt):
+        for t in TRIPS:
+            rs = [r for r in t['regions'] if r in slugs]
+            if slug in rs and len(rs) > 1:
+                i = rs.index(slug)
+                if not prev and i > 0: prev = _ref(rs[i - 1], 'Раньше по маршруту')
+                if not nxt and i < len(rs) - 1: nxt = _ref(rs[i + 1], 'Дальше по маршруту')
+                break
+    aria = 'Соседние регионы по маршруту'
+    if not nxt:
+        dates = {r['code']: r.get('date') or '' for r in load_map()['regions']}
+        code = _page_code(slug)
+        if code in ('77', '50') or not dates.get(code):
+            order = sorted(slugs, key=lambda s: (int(_page_code(s)), s))
+        else:
+            order = sorted([s for s in slugs if dates.get(_page_code(s)) and _page_code(s) not in ('77', '50')],
+                           key=lambda s: (dates[_page_code(s)], s))
+        i = order.index(slug)
+        taken = {prev and prev[2], f'../{slug}/index.html'}
+        for k in range(1, len(order)):
+            cand = order[(i + k) % len(order)]
+            if f'../{cand}/index.html' not in taken:
+                nxt = _ref(cand, 'Следующий отчёт'); break
+        aria = 'Читать дальше'
+    return prev, nxt, aria
+
 def region_body(code, prev=None, nxt=None):
     """prev / nxt — соседи ПО МАРШРУТУ ПОЕЗДКИ: (код, название, ссылка, подпись) или None."""
     src = cover_head(inject_data(code, open(os.path.join(ROOT, 'src', f'{code}.html'), encoding='utf-8').read()))
     top = ('<nav class="topbar"><a href="../index.html">← Все регионы</a>'
            '<div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button>'
            '<button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>')
+    prev, nxt, aria = read_next(code, prev, nxt)
     def pl(x, cls):
         if not x:
             return '<a class="%s" href="../index.html"><span>Все регионы</span></a>' % cls
@@ -538,7 +585,7 @@ def region_body(code, prev=None, nxt=None):
         txt = f'<span><small>{e(label)}</small>{e(name)}</span>'
         b = code_badge(c)
         return f'<a class="{cls}" href="{e(link)}">' + (b + txt if cls == 'prev' else txt + b) + '</a>'
-    pager = '<nav class="pager" aria-label="Соседние регионы по маршруту">' + pl(prev, 'prev') + pl(nxt, 'next') + '</nav>'
+    pager = f'<nav class="pager" aria-label="{aria}">' + pl(prev, 'prev') + pl(nxt, 'next') + '</nav>'
     return f'<div class="page page-cover">\n{top}\n{src}\n{pager}\n</div>'
 
 def meta_tags(title, desc, path, image):
@@ -566,8 +613,19 @@ def meta_tags(title, desc, path, image):
     ]
     return '\n'.join(t)
 
+def footer(up, home):
+    """Общий подвал. На главной название без ссылки (она и есть главная). Контактов автор не давал —
+    если появятся, им место строкой после .ft-who."""
+    name = f'<span class="ft-name">{e(SERIES_TITLE)}</span>' if home else f'<a class="ft-name" href="{up}index.html">{e(SERIES_TITLE)}</a>'
+    return (f'<footer class="site-foot{" ft-home" if home else ""}" role="contentinfo"><div class="ft-in">'
+            f'<div class="ft-t">{name}<p class="ft-who">Сергей Веретенников · отчёты о поездках</p>'
+            f'<p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div>'
+            f'<a class="ft-top" href="#top">Наверх ↑</a></div></footer>')
+
 def doc(title, body, depth, inline, reg_color=None, meta=''):
     up = '../' * depth
+    if 'class="lost"' not in body:   # на 404 подвала нет: её пути относительные, а открывается она по любому адресу
+        body += '\n' + footer(up, 'ix-page' in body)
     style = f'<style>\n{CSS}\n</style>' if inline else f'<link rel="stylesheet" href="{up}series.css?v={VER["css"]}">'
     script = f'<script>\n{JS}\n</script>' if inline else f'<script src="{up}series.js?v={VER["js"]}"></script>'
     extra = f'<style>{reg_color}</style>' if reg_color else ''
@@ -579,7 +637,7 @@ def doc(title, body, depth, inline, reg_color=None, meta=''):
         script += f'\n<script>\n{MAPJS}\n</script>' if inline else f'\n<script src="{up}map.js?v={VER["map"]}"></script>'
     return (f'<!doctype html>\n<html lang="ru">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-            f'<title>{e(title)}</title>\n{meta}\n{THEME_INIT}\n{fonts(up)}\n{style}\n{extra}\n</head>\n<body>\n{body}\n{script}\n</body>\n</html>\n')
+            f'<title>{e(title)}</title>\n{meta}\n{THEME_INIT}\n{fonts(up)}\n{style}\n{extra}\n</head>\n<body id="top">\n{body}\n{script}\n</body>\n</html>\n')
 
 def fragment(title, body):
     """Главная страница артефакта: без doctype/html/head/body."""
@@ -706,6 +764,8 @@ PAGES = [
     dict(slug='04-altai-republic', title='4 · Республика Алтай',
          prev=('22', 'Алтайский край', '../22-altai-krai/index.html', 'Раньше по маршруту'), next=None, color=None),
 ]
+
+TRIPS = json.load(open(os.path.join(ROOT, 'data', 'trips.json'), encoding='utf-8')) if os.path.exists(os.path.join(ROOT, 'data', 'trips.json')) else []
 
 COLORS = json.load(open(os.path.join(ROOT, 'data', 'colors.json'), encoding='utf-8')) if os.path.exists(os.path.join(ROOT, 'data', 'colors.json')) else {}
 
