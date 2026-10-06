@@ -689,3 +689,40 @@ li.reg.read .reg-t>div>a::after,.fc.read .fc-nm::after{content:"\00a0\2713";colo
 .tl-chain a.st:hover,.tl-chain a.st:focus-visible{border-color:var(--sky);color:var(--sky-deep)}
 .tl-chain .st b{flex:none;min-width:1.7rem;padding:.1rem .3rem;border-radius:999px;background:var(--sky);color:#fff;font:600 .78rem/1.2 var(--sign);text-align:center}
 .tl-chain .ar{color:var(--soft)}
+
+/* ==== Главная: активный фильтр ==== */
+.chip[aria-pressed="true"]{box-shadow:0 0 0 2px var(--sky-bg,rgba(0,0,0,.1))}
+.legend:has(.ychip[aria-pressed="true"]) .ychip[aria-pressed="false"]{opacity:.5}
+.legend .ychip[aria-pressed="true"]{background:var(--sky);border-color:var(--sky);color:#fff;font-weight:700}
+.legend .ychip[aria-pressed="true"] i{box-shadow:0 0 0 2px #fff}
+.fnote{max-width:var(--wide);margin-inline:auto;display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .8rem;margin-block:1rem 0;padding:.6rem .9rem;border:1px solid var(--sky);background:var(--sky-bg);color:var(--ink);border-radius:.6rem;font-size:.95rem}
+.fnote[hidden]{display:none}
+.fnote button{font:inherit;font-weight:600;color:var(--sky);background:none;border:0;padding:.3rem .2rem;cursor:pointer;text-decoration:underline;min-height:2.2rem}
+/* ---- Схема точек съёмки (build.py, daymap_v2): силуэт города или региона, все снимки архива точками, номера мест.
+   Радиус точки снимка задан в единицах схемы (ширина 360): на телефоне схема ~330 px — 3,3 ≈ 3 px на экране,
+   на компьютере 448 px (max-width 28rem) — 2,8 ≈ 3,5 px. */
+.dms + .dms{margin-top:.6rem}
+.dms-city{fill:color-mix(in srgb,var(--reg) 16%,transparent);stroke:var(--reg);stroke-width:1.2;stroke-linejoin:round}
+.dms-reg{fill:color-mix(in srgb,var(--reg) 9%,transparent);stroke:color-mix(in srgb,var(--reg) 70%,var(--soft));stroke-width:1;stroke-linejoin:round}
+.dms-region .dms-city{stroke-width:.8}
+.dms-shot{fill:var(--reg);opacity:.85;r:3.3px}
+@media (min-width:641px){.dms-shot{r:2.8px}}
+.dms-out circle{fill:var(--surface);stroke:var(--ink);stroke-width:2}
+.dms-out text{fill:var(--ink)}
+.dms-group rect,.dms-group circle{fill:var(--reg);stroke:var(--surface);stroke-width:2}
+.dms-group text{fill:#fff}
+.dms-box{fill:var(--surface);stroke:var(--line);stroke-width:1}
+.dms-inset .dms-reg{stroke-width:.8}
+.dms-cap{fill:var(--ink)}
+.dms-here{fill:none;stroke:var(--reg);stroke-width:2}
+.dms-legend{margin:.5rem 0 0;font:600 .9rem/1.4 var(--sign);color:var(--ink)}
+.dms-osm{font-weight:400;color:var(--soft)}
+/* Две схемы (город и регион): на компьютере — в ряд, одного размера (у обеих viewBox 360×330), подпись и список — под обеими;
+   рисунок выходит из колонки текста в широкую, чтобы каждая схема была не мельче одиночной. */
+.dms-pair .dms + .dms{margin-top:.6rem}
+@media (min-width:900px){
+  .sec > .daymap:has(.dms-pair){grid-column:1/-1;width:100%;max-width:var(--wide);margin-inline:auto}
+  .dms-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;align-items:start}
+  .dms-pair .dms{max-width:none;margin:0}
+  .dms-pair .dms + .dms{margin-top:0}
+}
