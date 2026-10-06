@@ -163,6 +163,16 @@ HOME = '77'   # Москва — дом автора, начало и конец
 # Набор и порядок — заготовка из макета, уточняет автор. У каждого должен быть card.webp (tools/thumbs.py).
 FAV = ['39-kaliningrad', '91-krym', '05-dagestan', '04-altai-republic', '65-sakhalin', '41-kamchatka']
 
+def places_of(slug):
+    """Места из шапки отчёта (<div class="reg-places"> в src/<slug>.html) — для строки поиска на главной:
+    так находятся Тобольск, Мирный, Куршская коса, а не только название региона и столица."""
+    f = os.path.join(ROOT, 'src', slug + '.html')
+    if not os.path.exists(f): return ''
+    m = re.search(r'<div class="reg-places"[^>]*>(.*?)</div>', open(f, encoding='utf-8').read(), re.S)
+    return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', '', m.group(1)))).replace('·', ' ') if m else ''
+
+ALIASES = {'78': 'питер спб петербург', '77': 'мск'}   # разговорные имена, которых нет ни в названии, ни в столице
+
 def hook_of(slug):
     """Крючок отчёта (<p class="hook"> в src/<slug>.html) как чистый текст: для строки списка и карточки ленты."""
     f = os.path.join(ROOT, 'src', slug + '.html')
@@ -303,7 +313,9 @@ def index_body():
         # строка крючка из отчёта (у региона с несколькими страницами — с первой), серым с многоточием
         hook = main and hook_of(main.split('/')[0])
         hk = f'<span class="hk">{e(hook)}</span>' if hook else ''
-        attrs = f' data-code="{code}" data-fo="{FOKEY[short]}" data-cap="{e(cap)}" data-q="{e(find_key(name + " " + cap))}"'
+        q = ' '.join([name, cap, ALIASES.get(code, '')] + [places_of(href(sl).split('/')[0]) for _, sl in links]
+                     + [lab for lab, _ in links[1:] if not lab.isdigit()])
+        attrs = f' data-code="{code}" data-fo="{FOKEY[short]}" data-cap="{e(cap)}" data-q="{e(find_key(q))}"'
         if d: attrs += f' data-date="{ru_date(d)}" data-year="{d[:4]}" data-iso="{d}" data-tr="{trans[code]}"'
         if code == HOME: attrs += f' data-home="1" data-iso="{first_iso}"'   # в хронологии горит с первой даты
         # миниатюра — tools/thumbs.py; грузится по мере прокрутки, карточка на карте берёт её же; нажимается — ведёт на отчёт
