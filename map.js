@@ -27,7 +27,7 @@
     var cap = li.dataset.cap || '';
     var parts = sub ? [].slice.call(sub.querySelectorAll('a')) : [];
     var date = li.dataset.home ? 'Дом — отсюда начинаются поездки'
-      : li.dataset.date ? 'Первый визит: ' + li.dataset.date : 'Ещё впереди';
+      : li.dataset.date ? 'В отчёте: ' + li.dataset.date : 'Ещё впереди';
     var tr = TR[li.dataset.tr];
     if (tr) date += ' · ' + tr.icon + ' ' + tr.text;
     card.innerHTML = '';
