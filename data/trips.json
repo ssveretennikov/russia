@@ -23,9 +23,10 @@
   "id": "2022-03-06",
   "start": "2022-03-06",
   "end": "2022-03-08",
-  "checked": false,
+  "checked": true,
   "regions": [
    "30-astrakhan",
+   "34-volgograd",
    "64-saratov"
   ]
  },
@@ -71,11 +72,12 @@
   ]
  },
  {
-  "id": "2022-04-25",
-  "start": "2022-04-25",
+  "id": "2022-04-24",
+  "start": "2022-04-24",
   "end": "2022-05-10",
-  "checked": false,
+  "checked": true,
   "regions": [
+   "54-novosibirsk",
    "55-omsk",
    "45-kurgan",
    "74-chelyabinsk",
@@ -91,17 +93,16 @@
   ]
  },
  {
-  "id": "2022-05-30",
+  "id": "2022-05-29",
   "start": "2022-05-30",
   "end": "2022-06-06",
-  "checked": false,
+  "checked": true,
   "regions": [
    "70-tomsk",
    "42-kemerovo",
    "24-krasnoyarsk",
    "19-khakassia",
-   "17-tuva",
-   "54-novosibirsk"
+   "17-tuva"
   ]
  },
  {
@@ -148,10 +149,8 @@
   "id": "2022-08-19",
   "start": "2022-08-19",
   "end": "2022-08-20",
-  "checked": false,
-  "regions": [
-   "34-volgograd"
-  ]
+  "checked": true,
+  "regions": []
  },
  {
   "id": "2022-12-17",

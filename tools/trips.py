@@ -25,6 +25,15 @@ MONTHS_SHORT = {k[:3]: v for k, v in MONTHS.items()}
 def spans(text):
     """Все отрезки дат из строки «Когда»: «7–12 августа 2025», «30 июля — 4 августа 2025», «12 марта 2022 и 16 июля 2023»."""
     text = text.replace(' ', ' ').replace('\xa0', ' ')
+    # «6–7 марта и 19–20 августа 2022», «24 апреля, 29 мая и 6 июня 2022»: год стоит один раз, в конце —
+    # дописываем его к каждой дате без года, иначе такие даты терялись (поймано автором 06.10.2026)
+    parts = re.split(r'\s*(?:,|\bи\b|;)\s*', text)
+    years = [re.search(r'(\d{4})', x) for x in parts]
+    for i in range(len(parts) - 1, -1, -1):
+        if not years[i]:
+            nxt = next((y.group(1) for y in years[i + 1:] if y), None)
+            if nxt: parts[i] = parts[i].rstrip() + ' ' + nxt
+    text = ' и '.join(parts)
     out = []
     # «30 июля — 4 августа 2025» / «28 декабря 2023 — 2 января 2024»
     for m in re.finditer(r'(\d{1,2})\s+([а-я]+)(?:\s+(\d{4}))?\s*[—–-]\s*(\d{1,2})\s+([а-я]+)\s+(\d{4})', text):
