@@ -625,3 +625,22 @@ html{scroll-behavior:smooth}
   .sec > .wide{width:auto;max-width:none;margin-inline:calc(-1 * var(--gutter))}
   .sec > .wide figcaption{padding-inline:var(--gutter)}
 }
+
+/* ==== Карта главной: телефон и управление (этап 3) ==== */
+/* увеличенную карту тянут пальцем: прокрутка страницы с неё не начинается */
+.rumap.zoomed{touch-action:none;cursor:grab}
+.rumap.zoomed:active{cursor:grabbing}
+/* легенда годов — она же фильтр по году */
+.legend .ychip{display:inline-flex;align-items:center;gap:.4rem;font:inherit;color:inherit;background:none;border:1px solid transparent;border-radius:999px;padding:.35rem .6rem;margin:-.35rem -.2rem;cursor:pointer;min-height:2.2rem}
+.legend .ychip:hover{border-color:var(--sky)}
+.legend .ychip[aria-pressed="true"]{border-color:var(--sky);background:var(--sky-bg);color:var(--ink);font-weight:600}
+.legend .ychip:focus-visible{outline:2px solid var(--sky);outline-offset:1px}
+.legend .k-ahead{padding-left:.4rem}
+/* один проигрыватель: «Путь по годам» — его главная кнопка с подписью */
+.tl-ctl .play{width:auto;padding:0 1rem 0 .8rem;gap:.4rem;font:600 .88rem/1 var(--body);white-space:nowrap}
+.tl-ctl .play svg{flex:none}
+@media (max-width:640px){
+  .tl{grid-template-columns:minmax(0,1fr);grid-template-areas:"ctl" "track" "read" "all"}
+  .tl-ctl{justify-content:space-between}
+  .tl-ctl .play{flex:1}
+}

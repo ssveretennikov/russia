@@ -232,8 +232,21 @@ def index_body():
     # Цвет на карте — по «возрасту» года первой поездки: 0 — последний год, 3 — третий с конца и раньше.
     # Привязка к возрасту, а не к самому году: новый год сам станет самым заметным, стили править не нужно.
     def age(y): return min(3, len(years) - 1 - years.index(y))
-    legend = (''.join(f'<li><i class="k-a{age(y)}"></i>{y}</li>' for y in years)
-              + '<li><i class="k-n"></i>Ещё впереди</li>')
+    # Легенда годов — она же фильтр по году: отдельные кнопки годов повторяли её второй раз.
+    legend = (''.join(f'<li><button type="button" class="ychip" data-k="year" data-v="{y}" aria-pressed="false"><i class="k-a{age(y)}"></i>{y}</button></li>' for y in years)
+              + '<li class="k-ahead"><i class="k-n"></i>Ещё впереди</li>')
+    # Шаги «Пути по годам» — поездки из data/trips.json: [начало, конец, [коды]]. Код — число в начале slug;
+    # Москвы и Подмосковья там нет намеренно (дом), они горят с первого шага.
+    codes = {r['code'] for r in mp['regions']}
+    tsteps = []
+    for t in sorted(TRIPS, key=lambda t: t['start']):
+        cs = []
+        for sl in t['regions']:
+            c = str(int(sl.split('-')[0]))
+            assert c in codes, sl
+            if c not in cs: cs.append(c)
+        tsteps.append([t['start'], t['end'], cs])
+    tsteps_json = e(json.dumps(tsteps, ensure_ascii=False, separators=(',', ':')))
     # ---- прогресс для шапки: считается из тех же дат, что и карта, руками не правится ----
     names = {code: name for _, _, regs in D for code, name, *_ in regs}
     first_iso, last_iso = min(trips.values()), max(trips.values())
@@ -260,8 +273,6 @@ def index_body():
         paths.append(f'<path class="{cls}" data-code="{r["code"]}" data-fo="{fo}"{yr} d="{r["d"]}" tabindex="0" role="{"link" if link else "img"}" aria-label="{label}"/>')
     chips_fo = '<button type="button" class="chip" data-k="fo" data-v="" aria-pressed="true">Все</button>' + ''.join(
         f'<button type="button" class="chip" data-k="fo" data-v="{FOKEY[s]}" aria-pressed="false" title="{e(f)}">{s}</button>' for s, f, _ in D if s)
-    chips_y = '<button type="button" class="chip" data-k="year" data-v="" aria-pressed="true">Все годы</button>' + ''.join(
-        f'<button type="button" class="chip" data-k="year" data-v="{y}" aria-pressed="false">{y}</button>' for y in years)
     out = [f'''<div class="page ix-page">
 <header class="ix-head">
   <div class="ix-top"><div class="ix-kicker">Сергей Веретенников · отчёты о поездках</div><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button></div>
@@ -272,10 +283,9 @@ def index_body():
   </div>
   {stats}
 </header>
-<section class="mapbox" id="karta" aria-label="Карта посещённых регионов">
+<section class="mapbox" id="karta" aria-label="Карта посещённых регионов" data-trips="{tsteps_json}">
   <div class="filters">
     <div class="chips" role="group" aria-label="Федеральный округ">{chips_fo}</div>
-    <div class="chips" role="group" aria-label="Год поездки">{chips_y}</div>
   </div>
   <div class="mapwrap">
   <svg class="rumap" viewBox="0 0 {mp['w']} {mp['h']}" role="group" aria-label="Карта России, посещённые регионы">
@@ -285,14 +295,14 @@ def index_body():
   <p class="mapdate" id="mapdate" aria-hidden="true" hidden></p>
   </div>
   <div class="mapbar">
-    <ul class="legend" aria-label="Год первой поездки">{legend}</ul>
-    <div class="mapbtns"><button type="button" class="zoom mstory" id="story">{ICON['play']}{ICON['pause']}<span>Путь по годам</span></button><button type="button" class="zoom" id="zoom">Европейская часть</button></div>
+    <ul class="legend" role="group" aria-label="Год первой поездки — нажмите, чтобы оставить только его">{legend}</ul>
+    <div class="mapbtns"><button type="button" class="zoom" id="zoom" aria-pressed="false">Европейская часть</button></div>
   </div>
   <div class="mcard" id="mcard" aria-live="polite"><p class="mhint"><span class="h-mouse">Наведите на регион или нажмите на него.</span><span class="h-touch">Нажмите на регион — появится ссылка на отчёт.</span></p></div>
   <div class="tl" aria-label="Хронология поездок">
-    <div class="tl-ctl"><button type="button" id="tprev" aria-label="Предыдущая дата">{ICON['prev']}</button><button type="button" class="play" id="play" aria-label="Воспроизвести">{ICON['play']}{ICON['pause']}</button><button type="button" id="tnext" aria-label="Следующая дата">{ICON['next']}</button></div>
-    <div class="tl-track"><input type="range" id="track" min="0" value="0" aria-label="Дата на временной шкале"><div class="ruler" id="ruler" aria-hidden="true"></div></div>
-    <div class="tl-read"><strong id="tdate">Все даты</strong><span id="tnote" aria-live="polite"></span></div>
+    <div class="tl-ctl"><button type="button" id="tprev" aria-label="Предыдущая поездка">{ICON['prev']}</button><button type="button" class="play" id="play" aria-label="Путь по годам: воспроизвести">{ICON['play']}{ICON['pause']}<span>Путь по годам</span></button><button type="button" id="tnext" aria-label="Следующая поездка">{ICON['next']}</button></div>
+    <div class="tl-track"><input type="range" id="track" min="0" value="0" aria-label="Поездка на временной шкале"><div class="ruler" id="ruler" aria-hidden="true"></div></div>
+    <div class="tl-read"><strong id="tdate">Все поездки</strong><span id="tnote" aria-live="polite"></span></div>
     <button type="button" class="tl-all" id="tall" hidden>Показать весь период</button>
   </div>
 </section>
