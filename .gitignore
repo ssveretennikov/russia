@@ -1,6 +1,6 @@
 # Рабочие материалы остаются на диске автора и в репозиторий не попадают
-# из regions/ в git идут только тексты и таблицы; work/ — кэш просмотра архива, пересоздаётся командами inventory, detail, vstrip
-regions/*/work/
+# regions/ — закрытый репозиторий ssveretennikov/russia-regions (своя папка со своим git), в сайт не идёт
+/regions/
 # ролики лежат в отдельном репозитории russia-video (папка рядом, свой git): основной сайт без них укладывается в предел GitHub Pages
 /russia-video/
 _artifact/
