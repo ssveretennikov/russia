@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#435BA8;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#8E9ED2;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#8E9ED2;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P047">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Набережная городского пруда, за водой ряд высотных домов и круглое здание под синим небом с облаками"></div>
@@ -96,8 +97,21 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Екатеринбург</span></a></li>
+    <li><a href="#g2"><span class="toc-d">28 апреля · четверг · день</span><span class="toc-t">Ельцин Центр, четыре часа</span></a></li>
+    <li><a href="#g3"><span class="toc-t">Набережная и всё официальное</span></a></li>
+    <li><a href="#g4"><span class="toc-d">28 апреля · вечер</span><span class="toc-t">Пешеходная улица и её контрасты</span></a></li>
+    <li><a href="#g5"><span class="toc-t">Клавиатура на берегу</span></a></li>
+    <li><a href="#g6"><span class="toc-d">28 апреля · ночь</span><span class="toc-t">Ночной город и дорога к поезду</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Екатеринбург</h2>
+  <h2 id="g1">Три вещи про Екатеринбург</h2>
   <ul class="facts">
     <li>в Ельцин Центре можно посидеть в зале с голограммами выступающих политиков и аудиозаписями тех лет и почувствовать себя на Съезде. А можно записать в рубке обращение к народу на тему по выбору и отправить себе на почту. Мне, кстати, так и не прислали. Говорят, остальным доходит</li>
     <li>там же музей СССР и выставки. Я попал на Лагранжа, советские чёрно-белые фотографии: погуглите, наверняка узнаете</li>
@@ -115,7 +129,7 @@
 
 <section class="sec">
   <div class="day">28 апреля · четверг · день</div>
-  <h2>Ельцин Центр, четыре часа</h2>
+  <h2 id="g2">Ельцин Центр, четыре часа</h2>
   <p>Слышать про современный Екатеринбург и не слышать про Ельцин Центр — вещи несовместимые. Первым делом отправился туда. Внутри всё современно: на этажах офисы, кафе, развлечения, а сам музей первого президента на втором этаже. Фото из экспозиции я делал для себя, в этом повествовании они не очень информативны, но пара кадров всё-таки нужна, чтобы было понятно, как это сделано.</p>
   <div class="row">
     <figure id="P009">
@@ -170,7 +184,7 @@
 </section>
 
 <section class="sec">
-  <h2>Набережная и всё официальное</h2>
+  <h2 id="g3">Набережная и всё официальное</h2>
   <p>Неподалёку здание правительства области, театр, администрация города. Всё рядом, всё из разных эпох, и это тот самый случай, когда соседи не договаривались.</p>
   <div class="row narrow">
     <figure id="P044">
@@ -200,7 +214,7 @@
 
 <section class="sec">
   <div class="day">28 апреля · вечер</div>
-  <h2>Пешеходная улица и её контрасты</h2>
+  <h2 id="g4">Пешеходная улица и её контрасты</h2>
   <p>Центральная пешеходная улица в Екатеринбурге состоит из контрастов. Скульптура парочке, как же без неё. Скульптур тут вообще хватает: бронзовые люди стоят у фонтанов, сидят на скамейках, показывают куда-то рукой. А свернёшь в проулок, и вид совсем другой. Контрасты…</p>
   <div class="row">
     <figure id="P061">
@@ -235,7 +249,7 @@
 </section>
 
 <section class="sec">
-  <h2>Клавиатура на берегу</h2>
+  <h2 id="g5">Клавиатура на берегу</h2>
   <p>Вдоль Исети лежит арт-объект, ради которого я поднял дрон. Клавиатура из бетонных плит на склоне, в натуральную величину, если считать, что пользователь ростом с дом. Люди ходят по клавишам и сидят на пробеле.</p>
   <div class="row">
     <figure id="P079">
@@ -275,7 +289,7 @@
 
 <section class="sec">
   <div class="day">28 апреля · ночь</div>
-  <h2>Ночной город и дорога к поезду</h2>
+  <h2 id="g6">Ночной город и дорога к поезду</h2>
   <p>Стемнело, и город включил подсветку. Дом Севастьянова, местная достопримечательность, ночью выглядит как торт. По дороге к вокзалу — Цой на стене, Люмьеры у «Космоса» и храм, мимо которого в этом городе пройти нельзя.</p>
   <figure class="wide" id="P092">
     <div class="ph"><img src="media/sevastyanov.webp" width="2000" height="1500" loading="lazy" alt="Ночная подсветка дома Севастьянова с башенкой и колоннами, пустая дорога на переднем плане"></div>
@@ -305,6 +319,11 @@
       <figcaption><time>22:47</time>На этом всё. Пока, Екатеринбург. Скоро поезд.</figcaption>
     </figure>
   </div>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Ельцин Центр один стоит поездки, а клавиатура на берегу и деревянный дом рядом с небоскрёбом объясняют город лучше любого путеводителя. Не хватило второго дня: за шестнадцать часов я увидел только центр, а письмо из рубки так и не пришло.</p>
@@ -327,6 +346,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../74-chelyabinsk/index.html"><span class="code">74</span><span><small>Раньше по маршруту</small>Челябинская область</span></a><a class="next" href="../59-perm/index.html"><span><small>Дальше по маршруту</small>Пермский край</span><span class="code">59</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

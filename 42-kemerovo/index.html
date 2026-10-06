@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#3A74B0;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#75A2D1;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#75A2D1;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P016">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: излучина Томи, на берегу две полосатые трубы ТЭЦ, за рекой мост и город"></div>
@@ -83,8 +84,23 @@
   <p>Хостел попался один из худших за год. Шумновато, грязновато и нет плиты. Я настолько привык, что плита есть всегда, что купил яйца на утро. В интернете нашёл рецепт варки яйца в микроволновке с уверениями, что оно точно-точно не взорвётся. Теперь и рецептам из интернета не верю тоже. Позавтракал сладким и поехал на Красную горку.</p>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Кемерово</span></a></li>
+    <li><a href="#g2"><span class="toc-d">31 мая · вторник · утро</span><span class="toc-t">Красная горка: музей вместо шахты</span></a></li>
+    <li><a href="#g3"><span class="toc-t">Дрон над Томью</span></a></li>
+    <li><a href="#g4"><span class="toc-d">31 мая · день</span><span class="toc-t">Колония, имя и космос</span></a></li>
+    <li><a href="#g5"><span class="toc-t">Память шахтёрам Кузбасса</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Рудничный бор</span></a></li>
+    <li><a href="#g7"><span class="toc-d">31 мая · вечер</span><span class="toc-t">Набережная и центр</span></a></li>
+    <li><a href="#g8"><span class="toc-d">31 мая · 22:00</span><span class="toc-t">Парк ангелов</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Кемерово</h2>
+  <h2 id="g1">Три вещи про Кемерово</h2>
   <ul class="facts">
     <li>в 1920-х здесь работала Автономная индустриальная колония «Кузбасс»: около 700 человек из разных стран приехали строить в Сибири коммунистическую утопию. Не вышло</li>
     <li>уголь из шахт вывозили на лошадях. Последний конь вышел из шахты в 1972 году</li>
@@ -101,7 +117,7 @@
 
 <section class="sec">
   <div class="day">31 мая · вторник · утро</div>
-  <h2>Красная горка: музей вместо шахты</h2>
+  <h2 id="g2">Красная горка: музей вместо шахты</h2>
   <p>На территории бывшего Кемеровского рудника сделали музей-заповедник. В нём музей истории Кузбасса и экспозиция «Шахта» с забоем, крепью и шахтёрами в полный рост. Раз в настоящую не пускают, довольствовался этой.</p>
   <div class="row">
     <figure id="P003">
@@ -134,7 +150,7 @@
 </section>
 
 <section class="sec">
-  <h2>Дрон над Томью</h2>
+  <h2 id="g3">Дрон над Томью</h2>
   <p>Берег здесь высокий, по GPS 218 метров, и с него хочется посмотреть на реку сверху. Запустил.</p>
   <figure class="wide">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-tom.jpg" src="https://ssveretennikov.github.io/russia-video/42-kemerovo/v-dron-tom.mp4" width="1280" height="720"></video></div>
@@ -148,7 +164,7 @@
 
 <section class="sec">
   <div class="day">31 мая · день</div>
-  <h2>Колония, имя и космос</h2>
+  <h2 id="g4">Колония, имя и космос</h2>
   <p>В музее истории самое интересное — стенды. Про Автономную индустриальную колонию «Кузбасс», где 700 человек со всего мира строили утопию. Про то, как городу выбирали имя. И про Леонова: Кемерово космический.</p>
   <div class="row">
     <figure id="P029">
@@ -188,7 +204,7 @@
 </section>
 
 <section class="sec">
-  <h2>Память шахтёрам Кузбасса</h2>
+  <h2 id="g5">Память шахтёрам Кузбасса</h2>
   <p>Памятник Эрнста Неизвестного стоит в сосновом лесу у реки. Чёрный, высокий, с надписью на постаменте. Я сел у подножия и отправил дрон вверх.</p>
   <figure class="wide">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-pamyatnik.jpg" src="https://ssveretennikov.github.io/russia-video/42-kemerovo/v-dron-pamyatnik.mp4" width="1280" height="720"></video></div>
@@ -211,7 +227,7 @@
 </section>
 
 <section class="sec">
-  <h2>Рудничный бор</h2>
+  <h2 id="g6">Рудничный бор</h2>
   <p>Дальше смотровая площадка в сторону Рудничного бора, где сохранён реликтовый лес. Очень классное место для промышленного города. Птица на пути, скульптура из стволов, орёл на скале и надпись «Кузбасс» на холме.</p>
   <div class="row narrow">
     <figure id="P061">
@@ -235,7 +251,7 @@
 
 <section class="sec">
   <div class="day">31 мая · вечер</div>
-  <h2>Набережная и центр</h2>
+  <h2 id="g7">Набережная и центр</h2>
   <p>Вечером перешёл на городской берег. Набережная, остров Кемеровский посреди реки, красная «Победа» в георгиевских ленточках, сердце, в которое все встают фотографироваться. Я тоже встал.</p>
   <figure class="wide" id="P076">
     <div class="ph"><img src="media/ostrov.webp" width="2000" height="1500" loading="lazy" alt="Вечерняя Томь с лесистым островом посередине, голубое небо с облаками"></div>
@@ -290,7 +306,7 @@
 
 <section class="sec">
   <div class="day">31 мая · 22:00</div>
-  <h2>Парк ангелов</h2>
+  <h2 id="g8">Парк ангелов</h2>
   <p>Закончил в «Парке ангелов». Он классный и современный: камни, подсветка, деревья в деревянных рамах и надписи на плитах. Ночью накануне я, кажется, заходил сюда же, не зная, где оказался.</p>
   <div class="row narrow">
     <figure id="P096">
@@ -310,6 +326,11 @@
     <div class="ph"><img src="media/dom.webp" width="1600" height="1200" loading="lazy" alt="Полуразрушенный дом с провалившейся крышей, на заборе слой объявлений и афиш"></div>
     <figcaption><time>22:17</time>Через дорогу от нового парка. Афиши на заборе держат дом лучше, чем крыша. На сегодня всё.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Хорошо: музей на руднике, где можно залезть в ковш, дрон над Томью и настоящий сосновый бор в черте угольного города. Не хватило самой шахты, нормального хостела и варёного яйца.</p>
@@ -333,6 +354,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../70-tomsk/index.html"><span class="code">70</span><span><small>Раньше по маршруту</small>Томская область</span></a><a class="next" href="../24-krasnoyarsk/index.html"><span><small>Дальше по маршруту</small>Красноярский край</span><span class="code">24</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

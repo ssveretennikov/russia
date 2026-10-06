@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#727932;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#BFC775;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#BFC775;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P054">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1239" alt="Белое здание музея с куполом обсерватории на крыше, перед ним трава и деревья"></div>
@@ -64,8 +65,21 @@
   <p class="lead">День получился из двух половин. Первая: пустой город на рассвете, где я в одиночестве считал церкви и колонки с водой. Вторая: парк с ракетой над рекой и музей, в который заходишь на часок, а выходишь, когда уже льёт. Между ними ничего не планировалось, и это было правильно.</p>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Калугу</span></a></li>
+    <li><a href="#g2"><span class="toc-d">8 июня · четверг · 05:45</span><span class="toc-t">Город, пока он спит</span></a></li>
+    <li><a href="#g3"><span class="toc-t">Церкви, которых больше всего</span></a></li>
+    <li><a href="#g4"><span class="toc-d">8 июня · 08:30</span><span class="toc-t">Парк, пока музей закрыт</span></a></li>
+    <li><a href="#g5"><span class="toc-d">8 июня · 10:13</span><span class="toc-t">Музей, три часа вместо одного</span></a></li>
+    <li><a href="#g6"><span class="toc-d">8 июня · 14:23</span><span class="toc-t">Ливень и аэропорт</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Калугу</h2>
+  <h2 id="g1">Три вещи про Калугу</h2>
   <ul class="facts">
     <li>в Калугу я приехал не из Москвы и улетел не в Москву. Для города в двух часах от столицы это редкий сценарий, и он сработал: билет до Минеральных Вод отсюда дешевле</li>
     <li>церкви есть во многих городах России, и немало. Но по моим ощущениям, в Калуге их больше всего. За час утренней прогулки я насчитал больше, чем успел сфотографировать</li>
@@ -82,7 +96,7 @@
 
 <section class="sec">
   <div class="day">8 июня · четверг · 05:45</div>
-  <h2>Город, пока он спит</h2>
+  <h2 id="g2">Город, пока он спит</h2>
   <p>Первый кадр в 05:45. В это время в Калуге нет никого, кроме меня и телевышки, так что фотографировать удобно: ничто не мешает, кроме тени от самого себя.</p>
   <div class="row">
     <figure id="P004">
@@ -121,7 +135,7 @@
 </section>
 
 <section class="sec">
-  <h2>Церкви, которых больше всего</h2>
+  <h2 id="g3">Церкви, которых больше всего</h2>
   <p>Во многих городах России есть церкви, и немало. Но по моим ощущениям, в Калуге их больше всего. Ниже далеко не все, только те, мимо которых я прошёл до восьми утра.</p>
   <div class="row narrow">
     <figure id="P018">
@@ -167,7 +181,7 @@
 
 <section class="sec">
   <div class="day">8 июня · 08:30</div>
-  <h2>Парк, пока музей закрыт</h2>
+  <h2 id="g4">Парк, пока музей закрыт</h2>
   <p>К половине девятого дошёл до музея. Он ещё закрыт, зато вокруг парк, и в нём всё, что в Калуге связано с космосом, выставлено под открытым небом: памятники, тарелка, буквы, ракеты и одна настоящая обсерватория.</p>
   <div class="row">
     <figure id="P040">
@@ -235,7 +249,7 @@
 
 <section class="sec">
   <div class="day">8 июня · 10:13</div>
-  <h2>Музей, три часа вместо одного</h2>
+  <h2 id="g5">Музей, три часа вместо одного</h2>
   <p>Территория музея огромная, и сам музей мне очень-очень понравился. Изучал всё как самостоятельно, так и с экскурсией. Времени, к сожалению, было часа два, максимум три, а там можно остаться на целый день и всё рассматривать. Ниже то, на чём я задержался.</p>
   <div class="row narrow">
     <figure id="P102">
@@ -292,7 +306,7 @@
 
 <section class="sec">
   <div class="day">8 июня · 14:23</div>
-  <h2>Ливень и аэропорт</h2>
+  <h2 id="g6">Ливень и аэропорт</h2>
   <p>Зарядил такой сильный дождь, что не помог мой пончо. Ливнёвок в городе нет, вся дорога — одна сплошная лужа, и как итог ноги промокли насквозь. На этом знакомство с городом пришлось завершить, хотя намеченных объектов оставалось не так уж и много. И по закону подлости, как только я приехал в аэропорт, дождь закончился.</p>
   <figure class="wide" id="P178">
     <div class="ph"><img src="media/liven.webp" width="2000" height="1126" loading="lazy" alt="Ливень в парке, сквозь струи дождя видна статуя Гагарина и машины на парковке"></div>
@@ -312,6 +326,11 @@
     <div class="ph"><img src="media/vokzal.webp" width="1600" height="901" loading="lazy" alt="Синее здание аэровокзала с надписью «Калуга KALUGA» и терминалом А"></div>
     <figcaption><time>15:37</time>Аэропорт. Небо уже светлеет, разумеется. Сажусь на самолёт до Минеральных Вод, оттуда начнётся Кавказ.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Музей космонавтики стоил поездки сам по себе, а утренняя Калуга без людей оказалась приятнее, чем я ждал от города «на крайний случай». Не хватило второй половины дня: намеченное в центре осталось под дождём, и в телескоп я так ничего и не увидел.</p>
@@ -335,6 +354,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../57-oryol/index.html"><span class="code">57</span><span><small>Раньше по маршруту</small>Орловская область</span></a><a class="next" href="../09-karachay-cherkessia/index.html"><span><small>Дальше по маршруту</small>Карачаево-Черкесия</span><span class="code">9</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

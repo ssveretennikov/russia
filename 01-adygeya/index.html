@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#5E7E33;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#A4C775;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#A4C775;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P016">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Сергей в красной кепке и белой футболке стоит на смотровой, за ним зелёная долина и горы под облаками"></div>
@@ -111,8 +112,23 @@
   <p>Ехали мы большой компанией, человек двадцать, на автобусе. Это важно для понимания фотографий: там много людей, и все они машут.</p>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Адыгею</span></a></li>
+    <li><a href="#g2"><span class="toc-d">18 июня · суббота · утро</span><span class="toc-t">Майкоп за час</span></a></li>
+    <li><a href="#g3"><span class="toc-d">18 июня · день</span><span class="toc-t">День халюжа</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Смотровая, 764 метра</span></a></li>
+    <li><a href="#g5"><span class="toc-t">Большая Азишская пещера</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Дрон у дороги</span></a></li>
+    <li><a href="#g7"><span class="toc-d">18 июня · вечер</span><span class="toc-t">«Остров любви»</span></a></li>
+    <li><a href="#g8"><span class="toc-d">18 июня · 20:58</span><span class="toc-t">Покаааа</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Адыгею</h2>
+  <h2 id="g1">Три вещи про Адыгею</h2>
   <ul class="facts">
     <li>единственный регион России, целиком лежащий внутри другого региона. Граница с Краснодарским краем со всех сторон</li>
     <li>адыгейцы здесь примерно четверть населения, две трети русские. Все адыгейцы — адыги, но не все адыги — адыгейцы: кабардинцы, черкесы и шапсуги тоже адыги</li>
@@ -129,7 +145,7 @@
 
 <section class="sec">
   <div class="day">18 июня · суббота · утро</div>
-  <h2>Майкоп за час</h2>
+  <h2 id="g2">Майкоп за час</h2>
   <p>Майкоп маленький, чистый и тихий. На центр хватило часа, и я не уверен, что ему нужно больше.</p>
   <div class="row">
     <figure id="P001">
@@ -158,7 +174,7 @@
 
 <section class="sec">
   <div class="day">18 июня · день</div>
-  <h2>День халюжа</h2>
+  <h2 id="g3">День халюжа</h2>
   <p>18 июня в Адыгее празднуют халюж. Это такой адыгейский пирожок, жареный, с сыром. Я узнал об этом по пробке: полреспублики ехало в ту же сторону, что и мы.</p>
   <figure class="wide">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-probka.jpg" src="https://ssveretennikov.github.io/russia-video/01-adygeya/v-probka.mp4" width="1280" height="720"></video></div>
@@ -182,7 +198,7 @@
 </section>
 
 <section class="sec">
-  <h2>Смотровая, 764 метра</h2>
+  <h2 id="g4">Смотровая, 764 метра</h2>
   <p>Остановились на первой смотровой. Здесь уже понятно, зачем в Адыгею едут: не за городом, а вот за этим.</p>
   <figure class="wide" id="P121">
     <div class="ph"><img src="media/dolina.webp" width="2000" height="1500" loading="lazy" alt="Широкая зелёная долина, за ней ряды гор, над ними крупные облака"></div>
@@ -205,7 +221,7 @@
 </section>
 
 <section class="sec">
-  <h2>Большая Азишская пещера</h2>
+  <h2 id="g5">Большая Азишская пещера</h2>
   <p>Вход на высоте полтора километра, по GPS 1 550 метров. Это самая высокая точка дня, и она под землёй. Маршрут по пещере больше двухсот метров, весь на лестницах, и внутри прохладно настолько, что половина группы пожалела о шортах.</p>
   <div class="row">
     <figure id="P028">
@@ -238,7 +254,7 @@
 </section>
 
 <section class="sec">
-  <h2>Дрон у дороги</h2>
+  <h2 id="g6">Дрон у дороги</h2>
   <p>Выбрались из пещеры и остановились перекусить у дороги. Захотелось посмотреть на всё это сверху. Не знаю, почему дрон начало косить, но несколько кадров он всё же снял ровно.</p>
   <figure class="wide">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-doroga.jpg" src="https://ssveretennikov.github.io/russia-video/01-adygeya/v-dron-doroga.mp4" width="1280" height="720"></video></div>
@@ -258,7 +274,7 @@
 
 <section class="sec">
   <div class="day">18 июня · вечер</div>
-  <h2>«Остров любви»</h2>
+  <h2 id="g7">«Остров любви»</h2>
   <p>Самая красивая точка маршрута приберегли напоследок. Обрыв над лесом, сосны, которые растут вбок, качели на краю и две надписи для тех, кто без них не поймёт, что здесь красиво.</p>
   <figure class="wide" id="P179">
     <div class="ph"><img src="media/gruppa-dom.webp" width="1600" height="1200" loading="lazy" alt="Группа людей в красных кепках у деревянного дома, впереди Сергей в белой футболке"></div>
@@ -326,11 +342,16 @@
 
 <section class="sec">
   <div class="day">18 июня · 20:58</div>
-  <h2>Покаааа</h2>
+  <h2 id="g8">Покаааа</h2>
   <figure class="wide" id="P209">
     <div class="ph"><img src="media/zakat.webp" width="1600" height="1200" loading="lazy" alt="Тёмная дорога из окна автобуса, впереди красная полоса заката"></div>
     <figcaption><time>20:58</time>Обратно в автобусе. Закат из окна, отражения салона, 318 метров над морем. Спустились. <span class="credit">Фото Лены</span></figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>За один день: город, пробка в честь пирожка, два кабана, пещера на полутора тысячах и обрыв, над которым летает дрон. Для региона второго с конца по площади это очень много.</p>
@@ -353,6 +374,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../23-krasnodar/index.html"><span class="code">23</span><span><small>Раньше по маршруту</small>Краснодарский край</span></a><a class="next" href="../26-stavropol/index.html"><span><small>Дальше по маршруту</small>Ставропольский край</span><span class="code">26</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

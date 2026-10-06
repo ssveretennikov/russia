@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#1A70D1;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#67A2E4;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#67A2E4;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P037">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1239" alt="Белые стены и башни кремля на зелёном холме под синим небом"></div>
@@ -82,8 +83,19 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Тобольск</span></a></li>
+    <li><a href="#g2"><span class="toc-t">Менделеев на каждом шагу</span></a></li>
+    <li><a href="#g3"><span class="toc-t">Кремль на холме</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Тюремный замок</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Тобольск</h2>
+  <h2 id="g1">Три вещи про Тобольск</h2>
   <ul class="facts">
     <li>у города со ста тысячами жителей есть свой аэропорт, открытый в 2021 году. Жирновато для нестоличного города, пока не узнаёшь, что здесь стоит ЗапСибНефтехим, завод СИБУРа, и сама компания зарегистрирована тут же</li>
     <li>две знаменитости Тобольска, по версии девчонок из тюменской гостиницы: Инстасамка и Менделеев. Второго в городе видно на каждом шагу: дома, плитка, скульптуры</li>
@@ -100,7 +112,7 @@
 </section>
 
 <section class="sec">
-  <h2>Менделеев на каждом шагу</h2>
+  <h2 id="g2">Менделеев на каждом шагу</h2>
   <p>Вокзал в Тобольске стоит так, что оттуда не добраться просто так, только на такси. Первый раз такое вижу: обычно вокзал в черте города, а часто и в центре. Хостел выбрал неудачно, второй раз в жизни пожалел об этом: сырость в коридорах, духота, толпа детей на соревнованиях. Ужинал самсой из киоска, полуголодный и расстроенный лёг спать. Зато утро началось с хорошего завтрака и хорошей погоды.</p>
   <p>Город с утра напоминал о Менделееве: дома, плитка, скульптуры, даже химические символы на фасадах.</p>
   <div class="row narrow">
@@ -121,7 +133,7 @@
 </section>
 
 <section class="sec">
-  <h2>Кремль на холме</h2>
+  <h2 id="g3">Кремль на холме</h2>
   <p>Мимо кремля сначала в парк. Там стела Ермаку, и от неё открывается вид на кремль с одной стороны и на Нижний посад с другой. Тут здорово. Ходить можно не везде, есть и огороженная территория, но Прямской взвоз между огромными белыми стенами ведёт вниз, в посад, к базарной площади.</p>
   <div class="row narrow">
     <figure id="P035">
@@ -174,7 +186,7 @@
 </section>
 
 <section class="sec">
-  <h2>Тюремный замок</h2>
+  <h2 id="g4">Тюремный замок</h2>
   <p>Время ещё было, успел в Тюремный замок. На экскурсию уже не успел, но самостоятельного осмотра хватило. Неожиданно интересно оказалось гулять по тюрьме: камеры, карцер, прогулочный дворик под решёткой, комната свиданий и передач, духовные комнаты для разных конфессий и стенды, что почитать. Фотки выложил не все, лучше брать экскурсию.</p>
   <figure class="wide" id="P110">
     <div class="ph"><img src="media/svoboda.webp" width="2000" height="1126" loading="lazy" alt="Распахнутые чёрные ворота тюрьмы, над ними табличка «На свободу — с чистой совестью!»"></div>
@@ -225,6 +237,11 @@
     <div class="ph"><img src="media/uznik.webp" width="788" height="1400" loading="lazy" alt="Вывеска на белой стене: гостиница «Опочивальни», хостел «Узник», кафе «Поварня»"></div>
     <figcaption><time>18:54</time>Хостел «Узник». После Тюремного замка название читается как гарантия качества.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Тобольск с кремлём и тюрьмой за один день перевесил три дня Тюмени, и ходить по нему легко: всё на одном холме. Не хватило экскурсии в Тюремный замок и нормального хостела, так что зимой на горячие источники заеду и остановлюсь в кремле.</p>
@@ -246,6 +263,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../72-tyumen/index.html"><span class="code">72</span><span><small>Раньше по маршруту</small>Тюменская область</span></a><a class="next" href="../86-khanty-mansi/index.html"><span><small>Дальше по маршруту</small>Ханты-Мансийский АО — Югра</span><span class="code">86</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

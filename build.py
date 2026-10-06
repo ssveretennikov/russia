@@ -616,9 +616,75 @@ def read_next(slug, prev, nxt):
         aria = 'Читать дальше'
     return prev, nxt, aria
 
+def _tail_block(body):
+    """Если тело главы кончается блоком оценки (div.verdict) или счёта (dl.bill) — (тело без него, блок).
+    Берётся только хвост: ценник посреди главы (Камчатка, «Лава с ценником») остаётся на месте."""
+    s = body.rstrip()
+    if s.endswith('</dl>'):
+        i = s.rfind('<dl class="bill"')
+        if i >= 0 and '</dl>' not in s[i:-5]: return s[:i], s[i:]
+    if s.endswith('</div>'):
+        i = s.rfind('<div class="verdict"')
+        if i >= 0:
+            depth, k = 0, i                       # в оценке вложенный div — ищем её парный </div>
+            for m in re.finditer(r'<div\b|</div>', s[i:]):
+                depth += 1 if m.group(0) == '<div' else -1
+                if depth == 0: k = i + m.end(); break
+            if k == len(s): return s[:i], s[i:]
+    return None
+
+def _plain(x):
+    return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', x)).strip()
+
+def chapters_and_final(src):
+    """Оглавление и финал страницы региона (этап 2). Исходники src/*.html не трогаем: здесь у каждого h2
+    появляется якорь g1, g2…, оценка и «Счёт по региону» из хвоста последней главы уходят в отдельный
+    section.sec.final, а после вводки (первой секции) встаёт список глав. Возвращает (страница, липкая строка)."""
+    secs = list(re.finditer(r'<section class="sec">(.*?)</section>', src, re.S))
+    if not secs: return src, ''
+    last = secs[-1]
+    body, moved = last.group(1), []
+    while True:
+        t = _tail_block(body)
+        if not t: break
+        body, blk = t; moved.insert(0, blk)
+    final = ''
+    if moved:
+        final = ('\n\n<section class="sec final" id="final" aria-labelledby="final-h">\n'
+                 '  <div class="day final-h" id="final-h">Итого</div>\n  ' + '\n  '.join(moved) + '\n</section>')
+        src = src[:last.start()] + f'<section class="sec">{body}\n</section>' + final + src[last.end():]
+    n = 0
+    def anchor(m):
+        nonlocal n
+        n += 1
+        return f'<h2 id="g{n}">'
+    src = re.sub(r'<h2>', anchor, src)
+    items = []
+    for sm in re.finditer(r'<section class="sec">(.*?)</section>', src, re.S):
+        h = re.search(r'<h2 id="(g\d+)">(.*?)</h2>', sm.group(1), re.S)
+        if not h: continue
+        d = re.search(r'<div class="day">(.*?)</div>', sm.group(1), re.S)
+        day = f'<span class="toc-d">{_plain(d.group(1))}</span>' if d else ''
+        items.append(f'<li><a href="#{h.group(1)}">{day}<span class="toc-t">{_plain(h.group(2))}</span></a></li>')
+    if final:
+        items.append('<li><a href="#final"><span class="toc-t">Итого</span></a></li>')
+    if len(items) < 2: return src, ''
+    toc = ('<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">\n'
+           '  <div class="toc-h">Главы</div>\n  <ol>\n    ' + '\n    '.join(items) + '\n  </ol>\n</nav></section>')
+    first = re.search(r'<section class="sec">.*?</section>', src, re.S)
+    if 'class="lead"' in first.group(0) and '<h2' not in first.group(0):
+        src = src[:first.end()] + '\n\n' + toc + src[first.end():]
+    else:
+        src = src[:first.start()] + toc + '\n\n' + src[first.start():]
+    # строка для телефона: название текущей главы (ссылка к оглавлению) и «наверх»; показывает series.js
+    bar = ('<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a>'
+           '<a class="cb-up" href="#top">Наверх ↑</a></div>')
+    return src, bar
+
 def region_body(code, prev=None, nxt=None):
     """prev / nxt — соседи ПО МАРШРУТУ ПОЕЗДКИ: (код, название, ссылка, подпись) или None."""
     src = cover_head(inject_data(code, open(os.path.join(ROOT, 'src', f'{code}.html'), encoding='utf-8').read()))
+    src, bar = chapters_and_final(src)
     top = ('<nav class="topbar"><a href="../index.html">← Все регионы</a>'
            '<div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button>'
            '<button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>')
@@ -631,7 +697,7 @@ def region_body(code, prev=None, nxt=None):
         b = code_badge(c)
         return f'<a class="{cls}" href="{e(link)}">' + (b + txt if cls == 'prev' else txt + b) + '</a>'
     pager = f'<nav class="pager" aria-label="{aria}">' + pl(prev, 'prev') + pl(nxt, 'next') + '</nav>'
-    return f'<div class="page page-cover">\n{top}\n{src}\n{pager}\n</div>'
+    return f'<div class="page page-cover">\n{top}\n{bar}\n{src}\n{pager}\n</div>'
 
 def meta_tags(title, desc, path, image):
     """Ссылки для пересылки (Open Graph) и значок. path — адрес страницы от корня сайта: '' или '49-magadan/'."""

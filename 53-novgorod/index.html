@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#12292C;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#75BDC7;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#75BDC7;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P042">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: Софийский собор, звонница и красная кремлёвская стена, за ними голые деревья и город"></div>
@@ -85,8 +86,21 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Новгород</span></a></li>
+    <li><a href="#g2"><span class="toc-d">16 апреля · суббота · 18:04</span><span class="toc-t">Кремль, пока светло</span></a></li>
+    <li><a href="#g3"><span class="toc-t">Летим через «Волгу»</span></a></li>
+    <li><a href="#g4"><span class="toc-d">16 апреля · 19:06</span><span class="toc-t">Золотой час</span></a></li>
+    <li><a href="#g5"><span class="toc-d">16 апреля · 19:56</span><span class="toc-t">Юрьев монастырь на закате</span></a></li>
+    <li><a href="#g6"><span class="toc-d">16 апреля · 22:06</span><span class="toc-t">Обратно к вокзалу</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Новгород</h2>
+  <h2 id="g1">Три вещи про Новгород</h2>
   <ul class="facts">
     <li>в кремле стоит памятник «Тысячелетие России», 1862 год. Каждый элемент или группа элементов неслучайны и что-то означают</li>
     <li>средний ярус памятника показывает шесть крупных эпох: призвание варягов, крещение Руси, начало изгнания татар, основание самодержавного царства, начало царствования Романовых и основание Российской империи</li>
@@ -103,7 +117,7 @@
 
 <section class="sec">
   <div class="day">16 апреля · суббота · 18:04</div>
-  <h2>Кремль, пока светло</h2>
+  <h2 id="g2">Кремль, пока светло</h2>
   <p>От вокзала до кремля пешком, и первое, что видишь, это стена с башнями над сухим рвом. Красный кирпич, остатки снега, синее небо. Внутри тихо: сезон не начался, кремль ремонтируют, и половина построек в лесах.</p>
   <figure class="wide" id="P001">
     <div class="ph"><img src="media/steny.webp" width="2000" height="1500" loading="lazy" alt="Красная кремлёвская стена с двумя башнями над сухим рвом, в тени остатки снега"></div>
@@ -142,7 +156,7 @@
 </section>
 
 <section class="sec">
-  <h2>Летим через «Волгу»</h2>
+  <h2 id="g3">Летим через «Волгу»</h2>
   <p>В статье я написал «летим через Волгу посмотреть на аркаду Гостиного двора». Река в Новгороде называется Волхов, и я это знал, но дрон уже был в воздухе, а руки заняты. Оставляю как есть: это единственная Волга, по которой в апреле идёт лёд мимо кремля.</p>
   <figure class="wide" id="P035">
     <div class="ph"><img src="media/dron-volhov.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: широкая река с плывущими льдинами, на дальнем берегу белая аркада и купола"></div>
@@ -164,7 +178,7 @@
 
 <section class="sec">
   <div class="day">16 апреля · 19:06</div>
-  <h2>Золотой час</h2>
+  <h2 id="g4">Золотой час</h2>
   <p>После дрона вернулся в кремль, потому что свет стал другим. Памятник из чёрного стал бронзовым, стены из красных — тёплыми, а башни против солнца превратились в силуэты.</p>
   <div class="row narrow">
     <figure id="P021">
@@ -192,7 +206,7 @@
 
 <section class="sec">
   <div class="day">16 апреля · 19:56</div>
-  <h2>Юрьев монастырь на закате</h2>
+  <h2 id="g5">Юрьев монастырь на закате</h2>
   <p>Ещё съездил в деревню Юрьево, в Свято-Юрьев мужской монастырь. Приехал за полчаса до заката: колокольня ещё в солнце, стены уже в тени. Вокруг поля, мельница и разлив, за горизонтом озеро Ильмень, которое я так и не увидел, но знаю, что оно там.</p>
   <div class="row narrow">
     <figure id="P047">
@@ -232,7 +246,7 @@
 
 <section class="sec">
   <div class="day">16 апреля · 22:06</div>
-  <h2>Обратно к вокзалу</h2>
+  <h2 id="g6">Обратно к вокзалу</h2>
   <p>Вернулся в город уже в темноте. По дороге к поезду встретил красное сердце для пластиковых крышек и вокзал с подсветкой, перед ним Александр Невский. Утром он был первым, кого я увидел в Новгороде, вечером стал последним.</p>
   <div class="row narrow">
     <figure id="P043">
@@ -244,6 +258,11 @@
       <figcaption><time>22:06</time>Памятник Александру Невскому и здание вокзала. Поезд через полчаса.</figcaption>
     </figure>
   </div>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Четырёх часов хватило на кремль, два полёта и монастырь, и свет весь вечер работал на меня. Не хватило самого города: Ярославово дворище я видел только с дрона, а Ильмень только за горизонтом.</p>
@@ -266,6 +285,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../60-pskov/index.html"><span><small>Дальше по маршруту</small>Псковская область</span><span class="code">60</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#228639;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#65D77F;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#65D77F;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P075">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Ледяной трон с высокой резной спинкой в арке, на сиденье шкура"></div>
@@ -82,8 +83,19 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Якутию</span></a></li>
+    <li><a href="#g2"><span class="toc-d">9 июля · суббота</span><span class="toc-t">Якутск: прилёт и мамонт не тот</span></a></li>
+    <li><a href="#g3"><span class="toc-t">Царство вечной мерзлоты</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Чочур Муран</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Якутию</h2>
+  <h2 id="g1">Три вещи про Якутию</h2>
   <ul class="facts">
     <li>дома в якутских городах строят на сваях, чтобы под ними гулял ветер. Иначе тепло от здания рано или поздно растопит мерзлоту, и фундамент потеряет устойчивость</li>
     <li>многие местные зимой вообще не глушат машину: двигатель работает на холостых днями и ночами. Если заглушить, масло в моторе попросту замёрзнет</li>
@@ -108,7 +120,7 @@
 
 <section class="sec">
   <div class="day">9 июля · суббота</div>
-  <h2>Якутск: прилёт и мамонт не тот</h2>
+  <h2 id="g2">Якутск: прилёт и мамонт не тот</h2>
   <p>Кто бы мог подумать, что в Якутии тоже белые ночи. Самолёт садился в начале третьего, и за окном был рассвет, а не ночь. Днём поехал в музей вечной мерзлоты, но попал в институт Мерзлотоведения, который оказался закрыт. Сфоткал мамонта и поехал обратно.</p>
   <div class="row narrow">
     <figure id="P001">
@@ -127,7 +139,7 @@
 </section>
 
 <section class="sec">
-  <h2>Царство вечной мерзлоты</h2>
+  <h2 id="g3">Царство вечной мерзлоты</h2>
   <p>Снаружи музей выглядит как небольшая пристройка, уходящая в гору. Внутри после кассы надо пройти ещё несколько дверей, чтобы оказаться под горой. Всем на входе раздают тёплые плащи, иначе легко замёрзнуть: весь год здесь от −15 до −5, летом остужаешься, зимой греешься. Территория довольно большая, и чего тут только нет.</p>
   <div class="row">
     <figure id="P016">
@@ -199,7 +211,7 @@
 </section>
 
 <section class="sec">
-  <h2>Чочур Муран</h2>
+  <h2 id="g4">Чочур Муран</h2>
   <p>В горе побывал, теперь полез на неё. С холма видно реку и город, а на другой стороне озера ещё одна достопримечательность — эколого-этнографический комплекс «Чочур Муран». Насколько я понял, изначально тут было только кафе, а хобби хозяина по собирательству всяких интересных вещей привело к целому комплексу. Ходить по территории и по самому кафе можно без заказа и без билета.</p>
   <figure class="wide" id="P128">
     <div class="ph"><img src="media/vid-s-holma.webp" width="2000" height="1500" loading="lazy" alt="Вид с холма на излучину реки, за ней дома города под серым небом"></div>
@@ -233,6 +245,11 @@
 </section>
 
 <section class="sec">
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Лёд под горой в июле, белые ночи и кафе, где мамонт лежит рядом с перчатками Роя Джонса: странного здесь больше, чем где-либо до этого. Не хватило денег на экскурсии и, честно говоря, Ленских столбов, за которыми сюда едут все, кроме меня. А <a href="../14-mirny/index.html">про Мирный отдельная страница</a>.</p>
@@ -254,6 +271,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../75-zabaykalsky/index.html"><span class="code">75</span><span><small>Раньше по маршруту</small>Забайкальский край</span></a><a class="next" href="../14-mirny/index.html"><span><small>Дальше по маршруту</small>Мирный</span><span class="code">14</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

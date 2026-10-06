@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#7F7234;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C7B975;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C7B975;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P063">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1239" alt="Белый особняк с колоннами, балконом и широкой лестницей на фоне ясного неба"></div>
@@ -82,8 +83,24 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Тамбов</span></a></li>
+    <li><a href="#g2"><span class="toc-d">9 сентября · суббота · вечер</span><span class="toc-t">Приехал, замёрз</span></a></li>
+    <li><a href="#g3"><span class="toc-d">10 сентября · воскресенье · утро</span><span class="toc-t">Надёжный товарищ</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Храмы, которые я узнаю</span></a></li>
+    <li><a href="#g5"><span class="toc-d">10 сентября · день</span><span class="toc-t">Соборная площадь</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Дворец, которого не должно быть</span></a></li>
+    <li><a href="#g7"><span class="toc-d">10 сентября · вечер</span><span class="toc-t">Набережная со странным названием</span></a></li>
+    <li><a href="#g8"><span class="toc-t">Колокольня с подсветкой</span></a></li>
+    <li><a href="#g9"><span class="toc-d">10 сентября · ночь</span><span class="toc-t">Волки перед правительством</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Тамбов</h2>
+  <h2 id="g1">Три вещи про Тамбов</h2>
   <ul class="facts">
     <li>тамбовский волк, как тут утверждают, надёжный товарищ. Написано на столбе в сосновом парке, спорить не с кем</li>
     <li>Агапкин и Шатров, авторы марша «Прощание славянки» и вальса «На сопках Маньчжурии», стоят в центре города одним памятником</li>
@@ -101,7 +118,7 @@
 
 <section class="sec">
   <div class="day">9 сентября · суббота · вечер</div>
-  <h2>Приехал, замёрз</h2>
+  <h2 id="g2">Приехал, замёрз</h2>
   <figure class="wide" id="P001">
     <div class="ph"><img src="media/alleya.webp" width="2000" height="1126" loading="lazy" alt="Пешеходная аллея со скамьями, вдали многоэтажки, пасмурное небо"></div>
     <figcaption><time>18:44</time>Единственный кадр первого вечера. Дальше по плану гостиница и шапка.</figcaption>
@@ -110,7 +127,7 @@
 
 <section class="sec">
   <div class="day">10 сентября · воскресенье · утро</div>
-  <h2>Надёжный товарищ</h2>
+  <h2 id="g3">Надёжный товарищ</h2>
   <p>С утра сюрприз: за окном рынок. Но знакомство с городом положено начинать с его главного жителя, так что первым делом поехал к волку. Он стоит среди сосен, деревянный, на столбе, и к нему прилагается характеристика.</p>
   <figure class="mid" id="P004">
     <div class="ph"><img src="media/volk-park.webp" width="1600" height="901" loading="lazy" alt="Деревянная ограда-решётка и фигура волка на столбе среди высоких сосен"></div>
@@ -123,7 +140,7 @@
 </section>
 
 <section class="sec">
-  <h2>Храмы, которые я узнаю</h2>
+  <h2 id="g4">Храмы, которые я узнаю</h2>
   <p>Вернулся в город и пошёл по храмам. Их тут много, и у них общий почерк: розовый кирпич в белую клетку, пёстрые купола, высокие колокольни. Один такой запоминаешь, второй уже узнаёшь.</p>
   <div class="row narrow">
     <figure id="P018">
@@ -153,7 +170,7 @@
 
 <section class="sec">
   <div class="day">10 сентября · день</div>
-  <h2>Соборная площадь</h2>
+  <h2 id="g5">Соборная площадь</h2>
   <p>Спасо-Преображенский собор, белый, с отдельной колокольней. Рядом часовня Питирима Тамбовского на мостике, в ней можно набрать воды. А перед часовней стоят чаны, и до сих пор не знаю, что в них. Святая вода?</p>
   <figure class="wide" id="P036">
     <div class="ph"><img src="media/sobor.webp" width="2000" height="1126" loading="lazy" alt="Белый собор с колокольней за деревьями, перед ним площадь с газонами"></div>
@@ -194,7 +211,7 @@
 </section>
 
 <section class="sec">
-  <h2>Дворец, которого не должно быть</h2>
+  <h2 id="g6">Дворец, которого не должно быть</h2>
   <p>Когда заранее отмечал список достопримечательностей, в замок не поверил. Это же не Питер. Но усадьба Асеевых действительно дворец, как в Ленинградской области, белый, с колоннами и фонтаном. Жаль, летать на квадрокоптере здесь запретили: картинка была бы на отдельную главу. Внутрь пускают только с экскурсией, пришлось ждать минут сорок до очередной группы.</p>
   <figure class="mid" id="P065">
     <div class="ph"><img src="media/usadba-bok.webp" width="1600" height="901" loading="lazy" alt="Боковой фасад белого особняка с башенкой и арочным крыльцом на фоне синего неба"></div>
@@ -230,7 +247,7 @@
 
 <section class="sec">
   <div class="day">10 сентября · вечер</div>
-  <h2>Набережная со странным названием</h2>
+  <h2 id="g7">Набережная со странным названием</h2>
   <p>Дальше набережная. Кое-где очень даже современная, с флагами и круглыми сиденьями, дальше простая, но без сильных косяков. Справа река со странным названием Цна. По пути памятники: солдатам правопорядка, Ушаков, тамбовский мужик, и ковыль, который я с детства знаю на ощупь.</p>
   <figure class="mid" id="P091">
     <div class="ph"><img src="media/sobaka.webp" width="1600" height="901" loading="lazy" alt="Белая собака на берегу реки, вдали синий подвесной мост"></div>
@@ -257,7 +274,7 @@
 </section>
 
 <section class="sec">
-  <h2>Колокольня с подсветкой</h2>
+  <h2 id="g8">Колокольня с подсветкой</h2>
   <p>С набережной издалека виден, наверное, главный храмовый комплекс города: Казанский богородичный мужской монастырь с высокой колокольней и семинария рядом. Рядом памятник Зое Космодемьянской, она отсюда родом. Я дождался, пока включат подсветку. С подсветкой вообще крутяк.</p>
   <figure class="wide" id="P121">
     <div class="ph"><img src="media/zakat.webp" width="2000" height="1126" loading="lazy" alt="Панорама с набережного парка: храмы и колокольня на фоне заката"></div>
@@ -303,7 +320,7 @@
 
 <section class="sec">
   <div class="day">10 сентября · ночь</div>
-  <h2>Волки перед правительством</h2>
+  <h2 id="g9">Волки перед правительством</h2>
   <p>Перед зданием правительства области буквы «ТАМБОВ» и стая металлических волков. Селфи с ними в шапке: холодно было с первого вечера, и к последнему не потеплело. Потом ужин, книжный с необычным фасадом и широкий проспект, по которому я возвращался на вокзал.</p>
   <figure class="wide" id="P159">
     <div class="ph"><img src="media/bukvy.webp" width="2000" height="1126" loading="lazy" alt="Большие буквы «ТАМБОВ» и металлические фигуры волков на площади перед подсвеченным зданием"></div>
@@ -321,6 +338,11 @@
     <div class="ph"><img src="media/noch.webp" width="2000" height="1126" loading="lazy" alt="Ночной перекрёсток с фонарями, ёлками и пешеходным переходом"></div>
     <figcaption><time>21:18</time>Проспект к вокзалу. Дальше странный трип: ночь в поезде до Москвы, самолёт до Казани, автобус до Чебоксар. Почему не сразу, уже не помню.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>Хорошо: город с собственным лицом, храмы, которые узнаёшь, дворец, в который не верил, и набережная без сильных косяков. Не хватило дрона над усадьбой и тепла: шапку я не снимал весь день.</p>
@@ -343,6 +365,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../02-bashkortostan/index.html"><span class="code">2</span><span><small>Раньше по маршруту</small>Республика Башкортостан</span></a><a class="next" href="../12-mari-el/index.html"><span><small>Дальше по маршруту</small>Республика Марий Эл</span><span class="code">12</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>
