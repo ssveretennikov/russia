@@ -23,9 +23,10 @@
 <meta name="twitter:image" content="https://ssveretennikov.github.io/russia/51-murmansk/og.jpg">
 <meta name="theme-color" content="#F1F2EE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
+<link rel="preload" as="image" href="media/hero.webp" fetchpriority="high" imagesrcset="media/hero.m.webp 1080w, media/hero.webp 2200w" imagesizes="100vw">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=866b6051">
+<link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/oswald-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../series.css?v=512d5062">
 <style>:root{--reg:#2277B9;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#5CA6E1;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#5CA6E1;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
@@ -34,7 +35,7 @@
 <div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P015">
-    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Чёрный борт ледокола «Ленин» с белой надстройкой у заснеженного причала, ясное небо"></div>
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" srcset="media/hero.m.webp 1080w, media/hero.webp 2200w" sizes="100vw" width="2200" height="1650" alt="Чёрный борт ледокола «Ленин» с белой надстройкой у заснеженного причала, ясное небо"></div>
     <div class="reg-id" style="--nw:10">
       <span class="code" aria-label="Код региона 51">51</span>
       <h1>Мурманская область</h1>
@@ -132,16 +133,16 @@
   </div>
   <div class="row">
     <figure id="P003">
-      <div class="ph"><img src="media/grebeshki.webp" width="1200" height="1600" loading="lazy" alt="Белая тарелка с гребешками, зеленью и ягодным соусом на деревянном столе"></div>
+      <div class="ph"><img src="media/grebeshki.webp" srcset="media/grebeshki.m.webp 1080w, media/grebeshki.webp 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1200" height="1600" loading="lazy" alt="Белая тарелка с гребешками, зеленью и ягодным соусом на деревянном столе"></div>
       <figcaption><time>12:37</time>Гребешки. После них ёж уже не кажется странным.</figcaption>
     </figure>
     <figure id="P008">
-      <div class="ph"><img src="media/desert.webp" width="1600" height="1200" loading="lazy" alt="Чашка чая, стеклянный чайник и слоёный десерт с ягодами на столе"></div>
+      <div class="ph"><img src="media/desert.webp" srcset="media/desert.m.webp 1080w, media/desert.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Чашка чая, стеклянный чайник и слоёный десерт с ягодами на столе"></div>
       <figcaption><time>13:10</time>Чай и десерт. К этому моменту я уже не торопился на ледокол.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P011">
-    <div class="ph"><img src="media/medved.webp" width="1200" height="1600" loading="lazy" alt="Чучело бурого медведя с поднятой лапой у деревянной двери"></div>
+    <div class="ph"><img src="media/medved.webp" srcset="media/medved.m.webp 1080w, media/medved.webp 1200w" sizes="(max-width: 640px) 100vw, 672px" width="1200" height="1600" loading="lazy" alt="Чучело бурого медведя с поднятой лапой у деревянной двери"></div>
     <figcaption><time>13:29</time>А если не наелся — можешь взять на дорожку. Медведь у выхода провожает всех одинаково.</figcaption>
   </figure>
   <div class="row narrow">
@@ -161,21 +162,21 @@
   <h2 id="g3">Ледокол «Ленин»</h2>
   <p>Стоит у морского вокзала, чёрный, огромный, с кранами на палубе. С земли его целиком не взять, поэтому я поднял дрон. Сверху оказалось, что порт живёт своей жизнью: красные буксиры, краны, вода без единой льдинки.</p>
   <figure class="wide">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-port.jpg" src="https://ssveretennikov.github.io/russia-video/51-murmansk/v-dron-port.mp4" width="1280" height="720"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-dron-port.jpg" src="https://ssveretennikov.github.io/russia-video/51-murmansk/v-dron-port.mp4" width="1280" height="720"></video></div>
     <figcaption><time>≈14:18</time>Дрон отворачивается от ледокола и показывает порт: буксиры, краны, морской вокзал. Март, а залив не замёрз.</figcaption>
   </figure>
   <div class="row">
     <figure id="P018">
-      <div class="ph"><img src="media/dron-port.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона на порт: причалы, суда у стенки, краны, город на сопках"></div>
+      <div class="ph"><img src="media/dron-port.webp" srcset="media/dron-port.m.webp 1080w, media/dron-port.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="2000" height="1125" loading="lazy" alt="Вид с дрона на порт: причалы, суда у стенки, краны, город на сопках"></div>
       <figcaption><time>14:27</time>Порт сверху. Город по сопкам, суда у стенок, и всё это работает в воскресенье.</figcaption>
     </figure>
     <figure id="P019">
-      <div class="ph"><img src="media/dron-ledokol.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона на судно у причала, на воде солнечный блик"></div>
+      <div class="ph"><img src="media/dron-ledokol.webp" srcset="media/dron-ledokol.m.webp 1080w, media/dron-ledokol.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="2000" height="1125" loading="lazy" alt="Вид с дрона на судно у причала, на воде солнечный блик"></div>
       <figcaption><time>14:28</time>Блик солнца на воде. В марте, за полярным кругом. Я проверил дату дважды.</figcaption>
     </figure>
   </div>
   <figure class="wide" id="P020">
-    <div class="ph"><img src="media/dron-buksiry.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: красные буксиры у причала, за ними ограждение с рисунком и портовые краны"></div>
+    <div class="ph"><img src="media/dron-buksiry.webp" srcset="media/dron-buksiry.m.webp 1080w, media/dron-buksiry.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="2000" height="1125" loading="lazy" alt="Вид с дрона: красные буксиры у причала, за ними ограждение с рисунком и портовые краны"></div>
     <figcaption><time>14:31</time>Красные буксиры у причала. Единственный яркий цвет в порту, не считая дрона.</figcaption>
   </figure>
   <p>Внутрь — только с экскурсией, и она идёт почти два часа. Коридор с каютами обшит деревом, как в хорошем поезде. Потом машинное отделение с турбиной, потом пост управления реактором: стена приборов, зелёная схема на экране и экскурсовод, который всё это помнит наизусть.</p>
@@ -190,11 +191,11 @@
     </figure>
   </div>
   <figure class="mid" id="P024">
-    <div class="ph"><img src="media/pult.webp" width="1200" height="1600" loading="lazy" alt="Пульт управления с рядами приборов, тумблеров и экранов, у пульта экскурсовод"></div>
+    <div class="ph"><img src="media/pult.webp" srcset="media/pult.m.webp 1080w, media/pult.webp 1200w" sizes="(max-width: 640px) 100vw, 672px" width="1200" height="1600" loading="lazy" alt="Пульт управления с рядами приборов, тумблеров и экранов, у пульта экскурсовод"></div>
     <figcaption><time>15:36</time>Пост управления реактором. Ни одного сенсорного экрана, и всё работало.</figcaption>
   </figure>
   <figure class="tall">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-pult.jpg" src="https://ssveretennikov.github.io/russia-video/51-murmansk/v-pult.mp4" width="720" height="1280"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-pult.jpg" src="https://ssveretennikov.github.io/russia-video/51-murmansk/v-pult.mp4" width="720" height="1280"></video></div>
     <figcaption><time>≈15:36</time>Пульт крупно: стрелки, лампочки, красные рукоятки с подписями. Хочется что-нибудь переключить, нельзя.</figcaption>
   </figure>
   <div class="row narrow">
@@ -208,11 +209,11 @@
     </figure>
   </div>
   <figure class="tall">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-shema.jpg" src="https://ssveretennikov.github.io/russia-video/51-murmansk/v-shema.mp4" width="720" height="1280"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-shema.jpg" src="https://ssveretennikov.github.io/russia-video/51-murmansk/v-shema.mp4" width="720" height="1280"></video></div>
     <figcaption><time>≈16:19</time>Схема судна в разрезе, от кормы до носа. На корме вертолёт, в середине реактор, остальное — люди и трубы.</figcaption>
   </figure>
   <figure class="mid" id="P028">
-    <div class="ph"><img src="media/bort.webp" width="1200" height="1600" loading="lazy" alt="Чёрный борт ледокола с белой надписью «Ленин / LENIN» и зелёными швартовыми канатами"></div>
+    <div class="ph"><img src="media/bort.webp" srcset="media/bort.m.webp 1080w, media/bort.webp 1200w" sizes="(max-width: 640px) 100vw, 672px" width="1200" height="1600" loading="lazy" alt="Чёрный борт ледокола с белой надписью «Ленин / LENIN» и зелёными швартовыми канатами"></div>
     <figcaption><time>16:50</time>Вышли через два часа. На швартовах сидят чайки, у них экскурсия бесплатная.</figcaption>
   </figure>
 </section>
@@ -287,7 +288,7 @@
 
 <nav class="pager" aria-label="Читать дальше"><a class="prev" href="../10-karelia/index.html"><span class="code">10</span><span><small>Раньше по маршруту</small>Республика Карелия</span></a><a class="next" href="../37-ivanovo/index.html"><span><small>Следующий отчёт</small>Ивановская область</span><span class="code">37</span></a></nav>
 </div>
-<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=9328f84d"></script>
+<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p><p class="ft-nav"><a href="../trips/index.html">Поездки</a> · <a href="../about/index.html">О проекте</a></p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
+<script src="../series.js?v=b28c6248"></script>
 </body>
 </html>

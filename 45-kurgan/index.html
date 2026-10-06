@@ -23,9 +23,10 @@
 <meta name="twitter:image" content="https://ssveretennikov.github.io/russia/45-kurgan/og.jpg">
 <meta name="theme-color" content="#F1F2EE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
+<link rel="preload" as="image" href="media/hero.webp" fetchpriority="high" imagesrcset="media/hero.m.webp 1080w, media/hero.webp 2200w" imagesizes="100vw">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=866b6051">
+<link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/oswald-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../series.css?v=512d5062">
 <style>:root{--reg:#916F3B;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C7A675;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C7A675;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
@@ -34,7 +35,7 @@
 <div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P006">
-    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: красная церковь с золотыми куполами на берегу реки, за рекой частные дома"></div>
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" srcset="media/hero.m.webp 1080w, media/hero.webp 2200w" sizes="100vw" width="2200" height="1238" alt="Вид с дрона: красная церковь с золотыми куполами на берегу реки, за рекой частные дома"></div>
     <div class="reg-id" style="--nw:10">
       <span class="code" aria-label="Код региона 45">45</span>
       <h1>Курганская область</h1>
@@ -126,15 +127,15 @@
   <h2 id="g3">Собор, Тобол и правильные ценности</h2>
   <p>Набережную только что отстроили, ещё пахнет бетоном. Собор красный, купола золотые, напротив — старые частные дома, которые благоустройство пока не тронуло. С дрона эта граница видна лучше, чем с земли.</p>
   <figure class="wide" id="P005">
-    <div class="ph"><img src="media/sobor-tobol.webp" width="2000" height="1500" loading="lazy" alt="Пустая площадь у набережной, вдали красная церковь с куполами и памятник на постаменте"></div>
+    <div class="ph"><img src="media/sobor-tobol.webp" srcset="media/sobor-tobol.m.webp 1080w, media/sobor-tobol.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="2000" height="1500" loading="lazy" alt="Пустая площадь у набережной, вдали красная церковь с куполами и памятник на постаменте"></div>
     <figcaption><time>11:12</time>Богоявленский собор и памятник Красину. Площадь большая, людей ноль, вторник.</figcaption>
   </figure>
   <figure class="wide">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-sobor.jpg" src="https://ssveretennikov.github.io/russia-video/45-kurgan/v-dron-sobor.mp4" width="1280" height="720"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-dron-sobor.jpg" src="https://ssveretennikov.github.io/russia-video/45-kurgan/v-dron-sobor.mp4" width="1280" height="720"></video></div>
     <figcaption><time>≈11:13</time>Облёт собора. Крыши красные, купола золотые, парковка пустая: дрону тут никто не мешал.</figcaption>
   </figure>
   <figure class="wide">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-reka.jpg" src="https://ssveretennikov.github.io/russia-video/45-kurgan/v-dron-reka.mp4" width="1280" height="720"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-dron-reka.jpg" src="https://ssveretennikov.github.io/russia-video/45-kurgan/v-dron-reka.mp4" width="1280" height="720"></video></div>
     <figcaption><time>≈11:31</time>От собора вдоль Тобола к мосту. Слева новая набережная, справа старый частный сектор, между ними река.</figcaption>
   </figure>
   <p>Дальше по улицам: топиарные фигуры, парные скульптуры, скамьи для двоих. Город старательно рассказывает про любовь и семью. Из этого ряда выбивается разве что селфи — там только я.</p>
@@ -160,25 +161,25 @@
   </div>
   <div class="row">
     <figure id="P011">
-      <div class="ph"><img src="media/derevyannyi-dom.webp" width="1600" height="1200" loading="lazy" alt="Тёмный деревянный двухэтажный дом с большой застеклённой крышей"></div>
+      <div class="ph"><img src="media/derevyannyi-dom.webp" srcset="media/derevyannyi-dom.m.webp 1080w, media/derevyannyi-dom.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Тёмный деревянный двухэтажный дом с большой застеклённой крышей"></div>
       <figcaption><time>12:36</time>Есть интересные постройки. Деревянный дом со стеклянной крышей: старое снизу, новое сверху.</figcaption>
     </figure>
     <figure id="P013">
-      <div class="ph"><img src="media/rospis.webp" width="1600" height="1200" loading="lazy" alt="Торец пятиэтажки расписан цветными горами и аркой, внизу вывески магазинов"></div>
+      <div class="ph"><img src="media/rospis.webp" srcset="media/rospis.m.webp 1080w, media/rospis.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Торец пятиэтажки расписан цветными горами и аркой, внизу вывески магазинов"></div>
       <figcaption><time>12:42</time>Граффити на торце дома и арка. Под горами — косметология и здоровое питание.</figcaption>
     </figure>
   </div>
   <figure class="wide" id="P016">
-    <div class="ph"><img src="media/dron-centr.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: красная церковь с часовой башней среди сквера, вокруг крыши и многоэтажки"></div>
+    <div class="ph"><img src="media/dron-centr.webp" srcset="media/dron-centr.m.webp 1080w, media/dron-centr.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="2000" height="1125" loading="lazy" alt="Вид с дрона: красная церковь с часовой башней среди сквера, вокруг крыши и многоэтажки"></div>
     <figcaption><time>12:55</time>Центр с дрона. Александро-Невский собор с часами на башне, сквер вокруг, город плоский до горизонта.</figcaption>
   </figure>
   <div class="row">
     <figure id="P019">
-      <div class="ph"><img src="media/dron-bashnya.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона на часовую башню красной церкви, рядом парковка и низкие дома"></div>
+      <div class="ph"><img src="media/dron-bashnya.webp" srcset="media/dron-bashnya.m.webp 1080w, media/dron-bashnya.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="2000" height="1125" loading="lazy" alt="Вид с дрона на часовую башню красной церкви, рядом парковка и низкие дома"></div>
       <figcaption><time>12:57</time>Башня вровень с дроном. Часы на всех четырёх сторонах, и все показывают одно время, я проверил.</figcaption>
     </figure>
     <figure id="P021">
-      <div class="ph"><img src="media/dron-chasy.webp" width="2000" height="1125" loading="lazy" alt="Крупно часы на башне церкви с дрона, за ними крыши города"></div>
+      <div class="ph"><img src="media/dron-chasy.webp" srcset="media/dron-chasy.m.webp 1080w, media/dron-chasy.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="2000" height="1125" loading="lazy" alt="Крупно часы на башне церкви с дрона, за ними крыши города"></div>
       <figcaption><time>12:58</time>Без пяти час. Подлетел так близко, как позволила совесть.</figcaption>
     </figure>
   </div>
@@ -212,7 +213,7 @@
     </figure>
   </div>
   <figure class="wide" id="P048">
-    <div class="ph"><img src="media/chaika.webp" width="2000" height="1500" loading="lazy" alt="Чёрный ГАЗ-13 «Чайка» на каменном постаменте во дворе института, рядом ели"></div>
+    <div class="ph"><img src="media/chaika.webp" srcset="media/chaika.m.webp 1080w, media/chaika.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="2000" height="1500" loading="lazy" alt="Чёрный ГАЗ-13 «Чайка» на каменном постаменте во дворе института, рядом ели"></div>
     <figcaption><time>15:45</time>«Чайка» во дворе. По табличке — служебный автомобиль академика Илизарова, из тех, что полагались министрам.</figcaption>
   </figure>
 </section>
@@ -232,7 +233,7 @@
     </figure>
   </div>
   <figure class="tall">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-lisa.jpg" src="https://ssveretennikov.github.io/russia-video/45-kurgan/v-lisa.mp4" width="720" height="1280"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-lisa.jpg" src="https://ssveretennikov.github.io/russia-video/45-kurgan/v-lisa.mp4" width="720" height="1280"></video></div>
     <figcaption><time>≈16:44</time>Лиса слезает с будки за морковкой. Берёт аккуратно, как будто ей тоже сказали «руками не трогать».</figcaption>
   </figure>
   <div class="row narrow">
@@ -246,11 +247,11 @@
     </figure>
   </div>
   <figure class="tall">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dikobrazy.jpg" src="https://ssveretennikov.github.io/russia-video/45-kurgan/v-dikobrazy.mp4" width="720" height="1280"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-dikobrazy.jpg" src="https://ssveretennikov.github.io/russia-video/45-kurgan/v-dikobrazy.mp4" width="720" height="1280"></video></div>
     <figcaption><time>≈17:00</time>На-сто-я-щи-е дикобразы. Подвижные и любопытные, иглы в сетку. Самое неадекватное животное тут, впрочем, не они, а сурикат, но он в кадр не дался.</figcaption>
   </figure>
   <figure class="tall">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-kabany.jpg" src="https://ssveretennikov.github.io/russia-video/45-kurgan/v-kabany.mp4" width="720" height="1280"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-kabany.jpg" src="https://ssveretennikov.github.io/russia-video/45-kurgan/v-kabany.mp4" width="720" height="1280"></video></div>
     <figcaption><time>≈17:14</time>Большая семья кабанов. Полосатые поросята и взрослый у самой сетки. Никогда не видел их так близко и в таком количестве. Через решётку выглядят симпатично и безопасно.</figcaption>
   </figure>
   <div class="row narrow">
@@ -293,7 +294,7 @@
 
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../55-omsk/index.html"><span class="code">55</span><span><small>Раньше по маршруту</small>Омская область</span></a><a class="next" href="../74-chelyabinsk/index.html"><span><small>Дальше по маршруту</small>Челябинская область</span><span class="code">74</span></a></nav>
 </div>
-<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=9328f84d"></script>
+<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p><p class="ft-nav"><a href="../trips/index.html">Поездки</a> · <a href="../about/index.html">О проекте</a></p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
+<script src="../series.js?v=b28c6248"></script>
 </body>
 </html>

@@ -23,9 +23,10 @@
 <meta name="twitter:image" content="https://ssveretennikov.github.io/russia/60-pskov/og.jpg">
 <meta name="theme-color" content="#F1F2EE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
+<link rel="preload" as="image" href="media/hero.webp" fetchpriority="high" imagesrcset="media/hero.m.webp 1080w, media/hero.webp 2200w" imagesizes="100vw">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=866b6051">
+<link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/oswald-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../series.css?v=512d5062">
 <style>:root{--reg:#644E29;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C7A975;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C7A975;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
@@ -34,7 +35,7 @@
 <div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P022">
-    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: кремль на холме у слияния двух рек, белый собор за стенами, разлив, облака"></div>
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" srcset="media/hero.m.webp 1080w, media/hero.webp 2200w" sizes="100vw" width="2200" height="1238" alt="Вид с дрона: кремль на холме у слияния двух рек, белый собор за стенами, разлив, облака"></div>
     <div class="reg-id" style="--nw:9">
       <span class="code" aria-label="Код региона 60">60</span>
       <h1>Псковская область</h1>
@@ -120,7 +121,7 @@
       <figcaption><time>09:02</time>Первая башня. Шатёр деревянный, стены серые, небо такое, что хочется остаться.</figcaption>
     </figure>
     <figure id="P003">
-      <div class="ph"><img src="media/arka.webp" width="1600" height="1200" loading="lazy" alt="Арка в крепостной стене, в проёме река и белая церковь на другом берегу"></div>
+      <div class="ph"><img src="media/arka.webp" srcset="media/arka.m.webp 1080w, media/arka.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Арка в крепостной стене, в проёме река и белая церковь на другом берегу"></div>
       <figcaption><time>09:04</time>Арка в стене работает как рамка: в ней сразу река и церковь на том берегу.</figcaption>
     </figure>
   </div>
@@ -135,7 +136,7 @@
     </figure>
   </div>
   <figure class="tall">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-svod.jpg" src="https://ssveretennikov.github.io/russia-video/60-pskov/v-svod.mp4" width="720" height="1280"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-svod.jpg" src="https://ssveretennikov.github.io/russia-video/60-pskov/v-svod.mp4" width="720" height="1280"></video></div>
     <figcaption><time>≈09:20</time>Проходим внутрь. Под сводом темно, потом стена, потом за поворотом золотые купола собора.</figcaption>
   </figure>
   <figure class="mid" id="P014">
@@ -143,7 +144,7 @@
     <figcaption><time>09:19</time>Ворота с иконой над аркой. Для крепости это, видимо, и была главная защита.</figcaption>
   </figure>
   <figure class="tall">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-boynica.jpg" src="https://ssveretennikov.github.io/russia-video/60-pskov/v-boynica.mp4" width="720" height="1280"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-boynica.jpg" src="https://ssveretennikov.github.io/russia-video/60-pskov/v-boynica.mp4" width="720" height="1280"></video></div>
     <figcaption><time>≈09:45</time>Поднялись чуть повыше. Через бойницу видно реку в разливе, потом галерея и весь двор кремля под ногами.</figcaption>
   </figure>
 </section>
@@ -152,7 +153,7 @@
   <h2 id="g3">Кремль снаружи и сверху</h2>
   <p>Вышел за стены и обошёл мыс по берегу. Снизу башни выглядят выше, чем изнутри, а вода в апреле подходит к самым камням. Потом поднял дрон, и стало понятно, зачем кремль поставили именно сюда: с воздуха видно обе реки сразу и стену, которая идёт точно по стрелке.</p>
   <figure class="wide" id="P019">
-    <div class="ph"><img src="media/persi.webp" width="2000" height="1500" loading="lazy" alt="Высокая крепостная стена на холме над рекой, справа башня с шатром, облака"></div>
+    <div class="ph"><img src="media/persi.webp" srcset="media/persi.m.webp 1080w, media/persi.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="2000" height="1500" loading="lazy" alt="Высокая крепостная стена на холме над рекой, справа башня с шатром, облака"></div>
     <figcaption><time>09:49</time>Перси, как подписал это в статье. Стена поверх холма, холм поверх реки.</figcaption>
   </figure>
   <div class="row narrow">
@@ -161,21 +162,21 @@
       <figcaption><time>09:50</time>Башня на стрелке. Разлив дошёл до её ступеней, и башня в нём отражается.</figcaption>
     </figure>
     <figure id="P028">
-      <div class="ph"><img src="media/dron-bashnya.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона сверху на круглую башню с конусной крышей у реки"></div>
+      <div class="ph"><img src="media/dron-bashnya.webp" srcset="media/dron-bashnya.m.webp 1080w, media/dron-bashnya.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="2000" height="1125" loading="lazy" alt="Вид с дрона сверху на круглую башню с конусной крышей у реки"></div>
       <figcaption><time>10:02</time>Та же башня, но дрон смотрит ей на макушку. Крыша как у карандаша.</figcaption>
     </figure>
   </div>
   <figure class="wide">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-reka.jpg" src="https://ssveretennikov.github.io/russia-video/60-pskov/v-dron-reka.mp4" width="1280" height="720"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-dron-reka.jpg" src="https://ssveretennikov.github.io/russia-video/60-pskov/v-dron-reka.mp4" width="1280" height="720"></video></div>
     <figcaption><time>≈10:01</time>Пролёт над Великой мимо башен. Город на том берегу, вода тёмная, апрельская.</figcaption>
   </figure>
   <div class="row">
     <figure id="P024">
-      <div class="ph"><img src="media/dron-izluchina.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: излучина реки, крепостные стены вдоль берега и собор"></div>
+      <div class="ph"><img src="media/dron-izluchina.webp" srcset="media/dron-izluchina.m.webp 1080w, media/dron-izluchina.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="2000" height="1125" loading="lazy" alt="Вид с дрона: излучина реки, крепостные стены вдоль берега и собор"></div>
       <figcaption><time>09:58</time>Общий вид. Слева Пскова, справа Великая, посередине всё, ради чего сюда едут.</figcaption>
     </figure>
     <figure id="P027">
-      <div class="ph"><img src="media/dron-sobor.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: крыша башни на переднем плане, за ней стены и белый собор, река"></div>
+      <div class="ph"><img src="media/dron-sobor.webp" srcset="media/dron-sobor.m.webp 1080w, media/dron-sobor.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="2000" height="1125" loading="lazy" alt="Вид с дрона: крыша башни на переднем плане, за ней стены и белый собор, река"></div>
       <figcaption><time>10:02</time>И ещё один, с кровлей башни на переднем плане. Больше дрон в Пскове не летал: снял всё, что хотел, за пять минут.</figcaption>
     </figure>
   </div>
@@ -186,7 +187,7 @@
   <h2 id="g4">Другой берег</h2>
   <p>Перешёл Великую. Отсюда кремль выглядит как с открытки, и именно отсюда читается надпись на стене. Рядом набережная и кампус Псковского государственного университета, рыбаки, и Ольгин крест: место, где княгиня Ольга заложила город.</p>
   <figure class="wide" id="P031">
-    <div class="ph"><img src="media/kreml-s-berega.webp" width="2000" height="1500" loading="lazy" alt="Кремль с собором и башнями на другом берегу широкой реки, на стене надпись «Россия начинается здесь»"></div>
+    <div class="ph"><img src="media/kreml-s-berega.webp" srcset="media/kreml-s-berega.m.webp 1080w, media/kreml-s-berega.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="2000" height="1500" loading="lazy" alt="Кремль с собором и башнями на другом берегу широкой реки, на стене надпись «Россия начинается здесь»"></div>
     <figcaption><time>10:30</time>«Россия начинается здесь». На Камчатке было «Здесь начинается Россия». Два конца страны, одна фраза, разный смысл.</figcaption>
   </figure>
   <div class="row narrow">
@@ -216,7 +217,7 @@
   </div>
   <div class="row">
     <figure id="P042">
-      <div class="ph"><img src="media/golubaya.webp" width="1600" height="1200" loading="lazy" alt="Голубая церковь с белыми колоннами и куполом на перекрёстке"></div>
+      <div class="ph"><img src="media/golubaya.webp" srcset="media/golubaya.m.webp 1080w, media/golubaya.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Голубая церковь с белыми колоннами и куполом на перекрёстке"></div>
       <figcaption><time>12:19</time>Голубая с колоннами. Среди белых псковских церквей выглядит гостьей из Петербурга.</figcaption>
     </figure>
     <figure id="P044">
@@ -240,7 +241,7 @@
       <figcaption><time>12:34</time>Ещё одна башня, уже не в кремле. Псков, кажется, целиком состоит из стен и башен, просто в кремле они собраны плотнее.</figcaption>
     </figure>
     <figure id="P058">
-      <div class="ph"><img src="media/ya-u-bashni.webp" width="1600" height="1200" loading="lazy" alt="Сергей в синей куртке стоит с раскинутыми руками у круглой башни, за ним река"></div>
+      <div class="ph"><img src="media/ya-u-bashni.webp" srcset="media/ya-u-bashni.m.webp 1080w, media/ya-u-bashni.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Сергей в синей куртке стоит с раскинутыми руками у круглой башни, за ним река"></div>
       <figcaption><time>12:45</time>Единственный кадр со мной за день. Башня, река, руки в стороны: отчитался.</figcaption>
     </figure>
   </div>
@@ -279,7 +280,7 @@
 
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../53-novgorod/index.html"><span class="code">53</span><span><small>Раньше по маршруту</small>Новгородская область</span></a><a class="next" href="../76-yaroslavl/index.html"><span><small>Дальше по маршруту</small>Ярославская область</span><span class="code">76</span></a></nav>
 </div>
-<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=9328f84d"></script>
+<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p><p class="ft-nav"><a href="../trips/index.html">Поездки</a> · <a href="../about/index.html">О проекте</a></p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
+<script src="../series.js?v=b28c6248"></script>
 </body>
 </html>
