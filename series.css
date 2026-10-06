@@ -651,3 +651,32 @@ li.reg.read .reg-t>div>a::after,.fc.read .fc-nm::after{content:"\00a0\2713";colo
   .tl-ctl{justify-content:space-between}
   .tl-ctl .play{flex:1}
 }
+
+/* ---------- Поездки и о проекте ---------- */
+.ix-trips{font-family:var(--sign);font-size:.95rem;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+.ix-trips:hover{text-decoration:underline}
+.ft-nav{margin:.4rem 0 0}
+.tr-head,.tr-year,.ab-text{max-width:var(--wide);margin-inline:auto}
+.tr-head h1,.ab-text h1{font-family:var(--sign);font-size:clamp(2rem,6vw,3.2rem);line-height:1.05;margin:1rem 0 .8rem}
+.tr-lead{max-width:42rem;color:var(--soft)}
+.tr-year{margin-top:clamp(2rem,5vw,3rem)}
+.tr-yh{display:flex;align-items:baseline;justify-content:space-between;gap:.4rem 1rem;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:.5rem}
+.tr-yh h2{font-family:var(--sign);font-size:1.8rem;margin:0;line-height:1}
+.tr-yh span{color:var(--soft);font-family:var(--sign);font-size:.9rem;letter-spacing:.04em;text-transform:uppercase}
+.tr-list{list-style:none;margin:0;padding:0}
+.tr-card{display:flex;gap:1rem;align-items:flex-start;padding:1rem 0;border-bottom:1px solid var(--line)}
+.tr-th{width:6rem;aspect-ratio:4/3;object-fit:cover;border-radius:.55rem;flex:none;background:var(--line)}
+.tr-t{min-width:0;flex:1}
+.tr-d{font-weight:600}
+.tr-m{color:var(--soft);font-size:.92rem}
+.tr-chain{list-style:none;margin:.55rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.45rem .9rem}
+.tr-chain a{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;color:var(--ink);min-width:0}
+.tr-chain a:hover small{text-decoration:underline}
+.tr-chain .code{font-size:1rem;background:var(--c,var(--ink));color:#fff}
+.tr-chain small{font-size:.85rem;overflow-wrap:anywhere}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tr-chain .code{background:var(--cd,var(--ink));color:#14100A}}
+:root[data-theme="dark"] .tr-chain .code{background:var(--cd,var(--ink));color:#14100A}
+.ab-page{min-height:70vh}
+.ab-text p{margin:0 0 1rem;max-width:40rem}
+.ab-text .ab-links{font-family:var(--sign);letter-spacing:.04em;text-transform:uppercase;font-size:.95rem;margin-top:2rem}
+@media (min-width:720px){.tr-th{width:9rem}}
