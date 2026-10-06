@@ -251,7 +251,7 @@
     });
   });
 
-  // «Поездки по порядку»: шаг — одна поездка из data/trips.json (build.py кладёт их в data-trips у блока карты).
+  // «Посмотреть маршрут»: шаг — одна поездка из data/trips.json (build.py кладёт их в data-trips у блока карты).
   // Регионы поездки загораются вместе. Дом и регионы без поездки в списке горят с первого шага.
   var steps = JSON.parse(box.dataset.trips || '[]');
   var N = steps.length;                     // значение ползунка N = «все поездки»
@@ -303,7 +303,7 @@
     syncFav();
     track.value = idx; tall.hidden = idx >= N;
     playBtn.classList.toggle('playing', playing);
-    playBtn.setAttribute('aria-label', playing ? 'Поездки по порядку: пауза' : 'Поездки по порядку: воспроизвести');
+    playBtn.setAttribute('aria-label', playing ? 'Посмотреть маршрут: пауза' : 'Посмотреть маршрут: воспроизвести');
     mapdate.hidden = !trip;
     document.getElementById('tprev').disabled = idx <= 0;
     document.getElementById('tnext').disabled = idx >= N;

@@ -1,7 +1,7 @@
 # Проверка главной страницы без сервера (Playwright + Chromium), после python build.py:
 #   python tools/check-main.py
 # Что проверяется: карта нарисована (89 регионов); фильтр округа и года прячет лишние строки и ленту «Любимые»;
-# поиск находит регион и прячет ленту, сброс возвращает её; «Поездки по порядку» запускается и останавливается;
+# поиск находит регион и прячет ленту, сброс возвращает её; «Посмотреть маршрут» запускается и останавливается;
 # все ссылки карточек ленты и строк списка ведут на существующие страницы; горизонтальной прокрутки нет.
 import os, sys
 from urllib.parse import unquote
@@ -49,13 +49,13 @@ def run(page, width):
     check(not fav_shown(), 'поиск: лента скрыта')
     page.fill('#find', ''); page.wait_for_timeout(100)
     check(fav_shown() and visible('li.reg[data-code]') == 89, 'сброс поиска: лента вернулась, все 89 строк на месте')
-    # «Поездки по порядку»
+    # «Посмотреть маршрут»
     page.click('#play'); page.wait_for_timeout(300)
-    check(page.evaluate('document.getElementById("play").classList.contains("playing")'), '«Поездки по порядку» запустился')
+    check(page.evaluate('document.getElementById("play").classList.contains("playing")'), '«Посмотреть маршрут» запустился')
     check(not page.evaluate('document.getElementById("mapdate").hidden'), 'над картой показана дата')
     check(not fav_shown(), 'хронология: лента скрыта')
     page.click('#play'); page.wait_for_timeout(100)
-    check(not page.evaluate('document.getElementById("play").classList.contains("playing")'), '«Поездки по порядку» остановился')
+    check(not page.evaluate('document.getElementById("play").classList.contains("playing")'), '«Посмотреть маршрут» остановился')
     page.click('#tall'); page.wait_for_timeout(100)
     check(fav_shown(), '«Показать весь период»: лента вернулась')
     # ссылки

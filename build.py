@@ -302,7 +302,7 @@ def index_body():
   </div>
   <div class="mcard" id="mcard" aria-live="polite"><p class="mhint"><span class="h-mouse">Наведите на регион или нажмите на него.</span><span class="h-touch">Нажмите на регион — появится ссылка на отчёт.</span></p></div>
   <div class="tl" aria-label="Хронология поездок">
-    <div class="tl-ctl"><button type="button" id="tprev" aria-label="Предыдущая поездка">{ICON['prev']}</button><button type="button" class="play" id="play" aria-label="Поездки по порядку: воспроизвести">{ICON['play']}{ICON['pause']}<span>Поездки по порядку</span></button><button type="button" id="tnext" aria-label="Следующая поездка">{ICON['next']}</button></div>
+    <div class="tl-ctl"><button type="button" id="tprev" aria-label="Предыдущая поездка">{ICON['prev']}</button><button type="button" class="play" id="play" aria-label="Посмотреть маршрут: воспроизвести">{ICON['play']}{ICON['pause']}<span>Посмотреть маршрут</span></button><button type="button" id="tnext" aria-label="Следующая поездка">{ICON['next']}</button></div>
     <div class="tl-track"><input type="range" id="track" min="0" value="0" aria-label="Поездка на временной шкале"><div class="ruler" id="ruler" aria-hidden="true"></div></div>
     <div class="tl-read" aria-live="polite"><strong id="tdate">Все поездки</strong><span id="tnote"></span><span class="tl-chain" id="tchain" hidden></span></div>
     <button type="button" class="tl-all" id="tall" hidden>Показать весь период</button>
