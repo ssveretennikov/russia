@@ -495,6 +495,104 @@ def daymap_svg(slug, labels, ids=()):
     return '\n'.join(out) + '\n<ol class="dm-list">' + ''.join(li) + '</ol>'
 
 
+# ---- Схема по городу (проба, замысел автора 06.10.2026). Включается DAYMAP_MODE = 'city' (ключ --daymap-city=<slug>);
+#   None — прежняя карта мест. Нужен контур data/cities/<slug>.geojson (из OpenStreetMap, упрощённый).
+#   Места внутри контура — на настоящих местах, места за городом — условно у края окна в своём направлении,
+#   без масштаба, с расстоянием в списке. Мелкие точки — все снимки архива с координатами: виден путь автора.
+DAYMAP_MODE = None
+NO_TRACK = ('77-',)   # Москва: где живёт автор — точки снимков не рисуются (приватность)
+
+def _city_ring(slug):
+    f = os.path.join(ROOT, 'data', 'cities', slug + '.geojson')
+    if not os.path.exists(f): return None
+    g = json.load(open(f, encoding='utf-8'))['features'][0]['geometry']
+    return g['coordinates'][0] if g['type'] == 'Polygon' else max((p[0] for p in g['coordinates']), key=len)
+
+def _inside(ring, la, lo):
+    c = False
+    for (x1, y1), (x2, y2) in zip(ring, ring[1:] + ring[:1]):
+        if (y1 > la) != (y2 > la) and lo < x1 + (la - y1) * (x2 - x1) / (y2 - y1): c = not c
+    return c
+
+def daymap_city_svg(slug, labels, ids=()):
+    ring = _city_ring(slug)
+    if not ring: return daymap_svg(slug, labels, ids)
+    rows, _ = _gps_rows(slug)
+    n = len(labels)
+    counts = [0] * n; first = [None] * n
+    for r in rows:
+        d = [_km(r['lat'], r['lon'], la, lo) for la, lo, _ in labels]
+        i = min(range(n), key=d.__getitem__)
+        if d[i] > 15: continue
+        counts[i] += 1
+        if first[i] is None and r['id'] in ids: first[i] = r['id']
+    W, H, pad, edge = 360, 330, 14, 30   # edge — полоса у края окна для мест за городом
+    lons = [p[0] for p in ring]; lats = [p[1] for p in ring]
+    lat0 = (min(lats) + max(lats)) / 2; k = math.cos(math.radians(lat0))
+    cx, cy = (min(lons) + max(lons)) / 2 * k, (min(lats) + max(lats)) / 2
+    iw, ih = W - 2 * (pad + edge), H - 2 * (pad + edge) - 18
+    span = max((max(lons) - min(lons)) * k / iw, (max(lats) - min(lats)) / ih)   # градусов на пиксель
+    ox, oy = W / 2, pad + edge + ih / 2
+    P = lambda la, lo: (ox + (lo * k - cx) / span, oy - (la - cy) / span)
+    def far_pos(la, lo, inset=0):
+        """Точка за городом — на краю окна по лучу из центра города в её сторону."""
+        vx, vy = (lo * k - cx), -(la - cy); L = math.hypot(vx, vy) or 1
+        vx, vy = vx / L, vy / L
+        hx, hy = W / 2 - pad - 12 - inset, (H - 18) / 2 - pad - 12 - inset
+        t = min(hx / abs(vx) if vx else 1e9, hy / abs(vy) if vy else 1e9)
+        return ox + vx * t, (H - 18) / 2 + vy * t
+    inc = [_inside(ring, la, lo) for la, lo, _ in labels]
+    true = [P(la, lo) if inc[i] else far_pos(la, lo) for i, (la, lo, _) in enumerate(labels)]
+    city_c = ((min(lats) + max(lats)) / 2, (min(lons) + max(lons)) / 2)
+    R, gap = 11, 25
+    pos = [list(p) for p in true]
+    for _ in range(300):   # близкие места раздвигаются, к настоящему положению ведёт тонкая линия
+        moved = False
+        for a in range(n):
+            for b in range(a + 1, n):
+                vx, vy = pos[b][0] - pos[a][0], pos[b][1] - pos[a][1]; d = math.hypot(vx, vy)
+                if d < gap:
+                    if d < 1e-6: vx, vy, d = 1.0, 0.3 * (b - a), math.hypot(1.0, 0.3 * (b - a))
+                    s = (gap - d) / 2 / d
+                    pos[a][0] -= vx * s; pos[a][1] -= vy * s; pos[b][0] += vx * s; pos[b][1] += vy * s; moved = True
+        for p in pos:
+            p[0] = min(max(p[0], R + 2), W - R - 2); p[1] = min(max(p[1], R + 2), H - 30)
+        if not moved: break
+    name = next((nm for _, _, regs in D for _, nm, _, _, links in regs for _, sl in links
+                 if href(sl).split('/')[0] == slug), '')
+    out = [f'<svg class="daymap-svg dm-city" viewBox="0 0 {W} {H}" role="img" aria-label="Схема мест по городу{(" — " + e(name)) if name else ""}: '
+           f'{n} {plural(n, "место", "места", "мест")} по порядку, названия — списком под схемой">']
+    out.append('<path class="dmc-city" d="M' + ' L'.join(f'{x:.1f},{y:.1f}' for x, y in (P(la, lo) for lo, la in ring)) + ' Z"/>')
+    if not slug.startswith(NO_TRACK):
+        for r in rows:
+            x, y = P(r['lat'], r['lon']) if _inside(ring, r['lat'], r['lon']) else far_pos(r['lat'], r['lon'], 4)
+            out.append(f'<circle class="dmc-shot" cx="{x:.1f}" cy="{y:.1f}" r="2.2"/>')
+    for i in range(n - 1):
+        far = not inc[i] or not inc[i + 1] or _km(labels[i][0], labels[i][1], labels[i + 1][0], labels[i + 1][1]) > 50
+        (x1, y1), (x2, y2) = true[i], true[i + 1]
+        out.append(f'<line class="dm-route{" dm-far" if far else ""}" x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}"/>')
+    for i in range(n):
+        (tx, ty), (x, y) = true[i], pos[i]
+        if math.hypot(tx - x, ty - y) > 1:
+            out.append(f'<line class="dm-lead" x1="{tx:.1f}" y1="{ty:.1f}" x2="{x:.1f}" y2="{y:.1f}"/><circle class="dm-dot" cx="{tx:.1f}" cy="{ty:.1f}" r="2.5"/>')
+    for i in range(n):
+        x, y = pos[i]
+        out.append(f'<g class="dm-num{"" if inc[i] else " dmc-out"}"><circle cx="{x:.1f}" cy="{y:.1f}" r="{R}"/><text x="{x:.1f}" y="{y + 4.5:.1f}" text-anchor="middle">{i + 1}</text></g>')
+    km_px = 1 / (span * 111.2)   # линейка — только для города: места за чертой стоят без масштаба
+    step = next((v for v in (50, 20, 10, 5, 2, 1, .5, .2, .1) if v * km_px <= iw / 4), .1)
+    L = step * km_px; lab = f'{step:g} км' if step >= 1 else f'{int(step * 1000)} м'
+    out.append(f'<g class="dm-scale"><path d="M{pad},{H - 14} v-5 h{L:.1f} v5"/><text x="{pad + L + 6:.1f}" y="{H - 13}">{lab}</text></g>')
+    out.append('</svg>')
+    li = []
+    for i, (la, lo, nm) in enumerate(labels):
+        t = f'<a href="#{first[i]}">{e(nm)}</a>' if first[i] else e(nm)
+        dist = '' if inc[i] else f' <span class="dm-n">· ≈{int(round(_km(la, lo, *city_c), -1))} км</span>'
+        c = f' <span class="dm-n">· {counts[i]} фото</span>' if counts[i] else ''
+        li.append(f'<li>{t}{dist}{c}</li>')
+    return ('\n'.join(out) + '\n<ol class="dm-list">' + ''.join(li) + '</ol>'
+            '\n<p class="dmc-osm">Контур города — © участники OpenStreetMap</p>')
+
+
 def profile_svg(slug):
     rows, sel = _gps_rows(slug)
     rows = [r for r in rows if r['alt'] > 0]
@@ -550,7 +648,7 @@ def inject_data(slug, src):
             part = part.strip()
             mm = re.match(r'(-?\d+\.?\d*),\s*(-?\d+\.?\d*)\s+(.+)', part)
             if mm: labels.append((float(mm[1]), float(mm[2]), mm[3].strip()))
-        return daymap_svg(slug, labels, ids)
+        return (daymap_city_svg if DAYMAP_MODE == 'city' else daymap_svg)(slug, labels, ids)
     ids = set(re.findall(r'<figure[^>]* id="(P[0-9]+)"', src))
     src = src.replace('<figure class="wide daymap">', '<figure class="daymap">')   # в ширину колонки текста
     src = re.sub(r'<!--daymap:?(.*?)-->', dm, src, flags=re.S)
@@ -1103,6 +1201,13 @@ if __name__ == '__main__':
     import sys
     if '--local-video' in sys.argv:
         VIDEO_BASE = '../russia-video/'
+    city = next((a.split('=', 1)[1] for a in sys.argv if a.startswith('--daymap-city=')), None)
+    if city:   # проба схемы по городу: одна страница в <slug>/index.city.html, остальное не трогается
+        DAYMAP_MODE = 'city'
+        pg = next(p for p in PAGES if p['slug'] == city)
+        open(os.path.join(ROOT, city, 'index.city.html'), 'w', encoding='utf-8').write(
+            doc(pg['title'], region_body(city, pg['prev'], pg['next']), 1, False, region_style(pg['color'], city), ''))
+        print('готово:', city + '/index.city.html'); sys.exit(0)
     ok = build('--artifact' in sys.argv)
     if not ok and '--allow-missing-video' not in sys.argv:
         sys.exit(1)
