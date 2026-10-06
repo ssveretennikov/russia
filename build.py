@@ -912,7 +912,7 @@ PAGES = [
          prev=('87', 'Чукотский автономный округ', '../87-chukotka/index.html', 'Раньше по маршруту'),
          next=('49', 'Магаданская область', '../49-magadan/index.html', 'Дальше по маршруту'), color=None),
     dict(slug='91-krym', title='91 · Республика Крым',
-         prev=None, next=('92', 'Севастополь', '../92-sevastopol/index.html', 'Дальше по маршруту'), color=None),
+         prev=None, next=None, color=None),
     dict(slug='92-sevastopol', title='92 · Севастополь',
          prev=('91', 'Республика Крым', '../91-krym/index.html', 'Раньше по маршруту'),
          next=('91', 'Республика Крым · Карадаг', '../91-krym/index.html#g7', 'Дальше по маршруту'), color=None),
