@@ -544,3 +544,10 @@ details.more[open] summary{margin-bottom:.6rem}
 .dm-list li::marker{font-family:var(--sign);font-weight:700}
 .dm-list a{color:var(--ink)}
 .dm-n{color:var(--soft);white-space:nowrap}
+
+/* ---------- Просмотр фото: увеличение и история ---------- */
+.lb-f img{transform-origin:center center;will-change:transform;-webkit-user-drag:none;-webkit-touch-callout:none}
+.lb-zoomed .lb-f img{cursor:grab}
+.lb-f figcaption,.lb-n{transition:opacity .2s}
+.lb-zoomed .lb-f figcaption,.lb-zoomed .lb-n{opacity:0;pointer-events:none}
+.lb-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
