@@ -23,9 +23,10 @@
 <meta name="twitter:image" content="https://ssveretennikov.github.io/russia/33-vladimir/og.jpg">
 <meta name="theme-color" content="#F1F2EE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
+<link rel="preload" as="image" href="media/hero.webp" fetchpriority="high" imagesrcset="media/hero.m.webp 1080w, media/hero.webp 2200w" imagesizes="100vw">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=866b6051">
+<link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/oswald-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../series.css?v=512d5062">
 <style>:root{--reg:#2B78BA;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#66A5DC;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#66A5DC;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
@@ -34,7 +35,7 @@
 <div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P005">
-    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: белый Успенский собор с золотыми куполами на заснеженном холме, за ним город и река"></div>
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" srcset="media/hero.m.webp 1080w, media/hero.webp 2200w" sizes="100vw" width="2200" height="1238" alt="Вид с дрона: белый Успенский собор с золотыми куполами на заснеженном холме, за ним город и река"></div>
     <div class="reg-id" style="--nw:12">
       <span class="code" aria-label="Код региона 33">33</span>
       <h1>Владимирская область</h1>
@@ -121,7 +122,7 @@
   <h2 id="g2">Улица как музей</h2>
   <p>День начался с кофе в «Гостиной муке»: цены вполне московские, зато проснулся. Первое, что замечаешь во Владимире: скульптуры стоят не на площадях, а у дверей. Аптекарь у старой аптеки, художник у мольберта на смотровой. Ходишь по центру, и на каждом углу кто-то бронзовый уже занят делом.</p>
   <figure class="wide" id="P002">
-    <div class="ph"><img src="media/rozovyj-dom.webp" width="1600" height="1200" loading="lazy" alt="Розовое кирпичное двухэтажное здание с подстриженными деревьями на фоне синего неба"></div>
+    <div class="ph"><img src="media/rozovyj-dom.webp" srcset="media/rozovyj-dom.m.webp 1080w, media/rozovyj-dom.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="1600" height="1200" loading="lazy" alt="Розовое кирпичное двухэтажное здание с подстриженными деревьями на фоне синего неба"></div>
     <figcaption><time>11:55</time>Розовый дом в центре. Снег под ним уже сдался, деревья ещё нет.</figcaption>
   </figure>
   <div class="row narrow">
@@ -140,11 +141,11 @@
   <h2 id="g3">Собор сверху</h2>
   <p>Со смотровой у собора поднял дрон. Внизу площадка с памятником князю Владимиру, люди на ней размером с запятые, а собор рядом белый и спокойный, как на всех фотографиях, только мой.</p>
   <figure class="wide" id="P007">
-    <div class="ph"><img src="media/dron-knyaz.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: круглая площадка с конным памятником на краю холма, вдали Успенский собор"></div>
+    <div class="ph"><img src="media/dron-knyaz.webp" srcset="media/dron-knyaz.m.webp 1080w, media/dron-knyaz.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="2000" height="1125" loading="lazy" alt="Вид с дрона: круглая площадка с конным памятником на краю холма, вдали Успенский собор"></div>
     <figcaption><time>12:43</time>Площадка с князем Владимиром и собор. Снег на склонах лежит только там, куда не достаёт солнце.</figcaption>
   </figure>
   <figure class="wide">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-sobor.jpg" src="https://ssveretennikov.github.io/russia-video/33-vladimir/v-dron-sobor.mp4" width="1280" height="720"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-dron-sobor.jpg" src="https://ssveretennikov.github.io/russia-video/33-vladimir/v-dron-sobor.mp4" width="1280" height="720"></video></div>
     <figcaption><time>≈12:42</time>Дрон поднимается от памятника к собору. Всё-таки классная штука — дрон.</figcaption>
   </figure>
 </section>
@@ -168,11 +169,11 @@
     <figcaption><time>12:59</time>Огонь крупно. Через минуту из него достанут мою заготовку.</figcaption>
   </figure>
   <figure class="tall">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-kuznica.jpg" src="https://ssveretennikov.github.io/russia-video/33-vladimir/v-kuznica.mp4" width="720" height="1280"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-kuznica.jpg" src="https://ssveretennikov.github.io/russia-video/33-vladimir/v-kuznica.mp4" width="720" height="1280"></video></div>
     <figcaption><time>≈12:59</time>Мастер-класс. Кузнец в красном держит, гость бьёт. Звук стоит такой, что телефон его не передаёт.</figcaption>
   </figure>
   <figure class="mid" id="P009">
-    <div class="ph"><img src="media/gvozd.webp" width="1200" height="1600" loading="lazy" alt="Кованый гвоздь лежит на раскрытой ладони"></div>
+    <div class="ph"><img src="media/gvozd.webp" srcset="media/gvozd.m.webp 1080w, media/gvozd.webp 1200w" sizes="(max-width: 640px) 100vw, 672px" width="1200" height="1600" loading="lazy" alt="Кованый гвоздь лежит на раскрытой ладони"></div>
     <figcaption><time>12:50</time>Это будет гвоздь. Сам сделалъ.</figcaption>
   </figure>
 </section>
@@ -205,7 +206,7 @@
     </figure>
   </div>
   <figure class="mid" id="P025">
-    <div class="ph"><img src="media/petuhi.webp" width="1200" height="1600" loading="lazy" alt="Витрина музея: цветные стеклянные петухи на подставках"></div>
+    <div class="ph"><img src="media/petuhi.webp" srcset="media/petuhi.m.webp 1080w, media/petuhi.webp 1200w" sizes="(max-width: 640px) 100vw, 672px" width="1200" height="1600" loading="lazy" alt="Витрина музея: цветные стеклянные петухи на подставках"></div>
     <figcaption><time>14:48</time>Стеклянные петухи из Гусь-Хрустального. Филиал музея в церкви: пока что самое неожиданное место для витрины.</figcaption>
   </figure>
 </section>
@@ -215,11 +216,11 @@
   <p>Ещё одно классное место. На входе «Ложка погоды»: если ложка мокрая, идёт дождь, если ложки нет, музей закрыт. Внутри показывают, как из полена получается ложка, и коллекцию ложек со всей страны. У них нет ложки из Южно-Сахалинска. Я обещал постараться привезти.</p>
   <div class="row">
     <figure id="P032">
-      <div class="ph"><img src="media/lozhka-pogody.webp" width="1200" height="1600" loading="lazy" alt="Табличка «Ложка погоды» на кирпичной стене с расшифровкой состояний ложки"></div>
+      <div class="ph"><img src="media/lozhka-pogody.webp" srcset="media/lozhka-pogody.m.webp 1080w, media/lozhka-pogody.webp 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1200" height="1600" loading="lazy" alt="Табличка «Ложка погоды» на кирпичной стене с расшифровкой состояний ложки"></div>
       <figcaption><time>15:35</time>Ложка погоды. Самый честный прогноз в городе.</figcaption>
     </figure>
     <figure id="P033">
-      <div class="ph"><img src="media/lozhki.webp" width="1600" height="1200" loading="lazy" alt="Стенд «Этапы изготовления ложек»: заготовки от бруска до готовой ложки"></div>
+      <div class="ph"><img src="media/lozhki.webp" srcset="media/lozhki.m.webp 1080w, media/lozhki.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Стенд «Этапы изготовления ложек»: заготовки от бруска до готовой ложки"></div>
       <figcaption><time>15:37</time>От бруска до ложки за семь шагов. После кузницы кажется, что и это я бы смог.</figcaption>
     </figure>
   </div>
@@ -230,15 +231,15 @@
   <h2 id="g7">Колокольня с дрона</h2>
   <p>Ближе к вечеру снова поднял дрон, на этот раз у старой колокольни. Вблизи она вся в облупленной штукатурке и кирпиче, в окнах колокола, а над ней город, который отсюда весь помещается в кадр.</p>
   <figure class="wide" id="P042">
-    <div class="ph"><img src="media/dron-kryshi.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: крыши старого города в снегу, вдали река и равнина"></div>
+    <div class="ph"><img src="media/dron-kryshi.webp" srcset="media/dron-kryshi.m.webp 1080w, media/dron-kryshi.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="2000" height="1125" loading="lazy" alt="Вид с дрона: крыши старого города в снегу, вдали река и равнина"></div>
     <figcaption><time>17:11</time>Крыши центра с высоты колокольни. Март: половина крыш белая, половина уже нет.</figcaption>
   </figure>
   <figure class="wide" id="P049">
-    <div class="ph"><img src="media/dron-kupola.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: бело-голубая колокольня с облупленной штукатуркой и золотым куполом, за ней город"></div>
+    <div class="ph"><img src="media/dron-kupola.webp" srcset="media/dron-kupola.m.webp 1080w, media/dron-kupola.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="2000" height="1125" loading="lazy" alt="Вид с дрона: бело-голубая колокольня с облупленной штукатуркой и золотым куполом, за ней город"></div>
     <figcaption><time>17:13</time>Колокольня вблизи. Снизу она нарядная, сверху видно, сколько ей лет.</figcaption>
   </figure>
   <figure class="wide">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-kolokolnya.jpg" src="https://ssveretennikov.github.io/russia-video/33-vladimir/v-dron-kolokolnya.mp4" width="1280" height="720"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-dron-kolokolnya.jpg" src="https://ssveretennikov.github.io/russia-video/33-vladimir/v-dron-kolokolnya.mp4" width="1280" height="720"></video></div>
     <figcaption><time>≈17:14</time>Дрон заглядывает в окна колокольни: колокола, пустые проёмы, потом золотой купол и город. Лучшие секунды дня.</figcaption>
   </figure>
 </section>
@@ -248,11 +249,11 @@
   <p>Ужинать пошёл в кафе «Тоня и её пельмени». В туалете висит табличка с просьбой не выбрасывать в унитаз рыбок, слёзы бывших, важные улики и обручальные кольца. За это прощаешь.</p>
   <div class="row">
     <figure id="P039">
-      <div class="ph"><img src="media/tonya.webp" width="1200" height="1600" loading="lazy" alt="Вход в кафе «Тоня и её пельмени»: стеклянные двери, гирлянды, вывеска"></div>
+      <div class="ph"><img src="media/tonya.webp" srcset="media/tonya.m.webp 1080w, media/tonya.webp 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1200" height="1600" loading="lazy" alt="Вход в кафе «Тоня и её пельмени»: стеклянные двери, гирлянды, вывеска"></div>
       <figcaption><time>18:24</time>Тоня и её пельмени. Пельмени хорошие, Тоню не видел.</figcaption>
     </figure>
     <figure id="P038">
-      <div class="ph"><img src="media/tablichka.webp" width="1200" height="1600" loading="lazy" alt="Табличка в туалете кафе со списком того, что нельзя выбрасывать в унитаз"></div>
+      <div class="ph"><img src="media/tablichka.webp" srcset="media/tablichka.m.webp 1080w, media/tablichka.webp 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1200" height="1600" loading="lazy" alt="Табличка в туалете кафе со списком того, что нельзя выбрасывать в унитаз"></div>
       <figcaption><time>18:14</time>Список запрещённого к смыву. «Слёзы бывших» — пункт третий.</figcaption>
     </figure>
   </div>
@@ -289,7 +290,7 @@
 
 <nav class="pager" aria-label="Читать дальше"><a class="prev" href="../37-ivanovo/index.html"><span class="code">37</span><span><small>Раньше по маршруту</small>Ивановская область</span></a><a class="next" href="../39-kaliningrad/index.html"><span><small>Следующий отчёт</small>Калининградская область</span><span class="code">39</span></a></nav>
 </div>
-<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=9328f84d"></script>
+<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p><p class="ft-nav"><a href="../trips/index.html">Поездки</a> · <a href="../about/index.html">О проекте</a></p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
+<script src="../series.js?v=b28c6248"></script>
 </body>
 </html>

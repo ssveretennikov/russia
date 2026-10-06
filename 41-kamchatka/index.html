@@ -23,9 +23,10 @@
 <meta name="twitter:image" content="https://ssveretennikov.github.io/russia/41-kamchatka/og.jpg">
 <meta name="theme-color" content="#F1F2EE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
+<link rel="preload" as="image" href="media/hero.webp" fetchpriority="high" imagesrcset="media/hero.m.webp 1080w, media/hero.webp 2200w" imagesizes="100vw">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=866b6051">
+<link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/oswald-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../series.css?v=512d5062">
 
 </head>
 <body id="top">
@@ -34,7 +35,7 @@
 <div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P128">
-    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Сергей стоит, раскинув руки, в коридоре между двумя снежными стенами в тёмных разводах"></div>
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" srcset="media/hero.m.webp 1080w, media/hero.webp 2200w" sizes="100vw" width="2200" height="1650" alt="Сергей стоит, раскинув руки, в коридоре между двумя снежными стенами в тёмных разводах"></div>
     <div class="reg-id" style="--nw:10">
       <span class="code" aria-label="Код региона 41">41</span>
       <h1>Камчатский край</h1>
@@ -132,18 +133,18 @@
       <figcaption><time>17:18</time>Первый дымящий за этот рейс. Высота шесть километров, облака внизу, он над ними.</figcaption>
     </figure>
     <figure>
-      <div class="ph"><video controls playsinline preload="metadata" poster="media/v-vulkan.jpg" src="https://ssveretennikov.github.io/russia-video/41-kamchatka/v-vulkan.mp4" width="1280" height="720"></video></div>
+      <div class="ph"><video controls playsinline preload="none" data-poster="media/v-vulkan.jpg" src="https://ssveretennikov.github.io/russia-video/41-kamchatka/v-vulkan.mp4" width="1280" height="720"></video></div>
       <figcaption><time>17:17</time>Он же в движении. Двигаюсь, правда, я, а он стоит и дымит.</figcaption>
     </figure>
   </div>
   <p>Сели в Елизове, в новом терминале. Внутри на колоннах зелёные таблички. В другое время прошёл бы мимо, но после 30 июля их читаешь внимательно и на всякий случай запоминаешь, где колонна.</p>
   <div class="row">
     <figure id="P009">
-      <div class="ph"><img src="media/aeroport.webp" width="1600" height="1200" loading="lazy" alt="Здание нового терминала аэропорта под солнцем"></div>
+      <div class="ph"><img src="media/aeroport.webp" srcset="media/aeroport.m.webp 1080w, media/aeroport.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Здание нового терминала аэропорта под солнцем"></div>
       <figcaption><time>18:20</time>Аэропорт «Камчатка». Солнце, и это надо запомнить: дальше с ним будет хуже.</figcaption>
     </figure>
     <figure id="P011">
-      <div class="ph"><img src="media/zemletryasenie.webp" width="1400" height="1050" loading="lazy" alt="Две зелёные таблички «Безопасное место при землетрясении» на колонне в терминале"></div>
+      <div class="ph"><img src="media/zemletryasenie.webp" srcset="media/zemletryasenie.m.webp 1080w, media/zemletryasenie.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1400" height="1050" loading="lazy" alt="Две зелёные таблички «Безопасное место при землетрясении» на колонне в терминале"></div>
       <figcaption><time>18:37</time>«Безопасное место при землетрясении». Две штуки на одной колонне, чтобы наверняка.</figcaption>
     </figure>
   </div>
@@ -154,22 +155,22 @@
   <h2 id="g3">Вулканы, которых не видно</h2>
   <p>Весь день на юге полуострова, у вулканов Мутновский и Горелый, километрах в восьмидесяти от города. Обычная машина туда не годится, поэтому на стоянке утром ждёт фургон на колёсах мне по пояс, разрисованный утками и Микки-Маусом. Спина помнит такие машины ещё с 2017 года.</p>
   <figure class="wide" id="P018">
-    <div class="ph"><img src="media/vezdehod.webp" width="1600" height="1200" loading="lazy" alt="Фургон-вездеход на огромных колёсах, разрисованный граффити с утками"></div>
+    <div class="ph"><img src="media/vezdehod.webp" srcset="media/vezdehod.m.webp 1080w, media/vezdehod.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="1600" height="1200" loading="lazy" alt="Фургон-вездеход на огромных колёсах, разрисованный граффити с утками"></div>
     <figcaption><time>07:25</time>Транспорт дня. Колёса по пояс, утки на борту. Одно колесо уже сдалось.</figcaption>
   </figure>
   <p>Первая остановка — Вилючинский перевал, около 900 метров. Видов с него в этот день не было, был туман и резные деревянные идолы. Им кладут в рот монетки и конфеты. Судя по количеству фантиков, с погодой это не помогает.</p>
   <figure class="mid" id="P026">
-    <div class="ph"><img src="media/idoly.webp" width="1400" height="1050" loading="lazy" alt="Резной деревянный идол, в щелях монетки и фантики, вокруг туман"></div>
+    <div class="ph"><img src="media/idoly.webp" srcset="media/idoly.m.webp 1080w, media/idoly.webp 1400w" sizes="(max-width: 640px) 100vw, 672px" width="1400" height="1050" loading="lazy" alt="Резной деревянный идол, в щелях монетки и фантики, вокруг туман"></div>
     <figcaption><time>08:22</time>Берёт и мелочью, и конфетами. Сдачи не даёт.</figcaption>
   </figure>
   <p>Зато туман выдал медведя. Светлый, идёт по тундре по своим делам и на вездеход с утками не оглядывается. Через сорок минут, уже в другом месте, второй: стоит у дороги и ест траву. В старом отчёте я писал, что медведей тут очень много. Теперь проверено.</p>
   <div class="row">
     <figure>
-      <div class="ph"><video controls playsinline preload="metadata" poster="media/v-medved.jpg" src="https://ssveretennikov.github.io/russia-video/41-kamchatka/v-medved.mp4" width="1280" height="720"></video></div>
+      <div class="ph"><video controls playsinline preload="none" data-poster="media/v-medved.jpg" src="https://ssveretennikov.github.io/russia-video/41-kamchatka/v-medved.mp4" width="1280" height="720"></video></div>
       <figcaption><time>08:49</time>Первый. Вышел из тумана, прошёл мимо и ушёл в туман. Вопросов к нам не возникло.</figcaption>
     </figure>
     <figure id="P053">
-      <div class="ph"><img src="media/medved.webp" width="1600" height="1200" loading="lazy" alt="Медведь пасётся в траве у дороги"></div>
+      <div class="ph"><img src="media/medved.webp" srcset="media/medved.m.webp 1080w, media/medved.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Медведь пасётся в траве у дороги"></div>
       <figcaption><time>09:31</time>Второй. Рыба и ягода, видимо, позже, а пока салат.</figcaption>
     </figure>
   </div>
@@ -185,7 +186,7 @@
     </figure>
   </div>
   <figure class="mid" id="P087">
-    <div class="ph"><img src="media/zapret.webp" width="1400" height="1050" loading="lazy" alt="Табличка «Внимание! Проход запрещён. Опасность обрушения склона»"></div>
+    <div class="ph"><img src="media/zapret.webp" srcset="media/zapret.m.webp 1080w, media/zapret.webp 1400w" sizes="(max-width: 640px) 100vw, 672px" width="1400" height="1050" loading="lazy" alt="Табличка «Внимание! Проход запрещён. Опасность обрушения склона»"></div>
     <figcaption><time>10:40</time>«Проход запрещён. Опасность обрушения склона». После недели с магнитудой 8,8 спорить не хочется.</figcaption>
   </figure>
 </section>
@@ -194,27 +195,27 @@
   <h2 id="g4">Снег в августе и пещеры под ним</h2>
   <p>Ближе к Горелому туман приподнялся. Открылось каменное поле: шлак, валуны, на склонах снежные языки. Вулкана целиком так и не показали, но после утра в белом и это выглядело щедростью. Я отметил событие прыжком с валуна.</p>
   <figure class="wide" id="P106">
-    <div class="ph"><img src="media/pryzhok.webp" width="1600" height="1200" loading="lazy" alt="Сергей в прыжке с валуна на каменном поле, на склонах снежные языки"></div>
+    <div class="ph"><img src="media/pryzhok.webp" srcset="media/pryzhok.m.webp 1080w, media/pryzhok.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="1600" height="1200" loading="lazy" alt="Сергей в прыжке с валуна на каменном поле, на склонах снежные языки"></div>
     <figcaption><time>11:55</time>Высота прыжка скромнее, чем казалось в полёте. Приземление прошло штатно.</figcaption>
   </figure>
   <p>Потом снежник. Август, а стены выше человека, в тёмных полосах, как срез пирога. Между двумя глыбами коридор, в нём я и стою на главном снимке этой страницы.</p>
   <figure class="wide" id="P113">
-    <div class="ph"><img src="media/led.webp" width="1600" height="900" loading="lazy" alt="Сергей на фоне снежной стены в тёмных полосах"></div>
+    <div class="ph"><img src="media/led.webp" srcset="media/led.m.webp 1080w, media/led.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="1600" height="900" loading="lazy" alt="Сергей на фоне снежной стены в тёмных полосах"></div>
     <figcaption><time>12:19</time>Снег в полоску. Тёмные слои — пепел: вулканы тут напоминают о себе даже в снегу.</figcaption>
   </figure>
   <p>Последняя точка дня — лавовые пещеры к северу от Горелого. Их здесь четырнадцать, все в одном лавовом потоке, которому около двух тысяч лет. Ко входу спускаешься по снегу: сверху август, под ногами зима, впереди чёрная дыра. Внутри интереснее всего смотреть назад, на свет.</p>
   <div class="row">
     <figure id="P142">
-      <div class="ph"><img src="media/peshchera.webp" width="1600" height="1200" loading="lazy" alt="Человек в голубой куртке стоит на снегу у тёмного входа в пещеру"></div>
+      <div class="ph"><img src="media/peshchera.webp" srcset="media/peshchera.m.webp 1080w, media/peshchera.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Человек в голубой куртке стоит на снегу у тёмного входа в пещеру"></div>
       <figcaption><time>13:03</time>Вход. Спускаешься к нему по снегу, которому август не указ.</figcaption>
     </figure>
     <figure id="P147">
-      <div class="ph"><img src="media/svet.webp" width="1600" height="1200" loading="lazy" alt="Светлый проём входа, вид изнутри тёмной пещеры"></div>
+      <div class="ph"><img src="media/svet.webp" srcset="media/svet.m.webp 1080w, media/svet.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Светлый проём входа, вид изнутри тёмной пещеры"></div>
       <figcaption><time>13:05</time>Взгляд изнутри. Две тысячи лет назад здесь текло то, что теперь потолок.</figcaption>
     </figure>
   </div>
   <figure class="wide" id="P152">
-    <div class="ph"><img src="media/lava.webp" width="1600" height="1200" loading="lazy" alt="Зубцы застывшей лавы над снегом"></div>
+    <div class="ph"><img src="media/lava.webp" srcset="media/lava.m.webp 1080w, media/lava.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="1600" height="1200" loading="lazy" alt="Зубцы застывшей лавы над снегом"></div>
     <figcaption><time>13:12</time>Лава застыла зубцами, как корона. Запомните её: через два дня она появится снова, уже с ценником.</figcaption>
   </figure>
 </section>
@@ -223,42 +224,42 @@
   <h2 id="g5">Пушки над бухтой</h2>
   <p>К шести вернулись в Петропавловск, и я пошёл гулять до темноты. Началось с ларька на остановке, который точно знает, кто его клиент.</p>
   <figure class="mid" id="P166">
-    <div class="ph"><img src="media/strizhka.webp" width="1400" height="1050" loading="lazy" alt="Ларёк на остановке с вывеской «Здесь круто стригут мужиков»"></div>
+    <div class="ph"><img src="media/strizhka.webp" srcset="media/strizhka.m.webp 1080w, media/strizhka.webp 1400w" sizes="(max-width: 640px) 100vw, 672px" width="1400" height="1050" loading="lazy" alt="Ларёк на остановке с вывеской «Здесь круто стригут мужиков»"></div>
     <figcaption><time>18:04</time>«Здесь круто стригут мужиков». Верю, но проверить мне нечем.</figcaption>
   </figure>
   <p>На склоне Никольской сопки над Авачинской бухтой стоят пушки. Здесь была III батарея лейтенанта Максутова, её называли «Смертельной»: в августе 1854 года, в Крымскую войну, она отбивалась от англо-французской эскадры. Табличка рядом честно рассказывает и про сами пушки: в 1959-м поставили деревянный макет, в 1967-м заменили чугунными. В двух шагах от батареи растут мухоморы, и их, в отличие от пушек, никто не охраняет.</p>
   <figure class="wide" id="P187">
-    <div class="ph"><img src="media/pushki.webp" width="1600" height="1200" loading="lazy" alt="Чугунные пушки на бастионе над бухтой"></div>
+    <div class="ph"><img src="media/pushki.webp" srcset="media/pushki.m.webp 1080w, media/pushki.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="1600" height="1200" loading="lazy" alt="Чугунные пушки на бастионе над бухтой"></div>
     <figcaption><time>20:50</time>Батарея по-прежнему смотрит на бухту. Эскадры в этот вечер не было, было рыболовное судно.</figcaption>
   </figure>
   <div class="row narrow">
     <figure id="P196">
-      <div class="ph"><img src="media/mukhomor.webp" width="1400" height="1050" loading="lazy" alt="Мухомор в траве"></div>
+      <div class="ph"><img src="media/mukhomor.webp" srcset="media/mukhomor.m.webp 1080w, media/mukhomor.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1400" height="1050" loading="lazy" alt="Мухомор в траве"></div>
       <figcaption><time>20:58</time>Сосед батареи. Не трогал, мне ещё на сплав.</figcaption>
     </figure>
     <figure id="P204">
-      <div class="ph"><img src="media/vulkany.webp" width="1400" height="1050" loading="lazy" alt="Арт-объекты в сквере с названиями вулканов и их высотами"></div>
+      <div class="ph"><img src="media/vulkany.webp" srcset="media/vulkany.m.webp 1080w, media/vulkany.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1400" height="1050" loading="lazy" alt="Арт-объекты в сквере с названиями вулканов и их высотами"></div>
       <figcaption><time>21:03</time>Корякская сопка — 3456, Авачинская — 2741. В таком виде вулканы от меня не прячутся, и обойти их можно за минуту.</figcaption>
     </figure>
   </div>
   <div class="row">
     <figure id="P203">
-      <div class="ph"><img src="media/bukvy.webp" width="1600" height="1200" loading="lazy" alt="Оранжевые буквы «Камчатка» в сквере"></div>
+      <div class="ph"><img src="media/bukvy.webp" srcset="media/bukvy.m.webp 1080w, media/bukvy.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Оранжевые буквы «Камчатка» в сквере"></div>
       <figcaption><time>21:02</time>На случай, если кто-то за три поездки так и не понял, где он.</figcaption>
     </figure>
     <figure id="P212">
-      <div class="ph"><img src="media/bukhta.webp" width="1600" height="901" loading="lazy" alt="Сергей в зелёной шапке машет рукой на фоне бухты"></div>
+      <div class="ph"><img src="media/bukhta.webp" srcset="media/bukhta.m.webp 1080w, media/bukhta.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="901" loading="lazy" alt="Сергей в зелёной шапке машет рукой на фоне бухты"></div>
       <figcaption><time>21:09</time>Авачинская бухта. Машу ей как старой знакомой: всё-таки третий раз.</figcaption>
     </figure>
   </div>
   <p>Стемнело к десяти. Внизу у воды светился белый купол, рядом качели и гирлянды, за ними прожекторы порта. Оттуда я вышел на тропу вокруг Култучного, озера прямо в черте города. Оно есть и в моём старом отчёте, только днём.</p>
   <div class="row">
     <figure id="P237">
-      <div class="ph"><img src="media/kupol.webp" width="1600" height="1200" loading="lazy" alt="Белый светящийся купол на ночном пляже, рядом качели и гирлянды"></div>
+      <div class="ph"><img src="media/kupol.webp" srcset="media/kupol.m.webp 1080w, media/kupol.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Белый светящийся купол на ночном пляже, рядом качели и гирлянды"></div>
       <figcaption><time>22:00</time>Купол на берегу. Светит на весь пляж, как ночник.</figcaption>
     </figure>
     <figure id="P251">
-      <div class="ph"><img src="media/kultuchnoe.webp" width="1600" height="1200" loading="lazy" alt="Огни города отражаются в озере ночью"></div>
+      <div class="ph"><img src="media/kultuchnoe.webp" srcset="media/kultuchnoe.m.webp 1080w, media/kultuchnoe.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Огни города отражаются в озере ночью"></div>
       <figcaption><time>22:12</time>Култучное. Город отражается целиком. Жаль, что вулканы так не умеют.</figcaption>
     </figure>
   </div>
@@ -280,7 +281,7 @@
   </div>
   <p>По пути ловили рыбу. Первую вытащили в половине двенадцатого, и она сразу стала главной в лодке. К часу дня на гальке лежал улов. Разделывали тут же, поставив доску прямо в реку, а из самой крупной рыбы икру достали в миску у меня на глазах.</p>
   <figure class="wide" id="P276">
-    <div class="ph"><img src="media/ryba.webp" width="1600" height="1200" loading="lazy" alt="Мужчина в кепке и жилете держит пойманную рыбу, девушка снимает её на телефон"></div>
+    <div class="ph"><img src="media/ryba.webp" srcset="media/ryba.m.webp 1080w, media/ryba.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="1600" height="1200" loading="lazy" alt="Мужчина в кепке и жилете держит пойманную рыбу, девушка снимает её на телефон"></div>
     <figcaption><time>11:37</time>Первая. Её в этот момент фотографировали охотнее, чем меня за всю поездку.</figcaption>
   </figure>
   <div class="row narrow">
@@ -289,12 +290,12 @@
       <figcaption><time>13:07</time>Итог полутора часов рыбалки. В магазине на это смотрят через стекло.</figcaption>
     </figure>
     <figure id="P288">
-      <div class="ph"><img src="media/razdelka.webp" width="1600" height="1200" loading="lazy" alt="Рыбу разделывают на доске, стоящей в воде у берега"></div>
+      <div class="ph"><img src="media/razdelka.webp" srcset="media/razdelka.m.webp 1080w, media/razdelka.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Рыбу разделывают на доске, стоящей в воде у берега"></div>
       <figcaption><time>13:17</time>Кухня без раковины: вода течёт сама и сама всё уносит.</figcaption>
     </figure>
   </div>
   <figure class="wide">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-ikra.jpg" src="https://ssveretennikov.github.io/russia-video/41-kamchatka/v-ikra.mp4" width="1280" height="720"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-ikra.jpg" src="https://ssveretennikov.github.io/russia-video/41-kamchatka/v-ikra.mp4" width="1280" height="720"></video></div>
     <figcaption><time>13:21</time>Икра. Без банки, без этикетки и без ценника. Засекаю время.</figcaption>
   </figure>
   <p>Тем временем на берегу поставили треноги из жердей и повесили два котла под уху. Жерди пилили аккумуляторной пилой, костёр раздували аккумуляторной воздуходувкой. Дикая природа, вулканы, медведи, и над всем этим жужжит садовый инструмент.</p>
@@ -304,7 +305,7 @@
       <figcaption><time>13:54</time>Уха в двух котлах. Рыба в ней из той же реки, что и вода.</figcaption>
     </figure>
     <figure>
-      <div class="ph"><video controls playsinline preload="metadata" poster="media/v-koster.jpg" src="https://ssveretennikov.github.io/russia-video/41-kamchatka/v-koster.mp4" width="1280" height="720"></video></div>
+      <div class="ph"><video controls playsinline preload="none" data-poster="media/v-koster.jpg" src="https://ssveretennikov.github.io/russia-video/41-kamchatka/v-koster.mp4" width="1280" height="720"></video></div>
       <figcaption><time>13:55</time>Костёр на батарейках. Дуть самому, как выяснилось, уже прошлый век.</figcaption>
     </figure>
   </div>
@@ -315,18 +316,18 @@
       <figcaption><time>14:23</time>Час назад это плавало. Лицо у меня соответствующее.</figcaption>
     </figure>
     <figure id="P309">
-      <div class="ph"><img src="media/buterbrod.webp" width="1600" height="900" loading="lazy" alt="Сергей с бутербродом с икрой, за ним рафты на берегу"></div>
+      <div class="ph"><img src="media/buterbrod.webp" srcset="media/buterbrod.m.webp 1080w, media/buterbrod.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="900" loading="lazy" alt="Сергей с бутербродом с икрой, за ним рафты на берегу"></div>
       <figcaption><time>14:45</time>Финиш: 1 час 24 минуты от рыбы до хлеба. За спиной рафты, на которых всё это приплыло.</figcaption>
     </figure>
   </div>
   <p>Сплав заканчивается у Малкинских горячих источников. Вода бьёт из галечника у реки Ключевки, горячая до 84 °C, а ванны вырыты прямо в гальке. Желающих полно. Я тоже залез.</p>
   <div class="row">
     <figure id="P330">
-      <div class="ph"><img src="media/malki.webp" width="1600" height="900" loading="lazy" alt="Сергей без футболки у горячих источников, за ним пар и люди в ваннах из гальки"></div>
+      <div class="ph"><img src="media/malki.webp" srcset="media/malki.m.webp 1080w, media/malki.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="900" loading="lazy" alt="Сергей без футболки у горячих источников, за ним пар и люди в ваннах из гальки"></div>
       <figcaption><time>17:27</time>Малки. В 2017-м грелся в Паратунке, теперь для сравнения здесь. Пар одинаковый.</figcaption>
     </figure>
     <figure id="P332">
-      <div class="ph"><img src="media/goryachaya.webp" width="1600" height="1200" loading="lazy" alt="Табличка «Осторожно! Горячая вода» у парящего ручья"></div>
+      <div class="ph"><img src="media/goryachaya.webp" srcset="media/goryachaya.m.webp 1080w, media/goryachaya.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Табличка «Осторожно! Горячая вода» у парящего ручья"></div>
       <figcaption><time>17:39</time>«Осторожно! Горячая вода». Ручей при этом парит, как чайник, но табличка надёжнее.</figcaption>
     </figure>
   </div>
@@ -349,17 +350,17 @@
       <figcaption><time>07:38</time>Позавчера я ходил по этому весь день и ничего не заплатил. Упущенная выгода не поддаётся подсчёту.</figcaption>
     </figure>
     <figure id="P344">
-      <div class="ph"><img src="media/voda.webp" width="1600" height="1200" loading="lazy" alt="Кулер с бутылью воды «Малки» в зале аэропорта"></div>
+      <div class="ph"><img src="media/voda.webp" srcset="media/voda.m.webp 1080w, media/voda.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Кулер с бутылью воды «Малки» в зале аэропорта"></div>
       <figcaption><time>07:43</time>В кулере вода «Малки». Вчера я в ней сидел, сегодня пью. Остывшую, конечно.</figcaption>
     </figure>
   </div>
   <p>И одна вещь, которую я не понял. На колонне в зале крупные буквы и координаты: 53°2′ с. ш., 158°39′ в. д. Это не аэропорт, а центр Петропавловска, до него отсюда километров двадцать. Возможно, так и задумано. Возможно, колонна просто скучает по городу.</p>
   <figure class="wide" id="P340">
-    <div class="ph"><img src="media/koordinaty.webp" width="1600" height="1200" loading="lazy" alt="Колонна в зале аэропорта с крупными буквами и координатами"></div>
+    <div class="ph"><img src="media/koordinaty.webp" srcset="media/koordinaty.m.webp 1080w, media/koordinaty.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="1600" height="1200" loading="lazy" alt="Колонна в зале аэропорта с крупными буквами и координатами"></div>
     <figcaption><time>07:40</time>По этим координатам самолёты не садятся. Там бухта, пушки и мухоморы.</figcaption>
   </figure>
   <figure class="mid" id="P347">
-    <div class="ph"><img src="media/salon.webp" width="1600" height="1200" loading="lazy" alt="Салон небольшого самолёта, ряды кресел"></div>
+    <div class="ph"><img src="media/salon.webp" srcset="media/salon.m.webp 1080w, media/salon.webp 1600w" sizes="(max-width: 640px) 100vw, 672px" width="1600" height="1200" loading="lazy" alt="Салон небольшого самолёта, ряды кресел"></div>
     <figcaption><time>08:57</time>Снова маленький самолёт с винтами. В прошлый раз из такого показали извержение, так что планка высокая.</figcaption>
   </figure>
   <p>Дальше <a href="../49-magadan/index.html">Магадан</a>, третья точка маршрута Москва — Анадырь — Петропавловск-Камчатский — Магадан.</p>
@@ -390,7 +391,7 @@
 
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../87-chukotka/index.html"><span class="code">87</span><span><small>Раньше по маршруту</small>Чукотский автономный округ</span></a><a class="next" href="../49-magadan/index.html"><span><small>Дальше по маршруту</small>Магаданская область</span><span class="code">49</span></a></nav>
 </div>
-<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=9328f84d"></script>
+<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p><p class="ft-nav"><a href="../trips/index.html">Поездки</a> · <a href="../about/index.html">О проекте</a></p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
+<script src="../series.js?v=b28c6248"></script>
 </body>
 </html>

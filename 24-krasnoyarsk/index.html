@@ -23,9 +23,10 @@
 <meta name="twitter:image" content="https://ssveretennikov.github.io/russia/24-krasnoyarsk/og.jpg">
 <meta name="theme-color" content="#F1F2EE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
+<link rel="preload" as="image" href="media/hero.webp" fetchpriority="high" imagesrcset="media/hero.m.webp 1080w, media/hero.webp 2200w" imagesizes="100vw">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=866b6051">
+<link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/oswald-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../series.css?v=512d5062">
 <style>:root{--reg:#565018;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#D5CA67;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#D5CA67;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
@@ -34,7 +35,7 @@
 <div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P042">
-    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: лесистые холмы до горизонта, вдали город под низкой дождевой тучей"></div>
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" srcset="media/hero.m.webp 1080w, media/hero.webp 2200w" sizes="100vw" width="2200" height="1238" alt="Вид с дрона: лесистые холмы до горизонта, вдали город под низкой дождевой тучей"></div>
     <div class="reg-id" style="--nw:12">
       <span class="code" aria-label="Код региона 24">24</span>
       <h1>Красноярский край</h1>
@@ -120,7 +121,7 @@
       <figcaption><time>13:37</time>Ворота резные, свежепокрашенные. За ними, судя по шлагбауму рядом, обычная парковка.</figcaption>
     </figure>
     <figure id="P006">
-      <div class="ph"><img src="media/bashenka.webp" width="1600" height="1200" loading="lazy" alt="Деревянный дом с красной остроконечной башенкой и застеклённой верандой у дороги"></div>
+      <div class="ph"><img src="media/bashenka.webp" srcset="media/bashenka.m.webp 1080w, media/bashenka.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Деревянный дом с красной остроконечной башенкой и застеклённой верандой у дороги"></div>
       <figcaption><time>13:38</time>Дом с башенкой. Такой вот ландшафтный дизайн, если сзади не смотреть на провода.</figcaption>
     </figure>
   </div>
@@ -131,7 +132,7 @@
   <h2 id="g3">Три процента заряда</h2>
   <p>Вечером пошёл небольшой дождь, такси подорожало в разы, и я взял самокат. Маршрут был простой: филармония, Виноградовский мост, Коммунальный мост, краеведческий музей. На всё это у телефона оставалось минут сорок жизни, и я это знал.</p>
   <figure class="wide" id="P008">
-    <div class="ph"><img src="media/filarmoniya.webp" width="1600" height="1200" loading="lazy" alt="Здание краевой филармонии ночью, фасад подсвечен жёлтым"></div>
+    <div class="ph"><img src="media/filarmoniya.webp" srcset="media/filarmoniya.m.webp 1080w, media/filarmoniya.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="1600" height="1200" loading="lazy" alt="Здание краевой филармонии ночью, фасад подсвечен жёлтым"></div>
     <figcaption><time>00:32</time>Филармония. Жёлтая настолько, что самокат рядом стал невидимым.</figcaption>
   </figure>
   <div class="row narrow">
@@ -140,21 +141,21 @@
       <figcaption><time>00:43</time>Виноградовский мост. Пешеходный, синий, пустой. Час ночи, среда.</figcaption>
     </figure>
     <figure>
-      <div class="ph"><video controls playsinline preload="metadata" poster="media/v-most.jpg" src="https://ssveretennikov.github.io/russia-video/24-krasnoyarsk/v-most.mp4" width="720" height="1280"></video></div>
+      <div class="ph"><video controls playsinline preload="none" data-poster="media/v-most.jpg" src="https://ssveretennikov.github.io/russia-video/24-krasnoyarsk/v-most.mp4" width="720" height="1280"></video></div>
       <figcaption><time>≈00:32</time>Еду по мосту на самокате. Одной рукой снимаю, и это, пожалуй, зря.</figcaption>
     </figure>
   </div>
   <figure class="wide" id="P010">
-    <div class="ph"><img src="media/kommunalny.webp" width="1600" height="1200" loading="lazy" alt="Ночной арочный мост с подсветкой, огни отражаются в тёмной воде реки"></div>
+    <div class="ph"><img src="media/kommunalny.webp" srcset="media/kommunalny.m.webp 1080w, media/kommunalny.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="1600" height="1200" loading="lazy" alt="Ночной арочный мост с подсветкой, огни отражаются в тёмной воде реки"></div>
     <figcaption><time>00:59</time>Коммунальный мост, тот самый с десяти рублей. Купюру достать не успел: телефон был важнее.</figcaption>
   </figure>
   <div class="row">
     <figure id="P012">
-      <div class="ph"><img src="media/muzey.webp" width="1600" height="1200" loading="lazy" alt="Здание в египетском стиле ночью: колонны, роспись над входом, ступени"></div>
+      <div class="ph"><img src="media/muzey.webp" srcset="media/muzey.m.webp 1080w, media/muzey.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Здание в египетском стиле ночью: колонны, роспись над входом, ступени"></div>
       <figcaption><time>01:13</time>Краеведческий музей. Мало кто знает, но египетская цивилизация зарождалась у нас, в Восточной Сибири.</figcaption>
     </figure>
     <figure id="P016">
-      <div class="ph"><img src="media/graffiti.webp" width="1600" height="1200" loading="lazy" alt="Трафаретное граффити человека в плаще на каменной стене подземного прохода"></div>
+      <div class="ph"><img src="media/graffiti.webp" srcset="media/graffiti.m.webp 1080w, media/graffiti.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Трафаретное граффити человека в плаще на каменной стене подземного прохода"></div>
       <figcaption><time>01:15</time>Граффити под Коммунальным мостом. Через несколько минут после этого кадра телефон сел.</figcaption>
     </figure>
   </div>
@@ -166,7 +167,7 @@
   <h2 id="g4">Вокзал и камера хранения</h2>
   <p>Вечером того же дня у меня был поезд в Абакан, и в парк нужно было успеть до него. Один на тропу с медведями мне не хотелось, поэтому накануне ночью я нашёл на «Трипстере» местного гида и купил у него индивидуальную экскурсию. Мне повезло: Андрей был свободен и согласился встретиться пораньше. Маленького рюкзака у меня не было, только сумка на 50 литров со всей жизнью, так что всё лишнее уехало в камеру хранения на вокзале.</p>
   <figure class="wide" id="P017">
-    <div class="ph"><img src="media/vokzal.webp" width="1600" height="1200" loading="lazy" alt="Здание вокзала с колоннами и высокая колонна со скульптурой на мокрой пустой площади"></div>
+    <div class="ph"><img src="media/vokzal.webp" srcset="media/vokzal.m.webp 1080w, media/vokzal.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="1600" height="1200" loading="lazy" alt="Здание вокзала с колоннами и высокая колонна со скульптурой на мокрой пустой площади"></div>
     <figcaption><time>08:55</time>Вокзал милый и компактный. Площадь мокрая и пустая, как и положено в девять утра четверга.</figcaption>
   </figure>
   <p>Андрей задерживался, и я уже строил запасные планы: рядом зоопарк, в городе оставались недосмотренные места. Но он приехал, и мы пошли.</p>
@@ -177,7 +178,7 @@
   <h2 id="g5">Столбы: вверх</h2>
   <p>Погода была суперская, в сибирском смысле: то солнце, то пасмурно, и до дождя мы успели полазить по сухим камням. Народа не было совсем. Пара бегунов и три-четыре посетителя за пять часов, хотя в группе парка в ВК все неделями спрашивали, когда откроют.</p>
   <figure class="mid" id="P019">
-    <div class="ph"><img src="media/rodnik.webp" width="1600" height="1200" loading="lazy" alt="Человек складывает пирамидку из камней на каменной выкладке в лесу"></div>
+    <div class="ph"><img src="media/rodnik.webp" srcset="media/rodnik.m.webp 1080w, media/rodnik.webp 1600w" sizes="(max-width: 640px) 100vw, 672px" width="1600" height="1200" loading="lazy" alt="Человек складывает пирамидку из камней на каменной выкладке в лесу"></div>
     <figcaption><time>11:24</time>Ритуал Андрея перед входом: сложить человечка из камней на роднике. Я не мешал.</figcaption>
   </figure>
   <div class="row narrow">
@@ -191,25 +192,25 @@
     </figure>
   </div>
   <figure class="wide" id="P032">
-    <div class="ph"><img src="media/tayga.webp" width="1600" height="1200" loading="lazy" alt="Панорама лесистых холмов с вершины, на горизонте город, над ним тучи"></div>
+    <div class="ph"><img src="media/tayga.webp" srcset="media/tayga.m.webp 1080w, media/tayga.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="1600" height="1200" loading="lazy" alt="Панорама лесистых холмов с вершины, на горизонте город, над ним тучи"></div>
     <figcaption><time>13:16</time>Первая смотровая, на плече «Деда». Тайга во все стороны, и ни одной души. Я таких видов ждал всю Сибирь.</figcaption>
   </figure>
   <figure class="wide">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-ded.jpg" src="https://ssveretennikov.github.io/russia-video/24-krasnoyarsk/v-dron-ded.mp4" width="1280" height="720"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-dron-ded.jpg" src="https://ssveretennikov.github.io/russia-video/24-krasnoyarsk/v-dron-ded.mp4" width="1280" height="720"></video></div>
     <figcaption><time>≈13:16</time>Дрон отлетает от «Деда». Сижу на камне, Андрей рядом с пультом. Чем дальше дрон, тем меньше становится понятно, как мы сюда залезли.</figcaption>
   </figure>
   <div class="row">
     <figure id="P036">
-      <div class="ph"><img src="media/dron-greben.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: гранитный гребень среди леса, на камнях две фигуры"></div>
+      <div class="ph"><img src="media/dron-greben.webp" srcset="media/dron-greben.m.webp 1080w, media/dron-greben.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="2000" height="1125" loading="lazy" alt="Вид с дрона: гранитный гребень среди леса, на камнях две фигуры"></div>
       <figcaption><time>13:12</time>Гребень сверху. Две точки на камне — это мы. Фильтров дрону всё ещё очень не хватает: засветы.</figcaption>
     </figure>
     <figure id="P038">
-      <div class="ph"><img src="media/dron-bashnya.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: отдельная скальная башня над сплошным лесом"></div>
+      <div class="ph"><img src="media/dron-bashnya.webp" srcset="media/dron-bashnya.m.webp 1080w, media/dron-bashnya.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="2000" height="1125" loading="lazy" alt="Вид с дрона: отдельная скальная башня над сплошным лесом"></div>
       <figcaption><time>13:12</time>Соседний столб. На него мы не полезли, и я считаю это зрелым решением.</figcaption>
     </figure>
   </div>
   <figure class="wide" id="P039">
-    <div class="ph"><img src="media/dron-les.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: скалы на краю леса и холмы до горизонта"></div>
+    <div class="ph"><img src="media/dron-les.webp" srcset="media/dron-les.m.webp 1080w, media/dron-les.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="2000" height="1125" loading="lazy" alt="Вид с дрона: скалы на краю леса и холмы до горизонта"></div>
     <figcaption><time>13:12</time>Дальше только холмы и лес. По GPS мы на 839 метрах, город внизу примерно на 130.</figcaption>
   </figure>
 </section>
@@ -229,16 +230,16 @@
   </div>
   <div class="row narrow">
     <figure>
-      <div class="ph"><video controls playsinline preload="metadata" poster="media/v-kray.jpg" src="https://ssveretennikov.github.io/russia-video/24-krasnoyarsk/v-kray.mp4" width="720" height="1280"></video></div>
+      <div class="ph"><video controls playsinline preload="none" data-poster="media/v-kray.jpg" src="https://ssveretennikov.github.io/russia-video/24-krasnoyarsk/v-kray.mp4" width="720" height="1280"></video></div>
       <figcaption><time>≈13:37</time>Ноги над обрывом, потом колонны, потом столб с шестом на макушке. Кто-то туда долез и оставил.</figcaption>
     </figure>
     <figure id="P050">
-      <div class="ph"><img src="media/listvennica.webp" width="1600" height="1200" loading="lazy" alt="Гранитная скала с лиственницей наверху, внизу песчаная площадка и сосны"></div>
+      <div class="ph"><img src="media/listvennica.webp" srcset="media/listvennica.m.webp 1080w, media/listvennica.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Гранитная скала с лиственницей наверху, внизу песчаная площадка и сосны"></div>
       <figcaption><time>13:43</time>Как тут выживают деревья — загадка. Корни где-то внутри камня.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P053">
-    <div class="ph"><img src="media/selfi.webp" width="1600" height="1200" loading="lazy" alt="Сергей в чёрной толстовке улыбается в селфи на фоне леса и тумана"></div>
+    <div class="ph"><img src="media/selfi.webp" srcset="media/selfi.m.webp 1080w, media/selfi.webp 1600w" sizes="(max-width: 640px) 100vw, 672px" width="1600" height="1200" loading="lazy" alt="Сергей в чёрной толстовке улыбается в селфи на фоне леса и тумана"></div>
     <figcaption><time>14:07</time>Лицо, полное счастья. По-моему, было сильно ветрено, а может, как всегда решил сгримасничать, не помню.</figcaption>
   </figure>
 </section>
@@ -261,7 +262,7 @@
     <figcaption><time>15:36</time>Облака опустились ниже нас. Не передать словами, насколько тут красиво, поэтому я и не буду.</figcaption>
   </figure>
   <figure class="wide">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-tuman.jpg" src="https://ssveretennikov.github.io/russia-video/24-krasnoyarsk/v-tuman.mp4" width="1280" height="720"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-tuman.jpg" src="https://ssveretennikov.github.io/russia-video/24-krasnoyarsk/v-tuman.mp4" width="1280" height="720"></video></div>
     <figcaption><time>≈15:45</time>Панорама с последней вершины: туман ходит по тайге, в кадр попадают мои ботинки. Мокрые.</figcaption>
   </figure>
   <figure class="mid" id="P071">
@@ -303,7 +304,7 @@
 
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../42-kemerovo/index.html"><span class="code">42</span><span><small>Раньше по маршруту</small>Кемеровская область</span></a><a class="next" href="../19-khakassia/index.html"><span><small>Дальше по маршруту</small>Республика Хакасия</span><span class="code">19</span></a></nav>
 </div>
-<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=9328f84d"></script>
+<footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p><p class="ft-nav"><a href="../trips/index.html">Поездки</a> · <a href="../about/index.html">О проекте</a></p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
+<script src="../series.js?v=b28c6248"></script>
 </body>
 </html>
