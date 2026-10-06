@@ -27,7 +27,7 @@
     var cap = li.dataset.cap || '';
     var parts = sub ? [].slice.call(sub.querySelectorAll('a')) : [];
     var date = li.dataset.home ? 'Дом — отсюда начинаются поездки'
-      : li.dataset.date ? 'Первый визит: ' + li.dataset.date : 'Ещё впереди';
+      : li.dataset.date ? 'В отчёте: ' + li.dataset.date : 'Ещё впереди';
     var tr = TR[li.dataset.tr];
     if (tr) date += ' · ' + tr.icon + ' ' + tr.text;
     card.innerHTML = '';
@@ -144,6 +144,38 @@
     items.forEach(function (li) { li.hidden = !okFilter(li); });
     secs.forEach(function (s) { s.hidden = !s.querySelector('li.reg:not([hidden])'); });
     none.hidden = items.some(function (li) { return !li.hidden; });
+    syncFav();
+  }
+
+  // Лента «Любимые» — для первого взгляда на всю страну. Когда читатель что-то ищет, выбрал округ или год
+  // или смотрит «Путь по годам», лента убирается, чтобы найденное стояло сразу под поиском.
+  var fav = document.getElementById('fav'), favRow = document.getElementById('favRow');
+  var favNav = document.getElementById('favNav'), favPrev = document.getElementById('favPrev'), favNext = document.getElementById('favNext');
+  function favStep() {
+    // листаем на столько карточек, сколько целиком помещается в ленте: на компьютере — по три
+    var cards = favRow.querySelectorAll('.fc');
+    if (cards.length < 2) return favRow.clientWidth;
+    var pitch = cards[1].offsetLeft - cards[0].offsetLeft, gap = pitch - cards[0].offsetWidth;
+    return Math.max(1, Math.floor((favRow.clientWidth + gap + 1) / pitch)) * pitch;
+  }
+  function favSyncNav() {
+    if (!fav) return;
+    var max = favRow.scrollWidth - favRow.clientWidth;
+    favPrev.disabled = favRow.scrollLeft <= 2;
+    favNext.disabled = favRow.scrollLeft >= max - 2;
+    favNav.hidden = max <= 2;
+  }
+  function syncFav() {
+    if (!fav) return;
+    var busy = !!(state.fo || state.year || state.q) || idx < N;
+    if (fav.hidden !== busy) fav.hidden = busy;
+    if (!busy) favSyncNav();
+  }
+  if (fav) {
+    favPrev.addEventListener('click', function () { favRow.scrollBy({ left: -favStep(), behavior: 'smooth' }); });
+    favNext.addEventListener('click', function () { favRow.scrollBy({ left: favStep(), behavior: 'smooth' }); });
+    favRow.addEventListener('scroll', favSyncNav, { passive: true });
+    window.addEventListener('resize', favSyncNav);
   }
   // поиск по названию и столице; строка поиска в атрибуте data-q уже строчная и с «е» вместо «ё»
   var find = document.getElementById('find'), none = document.getElementById('none');
@@ -217,6 +249,7 @@
     });
     items.forEach(function (li) { li.hidden = !!(cur && li.dataset.iso && li.dataset.iso > cur) || !okFilter(li); });
     secs.forEach(function (s) { s.hidden = !s.querySelector('li.reg:not([hidden])'); });
+    syncFav();
     track.value = posOf(idx); tall.hidden = idx >= N; playBtn.classList.toggle('playing', playing); playBtn.setAttribute('aria-label', playing ? 'Пауза' : 'Воспроизвести');
     story.classList.toggle('playing', playing);
     mapdate.hidden = !cur;

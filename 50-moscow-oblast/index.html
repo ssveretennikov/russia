@@ -25,22 +25,25 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=f477f7da">
-
+<link rel="stylesheet" href="../series.css?v=690f2df7">
+<style>:root{--reg:#1A6FD1;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#67A1E4;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#67A1E4;--reg-ink:#14100A}</style>
 </head>
 <body>
-<div class="page">
+<div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
-<header class="reg-head">
-  <div class="reg-id">
-    <span class="code" aria-label="Код региона 50">50</span>
-    <div class="reg-name">
+<header class="reg-head cover-head">
+  <figure class="hero-ph cover" id="P018">
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1467" alt="Белокаменная церковь с высокой колокольней, люди у входа, трава, облака"></div>
+    <div class="reg-id" style="--nw:10">
+      <span class="code" aria-label="Код региона 50">50</span>
       <h1>Московская область</h1>
-      <div class="reg-places">Подольск · Дубровицы</div>
     </div>
-  </div>
-  <p class="hook">Регион вокруг Москвы. Один день: рабочий у стелы, церковь в белокаменной резьбе, вечерний город и электричка в 22:01.</p>
-  <dl class="passport">
+    <figcaption><time>16:52</time>Дубровицы. Церковь Знамения, ради неё я и выехал за город.</figcaption>
+  </figure>
+  <div class="under">
+    <div class="reg-places">Подольск · Дубровицы</div>
+    <p class="hook">Регион вокруг Москвы. Один день: рабочий у стелы, церковь в белокаменной резьбе, вечерний город и электричка в 22:01.</p>
+    <dl class="passport">
     <div><dt>Когда</dt><dd>10 августа 2024</dd></div>
     <div><dt>Сколько</dt><dd>1 день</dd></div>
     <div><dt>Время</dt><dd>МСК</dd></div>
@@ -48,13 +51,10 @@
     <div><dt>Снято</dt><dd>90 фото, 3 видео</dd></div>
     <div><dt>Оценка</dt><dd>✓ был</dd></div>
   </dl>
-  <ol class="route" aria-label="Маршрут дня">
+    <ol class="route" aria-label="Маршрут дня">
     <li>Москва</li><li class="here">Подольск</li><li>Дубровицы</li><li>Подольск</li><li>Москва</li>
   </ol>
-  <figure class="hero-ph" id="P018">
-    <div class="ph"><img src="media/hero.webp" width="2200" height="1239" alt="Белокаменная церковь с высокой колокольней, люди у входа, трава, облака"></div>
-    <figcaption><time>16:52</time>Дубровицы. Церковь Знамения, ради неё я и выехал за город.</figcaption>
-  </figure>
+  </div>
 </header>
 
 <article class="story">
@@ -63,33 +63,7 @@
   <p class="lead">Московская область окружает Москву со всех сторон, и обычно её проезжаешь насквозь. В этот раз я остановился: суббота, Подольск, вторая половина дня.</p>
   <p class="lead">День вышел из трёх частей: центр города, усадьба за его чертой и долгий вечерний обход. Телефон записывал координаты, так что порядок ниже проверен по GPS.</p>
   <figure class="wide daymap">
-    <svg class="daymap-svg" viewBox="0 0 640 456" role="img" aria-label="Маршрут дня по точкам съёмки">
-<polyline class="dm-route" points="315.1,405.9 315.1,405.9 315.1,405.9 315.0,405.1 315.2,404.2 315.2,404.2 315.4,406.6 315.4,406.6 230.3,387.7 230.3,387.7 230.5,387.5 230.6,387.1 230.9,386.4 230.9,386.4 230.9,386.4 231.4,386.7 231.4,386.7 231.8,386.7 231.8,386.6 231.8,386.6 231.8,386.6 232.3,386.4 232.3,386.4 232.3,386.4 232.3,386.4 233.1,386.3 232.6,386.7 232.6,386.7 311.0,395.2 311.0,393.4 311.0,393.4 311.0,392.7 261.4,424.9 261.4,424.9 259.9,426.3 259.0,428.0 259.0,428.0 259.0,428.0 259.0,428.0 259.0,428.0 259.0,428.0 262.8,426.0 262.7,425.9 263.7,425.3 265.7,424.4 270.5,421.7 270.5,421.7 271.8,420.8 275.4,419.1 275.4,419.1 277.7,417.8 277.7,417.8 277.7,417.8 278.5,416.2 280.2,415.0 289.2,410.2 290.5,409.5 293.9,407.3 295.8,404.5 294.7,403.7 294.7,403.7 293.5,402.4 293.5,402.4 293.4,401.7 293.4,401.7 313.3,405.7 397.2,45.8 397.9,44.5 398.3,43.6 404.5,33.2 409.7,28.0"/>
-<g class="dm-label"><circle cx="404.5" cy="33.3" r="4"/><text x="396.5" y="37.3" text-anchor="end">Электричка</text></g>
-<g class="dm-label"><circle cx="230.4" cy="387.7" r="4"/><text x="238.4" y="391.7">Дубровицы</text></g>
-<g class="dm-label"><circle cx="315.1" cy="405.9" r="4"/><text x="323.1" y="409.9">Центр Подольска</text></g>
-<g class="dm-label"><circle cx="293.9" cy="407.3" r="4"/><text x="301.9" y="427.9">Дом книги</text></g>
-<g class="dm-label"><circle cx="261.4" cy="424.9" r="4"/><text x="269.4" y="445.9">Монумент защитникам</text></g>
-<a href="#P002" class="dm-pt"><circle cx="315.1" cy="405.9" r="6"><title>15:29</title></circle></a>
-<a href="#P005" class="dm-pt"><circle cx="315.2" cy="404.2" r="6"><title>15:31</title></circle></a>
-<a href="#P008" class="dm-pt"><circle cx="315.4" cy="406.6" r="6"><title>15:58</title></circle></a>
-<a href="#P009" class="dm-pt"><circle cx="230.3" cy="387.7" r="6"><title>16:49</title></circle></a>
-<a href="#P018" class="dm-pt"><circle cx="231.8" cy="386.7" r="6"><title>16:52</title></circle></a>
-<a href="#P022" class="dm-pt"><circle cx="232.3" cy="386.4" r="6"><title>16:53</title></circle></a>
-<a href="#P025" class="dm-pt"><circle cx="232.3" cy="386.4" r="6"><title>16:53</title></circle></a>
-<a href="#P027" class="dm-pt"><circle cx="232.6" cy="386.7" r="6"><title>16:55</title></circle></a>
-<a href="#P048" class="dm-pt"><circle cx="311.0" cy="395.2" r="6"><title>19:38</title></circle></a>
-<a href="#P050" class="dm-pt"><circle cx="311.0" cy="393.4" r="6"><title>19:39</title></circle></a>
-<a href="#P052" class="dm-pt"><circle cx="261.4" cy="424.9" r="6"><title>20:03</title></circle></a>
-<a href="#P053" class="dm-pt"><circle cx="261.4" cy="424.9" r="6"><title>20:04</title></circle></a>
-<a href="#P071" class="dm-pt"><circle cx="277.7" cy="417.8" r="6"><title>20:32</title></circle></a>
-<a href="#P078" class="dm-pt"><circle cx="295.8" cy="404.5" r="6"><title>20:49</title></circle></a>
-<a href="#P079" class="dm-pt"><circle cx="294.7" cy="403.7" r="6"><title>20:51</title></circle></a>
-<a href="#P081" class="dm-pt"><circle cx="293.5" cy="402.4" r="6"><title>20:53</title></circle></a>
-<a href="#P085" class="dm-pt"><circle cx="313.3" cy="405.7" r="6"><title>21:17</title></circle></a>
-<a href="#P088" class="dm-pt"><circle cx="398.3" cy="43.6" r="6"><title>22:01</title></circle></a>
-<a href="#P089" class="dm-pt"><circle cx="404.5" cy="33.2" r="6"><title>22:02</title></circle></a>
-</svg>
+    
     <figcaption>Маршрут дня по точкам съёмки. Кружки — фото из этого отчёта, по ним можно кликать.</figcaption>
   </figure>
 </section>
@@ -108,16 +82,16 @@
   <h2>Подольск, рабочий и автобусы</h2>
   <p>Архив начинается в 15:29, у монумента с рабочим. Он упирается плечом в высокую стелу. Рядом автовокзал, поэтому на заднем плане всё время кто-то уезжает.</p>
   <figure class="wide" id="P002">
-    <div class="ph"><img src="media/monument.webp" width="2000" height="1126" loading="lazy" alt="Фигура рабочего у высокой тёмной стелы, синее небо, вдали автобусы"></div>
+    <div class="ph"><img src="media/monument.webp" width="2000" height="1333" loading="lazy" alt="Фигура рабочего у высокой тёмной стелы, синее небо, вдали автобусы"></div>
     <figcaption><time>15:29</time>Солнце ровно над стелой. Рабочий держит её с одной стороны.</figcaption>
   </figure>
   <div class="row">
     <figure id="P005">
-      <div class="ph"><img src="media/ekaterina.webp" width="1600" height="901" loading="lazy" alt="Памятник сидящей женщине за столом на розовом постаменте в парке"></div>
+      <div class="ph"><img src="media/ekaterina.webp" width="1600" height="1200" loading="lazy" alt="Памятник сидящей женщине за столом на розовом постаменте в парке"></div>
       <figcaption><time>15:31</time>Екатерина Великая в парке. Подпись на постаменте я прочитал.</figcaption>
     </figure>
     <figure id="P008">
-      <div class="ph"><img src="media/avtovokzal.webp" width="1600" height="901" loading="lazy" alt="Ряд автобусов на автовокзале, за ним жилые дома"></div>
+      <div class="ph"><img src="media/avtovokzal.webp" width="1600" height="1200" loading="lazy" alt="Ряд автобусов на автовокзале, за ним жилые дома"></div>
       <figcaption><time>15:58</time>Автовокзал. Автобусов больше, чем пассажиров.</figcaption>
     </figure>
   </div>
@@ -127,7 +101,7 @@
   <h2>Дубровицы</h2>
   <p>В 16:49 я уже в усадьбе за городом. У подхода к дому оранжевый шлагбаум, а церковь стоит дальше, на открытом месте.</p>
   <figure class="wide" id="P009">
-    <div class="ph"><img src="media/usadba-podhod.webp" width="2000" height="1126" loading="lazy" alt="Белый усадебный дом с колоннами на краю зелёного газона, оранжевый шлагбаум"></div>
+    <div class="ph"><img src="media/usadba-podhod.webp" width="2000" height="1500" loading="lazy" alt="Белый усадебный дом с колоннами на краю зелёного газона, оранжевый шлагбаум"></div>
     <figcaption><time>16:49</time>Усадебный дом и шлагбаум.</figcaption>
   </figure>
   <figure class="wide">
@@ -136,30 +110,30 @@
   </figure>
   <div class="row narrow">
     <figure id="P022">
-      <div class="ph"><img src="media/cerkov-snizu.webp" width="788" height="1400" loading="lazy" alt="Церковь снизу вверх: резные ярусы, ступени, две женщины у входа"></div>
+      <div class="ph"><img src="media/cerkov-snizu.webp" width="1400" height="1867" loading="lazy" alt="Церковь снизу вверх: резные ярусы, ступени, две женщины у входа"></div>
       <figcaption><time>16:53</time>Снизу видно, сколько на стенах резьбы.</figcaption>
     </figure>
     <figure id="P025">
-      <div class="ph"><img src="media/karniz.webp" width="788" height="1400" loading="lazy" alt="Резной белокаменный карниз башни на фоне синего неба"></div>
+      <div class="ph"><img src="media/karniz.webp" width="1400" height="1867" loading="lazy" alt="Резной белокаменный карниз башни на фоне синего неба"></div>
       <figcaption><time>16:53</time>Карниз башни крупно.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P027">
-    <div class="ph"><img src="media/nisha.webp" width="788" height="1400" loading="lazy" alt="Угол церковной стены с резьбой и скульптурой в нише"></div>
+    <div class="ph"><img src="media/nisha.webp" width="1400" height="1867" loading="lazy" alt="Угол церковной стены с резьбой и скульптурой в нише"></div>
     <figcaption><time>16:55</time>Скульптура в нише у самой земли. Подписи рядом нет.</figcaption>
   </figure>
   <div class="row">
     <figure id="P029">
-      <div class="ph"><img src="media/dom-kolonnada.webp" width="1600" height="901" loading="lazy" alt="Усадебный дом с круглой колоннадой и лестницей, по бокам строительные леса"></div>
+      <div class="ph"><img src="media/dom-kolonnada.webp" width="1600" height="1200" loading="lazy" alt="Усадебный дом с круглой колоннадой и лестницей, по бокам строительные леса"></div>
       <figcaption><time>17:03</time>Дом с колоннами. Слева стоят леса.</figcaption>
     </figure>
     <figure id="P035">
-      <div class="ph"><img src="media/sklon.webp" width="1600" height="901" loading="lazy" alt="Дом на холме, по травяному склону спускаются деревянные лестницы"></div>
+      <div class="ph"><img src="media/sklon.webp" width="1600" height="1200" loading="lazy" alt="Дом на холме, по травяному склону спускаются деревянные лестницы"></div>
       <figcaption><time>17:05</time>Деревянные лестницы по склону.</figcaption>
     </figure>
   </div>
   <figure class="wide" id="P037">
-    <div class="ph"><img src="media/holm.webp" width="2000" height="1126" loading="lazy" alt="Травяной склон с отдыхающими, на холме вдали церковь и дом"></div>
+    <div class="ph"><img src="media/holm.webp" width="2000" height="1000" loading="lazy" alt="Травяной склон с отдыхающими, на холме вдали церковь и дом"></div>
     <figcaption><time>17:06</time>На склоне лежат на траве. Церковь и дом видны отсюда сразу.</figcaption>
   </figure>
   <figure class="wide">
@@ -174,26 +148,26 @@
   <p>С 19:38 и до девяти я ходил по городу и снимал всё подряд: аллеи, эстраду, памятники, вывески. Пока темнело, кадры становились всё синее.</p>
   <div class="row">
     <figure id="P048">
-      <div class="ph"><img src="media/alleya.webp" width="1600" height="901" loading="lazy" alt="Аллея с фонарями, детская площадка, гуляющие люди"></div>
+      <div class="ph"><img src="media/alleya.webp" width="1600" height="900" loading="lazy" alt="Аллея с фонарями, детская площадка, гуляющие люди"></div>
       <figcaption><time>19:38</time>Аллея с огнями и детская площадка.</figcaption>
     </figure>
     <figure id="P050">
-      <div class="ph"><img src="media/estrada.webp" width="1600" height="901" loading="lazy" alt="Летняя эстрада с рядами зелёных кресел, берёзы"></div>
+      <div class="ph"><img src="media/estrada.webp" width="1600" height="900" loading="lazy" alt="Летняя эстрада с рядами зелёных кресел, берёзы"></div>
       <figcaption><time>19:39</time>Летняя эстрада. Зелёные кресла, зрителей нет.</figcaption>
     </figure>
   </div>
   <div class="row">
     <figure id="P052">
-      <div class="ph"><img src="media/zaschitniki.webp" width="1600" height="901" loading="lazy" alt="Серебристая угловатая композиция из фигур, сумерки"></div>
+      <div class="ph"><img src="media/zaschitniki.webp" width="1600" height="1200" loading="lazy" alt="Серебристая угловатая композиция из фигур, сумерки"></div>
       <figcaption><time>20:03</time>Монумент защитникам. Серебро в сумерках заметно.</figcaption>
     </figure>
     <figure id="P053">
-      <div class="ph"><img src="media/plita.webp" width="1600" height="901" loading="lazy" alt="Гранитная плита с текстом про курсантов 1941 года, вокруг цветы"></div>
+      <div class="ph"><img src="media/plita.webp" width="1600" height="1200" loading="lazy" alt="Гранитная плита с текстом про курсантов 1941 года, вокруг цветы"></div>
       <figcaption><time>20:04</time>Плита перед монументом: про октябрь 1941 года и курсантов.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P071">
-    <div class="ph"><img src="media/posoh.webp" width="788" height="1400" loading="lazy" alt="Памятник пожилому мужчине с посохом на каменной глыбе, позади здание"></div>
+    <div class="ph"><img src="media/posoh.webp" width="1400" height="1867" loading="lazy" alt="Памятник пожилому мужчине с посохом на каменной глыбе, позади здание"></div>
     <figcaption><time>20:32</time>Памятник мужчине с посохом. Подписи в кадре нет.</figcaption>
   </figure>
   <figure class="wide">
@@ -202,21 +176,21 @@
   </figure>
   <div class="row narrow">
     <figure id="P078">
-      <div class="ph"><img src="media/stela.webp" width="788" height="1400" loading="lazy" alt="Стела с гербом города и орденом Отечественной войны у жилого дома"></div>
+      <div class="ph"><img src="media/stela.webp" width="1400" height="1867" loading="lazy" alt="Стела с гербом города и орденом Отечественной войны у жилого дома"></div>
       <figcaption><time>20:49</time>Стела с гербом города и орденом Отечественной войны.</figcaption>
     </figure>
     <figure id="P081">
-      <div class="ph"><img src="media/kolokolnya.webp" width="788" height="1400" loading="lazy" alt="Белая колокольня в вечерней подсветке на синем небе"></div>
+      <div class="ph"><img src="media/kolokolnya.webp" width="1400" height="1867" loading="lazy" alt="Белая колокольня в вечерней подсветке на синем небе"></div>
       <figcaption><time>20:53</time>Колокольня в вечерней подсветке.</figcaption>
     </figure>
   </div>
   <span class="rubric">Что-то не понял</span>
   <figure class="mid" id="P079">
-    <div class="ph"><img src="media/neon.webp" width="1600" height="901" loading="lazy" alt="Розовая неоновая надпись в окне: «Твои волосы лучше, чем у его бывшей!»"></div>
+    <div class="ph"><img src="media/neon.webp" width="1600" height="1200" loading="lazy" alt="Розовая неоновая надпись в окне: «Твои волосы лучше, чем у его бывшей!»"></div>
     <figcaption><time>20:51</time>«Твои волосы лучше, чем у его бывшей!» Неон в окне. Повод для надписи остался за кадром.</figcaption>
   </figure>
   <figure class="mid" id="P085">
-    <div class="ph"><img src="media/konditer.webp" width="1600" height="901" loading="lazy" alt="Светящаяся вывеска кондитерской над входом в жилом доме, вечер"></div>
+    <div class="ph"><img src="media/konditer.webp" width="1600" height="1200" loading="lazy" alt="Светящаяся вывеска кондитерской над входом в жилом доме, вечер"></div>
     <figcaption><time>21:17</time>Вывеска кондитерской над входом. Название прочитано не до конца.</figcaption>
   </figure>
 </section>
@@ -230,7 +204,7 @@
       <figcaption><time>22:01</time>Электричка.</figcaption>
     </figure>
     <figure id="P089">
-      <div class="ph"><img src="media/shokolad.webp" width="788" height="1400" loading="lazy" alt="Плитка шоколада с орехами в прозрачной обёртке в руке, в вагоне"></div>
+      <div class="ph"><img src="media/shokolad.webp" width="1400" height="1867" loading="lazy" alt="Плитка шоколада с орехами в прозрачной обёртке в руке, в вагоне"></div>
       <figcaption><time>22:02</time>Шоколад с орехами.</figcaption>
     </figure>
   </div>
@@ -255,6 +229,6 @@
 
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../50-moscow-oblast-2/index.html"><span><small>Следующая часть</small>Московская область · парк «Патриот»</span><span class="code">50</span></a></nav>
 </div>
-<script src="../series.js?v=491ada4f"></script>
+<script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>

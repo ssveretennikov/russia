@@ -25,22 +25,25 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=f477f7da">
-
+<link rel="stylesheet" href="../series.css?v=690f2df7">
+<style>:root{--reg:#9B692C;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#D4A368;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#D4A368;--reg-ink:#14100A}</style>
 </head>
 <body>
-<div class="page">
+<div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
-<header class="reg-head">
-  <div class="reg-id">
-    <span class="code" aria-label="Код региона 17">17</span>
-    <div class="reg-name">
+<header class="reg-head cover-head">
+  <figure class="hero-ph cover" id="P137">
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Излучина Енисея с вершины холма, справа скальный обрыв, на краю стоит человек"></div>
+    <div class="reg-id" style="--nw:10">
+      <span class="code" aria-label="Код региона 17">17</span>
       <h1>Республика Тыва</h1>
-      <div class="reg-places">Кызыл · Центр Азии · Алдын-Булак · Будда на Енисее</div>
     </div>
-  </div>
-  <p class="hook">Ехал без ножа и с плохой статистикой в голове. Уехал с тувинской песней, которую так и не выучил.</p>
-  <dl class="passport">
+    <figcaption><time>18:53</time>Енисей с холма над Буддой. Это не я на краю, я стою чуть дальше от края и считаю, что так правильнее.</figcaption>
+  </figure>
+  <div class="under">
+    <div class="reg-places">Кызыл · Центр Азии · Алдын-Булак · Будда на Енисее</div>
+    <p class="hook">Ехал без ножа и с плохой статистикой в голове. Уехал с тувинской песней, которую так и не выучил.</p>
+    <dl class="passport">
     <div><dt>Когда</dt><dd>4 июня 2022</dd></div>
     <div><dt>Сколько</dt><dd>1 день</dd></div>
     <div><dt>Время</dt><dd>МСК+4</dd></div>
@@ -48,13 +51,10 @@
     <div><dt>Снято</dt><dd>146 фото, 11 видео</dd></div>
     <div><dt>Оценка</dt><dd class="heart">❤</dd></div>
   </dl>
-  <ol class="route" aria-label="Маршрут дня">
+    <ol class="route" aria-label="Маршрут дня">
     <li class="here">Кызыл</li><li>Хурээ</li><li>Центр Азии</li><li>Музей</li><li>Алдын-Булак</li><li>Будда</li>
   </ol>
-  <figure class="hero-ph" id="P137">
-    <div class="ph"><img src="media/hero.webp" width="1650" height="2200" alt="Излучина Енисея с вершины холма, справа скальный обрыв, на краю стоит человек"></div>
-    <figcaption><time>18:53</time>Енисей с холма над Буддой. Это не я на краю, я стою чуть дальше от края и считаю, что так правильнее.</figcaption>
-  </figure>
+  </div>
 </header>
 
 <article class="story">
@@ -63,50 +63,7 @@
   <p class="lead">В Тыву я ехал с готовым мнением. Статистика у республики такая, что её не хочется цитировать целиком: лидер по сифилису, по смертности от внешних причин, по беспризорникам, самый высокий уровень бедности и так далее. Ну ок, ещё Сергей Кужегетович отсюда, вместе с Путиным тут отдыхают. А ещё много тувинцев сейчас на Украине участвуют в СВО, и, говорят, показывают хорошие результаты. В Абакане русская девушка оттуда посоветовала без ножа не ездить, а в ютубе про Кызыл нет ни одного ролика без слова «опасно». Нож я не купил, зато почти все вещи оставил в камере хранения в Абакане. Настроение было, скажем так, собранное.</p>
   <p class="lead">А потом был один день, в котором всё перевернулось не из-за видов, хотя виды здесь серьёзные, а из-за людей. Парень в магазине, которому стало обидно за свой город. Его брат с машиной. Двое попутчиков с заднего сиденья, которых я сначала записал в грабители. И Будда на берегу Енисея, которого открыли за неделю до меня. Ниже всё по порядку.</p>
   <figure class="wide daymap">
-    <svg class="daymap-svg" viewBox="0 0 640 295" role="img" aria-label="Маршрут дня по точкам съёмки">
-<polyline class="dm-route" points="518.0,63.6 518.6,61.7 518.7,61.5 517.6,67.0 519.7,61.0 517.6,67.0 517.6,67.0 513.2,61.1 513.1,61.1 513.2,60.9 513.2,60.9 513.2,60.9 513.2,60.9 513.3,61.1 510.4,63.7 513.2,61.4 513.3,61.2 513.3,61.2 513.3,61.2 513.3,61.2 513.2,60.9 513.2,61.1 513.3,61.2 513.3,61.2 507.3,52.0 511.2,60.2 511.9,59.8 511.9,59.8 510.3,59.6 510.3,59.6 510.3,59.6 510.3,59.6 510.3,59.6 510.1,59.7 510.1,59.7 508.5,60.8 508.6,60.5 508.6,60.5 509.8,60.5 509.7,60.8 509.0,59.7 509.0,59.7 490.9,51.0 507.6,60.0 507.5,60.1 508.4,60.3 511.2,63.6 511.4,63.6 511.5,63.4 511.5,63.4 508.9,63.6 508.3,63.8 508.1,63.9 506.9,63.7 507.3,63.9 507.0,64.3 504.3,65.8 506.2,66.0 504.4,66.4 504.3,65.1 504.3,65.5 504.8,65.4 504.5,65.3 504.5,65.3 504.7,65.4 500.5,66.6 499.4,67.0 499.4,66.8 498.8,67.3 498.5,66.8 499.4,66.1 499.5,66.1 498.5,66.2 498.5,66.2 498.5,66.4 498.5,66.4 498.4,66.4 498.2,66.2 498.2,66.2 498.3,66.2 498.3,66.2 486.8,64.5 486.8,64.5 494.9,67.6 494.9,67.6 498.3,66.2 498.2,66.2 498.3,66.2 498.3,66.2 496.8,67.7 498.3,67.5 497.5,67.3 498.9,67.3 497.9,67.6 120.8,251.1 121.1,251.5 121.1,251.5 121.6,250.4 158.2,267.0 121.6,250.1 121.6,250.1 121.6,250.1 121.8,250.0 121.8,250.0 158.1,267.3 121.6,250.4 121.6,250.4 121.6,250.4 122.2,254.3 122.2,254.3 121.6,250.4 121.2,250.4 121.3,250.3 121.3,250.3 121.3,252.6 121.3,252.6 120.7,251.4 120.7,251.4 121.6,253.4 121.6,253.4 120.0,252.0 122.2,254.3 507.3,52.0 504.0,60.7 490.7,50.3 517.7,55.4 517.7,55.4 517.8,55.8 517.8,55.5 508.2,58.0 518.1,55.2 519.3,54.1 501.0,87.9 520.0,53.8 505.6,28.0 520.0,53.8 519.5,53.9 519.6,53.7 515.5,77.6 519.9,53.6 519.9,53.6 507.3,52.0 507.2,52.0"/>
-<g class="dm-label"><circle cx="517.7" cy="55.5" r="4"/><text x="509.7" y="59.5" text-anchor="end">Будда</text></g>
-<g class="dm-label"><circle cx="511.2" cy="60.2" r="4"/><text x="503.2" y="77.5" text-anchor="end">Центр Азии</text></g>
-<g class="dm-label"><circle cx="513.2" cy="61.1" r="4"/><text x="505.2" y="95.5" text-anchor="end">Хурээ</text></g>
-<g class="dm-label"><circle cx="500.5" cy="66.6" r="4"/><text x="492.5" y="113.5" text-anchor="end">Национальный музей</text></g>
-<g class="dm-label"><circle cx="121.6" cy="250.1" r="4"/><text x="129.6" y="254.1">Алдын-Булак</text></g>
-<a href="#P009" class="dm-pt"><circle cx="513.1" cy="61.1" r="6"><title>08:08</title></circle></a>
-<a href="#P010" class="dm-pt"><circle cx="513.2" cy="60.9" r="6"><title>08:08</title></circle></a>
-<a href="#P012" class="dm-pt"><circle cx="513.2" cy="60.9" r="6"><title>08:14</title></circle></a>
-<a href="#P015" class="dm-pt"><circle cx="510.4" cy="63.7" r="6"><title>08:18</title></circle></a>
-<a href="#P021" class="dm-pt"><circle cx="513.2" cy="60.9" r="6"><title>08:36</title></circle></a>
-<a href="#P022" class="dm-pt"><circle cx="513.2" cy="61.1" r="6"><title>08:40</title></circle></a>
-<a href="#P027" class="dm-pt"><circle cx="511.9" cy="59.8" r="6"><title>09:02</title></circle></a>
-<a href="#P033" class="dm-pt"><circle cx="510.3" cy="59.6" r="6"><title>09:09</title></circle></a>
-<a href="#P034" class="dm-pt"><circle cx="510.1" cy="59.7" r="6"><title>09:10</title></circle></a>
-<a href="#P038" class="dm-pt"><circle cx="508.6" cy="60.5" r="6"><title>09:13</title></circle></a>
-<a href="#P046" class="dm-pt"><circle cx="508.4" cy="60.3" r="6"><title>10:18</title></circle></a>
-<a href="#P047" class="dm-pt"><circle cx="511.2" cy="63.6" r="6"><title>11:44</title></circle></a>
-<a href="#P051" class="dm-pt"><circle cx="508.9" cy="63.6" r="6"><title>11:53</title></circle></a>
-<a href="#P055" class="dm-pt"><circle cx="507.3" cy="63.9" r="6"><title>11:58</title></circle></a>
-<a href="#P056" class="dm-pt"><circle cx="507.0" cy="64.3" r="6"><title>12:03</title></circle></a>
-<a href="#P059" class="dm-pt"><circle cx="504.4" cy="66.4" r="6"><title>12:10</title></circle></a>
-<a href="#P062" class="dm-pt"><circle cx="504.8" cy="65.4" r="6"><title>12:21</title></circle></a>
-<a href="#P069" class="dm-pt"><circle cx="498.8" cy="67.3" r="6"><title>12:34</title></circle></a>
-<a href="#P078" class="dm-pt"><circle cx="498.2" cy="66.2" r="6"><title>14:10</title></circle></a>
-<a href="#P083" class="dm-pt"><circle cx="486.8" cy="64.5" r="6"><title>14:36</title></circle></a>
-<a href="#P088" class="dm-pt"><circle cx="498.3" cy="66.2" r="6"><title>14:39</title></circle></a>
-<a href="#P089" class="dm-pt"><circle cx="498.3" cy="66.2" r="6"><title>14:42</title></circle></a>
-<a href="#P099" class="dm-pt"><circle cx="121.6" cy="250.4" r="6"><title>16:27</title></circle></a>
-<a href="#P104" class="dm-pt"><circle cx="121.8" cy="250.0" r="6"><title>16:30</title></circle></a>
-<a href="#P111" class="dm-pt"><circle cx="122.2" cy="254.3" r="6"><title>16:34</title></circle></a>
-<a href="#P117" class="dm-pt"><circle cx="121.3" cy="250.3" r="6"><title>16:43</title></circle></a>
-<a href="#P121" class="dm-pt"><circle cx="120.7" cy="251.4" r="6"><title>16:52</title></circle></a>
-<a href="#P123" class="dm-pt"><circle cx="121.6" cy="253.4" r="6"><title>16:57</title></circle></a>
-<a href="#P128" class="dm-pt"><circle cx="490.7" cy="50.3" r="6"><title>18:34</title></circle></a>
-<a href="#P129" class="dm-pt"><circle cx="517.7" cy="55.4" r="6"><title>18:35</title></circle></a>
-<a href="#P131" class="dm-pt"><circle cx="517.8" cy="55.8" r="6"><title>18:36</title></circle></a>
-<a href="#P134" class="dm-pt"><circle cx="518.1" cy="55.2" r="6"><title>18:44</title></circle></a>
-<a href="#P137" class="dm-pt"><circle cx="520.0" cy="53.8" r="6"><title>18:53</title></circle></a>
-<a href="#P140" class="dm-pt"><circle cx="519.5" cy="53.9" r="6"><title>18:54</title></circle></a>
-<a href="#P145" class="dm-pt"><circle cx="507.3" cy="52.0" r="6"><title>19:08</title></circle></a>
-<a href="#P146" class="dm-pt"><circle cx="507.2" cy="52.0" r="6"><title>19:11</title></circle></a>
-</svg>
+    
     <figcaption>Точки съёмки за день. Кружки — фото из этого отчёта, по ним можно кликать. Юрты в 40 км от города, всё остальное в Кызыле.</figcaption>
   </figure>
   <p>Ночной автобус из Красноярска останавливается не на автовокзале, а у какой-то гостиницы, и делает это рано. Так что город я начал изучать, когда в нём ещё никого не было.</p>
@@ -149,11 +106,11 @@
   </div>
   <div class="row narrow">
     <figure id="P015">
-      <div class="ph"><img src="media/stupa.webp" width="1050" height="1400" loading="lazy" alt="Белая ступа с золотой верхушкой на фоне синего неба, крупно"></div>
+      <div class="ph"><img src="media/stupa.webp" width="1400" height="1867" loading="lazy" alt="Белая ступа с золотой верхушкой на фоне синего неба, крупно"></div>
       <figcaption><time>08:18</time>На стенде рядом — наставления Далай-ламы XIV. Почитаешь и думаешь: хорошую религию придумали.</figcaption>
     </figure>
     <figure id="P022">
-      <div class="ph"><img src="media/zal.webp" width="1050" height="1400" loading="lazy" alt="Высокая колонна, увешанная оранжевыми лентами, в светлом зале храма, внизу алтарь"></div>
+      <div class="ph"><img src="media/zal.webp" width="1400" height="1867" loading="lazy" alt="Высокая колонна, увешанная оранжевыми лентами, в светлом зале храма, внизу алтарь"></div>
       <figcaption><time>08:40</time>Внутри. Колонна в лентах до потолка. Тут же купил монгольские ароматические свечи.</figcaption>
     </figure>
   </div>
@@ -176,7 +133,7 @@
       <figcaption><time>09:10</time>Монумент «Царская охота». Лучники на скаку, на заднем плане Енисей, который никуда не скачет.</figcaption>
     </figure>
     <figure id="P038">
-      <div class="ph"><img src="media/obelisk.webp" width="1200" height="1600" loading="lazy" alt="Обелиск на бронзовом шаре, у подножия бронзовые фигуры животных, рядом конь"></div>
+      <div class="ph"><img src="media/obelisk.webp" width="1600" height="1200" loading="lazy" alt="Обелиск на бронзовом шаре, у подножия бронзовые фигуры животных, рядом конь"></div>
       <figcaption><time>09:13</time>Обелиск «Центр Азии» на шаре. Животные вокруг — целый календарь, я обошёл всех.</figcaption>
     </figure>
   </div>
@@ -186,7 +143,7 @@
   </figure>
   <div class="row">
     <figure id="P046">
-      <div class="ph"><img src="media/arka.webp" width="1200" height="1600" loading="lazy" alt="Арка с надписью «Центр Азии, Республика Тыва», за ней аллея и обелиск вдали"></div>
+      <div class="ph"><img src="media/arka.webp" width="1600" height="1200" loading="lazy" alt="Арка с надписью «Центр Азии, Республика Тыва», за ней аллея и обелиск вдали"></div>
       <figcaption><time>10:18</time>Арка с названием, чтобы не было сомнений. У других спорящих сторон, подозреваю, такие же.</figcaption>
     </figure>
     <figure id="P033">
@@ -202,7 +159,7 @@
   <p>Просто несколько фото города. Деревянные дома старого центра, граффити, театр, в который я не попал, и площадь с молитвенным барабаном, самым большим в городе.</p>
   <div class="row">
     <figure id="P047">
-      <div class="ph"><img src="media/dom-rozovyi.webp" width="1200" height="1600" loading="lazy" alt="Двухэтажный деревянный дом с розовыми стенами и резными наличниками"></div>
+      <div class="ph"><img src="media/dom-rozovyi.webp" width="1600" height="1200" loading="lazy" alt="Двухэтажный деревянный дом с розовыми стенами и резными наличниками"></div>
       <figcaption><time>11:44</time>Старый центр. Дома деревянные, наличники резные, краска такая, какую нашли.</figcaption>
     </figure>
     <figure id="P051">
@@ -225,7 +182,7 @@
     <figcaption><time>≈12:16</time>Барабан крутят по очереди, целыми семьями. Я дождался своей.</figcaption>
   </figure>
   <figure class="mid" id="P062">
-    <div class="ph"><img src="media/ya-baraban.webp" width="1200" height="1600" loading="lazy" alt="Сергей в чёрной куртке стоит у большого красного молитвенного барабана с золотыми письменами, рядом девочка в розовом"></div>
+    <div class="ph"><img src="media/ya-baraban.webp" width="1400" height="1867" loading="lazy" alt="Сергей в чёрной куртке стоит у большого красного молитвенного барабана с золотыми письменами, рядом девочка в розовом"></div>
     <figcaption><time>12:21</time>Самый большой барабан в городе и я для масштаба. Девочка в розовом в кадр не просилась, но оставила себе место.</figcaption>
   </figure>
   <figure class="mid" id="P056">
@@ -253,11 +210,11 @@
   </div>
   <div class="row narrow">
     <figure id="P088">
-      <div class="ph"><img src="media/knizhki.webp" width="1400" height="1050" loading="lazy" alt="Две продолговатые рукописные книги в жёлтых обложках на синей ткани в витрине"></div>
+      <div class="ph"><img src="media/knizhki.webp" width="1600" height="1200" loading="lazy" alt="Две продолговатые рукописные книги в жёлтых обложках на синей ткани в витрине"></div>
       <figcaption><time>14:39</time>«Книжки», как я их назвал. Длинные, в жёлтых обложках, на непонятном мне языке.</figcaption>
     </figure>
     <figure id="P089">
-      <div class="ph"><img src="media/shaman.webp" width="1050" height="1400" loading="lazy" alt="Ритуальная маска с выпученными глазами и шёлковый костюм на манекене в витрине"></div>
+      <div class="ph"><img src="media/shaman.webp" width="1400" height="1867" loading="lazy" alt="Ритуальная маска с выпученными глазами и шёлковый костюм на манекене в витрине"></div>
       <figcaption><time>14:42</time>Костюм и маска шамана. Там же в витринах шкатулки производства Сергея Шойгу, и мыши разных мастей, если вдруг вы хотели.</figcaption>
     </figure>
   </div>
@@ -278,7 +235,7 @@
       <figcaption><time>16:27</time>Смотровая над Енисеем. Бутылка воды из того самого магазина.</figcaption>
     </figure>
     <figure id="P104">
-      <div class="ph"><img src="media/druzya.webp" width="1200" height="1600" loading="lazy" alt="Сергей и двое молодых людей стоят в обнимку на скале над рекой"></div>
+      <div class="ph"><img src="media/druzya.webp" width="1400" height="1867" loading="lazy" alt="Сергей и двое молодых людей стоят в обнимку на скале над рекой"></div>
       <figcaption><time>16:30</time>Я с новыми друзьями. Полчаса назад я записывал их в грабители, и мне до сих пор за это немного стыдно.</figcaption>
     </figure>
   </div>
@@ -292,11 +249,11 @@
   </figure>
   <div class="row narrow">
     <figure id="P111">
-      <div class="ph"><img src="media/ya-tropa.webp" width="1050" height="1400" loading="lazy" alt="Сергей в чёрной футболке идёт по каменной тропе на склоне, внизу юрты и холмы"></div>
+      <div class="ph"><img src="media/ya-tropa.webp" width="1400" height="1867" loading="lazy" alt="Сергей в чёрной футболке идёт по каменной тропе на склоне, внизу юрты и холмы"></div>
       <figcaption><time>16:34</time>Спуск к юртам. Часа мне хватило: прочувствовать, пофоткаться и посмотреть, как тувинцы гуляют свадьбы.</figcaption>
     </figure>
     <figure id="P117">
-      <div class="ph"><img src="media/sulde.webp" width="1050" height="1400" loading="lazy" alt="Шесты с пучками чёрных перьев на вершине каменной насыпи на фоне холмов"></div>
+      <div class="ph"><img src="media/sulde.webp" width="1400" height="1867" loading="lazy" alt="Шесты с пучками чёрных перьев на вершине каменной насыпи на фоне холмов"></div>
       <figcaption><time>16:43</time>Знамёна Сульде. На стенде рядом написано, что женщинам к ним подходить нельзя; я прочитал и обошёл по кругу.</figcaption>
     </figure>
   </div>
@@ -325,7 +282,7 @@
     </figure>
   </div>
   <figure class="tall" id="P129">
-    <div class="ph"><img src="media/budda.webp" width="1050" height="1400" loading="lazy" alt="Золотая статуя сидящего Будды на лотосе, у подножия стоят люди"></div>
+    <div class="ph"><img src="media/budda.webp" width="1400" height="1867" loading="lazy" alt="Золотая статуя сидящего Будды на лотосе, у подножия стоят люди"></div>
     <figcaption><time>18:35</time>Самая высокая статуя Будды в России. Люди внизу для масштаба, масштаб работает.</figcaption>
   </figure>
   <figure class="wide" id="P134">
@@ -347,7 +304,7 @@
     </figure>
   </div>
   <figure class="tall" id="P146">
-    <div class="ph"><img src="media/budda-zakat.webp" width="1050" height="1400" loading="lazy" alt="Золотая статуя Будды сбоку, рука поднята в жесте, закатный свет"></div>
+    <div class="ph"><img src="media/budda-zakat.webp" width="1400" height="1867" loading="lazy" alt="Золотая статуя Будды сбоку, рука поднята в жесте, закатный свет"></div>
     <figcaption><time>19:11</time>Последний кадр дня. Приехал с нервами, уехал вот с этим.</figcaption>
   </figure>
   <div class="verdict">
@@ -372,6 +329,6 @@
 
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../index.html"><span>Все регионы</span></a></nav>
 </div>
-<script src="../series.js?v=491ada4f"></script>
+<script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>

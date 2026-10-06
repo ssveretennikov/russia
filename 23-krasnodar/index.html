@@ -25,22 +25,25 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=f477f7da">
-
+<link rel="stylesheet" href="../series.css?v=690f2df7">
+<style>:root{--reg:#8C6E2B;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#D1B16B;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#D1B16B;--reg-ink:#14100A}</style>
 </head>
 <body>
-<div class="page">
+<div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
-<header class="reg-head">
-  <div class="reg-id">
-    <span class="code" aria-label="Код региона 23">23</span>
-    <div class="reg-name">
+<header class="reg-head cover-head">
+  <figure class="hero-ph cover" id="P050">
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Закат над клумбой фиолетовых цветов, на гребне холма цепочка людей"></div>
+    <div class="reg-id" style="--nw:13">
+      <span class="code" aria-label="Код региона 23">23</span>
       <h1>Краснодарский край</h1>
-      <div class="reg-places">Краснодар · Парк «Краснодар» · Японский сад</div>
     </div>
-  </div>
-  <p class="hook">Две поездки в один город. Парк у стадиона, в который хотелось вернуться вечером, и японский сад с красной пагодой и карпами кои.</p>
-  <dl class="passport">
+    <figcaption><time>19:10</time>17 июня 2022, закат над клумбой в парке у стадиона. На гребне холма вся очередь за последним светом.</figcaption>
+  </figure>
+  <div class="under">
+    <div class="reg-places">Краснодар · Парк «Краснодар» · Японский сад</div>
+    <p class="hook">Две поездки в один город. Парк у стадиона, в который хотелось вернуться вечером, и японский сад с красной пагодой и карпами кои.</p>
+    <dl class="passport">
     <div><dt>Когда</dt><dd>17–18 июня 2022, 23–30 марта 2024</dd></div>
     <div><dt>Сколько</dt><dd>2 поездки: 1 день и 8 дней</dd></div>
     <div><dt>Время</dt><dd>МСК</dd></div>
@@ -48,13 +51,10 @@
     <div><dt>Снято</dt><dd>370 фото, 15 видео</dd></div>
     <div><dt>Оценка</dt><dd>✓ был</dd></div>
   </dl>
-  <ol class="route" aria-label="Маршрут поездки">
+    <ol class="route" aria-label="Маршрут поездки">
     <li>Волгоград</li><li class="here">Краснодар</li><li>Адыгея</li>
   </ol>
-  <figure class="hero-ph" id="P050">
-    <div class="ph"><img src="media/hero.webp" width="2200" height="1650" alt="Закат над клумбой фиолетовых цветов, на гребне холма цепочка людей"></div>
-    <figcaption><time>19:10</time>17 июня 2022, закат над клумбой в парке у стадиона. На гребне холма вся очередь за последним светом.</figcaption>
-  </figure>
+  </div>
 </header>
 
 <article class="story">
@@ -63,35 +63,7 @@
   <p class="lead">В Краснодаре я был дважды. В июне 2022 это был один день в групповой экскурсии: шли за гидом, маршрут выбирал не я. В марте 2024 я приехал уже сам, поездом, примерно на неделю. На одной странице обе поездки, с датами в заголовках.</p>
   <p class="lead">Связывает их парк «Краснодар», который многие зовут парком Галицкого. В 2022 я написал, что хотел бы вернуться сюда ради него и посмотреть вечером, когда включают подсветку. Через 21 месяц вернулся. Кроме парка в 2024 был ещё японский сад, которого в первый раз не было.</p>
   <figure class="wide daymap">
-    <svg class="daymap-svg" viewBox="0 0 640 456" role="img" aria-label="Маршрут дня по точкам съёмки">
-<polyline class="dm-route" points="314.9,426.7 314.7,426.7 314.9,426.7 314.3,428.0 314.3,428.0 314.3,428.0 314.3,428.0 314.4,428.0 314.4,428.0 314.4,428.0 314.4,428.0 314.4,428.0 314.4,427.8 314.4,427.8 314.4,427.7 314.5,427.5 314.5,427.5 316.7,426.5 316.7,426.5 316.8,426.5 316.8,426.5 316.9,426.6 297.3,29.0 336.8,28.0 342.7,313.4 342.4,318.5 342.4,318.5 342.1,318.8 316.2,426.1 316.6,426.5 316.7,426.5 316.7,426.5 316.7,426.4 316.7,426.4 316.7,426.4 316.7,426.4 316.8,426.5 316.8,426.5 316.7,426.5 316.7,426.5 316.8,426.5 316.8,426.5 316.8,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 317.0,426.5 317.0,426.5 316.9,426.6 316.8,426.6 316.8,426.6 316.8,426.6 316.8,426.6 316.8,426.6 316.8,426.6 316.7,426.6 316.7,426.6 316.8,426.6 316.8,426.6 316.8,426.6 316.8,426.6 316.8,426.6 316.8,426.6 316.8,426.6 316.7,426.6 316.7,426.6 316.7,426.6 316.6,426.6 316.6,426.6 316.2,425.9 316.2,425.9 316.2,425.9 316.2,425.9 316.2,425.9 316.7,426.4 316.7,426.4 316.7,426.4 316.7,426.4 316.6,426.3 316.7,426.3 316.7,426.0 316.7,426.0 316.6,425.9 316.6,426.0 316.6,426.0 316.9,426.5 316.9,426.5 316.7,426.0 316.7,426.0 316.8,426.5 316.9,426.5 316.9,426.5 316.8,426.6 316.9,426.5 316.8,426.5 316.8,426.6 316.8,426.6 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.5 316.9,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.5 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 316.9,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.4 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 317.0,426.5 316.8,426.5 316.8,426.5 316.8,426.5 316.8,426.5"/>
-<g class="dm-label"><circle cx="316.6" cy="426.5" r="4"/><text x="324.6" y="430.5">Стадион и парк</text></g>
-<g class="dm-label"><circle cx="316.9" cy="426.5" r="4"/><text x="324.9" y="448.5">Японский сад</text></g>
-<g class="dm-label"><circle cx="314.9" cy="426.7" r="4"/><text x="322.9" y="466.5">Церковь у старта</text></g>
-<g class="dm-label"><circle cx="314.4" cy="428.0" r="4"/><text x="322.4" y="484.5">Центр, памятник Екатерине II</text></g>
-<a href="#P001" class="dm-pt"><circle cx="314.9" cy="426.7" r="6"><title>10:44</title></circle></a>
-<a href="#P067" class="dm-pt"><circle cx="314.4" cy="428.0" r="6"><title>16:25</title></circle></a>
-<a href="#P009" class="dm-pt"><circle cx="314.4" cy="427.7" r="6"><title>16:51</title></circle></a>
-<a href="#P021" class="dm-pt"><circle cx="316.8" cy="426.5" r="6"><title>18:33</title></circle></a>
-<a href="#P084" class="dm-pt"><circle cx="342.4" cy="318.5" r="6"><title>06:19</title></circle></a>
-<a href="#P088" class="dm-pt"><circle cx="316.7" cy="426.5" r="6"><title>15:02</title></circle></a>
-<a href="#P094" class="dm-pt"><circle cx="316.8" cy="426.5" r="6"><title>15:13</title></circle></a>
-<a href="#P113" class="dm-pt"><circle cx="316.8" cy="426.6" r="6"><title>18:49</title></circle></a>
-<a href="#P126" class="dm-pt"><circle cx="316.6" cy="426.6" r="6"><title>19:06</title></circle></a>
-<a href="#P138" class="dm-pt"><circle cx="316.7" cy="426.3" r="6"><title>13:13</title></circle></a>
-<a href="#P144" class="dm-pt"><circle cx="316.9" cy="426.5" r="6"><title>21:58</title></circle></a>
-<a href="#P160" class="dm-pt"><circle cx="316.9" cy="426.5" r="6"><title>09:51</title></circle></a>
-<a href="#P175" class="dm-pt"><circle cx="317.0" cy="426.5" r="6"><title>10:01</title></circle></a>
-<a href="#P180" class="dm-pt"><circle cx="317.0" cy="426.5" r="6"><title>10:03</title></circle></a>
-<a href="#P218" class="dm-pt"><circle cx="316.9" cy="426.5" r="6"><title>10:50</title></circle></a>
-<a href="#P234" class="dm-pt"><circle cx="316.9" cy="426.5" r="6"><title>11:50</title></circle></a>
-<a href="#P271" class="dm-pt"><circle cx="317.0" cy="426.4" r="6"><title>13:46</title></circle></a>
-<a href="#P304" class="dm-pt"><circle cx="316.9" cy="426.4" r="6"><title>16:23</title></circle></a>
-<a href="#P334" class="dm-pt"><circle cx="317.0" cy="426.4" r="6"><title>17:27</title></circle></a>
-<a href="#P358" class="dm-pt"><circle cx="317.0" cy="426.5" r="6"><title>17:58</title></circle></a>
-<a href="#P362" class="dm-pt"><circle cx="317.0" cy="426.5" r="6"><title>18:03</title></circle></a>
-<a href="#P367" class="dm-pt"><circle cx="316.8" cy="426.5" r="6"><title>18:57</title></circle></a>
-</svg>
+    
     <figcaption>Точки съёмки двух поездок. Кружки — фото из этого отчёта, по ним можно кликать.</figcaption>
   </figure>
 </section>
@@ -118,21 +90,21 @@
   <h2>Центр за полдня</h2>
   <p>До Краснодара я добирался из Волгограда ночным поездом: аэропорт Краснодара тогда был закрыт. В середине июня в Волгограде и Краснодаре одинаково много мошек, они не отстают ни в тени, ни на солнце. Отмахивался бейсболкой. В августе их уже нет.</p>
   <figure class="mid" id="P001">
-    <div class="ph"><img src="media/cerkov.webp" width="1200" height="1600" loading="lazy" alt="Церковь из красного кирпича с синими куполами на углу улицы"></div>
+    <div class="ph"><img src="media/cerkov.webp" width="1600" height="1200" loading="lazy" alt="Церковь из красного кирпича с синими куполами на углу улицы"></div>
     <figcaption><time>10:44</time>Первая остановка, красный кирпич и синие купола. Первый кадр поездки.</figcaption>
   </figure>
   <div class="row narrow">
     <figure id="P004">
-      <div class="ph"><img src="media/sobor.webp" width="1050" height="1400" loading="lazy" alt="Белый собор с золотыми куполами, у входа резной каменный крест"></div>
+      <div class="ph"><img src="media/sobor.webp" width="1400" height="1867" loading="lazy" alt="Белый собор с золотыми куполами, у входа резной каменный крест"></div>
       <figcaption><time>15:50</time>Белый собор с золотыми куполами. Резной крест у входа больше любого из нас.</figcaption>
     </figure>
     <figure id="P006">
-      <div class="ph"><img src="media/ekaterina.webp" width="1050" height="1400" loading="lazy" alt="Памятник Екатерине II на высоком постаменте с орлом, за кованой оградой"></div>
+      <div class="ph"><img src="media/ekaterina.webp" width="1400" height="1867" loading="lazy" alt="Памятник Екатерине II на высоком постаменте с орлом, за кованой оградой"></div>
       <figcaption><time>16:06</time>Екатерина II за оградой. Город носил её имя до 1920 года.</figcaption>
     </figure>
   </div>
   <figure class="wide" id="P067">
-    <div class="ph"><img src="media/gruppa.webp" width="2000" height="1500" loading="lazy" alt="Группа людей сидит и стоит на площади у памятника Екатерине II"></div>
+    <div class="ph"><img src="media/gruppa.webp" width="2000" height="1125" loading="lazy" alt="Группа людей сидит и стоит на площади у памятника Екатерине II"></div>
     <figcaption><time>16:25</time>Группа у памятника. Меня тут нет, я снимаю. <span class="credit">Фото Лены</span></figcaption>
   </figure>
   <div class="row">
@@ -151,21 +123,21 @@
   <h2>Лучший парк, как мне тогда показалось</h2>
   <p>Про парк «Краснодар» я написал во ВК: лучший парк страны, по моему скромному мнению. Через стадион и клумбы мы пришли около шести вечера. Вход здесь не как в обычный парк: площадь, ровные ряды деревьев и стеклянные стены, в которых отражается всё.</p>
   <figure class="wide" id="P011">
-    <div class="ph"><img src="media/stadion-2022.webp" width="2000" height="1500" loading="lazy" alt="Стадион с круглым светлым фасадом, перед ним площадь с рядами деревьев"></div>
+    <div class="ph"><img src="media/stadion-2022.webp" width="2000" height="1125" loading="lazy" alt="Стадион с круглым светлым фасадом, перед ним площадь с рядами деревьев"></div>
     <figcaption><time>17:58</time>Стадион «Краснодар» стоит рядом с парком. Ясное небо, на площади почти никого.</figcaption>
   </figure>
   <div class="row narrow">
     <figure id="P021">
-      <div class="ph"><img src="media/zerkalo.webp" width="1050" height="1400" loading="lazy" alt="Групповое селфи в зеркальной стене парка, в отражении павильоны"></div>
+      <div class="ph"><img src="media/zerkalo.webp" width="1400" height="1867" loading="lazy" alt="Групповое селфи в зеркальной стене парка, в отражении павильоны"></div>
       <figcaption><time>18:33</time>Зеркальные павильоны: селфи получаются у всех, кадр один, а нас в нём трое. <span class="credit">Фото Лены</span></figcaption>
     </figure>
     <figure id="P023">
-      <div class="ph"><img src="media/derevo.webp" width="1050" height="1400" loading="lazy" alt="Цветущее дерево в чёрном квадрате среди воды, на фоне дома"></div>
+      <div class="ph"><img src="media/derevo.webp" width="1400" height="1867" loading="lazy" alt="Цветущее дерево в чёрном квадрате среди воды, на фоне дома"></div>
       <figcaption><time>18:15</time>Цветущее дерево в чёрной раме посреди воды. Дома на заднем плане для масштаба.</figcaption>
     </figure>
   </div>
   <figure class="wide" id="P032">
-    <div class="ph"><img src="media/prud.webp" width="2000" height="1500" loading="lazy" alt="Круглый пруд с розовым диском и деревом посередине, вокруг зеркальные павильоны и люди"></div>
+    <div class="ph"><img src="media/prud.webp" width="2000" height="1125" loading="lazy" alt="Круглый пруд с розовым диском и деревом посередине, вокруг зеркальные павильоны и люди"></div>
     <figcaption><time>18:33</time>Круглый пруд, на воде розовый диск, на диске дерево. Дети у края смотрят на рыб.</figcaption>
   </figure>
   <figure class="mid" id="P038">
@@ -181,7 +153,7 @@
   <p>В 2024 я ехал поездом. Из вагона остались книга на столике, окно с зимой и один рассвет.</p>
   <div class="row">
     <figure id="P077">
-      <div class="ph"><img src="media/vagon.webp" width="788" height="1400" loading="lazy" alt="Окно вагона, за ним зимний пейзаж, на столике лежит книга"></div>
+      <div class="ph"><img src="media/vagon.webp" width="1400" height="1867" loading="lazy" alt="Окно вагона, за ним зимний пейзаж, на столике лежит книга"></div>
       <figcaption><time>11:07</time>23 марта. За окном ещё зима, на столике книга.</figcaption>
     </figure>
     <figure id="P084">
@@ -195,11 +167,11 @@
   <h2>Парк, на этот раз вечером</h2>
   <p>В день приезда я пошёл в парк в первый же час после заселения. Теперь в нём была весна, облака и пальмы у стадиона.</p>
   <figure class="mid" id="P088">
-    <div class="ph"><img src="media/ya-stadion.webp" width="1600" height="747" loading="lazy" alt="Сергей на фоне пальм и стадиона с круглым фасадом"></div>
+    <div class="ph"><img src="media/ya-stadion.webp" width="1600" height="900" loading="lazy" alt="Сергей на фоне пальм и стадиона с круглым фасадом"></div>
     <figcaption><time>15:02</time>Пальмы в марте у стадиона. Я для масштаба.</figcaption>
   </figure>
   <figure class="wide" id="P094">
-    <div class="ph"><img src="media/voda.webp" width="2000" height="1126" loading="lazy" alt="Вода в бассейне парка и стеклянная сфера-беседка, облачное небо"></div>
+    <div class="ph"><img src="media/voda.webp" width="2000" height="1125" loading="lazy" alt="Вода в бассейне парка и стеклянная сфера-беседка, облачное небо"></div>
     <figcaption><time>15:13</time>Вода и стеклянная сфера. В 2022 я видел её только мельком.</figcaption>
   </figure>
   <figure class="wide">
@@ -212,7 +184,7 @@
   </figure>
   <p>Подсветку я наконец увидел. К шести вечера стеклянная клетка с деревом, белый рельеф и шары на лужайке сменили вид.</p>
   <figure class="mid" id="P113">
-    <div class="ph"><img src="media/fonar.webp" width="1600" height="901" loading="lazy" alt="Стеклянная конструкция в форме фонаря с деревом внутри на фоне заката, силуэты прохожих"></div>
+    <div class="ph"><img src="media/fonar.webp" width="1600" height="1200" loading="lazy" alt="Стеклянная конструкция в форме фонаря с деревом внутри на фоне заката, силуэты прохожих"></div>
     <figcaption><time>18:49</time>Стеклянный «фонарь» с деревом внутри. Закат, прохожие в силуэтах.</figcaption>
   </figure>
   <figure class="wide" id="P126">
@@ -227,11 +199,11 @@
   <p>Это были рабочие дни: ноутбук и съёмная квартира. В отчёт они не попали, кроме двух видов.</p>
   <div class="row narrow">
     <figure id="P138">
-      <div class="ph"><img src="media/dozhd.webp" width="788" height="1400" loading="lazy" alt="Стадион за мокрым окном с каплями дождя"></div>
+      <div class="ph"><img src="media/dozhd.webp" width="1400" height="1867" loading="lazy" alt="Стадион за мокрым окном с каплями дождя"></div>
       <figcaption><time>13:13</time>26 марта. Стадион из окна в дождь.</figcaption>
     </figure>
     <figure id="P144">
-      <div class="ph"><img src="media/stend.webp" width="788" height="1400" loading="lazy" alt="Информационный стенд «Japanese Garden / Японский сад» с QR-кодами"></div>
+      <div class="ph"><img src="media/stend.webp" width="1400" height="1867" loading="lazy" alt="Информационный стенд «Japanese Garden / Японский сад» с QR-кодами"></div>
       <figcaption><time>21:58</time>27 марта, у входа в сад. Стенд объясняет: вход по QR-кодам и по интервалам, один код на одного или двоих.</figcaption>
     </figure>
   </div>
@@ -242,21 +214,21 @@
   <h2>Японский сад</h2>
   <p>Сад я пришёл смотреть утром и вышел вечером: девять часов с перерывом на суп и кофе. Утро было пасмурным, ближе к вечеру прояснилось.</p>
   <figure class="wide" id="P160">
-    <div class="ph"><img src="media/sad-kamney.webp" width="2000" height="1126" loading="lazy" alt="Подстриженная сосна на холмике из мха, камень, жёлтая ограда с черепичным коньком"></div>
+    <div class="ph"><img src="media/sad-kamney.webp" width="2000" height="1125" loading="lazy" alt="Подстриженная сосна на холмике из мха, камень, жёлтая ограда с черепичным коньком"></div>
     <figcaption><time>09:51</time>Сад камней. Сосны подстрижены так, будто их кто-то обдумывал.</figcaption>
   </figure>
   <div class="row narrow">
     <figure id="P175">
-      <div class="ph"><img src="media/samuray.webp" width="788" height="1400" loading="lazy" alt="Фигура самурая в доспехах в витрине у окна музея"></div>
+      <div class="ph"><img src="media/samuray.webp" width="1400" height="1867" loading="lazy" alt="Фигура самурая в доспехах в витрине у окна музея"></div>
       <figcaption><time>10:01</time>Самурай в музее при саду. Смотрит в окно на сад.</figcaption>
     </figure>
     <figure id="P218">
-      <div class="ph"><img src="media/stupa.webp" width="788" height="1400" loading="lazy" alt="Высокая каменная пагода из ступенчатых плит среди деревьев и каменной дорожки"></div>
+      <div class="ph"><img src="media/stupa.webp" width="1400" height="1867" loading="lazy" alt="Высокая каменная пагода из ступенчатых плит среди деревьев и каменной дорожки"></div>
       <figcaption><time>10:50</time>Каменная пагода. Тропинка подходит к ней, не огибая.</figcaption>
     </figure>
   </div>
   <figure class="wide" id="P180">
-    <div class="ph"><img src="media/torii.webp" width="2000" height="1126" loading="lazy" alt="Красные ворота тории у ручья с каменным краем, сосны и бамбук"></div>
+    <div class="ph"><img src="media/torii.webp" width="2000" height="1125" loading="lazy" alt="Красные ворота тории у ручья с каменным краем, сосны и бамбук"></div>
     <figcaption><time>10:03</time>Красные ворота тории у ручья.</figcaption>
   </figure>
   <figure class="wide">
@@ -269,11 +241,11 @@
   </figure>
   <div class="row narrow">
     <figure id="P271">
-      <div class="ph"><img src="media/pagoda.webp" width="788" height="1400" loading="lazy" alt="Красная двухъярусная пагода на холме, у моста с красными перилами люди"></div>
+      <div class="ph"><img src="media/pagoda.webp" width="1400" height="1867" loading="lazy" alt="Красная двухъярусная пагода на холме, у моста с красными перилами люди"></div>
       <figcaption><time>13:46</time>Красная пагода на холме. У моста очередь за фотографией.</figcaption>
     </figure>
     <figure id="P304">
-      <div class="ph"><img src="media/fonari.webp" width="788" height="1400" loading="lazy" alt="Подвесные бумажные фонари с цветами внутри чайного дома, вид сверху"></div>
+      <div class="ph"><img src="media/fonari.webp" width="1400" height="1867" loading="lazy" alt="Подвесные бумажные фонари с цветами внутри чайного дома, вид сверху"></div>
       <figcaption><time>16:23</time>Бумажные фонари с цветами в чайном доме. Смотрел сверху.</figcaption>
     </figure>
   </div>
@@ -283,16 +255,16 @@
   </figure>
   <div class="row narrow">
     <figure id="P334">
-      <div class="ph"><img src="media/magnoliya.webp" width="788" height="1400" loading="lazy" alt="Розовые цветы магнолии на фоне чугунной решётки"></div>
+      <div class="ph"><img src="media/magnoliya.webp" width="1400" height="1867" loading="lazy" alt="Розовые цветы магнолии на фоне чугунной решётки"></div>
       <figcaption><time>17:27</time>Магнолия цветёт, конец марта.</figcaption>
     </figure>
     <figure id="P358">
-      <div class="ph"><img src="media/koi.webp" width="788" height="1400" loading="lazy" alt="Карпы кои разных цветов в прозрачной воде над камнями"></div>
+      <div class="ph"><img src="media/koi.webp" width="1400" height="1867" loading="lazy" alt="Карпы кои разных цветов в прозрачной воде над камнями"></div>
       <figcaption><time>17:58</time>Карпы кои над камнями. Воды почти не видно, рыбы будто висят.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P362">
-    <div class="ph"><img src="media/dzizo.webp" width="788" height="1400" loading="lazy" alt="Каменный фонарь и две статуэтки дзидзо у бамбукового забора"></div>
+    <div class="ph"><img src="media/dzizo.webp" width="1400" height="1867" loading="lazy" alt="Каменный фонарь и две статуэтки дзидзо у бамбукового забора"></div>
     <figcaption><time>18:03</time>Каменный фонарь и две статуэтки дзидзо за бамбуковым забором.</figcaption>
   </figure>
 </section>
@@ -301,7 +273,7 @@
   <div class="day">29 марта · вечер</div>
   <h2>Пока, Краснодар</h2>
   <figure class="wide" id="P367">
-    <div class="ph"><img src="media/alleya.webp" width="2000" height="1126" loading="lazy" alt="Вечерняя аллея с подсвеченными колоннами у земли, голые деревья, сумерки"></div>
+    <div class="ph"><img src="media/alleya.webp" width="2000" height="1125" loading="lazy" alt="Вечерняя аллея с подсвеченными колоннами у земли, голые деревья, сумерки"></div>
     <figcaption><time>18:57</time>Аллея в сумерках, подсветка у земли. Последний кадр дня. 30 марта я уехал.</figcaption>
   </figure>
   <div class="verdict">
@@ -325,6 +297,6 @@
 
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../01-adygeya/index.html"><span><small>Дальше по маршруту</small>Республика Адыгея</span><span class="code">1</span></a></nav>
 </div>
-<script src="../series.js?v=491ada4f"></script>
+<script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>

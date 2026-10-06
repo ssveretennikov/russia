@@ -25,22 +25,25 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=f477f7da">
-
+<link rel="stylesheet" href="../series.css?v=690f2df7">
+<style>:root{--reg:#1A60D1;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#74A0E7;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#74A0E7;--reg-ink:#14100A}</style>
 </head>
 <body>
-<div class="page">
+<div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
-<header class="reg-head">
-  <div class="reg-id">
-    <span class="code" aria-label="Код региона 48">48</span>
-    <div class="reg-name">
+<header class="reg-head cover-head">
+  <figure class="hero-ph cover" id="P004">
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Высотная гостиница с красной башней над низким павильоном, у дороги жёлтый автобус, снег и синее небо"></div>
+    <div class="reg-id" style="--nw:8">
+      <span class="code" aria-label="Код региона 48">48</span>
       <h1>Липецкая область</h1>
-      <div class="reg-places">Липецк · НЛМК · зоопарк · «38 попугаев»</div>
     </div>
-  </div>
-  <p class="hook">Город металлургов, и это видно по скульптурам: собачки, гитарист на коне и удав с мартышкой здесь из металла. Один февральский день, поезд туда, автобус с неожиданным репертуаром обратно.</p>
-  <dl class="passport">
+    <figcaption><time>08:23</time>Восемь утра, минус, солнце. Таким Липецк был первые четыре часа, потом его подменили.</figcaption>
+  </figure>
+  <div class="under">
+    <div class="reg-places">Липецк · НЛМК · зоопарк · «38 попугаев»</div>
+    <p class="hook">Город металлургов, и это видно по скульптурам: собачки, гитарист на коне и удав с мартышкой здесь из металла. Один февральский день, поезд туда, автобус с неожиданным репертуаром обратно.</p>
+    <dl class="passport">
     <div><dt>Когда</dt><dd>19 февраля 2022</dd></div>
     <div><dt>Сколько</dt><dd>1 день</dd></div>
     <div><dt>Время</dt><dd>МСК</dd></div>
@@ -48,13 +51,10 @@
     <div><dt>Снято</dt><dd>67 фото, 10 видео</dd></div>
     <div><dt>Оценка</dt><dd>✓ был</dd></div>
   </dl>
-  <ol class="route" aria-label="Маршрут дня">
+    <ol class="route" aria-label="Маршрут дня">
     <li class="here">Вокзал</li><li>Авиацентр</li><li>Площадь у НЛМК</li><li>Зоопарк</li><li>Парки</li><li>Соборная площадь</li>
   </ol>
-  <figure class="hero-ph" id="P004">
-    <div class="ph"><img src="media/hero.webp" width="2200" height="1650" alt="Высотная гостиница с красной башней над низким павильоном, у дороги жёлтый автобус, снег и синее небо"></div>
-    <figcaption><time>08:23</time>Восемь утра, минус, солнце. Таким Липецк был первые четыре часа, потом его подменили.</figcaption>
-  </figure>
+  </div>
 </header>
 
 <article class="story">
@@ -63,29 +63,7 @@
   <p class="lead">Липецк — город металлургов, и он этого не скрывает. Металл здесь не только в домне комбината, который занимает полгоризонта, но и на улицах: собачки у вокзала, гитарист верхом на коне, дама на скамейке, удав с мартышкой в парке. Там, где в другом городе поставили бы бронзу, тут поставили сталь, и это, по-моему, честно.</p>
   <p class="lead">Я приехал на один день, поездом, в субботу. Утром было солнце и мороз, к обеду небо закрылось, снег раскис, и город из открыточного стал обычным февральским. Так и оставил: половина кадров синих, половина серых, это не фильтр, это Липецк за день.</p>
   <figure class="wide daymap">
-    <svg class="daymap-svg" viewBox="0 0 640 350" role="img" aria-label="Маршрут дня по точкам съёмки">
-<polyline class="dm-route" points="278.0,28.0 277.9,28.0 282.3,32.5 278.2,31.3 317.6,44.1 354.6,68.7 356.1,68.2 354.6,68.7 362.4,82.9 365.7,86.0 371.4,86.7 470.5,195.1 470.5,195.1 479.6,195.6 479.6,195.6 493.1,226.9 489.0,211.2 418.9,205.8 412.9,201.0 423.8,149.7 423.8,149.7 426.0,150.7 478.5,105.1 472.4,108.9 520.0,104.5 518.1,115.2 518.1,115.2 460.2,155.6 460.2,155.6 449.8,163.7 449.2,185.6 120.0,322.5"/>
-<g class="dm-label"><circle cx="278.8" cy="30.4" r="4"/><text x="286.8" y="34.4">Вокзал</text></g>
-<g class="dm-label"><circle cx="352.5" cy="67.7" r="4"/><text x="360.5" y="71.7">Граффити и самолёт</text></g>
-<g class="dm-label"><circle cx="477.1" cy="105.1" r="4"/><text x="469.1" y="109.1" text-anchor="end">Памятник учителю</text></g>
-<g class="dm-label"><circle cx="460.1" cy="151.7" r="4"/><text x="452.1" y="155.7" text-anchor="end">Соборная площадь</text></g>
-<g class="dm-label"><circle cx="471.5" cy="198.4" r="4"/><text x="463.5" y="202.4" text-anchor="end">Площадь у НЛМК</text></g>
-<g class="dm-label"><circle cx="420.5" cy="207.7" r="4"/><text x="412.5" y="220.4" text-anchor="end">Парк, дама на скамейке</text></g>
-<a href="#P001" class="dm-pt"><circle cx="278.0" cy="28.0" r="6"><title>08:20</title></circle></a>
-<a href="#P004" class="dm-pt"><circle cx="278.2" cy="31.3" r="6"><title>08:23</title></circle></a>
-<a href="#P006" class="dm-pt"><circle cx="354.6" cy="68.7" r="6"><title>08:39</title></circle></a>
-<a href="#P009" class="dm-pt"><circle cx="362.4" cy="82.9" r="6"><title>08:45</title></circle></a>
-<a href="#P019" class="dm-pt"><circle cx="470.5" cy="195.1" r="6"><title>10:58</title></circle></a>
-<a href="#P021" class="dm-pt"><circle cx="479.6" cy="195.6" r="6"><title>11:04</title></circle></a>
-<a href="#P046" class="dm-pt"><circle cx="493.1" cy="226.9" r="6"><title>12:29</title></circle></a>
-<a href="#P051" class="dm-pt"><circle cx="418.9" cy="205.8" r="6"><title>14:14</title></circle></a>
-<a href="#P058" class="dm-pt"><circle cx="478.5" cy="105.1" r="6"><title>15:59</title></circle></a>
-<a href="#P060" class="dm-pt"><circle cx="520.0" cy="104.5" r="6"><title>16:15</title></circle></a>
-<a href="#P061" class="dm-pt"><circle cx="518.1" cy="115.2" r="6"><title>16:19</title></circle></a>
-<a href="#P063" class="dm-pt"><circle cx="460.2" cy="155.6" r="6"><title>17:45</title></circle></a>
-<a href="#P065" class="dm-pt"><circle cx="449.8" cy="163.7" r="6"><title>17:48</title></circle></a>
-<a href="#P066" class="dm-pt"><circle cx="449.2" cy="185.6" r="6"><title>17:54</title></circle></a>
-</svg>
+    
     <figcaption>Маршрут дня по точкам съёмки. Зоопарк и центр без GPS, телефон там координаты не писал.</figcaption>
   </figure>
 </section>
@@ -112,11 +90,11 @@
   <p>С поезда и сразу в город, пока солнце. Первое, что встречает на вокзале, — металл: фигуры на постаменте и композиция на фасаде. Дальше по дороге военные плакаты, поверх которых кто-то расписался баллончиком, и самолёт на постаменте у авиацентра.</p>
   <div class="row narrow">
     <figure id="P001">
-      <div class="ph"><img src="media/vokzal.webp" width="1050" height="1400" loading="lazy" alt="Скульптурная группа из тёмного металла на белом постаменте у здания с красными вставками"></div>
+      <div class="ph"><img src="media/vokzal.webp" width="1400" height="1867" loading="lazy" alt="Скульптурная группа из тёмного металла на белом постаменте у здания с красными вставками"></div>
       <figcaption><time>08:20</time>Вокзал. Город металлургов начинается с первой платформы.</figcaption>
     </figure>
     <figure id="P009">
-      <div class="ph"><img src="media/samolet.webp" width="1050" height="1400" loading="lazy" alt="Серебристый самолёт на бетонном постаменте, нос вверх, на фоне синего неба и строительного крана"></div>
+      <div class="ph"><img src="media/samolet.webp" width="1400" height="1867" loading="lazy" alt="Серебристый самолёт на бетонном постаменте, нос вверх, на фоне синего неба и строительного крана"></div>
       <figcaption><time>08:45</time>Погибшим лётчикам липецкого авиацентра. Самолёт настоящий, в небо смотрит под правильным углом.</figcaption>
     </figure>
   </div>
@@ -125,7 +103,7 @@
     <figcaption><time>08:39</time>Суровые липецкие граффити, прямо на плакатах. Цитата из оригинала, лучше не скажу.</figcaption>
   </figure>
   <figure class="mid" id="P012">
-    <div class="ph"><img src="media/kafe.webp" width="1050" height="1400" loading="lazy" alt="Сергей в синей куртке с наушниками сидит в кафе, подпёр подбородок кулаком"></div>
+    <div class="ph"><img src="media/kafe.webp" width="1400" height="1867" loading="lazy" alt="Сергей в синей куртке с наушниками сидит в кафе, подпёр подбородок кулаком"></div>
     <figcaption><time>09:12</time>Согреваюсь в кафе и записываю обращение к подписчикам. Текст обращения история не сохранила.</figcaption>
   </figure>
 </section>
@@ -136,25 +114,25 @@
   <p>Отсюда видно главное предприятие города. НЛМК — это не завод за окраиной, это здание на площади, напротив памятника с большой цифрой 50. Рядом гитарист на коне, уже из металла, и новогодняя ёлка, которая в середине февраля ещё стоит.</p>
   <div class="row narrow">
     <figure id="P013">
-      <div class="ph"><img src="media/gitarist.webp" width="1050" height="1400" loading="lazy" alt="Металлическая скульптура всадника с гитарой на коне среди снега"></div>
+      <div class="ph"><img src="media/gitarist.webp" width="1400" height="1867" loading="lazy" alt="Металлическая скульптура всадника с гитарой на коне среди снега"></div>
       <figcaption><time>10:16</time>Е, е-е, е-е. Так в оригинале, и я до сих пор не знаю, что он играет.</figcaption>
     </figure>
     <figure id="P014">
-      <div class="ph"><img src="media/nlmk.webp" width="1050" height="1400" loading="lazy" alt="Светлое административное здание с вывеской «Новолипецкий металлургический комбинат» и мокрым асфальтом перед ним"></div>
+      <div class="ph"><img src="media/nlmk.webp" width="1400" height="1867" loading="lazy" alt="Светлое административное здание с вывеской «Новолипецкий металлургический комбинат» и мокрым асфальтом перед ним"></div>
       <figcaption><time>10:36</time>НЛМК. Весь город работает здесь, или на тех, кто здесь работает.</figcaption>
     </figure>
   </div>
   <figure class="tall" id="P017">
-    <div class="ph"><img src="media/50.webp" width="1050" height="1400" loading="lazy" alt="Высокий каменный монумент с фигурами и цифрой 50 в контровом солнце на площади"></div>
+    <div class="ph"><img src="media/50.webp" width="1400" height="1867" loading="lazy" alt="Высокий каменный монумент с фигурами и цифрой 50 в контровом солнце на площади"></div>
     <figcaption><time>10:39</time>Памятник с цифрой 50, против солнца. Что за пятьдесят, табличка знает, я не дочитал.</figcaption>
   </figure>
   <div class="row narrow">
     <figure id="P019">
-      <div class="ph"><img src="media/elka.webp" width="1050" height="1400" loading="lazy" alt="Большая искусственная ёлка на площади у дороги, снег, синее небо"></div>
+      <div class="ph"><img src="media/elka.webp" width="1400" height="1867" loading="lazy" alt="Большая искусственная ёлка на площади у дороги, снег, синее небо"></div>
       <figcaption><time>10:58</time>Ещё один слабак сдался. Но Новый год от нас не уходит: 19 февраля, ёлка на месте.</figcaption>
     </figure>
     <figure id="P021">
-      <div class="ph"><img src="media/shary.webp" width="1050" height="1400" loading="lazy" alt="Красные объёмные буквы и большие красные ёлочные шары на снегу среди тополей"></div>
+      <div class="ph"><img src="media/shary.webp" width="1400" height="1867" loading="lazy" alt="Красные объёмные буквы и большие красные ёлочные шары на снегу среди тополей"></div>
       <figcaption><time>11:04</time>Шары и буквы к ёлке в комплекте. Снег под ними ещё чистый, через час будет не так.</figcaption>
     </figure>
   </div>
@@ -164,26 +142,26 @@
   <h2>Зоопарк и лигрица</h2>
   <p>Я как любитель зоопарков не мог не посетить липецкий. Тем более тут должна быть лигрица, гибрид льва и тигрицы. На входе лев на крыше, внутри лемуры, носухи, ягуар, пантера с табличкой «Чёрная» и лев с табличкой «Лев». Лигрицы в кадрах нет. Или она была, но не подписана.</p>
   <figure class="tall" id="P023">
-    <div class="ph"><img src="media/zoopark.webp" width="1050" height="1400" loading="lazy" alt="Вход в зоопарк: разноцветное здание с вывеской «Зоопарк» и фигурой льва на крыше"></div>
+    <div class="ph"><img src="media/zoopark.webp" width="1400" height="1867" loading="lazy" alt="Вход в зоопарк: разноцветное здание с вывеской «Зоопарк» и фигурой льва на крыше"></div>
     <figcaption><time>11:08</time>Вход. Лев на крыше работает вывеской и охраной одновременно.</figcaption>
   </figure>
   <div class="row narrow">
     <figure id="P033">
-      <div class="ph"><img src="media/koati.webp" width="1050" height="1400" loading="lazy" alt="Носуха идёт по белой плитке вольера"></div>
+      <div class="ph"><img src="media/koati.webp" width="1400" height="1867" loading="lazy" alt="Носуха идёт по белой плитке вольера"></div>
       <figcaption><time>11:29</time>Носуха идёт по своим делам. Ни разу не посмотрела.</figcaption>
     </figure>
     <figure id="P040">
-      <div class="ph"><img src="media/pantera.webp" width="1050" height="1400" loading="lazy" alt="Чёрная пантера лежит на полке за решёткой на фоне нарисованных гор"></div>
+      <div class="ph"><img src="media/pantera.webp" width="1400" height="1867" loading="lazy" alt="Чёрная пантера лежит на полке за решёткой на фоне нарисованных гор"></div>
       <figcaption><time>11:39</time>Мы тут успокоились, и вы давайте успокаивайтесь.</figcaption>
     </figure>
   </div>
   <div class="row narrow">
     <figure id="P042">
-      <div class="ph"><img src="media/lev.webp" width="1050" height="1400" loading="lazy" alt="Лев лежит в вольере за решёткой, над ним табличка «Лев»"></div>
+      <div class="ph"><img src="media/lev.webp" width="1400" height="1867" loading="lazy" alt="Лев лежит в вольере за решёткой, над ним табличка «Лев»"></div>
       <figcaption><time>11:40</time>И не грустите. Табличка «Лев» на случай, если есть сомнения.</figcaption>
     </figure>
     <figure id="P044">
-      <div class="ph"><img src="media/oleni.webp" width="1050" height="1400" loading="lazy" alt="Два оленя лежат на снегу у деревянного домика в вольере"></div>
+      <div class="ph"><img src="media/oleni.webp" width="1400" height="1867" loading="lazy" alt="Два оленя лежат на снегу у деревянного домика в вольере"></div>
       <figcaption><time>12:00</time>Оленям единственным здесь не холодно. Остальные, включая меня, зимовали под крышей.</figcaption>
     </figure>
   </div>
@@ -202,16 +180,16 @@
   <h2>Серый Липецк с земли и с воздуха</h2>
   <p>К половине первого небо закрылось, и дальше город был серым. Зато серый Липецк оказался добрее к дрону: ветра нет, солнца нет, снимать можно. Внизу тем временем всё смешалось в доме Облонских: Чеширский кот с мухоморами, дама с собачкой на скамейке, учительница с ученицей, собачки и «38 попугаев». Все, кроме кота, из металла.</p>
   <figure class="mid" id="P046">
-    <div class="ph"><img src="media/zabroshka.webp" width="1050" height="1400" loading="lazy" alt="Серое пятиэтажное здание с выбитыми окнами"></div>
+    <div class="ph"><img src="media/zabroshka.webp" width="1400" height="1867" loading="lazy" alt="Серое пятиэтажное здание с выбитыми окнами"></div>
     <figcaption><time>12:29</time>Обидненько. Было чьё-то, теперь ничьё.</figcaption>
   </figure>
   <div class="row narrow">
     <figure id="P048">
-      <div class="ph"><img src="media/kot.webp" width="1050" height="1400" loading="lazy" alt="Розово-полосатый Чеширский кот среди синих грибов в заснеженном парке"></div>
+      <div class="ph"><img src="media/kot.webp" width="1400" height="1867" loading="lazy" alt="Розово-полосатый Чеширский кот среди синих грибов в заснеженном парке"></div>
       <figcaption><time>13:42</time>Чеширский кот и синие грибы. Всё смешалось в доме Облонских.</figcaption>
     </figure>
     <figure id="P058">
-      <div class="ph"><img src="media/uchitel.webp" width="1050" height="1400" loading="lazy" alt="Памятник: учительница с книгой и девочка с портфелем идут по постаменту, вокруг снег"></div>
+      <div class="ph"><img src="media/uchitel.webp" width="1400" height="1867" loading="lazy" alt="Памятник: учительница с книгой и девочка с портфелем идут по постаменту, вокруг снег"></div>
       <figcaption><time>15:59</time>Памятник учителю. Ученица с портфелем не отстаёт, и это самое правдивое в скульптуре.</figcaption>
     </figure>
   </div>
@@ -225,11 +203,11 @@
   </figure>
   <div class="row narrow">
     <figure id="P060">
-      <div class="ph"><img src="media/sobachki.webp" width="1050" height="1400" loading="lazy" alt="Четыре металлические фигурки собак и мышей в снегу под деревьями парка"></div>
+      <div class="ph"><img src="media/sobachki.webp" width="1400" height="1867" loading="lazy" alt="Четыре металлические фигурки собак и мышей в снегу под деревьями парка"></div>
       <figcaption><time>16:15</time>Инсталляция «Собачки». Металлические, как положено в городе металлургов.</figcaption>
     </figure>
     <figure id="P061">
-      <div class="ph"><img src="media/popugai.webp" width="1050" height="1400" loading="lazy" alt="Металлический удав, свёрнутый кольцами, и мартышка рядом с ним в снегу"></div>
+      <div class="ph"><img src="media/popugai.webp" width="1400" height="1867" loading="lazy" alt="Металлический удав, свёрнутый кольцами, и мартышка рядом с ним в снегу"></div>
       <figcaption><time>16:19</time>«38 попугаев». Удав есть, мартышка есть, попугаев не считал.</figcaption>
     </figure>
   </div>
@@ -245,16 +223,16 @@
   <p>Сумерки, мокрая площадь, администрация с флагом, собор и памятник на 300 лет городу. Три эпохи на одном снимке, если встать правильно. Обратно в автобусе, где водитель слушал то, чего я в общественном транспорте не ожидал.</p>
   <div class="row narrow">
     <figure id="P063">
-      <div class="ph"><img src="media/administraciya.webp" width="1050" height="1400" loading="lazy" alt="Здание областной администрации с флагом на крыше над мокрой площадью в сумерках"></div>
+      <div class="ph"><img src="media/administraciya.webp" width="1400" height="1867" loading="lazy" alt="Здание областной администрации с флагом на крыше над мокрой площадью в сумерках"></div>
       <figcaption><time>17:45</time>Администрация. Снег на площади растаял за день полностью.</figcaption>
     </figure>
     <figure id="P065">
-      <div class="ph"><img src="media/sobor.webp" width="1050" height="1400" loading="lazy" alt="Колокольня и купол собора над площадью в сумерках, перед ними памятник"></div>
+      <div class="ph"><img src="media/sobor.webp" width="1400" height="1867" loading="lazy" alt="Колокольня и купол собора над площадью в сумерках, перед ними памятник"></div>
       <figcaption><time>17:48</time>Собор и памятник на площади. Три эпохи: собор, администрация, светофор.</figcaption>
     </figure>
   </div>
   <figure class="tall" id="P066">
-    <div class="ph"><img src="media/300-let.webp" width="1050" height="1400" loading="lazy" alt="Колонна с парусником наверху, у подножия пушка, вокруг огни вечернего города"></div>
+    <div class="ph"><img src="media/300-let.webp" width="1400" height="1867" loading="lazy" alt="Колонна с парусником наверху, у подножия пушка, вокруг огни вечернего города"></div>
     <figcaption><time>17:54</time>Памятник «300 лет городу Липецк». Парусник наверху, пушка внизу, автобус через пять минут.</figcaption>
   </figure>
   <figure class="tall">
@@ -282,6 +260,6 @@
 
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../index.html"><span>Все регионы</span></a></nav>
 </div>
-<script src="../series.js?v=491ada4f"></script>
+<script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>
