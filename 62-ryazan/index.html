@@ -25,22 +25,25 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=f477f7da">
+<link rel="stylesheet" href="../series.css?v=6eea20e4">
 <style>:root{--reg:#AA543A;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#D28E7A;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#D28E7A;--reg-ink:#14100A}</style>
 </head>
 <body>
-<div class="page">
+<div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
-<header class="reg-head">
-  <div class="reg-id">
-    <span class="code" aria-label="Код региона 62">62</span>
-    <div class="reg-name">
+<header class="reg-head cover-head">
+  <figure class="hero-ph cover" id="P009">
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Бронзовый всадник на вздыбленном коне на красном каменном постаменте на фоне синего неба"></div>
+    <div class="reg-id" style="--nw:9">
+      <span class="code" aria-label="Код региона 62">62</span>
       <h1>Рязанская область</h1>
-      <div class="reg-places">Рязань · Музей ВДВ · Рязанский кремль</div>
     </div>
-  </div>
-  <p class="hook">Город, где грибы с глазами, десант в музее, а дождь идёт по расписанию. Дрон так и не взлетел.</p>
-  <dl class="passport">
+    <figcaption><time>08:19</time>Евпатий Коловрат. В восемь утра небо ещё синее, и это последний синий кадр за день.</figcaption>
+  </figure>
+  <div class="under">
+    <div class="reg-places">Рязань · Музей ВДВ · Рязанский кремль</div>
+    <p class="hook">Город, где грибы с глазами, десант в музее, а дождь идёт по расписанию. Дрон так и не взлетел.</p>
+    <dl class="passport">
     <div><dt>Когда</dt><dd>10 мая 2022</dd></div>
     <div><dt>Сколько</dt><dd>1 день</dd></div>
     <div><dt>Время</dt><dd>МСК</dd></div>
@@ -48,13 +51,10 @@
     <div><dt>Снято</dt><dd>57 фото</dd></div>
     <div><dt>Оценка</dt><dd>✓ был</dd></div>
   </dl>
-  <ol class="route" aria-label="Маршрут дня">
+    <ol class="route" aria-label="Маршрут дня">
     <li class="here">Драмтеатр</li><li>Евпатий Коловрат</li><li>Музей ВДВ</li><li>Кремль</li>
   </ol>
-  <figure class="hero-ph" id="P009">
-    <div class="ph"><img src="media/hero.webp" width="2200" height="1650" alt="Бронзовый всадник на вздыбленном коне на красном каменном постаменте на фоне синего неба"></div>
-    <figcaption><time>08:19</time>Евпатий Коловрат. В восемь утра небо ещё синее, и это последний синий кадр за день.</figcaption>
-  </figure>
+  </div>
 </header>
 
 <article class="story">
@@ -254,6 +254,6 @@
 
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../index.html"><span>Все регионы</span></a></nav>
 </div>
-<script src="../series.js?v=491ada4f"></script>
+<script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>

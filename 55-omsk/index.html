@@ -25,22 +25,25 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=f477f7da">
+<link rel="stylesheet" href="../series.css?v=6eea20e4">
 <style>:root{--reg:#9E682E;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#D3A069;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#D3A069;--reg-ink:#14100A}</style>
 </head>
 <body>
-<div class="page">
+<div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
-<header class="reg-head">
-  <div class="reg-id">
-    <span class="code" aria-label="Код региона 55">55</span>
-    <div class="reg-name">
+<header class="reg-head cover-head">
+  <figure class="hero-ph cover" id="P086">
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Закат над широкой рекой, песчаная отмель, вдоль берега гранитный парапет"></div>
+    <div class="reg-id" style="--nw:7">
+      <span class="code" aria-label="Код региона 55">55</span>
       <h1>Омская область</h1>
-      <div class="reg-places">Омск · Иртыш · Центр изучения истории Гражданской войны · улица Чокана Валиханова</div>
     </div>
-  </div>
-  <p class="hook">Город, в котором всё почти есть. Вход в метро без метро, спуск к реке без лестницы, набережная, которую я искал весь день, и люди, из-за которых всё это прощаешь.</p>
-  <dl class="passport">
+    <figcaption><time>20:31</time>Иртыш в половине девятого вечера. Набережную я так и не нашёл, зато нашёл закат.</figcaption>
+  </figure>
+  <div class="under">
+    <div class="reg-places">Омск · Иртыш · Центр изучения истории Гражданской войны · улица Чокана Валиханова</div>
+    <p class="hook">Город, в котором всё почти есть. Вход в метро без метро, спуск к реке без лестницы, набережная, которую я искал весь день, и люди, из-за которых всё это прощаешь.</p>
+    <dl class="passport">
     <div><dt>Когда</dt><dd>25 апреля 2022</dd></div>
     <div><dt>Сколько</dt><dd>1 день</dd></div>
     <div><dt>Время</dt><dd>МСК+3</dd></div>
@@ -48,13 +51,10 @@
     <div><dt>Снято</dt><dd>93 фото, 3 видео</dd></div>
     <div><dt>Оценка</dt><dd class="heart">❤</dd></div>
   </dl>
-  <ol class="route" aria-label="Маршрут дня">
+    <ol class="route" aria-label="Маршрут дня">
     <li class="here">Вокзал</li><li>Музей Гражданской войны</li><li>Иртыш</li><li>Успенский собор</li><li>Улица Валиханова</li>
   </ol>
-  <figure class="hero-ph" id="P086">
-    <div class="ph"><img src="media/hero.webp" width="2200" height="1650" alt="Закат над широкой рекой, песчаная отмель, вдоль берега гранитный парапет"></div>
-    <figcaption><time>20:31</time>Иртыш в половине девятого вечера. Набережную я так и не нашёл, зато нашёл закат.</figcaption>
-  </figure>
+  </div>
 </header>
 
 <article class="story">
@@ -294,6 +294,6 @@
 
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../index.html"><span>Все регионы</span></a></nav>
 </div>
-<script src="../series.js?v=491ada4f"></script>
+<script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>
