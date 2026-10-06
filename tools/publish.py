@@ -7,7 +7,7 @@
 
 Делает по каждому региону: tools/media.py export <slug>; затем tools/og.py, build.py;
 затем отправляет ролики в репозиторий russia-video (папка russia-video/, ветка main),
-затем git add <slug>/ regions/<slug>/media.tsv, коммит «Медиа: …» и push в текущую ветку.
+затем git add <slug>/, коммит «Медиа: …» и push в текущую ветку; media.tsv коммитится в закрытом репозитории regions/.
 """
 import os, subprocess, sys
 from pathlib import Path
@@ -60,7 +60,13 @@ def main():
         if ahead not in ('0', ''): sys.exit('ошибка: в russia-video остались неотправленные коммиты, страницы не трогаю')
         size = sum(f.stat().st_size for f in vid.glob('*/*.mp4')) / 2 ** 20
         print(f'ролики на сайте russia-video: {size:.0f} МБ из 1024' + (' — БЛИЗКО К ПРЕДЕЛУ GitHub Pages, скажите автору' if size > 950 else ''))
-    paths = [p for s in done for p in (s, f'regions/{s}/media.tsv')] + ['index.html', 'sitemap.xml', '404.html']
+    reg = ROOT / 'regions'   # закрытый репозиторий рабочих материалов: media.tsv живёт там
+    if (reg / '.git').exists():
+        subprocess.run(['git', 'add', *[f'{s}/media.tsv' for s in done if (reg / s / 'media.tsv').exists()]], cwd=reg)
+        if subprocess.run(['git', 'diff', '--cached', '--quiet'], cwd=reg).returncode:
+            subprocess.run(['git', 'commit', '-q', '-m', 'media.tsv: ' + ', '.join(done)], cwd=reg, check=True)
+            subprocess.run(['git', 'push', 'origin', 'main'], cwd=reg)
+    paths = list(done) + ['index.html', 'sitemap.xml', '404.html']
     paths += [str(p.relative_to(ROOT)) for p in ROOT.glob('*/index.html') if (ROOT / 'src' / (p.parent.name + '.html')).exists()]
     run('git', 'add', *paths)
     if subprocess.run(['git', 'diff', '--cached', '--quiet'], cwd=ROOT).returncode == 0: print('нечего коммитить'); return
