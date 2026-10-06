@@ -340,6 +340,7 @@ def index_body():
     # подписи «❤ — понравилось» у поиска нет: сердечко читателю не объясняется (решение автора)
     out.append('''<div class="ix-find">
   <input type="search" id="find" placeholder="Найти регион или город" aria-label="Найти регион или город" autocomplete="off">
+  <a class="ix-trips" href="trips/index.html">Все поездки →</a>
 </div>
 <p class="ix-none" id="none" hidden>Ничего не нашлось.</p>''')
     out.append(fav_section(trips))
@@ -740,7 +741,8 @@ def footer(up, home):
     name = f'<span class="ft-name">{e(SERIES_TITLE)}</span>' if home else f'<a class="ft-name" href="{up}index.html">{e(SERIES_TITLE)}</a>'
     return (f'<footer class="site-foot{" ft-home" if home else ""}" role="contentinfo"><div class="ft-in">'
             f'<div class="ft-t">{name}<p class="ft-who">Сергей Веретенников · отчёты о поездках</p>'
-            f'<p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div>'
+            f'<p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p>'
+            f'<p class="ft-nav"><a href="{up}trips/index.html">Поездки</a> · <a href="{up}about/index.html">О проекте</a></p></div>'
             f'<a class="ft-top" href="#top">Наверх ↑</a></div></footer>')
 
 def doc(title, body, depth, inline, reg_color=None, meta=''):
@@ -903,6 +905,93 @@ def region_style(color, slug=None):
             f'@media (prefers-color-scheme:dark){{:root:not([data-theme="light"]){{{dark}}}}}'
             f':root[data-theme="dark"]{{{dark}}}')
 
+# ---------- страницы «Поездки» и «О проекте» (этап 4) ----------
+TRANSPORT_WORD = {'plane': 'самолётом', 'train': 'поездом', 'bus': 'автобусом', 'car': 'на машине'}   # other — без подписи: что именно, неизвестно
+MONTHS = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря']
+
+def trip_dates(a, b):
+    """«19–20 февраля 2022», «24 апреля — 10 мая 2022», «30 декабря 2023 — 2 января 2024»."""
+    (y1, m1, d1), (y2, m2, d2) = (tuple(int(x) for x in s.split('-')) for s in (a, b))
+    if a == b: return f'{d1} {MONTHS[m1 - 1]} {y1}'
+    if y1 != y2: return f'{d1} {MONTHS[m1 - 1]} {y1} — {d2} {MONTHS[m2 - 1]} {y2}'
+    if m1 != m2: return f'{d1} {MONTHS[m1 - 1]} — {d2} {MONTHS[m2 - 1]} {y1}'
+    return f'{d1}–{d2} {MONTHS[m1 - 1]} {y1}'
+
+def trip_days(a, b):
+    import datetime
+    return (datetime.date.fromisoformat(b) - datetime.date.fromisoformat(a)).days + 1
+
+def _top(up):
+    return (f'<nav class="topbar"><a href="{up}index.html">← Все регионы</a>'
+            '<div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button></div></nav>')
+
+def trips_body():
+    """Все поездки из data/trips.json по годам. Пометка checked — внутренняя, на страницу не выводится."""
+    import json
+    trips = sorted(json.load(open(os.path.join(ROOT, 'data', 'trips.json'), encoding='utf-8')), key=lambda t: t['start'])
+    trans = json.load(open(os.path.join(ROOT, 'data', 'transport.json'), encoding='utf-8'))
+    regs = {_page_code(s) for t in trips for s in t['regions']}   # по кодам: у Якутии две страницы (14-yakutia, 14-mirny)
+    longest = max(trips, key=lambda t: (trip_days(t['start'], t['end']), t['start']))
+    ld = trip_days(longest['start'], longest['end'])
+    n = len(trips)
+    lead = (f'{n} {plural(n, "поездка", "поездки", "поездок")} с февраля 2022 года, в них '
+            f'{len(regs)} {plural(len(regs), "регион", "региона", "регионов")} — без Москвы и Подмосковья: это дом, '
+            f'отсюда поездки начинаются. Самая длинная — {ld} {plural(ld, "день", "дня", "дней")}, '
+            f'{trip_dates(longest["start"], longest["end"])}. Поездки — по годам, регионы в каждой — по маршруту.')
+    out = ['<div class="page tr-page">', _top('../'), '<header class="tr-head"><h1>Поездки</h1>',
+           f'<p class="tr-lead">{e(lead)}</p></header>']
+    for y in sorted({t['start'][:4] for t in trips}):
+        ts = [t for t in trips if t['start'][:4] == y]
+        ry = len({_page_code(s) for t in ts for s in t['regions']})
+        out.append(f'<section class="tr-year" aria-labelledby="y{y}"><div class="tr-yh"><h2 id="y{y}">{y}</h2>'
+                   f'<span>{len(ts)} {plural(len(ts), "поездка", "поездки", "поездок")} · {ry} {plural(ry, "регион", "региона", "регионов")}</span></div><ol class="tr-list">')
+        for t in ts:
+            first = t['regions'][0]
+            days, k = trip_days(t['start'], t['end']), len(t['regions'])
+            how = TRANSPORT_WORD.get(trans.get(_page_code(first), ''), '')
+            how = f' · <span class="tr-how">{how}</span>' if how else ''
+            chain = []
+            for s in t['regions']:
+                c = COLORS.get(s)
+                st = f' style="--c:{c["light"]};--cd:{c["dark"]}"' if c else ''
+                chain.append(f'<li><a href="../{s}/index.html"{st}><span class="code">{_page_code(s)}</span>'
+                             f'<small>{e(_page_name(s))}</small></a></li>')
+            th = f'{first}/thumb.webp'
+            img = (f'<img class="tr-th" src="../{th}" alt="" width="360" height="270" loading="lazy" decoding="async">'
+                   if os.path.exists(os.path.join(ROOT, th)) else '')
+            out.append(f'<li class="tr-card">{img}<div class="tr-t"><div class="tr-d">{trip_dates(t["start"], t["end"])}</div>'
+                       f'<div class="tr-m">{days} {plural(days, "день", "дня", "дней")} · {k} {plural(k, "регион", "региона", "регионов")}{how}</div>'
+                       f'<ol class="tr-chain" aria-label="Регионы по маршруту">{"".join(chain)}</ol></div></li>')
+        out.append('</ol></section>')
+    out.append('</div>')
+    return '\n'.join(out), lead
+
+ABOUT = [
+    'Цель простая: побывать в каждом регионе России хотя бы раз. Минимум — столица региона, дальше как получится. '
+    'Счёт идёт с февраля 2022 года, хотя поездки были и раньше.',
+    'По каждому региону — отчёт в одном формате: главный кадр, несколько фактов, дни поездки с фотографиями '
+    'и короткими подписями, оценка и «счёт по региону» — цифры этой поездки, серьёзные вперемешку с дурацкими. '
+    'Номер у региона — это код субъекта РФ.',
+    'Фотографии и видео — мои, если не подписано иначе. Цены — из чеков и ценников, время — из снимков. Чего не знаю — не пишу.',
+    'Автор — Сергей Веретенников. Сайт собран из статических страниц и живёт на GitHub Pages.',
+]
+
+def about_body():
+    ps = '\n'.join(f'<p>{e(p)}</p>' for p in ABOUT)
+    return (f'<div class="page ab-page">\n{_top("../")}\n<article class="ab-text"><h1>О проекте</h1>\n{ps}\n'
+            '<!-- Контакты: автор их пока не давал. Появятся — строкой здесь, например <p>Написать: …</p> -->\n'
+            '<p class="ab-links"><a href="../index.html">Все регионы</a> · <a href="../trips/index.html">Поездки</a></p>'
+            '\n</article>\n</div>'), ABOUT[0]
+
+def write_extra_pages():
+    for slug, title, fn in (('trips', 'Поездки', trips_body), ('about', 'О проекте', about_body)):
+        body, desc = fn()
+        full = f'{title} · {SITE_NAME}'
+        os.makedirs(os.path.join(ROOT, slug), exist_ok=True)
+        open(os.path.join(ROOT, slug, 'index.html'), 'w', encoding='utf-8').write(
+            doc(full, body, 1, False, None, meta_tags(full, desc, slug + '/', 'og.jpg')))
+        print('готово:', slug + '/index.html')
+
 def write_service_files():
     """404.html, sitemap.xml, robots.txt. На странице 404 пути абсолютные: она открывается по любому адресу."""
     base = '/' + SITE.split('/', 3)[3]
@@ -914,7 +1003,7 @@ def write_service_files():
     h = (h.replace('href="series.css', f'href="{base}series.css').replace('src="series.js', f'src="{base}series.js')
           .replace('href="fonts/', f'href="{base}fonts/'))
     open(os.path.join(ROOT, '404.html'), 'w', encoding='utf-8').write(h)
-    urls = [SITE] + [SITE + pg['slug'] + '/' for pg in PAGES]
+    urls = [SITE, SITE + 'trips/', SITE + 'about/'] + [SITE + pg['slug'] + '/' for pg in PAGES]
     open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8').write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + ''.join(f'  <url><loc>{u}</loc></url>\n' for u in urls) + '</urlset>\n')
@@ -947,6 +1036,7 @@ def build(artifact=False):
                 doc(pg['title'], body, 1, True, region_style(pg['color'], pg['slug'])))
         print('готово:', pg['slug'] + '/' + page_name)
     if not local:
+        write_extra_pages()
         write_service_files()
         print('готово: index.html')
     return check_video()
