@@ -251,7 +251,7 @@
     });
   });
 
-  // «Путь по годам»: шаг — одна поездка из data/trips.json (build.py кладёт их в data-trips у блока карты).
+  // «Поездки по порядку»: шаг — одна поездка из data/trips.json (build.py кладёт их в data-trips у блока карты).
   // Регионы поездки загораются вместе. Дом и регионы без поездки в списке горят с первого шага.
   var steps = JSON.parse(box.dataset.trips || '[]');
   var N = steps.length;                     // значение ползунка N = «все поездки»
@@ -303,21 +303,38 @@
     syncFav();
     track.value = idx; tall.hidden = idx >= N;
     playBtn.classList.toggle('playing', playing);
-    playBtn.setAttribute('aria-label', playing ? 'Путь по годам: пауза' : 'Путь по годам: воспроизвести');
+    playBtn.setAttribute('aria-label', playing ? 'Поездки по порядку: пауза' : 'Поездки по порядку: воспроизвести');
     mapdate.hidden = !trip;
     document.getElementById('tprev').disabled = idx <= 0;
     document.getElementById('tnext').disabled = idx >= N;
-    if (!trip) { tdate.textContent = 'Все поездки'; tnote.textContent = 'На карте все посещённые регионы.'; if (!picked) card.innerHTML = hint; return; }
+    var chain = document.getElementById('tchain');
+    if (!trip) {
+      tdate.textContent = 'Все поездки'; tnote.textContent = 'На карте все посещённые регионы.'; tnote.hidden = false;
+      chain.hidden = true; chain.innerHTML = '';
+      if (!picked) card.innerHTML = hint; return;
+    }
     var shown = items.filter(function (li) { return isOn(li, cur); }).length;
     var a = trip[0].split('-');
     mapdate.textContent = MON1[a[1] - 1] + ' ' + a[0];
     var sm = document.createElement('small'); sm.textContent = shown + ' из ' + total + ' регионов';
     mapdate.appendChild(sm);
-    tdate.textContent = span(trip[0], trip[1]);
-    tnote.textContent = 'Поездка ' + (cur + 1) + ' из ' + N + ': ' + trip[2].join(' → ');
-    show(trip[2][0]);
-    var extra = trip[2].slice(1).map(nameOf);
-    if (extra.length) { var s = card.querySelector('small'); if (s) s.textContent += ' · ещё: ' + extra.join(', '); }
+    // Подпись шага — про поездку целиком: номер и даты крупно, ниже регионы по порядку, каждый — ссылка на отчёт
+    tdate.textContent = 'Поездка ' + (cur + 1) + ' из ' + N + ' · ' + span(trip[0], trip[1]);
+    var li0 = byCode[trip[2][0]], tr = li0 && TR[li0.dataset.tr];
+    tnote.textContent = tr ? 'Туда ' + tr.text : '';
+    tnote.hidden = !tr;
+    chain.innerHTML = '';
+    trip[2].forEach(function (c, i) {
+      if (i) { var ar = document.createElement('span'); ar.className = 'ar'; ar.setAttribute('aria-hidden', 'true'); ar.textContent = '→'; chain.appendChild(ar); }
+      var href = linkOf(c), el = document.createElement(href ? 'a' : 'span');
+      if (href) el.href = href;
+      el.className = 'st';
+      var b = document.createElement('b'); b.textContent = c;
+      el.appendChild(b); el.appendChild(document.createTextNode(nameOf(c)));
+      chain.appendChild(el);
+    });
+    chain.hidden = false;
+    if (!picked) card.innerHTML = hint;
   }
   function okFilter(el) {
     var li = byCode[el.dataset.code];          // у контура на карте строки поиска нет — берётся из строки списка
