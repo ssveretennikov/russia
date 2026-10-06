@@ -47,7 +47,7 @@
 
 /* ---------- просмотр фото: клик, стрелки, свайп, Esc ---------- */
 (function () {
-  var imgs = [].slice.call(document.querySelectorAll('.ph img'));
+  var imgs = [].slice.call(document.querySelectorAll('.ph img:not(.cover-bg)'));   // размытая подложка обложки — не кадр
   if (!imgs.length) return;
   var box = document.createElement('div');
   box.className = 'lb'; box.hidden = true;
@@ -114,4 +114,20 @@
     if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(cur + (dx < 0 ? 1 : -1));
   }, { passive: true });
   box.addEventListener('touchmove', function (e) { e.preventDefault(); }, { passive: false });   // страница под окном не прокручивается
+})();
+
+/* Шапка-обложка: маршрут на телефоне прокручивается вбок. Край строки, за которым есть продолжение, уходит
+   в прозрачность (классы scrolled / at-end); если строка длиннее экрана, её можно прокрутить и с клавиатуры. */
+(function () {
+  var r = document.querySelector('.under .route');
+  if (!r) return;
+  function sync() {
+    var scrolls = r.scrollWidth > r.clientWidth + 1;
+    if (scrolls) r.tabIndex = 0; else r.removeAttribute('tabindex');
+    r.classList.toggle('scrolled', scrolls && r.scrollLeft > 2);
+    r.classList.toggle('at-end', !scrolls || r.scrollLeft + r.clientWidth >= r.scrollWidth - 2);
+  }
+  r.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync);
+  sync();
 })();

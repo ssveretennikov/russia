@@ -488,9 +488,46 @@ def inject_data(slug, src):
     src = re.sub(r'src="media/([^"]+\.mp4)"', video, src)
     return src
 
+def cover_head(src):
+    """Шапка-обложка (решение автора 06.10.2026, вариант А): главное фото первым во всю ширину, код и название
+    поверх нижней части кадра, остальное — под кадром. Исходники src/*.html остаются «анкетой» (код, название,
+    места, крючок, паспорт, маршрут, фото) — их 90 и они содержание, а не вёрстка; перестановка делается здесь.
+    Если шапка исходника устроена иначе и какой-то части нет — ошибка сборки, а не молча кривая страница."""
+    m = re.search(r'<header class="reg-head">(.*?)</header>', src, re.S)
+    if not m: raise ValueError('в исходнике нет <header class="reg-head">')
+    h = m.group(1)
+    def part(rx, name):
+        mm = re.search(rx, h, re.S)
+        if not mm: raise ValueError(f'в шапке исходника нет части «{name}»')
+        return mm
+    code = part(r'<span class="code"[^>]*>.*?</span>', 'код').group(0)
+    h1 = part(r'<h1>(.*?)</h1>', 'название')
+    places = part(r'<div class="reg-places">.*?</div>', 'места').group(0)
+    hook = part(r'<p class="hook">.*?</p>', 'крючок').group(0)
+    passport = part(r'<dl class="passport">.*?</dl>', 'паспорт').group(0)
+    route = part(r'<ol class="route"[^>]*>.*?</ol>', 'маршрут').group(0)
+    fig = part(r'<figure class="hero-ph"([^>]*)>\s*<div class="ph"><img ([^>]*)></div>\s*(<figcaption>.*?</figcaption>)\s*</figure>', 'главный кадр')
+    fig_attrs, img_attrs, caption = fig.groups()
+    w = re.search(r'width="(\d+)"', img_attrs); hh = re.search(r'height="(\d+)"', img_attrs)
+    portrait = bool(w and hh and int(w.group(1)) < int(hh.group(1)))
+    img_src = re.search(r'src="([^"]+)"', img_attrs).group(1)
+    # вертикальный кадр в широкую полосу не режем: он целиком, а поля по бокам — его же размытая копия.
+    # Копия — отдельная картинка, а не url() в стилях: адрес в style="" считался бы от series.css в корне сайта
+    ph = (f'<div class="ph"><img class="cover-bg" src="{img_src}" alt="" aria-hidden="true">' if portrait else '<div class="ph">')
+    # на узком телефоне кегль названия подбирается так, чтобы самое длинное слово встало в строку целиком
+    longest = max(len(wd) for wd in re.sub(r'<[^>]+>', '', h1.group(1)).split()) if h1.group(1).strip() else 1
+    head = (f'<header class="reg-head cover-head">\n'
+            f'  <figure class="hero-ph cover{" portrait" if portrait else ""}"{fig_attrs}>\n'
+            f'    {ph}<img fetchpriority="high" {img_attrs}></div>\n'
+            f'    <div class="reg-id" style="--nw:{longest}">\n      {code}\n      <h1>{h1.group(1)}</h1>\n    </div>\n'
+            f'    {caption}\n  </figure>\n'
+            f'  <div class="under">\n    {places}\n    {hook}\n    {passport}\n    {route}\n  </div>\n'
+            f'</header>')
+    return src[:m.start()] + head + src[m.end():]
+
 def region_body(code, prev=None, nxt=None):
     """prev / nxt — соседи ПО МАРШРУТУ ПОЕЗДКИ: (код, название, ссылка, подпись) или None."""
-    src = inject_data(code, open(os.path.join(ROOT, 'src', f'{code}.html'), encoding='utf-8').read())
+    src = cover_head(inject_data(code, open(os.path.join(ROOT, 'src', f'{code}.html'), encoding='utf-8').read()))
     top = ('<nav class="topbar"><a href="../index.html">← Все регионы</a>'
            '<div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button>'
            '<button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>')
@@ -502,7 +539,7 @@ def region_body(code, prev=None, nxt=None):
         b = code_badge(c)
         return f'<a class="{cls}" href="{e(link)}">' + (b + txt if cls == 'prev' else txt + b) + '</a>'
     pager = '<nav class="pager" aria-label="Соседние регионы по маршруту">' + pl(prev, 'prev') + pl(nxt, 'next') + '</nav>'
-    return f'<div class="page">\n{top}\n{src}\n{pager}\n</div>'
+    return f'<div class="page page-cover">\n{top}\n{src}\n{pager}\n</div>'
 
 def meta_tags(title, desc, path, image):
     """Ссылки для пересылки (Open Graph) и значок. path — адрес страницы от корня сайта: '' или '49-magadan/'."""

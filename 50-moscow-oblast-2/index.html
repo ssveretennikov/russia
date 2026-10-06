@@ -25,22 +25,25 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=88797b1d">
+<link rel="stylesheet" href="../series.css?v=690f2df7">
 <style>:root{--reg:#8A6E38;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C7AC75;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C7AC75;--reg-ink:#14100A}</style>
 </head>
 <body>
-<div class="page">
+<div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
-<header class="reg-head">
-  <div class="reg-id">
-    <span class="code" aria-label="Код региона 50">50</span>
-    <div class="reg-name">
+<header class="reg-head cover-head">
+  <figure class="hero-ph cover" id="P206">
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Мужчина в кадре, за ним вертолёт Ми-26 с красной звездой на открытой площадке"></div>
+    <div class="reg-id" style="--nw:10">
+      <span class="code" aria-label="Код региона 50">50</span>
       <h1>Московская область</h1>
-      <div class="reg-places">Кубинка · парк «Патриот»</div>
     </div>
-  </div>
-  <p class="hook">Храм с витражами, музей с тёмными залами, немецкие танки в павильоне и вертолёт Ми-26 на открытой площадке. Всё в одном парке, за один день.</p>
-  <dl class="passport">
+    <figcaption><time>17:40</time>Рядом с Ми-26. Он крупнее всего, что стоит вокруг.</figcaption>
+  </figure>
+  <div class="under">
+    <div class="reg-places">Кубинка · парк «Патриот»</div>
+    <p class="hook">Храм с витражами, музей с тёмными залами, немецкие танки в павильоне и вертолёт Ми-26 на открытой площадке. Всё в одном парке, за один день.</p>
+    <dl class="passport">
     <div><dt>Когда</dt><dd>23 апреля 2023</dd></div>
     <div><dt>Сколько</dt><dd>1 день</dd></div>
     <div><dt>Время</dt><dd>МСК</dd></div>
@@ -48,13 +51,10 @@
     <div><dt>Снято</dt><dd>126 фото, 8 видео</dd></div>
     <div><dt>Оценка</dt><dd>✓ был</dd></div>
   </dl>
-  <ol class="route" aria-label="Маршрут дня">
+    <ol class="route" aria-label="Маршрут дня">
     <li>Подольск</li><li class="here">Парк «Патриот»</li>
   </ol>
-  <figure class="hero-ph" id="P206">
-    <div class="ph"><img src="media/hero.webp" width="2200" height="1650" alt="Мужчина в кадре, за ним вертолёт Ми-26 с красной звездой на открытой площадке"></div>
-    <figcaption><time>17:40</time>Рядом с Ми-26. Он крупнее всего, что стоит вокруг.</figcaption>
-  </figure>
+  </div>
 </header>
 
 <article class="story">
@@ -212,6 +212,6 @@
 
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../50-moscow-oblast/index.html"><span class="code">50</span><span><small>Предыдущая часть</small>Московская область · Подольск</span></a><a class="next" href="../index.html"><span>Все регионы</span></a></nav>
 </div>
-<script src="../series.js?v=491ada4f"></script>
+<script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>
