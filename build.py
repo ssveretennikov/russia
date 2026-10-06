@@ -16,9 +16,11 @@ import hashlib
 VER = {n: hashlib.md5(t.encode('utf-8')).hexdigest()[:8] for n, t in (('css', CSS), ('js', JS), ('map', MAPJS))}
 # Шрифты — в fonts/ на сайте, правила @font-face в series.css. Здесь только предзагрузка двух файлов, нужных
 # с первого экрана (кириллица текста и заголовков): браузер начнёт качать их, не дожидаясь разбора стилей.
+# Латиница тоже нужна с первого экрана: цифры кодов, дат и чисел лежат в латинском наборе; Oswald — подписи шапки.
+# Пять файлов, около 150 КБ, — те же, что страница всё равно скачает, только раньше.
 def fonts(up):
-    return ''.join(f'<link rel="preload" href="{up}fonts/{f}-cyrillic.woff2" as="font" type="font/woff2" crossorigin>'
-                   for f in ('golos-text', 'unbounded'))
+    return ''.join(f'<link rel="preload" href="{up}fonts/{f}.woff2" as="font" type="font/woff2" crossorigin>'
+                   for f in ('unbounded-cyrillic', 'unbounded-latin', 'golos-text-cyrillic', 'golos-text-latin', 'oswald-cyrillic'))
 SERIES_TITLE = 'Россия: регион за регионом'   # рабочее название серии, меняется здесь
 SITE = 'https://ssveretennikov.github.io/russia/'   # адрес сайта; от него считаются ссылки для пересылки
 # Ролики лежат на отдельном сайте (репозиторий russia-video): GitHub Pages даёт 1 ГБ на сайт, а видео одно весит почти столько.
@@ -518,6 +520,28 @@ def profile_svg(slug):
     out.append('</svg>')
     return '\n'.join(out)
 
+# Ширина кадра на экране по виду фигуры — по раскладке series.css: медиа до 74rem (1184 px) на компьютере
+# и до 62rem между 640 и 900 px, текст 42rem, ряд — половина; на телефоне всё во всю ширину.
+SIZES = {'wide': '(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px',
+         'col': '(max-width: 640px) 100vw, 672px',
+         'row': '(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px',
+         'hero': '100vw'}
+
+def mobile_srcset(slug, fig, inner):
+    """Если рядом с media/x.webp лежит копия для телефона x.m.webp (tools/media.py mobile), картинке
+    добавляются srcset и sizes: телефон берёт копию в 1080 px, компьютер — оригинал. src остаётся оригиналом —
+    его открывает лайтбокс."""
+    cls = re.search(r'class="([^"]*)"', fig)
+    cls = cls.group(1).split() if cls else []
+    kind = 'hero' if 'hero-ph' in cls else 'wide' if 'wide' in cls else 'col' if ('mid' in cls or 'tall' in cls) else 'row'
+    def one(m):
+        tag = m.group(0)
+        s = re.search(r'src="media/([^"]+)\.webp"', tag); w = re.search(r'width="(\d+)"', tag)
+        if not s or not w or 'srcset=' in tag: return tag
+        if not os.path.exists(os.path.join(ROOT, slug, 'media', s.group(1) + '.m.webp')): return tag
+        return tag.replace(s.group(0), s.group(0) + f' srcset="media/{s.group(1)}.m.webp 1080w, media/{s.group(1)}.webp {w.group(1)}w" sizes="{SIZES[kind]}"', 1)
+    return re.sub(r'<img [^>]*>', one, inner)
+
 def inject_data(slug, src):
     """Подставляет карту дня, профиль высоты и реальные размеры картинок из regions/<slug>/media.tsv."""
     def dm(m):
@@ -540,11 +564,15 @@ def inject_data(slug, src):
                 w, h = dims[name]; return f'{m.group(1)}width="{w}" height="{h}"'
             return m.group(0)
         src = re.sub(r'(src="media/([^"]+)" )width="\d+" height="\d+"', fix, src)
+    src = re.sub(r'(<figure\b[^>]*>)(.*?)(</figure>)', lambda m: m.group(1) + mobile_srcset(slug, m.group(1), m.group(2)) + m.group(3), src, flags=re.S)
     # ролик — с отдельного сайта; обложка (poster) остаётся в media/ рядом со страницей
     def video(m):
         VIDEO_USED.append((slug, m.group(1)))
         return f'src="{VIDEO_BASE}{slug}/{m.group(1)}"'
     src = re.sub(r'src="media/([^"]+\.mp4)"', video, src)
+    # ролик и его обложка не качаются, пока до них не докрутили: preload="none", а poster подставляет
+    # series.js у края окна (атрибут poster браузер грузит сразу, даже у ролика в конце страницы)
+    src = re.sub(r'<video [^>]*>', lambda m: m.group(0).replace('preload="metadata"', 'preload="none"').replace(' poster="', ' data-poster="'), src)
     return src
 
 def cover_head(src):
@@ -570,9 +598,10 @@ def cover_head(src):
     w = re.search(r'width="(\d+)"', img_attrs); hh = re.search(r'height="(\d+)"', img_attrs)
     portrait = bool(w and hh and int(w.group(1)) < int(hh.group(1)))
     img_src = re.search(r'src="([^"]+)"', img_attrs).group(1)
+    ss = ''.join(re.findall(r' (?:srcset|sizes)="[^"]*"', ' ' + img_attrs))   # размытой копии — тот же файл, что главному кадру
     # вертикальный кадр в широкую полосу не режем: он целиком, а поля по бокам — его же размытая копия.
     # Копия — отдельная картинка, а не url() в стилях: адрес в style="" считался бы от series.css в корне сайта
-    ph = (f'<div class="ph"><img class="cover-bg" src="{img_src}" alt="" aria-hidden="true">' if portrait else '<div class="ph">')
+    ph = (f'<div class="ph"><img class="cover-bg" src="{img_src}"{ss} alt="" aria-hidden="true">' if portrait else '<div class="ph">')
     # на узком телефоне кегль названия подбирается так, чтобы самое длинное слово встало в строку целиком
     longest = max(len(wd) for wd in re.sub(r'<[^>]+>', '', h1.group(1)).split()) if h1.group(1).strip() else 1
     head = (f'<header class="reg-head cover-head">\n'
@@ -756,6 +785,12 @@ def doc(title, body, depth, inline, reg_color=None, meta=''):
     light, dark = ('#1F6FE5', '#2A63C4') if 'ix-page' in body else ('#F1F2EE', '#101315')
     meta += (f'\n<meta name="theme-color" content="{light}" media="(prefers-color-scheme: light)">'
              f'\n<meta name="theme-color" content="{dark}" media="(prefers-color-scheme: dark)">')
+    # главный кадр региона браузер начинает качать сразу, не дожидаясь стилей: он — самое крупное на первом экране
+    hero = re.search(r'<img fetchpriority="high" ([^>]*)>', body)
+    if hero:
+        a = dict(re.findall(r'\b(src|srcset|sizes)="([^"]*)"', hero.group(1)))
+        meta += (f'\n<link rel="preload" as="image" href="{a["src"]}" fetchpriority="high"'
+                 + (f' imagesrcset="{a["srcset"]}" imagesizes="{a["sizes"]}"' if 'srcset' in a else '') + '>')
     if 'ix-page' in body:                      # главная: карта и фильтры
         script += f'\n<script>\n{MAPJS}\n</script>' if inline else f'\n<script src="{up}map.js?v={VER["map"]}"></script>'
     return (f'<!doctype html>\n<html lang="ru">\n<head>\n<meta charset="utf-8">\n'

@@ -31,6 +31,7 @@ except Exception:
 ROOT = Path(__file__).resolve().parent.parent
 PHOTO_EXT = {'.jpg', '.jpeg', '.png'} | ({'.heic'} if HEIC else set())
 VIDEO_EXT = {'.mp4', '.mov', '.m4v'}
+MOBILE_W = 1080      # ширина копии фото для телефона (*.m.webp)
 WEBP_Q = 76          # качество фото на сайте; на глаз не отличить от JPEG 80, файлы легче примерно на 25–30%
 # Ролики лежат не на основном сайте, а в отдельном репозитории russia-video (папка рядом со скриптами, в git основного
 # сайта не идёт): GitHub Pages даёт 1 ГБ на сайт, а одно видео весит почти столько же. Обложки роликов остаются в <регион>/media/.
@@ -367,11 +368,34 @@ def cmd_export(a):
             p = probe(str(dst)); rows.append([name, mid, str(p['w']), str(p['h']), meta[2]])
         print(*rows[-1])
     if not only_video:
+        cmd_mobile(a)   # копии для телефона — сразу, чтобы новый регион не остался без них
         (rdir(a.region) / 'media.tsv').write_text('name\tid\tw\th\ttaken\n' + '\n'.join('\t'.join(r) for r in rows), encoding='utf-8')
     total = sum(f.stat().st_size for f in out.iterdir()) / 2 ** 20
     vtotal = sum(f.stat().st_size for f in vout.iterdir()) / 2 ** 20 if vout.is_dir() else 0
     print(f'готово: {len(rows)} файлов, {total:.0f} МБ в {out}' + (f', ролики {vtotal:.0f} МБ в {vout}' if vtotal else ''))
     if failed: sys.exit('не выгружены ролики: ' + ', '.join(failed))   # ненулевой код: publish.py не станет выкладывать страницу без роликов
+
+
+def cmd_mobile(a):
+    """Копия фото для телефона: <имя>.m.webp шириной MOBILE_W рядом с <имя>.webp, если оригинал шире.
+    Телефону 375 px с плотностью 2 хватает 750–1080 px, а оригинал до 2200 px весит втрое больше.
+    Страница отдаёт копию через srcset (build.py), лайтбокс открывает оригинал. Свежая копия не пересчитывается."""
+    regs = [a.region] if getattr(a, 'region', None) else sorted(d.name for d in ROOT.iterdir() if (d / 'media').is_dir() and re.match(r'\d', d.name))
+    made = skip = 0; size = 0
+    for r in regs:
+        for f in sorted((ROOT / r / 'media').glob('*.webp')):
+            if f.name.endswith('.m.webp'): continue
+            dst = f.with_name(f.stem + '.m.webp')
+            with Image.open(f) as im:
+                if im.width <= MOBILE_W:
+                    if dst.exists(): dst.unlink()   # оригинал стал узким — копия лишняя
+                    continue
+                if dst.exists() and dst.stat().st_mtime >= f.stat().st_mtime:
+                    skip += 1; size += dst.stat().st_size; continue
+                im = im.convert('RGB'); im = im.resize((MOBILE_W, round(im.height * MOBILE_W / im.width)), Image.LANCZOS)
+                im.save(dst, 'WEBP', quality=WEBP_Q, method=6)
+            made += 1; size += dst.stat().st_size
+    print(f'копии для телефона: новых {made}, свежих {skip}, всего {size / 2**20:.0f} МБ')
 
 
 def cmd_webp(a):
@@ -402,6 +426,7 @@ def main():
     p = sp.add_parser('vstrip'); p.add_argument('region'); p.add_argument('vid'); p.add_argument('--n', type=int, default=10); p.set_defaults(fn=cmd_vstrip)
     p = sp.add_parser('cands'); p.add_argument('region'); p.set_defaults(fn=cmd_cands)
     p = sp.add_parser('export'); p.add_argument('region'); p.add_argument('--video-only', action='store_true'); p.set_defaults(fn=cmd_export)
+    p = sp.add_parser('mobile'); p.add_argument('region', nargs='?'); p.set_defaults(fn=cmd_mobile)
     p = sp.add_parser('webp'); p.add_argument('region'); p.set_defaults(fn=cmd_webp)
     a = ap.parse_args(); a.fn(a)
 
