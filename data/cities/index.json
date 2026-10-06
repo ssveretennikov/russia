@@ -1,0 +1,233 @@
+{
+"01-adygeya": [
+"R3441283.geojson"
+],
+"02-bashkortostan": [
+"R1549169.geojson"
+],
+"03-buryatia": [
+"R1979944.geojson"
+],
+"04-altai-republic": [
+"R1875749.geojson"
+],
+"08-kalmykia": [
+"R10241972.geojson"
+],
+"10-karelia": [
+"R1701311.geojson",
+"R1468104.geojson"
+],
+"11-komi": [
+"R3404703.geojson"
+],
+"12-mari-el": [
+"R2635526.geojson"
+],
+"13-mordovia": [
+"R2307824.geojson"
+],
+"14-mirny": [
+"R5387995.geojson",
+"R5325621.geojson"
+],
+"14-yakutia": [
+"R5325621.geojson"
+],
+"16-tatarstan": [
+"R3437391.geojson"
+],
+"17-tuva": [
+"R3511787.geojson"
+],
+"18-udmurtia": [
+"R1670935.geojson"
+],
+"19-khakassia": [
+"R2168517.geojson"
+],
+"21-chuvashia": [
+"R3374548.geojson"
+],
+"22-altai-krai": [
+"R1701916.geojson",
+"R1550512.geojson"
+],
+"23-krasnodar": [
+"R7373058.geojson"
+],
+"24-krasnoyarsk": [
+"R1430616.geojson"
+],
+"26-stavropol": [
+"R6712557.geojson"
+],
+"27-khabarovsk": [
+"R2049848.geojson"
+],
+"28-amur": [
+"R2049858.geojson"
+],
+"30-astrakhan": [
+"R1853866.geojson"
+],
+"33-vladimir": [
+"R1991003.geojson"
+],
+"34-volgograd": [
+"R3374767.geojson"
+],
+"36-voronezh": [
+"R3536492.geojson"
+],
+"37-ivanovo": [
+"R389790.geojson"
+],
+"38-irkutsk": [
+"R1430614.geojson"
+],
+"39-kaliningrad": [
+"R1674442.geojson"
+],
+"41-kamchatka": [
+"R4139922.geojson",
+"R4139914.geojson"
+],
+"42-kemerovo": [
+"R1312868.geojson"
+],
+"43-kirov": [
+"R2383150.geojson"
+],
+"44-kostroma": [
+"R3536487.geojson"
+],
+"45-kurgan": [
+"R4676636.geojson"
+],
+"46-kursk": [
+"R3348896.geojson"
+],
+"47-leningrad": [
+"R312144.geojson"
+],
+"48-lipetsk": [
+"R3134925.geojson"
+],
+"49-magadan": [
+"R2621518.geojson",
+"R7619051.geojson"
+],
+"50-moscow-oblast": [
+"R1697322.geojson",
+"R2555133.geojson"
+],
+"51-murmansk": [
+"R3374641.geojson"
+],
+"52-nizhny-novgorod": [
+"R1752948.geojson"
+],
+"53-novgorod": [
+"R3396084.geojson"
+],
+"54-novosibirsk": [
+"R366544.geojson"
+],
+"55-omsk": [
+"R3442814.geojson"
+],
+"56-orenburg": [
+"W166155507.geojson"
+],
+"58-penza": [
+"R2552696.geojson"
+],
+"59-perm": [
+"R3437213.geojson"
+],
+"60-pskov": [
+"R1306984.geojson"
+],
+"62-ryazan": [
+"R1782722.geojson"
+],
+"63-samara": [
+"R3368701.geojson"
+],
+"64-saratov": [
+"R3955288.geojson"
+],
+"65-sakhalin": [
+"R2048160.geojson"
+],
+"66-sverdlovsk": [
+"R6564910.geojson"
+],
+"67-smolensk": [
+"R3339993.geojson"
+],
+"68-tambov": [
+"R4637058.geojson"
+],
+"69-tver": [
+"R930950.geojson"
+],
+"70-tomsk": [
+"R7261645.geojson"
+],
+"72-tobolsk": [
+"R3348770.geojson",
+"R2049854.geojson"
+],
+"72-tyumen": [
+"R2049854.geojson",
+"R3348770.geojson"
+],
+"73-ulyanovsk": [
+"R2049867.geojson"
+],
+"74-chelyabinsk": [
+"R4442556.geojson"
+],
+"75-zabaykalsky": [
+"R2637037.geojson"
+],
+"76-yaroslavl": [
+"R1432255.geojson",
+"R1701435.geojson"
+],
+"77-moscow-3": [
+"R2555133.geojson"
+],
+"78-spb-month": [
+"R421007.geojson"
+],
+"79-jewish-ao": [
+"R2048099.geojson"
+],
+"83-nenets": [
+"R1430336.geojson"
+],
+"86-khanty-mansi": [
+"R2339614.geojson"
+],
+"87-chukotka": [
+"R1957550.geojson"
+],
+"89-yamal": [
+"R13264489.geojson"
+],
+"91-krym": [
+"R3030295.geojson",
+"R4655546.geojson",
+"R3741133.geojson"
+],
+"92-sevastopol": [
+"R3030976.geojson",
+"R4656110.geojson"
+],
+"25-primorye": [
+"R1704857.geojson"
+]
+}
