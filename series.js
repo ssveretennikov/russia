@@ -95,12 +95,12 @@
     cur = (i + imgs.length) % imgs.length;
     var im = imgs[cur];
     resetZoom();
-    pic.src = im.currentSrc || im.src; pic.alt = im.alt;
+    pic.src = im.src; pic.alt = im.alt;   // src — оригинал; в ленте на телефоне показана копия из srcset (currentSrc)
     cap.textContent = caption(im);
     cnt.textContent = (cur + 1) + ' / ' + imgs.length;
     live.textContent = (cur + 1) + ' из ' + imgs.length + (cap.textContent ? ' · ' + cap.textContent : '');
     [cur - 1, cur + 1].forEach(function (k) {            // соседние кадры подгружаем заранее
-      var n = imgs[(k + imgs.length) % imgs.length]; if (n) new Image().src = n.currentSrc || n.src;
+      var n = imgs[(k + imgs.length) % imgs.length]; if (n) new Image().src = n.src;
     });
   }
   function open(i, from) {
@@ -278,4 +278,15 @@
     setTimeout(function () { row.classList.remove('back-hl'); }, 2600);
   }
   if (document.readyState === 'complete') go(); else window.addEventListener('load', go);
+})();
+
+/* Скорость: обложка ролика (data-poster) ставится, когда ролик подходит к окну, — до этого она не качается */
+(function () {
+  var vs = document.querySelectorAll('video[data-poster]');
+  function put(v) { v.poster = v.getAttribute('data-poster'); v.removeAttribute('data-poster'); }
+  if (!('IntersectionObserver' in window)) { vs.forEach(put); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (en) { if (en.isIntersecting) { put(en.target); io.unobserve(en.target); } });
+  }, { rootMargin: '600px 0px' });
+  vs.forEach(function (v) { io.observe(v); });
 })();

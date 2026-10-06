@@ -23,8 +23,9 @@
 <meta name="twitter:image" content="https://ssveretennikov.github.io/russia/56-orenburg/og.jpg">
 <meta name="theme-color" content="#F1F2EE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
+<link rel="preload" as="image" href="media/hero.webp" fetchpriority="high" imagesrcset="media/hero.m.webp 1080w, media/hero.webp 2200w" imagesizes="100vw">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/oswald-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../series.css?v=866b6051">
 <style>:root{--reg:#696A2C;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C4C775;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C4C775;--reg-ink:#14100A}</style>
 </head>
@@ -34,7 +35,7 @@
 <div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P027">
-    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: белая ротонда-смотровая над рекой, от неё уходит центральная улица с памятником и старыми зданиями"></div>
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" srcset="media/hero.m.webp 1080w, media/hero.webp 2200w" sizes="100vw" width="2200" height="1238" alt="Вид с дрона: белая ротонда-смотровая над рекой, от неё уходит центральная улица с памятником и старыми зданиями"></div>
     <div class="reg-id" style="--nw:12">
       <span class="code" aria-label="Код региона 56">56</span>
       <h1>Оренбургская область</h1>
@@ -118,16 +119,16 @@
   <h2 id="g2">Родина с высоты, на которой я её никогда не видел</h2>
   <p>Дрон поднялся в сумерках, после девяти вечера. Я знал тут каждую улицу ногами, а сверху увидел впервые: крыши, огороды, пойма с водой за околицей. Людей в кадре нет, и это правильно, они все дома.</p>
   <figure class="wide">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-derevnya.jpg" src="https://ssveretennikov.github.io/russia-video/56-orenburg/v-dron-derevnya.mp4" width="1280" height="720"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-dron-derevnya.jpg" src="https://ssveretennikov.github.io/russia-video/56-orenburg/v-dron-derevnya.mp4" width="1280" height="720"></video></div>
     <figcaption><time>≈21:18</time>Пролёт над центральной улицей. Дорога грунтовая, фонари уже горят, и всё это я помню с другой высоты, примерно с метра.</figcaption>
   </figure>
   <div class="row">
     <figure id="P010">
-      <div class="ph"><img src="media/dron-ulica.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: сельская улица с рядом одноэтажных домов и грунтовой дорогой в сумерках"></div>
+      <div class="ph"><img src="media/dron-ulica.webp" srcset="media/dron-ulica.m.webp 1080w, media/dron-ulica.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="2000" height="1125" loading="lazy" alt="Вид с дрона: сельская улица с рядом одноэтажных домов и грунтовой дорогой в сумерках"></div>
       <figcaption><time>21:21</time>Центральная улица. Та самая, по которой ходили в школу и из школы.</figcaption>
     </figure>
     <figure id="P007">
-      <div class="ph"><img src="media/dron-zakat.webp" width="2000" height="1125" loading="lazy" alt="Закат над тёмной поймой с речкой и разливом воды, вид с высоты"></div>
+      <div class="ph"><img src="media/dron-zakat.webp" srcset="media/dron-zakat.m.webp 1080w, media/dron-zakat.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="2000" height="1125" loading="lazy" alt="Закат над тёмной поймой с речкой и разливом воды, вид с высоты"></div>
       <figcaption><time>21:18</time>«Гора» и пойма за ней. Место, где прошло детство, с той стороны, с которой его видят только птицы.</figcaption>
     </figure>
   </div>
@@ -138,7 +139,7 @@
   <h2 id="g3">Оренбург пешком: Советская</h2>
   <p>Утро началось на вокзале, где за ограждением стоял паровоз и целая платформа народу на него смотрела. Дальше пешком по центру. Двор ТИЦ, граффити, карты на стенах и бесконечная Советская, на которой памятники стоят через каждые сто метров.</p>
   <figure class="mid" id="P011">
-    <div class="ph"><img src="media/parovoz.webp" width="1600" height="1200" loading="lazy" alt="Чёрный паровоз за белым ограждением на платформе, перед ним толпа зрителей"></div>
+    <div class="ph"><img src="media/parovoz.webp" srcset="media/parovoz.m.webp 1080w, media/parovoz.webp 1600w" sizes="(max-width: 640px) 100vw, 672px" width="1600" height="1200" loading="lazy" alt="Чёрный паровоз за белым ограждением на платформе, перед ним толпа зрителей"></div>
     <figcaption><time>10:43</time>Паровоз на вокзале. Вокруг больше людей, чем я потом видел на всей Советской.</figcaption>
   </figure>
   <div class="row narrow">
@@ -153,11 +154,11 @@
   </div>
   <div class="row">
     <figure id="P021">
-      <div class="ph"><img src="media/donoram.webp" width="1600" height="1200" loading="lazy" alt="Золотой монумент в виде ладони с каплей на чёрном постаменте, вокруг деревья"></div>
+      <div class="ph"><img src="media/donoram.webp" srcset="media/donoram.m.webp 1080w, media/donoram.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Золотой монумент в виде ладони с каплей на чёрном постаменте, вокруг деревья"></div>
       <figcaption><time>12:26</time>Памятник донорам на Советской. Рука, капля, спасибо.</figcaption>
     </figure>
     <figure id="P036">
-      <div class="ph"><img src="media/uchitelnica.webp" width="1600" height="1200" loading="lazy" alt="Бронзовая скульптура женщины с группой детей на площадке перед серой стеной"></div>
+      <div class="ph"><img src="media/uchitelnica.webp" srcset="media/uchitelnica.m.webp 1080w, media/uchitelnica.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Бронзовая скульптура женщины с группой детей на площадке перед серой стеной"></div>
       <figcaption><time>13:17</time>Памятник первой учительнице. Дети бронзовые, но стоят как настоящие: кто куда.</figcaption>
     </figure>
   </div>
@@ -173,11 +174,11 @@
   </div>
   <div class="row">
     <figure id="P039">
-      <div class="ph"><img src="media/teatr.webp" width="1600" height="1200" loading="lazy" alt="Здание театра с куполом и колоннами, перед ним улица с машинами и провода"></div>
+      <div class="ph"><img src="media/teatr.webp" srcset="media/teatr.m.webp 1080w, media/teatr.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Здание театра с куполом и колоннами, перед ним улица с машинами и провода"></div>
       <figcaption><time>13:30</time>Драматический театр. Скульптуры рядом с ним я снял раньше, а само здание — только отсюда, через провода.</figcaption>
     </figure>
     <figure id="P040">
-      <div class="ph"><img src="media/derevnya-vorota.webp" width="1200" height="1600" loading="lazy" alt="Кованые чёрные ворота со стендом «Культурный комплекс „Национальная деревня“» на фоне синего неба"></div>
+      <div class="ph"><img src="media/derevnya-vorota.webp" srcset="media/derevnya-vorota.m.webp 1080w, media/derevnya-vorota.webp 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1200" height="1600" loading="lazy" alt="Кованые чёрные ворота со стендом «Культурный комплекс „Национальная деревня“» на фоне синего неба"></div>
       <figcaption><time>13:48</time>Ворота Национальной деревни. Десять подворий за ними, и в каждом кормят по-своему.</figcaption>
     </figure>
   </div>
@@ -187,11 +188,11 @@
   <h2 id="g4">Урал и мост Европа — Азия</h2>
   <p>Набережная, ротонда, лестница вниз и пешеходный мост через Урал с двумя стелами по краям: на одном берегу Европа, на другом Азия. Здесь я и запустил дрон, потому что с земли мост выглядит как мост, а с высоты видно, что это граница частей света.</p>
   <figure class="wide">
-    <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-ural.jpg" src="https://ssveretennikov.github.io/russia-video/56-orenburg/v-dron-ural.mp4" width="1280" height="720"></video></div>
+    <div class="ph"><video controls playsinline preload="none" data-poster="media/v-dron-ural.jpg" src="https://ssveretennikov.github.io/russia-video/56-orenburg/v-dron-ural.mp4" width="1280" height="720"></video></div>
     <figcaption><time>≈12:41</time>Пролёт вдоль моста и поворот к ротонде. Люди на мосту заметили дрон, Урал не заметил.</figcaption>
   </figure>
   <figure class="wide" id="P023">
-    <div class="ph"><img src="media/dron-naberezhnaya.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: река Урал, вдоль неё набережная с песчаным пляжем, за ней здания и купола"></div>
+    <div class="ph"><img src="media/dron-naberezhnaya.webp" srcset="media/dron-naberezhnaya.m.webp 1080w, media/dron-naberezhnaya.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="2000" height="1125" loading="lazy" alt="Вид с дрона: река Урал, вдоль неё набережная с песчаным пляжем, за ней здания и купола"></div>
     <figcaption><time>12:38</time>Набережная и пляж. Вода в мае ещё высокая, песок уже готов.</figcaption>
   </figure>
   <div class="row narrow">
@@ -200,7 +201,7 @@
       <figcaption><time>13:06</time>Мост Европа — Азия снизу. GPS в этой точке показал высоту 0 метров. Думаю, он переволновался.</figcaption>
     </figure>
     <figure id="P031">
-      <div class="ph"><img src="media/most.webp" width="1600" height="1200" loading="lazy" alt="Пешеходный мост с чёрными стелами «Европа» и «Азия» по краям, по нему идут люди"></div>
+      <div class="ph"><img src="media/most.webp" srcset="media/most.m.webp 1080w, media/most.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Пешеходный мост с чёрными стелами «Европа» и «Азия» по краям, по нему идут люди"></div>
       <figcaption><time>12:53</time>Две стелы, два континента, одна прогулка. Из Европы в Азию без визы.</figcaption>
     </figure>
   </div>
@@ -211,15 +212,15 @@
   <h2 id="g5">Башня, будильник и стихи на стене</h2>
   <p>Вечером центр с другой стороны. Водонапорная башня, которую с земли не обойти, с дрона складывается в один кадр с перекрёстком. По дороге попались стихи на стене и памятник будильнику: местное уличное творчество, как я это назвал в статье, и менять не буду.</p>
   <figure class="mid" id="P041">
-    <div class="ph"><img src="media/stihi.webp" width="1600" height="1200" loading="lazy" alt="Жёлтая стена с написанным чёрным маркером стихотворением про апрель и солнце"></div>
+    <div class="ph"><img src="media/stihi.webp" srcset="media/stihi.m.webp 1080w, media/stihi.webp 1600w" sizes="(max-width: 640px) 100vw, 672px" width="1600" height="1200" loading="lazy" alt="Жёлтая стена с написанным чёрным маркером стихотворением про апрель и солнце"></div>
     <figcaption><time>16:57</time>«Мой любимый месяц — апрель». Автор стены ошибся на месяц, но настроение в мае было то же.</figcaption>
   </figure>
   <figure class="wide" id="P042">
-    <div class="ph"><img src="media/dron-bashnya.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: красно-белая водонапорная башня на перекрёстке, вокруг дома и флаги, вдали высотка"></div>
+    <div class="ph"><img src="media/dron-bashnya.webp" srcset="media/dron-bashnya.m.webp 1080w, media/dron-bashnya.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="2000" height="1125" loading="lazy" alt="Вид с дрона: красно-белая водонапорная башня на перекрёстке, вокруг дома и флаги, вдали высотка"></div>
     <figcaption><time>17:10</time>Водонапорная башня. Самое заметное здание в центре, которое никому давно не подаёт воду.</figcaption>
   </figure>
   <figure class="mid" id="P048">
-    <div class="ph"><img src="media/dron-bashnya-krupno.webp" width="2000" height="1125" loading="lazy" alt="Башня с конусной крышей крупно сверху, рядом перекрёсток с машинами и красными флагами"></div>
+    <div class="ph"><img src="media/dron-bashnya-krupno.webp" srcset="media/dron-bashnya-krupno.m.webp 1080w, media/dron-bashnya-krupno.webp 2000w" sizes="(max-width: 640px) 100vw, 672px" width="2000" height="1125" loading="lazy" alt="Башня с конусной крышей крупно сверху, рядом перекрёсток с машинами и красными флагами"></div>
     <figcaption><time>17:14</time>Та же башня сверху. Крыша как у карандаша, перекрёсток как у всех.</figcaption>
   </figure>
   <div class="row narrow">
@@ -228,7 +229,7 @@
       <figcaption><time>17:36</time>Будильник ростом с меня. Показывает без двадцати два, и, судя по виду, показывает давно.</figcaption>
     </figure>
     <figure id="P050">
-      <div class="ph"><img src="media/vecher-reka.webp" width="1600" height="1200" loading="lazy" alt="Берег реки вечером: набережная с фонарями, зелёные деревья на другом берегу"></div>
+      <div class="ph"><img src="media/vecher-reka.webp" srcset="media/vecher-reka.m.webp 1080w, media/vecher-reka.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Берег реки вечером: набережная с фонарями, зелёные деревья на другом берегу"></div>
       <figcaption><time>19:32</time>Урал в половине восьмого. По GPS здесь 103 метра: за день город поднялся со дна реки на целую высотку.</figcaption>
     </figure>
   </div>
@@ -240,7 +241,7 @@
   <p>Накопил много баллов РЖД в этом году и решил потратить их на поездку в СВ. Классно, что ещё и не было попутчика: два места, красные шторы, зеркало и кнопка вызова проводника, которой я так и не воспользовался.</p>
   <div class="row narrow">
     <figure id="P054">
-      <div class="ph"><img src="media/kupe.webp" width="1600" height="1200" loading="lazy" alt="Купе СВ: деревянные панели, красные шторы, круглое зеркало, застеленная полка"></div>
+      <div class="ph"><img src="media/kupe.webp" srcset="media/kupe.m.webp 1080w, media/kupe.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Купе СВ: деревянные панели, красные шторы, круглое зеркало, застеленная полка"></div>
       <figcaption><time>04:36</time>Половина пятого утра. Проснулся, посмотрел на второе пустое место, порадовался и лёг обратно.</figcaption>
     </figure>
     <figure id="P056">
@@ -276,6 +277,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../73-ulyanovsk/index.html"><span class="code">73</span><span><small>Раньше по маршруту</small>Ульяновская область</span></a><a class="next" href="../63-samara/index.html"><span><small>Дальше по маршруту</small>Самарская область</span><span class="code">63</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=9328f84d"></script>
+<script src="../series.js?v=b28c6248"></script>
 </body>
 </html>
