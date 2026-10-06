@@ -302,9 +302,9 @@ def index_body():
   </div>
   <div class="mcard" id="mcard" aria-live="polite"><p class="mhint"><span class="h-mouse">Наведите на регион или нажмите на него.</span><span class="h-touch">Нажмите на регион — появится ссылка на отчёт.</span></p></div>
   <div class="tl" aria-label="Хронология поездок">
-    <div class="tl-ctl"><button type="button" id="tprev" aria-label="Предыдущая поездка">{ICON['prev']}</button><button type="button" class="play" id="play" aria-label="Путь по годам: воспроизвести">{ICON['play']}{ICON['pause']}<span>Путь по годам</span></button><button type="button" id="tnext" aria-label="Следующая поездка">{ICON['next']}</button></div>
+    <div class="tl-ctl"><button type="button" id="tprev" aria-label="Предыдущая поездка">{ICON['prev']}</button><button type="button" class="play" id="play" aria-label="Посмотреть маршрут: воспроизвести">{ICON['play']}{ICON['pause']}<span>Посмотреть маршрут</span></button><button type="button" id="tnext" aria-label="Следующая поездка">{ICON['next']}</button></div>
     <div class="tl-track"><input type="range" id="track" min="0" value="0" aria-label="Поездка на временной шкале"><div class="ruler" id="ruler" aria-hidden="true"></div></div>
-    <div class="tl-read"><strong id="tdate">Все поездки</strong><span id="tnote" aria-live="polite"></span></div>
+    <div class="tl-read" aria-live="polite"><strong id="tdate">Все поездки</strong><span id="tnote"></span><span class="tl-chain" id="tchain" hidden></span></div>
     <button type="button" class="tl-all" id="tall" hidden>Показать весь период</button>
   </div>
 </section>
@@ -912,10 +912,10 @@ PAGES = [
          prev=('87', 'Чукотский автономный округ', '../87-chukotka/index.html', 'Раньше по маршруту'),
          next=('49', 'Магаданская область', '../49-magadan/index.html', 'Дальше по маршруту'), color=None),
     dict(slug='91-krym', title='91 · Республика Крым',
-         prev=None, next=('92', 'Севастополь', '../92-sevastopol/index.html', 'Дальше по маршруту'), color=None),
+         prev=None, next=None, color=None),
     dict(slug='92-sevastopol', title='92 · Севастополь',
-         prev=('91', 'Республика Крым', '../91-krym/index.html', 'Раньше по маршруту'),
-         next=('91', 'Республика Крым · Карадаг', '../91-krym/index.html#g7', 'Дальше по маршруту'), color=None),
+         prev=None,
+         next=None, color=None),
     dict(slug='22-altai-krai', title='22 · Алтайский край',
          prev=None, next=('4', 'Республика Алтай', '../04-altai-republic/index.html', 'Дальше по маршруту'), color=None,
          og='media/most.webp'),
