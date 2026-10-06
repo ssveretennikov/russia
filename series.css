@@ -593,3 +593,35 @@ html{scroll-behavior:smooth}
   .toc-d{font-size:.72rem}
 }
 @media (min-width:1360px) and (prefers-reduced-motion:reduce){.toc{transition:none}}
+/* ===== Раскладка фото: телефон и компьютер ===== */
+/* Заглушка, пока кадр грузится: спокойный серый вместо белого прямоугольника (в обеих темах --line). */
+.ph,.ph img,.ph video{background:var(--line)}
+/* Компьютер: три ширины. Текст — --col; медиа (wide, row, row.narrow) — одна ширина и один левый край; tall и mid — по тексту. */
+.sec > .tall{max-width:var(--col)}
+.sec > .tall .ph,.sec > .tall figcaption{max-width:26rem;margin-inline:auto}
+@media (min-width:900px){
+  :root{--media:74rem}
+  .sec > .wide,.sec > .row,.sec > .row.narrow{max-width:var(--media)}
+  /* Пара вертикальных кадров: ширина такая, чтобы кадр 3:4 не выше окна */
+  .sec > .row.narrow{max-width:min(var(--media),calc(127svh + 1rem))}
+}
+/* Ряды: кадры одной высоты, подписи на одной линии. Единая рамка ряда + object-fit:cover */
+.sec > .row{align-items:stretch}
+.sec > .row figure{display:flex;flex-direction:column;min-width:0}
+.sec > .row .ph{aspect-ratio:4/3}
+.sec > .row .ph img{height:100%;object-fit:cover}
+.sec > .row .ph video{height:100%;object-fit:contain;max-height:none}
+.sec > .row.narrow .ph{aspect-ratio:3/4}
+.sec > .row.narrow .ph img,.sec > .row.narrow .ph video{max-height:none}
+/* Телефон: пары вертикальных кадров остаются рядом; смешанные ряды — столбиком; wide — от края до края */
+@media (max-width:640px){
+  .sec > .row.narrow{grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}
+  .sec > .row.narrow figure{max-width:none}
+  .sec > .row.narrow figcaption{font-size:.85rem;overflow-wrap:anywhere}
+  .sec > .row .ph{aspect-ratio:auto}
+  .sec > .row .ph img,.sec > .row .ph video{height:auto}
+  .sec > .row.narrow .ph{aspect-ratio:3/4}
+  .sec > .row.narrow .ph img,.sec > .row.narrow .ph video{height:100%}
+  .sec > .wide{width:auto;max-width:none;margin-inline:calc(-1 * var(--gutter))}
+  .sec > .wide figcaption{padding-inline:var(--gutter)}
+}
