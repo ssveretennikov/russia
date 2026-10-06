@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#565018;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#D5CA67;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#D5CA67;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P042">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: лесистые холмы до горизонта, вдали город под низкой дождевой тучей"></div>
@@ -78,8 +79,23 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Красноярск</span></a></li>
+    <li><a href="#g2"><span class="toc-d">1 июня · среда</span><span class="toc-t">Деревянный Красноярск</span></a></li>
+    <li><a href="#g3"><span class="toc-d">2 июня · четверг · ночь</span><span class="toc-t">Три процента заряда</span></a></li>
+    <li><a href="#g4"><span class="toc-d">2 июня · утро</span><span class="toc-t">Вокзал и камера хранения</span></a></li>
+    <li><a href="#g5"><span class="toc-d">2 июня · день</span><span class="toc-t">Столбы: вверх</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Инстинкт самосохранения выкл</span></a></li>
+    <li><a href="#g7"><span class="toc-t">Зарядил дождь</span></a></li>
+    <li><a href="#g8"><span class="toc-d">2 июня · 20:18</span><span class="toc-t">Поезд в Абакан</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Красноярск</h2>
+  <h2 id="g1">Три вещи про Красноярск</h2>
   <ul class="facts">
     <li>Коммунальный мост через Енисей нарисован на десятирублёвой купюре. Я сверил: похож</li>
     <li>Красноярские столбы — парк прямо на окраине миллионника. Каждый столб здесь имеет имя, а для альпинистов имя есть у каждой стороны и каждого выступа большого камня</li>
@@ -96,7 +112,7 @@
 
 <section class="sec">
   <div class="day">1 июня · среда</div>
-  <h2>Деревянный Красноярск</h2>
+  <h2 id="g2">Деревянный Красноярск</h2>
   <p>Единственное, что я сделал в первый день до темноты, — вышел из хостела Hovel и прошёл пару кварталов. Хостел, кстати, классный. А кварталы оказались деревянными, как и в Кемерове, только тут дома стоят у большой дороги и как будто не замечают её.</p>
   <div class="row narrow">
     <figure id="P005">
@@ -112,7 +128,7 @@
 
 <section class="sec">
   <div class="day">2 июня · четверг · ночь</div>
-  <h2>Три процента заряда</h2>
+  <h2 id="g3">Три процента заряда</h2>
   <p>Вечером пошёл небольшой дождь, такси подорожало в разы, и я взял самокат. Маршрут был простой: филармония, Виноградовский мост, Коммунальный мост, краеведческий музей. На всё это у телефона оставалось минут сорок жизни, и я это знал.</p>
   <figure class="wide" id="P008">
     <div class="ph"><img src="media/filarmoniya.webp" width="1600" height="1200" loading="lazy" alt="Здание краевой филармонии ночью, фасад подсвечен жёлтым"></div>
@@ -147,7 +163,7 @@
 
 <section class="sec">
   <div class="day">2 июня · утро</div>
-  <h2>Вокзал и камера хранения</h2>
+  <h2 id="g4">Вокзал и камера хранения</h2>
   <p>Вечером того же дня у меня был поезд в Абакан, и в парк нужно было успеть до него. Один на тропу с медведями мне не хотелось, поэтому накануне ночью я нашёл на «Трипстере» местного гида и купил у него индивидуальную экскурсию. Мне повезло: Андрей был свободен и согласился встретиться пораньше. Маленького рюкзака у меня не было, только сумка на 50 литров со всей жизнью, так что всё лишнее уехало в камеру хранения на вокзале.</p>
   <figure class="wide" id="P017">
     <div class="ph"><img src="media/vokzal.webp" width="1600" height="1200" loading="lazy" alt="Здание вокзала с колоннами и высокая колонна со скульптурой на мокрой пустой площади"></div>
@@ -158,7 +174,7 @@
 
 <section class="sec">
   <div class="day">2 июня · день</div>
-  <h2>Столбы: вверх</h2>
+  <h2 id="g5">Столбы: вверх</h2>
   <p>Погода была суперская, в сибирском смысле: то солнце, то пасмурно, и до дождя мы успели полазить по сухим камням. Народа не было совсем. Пара бегунов и три-четыре посетителя за пять часов, хотя в группе парка в ВК все неделями спрашивали, когда откроют.</p>
   <figure class="mid" id="P019">
     <div class="ph"><img src="media/rodnik.webp" width="1600" height="1200" loading="lazy" alt="Человек складывает пирамидку из камней на каменной выкладке в лесу"></div>
@@ -199,7 +215,7 @@
 </section>
 
 <section class="sec">
-  <h2>Инстинкт самосохранения выкл</h2>
+  <h2 id="g6">Инстинкт самосохранения выкл</h2>
   <p>Фотографироваться я не люблю, но Андрей настоял: снимать надо много, чтобы потом было из чего выбрать. Я очень рад, что послушал. Так что ниже в основном камни, а между ними я.</p>
   <div class="row narrow">
     <figure id="P044">
@@ -228,7 +244,7 @@
 </section>
 
 <section class="sec">
-  <h2>Зарядил дождь</h2>
+  <h2 id="g7">Зарядил дождь</h2>
   <p>После обеда дождь всё-таки пошёл, не сильный, но камни стали мокрыми, и на оставшиеся вершины мы лезли уже без геройства. Пончо из «Декатлона», купленное давным-давно, наконец сыграло свою роль в путешествии: накрыло и меня, и рюкзак.</p>
   <div class="row narrow">
     <figure id="P056">
@@ -256,11 +272,16 @@
 
 <section class="sec">
   <div class="day">2 июня · 20:18</div>
-  <h2>Поезд в Абакан</h2>
+  <h2 id="g8">Поезд в Абакан</h2>
   <figure class="tall" id="P072">
     <div class="ph"><img src="media/vagon.webp" width="1050" height="1400" loading="lazy" alt="Тамбур вагона: окно и тёмная мокрая куртка на вешалке"></div>
     <figcaption><time>20:18</time>Вот такое у меня было состояние в поезде после Столбов: куртка сушится, хозяин спит.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>Город я толком не видел: половину проспал, половину прогулял без телефона. Но Столбы за один день перекрыли всё, и я вернусь хотя бы ради того, чтобы посмотреть на город при заряженном телефоне и дневном свете.</p>
@@ -283,6 +304,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../42-kemerovo/index.html"><span class="code">42</span><span><small>Раньше по маршруту</small>Кемеровская область</span></a><a class="next" href="../19-khakassia/index.html"><span><small>Дальше по маршруту</small>Республика Хакасия</span><span class="code">19</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>

@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#238528;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#66D66B;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#66D66B;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover portrait" id="P078">
     <div class="ph"><img class="cover-bg" src="media/hero.webp" alt="" aria-hidden="true"><img fetchpriority="high" src="media/hero.webp" width="1239" height="2200" alt="Высокая новогодняя ёлка в красно-синей подсветке, у подножия фигура человека, идёт снег"></div>
@@ -90,8 +91,22 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Барнаул</span></a></li>
+    <li><a href="#g2"><span class="toc-d">1–2 января · понедельник и вторник</span><span class="toc-t">В Барнаул через Новосибирск</span></a></li>
+    <li><a href="#g3"><span class="toc-t">Музей закрыт, дома на месте</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Горная аптека</span></a></li>
+    <li><a href="#g5"><span class="toc-t">Семь метров на букву</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Ёлка, театр и Цой в полночь</span></a></li>
+    <li><a href="#g7"><span class="toc-d">3 января · среда</span><span class="toc-t">Кот, которого убрали</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Барнаул</h2>
+  <h2 id="g1">Три вещи про Барнаул</h2>
   <ul class="facts">
     <li>буквы «БАРНАУЛ» на склоне Нагорного парка объёмные, высотой около семи метров. Стоят с 1997 года, и ночью рядом с ними человек выглядит как знак препинания</li>
     <li>в мае 2023 года на проспекте Ленина поставили бронзового кота с надписью «Сибирским котам любой месяц март». Через пять часов его убрали: горожане пожаловались. Позже ему нашли место у гостиницы</li>
@@ -111,7 +126,7 @@
 
 <section class="sec">
   <div class="day">1–2 января · понедельник и вторник</div>
-  <h2>В Барнаул через Новосибирск</h2>
+  <h2 id="g2">В Барнаул через Новосибирск</h2>
   <p>Барнаул начинается с Новосибирска. Вечером 1 января я прилетел туда из Москвы: так было то ли удобнее, то ли дешевле, чем лететь прямо в Барнаул, — точно уже не помню. Помню результат: в 05:44 утра 2 января я стою у вокзала Новосибирск-Главный, на площади ёлка, на табло ноль градусов, и впереди автобус.</p>
   <figure class="wide" id="P001">
     <div class="ph"><img src="media/tolmachevo.webp" width="1400" height="788" loading="lazy" alt="Фасад аэропорта Толмачёво вечером, у входа такси"></div>
@@ -141,7 +156,7 @@
 </section>
 
 <section class="sec">
-  <h2>Музей закрыт, дома на месте</h2>
+  <h2 id="g3">Музей закрыт, дома на месте</h2>
   <p>Следующие кадры — уже около пяти вечера, и к этому времени в Барнауле смеркается. Иду по старому центру, и первым попадается музей с названием, мимо которого не пройдёшь: «Музей магазин конопли и крапивы». Пройти мимо всё-таки пришлось. На двери объявление: «1, 2 января 2024 г. музеи и магазин не работают!» Из 366 дней того года я выбрал один из двух неправильных.</p>
   <div class="row">
     <figure id="P013">
@@ -177,7 +192,7 @@
 </section>
 
 <section class="sec">
-  <h2>Горная аптека</h2>
+  <h2 id="g4">Горная аптека</h2>
   <p>Один музей 2 января всё-таки работал, и это лучший возможный вариант. Аптека при горных заводах появилась в Барнауле ещё в XVIII веке, нынешнее здание стоит с 1792 года. Теперь здесь музей аптечного дела, и устроен он честно: склянки на полках, инструменты в витрине, печь с утварью. Сотрудница в белом халате листала перед посетителями старую книгу, и я снимал не её, а страницы.</p>
   <figure class="mid" id="P028">
     <div class="ph"><img src="media/apteka.webp" width="1200" height="676" loading="lazy" alt="Вывеска «Горная аптека. Музей. Магазин товаров для здоровья» на фасаде, сумерки"></div>
@@ -207,7 +222,7 @@
 </section>
 
 <section class="sec">
-  <h2>Семь метров на букву</h2>
+  <h2 id="g5">Семь метров на букву</h2>
   <p>После музея на улице уже праздник: пешеходная улица в огнях, звезда выше людей, снег не прекращается. А к десяти вечера я поднялся в Нагорный парк, на холм между Обью и Барнаулкой. Это та самая смотровая, с которой начался рассказ.</p>
   <figure class="wide" id="P049">
     <div class="ph"><img src="media/zvezda.webp" width="1600" height="901" loading="lazy" alt="Пешеходная улица вечером: светящаяся арка в виде звезды, под ней гуляют люди"></div>
@@ -231,7 +246,7 @@
 </section>
 
 <section class="sec">
-  <h2>Ёлка, театр и Цой в полночь</h2>
+  <h2 id="g6">Ёлка, театр и Цой в полночь</h2>
   <p>К главной ёлке я вышел в половине двенадцатого. Она стоит на ледяном основании, и подсветка меняет цвет каждые несколько секунд: только прицелился в радугу, а она уже зелёная. Рядом Дед Мороз из снега, которого в этот вечер продолжало лепить само небо.</p>
   <div class="row narrow">
     <figure id="P073">
@@ -256,7 +271,7 @@
 
 <section class="sec">
   <div class="day">3 января · среда</div>
-  <h2>Кот, которого убрали</h2>
+  <h2 id="g7">Кот, которого убрали</h2>
   <p>Половина восьмого утра, на улице темно, как ночью. На свежем снегу одна цепочка следов, гирлянды горят над пустым перекрёстком, ёлка переливается для уборочной техники.</p>
   <div class="row narrow">
     <figure id="P096">
@@ -284,6 +299,11 @@
     </figure>
   </div>
   <p>Дальше с экскурсией на юг: через Бийск в горы, к Телецкому озеру. Там наконец будет светло — продолжение на странице <a href="../04-altai-republic/index.html">Республики Алтай</a>.</p>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Хорошо было над Обью в метель и в Горной аптеке: одно место совсем без людей, другое с кассой, которая считает в пфеннигах. Не хватило дня: каким Барнаул бывает при свете и летом, я так и не узнал, и музей конопли остался загадкой.</p>
@@ -306,6 +326,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../04-altai-republic/index.html"><span><small>Дальше по маршруту</small>Республика Алтай</span><span class="code">4</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>

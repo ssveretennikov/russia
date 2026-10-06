@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#2176C9;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#63A4E3;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#63A4E3;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P904">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1239" alt="Кремлёвская башня над рекой, рядом проходит белый теплоход под синим небом"></div>
@@ -63,8 +64,23 @@
   <p class="lead">Страница собрана по темам, а не по датам. Апрель 2023, февраль, май, июнь, июль и август 2024 лежат в одном ряду: пешком, на теплоходе, на электротрамвае, у бассейна и на вечерней набережной.</p>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про этот кусок Москвы</span></a></li>
+    <li><a href="#g2"><span class="toc-d">1 и 9 апреля 2023</span><span class="toc-t">Храм, трубы и берёзы</span></a></li>
+    <li><a href="#g3"><span class="toc-d">9 апреля 2023 · 25–26 мая 2024</span><span class="toc-t">Центр с воды</span></a></li>
+    <li><a href="#g4"><span class="toc-d">12 июня 2024</span><span class="toc-t">Электротрамвай и Москва-Сити</span></a></li>
+    <li><a href="#g5"><span class="toc-d">31 августа 2024</span><span class="toc-t">Набережная вечером</span></a></li>
+    <li><a href="#g6"><span class="toc-d">15 июля 2024</span><span class="toc-t">Бассейн в парке</span></a></li>
+    <li><a href="#g7"><span class="toc-d">22 февраля 2024</span><span class="toc-t">Город из окна</span></a></li>
+    <li><a href="#g8"><span class="toc-t">Обед</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про этот кусок Москвы</h2>
+  <h2 id="g1">Три вещи про этот кусок Москвы</h2>
   <ul class="facts">
     <li>на табличке в ГЭС-2 написано, что четыре трубы бывшей электростанции когда-то выбрасывали в небо продукты горения нефти, торфа, дров и угля. Теперь на их месте синие трубы, и работают они наоборот: забирают чистый воздух с высоты 70 метров и подают в здание</li>
     <li>9 апреля 2023 снято 53 кадра с 10:49 до 16:50: храм, ГЭС-2, река и всё, что видно с воды</li>
@@ -74,7 +90,7 @@
 
 <section class="sec">
   <div class="day">1 и 9 апреля 2023</div>
-  <h2>Храм, трубы и берёзы</h2>
+  <h2 id="g2">Храм, трубы и берёзы</h2>
   <p>Первого апреля небо пасмурное, девятого ясное. Храм Христа Спасителя на обоих снимках, но разница заметна сразу.</p>
   <div class="row">
     <figure id="P242">
@@ -122,7 +138,7 @@
 
 <section class="sec">
   <div class="day">9 апреля 2023 · 25–26 мая 2024</div>
-  <h2>Центр с воды</h2>
+  <h2 id="g3">Центр с воды</h2>
   <p>В апреле 2023 на теплоходе проплывает Кремль. В мае 2024 я сам на теплоходе, под навесом, и список видов повторяется: мост, храм, башни, собор, смотровая над рекой.</p>
   <figure class="wide" id="P285">
     <div class="ph"><img src="media/teplohod-kreml.webp" width="2000" height="1126" loading="lazy" alt="Белый теплоход идёт вдоль кремлёвской стены"></div>
@@ -164,7 +180,7 @@
 
 <section class="sec">
   <div class="day">12 июня 2024</div>
-  <h2>Электротрамвай и Москва-Сити</h2>
+  <h2 id="g4">Электротрамвай и Москва-Сити</h2>
   <p>Электротрамвай ходит по реке и выглядит как обычный катер с большими окнами. Столики внутри, стекло от пола до потолка. За стеклом сначала стройка, потом Сити.</p>
   <div class="row">
     <figure id="P931">
@@ -202,7 +218,7 @@
 
 <section class="sec">
   <div class="day">31 августа 2024</div>
-  <h2>Набережная вечером</h2>
+  <h2 id="g5">Набережная вечером</h2>
   <p>Днём по реке ходят катера разных цветов. Вечером на набережной танцуют, а мимо проходит теплоход.</p>
   <figure class="mid" id="P065">
     <div class="ph"><img src="media/rozovyj.webp" width="1600" height="901" loading="lazy" alt="Розовый кораблик на Москве-реке, за ним жилые дома на набережной"></div>
@@ -220,7 +236,7 @@
 
 <section class="sec">
   <div class="day">15 июля 2024</div>
-  <h2>Бассейн в парке</h2>
+  <h2 id="g6">Бассейн в парке</h2>
   <figure class="wide" id="P1016">
     <div class="ph"><img src="media/bassejn.webp" width="2000" height="1126" loading="lazy" alt="Открытый бассейн, вокруг ряды пустых лежаков под соснами"></div>
     <figcaption><time>08:53</time>Утро, лежаки ещё пустые.</figcaption>
@@ -239,7 +255,7 @@
 
 <section class="sec">
   <div class="day">22 февраля 2024</div>
-  <h2>Город из окна</h2>
+  <h2 id="g7">Город из окна</h2>
   <p>Серый день: льдины на реке, Сити в тумане, мост с поездом.</p>
   <div class="row">
     <figure id="P883">
@@ -258,7 +274,7 @@
 </section>
 
 <section class="sec">
-  <h2>Обед</h2>
+  <h2 id="g8">Обед</h2>
   <div class="row narrow">
     <figure id="P108">
       <div class="ph"><img src="media/salat.webp" width="788" height="1400" loading="lazy" alt="Салат с лососем на деревянном столе"></div>
@@ -269,6 +285,11 @@
       <figcaption><time>12:55</time>Креветки с лаймом.</figcaption>
     </figure>
   </div>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>Центр с воды выглядит заметно иначе, чем с набережной, и это единственный способ увидеть Сити целиком. Зато в пасмурные и зимние дни кадры серые, хорошую Москву приходится ловить в солнечные.</p>
@@ -289,6 +310,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../77-moscow-1/index.html"><span class="code">77</span><span><small>Предыдущая часть</small>Москва · Выходные в мае 2023</span></a><a class="next" href="../77-moscow-3/index.html"><span><small>Следующая часть</small>Москва · События</span><span class="code">77</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>

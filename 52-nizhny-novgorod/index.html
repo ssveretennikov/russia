@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#A46723;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#DDA15F;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#DDA15F;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P100">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Белый пешеходный мост на опорах над зелёным склоном, над ним розовые облака"></div>
@@ -84,8 +85,21 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Нижний</span></a></li>
+    <li><a href="#g2"><span class="toc-d">13 августа · суббота · утро</span><span class="toc-t">Стрелка</span></a></li>
+    <li><a href="#g3"><span class="toc-d">13 августа · день</span><span class="toc-t">Набережная и 560 ступеней</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Кремль по кругу</span></a></li>
+    <li><a href="#g5"><span class="toc-d">13 августа · вечер</span><span class="toc-t">Рождественская и закат</span></a></li>
+    <li><a href="#g6"><span class="toc-d">13 августа · ночь</span><span class="toc-t">Парк Швейцария</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Нижний</h2>
+  <h2 id="g1">Три вещи про Нижний</h2>
   <ul class="facts">
     <li>Нижегородский кремль с его 13 башнями построили в 1500–1515 годах по схемам Леонардо да Винчи. Этим он и отличается от всех остальных российских кремлей</li>
     <li>Чкаловская лестница на набережной — длиннейшая в стране, 560 ступеней. Строили её немецкие военнопленные</li>
@@ -108,7 +122,7 @@
 
 <section class="sec">
   <div class="day">13 августа · суббота · утро</div>
-  <h2>Стрелка</h2>
+  <h2 id="g2">Стрелка</h2>
   <p>Начал с нижней точки, с самой стрелки. Здесь, где Ока впадает в Волгу, стоят рядом жёлтый собор Александра Невского и белый стадион «Нижний Новгород». Собор старше, стадион больше, и оба делают вид, что соседа не замечают.</p>
   <figure class="wide" id="P001">
     <div class="ph"><img src="media/strelka.webp" width="2000" height="1500" loading="lazy" alt="Жёлтый собор с чёрными шатрами на зелёном газоне, слева белый стадион, в небе перистые облака"></div>
@@ -149,7 +163,7 @@
 
 <section class="sec">
   <div class="day">13 августа · день</div>
-  <h2>Набережная и 560 ступеней</h2>
+  <h2 id="g3">Набережная и 560 ступеней</h2>
   <p>Перешёл на правый берег, на набережную. Здесь ходят теплоходы, стоит металлический олень, и отсюда начинается Чкаловская лестница. Я знал про 560 ступеней заранее, и это не помогло.</p>
   <div class="row">
     <figure id="P021">
@@ -182,7 +196,7 @@
 </section>
 
 <section class="sec">
-  <h2>Кремль по кругу</h2>
+  <h2 id="g4">Кремль по кругу</h2>
   <p>Круговой маршрут по стенам Нижегородского кремля открыли 22 августа 2021 года, к 800-летию города. Это около двух километров по стенам и башням, и я зашёл на него в четыре, а вышел около шести. Внутри башен лестницы, причём каменные, и ступени такие, что это уже не шаг, а подтягивание.</p>
   <figure class="mid" id="P032">
     <div class="ph"><img src="media/dmitrievskaya.webp" width="1200" height="1600" loading="lazy" alt="Кирпичная башня кремля с зелёной крышей и аркой входа, над аркой икона"></div>
@@ -247,7 +261,7 @@
 
 <section class="sec">
   <div class="day">13 августа · вечер</div>
-  <h2>Рождественская и закат</h2>
+  <h2 id="g5">Рождественская и закат</h2>
   <p>Спустился по лестнице к памятнику Минину и Пожарскому. Он здесь на ступенях, под кремлёвской стеной, и в шесть вечера на него падает солнце ровно спереди. Дальше Рождественская улица: пешеходная, с розовыми домами, и в конце её красная Рождественская церковь с такой колокольней, что я обошёл её дважды.</p>
   <figure class="wide" id="P082">
     <div class="ph"><img src="media/minin-pozharsky.webp" width="2000" height="1500" loading="lazy" alt="Бронзовый памятник Минину и Пожарскому на красном постаменте на ступенях, слева белая церковь, справа розовый дом"></div>
@@ -296,7 +310,7 @@
 
 <section class="sec">
   <div class="day">13 августа · ночь</div>
-  <h2>Парк Швейцария</h2>
+  <h2 id="g6">Парк Швейцария</h2>
   <p>Ночью уехал в верхнюю часть города: торговый центр «Океанис» и парк Швейцария. Это самая высокая точка дня, 200 метров, и там, в темноте, стоит толпа у поющего фонтана. Нижний, похоже, вообще любит стоять толпой и смотреть на что-нибудь красивое.</p>
   <div class="row">
     <figure id="P107">
@@ -316,6 +330,11 @@
     <div class="ph"><img src="media/lestnica-noch.webp" width="1050" height="1400" loading="lazy" alt="Подсвеченная деревянная лестница уходит вниз по тёмному склону среди деревьев"></div>
     <figcaption><time>22:20</time>Лестница вниз к реке, с подсветкой. Конечно, лестница. Чем ещё закончить день в Нижнем. На этом всё, завтра — Киров.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>Кремль по кругу, 560 ступеней, колокола на расстоянии руки и закат, за которым город ходит, как на работу. Не хватило второго дня: павильоны ярмарки и дом Горького остались за кадром, а парк Швейцария я видел только в темноте.</p>
@@ -338,6 +357,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../43-kirov/index.html"><span><small>Дальше по маршруту</small>Кировская область</span><span class="code">43</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>

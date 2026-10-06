@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#2277B9;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#5CA6E1;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#5CA6E1;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P015">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Чёрный борт ледокола «Ленин» с белой надстройкой у заснеженного причала, ясное небо"></div>
@@ -82,8 +83,20 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Мурманск</span></a></li>
+    <li><a href="#g2"><span class="toc-d">13 марта · воскресенье · утро</span><span class="toc-t">Ёлка в марте и «Царская охота»</span></a></li>
+    <li><a href="#g3"><span class="toc-d">13 марта · день</span><span class="toc-t">Ледокол «Ленин»</span></a></li>
+    <li><a href="#g4"><span class="toc-d">13 марта · вечер</span><span class="toc-t">На Севере жить</span></a></li>
+    <li><a href="#g5"><span class="toc-d">13 марта · 19:01</span><span class="toc-t">Столица Арктики</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Мурманск</h2>
+  <h2 id="g1">Три вещи про Мурманск</h2>
   <ul class="facts">
     <li>здесь стоит первый в мире атомный ледокол «Ленин». Сейчас это музей, и по нему водят экскурсии: каюты, машинное отделение, пост управления реактором</li>
     <li>Мурманск — город-герой, второй на моём пути</li>
@@ -100,7 +113,7 @@
 
 <section class="sec">
   <div class="day">13 марта · воскресенье · утро</div>
-  <h2>Ёлка в марте и «Царская охота»</h2>
+  <h2 id="g2">Ёлка в марте и «Царская охота»</h2>
   <p>Вокзал, снег, солнце, ёлка. Люди с чемоданами фотографируются на её фоне, и я тоже. Полдень, а по ощущениям — первые числа января.</p>
   <figure class="tall" id="P001">
     <div class="ph"><img src="media/elka.webp" width="1050" height="1400" loading="lazy" alt="Высокая наряженная ёлка перед зелёным зданием вокзала, рядом люди с чемоданами"></div>
@@ -145,7 +158,7 @@
 
 <section class="sec">
   <div class="day">13 марта · день</div>
-  <h2>Ледокол «Ленин»</h2>
+  <h2 id="g3">Ледокол «Ленин»</h2>
   <p>Стоит у морского вокзала, чёрный, огромный, с кранами на палубе. С земли его целиком не взять, поэтому я поднял дрон. Сверху оказалось, что порт живёт своей жизнью: красные буксиры, краны, вода без единой льдинки.</p>
   <figure class="wide">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-port.jpg" src="https://ssveretennikov.github.io/russia-video/51-murmansk/v-dron-port.mp4" width="1280" height="720"></video></div>
@@ -206,7 +219,7 @@
 
 <section class="sec">
   <div class="day">13 марта · вечер</div>
-  <h2>На Севере жить</h2>
+  <h2 id="g4">На Севере жить</h2>
   <p>До самолёта оставалось пару часов, и я прошёл через центр. Парусник на волне, вокзал с поездом в закате, буквы на сугробе, памятник герою, кот. Всё в снегу по колено, и всё в двадцати минутах друг от друга. Солнце за это время успело сесть: в пять вечера здесь уже закат, в семь — ночь.</p>
   <div class="row narrow">
     <figure id="P033">
@@ -243,11 +256,16 @@
 
 <section class="sec">
   <div class="day">13 марта · 19:01</div>
-  <h2>Столица Арктики</h2>
+  <h2 id="g5">Столица Арктики</h2>
   <figure class="tall" id="P043">
     <div class="ph"><img src="media/aeroport.webp" width="1050" height="1400" loading="lazy" alt="Вывеска «Аэропорт. Мурманск — столица Арктики» над входом в сумерках"></div>
     <figcaption><time>19:01</time>Приехал поездом, улетаю самолётом. Вывеска на прощание напоминает, где я был.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Ледокол, кот и ёж на льду — этого хватило, чтобы день запомнился. Не хватило самой области: за один солнечный день я увидел только Мурманск, а за полярный круг обычно едут не за городом.</p>
@@ -270,6 +288,6 @@
 <nav class="pager" aria-label="Читать дальше"><a class="prev" href="../10-karelia/index.html"><span class="code">10</span><span><small>Раньше по маршруту</small>Республика Карелия</span></a><a class="next" href="../37-ivanovo/index.html"><span><small>Следующий отчёт</small>Ивановская область</span><span class="code">37</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>

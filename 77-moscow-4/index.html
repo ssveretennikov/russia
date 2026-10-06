@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#D11A1C;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#E98182;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#E98182;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P585">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1239" alt="Сергей в красном свитере сидит за дикторским столом в студии с красно-синим экраном"></div>
@@ -64,8 +65,22 @@
   <p class="lead">Выставка собрала регионы страны в одном парке, и я ходил по ней, как по оглавлению собственного проекта. Дальше в ленте каток в ночь на 1 января 2024-го, китайский Новый год на Никольской и ещё одна новогодняя Москва, год спустя.</p>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про выставку</span></a></li>
+    <li><a href="#g2"><span class="toc-d">3 декабря · воскресенье</span><span class="toc-t">Регионы на стендах</span></a></li>
+    <li><a href="#g3"><span class="toc-d">9–10 декабря · суббота, воскресенье</span><span class="toc-t">Центральный зал и «Атом»</span></a></li>
+    <li><a href="#g4"><span class="toc-d">16 декабря – 17 января</span><span class="toc-t">Что ещё нашлось на выставке</span></a></li>
+    <li><a href="#g5"><span class="toc-d">1 января 2024 · понедельник</span><span class="toc-t">Каток в первую ночь года</span></a></li>
+    <li><a href="#g6"><span class="toc-d">17 февраля 2024 · суббота</span><span class="toc-t">Китайский Новый год на Никольской</span></a></li>
+    <li><a href="#g7"><span class="toc-d">декабрь 2024 – январь 2025</span><span class="toc-t">Зимний город год спустя</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про выставку</h2>
+  <h2 id="g1">Три вещи про выставку</h2>
   <ul class="facts">
     <li>выставка-форум «Россия» на ВДНХ шла с 3 декабря 2023 по 17 января 2024</li>
     <li>макет завода СПГ «Новатэк» в масштабе 1:8, на табличке под ним так и написано</li>
@@ -75,7 +90,7 @@
 
 <section class="sec">
   <div class="day">3 декабря · воскресенье</div>
-  <h2>Регионы на стендах</h2>
+  <h2 id="g2">Регионы на стендах</h2>
   <p>В первый день я пошёл туда, где у меня есть личный счёт: к регионам, в которых был.</p>
   <figure class="wide" id="P562">
     <div class="ph"><img src="media/zabaykalye.webp" width="2000" height="1126" loading="lazy" alt="Стенд Забайкалья с экранами и деревянной отделкой, вокруг посетители"></div>
@@ -95,7 +110,7 @@
 
 <section class="sec">
   <div class="day">9–10 декабря · суббота, воскресенье</div>
-  <h2>Центральный зал и «Атом»</h2>
+  <h2 id="g3">Центральный зал и «Атом»</h2>
   <p>9 декабря огни сложили слово «Россия» прямо на льду. На следующий день кадры идут с 13:17 до 22:00.</p>
   <figure class="wide" id="P606">
     <div class="ph"><img src="media/rossiya-ogni.webp" width="2000" height="1126" loading="lazy" alt="Светящаяся надпись «Россия» на льду, вдали колесо обозрения и огни павильона"></div>
@@ -137,7 +152,7 @@
 
 <section class="sec">
   <div class="day">16 декабря – 17 января</div>
-  <h2>Что ещё нашлось на выставке</h2>
+  <h2 id="g4">Что ещё нашлось на выставке</h2>
   <p>В декабре я возвращался сюда ещё несколько раз: 16, 21 и 24 числа, потом 30-го и в последний день, 17 января. Каждый раз находился зал, который в прошлый раз остался за кадром. Тема меняется от павильона к павильону: то лошади и робот-пчела, то киоск девяностых, то заводы в масштабе.</p>
   <p>Объяснять экспонаты я не буду. Название стенда и надпись на табличке — единственное, что здесь известно наверняка, остальное видно на кадрах.</p>
   <figure class="mid" id="P678">
@@ -188,7 +203,7 @@
 
 <section class="sec">
   <div class="day">1 января 2024 · понедельник</div>
-  <h2>Каток в первую ночь года</h2>
+  <h2 id="g5">Каток в первую ночь года</h2>
   <p>Новый год я встретил на улице. Каток с цветной подсветкой, ёлка под куполом из гирлянд и сцена с надписью «2024». Кто и где устроил этот праздник, по кадрам не скажу.</p>
   <div class="row narrow">
     <figure id="P870">
@@ -228,7 +243,7 @@
 
 <section class="sec">
   <div class="day">17 февраля 2024 · суббота</div>
-  <h2>Китайский Новый год на Никольской</h2>
+  <h2 id="g6">Китайский Новый год на Никольской</h2>
   <p>Через полтора месяца Новый год случился снова, уже по китайскому календарю. Никольскую украсили красными фонарями, а на мостовую поставили зверя из цветных узоров.</p>
   <figure class="wide" id="P042">
     <div class="ph"><img src="media/drakon.webp" width="2000" height="1126" loading="lazy" alt="Оранжевый дракон у дороги, рядом жёлтое такси и белый внедорожник"></div>
@@ -252,7 +267,7 @@
 
 <section class="sec">
   <div class="day">декабрь 2024 – январь 2025</div>
-  <h2>Зимний город год спустя</h2>
+  <h2 id="g7">Зимний город год спустя</h2>
   <p>Вторая зима вышла без выставки, но с метро и мостовыми. Новый год в Москве оказался в вагонах и подземных переходах не меньше, чем на площадях.</p>
   <figure class="tall" id="P088">
     <div class="ph"><img src="media/ded-moroz.webp" width="788" height="1400" loading="lazy" alt="Дед Мороз в красной шубе идёт с мешком по подземному переходу, вокруг пассажиры"></div>
@@ -280,6 +295,11 @@
       <figcaption><time>30.01 · 17:58</time>Москва-Сити в темноте, до конца месяца один день.</figcaption>
     </figure>
   </div>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>Выставка собрала страну в одном парке, и по ней приятно ходить, зная, где был сам. Но по кадрам видно, что больше всего я там фотографировал огни, а не людей.</p>
@@ -301,6 +321,6 @@
 <nav class="pager" aria-label="Читать дальше"><a class="prev" href="../77-moscow-3/index.html"><span class="code">77</span><span><small>Предыдущая часть</small>Москва · События</span></a><a class="next" href="../78-spb/index.html"><span><small>Следующий отчёт</small>Санкт-Петербург · три дня в июне</span><span class="code">78</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>

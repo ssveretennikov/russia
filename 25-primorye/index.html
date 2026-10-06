@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#1F314D;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#84A0CD;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#84A0CD;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P129">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: белый маяк с красной крышей на каменном островке, за ним вышка ЛЭП на косе, тёмная вода и сопки под вечерними облаками"></div>
@@ -130,8 +131,23 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Приморье</span></a></li>
+    <li><a href="#g2"><span class="toc-d">18 июля · понедельник · утро</span><span class="toc-t">Вокзал, который порт</span></a></li>
+    <li><a href="#g3"><span class="toc-d">18 июля · день</span><span class="toc-t">Музей Арсеньева</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Под Золотым мостом</span></a></li>
+    <li><a href="#g5"><span class="toc-d">18 июля · вечер</span><span class="toc-t">Кирха и фуникулёр за 23 рубля</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Остров Русский из автобуса и с дрона</span></a></li>
+    <li><a href="#g7"><span class="toc-d">18 июля · закат</span><span class="toc-t">Токаревская коса</span></a></li>
+    <li><a href="#g8"><span class="toc-d">19 июля · ночь и 05:49</span><span class="toc-t">Милкис и такси в аэропорт</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Приморье</h2>
+  <h2 id="g1">Три вещи про Приморье</h2>
   <ul class="facts">
     <li>здесь в тайге можно встретить и тигра, и леопарда, и медведя. В один день, если не повезёт</li>
     <li>Приморский край — родина первой женщины — капитана дальнего плавания, Анны Щетининой</li>
@@ -148,7 +164,7 @@
 
 <section class="sec">
   <div class="day">18 июля · понедельник · утро</div>
-  <h2>Вокзал, который порт</h2>
+  <h2 id="g2">Вокзал, который порт</h2>
   <p>После дождя, пасмурно, у всех зонтики в сумках. На привокзальной площади два вокзала: железнодорожный и морской, через дорогу друг от друга. Между ними перрон, за перроном кран и судно с машинами на палубе.</p>
   <div class="row">
     <figure id="P002">
@@ -183,7 +199,7 @@
 
 <section class="sec">
   <div class="day">18 июля · день</div>
-  <h2>Музей Арсеньева</h2>
+  <h2 id="g3">Музей Арсеньева</h2>
   <p>Музей истории Дальнего Востока имени Арсеньева. Отличный современный музей, и это редкий случай, когда я про музей пишу такое. Кирпичные залы, витрины с мечами и черепицей с драконами, стенд делового освоения Приморья с предметами купцов и промышленников.</p>
   <div class="row narrow">
     <figure id="P024">
@@ -208,7 +224,7 @@
 </section>
 
 <section class="sec">
-  <h2>Под Золотым мостом</h2>
+  <h2 id="g4">Под Золотым мостом</h2>
   <p>От музея вниз, к набережной. Подводная лодка С-56 стоит на суше как музей, рядом корабли, дальше Арка цесаревича Николая, а из-за неё уже виден Золотой мост. К нему я и шёл: вантовый, через бухту, и под ним можно просто пройти пешком.</p>
   <div class="row narrow">
     <figure id="P055">
@@ -249,7 +265,7 @@
 
 <section class="sec">
   <div class="day">18 июля · вечер</div>
-  <h2>Кирха и фуникулёр за 23 рубля</h2>
+  <h2 id="g5">Кирха и фуникулёр за 23 рубля</h2>
   <p>Наверх от моста стоит красная кирпичная Евангелическо-лютеранская церковь святого Павла. Рядом фуникулёр, один из видов местного транспорта: два вагона, один рельсовый путь, билет на электротранспорт за 23 рубля. Чек я сфотографировал, потому что это самый дешёвый подъём на смотровую в моей жизни.</p>
   <div class="row narrow">
     <figure id="P084">
@@ -278,7 +294,7 @@
 </section>
 
 <section class="sec">
-  <h2>Остров Русский из автобуса и с дрона</h2>
+  <h2 id="g6">Остров Русский из автобуса и с дрона</h2>
   <p>На остров Русский ехал в автобусе, где было очень много народа и очень мало места. Знаменитый современный Приморский океанариум в этот день, к сожалению, был закрыт, так что я смотрел кампус Дальневосточного федерального университета. С земли это корпуса, с дрона это корпуса, за которыми пролив и Русский мост.</p>
   <figure class="wide">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-kampus.jpg" src="https://ssveretennikov.github.io/russia-video/25-primorye/v-dron-kampus.mp4" width="1280" height="720"></video></div>
@@ -302,7 +318,7 @@
 
 <section class="sec">
   <div class="day">18 июля · закат</div>
-  <h2>Токаревская коса</h2>
+  <h2 id="g7">Токаревская коса</h2>
   <p>Классная достопримечательность в черте города: Токаревский маяк. Классная ещё и потому, что до него нужно дойти, и часть пути приходится преодолевать по воде. Я пришёл сюда к закату. Первый отрезок по воде проходится по щиколотку, максимум по колено. Следующий участок точно выше колена, и я не пошёл. Слетал на дроне.</p>
   <div class="row">
     <figure id="P117">
@@ -348,7 +364,7 @@
 
 <section class="sec">
   <div class="day">19 июля · ночь и 05:49</div>
-  <h2>Милкис и такси в аэропорт</h2>
+  <h2 id="g8">Милкис и такси в аэропорт</h2>
   <p>Забыл рассказать о новом открытии: Милкис, «газированное молоко». Странная штука, но прикольная, и именно в бутылке вкуснее, в Москве я находил только банки. Дня во Владивостоке крайне мало, а для Приморского края тем более. Очень хочется вернуться сюда подольше и с компанией.</p>
   <div class="row">
     <figure id="P144">
@@ -360,6 +376,11 @@
       <figcaption><time>05:49</time>Аэропорт очень далеко от города: такси стоит больше тысячи рублей. Учитывайте, если рейс ночью или рано утром. Я учёл не до конца.</figcaption>
     </figure>
   </div>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>За день: порт на вокзале, сырые гребешки, музей, под которым хочется задержаться, мост снизу и сверху за 23 рубля, кампус с дрона и маяк, до которого дошёл только дрон. Не хватило второго дня, океанариума и компании, чтобы перейти брод выше колена.</p>
@@ -383,6 +404,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../79-jewish-ao/index.html"><span class="code">79</span><span><small>Раньше по маршруту</small>Еврейская автономная область</span></a><a class="next" href="../65-sakhalin/index.html"><span><small>Дальше по маршруту</small>Сахалинская область</span><span class="code">65</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>

@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#8C4439;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#CE9188;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#CE9188;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P479">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1239" alt="Сергей с флагом на трибуне Лужников, внизу сцена и поле, заполненное людьми"></div>
@@ -69,9 +70,21 @@
   </ul>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-d">22 августа · вторник · День флага России</span><span class="toc-t">Флаги в Лужниках</span></a></li>
+    <li><a href="#g2"><span class="toc-d">27–28 августа · воскресенье, понедельник</span><span class="toc-t">Московский урбанистический форум</span></a></li>
+    <li><a href="#g3"><span class="toc-d">14 октября · суббота</span><span class="toc-t">Новая поликлиника</span></a></li>
+    <li><a href="#g4"><span class="toc-d">29 июня 2024 · суббота</span><span class="toc-t">Сто музыкантов на одной арене</span></a></li>
+    <li><a href="#g5"><span class="toc-d">26 июля 2024 · пятница</span><span class="toc-t">МТС True Tech Camp</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
   <div class="day">22 августа · вторник · День флага России</div>
-  <h2>Флаги в Лужниках</h2>
+  <h2 id="g1">Флаги в Лужниках</h2>
   <p>В Лужниках первые кадры в 16:39, последние в 23:32. До концерта ещё далеко, а на трибунах уже флаги.</p>
   <figure class="daymap">
     <svg class="daymap-svg" viewBox="0 0 360 370" role="img" aria-label="Карта мест — Москва: 3 места по порядку, названия — списком под картой">
@@ -127,7 +140,7 @@
 
 <section class="sec">
   <div class="day">27–28 августа · воскресенье, понедельник</div>
-  <h2>Московский урбанистический форум</h2>
+  <h2 id="g2">Московский урбанистический форум</h2>
   <p>Первый вечер форума и следующий день. В зале синий свет и голографический человек посередине.</p>
   <figure class="wide" id="P493">
     <div class="ph"><img src="media/forum-vhod.webp" width="2000" height="1126" loading="lazy" alt="Тёмный зал с синей подсветкой и аркой с логотипом форума"></div>
@@ -183,7 +196,7 @@
 
 <section class="sec">
   <div class="day">14 октября · суббота</div>
-  <h2>Новая поликлиника</h2>
+  <h2 id="g3">Новая поликлиника</h2>
   <p>Новый стандарт поликлиник. Людей в кадре почти нет.</p>
   <div class="row">
     <figure id="P557">
@@ -199,7 +212,7 @@
 
 <section class="sec">
   <div class="day">29 июня 2024 · суббота</div>
-  <h2>Сто музыкантов на одной арене</h2>
+  <h2 id="g4">Сто музыкантов на одной арене</h2>
   <p>Рок-концерт «100 музыкантов». На арене фиолетовый свет и сотни людей с инструментами.</p>
   <figure class="wide" id="P922">
     <div class="ph"><img src="media/arena.webp" width="2000" height="1126" loading="lazy" alt="Панорама арены в фиолетовом свете, на ней сотни музыкантов, над ними экраны"></div>
@@ -237,7 +250,7 @@
 
 <section class="sec">
   <div class="day">26 июля 2024 · пятница</div>
-  <h2>МТС True Tech Camp</h2>
+  <h2 id="g5">МТС True Tech Camp</h2>
   <p>Площадка у воды: аллея, причал, паддлборды, робо-бои и яхты.</p>
   <figure class="mid" id="P970">
     <div class="ph"><img src="media/ttc-alleya.webp" width="788" height="1400" loading="lazy" alt="Дорожка под потолком из синих бумажных конструкций, по ней идёт человек"></div>
@@ -279,6 +292,11 @@
       <figcaption><time>20:40</time>Кафе под бамбуковым навесом.</figcaption>
     </figure>
   </div>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>Сильнее всего в кадрах стадион с флагами и арена с сотней музыкантов. Не хватило подписей на стендах форума: что было что, по снимкам читается не всегда.</p>
@@ -298,6 +316,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../77-moscow-2/index.html"><span class="code">77</span><span><small>Предыдущая часть</small>Москва · Центр и вода</span></a><a class="next" href="../77-moscow-4/index.html"><span><small>Следующая часть</small>Москва · «Россия» на ВДНХ и Новый год</span><span class="code">77</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>

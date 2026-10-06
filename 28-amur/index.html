@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#446EA7;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#80A0CB;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#80A0CB;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P009">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Широкая мутная река под облачным небом, на другом берегу высотки китайского города"></div>
@@ -82,8 +83,20 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Амурскую область</span></a></li>
+    <li><a href="#g2"><span class="toc-d">14 июля · четверг · утро</span><span class="toc-t">Набережная: Китай напротив</span></a></li>
+    <li><a href="#g3"><span class="toc-d">14 июля · день</span><span class="toc-t">Два часа за символические деньги</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Центр под прямым углом</span></a></li>
+    <li><a href="#g5"><span class="toc-d">14 июля · вечер</span><span class="toc-t">К поезду</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Амурскую область</h2>
+  <h2 id="g1">Три вещи про Амурскую область</h2>
   <ul class="facts">
     <li>Благовещенск — единственный региональный центр России, расположенный прямо на государственной границе. И лидер среди городов страны по поездкам за границу на душу населения: Китай-то через реку</li>
     <li>область — центр российского изучения динозавров. Останки находят до сих пор, и у местного динозавра есть своё имя: амурозавр</li>
@@ -103,7 +116,7 @@
 
 <section class="sec">
   <div class="day">14 июля · четверг · утро</div>
-  <h2>Набережная: Китай напротив</h2>
+  <h2 id="g2">Набережная: Китай напротив</h2>
   <p>Утро было серым, Амур — коричневым, Хэйхэ на том берегу — высоким. Я прошёл набережную от конца до конца. Она не везде облагорожена: внизу местами песок и свежий бетон, зато верхний уровень нормальный.</p>
   <div class="row narrow">
     <figure id="P006">
@@ -160,7 +173,7 @@
 
 <section class="sec">
   <div class="day">14 июля · день</div>
-  <h2>Два часа за символические деньги</h2>
+  <h2 id="g3">Два часа за символические деньги</h2>
   <p>Амурский краеведческий музей. Здесь мне провели двухчасовую экскурсию за какие-то символические деньги, и это были лучшие два часа дня. Динозавры, тигр, старый план города и три временные выставки сразу.</p>
   <figure class="wide" id="P039">
     <div class="ph"><img src="media/muzey.webp" width="2000" height="1500" loading="lazy" alt="Кирпичное здание музея с белым декором и башенкой на углу"></div>
@@ -194,7 +207,7 @@
 </section>
 
 <section class="sec">
-  <h2>Центр под прямым углом</h2>
+  <h2 id="g4">Центр под прямым углом</h2>
   <p>После музея небо стало совсем синим, и город показал парадную сторону: арку, памятники, собаку на парапете. Всё по сетке, всё за три квартала от реки.</p>
   <figure class="wide" id="P065">
     <div class="ph"><img src="media/bronekater.webp" width="2000" height="1500" loading="lazy" alt="Бронекатер на голубом постаменте под открытым небом"></div>
@@ -222,7 +235,7 @@
 
 <section class="sec">
   <div class="day">14 июля · вечер</div>
-  <h2>К поезду</h2>
+  <h2 id="g5">К поезду</h2>
   <div class="row narrow">
     <figure id="P085">
       <div class="ph"><img src="media/kirha.webp" width="1050" height="1400" loading="lazy" alt="Кирпичная церковь с острым шпилем за деревьями, перед ней припаркованы машины"></div>
@@ -237,6 +250,11 @@
     <div class="ph"><img src="media/teatr.webp" width="2000" height="1500" loading="lazy" alt="Здание Амурского театра драмы с колоннами на пустой площади в вечернем свете"></div>
     <figcaption><time>18:29</time>Драмтеатр. Площадь пустая: вечер четверга, все уже дома или в Китае.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Хорошо было стоять на набережной и смотреть на другую страну через реку, а потом два часа слушать про динозавров за символические деньги. Не хватило второго дня и открытой границы: Хэйхэ так и остался картинкой на том берегу. Завтра с утра — Биробиджан.</p>
@@ -259,6 +277,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../27-khabarovsk/index.html"><span class="code">27</span><span><small>Раньше по маршруту</small>Хабаровский край</span></a><a class="next" href="../79-jewish-ao/index.html"><span><small>Дальше по маршруту</small>Еврейская автономная область</span><span class="code">79</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>

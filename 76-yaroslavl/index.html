@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#45291C;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C89279;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C89279;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P056">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: парк на мысе между двумя реками, с клумбами и дорожками, вокруг широкая вода"></div>
@@ -87,8 +88,21 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Ярославль</span></a></li>
+    <li><a href="#g2"><span class="toc-d">17 апреля · воскресенье · утро</span><span class="toc-t">Рыбинск по дороге</span></a></li>
+    <li><a href="#g3"><span class="toc-d">17 апреля · день</span><span class="toc-t">Кремль и купюра</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Медведь, камень и столица кольца</span></a></li>
+    <li><a href="#g5"><span class="toc-d">17 апреля · вечер</span><span class="toc-t">Стрелка и спортрежим</span></a></li>
+    <li><a href="#g6"><span class="toc-d">17 апреля · 20:21</span><span class="toc-t">Подустал от кремлей</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Ярославль</h2>
+  <h2 id="g1">Три вещи про Ярославль</h2>
   <ul class="facts">
     <li>Казанская часовня у монастыря — та самая, с купюры в 1000 рублей. Можно приложить и сравнить</li>
     <li>Ярославль называет себя столицей Золотого кольца, и это написано на стеле с картой прямо в центре</li>
@@ -104,7 +118,7 @@
 
 <section class="sec">
   <div class="day">17 апреля · воскресенье · утро</div>
-  <h2>Рыбинск по дороге</h2>
+  <h2 id="g2">Рыбинск по дороге</h2>
   <p>Утро началось не в Ярославле, а в Рыбинске, по той же Волге выше по течению. Пара часов на набережной: купеческие дома с резьбой, краснокирпичный храм с двумя шпилями, который больше похож на костёл, и мост через реку в ясном апрельском свете.</p>
   <figure class="mid" id="P061">
     <div class="ph"><img src="media/rybinsk-dom.webp" width="1600" height="1200" loading="lazy" alt="Двухэтажный деревянный дом с резным декором и зелёными кровлями на фоне синего неба"></div>
@@ -124,7 +138,7 @@
 
 <section class="sec">
   <div class="day">17 апреля · день</div>
-  <h2>Кремль и купюра</h2>
+  <h2 id="g3">Кремль и купюра</h2>
   <p>В Ярославле я первым делом пошёл к кремлю. Это монастырь за белой стеной с колокольней, и общий вид ещё меньше Новгородского. Рядом парк, а в парке Казанская часовня — белая, острая, с той самой купюры. Снизу я её снял честно, а потом поднял дрон и снял так, как на купюре не нарисовано.</p>
   <figure class="tall" id="P001">
     <div class="ph"><img src="media/cerkov-rozovaya.webp" width="1050" height="1400" loading="lazy" alt="Розовая церковь с тремя тёмными главами и зелёной крышей, вид снизу"></div>
@@ -165,7 +179,7 @@
 </section>
 
 <section class="sec">
-  <h2>Медведь, камень и столица кольца</h2>
+  <h2 id="g4">Медведь, камень и столица кольца</h2>
   <p>Дальше пешком по центру. Медведь, символ Ярославля, сидит на валуне у сувенирной лавки в жёлтой накидке и не смущается. В конце каждой улицы по церкви, на площади стела с картой и надписью «Столица Золотого кольца», у собора с золотыми куполами закладной камень и колокол на раме, ещё не поднятый. Набережная широкая, Волга ещё шире, и половина города вышла на неё греться.</p>
   <div class="row narrow">
     <figure id="P028">
@@ -211,7 +225,7 @@
 
 <section class="sec">
   <div class="day">17 апреля · вечер</div>
-  <h2>Стрелка и спортрежим</h2>
+  <h2 id="g5">Стрелка и спортрежим</h2>
   <p>К шести я дошёл до Стрелки и остаток светлого дня летал. Над мысом парк с клумбами, в конце колонна с золотым ангелом, с двух сторон вода: коричневая Которосль и синяя Волга, на которой ещё плавают льдины. Здесь я учился летать в спортрежиме и запускал автоматические программы съёмки. Дрон облетал колонну сам, я только держал телефон и старался не мешать.</p>
   <figure class="wide">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-strelka.jpg" src="https://ssveretennikov.github.io/russia-video/76-yaroslavl/v-dron-strelka.mp4" width="1280" height="720"></video></div>
@@ -233,7 +247,7 @@
 
 <section class="sec">
   <div class="day">17 апреля · 20:21</div>
-  <h2>Подустал от кремлей</h2>
+  <h2 id="g6">Подустал от кремлей</h2>
   <p>Закат застал меня на набережной: огни моста, тихая Волга, подсвеченная колонна и светящееся солнце в парке. Хороший город, честно. Но что-то подустал я от кремлей. Следующий пункт по плану — Сибирь.</p>
   <figure class="wide" id="P058">
     <div class="ph"><img src="media/zakat.webp" width="2000" height="1500" loading="lazy" alt="Закат над широкой рекой, вдали огни моста, на переднем плане фонарь на набережной"></div>
@@ -249,6 +263,11 @@
       <figcaption><time>20:27</time>Солнце в парке, когда настоящее уже село. Последний кадр дня.</figcaption>
     </figure>
   </div>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>Ярославль дал всё, что обещала купюра, и сверх того — Стрелку, Волгу со льдинами и целый день полётов без единого дерева на пути. Не хватило только нового слова: кремль здесь, как и в двадцати городах до него, и к вечеру я это почувствовал.</p>
@@ -271,6 +290,6 @@
 <nav class="pager" aria-label="Читать дальше"><a class="prev" href="../60-pskov/index.html"><span class="code">60</span><span><small>Раньше по маршруту</small>Псковская область</span></a><a class="next" href="../54-novosibirsk/index.html"><span><small>Следующий отчёт</small>Новосибирская область</span><span class="code">54</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>

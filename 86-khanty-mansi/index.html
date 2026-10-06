@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#897038;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C7AD75;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C7AD75;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P176">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1239" alt="Бронзовые мамонты идут цепочкой вдоль травянистого склона, впереди крупный мамонт с загнутыми бивнями"></div>
@@ -84,8 +85,25 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Югру</span></a></li>
+    <li><a href="#g2"><span class="toc-d">17–18 августа · четверг и пятница</span><span class="toc-t">Два дня за городом</span></a></li>
+    <li><a href="#g3"><span class="toc-d">19 августа · суббота · утро</span><span class="toc-t">Мокрый центр</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Парк имени Лосева</span></a></li>
+    <li><a href="#g5"><span class="toc-t">Площадь и библиотека</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Самаровский Чугас</span></a></li>
+    <li><a href="#g7"><span class="toc-d">19 августа · день</span><span class="toc-t">Собор и смотровая</span></a></li>
+    <li><a href="#g8"><span class="toc-t">Археопарк</span></a></li>
+    <li><a href="#g9"><span class="toc-d">19 августа · вечер</span><span class="toc-t">Музей геологии, нефти и газа</span></a></li>
+    <li><a href="#g10"><span class="toc-d">19 августа · 19:48</span><span class="toc-t">Домой</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Югру</h2>
+  <h2 id="g1">Три вещи про Югру</h2>
   <ul class="facts">
     <li>если ЯНАО ассоциируется с газом, то ХМАО — с нефтью. Югра — один из крупнейших нефтедобывающих регионов мира. Кроме нефти здесь добывают золото, кварц и другое</li>
     <li>железной дороги в Ханты-Мансийске нет. Ближайшая станция — Пыть-Ях, дальше автобус. Речной путь по Иртышу от Тобольска когда-то был, сейчас его нет</li>
@@ -102,7 +120,7 @@
 
 <section class="sec">
   <div class="day">17–18 августа · четверг и пятница</div>
-  <h2>Два дня за городом</h2>
+  <h2 id="g2">Два дня за городом</h2>
   <p>Первые двое суток я в город не выходил: гостиница за городом, ноутбук, созвоны. Из Ханты-Мансийска за это время успел увидеть ROSTIC'S вместо привычного KFC и купить кофе в местной кофейне.</p>
   <div class="row narrow">
     <figure id="P001">
@@ -118,7 +136,7 @@
 
 <section class="sec">
   <div class="day">19 августа · суббота · утро</div>
-  <h2>Мокрый центр</h2>
+  <h2 id="g3">Мокрый центр</h2>
   <p>В субботу поехал в город с самого утра. Ночью прошёл дождь, асфальт мокрый, небо серое, и в такую погоду Ханты-Мансийск выглядит честно: чистые улицы, скульптура на каждом углу и редкие деревянные дома среди обычных.</p>
   <div class="row narrow">
     <figure id="P007">
@@ -143,7 +161,7 @@
 </section>
 
 <section class="sec">
-  <h2>Парк имени Лосева</h2>
+  <h2 id="g4">Парк имени Лосева</h2>
   <p>Берёзы, пруд с ротондой и столько бронзы, что парк мог бы называться скульптурным. Здесь я впервые понял, что в этом городе любят ставить памятники всему, что стоит на месте.</p>
   <figure class="wide" id="P025">
     <div class="ph"><img src="media/prud.webp" width="2000" height="1126" loading="lazy" alt="Пруд с белой ротондой на острове среди берёз, серое небо отражается в воде"></div>
@@ -162,7 +180,7 @@
 </section>
 
 <section class="sec">
-  <h2>Площадь и библиотека</h2>
+  <h2 id="g5">Площадь и библиотека</h2>
   <p>Как называется площадь в центре, я так и не узнал, Яндекс тоже не подсказал. Пусть будет центральная. Рядом улица Карла Маркса с жанровыми скульптурами одной серии, а по пути к библиотеке — гагара.</p>
   <figure class="mid" id="P052">
       <div class="ph"><img src="media/monument.webp" width="1600" height="901" loading="lazy" alt="Бронзовые фигуры людей у подножия высокого монумента, рядом флаги"></div>
@@ -182,7 +200,7 @@
 </section>
 
 <section class="sec">
-  <h2>Самаровский Чугас</h2>
+  <h2 id="g6">Самаровский Чугас</h2>
   <p>Рядом с библиотекой начинается лес. Прямо в городе: лестница с деревянной аркой, ели, кормушки, идолы и белки, которые не боятся никого. В лесу стоит гостиница «Миснэ» и самое необычное место для офиса страховой, которое я видел.</p>
   <figure class="mid" id="P077">
     <div class="ph"><img src="media/lestnica.webp" width="1600" height="901" loading="lazy" alt="Деревянная лестница уходит вверх в хвойный лес через резную арку"></div>
@@ -206,7 +224,7 @@
 
 <section class="sec">
   <div class="day">19 августа · день</div>
-  <h2>Собор и смотровая</h2>
+  <h2 id="g7">Собор и смотровая</h2>
   <p>Воскресенский собор стоит на горке, и к нему ведёт каскад. С площадки наверху видно весь город сразу: крыши, дорогу, за ними пирамиду, до которой я так и не дошёл.</p>
   <div class="row narrow">
     <figure id="P108">
@@ -244,7 +262,7 @@
 </section>
 
 <section class="sec">
-  <h2>Археопарк</h2>
+  <h2 id="g8">Археопарк</h2>
   <p>В музее нефти записался на ближайшую экскурсию, и до неё оставалось полтора часа. Решил съездить в ещё одно популярное место. Археопарк — это склон, по которому идёт стадо мамонтов, а ниже пещерный лев, носороги, волки и первобытные охотники у чума. Можно почувствовать себя в первобытном строе, если не смотреть на парковку.</p>
   <figure class="wide" id="P149">
     <div class="ph"><img src="media/sklon.webp" width="2000" height="1126" loading="lazy" alt="Травянистый склон с цепочкой скульптур мамонтов, внизу надпись «Ханты-Мансийск — новогодняя столица Сибири»"></div>
@@ -285,7 +303,7 @@
 
 <section class="sec">
   <div class="day">19 августа · вечер</div>
-  <h2>Музей геологии, нефти и газа</h2>
+  <h2 id="g9">Музей геологии, нефти и газа</h2>
   <p>Музей напротив Югорского университета, и в него я хотел больше всего. Группа на экскурсию набралась небольшая, четыре человека, так что экскурсовод посвятил нам много времени и отвечал на всё. Друзы минералов, метеорит, который можно потрогать, и метеориты, которые нельзя, буровые долота, сейсмостанции, быт геологов и нефть в колбах: разных сортов, разной вязкости, включая ту, что у всех на слуху, марки Brent. Нефть здесь дают и понюхать.</p>
   <div class="row">
     <figure id="P234">
@@ -340,12 +358,17 @@
 
 <section class="sec">
   <div class="day">19 августа · 19:48</div>
-  <h2>Домой</h2>
+  <h2 id="g10">Домой</h2>
   <p>Что-то за неделю так вымотался, побывав всего в четырёх городах трёх регионов. Через две недели отпуск и семь новых регионов, а я смотрю на самолёт и уже хочу домой. Надо успеть хорошо наработаться, чтобы снова захотелось уехать.</p>
   <figure class="wide" id="P292">
     <div class="ph"><img src="media/vzlet.webp" width="2000" height="1126" loading="lazy" alt="Вид из иллюминатора на взлёте: крыло самолёта, внизу город и лесистый холм, вдали река"></div>
     <figcaption><time>19:48</time>Взлёт. Отсюда видно и город, и Чугас, и «Красного дракона». Так он выглядит с самолёта, раз уж вечером с земли не вышло.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>Ханты-Мансийск оказался красивым и в целом приятным городом, где есть что посмотреть, и одного дня на него мало: Музей природы и человека, набережная, порт, пирамида и канатка остались без меня. Может быть, когда-нибудь приеду посмотреть на чемпионат России по биатлону.</p>
@@ -369,6 +392,6 @@
 <nav class="pager" aria-label="Читать дальше"><a class="prev" href="../72-tobolsk/index.html"><span class="code">72</span><span><small>Раньше по маршруту</small>Тобольск</span></a><a class="next" href="../11-komi/index.html"><span><small>Следующий отчёт</small>Республика Коми</span><span class="code">11</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>

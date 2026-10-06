@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#C34F18;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#E2865A;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#E2865A;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover portrait" id="P096">
     <div class="ph"><img class="cover-bg" src="media/hero.webp" alt="" aria-hidden="true"><img fetchpriority="high" src="media/hero.webp" width="1650" height="2200" alt="Красное здание с готической башней и фигурами орлов за кованой оградой в вечернем свете"></div>
@@ -82,8 +83,22 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Киров</span></a></li>
+    <li><a href="#g2"><span class="toc-d">14 августа · воскресенье · утро</span><span class="toc-t">От вокзала до парка</span></a></li>
+    <li><a href="#g3"><span class="toc-d">14 августа · день</span><span class="toc-t">Парк имени Кирова</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Фантазариум</span></a></li>
+    <li><a href="#g5"><span class="toc-t">Центр: Грин, Шаляпин и «Тут сломалось»</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Музей дымковской игрушки</span></a></li>
+    <li><a href="#g7"><span class="toc-d">14 августа · вечер</span><span class="toc-t">Спасская и набережная</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Киров</h2>
+  <h2 id="g1">Три вещи про Киров</h2>
   <ul class="facts">
     <li>город назван в честь Сергея Кирова в 1934 году. Настоящая фамилия Кирова — Костриков, и в Вятке он не был ни разу</li>
     <li>кикимора родом отсюда. Новгородцы сложили на горе брёвна для будущего города, уснули, а проснулись — брёвна лежат в другом месте. Решили, что это нечистая сила развлекалась</li>
@@ -107,7 +122,7 @@
 
 <section class="sec">
   <div class="day">14 августа · воскресенье · утро</div>
-  <h2>От вокзала до парка</h2>
+  <h2 id="g2">От вокзала до парка</h2>
   <p>Утро началось у вокзала и пошло через спальные районы. Дома какие-то своеобразные, а на торце одной панельки — роспись в дымковском стиле. Так я впервые увидел игрушку, ещё не зная, что увижу её потом везде.</p>
   <figure class="wide" id="P002">
     <div class="ph"><img src="media/vokzal.webp" width="1600" height="1200" loading="lazy" alt="Светлое здание вокзала с большой аркой на фоне синего неба, перед ним ограда и кусты"></div>
@@ -131,7 +146,7 @@
 
 <section class="sec">
   <div class="day">14 августа · день</div>
-  <h2>Парк имени Кирова</h2>
+  <h2 id="g3">Парк имени Кирова</h2>
   <p>Парк в честь человека, который здесь не был. Внутри пруд, Ассоль и площадка, где вместо свадебных замков на мосту молодожёны оставляют плитку с именами. Идея мне нравится: ржавчины меньше, память та же.</p>
   <div class="row">
     <figure id="P010">
@@ -154,7 +169,7 @@
 </section>
 
 <section class="sec">
-  <h2>Фантазариум</h2>
+  <h2 id="g4">Фантазариум</h2>
   <p>Классное арт-пространство во дворе, и названия ему хватает. На входе табличка «Принимаем лом игрушек», под ней ведро, полное лома. Дальше лестница, коридоры, росписи на всём, включая унитаз. В таких местах обычно смотришь на стены, а тут ещё и читаешь: половина стен — тексты.</p>
   <figure class="wide" id="P023">
     <div class="ph"><img src="media/graffiti.webp" width="2000" height="1500" loading="lazy" alt="Длинный забор у дороги, на нём крупная цветная роспись-спираль, над ним деревья и облака"></div>
@@ -197,7 +212,7 @@
 </section>
 
 <section class="sec">
-  <h2>Центр: Грин, Шаляпин и «Тут сломалось»</h2>
+  <h2 id="g5">Центр: Грин, Шаляпин и «Тут сломалось»</h2>
   <p>Исторический центр Кирова — это костёл, университет, памятник Шаляпину, чьи родители из Вятской губернии, и здание, где учился Грин. А ещё дом с нарисованной трещиной и подписью «Тут сломалось». Ну правда ведь сломалось, почините уже.</p>
   <figure class="tall" id="P050">
     <div class="ph"><img src="media/kostel.webp" width="1050" height="1400" loading="lazy" alt="Кирпичный костёл с двумя башнями и часами на фасаде на фоне синего неба"></div>
@@ -230,7 +245,7 @@
 </section>
 
 <section class="sec">
-  <h2>Музей дымковской игрушки</h2>
+  <h2 id="g6">Музей дымковской игрушки</h2>
   <p>Дымковская игрушка всегда была именно игрушкой, детской, а не талисманом или идолом. Делают её вручную из глины, расписывают ярко, и спустя много лет цвет держится. Главное, что я понял в музее: игрушки не повторяются. Разные сюжеты, разные цвета, разный рисунок, и у каждой композиции есть автор и год.</p>
   <figure class="wide" id="P061">
     <div class="ph"><img src="media/muzey-zal.webp" width="2000" height="1500" loading="lazy" alt="Светлый зал музея, на стене десятки мелких ярких фигурок, внизу большая бело-красная игрушка-баран"></div>
@@ -260,7 +275,7 @@
 
 <section class="sec">
   <div class="day">14 августа · вечер</div>
-  <h2>Спасская и набережная</h2>
+  <h2 id="g7">Спасская и набережная</h2>
   <p>Вечер ушёл на улицу Спасскую, местный Арбат, и на набережную. На Спасской — музей истории мороженого с кафе в подвале, Спасский собор, особняк Булычёва, в котором теперь управление ФСБ, и библиотека Герцена. Ближе к реке — Свято-Серафимовский собор, зайцы на одуванчике и ротонды над обрывом.</p>
   <div class="row narrow">
     <figure id="P090">
@@ -304,6 +319,11 @@
       <figcaption><time>19:05</time>Фонтан с камнем. На этом ноги сказали, что день закончен.</figcaption>
     </figure>
   </div>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Киров оказался городом, который интереснее своих достопримечательностей: Фантазариум, музей игрушки и надпись «Тут сломалось» запомнились больше соборов. Но за день он так и остался городом на один день, и причины вернуться я пока не нашёл.</p>
@@ -326,6 +346,6 @@
 <nav class="pager" aria-label="Читать дальше"><a class="prev" href="../52-nizhny-novgorod/index.html"><span class="code">52</span><span><small>Раньше по маршруту</small>Нижегородская область</span></a><a class="next" href="../29-arkhangelsk/index.html"><span><small>Следующий отчёт</small>Архангельская область</span><span class="code">29</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>

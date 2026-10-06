@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#644E29;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C7A975;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C7A975;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P022">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: кремль на холме у слияния двух рек, белый собор за стенами, разлив, облака"></div>
@@ -80,8 +81,21 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Псков</span></a></li>
+    <li><a href="#g2"><span class="toc-d">16 апреля · суббота · утро</span><span class="toc-t">Кремль изнутри</span></a></li>
+    <li><a href="#g3"><span class="toc-t">Кремль снаружи и сверху</span></a></li>
+    <li><a href="#g4"><span class="toc-d">16 апреля · день</span><span class="toc-t">Другой берег</span></a></li>
+    <li><a href="#g5"><span class="toc-t">Старый город</span></a></li>
+    <li><a href="#g6"><span class="toc-d">16 апреля · 13:00</span><span class="toc-t">Станция Псков</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Псков</h2>
+  <h2 id="g1">Три вещи про Псков</h2>
   <ul class="facts">
     <li>символ города, он же на гербе, — зверь лютый. Считается, что это снежный барс, хотя барсы здесь не водятся. Местные говорят, что это рысь, которая до последнего защищает своё</li>
     <li>город заложила княгиня Ольга. Место закладки отмечено Ольгиным крестом на берегу Великой, напротив кремля</li>
@@ -98,7 +112,7 @@
 
 <section class="sec">
   <div class="day">16 апреля · суббота · утро</div>
-  <h2>Кремль изнутри</h2>
+  <h2 id="g2">Кремль изнутри</h2>
   <p>Конечно же, в первую очередь я пошёл в кремль. Вход через башню с аркой, дальше лестница под сводом, над ней железный ключ с гербом. Потом стены, и по стенам можно ходить: наверху деревянная галерея под крышей, с одной стороны двор, с другой бойницы с видом на реку.</p>
   <div class="row narrow">
     <figure id="P001">
@@ -135,7 +149,7 @@
 </section>
 
 <section class="sec">
-  <h2>Кремль снаружи и сверху</h2>
+  <h2 id="g3">Кремль снаружи и сверху</h2>
   <p>Вышел за стены и обошёл мыс по берегу. Снизу башни выглядят выше, чем изнутри, а вода в апреле подходит к самым камням. Потом поднял дрон, и стало понятно, зачем кремль поставили именно сюда: с воздуха видно обе реки сразу и стену, которая идёт точно по стрелке.</p>
   <figure class="wide" id="P019">
     <div class="ph"><img src="media/persi.webp" width="2000" height="1500" loading="lazy" alt="Высокая крепостная стена на холме над рекой, справа башня с шатром, облака"></div>
@@ -169,7 +183,7 @@
 
 <section class="sec">
   <div class="day">16 апреля · день</div>
-  <h2>Другой берег</h2>
+  <h2 id="g4">Другой берег</h2>
   <p>Перешёл Великую. Отсюда кремль выглядит как с открытки, и именно отсюда читается надпись на стене. Рядом набережная и кампус Псковского государственного университета, рыбаки, и Ольгин крест: место, где княгиня Ольга заложила город.</p>
   <figure class="wide" id="P031">
     <div class="ph"><img src="media/kreml-s-berega.webp" width="2000" height="1500" loading="lazy" alt="Кремль с собором и башнями на другом берегу широкой реки, на стене надпись «Россия начинается здесь»"></div>
@@ -188,7 +202,7 @@
 </section>
 
 <section class="sec">
-  <h2>Старый город</h2>
+  <h2 id="g5">Старый город</h2>
   <p>Дальше пешком по улицам. Церкви в Пскове белые, невысокие и стоят на холмах, картинка, которую я точно уже где-то видел, может, на открытке. Между церквями кузнец на скамейке, музыкальная лавочка и Цой на торце дома. В конце ещё одна башня у реки и единственный кадр, где я в кадре.</p>
   <div class="row narrow">
     <figure id="P037">
@@ -234,11 +248,16 @@
 
 <section class="sec">
   <div class="day">16 апреля · 13:00</div>
-  <h2>Станция Псков</h2>
+  <h2 id="g6">Станция Псков</h2>
   <figure class="mid" id="P060">
     <div class="ph"><img src="media/tablichka.webp" width="1050" height="1400" loading="lazy" alt="Мемориальная табличка на стене вокзала о событии 2 (15) марта 1917 года"></div>
     <figcaption><time>13:00</time>Вокзал. Знаковое место: здесь 2 (15) марта 1917 года в салон-вагоне Николай II отрёкся от престола. Прочитал и пошёл на свой поезд.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Лучший кремль из всех, что я видел, и четыре часа ясного апрельского неба. Не хватило всего остального: области за пределами Пскова, листвы на деревьях и времени, чтобы дойти хотя бы до Поганкиных палат, пусть и закрытых.</p>
@@ -261,6 +280,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../53-novgorod/index.html"><span class="code">53</span><span><small>Раньше по маршруту</small>Новгородская область</span></a><a class="next" href="../76-yaroslavl/index.html"><span><small>Дальше по маршруту</small>Ярославская область</span><span class="code">76</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>

@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#1A63D1;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#709FE6;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#709FE6;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P028">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Бетонная дуга плотины Саяно-Шушенской ГЭС между двумя лесистыми горами, перед ней тёмная вода и бетонная набережная"></div>
@@ -80,8 +81,21 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Хакасию</span></a></li>
+    <li><a href="#g2"><span class="toc-d">3 июня · пятница · вечер</span><span class="toc-t">Вокзал Абакана</span></a></li>
+    <li><a href="#g3"><span class="toc-d">5 июня · воскресенье · утро</span><span class="toc-t">Абакан по пути на автовокзал</span></a></li>
+    <li><a href="#g4"><span class="toc-d">5 июня · день</span><span class="toc-t">Два с половиной километра до ГЭС</span></a></li>
+    <li><a href="#g5"><span class="toc-d">5 июня · вечер</span><span class="toc-t">Гора Самохвал</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Маленький принц, борец и коты</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Хакасию</h2>
+  <h2 id="g1">Три вещи про Хакасию</h2>
   <ul class="facts">
     <li>одна из самых малонаселённых республик: на площади 61 876 км² живёт всего 528 000 человек</li>
     <li>здесь стоит Саяно-Шушенская ГЭС — крупнейшая в России</li>
@@ -97,7 +111,7 @@
 
 <section class="sec">
   <div class="day">3 июня · пятница · вечер</div>
-  <h2>Вокзал Абакана</h2>
+  <h2 id="g2">Вокзал Абакана</h2>
   <p>Приехал поездом, ночью. Первый кадр региона — вокзал с подсветкой и минивэн у входа. Кадров за следующий день нет.</p>
   <figure class="mid" id="P002">
     <div class="ph"><img src="media/vokzal.webp" width="1600" height="1200" loading="lazy" alt="Ночной вокзал «Абакан» с подсвеченной вывеской РЖД, у входа стоит минивэн"></div>
@@ -107,7 +121,7 @@
 
 <section class="sec">
   <div class="day">5 июня · воскресенье · утро</div>
-  <h2>Абакан по пути на автовокзал</h2>
+  <h2 id="g3">Абакан по пути на автовокзал</h2>
   <p>Утро воскресенья, город пустой. Иду на автовокзал и снимаю всё, что попадается: свадебный салон, пивовара, нотный стан на скамейке. Абакан не старается понравиться, и это ему идёт. По дороге встретил бездомных пёселей, но они в кадр не попали, так что поверьте на слово.</p>
   <div class="row">
     <figure id="P006">
@@ -137,7 +151,7 @@
 
 <section class="sec">
   <div class="day">5 июня · день</div>
-  <h2>Два с половиной километра до ГЭС</h2>
+  <h2 id="g4">Два с половиной километра до ГЭС</h2>
   <p>Доехал до Саяногорска, пересел на автобус до Черёмушек, вышел и пошёл. От остановки до плотины два с половиной километра вдоль водохранилища. По дороге никого. Тишина и безмолвие, как я тогда записал, и добавить к этому нечего. На самой плотине флаги и слово «РОССИЯ» во всю ширину, чтобы с набережной было понятно, чья она.</p>
   <figure class="wide" id="P011">
     <div class="ph"><img src="media/vodohranilishche.webp" width="2000" height="1500" loading="lazy" alt="Спокойная вода водохранилища между лесистыми горами, вдали хребет со снежной полосой"></div>
@@ -193,7 +207,7 @@
 
 <section class="sec">
   <div class="day">5 июня · вечер</div>
-  <h2>Гора Самохвал</h2>
+  <h2 id="g5">Гора Самохвал</h2>
   <p>Вернулся в Абакан и заскочил на гору Самохвал на окраине города. Небо к вечеру затянуло. Здесь памятник воинам-освободителям: возле каждого камня плита с конкретным городом республики. Рядом смотровая, канатная дорога и лыжный комплекс, который не работает.</p>
   <figure class="wide" id="P031">
     <div class="ph"><img src="media/samohval.webp" width="1600" height="1200" loading="lazy" alt="Мощёная площадка на холме с вертикальными камнями и фонарями под пасмурным небом"></div>
@@ -216,7 +230,7 @@
 </section>
 
 <section class="sec">
-  <h2>Маленький принц, борец и коты</h2>
+  <h2 id="g6">Маленький принц, борец и коты</h2>
   <p>Остаток вечера ушёл на городскую скульптуру. В Абакане её немного, но вся она стоит на пути к вокзалу, как будто специально. На этом путешествие по Сибири закончилось, следующее — по югу России.</p>
   <figure class="tall" id="P041">
     <div class="ph"><img src="media/princ.webp" width="1050" height="1400" loading="lazy" alt="Бронзовая фигура мальчика на большом шаре-планете перед жилым домом"></div>
@@ -232,6 +246,11 @@
       <figcaption><time>18:46</time>Забавная скульптура с котами. Куст-сердце рядом явно не случайность.</figcaption>
     </figure>
   </div>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>ГЭС стоила двух автобусов и пешей дороги, а Абакан не мешал и даже помогал. Не хватило заявки за две недели, чтобы попасть на саму станцию, и озёр, которыми регион славится.</p>
@@ -255,6 +274,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../24-krasnoyarsk/index.html"><span class="code">24</span><span><small>Раньше по маршруту</small>Красноярский край</span></a><a class="next" href="../17-tuva/index.html"><span><small>Дальше по маршруту</small>Республика Тыва</span><span class="code">17</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>
