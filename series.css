@@ -689,3 +689,10 @@ li.reg.read .reg-t>div>a::after,.fc.read .fc-nm::after{content:"\00a0\2713";colo
 .tl-chain a.st:hover,.tl-chain a.st:focus-visible{border-color:var(--sky);color:var(--sky-deep)}
 .tl-chain .st b{flex:none;min-width:1.7rem;padding:.1rem .3rem;border-radius:999px;background:var(--sky);color:#fff;font:600 .78rem/1.2 var(--sign);text-align:center}
 .tl-chain .ar{color:var(--soft)}
+
+/* ---- Схема по городу (проба): силуэт города из OpenStreetMap, мелкие точки — все снимки архива (build.py, daymap_city_svg). */
+.dmc-city{fill:color-mix(in srgb,var(--reg) 14%,transparent);stroke:var(--reg);stroke-width:1;stroke-linejoin:round}
+.dmc-shot{fill:var(--reg);opacity:.45}
+.dmc-out circle{fill:var(--surface);stroke:var(--ink);stroke-width:2}
+.dmc-out text{fill:var(--ink)}
+.dmc-osm{margin:.2rem 0 0;font-size:.8rem;color:var(--soft)}
