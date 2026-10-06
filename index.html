@@ -25,7 +25,7 @@
 <meta name="theme-color" content="#2A63C4" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="fonts/golos-text-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="fonts/oswald-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="series.css?v=512d5062">
+<link rel="stylesheet" href="series.css?v=294b946a">
 
 </head>
 <body id="top">
@@ -152,9 +152,9 @@
   </div>
   <div class="mcard" id="mcard" aria-live="polite"><p class="mhint"><span class="h-mouse">Наведите на регион или нажмите на него.</span><span class="h-touch">Нажмите на регион — появится ссылка на отчёт.</span></p></div>
   <div class="tl" aria-label="Хронология поездок">
-    <div class="tl-ctl"><button type="button" id="tprev" aria-label="Предыдущая поездка"><svg class="i-prev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button><button type="button" class="play" id="play" aria-label="Путь по годам: воспроизвести"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg><span>Путь по годам</span></button><button type="button" id="tnext" aria-label="Следующая поездка"><svg class="i-next" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button></div>
+    <div class="tl-ctl"><button type="button" id="tprev" aria-label="Предыдущая поездка"><svg class="i-prev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button><button type="button" class="play" id="play" aria-label="Поездки по порядку: воспроизвести"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg><span>Поездки по порядку</span></button><button type="button" id="tnext" aria-label="Следующая поездка"><svg class="i-next" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button></div>
     <div class="tl-track"><input type="range" id="track" min="0" value="0" aria-label="Поездка на временной шкале"><div class="ruler" id="ruler" aria-hidden="true"></div></div>
-    <div class="tl-read"><strong id="tdate">Все поездки</strong><span id="tnote" aria-live="polite"></span></div>
+    <div class="tl-read" aria-live="polite"><strong id="tdate">Все поездки</strong><span id="tnote"></span><span class="tl-chain" id="tchain" hidden></span></div>
     <button type="button" class="tl-all" id="tall" hidden>Показать весь период</button>
   </div>
 </section>
@@ -286,6 +286,6 @@
 </div>
 <footer class="site-foot ft-home" role="contentinfo"><div class="ft-in"><div class="ft-t"><span class="ft-name">Россия: регион за регионом</span><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p><p class="ft-nav"><a href="trips/index.html">Поездки</a> · <a href="about/index.html">О проекте</a></p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
 <script src="series.js?v=b28c6248"></script>
-<script src="map.js?v=137325db"></script>
+<script src="map.js?v=0783516c"></script>
 </body>
 </html>
