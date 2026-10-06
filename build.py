@@ -915,7 +915,7 @@ PAGES = [
          prev=None, next=('92', 'Севастополь', '../92-sevastopol/index.html', 'Дальше по маршруту'), color=None),
     dict(slug='92-sevastopol', title='92 · Севастополь',
          prev=('91', 'Республика Крым', '../91-krym/index.html', 'Раньше по маршруту'),
-         next=('91', 'Республика Крым · Карадаг', '../91-krym/index.html', 'Дальше по маршруту'), color=None),
+         next=('91', 'Республика Крым · Карадаг', '../91-krym/index.html#g7', 'Дальше по маршруту'), color=None),
     dict(slug='22-altai-krai', title='22 · Алтайский край',
          prev=None, next=('4', 'Республика Алтай', '../04-altai-republic/index.html', 'Дальше по маршруту'), color=None,
          og='media/most.webp'),
@@ -923,7 +923,8 @@ PAGES = [
          prev=('22', 'Алтайский край', '../22-altai-krai/index.html', 'Раньше по маршруту'), next=None, color=None),
 ]
 
-TRIPS = json.load(open(os.path.join(ROOT, 'data', 'trips.json'), encoding='utf-8')) if os.path.exists(os.path.join(ROOT, 'data', 'trips.json')) else []
+TRIPS = [t for t in (json.load(open(os.path.join(ROOT, 'data', 'trips.json'), encoding='utf-8'))
+         if os.path.exists(os.path.join(ROOT, 'data', 'trips.json')) else []) if t.get('regions')]   # пустая поездка = убрана автором
 
 COLORS = json.load(open(os.path.join(ROOT, 'data', 'colors.json'), encoding='utf-8')) if os.path.exists(os.path.join(ROOT, 'data', 'colors.json')) else {}
 
@@ -963,7 +964,7 @@ def _top(up):
 def trips_body():
     """Все поездки из data/trips.json по годам. Пометка checked — внутренняя, на страницу не выводится."""
     import json
-    trips = sorted(json.load(open(os.path.join(ROOT, 'data', 'trips.json'), encoding='utf-8')), key=lambda t: t['start'])
+    trips = sorted(TRIPS, key=lambda t: t['start'])   # TRIPS уже без пустых поездок, убранных автором
     trans = json.load(open(os.path.join(ROOT, 'data', 'transport.json'), encoding='utf-8'))
     regs = {_page_code(s) for t in trips for s in t['regions']}   # по кодам: у Якутии две страницы (14-yakutia, 14-mirny)
     longest = max(trips, key=lambda t: (trip_days(t['start'], t['end']), t['start']))

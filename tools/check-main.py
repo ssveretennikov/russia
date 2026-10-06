@@ -94,7 +94,9 @@ def phone(b):
 def player(page):
     # проигрыватель проходит все поездки и сам останавливается на полной карте
     n = page.evaluate('JSON.parse(document.getElementById("karta").dataset.trips).length')
-    check(n == 23, f'шагов «Пути по годам» — поездок: {n}')
+    import json as _j, os as _o
+    want = sum(1 for t in _j.load(open(_o.path.join(_o.path.dirname(_o.path.dirname(_o.path.abspath(__file__))), 'data', 'trips.json'), encoding='utf-8')) if t.get('regions'))
+    check(n == want, f'шагов «Пути по годам» — поездок: {n} (в data/trips.json непустых {want})')
     page.click('#play'); page.wait_for_timeout(200)
     check(page.evaluate('document.getElementById("track").value') == '0', 'проигрыватель начал с первой поездки')
     page.wait_for_timeout(n * 1500 + 1500)
