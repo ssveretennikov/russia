@@ -370,9 +370,6 @@ img.zoomable{cursor:zoom-in}
 /* ---- Карта дня и профиль высоты: строятся из GPS снимков (build.py). Точки — отобранные фото, клик ведёт к ним. */
 .daymap{background:var(--surface);border:1px solid var(--line);padding:.6rem}
 .daymap-svg,.profile-svg{display:block;width:100%;height:auto;font-family:var(--sign)}
-.dm-route{fill:none;stroke:var(--reg);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round;opacity:.85}
-.dm-label circle{fill:var(--ink)}
-.dm-label text{fill:var(--ink);font-size:14px;letter-spacing:.03em;paint-order:stroke;stroke:var(--surface);stroke-width:4px;stroke-linejoin:round}
 .dm-pt circle{fill:var(--surface);stroke:var(--ink);stroke-width:2;transition:fill .15s,r .15s}
 .dm-pt:hover circle,.dm-pt:focus circle{fill:var(--reg);stroke:var(--reg)}
 .pf-line{fill:none;stroke:var(--reg);stroke-width:2.5;stroke-linejoin:round}
@@ -533,3 +530,17 @@ details.more[open] summary{margin-bottom:.6rem}
 .site-foot .ft-top:hover{text-decoration:underline}
 .site-foot.ft-home{background:var(--sky-bg);border-top-color:var(--sky)}
 .site-foot.ft-home .ft-name,.site-foot.ft-home .ft-top{color:var(--sky-deep)}
+/* ---- Карта точек съёмки: в SVG только номера мест и линия маршрута, названия — списком под картой (build.py, daymap_svg). */
+.daymap-svg{max-width:28rem;margin-inline:auto}
+.dm-route{stroke:var(--reg);stroke-width:2.5;stroke-linecap:round;opacity:.85}
+.dm-far{stroke-dasharray:2 6;stroke-width:2.5}
+.dm-lead{stroke:var(--soft);stroke-width:1}
+.dm-dot{fill:var(--ink)}
+.dm-num circle{fill:var(--ink);stroke:var(--surface);stroke-width:2}
+.dm-num text{fill:var(--surface);font-size:13px;font-weight:700}
+.dm-scale path{fill:none;stroke:var(--soft);stroke-width:1.5}
+.dm-scale text{fill:var(--soft);font-size:12px}
+.dm-list{margin:.6rem 0 .2rem;padding-left:1.8rem;font-size:1rem;line-height:1.5}
+.dm-list li::marker{font-family:var(--sign);font-weight:700}
+.dm-list a{color:var(--ink)}
+.dm-n{color:var(--soft);white-space:nowrap}
