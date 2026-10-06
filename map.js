@@ -101,11 +101,20 @@
     });
     return [x0, y0, x1 - x0, y1 - y0];
   }
+  // Европейская часть — втрое крупнее всей страны: на телефоне при 1,45 раза Московская область была
+  // в 10 пикселей и пальцем в неё было не попасть. Центр — между Калининградом и Уралом, чуть ниже Москвы.
+  function europe() { var w = W / 3, h = H / 3; return [195 - w / 2, 300 - h / 2, w, h]; }
+  function clamp(v) {                           // не уводить карту за край при перетаскивании
+    var w = Math.min(W, v[2]), h = Math.min(H, v[3]);
+    return [Math.max(0, Math.min(W - w, v[0])), Math.max(0, Math.min(H - h, v[1])), w, h];
+  }
   function setView(v) { view = v; svg.setAttribute('viewBox', v.join(' ')); }
   function zoomTo(target) {
     cancelAnimationFrame(anim);
     zoomed = target !== FULL;
     zoomBtn.textContent = zoomed ? 'Вся страна' : 'Европейская часть';
+    zoomBtn.setAttribute('aria-pressed', zoomed ? 'true' : 'false');
+    svg.classList.toggle('zoomed', zoomed);
     if (still) { setView(target); return; }
     var from = view.slice(), t0 = null;
     anim = requestAnimationFrame(function step(ts) {
@@ -115,7 +124,51 @@
       if (k < 1) anim = requestAnimationFrame(step);
     });
   }
-  zoomBtn.addEventListener('click', function () { zoomTo(zoomed ? FULL : fit(EUROPE)); });
+  zoomBtn.addEventListener('click', function () { zoomTo(zoomed ? FULL : europe()); });
+
+  // Перетаскивание и щипок у увеличенной карты. Захват указателя — только когда палец уже сдвинулся:
+  // иначе касание региона ушло бы самой карте, а не региону, и карточка не открылась бы.
+  var ptrs = {}, drag = null, moved = false;
+  function svgScale() { return view[2] / svg.getBoundingClientRect().width; }   // единиц карты на пиксель
+  function startDrag() {
+    var ids = Object.keys(ptrs), a = ptrs[ids[0]], b = ptrs[ids[1]];
+    drag = { v: view.slice(), a: { x: a.x, y: a.y }, b: b ? { x: b.x, y: b.y } : null, k: svgScale() };
+  }
+  svg.addEventListener('pointerdown', function (ev) {
+    if (!zoomed) return;
+    ptrs[ev.pointerId] = { x: ev.clientX, y: ev.clientY };
+    moved = false; startDrag();
+  });
+  svg.addEventListener('pointermove', function (ev) {
+    if (!zoomed || !ptrs[ev.pointerId]) return;
+    ptrs[ev.pointerId] = { x: ev.clientX, y: ev.clientY };
+    var ids = Object.keys(ptrs), a = ptrs[ids[0]], b = ptrs[ids[1]];
+    var dx = a.x - drag.a.x, dy = a.y - drag.a.y;
+    if (!moved && Math.abs(dx) + Math.abs(dy) < 6 && !b) return;
+    if (!moved) { moved = true; try { svg.setPointerCapture(ev.pointerId); } catch (e) {} }
+    cancelAnimationFrame(anim);
+    var v = drag.v, k = drag.k;
+    if (b && drag.b) {                          // щипок: масштаб по расстоянию между пальцами, центр — между ними
+      var d0 = Math.hypot(drag.b.x - drag.a.x, drag.b.y - drag.a.y), d1 = Math.hypot(b.x - a.x, b.y - a.y);
+      var s = Math.max(W / v[2] / 6, Math.min(v[2] / W, d0 / Math.max(d1, 1)));   // не крупнее ×6 и не мельче всей страны
+      var r = svg.getBoundingClientRect();
+      var m0x = (drag.a.x + drag.b.x) / 2 - r.left, m0y = (drag.a.y + drag.b.y) / 2 - r.top;
+      var m1x = (a.x + b.x) / 2 - r.left, m1y = (a.y + b.y) / 2 - r.top;
+      var px = v[0] + m0x * k, py = v[1] + m0y * k, w = v[2] * s, h = v[3] * s;
+      setView(clamp([px - m1x * k * s, py - m1y * k * s, w, h]));
+    } else {
+      setView(clamp([v[0] - dx * k, v[1] - dy * k, v[2], v[3]]));
+    }
+  });
+  function endPtr(ev) {
+    if (!ptrs[ev.pointerId]) return;
+    delete ptrs[ev.pointerId];
+    if (Object.keys(ptrs).length) startDrag();   // один палец остался — продолжаем тянуть от него
+  }
+  svg.addEventListener('pointerup', endPtr);
+  svg.addEventListener('pointercancel', endPtr);
+  // после перетаскивания отпускание пальца не считается нажатием на регион
+  svg.addEventListener('click', function (ev) { if (moved) { ev.stopPropagation(); ev.preventDefault(); moved = false; } }, true);
 
   // «К карте»: список длинный, на телефоне — несколько тысяч точек; кнопка видна, когда карта ушла за верх экрана
   var totop = document.getElementById('totop');
@@ -183,92 +236,87 @@
     state.q = find.value.trim().toLowerCase().replace(/ё/g, 'е');
     stopPlay(); idx = N; draw(); apply();
   });
-  [].forEach.call(document.querySelectorAll('.chip'), function (c) {
+  var filterBtns = [].slice.call(document.querySelectorAll('.chip, .ychip'));
+  filterBtns.forEach(function (c) {
     c.addEventListener('click', function () {
-      state[c.dataset.k] = c.dataset.v;
-      [].forEach.call(document.querySelectorAll('.chip[data-k="' + c.dataset.k + '"]'), function (x) {
-        x.setAttribute('aria-pressed', x === c ? 'true' : 'false');
+      var k = c.dataset.k;
+      // год в легенде — переключатель: повторное нажатие возвращает все годы
+      state[k] = (k === 'year' && state.year === c.dataset.v) ? '' : c.dataset.v;
+      filterBtns.forEach(function (x) {
+        if (x.dataset.k === k) x.setAttribute('aria-pressed', x.dataset.v === state[k] ? 'true' : 'false');
       });
+      stopPlay(); idx = N; draw();
       apply();
-      if (c.dataset.k === 'fo') zoomTo(c.dataset.v ? fit(foBox(c.dataset.v)) : FULL);
+      if (k === 'fo') zoomTo(c.dataset.v ? fit(foBox(c.dataset.v)) : FULL);
     });
   });
 
-  // хронология: ползунок по датам первого визита, регионы накопительно, как в атласе
-  var dates = [], seen = {};
-  items.forEach(function (li) { var d = li.dataset.iso; if (d && !seen[d]) { seen[d] = 1; dates.push(d); } });
-  dates.sort();
-  var N = dates.length;                     // значение ползунка N = «все даты»
+  // «Путь по годам»: шаг — одна поездка из data/trips.json (build.py кладёт их в data-trips у блока карты).
+  // Регионы поездки загораются вместе. Дом и регионы без поездки в списке горят с первого шага.
+  var steps = JSON.parse(box.dataset.trips || '[]');
+  var N = steps.length;                     // значение ползунка N = «все поездки»
+  var firstStep = {};
+  steps.forEach(function (t, i) { t[2].forEach(function (c) { if (!(c in firstStep)) firstStep[c] = i; }); });
+  function stepOf(code) { return code in firstStep ? firstStep[code] : -1; }
   var track = document.getElementById('track'), tdate = document.getElementById('tdate'), tnote = document.getElementById('tnote');
-  var playBtn = document.getElementById('play'), tall = document.getElementById('tall');
-  var idx = N, playing = false, timer = null, STEP = 1050;
+  var playBtn = document.getElementById('play'), tall = document.getElementById('tall'), mapdate = document.getElementById('mapdate');
+  var idx = N, playing = false, timer = null, STEP = 1500;   // 23 поездки × 1,5 с ≈ 35 с
   var MON1 = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-  // «Путь по годам» под картой — та же кнопка воспроизведения, что в хронологии: та под карточкой, её не замечали
-  var story = document.getElementById('story'), mapdate = document.getElementById('mapdate');
-  story.addEventListener('click', function () { playBtn.click(); });
   var MON = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
-  function fmt(iso) { var a = iso.split('-'); return +a[2] + ' ' + MON[a[1] - 1] + ' ' + a[0]; }
-  // Шкала по календарю: каждому году равная доля полосы, ползунок считает дни. Шаги ‹ › и воспроизведение
-  // по-прежнему идут от поездки к поездке. По числу поездок 2024–2026 сжимались в край под одной подписью.
-  function dayNum(iso) { var a = iso.split('-'); return Date.UTC(+a[0], a[1] - 1, +a[2]) / 864e5; }
-  var Y0 = +dates[0].slice(0, 4), Y1 = +dates[N - 1].slice(0, 4);
-  var D0 = dayNum(Y0 + '-01-01'), DMAX = dayNum(Y1 + '-12-31') - D0;
-  var dayOf = dates.map(function (d) { return dayNum(d) - D0; });
-  function posOf(i) { return i < N ? dayOf[i] : DMAX; }
-  function idxAt(v) {                        // последняя поездка не позже выбранного дня; конец полосы — «все даты»
-    if (v >= DMAX) return N;
-    var i = 0;
-    while (i + 1 < N && dayOf[i + 1] <= v) i++;
-    return i;
+  function span(a, b) {                     // «19–20 февраля 2022», «30 июля – 7 августа 2025»
+    var x = a.split('-'), y = b.split('-');
+    if (a === b) return +x[2] + ' ' + MON[x[1] - 1] + ' ' + x[0];
+    if (x[0] !== y[0]) return +x[2] + ' ' + MON[x[1] - 1] + ' ' + x[0] + ' – ' + +y[2] + ' ' + MON[y[1] - 1] + ' ' + y[0];
+    if (x[1] !== y[1]) return +x[2] + ' ' + MON[x[1] - 1] + ' – ' + +y[2] + ' ' + MON[y[1] - 1] + ' ' + y[0];
+    return +x[2] + '–' + +y[2] + ' ' + MON[x[1] - 1] + ' ' + x[0];
   }
-  track.min = 0; track.max = DMAX; track.step = 1; track.value = DMAX;
-  var ruler = document.getElementById('ruler');
-  for (var y = Y0; y <= Y1; y++) {
+  track.min = 0; track.max = N; track.step = 1; track.value = N;
+  // Шкала по поездкам: засечка на каждую, подпись года — у первой поездки года
+  var ruler = document.getElementById('ruler'), lastY = '';
+  steps.forEach(function (t, i) {
+    var pos = i / N * 100 + '%', y = t[0].slice(0, 4);
+    var tick = document.createElement('i'); tick.style.left = pos; ruler.appendChild(tick);
+    if (y === lastY) return;
+    lastY = y;
     var s = document.createElement('span'), c = document.createElement('b');
-    c.textContent = String(y).slice(0, 2);   // «20» прячется на узком экране: остаётся «’22»
-    s.appendChild(c); s.appendChild(document.createTextNode(String(y).slice(2)));
-    s.style.left = (dayNum(y + '-01-01') - D0) / DMAX * 100 + '%';
+    c.textContent = y.slice(0, 2);            // «20» прячется на узком экране: остаётся «’22»
+    s.appendChild(c); s.appendChild(document.createTextNode(y.slice(2)));
+    s.style.left = pos;
     ruler.appendChild(s);
-  }
-  function fitRuler() { ruler.classList.toggle('short', ruler.clientWidth / (Y1 - Y0 + 1) < 48); }
+  });
+  function fitRuler() { ruler.classList.toggle('short', ruler.clientWidth < 360); }
   fitRuler();
   window.addEventListener('resize', fitRuler);
-  dayOf.forEach(function (d) {               // засечка на каждую дату поездки
-    var t = document.createElement('i');
-    t.style.left = d / DMAX * 100 + '%';
-    ruler.appendChild(t);
-  });
-  var total = items.filter(function (li) { return li.dataset.iso; }).length;   // по списку: у дома (Москвы) нет года, но он посещён
+  var total = items.filter(function (li) { return li.dataset.iso; }).length;   // посещённые по списку, дом тоже
+  function isOn(li, cur) { return !!li.dataset.iso && stepOf(li.dataset.code) <= cur; }
+  function nameOf(code) { var li = byCode[code], n = li && li.querySelector('.nm, a:not(.code)'); return n ? n.textContent : code; }
 
   function draw() {
-    var cur = idx < N ? dates[idx] : null;
+    var cur = idx < N ? idx : null, trip = cur === null ? null : steps[cur];
     paths.forEach(function (p) {
-      var iso = byCode[p.dataset.code] && byCode[p.dataset.code].dataset.iso;
-      p.classList.toggle('later', !!(cur && iso && iso > cur));
-      p.classList.toggle('arr', !!(cur && iso === cur && !byCode[p.dataset.code].dataset.home));
+      var li = byCode[p.dataset.code], vis = !!(li && li.dataset.iso);
+      p.classList.toggle('later', cur !== null && vis && stepOf(p.dataset.code) > cur);
+      p.classList.toggle('arr', !!trip && trip[2].indexOf(p.dataset.code) >= 0);
     });
-    items.forEach(function (li) { li.hidden = !!(cur && li.dataset.iso && li.dataset.iso > cur) || !okFilter(li); });
+    items.forEach(function (li) { li.hidden = (cur !== null && !!li.dataset.iso && !isOn(li, cur)) || !okFilter(li); });
     secs.forEach(function (s) { s.hidden = !s.querySelector('li.reg:not([hidden])'); });
     syncFav();
-    track.value = posOf(idx); tall.hidden = idx >= N; playBtn.classList.toggle('playing', playing); playBtn.setAttribute('aria-label', playing ? 'Пауза' : 'Воспроизвести');
-    story.classList.toggle('playing', playing);
-    mapdate.hidden = !cur;
-    if (cur) {
-      var a = cur.split('-');
-      mapdate.textContent = MON1[a[1] - 1] + ' ' + a[0];
-      var sm = document.createElement('small');
-      sm.textContent = items.filter(function (li) { return li.dataset.iso && li.dataset.iso <= cur; }).length + ' из ' + total + ' регионов';
-      mapdate.appendChild(sm);
-    }
+    track.value = idx; tall.hidden = idx >= N;
+    playBtn.classList.toggle('playing', playing);
+    playBtn.setAttribute('aria-label', playing ? 'Путь по годам: пауза' : 'Путь по годам: воспроизвести');
+    mapdate.hidden = !trip;
     document.getElementById('tprev').disabled = idx <= 0;
     document.getElementById('tnext').disabled = idx >= N;
-    if (!cur) { tdate.textContent = 'Все даты'; tnote.textContent = 'На карте все посещённые регионы.'; if (!picked) card.innerHTML = hint; return; }
-    var shown = items.filter(function (li) { return li.dataset.iso && li.dataset.iso <= cur; }).length;
-    var arrived = items.filter(function (li) { return li.dataset.iso === cur && !li.dataset.home; });
-    tdate.textContent = fmt(cur);
-    tnote.textContent = 'Показано ' + shown + ' из ' + total + ' регионов, накопительно.';
-    show(arrived[0].dataset.code);
-    var extra = arrived.slice(1).map(function (li) { return li.querySelector('.nm, a:not(.code)').textContent; });
+    if (!trip) { tdate.textContent = 'Все поездки'; tnote.textContent = 'На карте все посещённые регионы.'; if (!picked) card.innerHTML = hint; return; }
+    var shown = items.filter(function (li) { return isOn(li, cur); }).length;
+    var a = trip[0].split('-');
+    mapdate.textContent = MON1[a[1] - 1] + ' ' + a[0];
+    var sm = document.createElement('small'); sm.textContent = shown + ' из ' + total + ' регионов';
+    mapdate.appendChild(sm);
+    tdate.textContent = span(trip[0], trip[1]);
+    tnote.textContent = 'Поездка ' + (cur + 1) + ' из ' + N + ': ' + trip[2].join(' → ');
+    show(trip[2][0]);
+    var extra = trip[2].slice(1).map(nameOf);
     if (extra.length) { var s = card.querySelector('small'); if (s) s.textContent += ' · ещё: ' + extra.join(', '); }
   }
   function okFilter(el) {
@@ -280,8 +328,10 @@
   function stopPlay() { playing = false; clearTimeout(timer); }
   function loop() {
     if (!playing) return;
-    if (idx >= N) { stopPlay(); draw(); return; }
-    timer = setTimeout(function () { idx++; draw(); loop(); }, STEP);
+    timer = setTimeout(function () {
+      if (idx >= N - 1) { stopPlay(); idx = N; draw(); return; }   // после последней поездки — вся карта
+      idx++; draw(); loop();
+    }, STEP);
   }
   playBtn.addEventListener('click', function () {
     if (playing) { stopPlay(); draw(); return; }
@@ -289,20 +339,16 @@
     resetFilters(); picked = null; mark('');
     playing = true; draw(); loop();
   });
-  track.addEventListener('input', function () { stopPlay(); resetFilters(); picked = null; mark(''); setIdx(idxAt(+track.value)); });
+  track.addEventListener('input', function () { stopPlay(); resetFilters(); picked = null; mark(''); setIdx(+track.value); });
   document.getElementById('tprev').addEventListener('click', function () { stopPlay(); resetFilters(); setIdx(idx - 1); });
   document.getElementById('tnext').addEventListener('click', function () { stopPlay(); resetFilters(); setIdx(idx + 1); });
   tall.addEventListener('click', function () { stopPlay(); setIdx(N); });
   function resetFilters() {
     var hadFo = state.fo;
     state.fo = ''; state.year = '';
-    [].forEach.call(document.querySelectorAll('.chip'), function (x) { x.setAttribute('aria-pressed', x.dataset.v === '' ? 'true' : 'false'); });
+    filterBtns.forEach(function (x) { x.setAttribute('aria-pressed', x.dataset.v === '' ? 'true' : 'false'); });
     paths.forEach(function (p) { p.classList.remove('dim'); });
     if (hadFo) zoomTo(FULL);   // округ снят — снимается и его увеличение; «Европейскую часть» хронология не трогает
   }
-  // выбор фильтра сбрасывает хронологию
-  [].forEach.call(document.querySelectorAll('.chip'), function (c) {
-    c.addEventListener('click', function () { stopPlay(); idx = N; draw(); apply(); });
-  });
   draw();
 })();
