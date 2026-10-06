@@ -23,8 +23,9 @@
 <meta name="twitter:image" content="https://ssveretennikov.github.io/russia/74-chelyabinsk/og.jpg">
 <meta name="theme-color" content="#F1F2EE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
+<link rel="preload" as="image" href="media/hero.webp" fetchpriority="high" imagesrcset="media/hero.m.webp 1080w, media/hero.webp 1650w" imagesizes="100vw">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/golos-text-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/oswald-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../series.css?v=512d5062">
 <style>:root{--reg:#1A66D1;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#70A1E6;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#70A1E6;--reg-ink:#14100A}</style>
 </head>
@@ -33,8 +34,8 @@
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
 <div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
-  <figure class="hero-ph cover" id="P025">
-    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Синяя стеклянная высотка над пешеходной улицей с невысокими старыми домами, по улице идут люди"></div>
+  <figure class="hero-ph cover portrait" id="P025">
+    <div class="ph"><img class="cover-bg" src="media/hero.webp" srcset="media/hero.m.webp 1080w, media/hero.webp 1650w" sizes="100vw" alt="" aria-hidden="true"><img fetchpriority="high" src="media/hero.webp" srcset="media/hero.m.webp 1080w, media/hero.webp 1650w" sizes="100vw" width="1650" height="2200" alt="Синяя стеклянная высотка над пешеходной улицей с невысокими старыми домами, по улице идут люди"></div>
     <div class="reg-id" style="--nw:11">
       <span class="code" aria-label="Код региона 74">74</span>
       <h1>Челябинская область</h1>
@@ -78,7 +79,7 @@
 <g class="dm-num"><circle cx="249.8" cy="332.9" r="11"/><text x="249.8" y="337.4" text-anchor="middle">5</text></g>
 <g class="dm-scale"><path d="M26,356 v-5 h50.0 v5"/><text x="82.0" y="357">500 м</text></g>
 </svg>
-<ol class="dm-list"><li>Вокзал</li><li>Музей Южного Урала</li><li>Кировка</li><li>Набережная Миасса</li><li>Вокзал, 21:47</li></ol>
+<ol class="dm-list"><li><a href="#P001">Вокзал</a> <span class="dm-n">· 1 фото</span></li><li><a href="#P039">Музей Южного Урала</a> <span class="dm-n">· 10 фото</span></li><li><a href="#P024">Кировка</a> <span class="dm-n">· 7 фото</span></li><li><a href="#P010">Набережная Миасса</a> <span class="dm-n">· 22 фото</span></li><li><a href="#P052">Вокзал, 21:47</a> <span class="dm-n">· 3 фото</span></li></ol>
     <figcaption>Маршрут дня по точкам съёмки. Круг: от вокзала до вокзала. Номера — места из списка под картой; ссылки ведут к кадрам.</figcaption>
   </figure>
 </section>
@@ -119,11 +120,11 @@
   <p>От вокзала к музею я поехал на трамвае. Трамвай старый, синий, с рекламой оплаты смартфоном снаружи и дверью купе внутри. Внутри всё из того времени, когда таких дверей ещё не стеснялись.</p>
   <div class="row narrow">
     <figure id="P001">
-      <div class="ph"><img src="media/tramvay.webp" width="1400" height="1867" loading="lazy" alt="Салон старого трамвая: металлические поручни, узкая дверь с окном, за окном здания"></div>
+      <div class="ph"><img src="media/tramvay.webp" width="1050" height="1400" loading="lazy" alt="Салон старого трамвая: металлические поручни, узкая дверь с окном, за окном здания"></div>
       <figcaption><time>12:56</time>Та самая дверь. Купе, только в трамвае. Доехал на нём до музея.</figcaption>
     </figure>
     <figure class="tall">
-      <div class="ph"><video controls playsinline preload="metadata" poster="media/v-tramvay.jpg" src="https://ssveretennikov.github.io/russia-video/74-chelyabinsk/v-tramvay.mp4" width="720" height="1280"></video></div>
+      <div class="ph"><video controls playsinline preload="none" data-poster="media/v-tramvay.jpg" src="https://ssveretennikov.github.io/russia-video/74-chelyabinsk/v-tramvay.mp4" width="720" height="1280"></video></div>
       <figcaption><time>≈12:56</time>Трамвай уезжает. Снаружи он просит платить смартфоном со скидкой в 6 рублей, внутри — дверь купе.</figcaption>
     </figure>
   </div>
@@ -134,26 +135,26 @@
   <p>В музее руды, камни, чучела местных зверей и тех, кто здесь жил раньше. Дальше — история края, которую я пересказывать не буду: по большому счёту то же самое, что в любом историческом музее. Главный экспонат лежит отдельно и светится.</p>
   <div class="row">
     <figure id="P010">
-      <div class="ph"><img src="media/mineraly.webp" width="1600" height="1200" loading="lazy" alt="Минералы в стеклянной витрине, крупный синий камень с золотистыми вкраплениями"></div>
+      <div class="ph"><img src="media/mineraly.webp" srcset="media/mineraly.m.webp 1080w, media/mineraly.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Минералы в стеклянной витрине, крупный синий камень с золотистыми вкраплениями"></div>
       <figcaption><time>15:50</time>Руды и камни. Синий вот этот я бы унёс, но витрина.</figcaption>
     </figure>
     <figure id="P012">
-      <div class="ph"><img src="media/nosorog.webp" width="1600" height="1200" loading="lazy" alt="Чучело шерстистого носорога с длинным рогом в музейном зале"></div>
+      <div class="ph"><img src="media/nosorog.webp" srcset="media/nosorog.m.webp 1080w, media/nosorog.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Чучело шерстистого носорога с длинным рогом в музейном зале"></div>
       <figcaption><time>15:52</time>Шерстистый носорог. Обитал в этих краях. Сейчас здесь обитают в основном заводы.</figcaption>
     </figure>
   </div>
   <figure class="wide" id="P015">
-    <div class="ph"><img src="media/meteorit.webp" width="2000" height="1500" loading="lazy" alt="Крупный пористый камень и несколько осколков в подсвеченной синим витрине"></div>
+    <div class="ph"><img src="media/meteorit.webp" srcset="media/meteorit.m.webp 1080w, media/meteorit.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="1600" height="1200" loading="lazy" alt="Крупный пористый камень и несколько осколков в подсвеченной синим витрине"></div>
     <figcaption><time>15:57</time>Метеорит Челябинск. Тот самый, из всех роликов 2013 года. Вживую меньше, чем он тогда казался по новостям, и это, наверное, хорошо.</figcaption>
   </figure>
   <p>Во дворе музея, у стеклянного фасада, несколько скульптур из металла, а рядом «сад камней». Камни там тоже с претензией на космос.</p>
   <div class="row">
     <figure id="P016">
-      <div class="ph"><img src="media/zhelezo.webp" width="1400" height="1867" loading="lazy" alt="Металлическая скульптура-решётка из шестерёнок и труб у стеклянного здания"></div>
+      <div class="ph"><img src="media/zhelezo.webp" width="1050" height="1400" loading="lazy" alt="Металлическая скульптура-решётка из шестерёнок и труб у стеклянного здания"></div>
       <figcaption><time>16:19</time>Скульптуры из металла у музея. Из того, что в Челябинске всегда под рукой.</figcaption>
     </figure>
     <figure id="P020">
-      <div class="ph"><img src="media/sad-kamney.webp" width="1600" height="1200" loading="lazy" alt="Площадка с крупными валунами и табличками, за ней деревья и высотки"></div>
+      <div class="ph"><img src="media/sad-kamney.webp" srcset="media/sad-kamney.m.webp 1080w, media/sad-kamney.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Площадка с крупными валунами и табличками, за ней деревья и высотки"></div>
       <figcaption><time>16:24</time>«Сад камней». У каждого табличка, читать можно долго.</figcaption>
     </figure>
   </div>
@@ -163,16 +164,16 @@
   <h2 id="g4">Кировка</h2>
   <p>Челябинский Арбат — улица Кирова. Достаточно уютно: старые дома в два-три этажа, бронзовые жители на каждом углу, в плитке следы. Если не смотреть на высотку в самом начале улицы — совсем хорошо.</p>
   <figure class="mid" id="P024">
-    <div class="ph"><img src="media/ladon.webp" width="1600" height="1200" loading="lazy" alt="Ноги в кроссовках рядом с бронзовым отпечатком ладони в тротуарной плитке"></div>
+    <div class="ph"><img src="media/ladon.webp" srcset="media/ladon.m.webp 1080w, media/ladon.webp 1600w" sizes="(max-width: 640px) 100vw, 672px" width="1600" height="1200" loading="lazy" alt="Ноги в кроссовках рядом с бронзовым отпечатком ладони в тротуарной плитке"></div>
     <figcaption><time>16:50</time>Отпечаток ладони в плитке. Чья — не записал, а за полтора месяца уже вылетело из головы. Надо было записывать.</figcaption>
   </figure>
   <div class="row narrow">
     <figure id="P026">
-      <div class="ph"><img src="media/zerkalo.webp" width="1400" height="1867" loading="lazy" alt="Бронзовая дама с зонтиком смотрится в большое зеркало на пешеходной улице"></div>
+      <div class="ph"><img src="media/zerkalo.webp" width="1050" height="1400" loading="lazy" alt="Бронзовая дама с зонтиком смотрится в большое зеркало на пешеходной улице"></div>
       <figcaption><time>16:57</time>Дама с зонтом и зеркалом. В зеркало попадает и улица, и всё, что по ней идёт.</figcaption>
     </figure>
     <figure id="P028">
-      <div class="ph"><img src="media/verblyud-devochka.webp" width="1600" height="1200" loading="lazy" alt="Бронзовая девочка сидит у лежащего верблюда, на спине верблюда сидит мальчик"></div>
+      <div class="ph"><img src="media/verblyud-devochka.webp" srcset="media/verblyud-devochka.m.webp 1080w, media/verblyud-devochka.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Бронзовая девочка сидит у лежащего верблюда, на спине верблюда сидит мальчик"></div>
       <figcaption><time>16:58</time>Верблюд номер один, бронзовый. Мальчик сверху не из бронзы, он просто залез.</figcaption>
     </figure>
   </div>
@@ -182,16 +183,16 @@
   <h2 id="g5">Один кадр с дрона и верблюд в стимпанке</h2>
   <p>Вечером попробовал поднять дрон над драматическим театром. Здание советской постройки, круглое и белое, сверху выглядит ещё необычнее, чем с земли. Успел ровно одну фотографию, потом пошёл дождь.</p>
   <figure class="wide" id="P029">
-    <div class="ph"><img src="media/dron-teatr.webp" width="2000" height="1125" loading="lazy" alt="Вид с дрона: круглое белое здание театра среди деревьев, вокруг улицы и дома"></div>
+    <div class="ph"><img src="media/dron-teatr.webp" srcset="media/dron-teatr.m.webp 1080w, media/dron-teatr.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="2000" height="1125" loading="lazy" alt="Вид с дрона: круглое белое здание театра среди деревьев, вокруг улицы и дома"></div>
     <figcaption><time>19:15</time>Драматический театр сверху. Единственный кадр с дрона за день: дальше нелётная погода.</figcaption>
   </figure>
   <div class="row">
     <figure id="P031">
-      <div class="ph"><img src="media/verblyud.webp" width="1600" height="1200" loading="lazy" alt="Металлическая скульптура верблюда на длинных тонких ногах, за ней здание и облачное небо"></div>
+      <div class="ph"><img src="media/verblyud.webp" srcset="media/verblyud.m.webp 1080w, media/verblyud.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Металлическая скульптура верблюда на длинных тонких ногах, за ней здание и облачное небо"></div>
       <figcaption><time>19:21</time>Верблюд номер два, символ города в стимпанке. Потрясающая скульптура, я считаю. И нет, Шёлковый путь здесь ни при чём.</figcaption>
     </figure>
     <figure id="P032">
-      <div class="ph"><img src="media/kupol.webp" width="1600" height="1200" loading="lazy" alt="Кованая арка-беседка со стеклянным голубым куполом между деревьями, к ней ведёт лестница"></div>
+      <div class="ph"><img src="media/kupol.webp" srcset="media/kupol.m.webp 1080w, media/kupol.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Кованая арка-беседка со стеклянным голубым куполом между деревьями, к ней ведёт лестница"></div>
       <figcaption><time>19:37</time>Беседка с голубым куполом неподалёку. Деревья из металла, деревья настоящие — с земли не сразу отличишь.</figcaption>
     </figure>
   </div>
@@ -202,20 +203,20 @@
   <p>Очень классная здесь набережная. Днём я прошёл её под облаками, вечером вернулся на подсветку: колесо обозрения, мост в огнях и Челябинск-сити, который ночью, в цветах триколора, перестаёт раздражать и начинает работать ориентиром.</p>
   <div class="row">
     <figure id="P039">
-      <div class="ph"><img src="media/koleso.webp" width="1600" height="1200" loading="lazy" alt="Колесо обозрения над набережной с деревянными скамьями, облачное небо"></div>
+      <div class="ph"><img src="media/koleso.webp" srcset="media/koleso.m.webp 1080w, media/koleso.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Колесо обозрения над набережной с деревянными скамьями, облачное небо"></div>
       <figcaption><time>20:36</time>Колесо над набережной. Пока без света.</figcaption>
     </figure>
     <figure id="P041">
-      <div class="ph"><img src="media/koleso-noch.webp" width="1400" height="1867" loading="lazy" alt="Подсвеченное колесо обозрения над набережной, светящийся камень-скамья на плитке"></div>
+      <div class="ph"><img src="media/koleso-noch.webp" width="1050" height="1400" loading="lazy" alt="Подсвеченное колесо обозрения над набережной, светящийся камень-скамья на плитке"></div>
       <figcaption><time>20:57</time>Через двадцать минут. Светится колесо, светится камень, который на самом деле скамья.</figcaption>
     </figure>
   </div>
   <figure class="wide" id="P044">
-    <div class="ph"><img src="media/most-noch.webp" width="2000" height="1500" loading="lazy" alt="Арочный мост с огнями ночью, огни отражаются в тёмной воде реки"></div>
+    <div class="ph"><img src="media/most-noch.webp" srcset="media/most-noch.m.webp 1080w, media/most-noch.webp 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="2000" height="1500" loading="lazy" alt="Арочный мост с огнями ночью, огни отражаются в тёмной воде реки"></div>
     <figcaption><time>21:06</time>Вид на реку Миасс. Мост в огнях, вода его повторяет. Ради этого стоило возвращаться.</figcaption>
   </figure>
   <figure class="mid" id="P047">
-    <div class="ph"><img src="media/siti-noch.webp" width="1400" height="1867" loading="lazy" alt="Высотка, подсвеченная белым, синим и красным, в конце ночного бульвара с фонарями"></div>
+    <div class="ph"><img src="media/siti-noch.webp" width="1050" height="1400" loading="lazy" alt="Высотка, подсвеченная белым, синим и красным, в конце ночного бульвара с фонарями"></div>
     <figcaption><time>21:13</time>Челябинск-сити ночью. Днём не к месту, ночью, в триколоре, хотя бы не теряешься.</figcaption>
   </figure>
 </section>
@@ -225,26 +226,26 @@
   <p>Последний круг по Кировке в темноте, подземный переход с граффити, и к поезду. У вокзала ещё одна необычная скульптура, сам вокзал снаружи вполне обычный. Всё интересное внутри.</p>
   <div class="row narrow">
     <figure id="P048">
-      <div class="ph"><img src="media/kniga.webp" width="1400" height="1867" loading="lazy" alt="Бронзовая фигура человека в шляпе, читающего книгу на пюпитре, на ночной пешеходной улице"></div>
+      <div class="ph"><img src="media/kniga.webp" width="1050" height="1400" loading="lazy" alt="Бронзовая фигура человека в шляпе, читающего книгу на пюпитре, на ночной пешеходной улице"></div>
       <figcaption><time>21:28</time>Кировка ночью. Этот читает и не отвлекается на прохожих.</figcaption>
     </figure>
     <figure id="P050">
-      <div class="ph"><img src="media/graffiti.webp" width="1600" height="1200" loading="lazy" alt="Яркое граффити с буквами «ЧЕЛЯБИНСК» и трамваем на стене подземного перехода"></div>
+      <div class="ph"><img src="media/graffiti.webp" srcset="media/graffiti.m.webp 1080w, media/graffiti.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Яркое граффити с буквами «ЧЕЛЯБИНСК» и трамваем на стене подземного перехода"></div>
       <figcaption><time>21:32</time>Подземный переход. Трамвай и здесь, в рисунке. Кажется, город про него в курсе.</figcaption>
     </figure>
   </div>
   <div class="row narrow">
     <figure id="P052">
-      <div class="ph"><img src="media/pamyatnik.webp" width="1400" height="1867" loading="lazy" alt="Золочёная фигура на скале из камней, подсвеченная ночью"></div>
+      <div class="ph"><img src="media/pamyatnik.webp" width="1050" height="1400" loading="lazy" alt="Золочёная фигура на скале из камней, подсвеченная ночью"></div>
       <figcaption><time>21:47</time>Необычная скульптура возле вокзала. Золотая, на скале, в свете прожектора.</figcaption>
     </figure>
     <figure id="P053">
-      <div class="ph"><img src="media/vokzal.webp" width="1600" height="1200" loading="lazy" alt="Здание вокзала с вывеской «ВОКЗАЛ» ночью, перед ним парковка с машинами"></div>
+      <div class="ph"><img src="media/vokzal.webp" srcset="media/vokzal.m.webp 1080w, media/vokzal.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 45vw, 592px" width="1600" height="1200" loading="lazy" alt="Здание вокзала с вывеской «ВОКЗАЛ» ночью, перед ним парковка с машинами"></div>
       <figcaption><time>21:50</time>Снаружи вполне обычный. Не верьте.</figcaption>
     </figure>
   </div>
   <figure class="wide" id="P054">
-    <div class="ph"><img src="media/bilyard.webp" width="2000" height="1500" loading="lazy" alt="Бильярдный стол в зале вокзала, рядом стоят люди в форме, за ними большая решётчатая стена"></div>
+    <div class="ph"><img src="media/bilyard.webp" srcset="media/bilyard.m.webp 1080w, media/bilyard.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1184px" width="1600" height="1200" loading="lazy" alt="Бильярдный стол в зале вокзала, рядом стоят люди в форме, за ними большая решётчатая стена"></div>
     <figcaption><time>22:04</time>Зона отдыха на вокзале: бильярд, настольный теннис, настольный футбол, в зале повышенного комфорта PS4. По комфорту, мне кажется, один из лучших вокзалов из тех, что я видел.</figcaption>
   </figure>
   
@@ -274,6 +275,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../45-kurgan/index.html"><span class="code">45</span><span><small>Раньше по маршруту</small>Курганская область</span></a><a class="next" href="../66-sverdlovsk/index.html"><span><small>Дальше по маршруту</small>Свердловская область</span><span class="code">66</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p><p class="ft-nav"><a href="../trips/index.html">Поездки</a> · <a href="../about/index.html">О проекте</a></p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=9328f84d"></script>
+<script src="../series.js?v=b28c6248"></script>
 </body>
 </html>
