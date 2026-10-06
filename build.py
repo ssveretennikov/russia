@@ -496,6 +496,259 @@ def daymap_svg(slug, labels, ids=()):
     return '\n'.join(out) + '\n<ol class="dm-list">' + ''.join(li) + '</ol>'
 
 
+# ---- Схема точек съёмки (замысел автора 06.10.2026). DAYMAP_MODE = 'v2' — по умолчанию; None — прежняя карта мест.
+#   Вид выбирается сам по названным местам из метки и контурам городов (tools/cities.py, data/cities/):
+#   «город» — места в одном городе, 0–1 место за ним (условно у края окна, с расстоянием в списке);
+#   «регион» — несколько мест за городом, городские места собраны в одну точку;
+#   «две схемы» — за городом два места и больше, а в городе тоже много (два места или треть снимков): город, под ним регион.
+#   Окно приближено к местам (поля ~15 %), силуэт обрезается краем, но в кадре остаётся не меньше трети силуэта.
+#   Мелкие точки — все снимки архива с координатами: виден путь автора.
+DAYMAP_MODE = 'v2'
+NO_TRACK = ('77-',)   # Москва: где живёт автор — точки снимков не рисуются (приватность); Подмосковье — рисуются
+DM_W, DM_PAD = 360, 14
+MARGIN = 0.7          # места занимают 70 % окна — по 15 % полей с каждой стороны
+MIN_SIL = 1 / 3       # окно не уже трети силуэта: иначе от города остаётся заливка без формы
+
+_GEO = {}
+def _geo(name):
+    if name not in _GEO:
+        f = os.path.join(ROOT, 'data', name)
+        _GEO[name] = json.load(open(f, encoding='utf-8')) if os.path.exists(f) else {}
+    return _GEO[name]
+
+def _city_rings(slug):
+    """[(название, кольцо [[lon, lat], …])] — города страницы из data/cities/index.json, без повторов по названию."""
+    out = {}
+    for fn in _geo('cities/index.json').get(slug, []):
+        f = os.path.join(ROOT, 'data', 'cities', fn)
+        if not os.path.exists(f): continue
+        ft = json.load(open(f, encoding='utf-8'))['features'][0]
+        nm, ring = ft['properties']['name'], ft['geometry']['coordinates'][0]
+        if nm not in out or len(ring) > len(out[nm]): out[nm] = ring
+    return list(out.items())
+
+def _code(slug):
+    return slug.split('-')[0].lstrip('0')
+
+def _region_rings(slug):
+    return [[[lo, la] for la, lo in r] for r in _geo('regions-geo.json').get(_code(slug), [])]
+
+def _inside(ring, la, lo):
+    c = False
+    for (x1, y1), (x2, y2) in zip(ring, ring[1:] + ring[:1]):
+        if (y1 > la) != (y2 > la) and lo < x1 + (la - y1) * (x2 - x1) / (y2 - y1): c = not c
+    return c
+
+def _ring_center(ring):
+    a = cx = cy = 0.0
+    for (x1, y1), (x2, y2) in zip(ring, ring[1:] + ring[:1]):
+        c = x1 * y2 - x2 * y1; a += c; cx += (x1 + x2) * c; cy += (y1 + y2) * c
+    return (cy / (3 * a), cx / (3 * a)) if a else (ring[0][1], ring[0][0])
+
+class _Frame:
+    """Окно схемы: равнопромежуточная проекция «север вверх» вокруг мест, масштаб по правилу полей и трети силуэта."""
+    def __init__(self, pts, sil, H, avoid=None):
+        self.W, self.H = DM_W, H
+        self.iw, self.ih = DM_W - 2 * DM_PAD, H - 2 * DM_PAD - 18      # внизу полоса под линейку
+        la0 = sum(p[0] for p in pts) / len(pts); self.k = math.cos(math.radians(la0))
+        xs = [lo * self.k for _, lo in pts]; ys = [la for la, _ in pts]
+        sx = [p[0] * self.k for r in sil for p in r]; sy = [p[1] for r in sil for p in r]
+        s_pl = max((max(xs) - min(xs)) / self.iw, (max(ys) - min(ys)) / self.ih) / MARGIN
+        s_sil = max((max(sx) - min(sx)) / self.iw, (max(sy) - min(sy)) / self.ih) if sil else s_pl
+        s = max(s_pl, s_sil * MIN_SIL, 1.2 / 111.2 / self.iw)          # и не меньше 1,2 км на окно
+        s = min(s, max(s_sil * 1.08, s_pl))                              # и не шире всего силуэта, если места позволяют
+        self.cx, self.cy = (max(xs) + min(xs)) / 2, (max(ys) + min(ys)) / 2
+        if sil and s >= s_sil:   # силуэт целиком в окне — по центру силуэта, если места не выпадают
+            ccx, ccy = (max(sx) + min(sx)) / 2, (max(sy) + min(sy)) / 2
+            hx, hy = self.iw * s / 2 * .95, self.ih * s / 2 * .95
+            self.cx = min(max(ccx, max(xs) - hx), min(xs) + hx); self.cy = min(max(ccy, max(ys) - hy), min(ys) + hy)
+        self.s = s
+        if avoid:   # врезка в углу: места под ней — окно чуть шире
+            for _ in range(6):
+                if not any(avoid[0] - 12 < x < avoid[2] + 12 and avoid[1] - 12 < y < avoid[3] + 12
+                           for x, y in (self.P(la, lo) for la, lo in pts)): break
+                self.s *= 1.15
+    def P(self, la, lo):
+        return (DM_W / 2 + (lo * self.k - self.cx) / self.s, DM_PAD + self.ih / 2 - (la - self.cy) / self.s)
+    def edge(self, la, lo, inset=0):
+        """Место за окном — у края окна по лучу из центра в его сторону."""
+        x, y = self.P(la, lo); ox, oy = DM_W / 2, DM_PAD + self.ih / 2
+        vx, vy = x - ox, y - oy; L = math.hypot(vx, vy) or 1; vx, vy = vx / L, vy / L
+        hx, hy = self.iw / 2 - 2 - inset, self.ih / 2 - 2 - inset
+        t = min(hx / abs(vx) if vx else 1e9, hy / abs(vy) if vy else 1e9)
+        return ox + vx * t, oy + vy * t
+    def visible(self, x, y):
+        return 0 <= x <= self.W and 0 <= y <= self.H - 18
+    def path(self, ring):
+        return 'M' + ' L'.join(f'{x:.1f},{y:.1f}' for x, y in (self.P(la, lo) for lo, la in ring)) + ' Z'
+    def scale(self):
+        km_px = 1 / (self.s * 111.2)
+        step = next((v for v in (1000, 500, 200, 100, 50, 20, 10, 5, 2, 1, .5, .2, .1) if v * km_px <= self.iw / 4), .1)
+        L = step * km_px; lab = f'{step:g} км' if step >= 1 else f'{int(step * 1000)} м'
+        return (f'<g class="dm-scale"><path d="M{DM_PAD},{self.H - 14} v-5 h{L:.1f} v5"/>'
+                f'<text x="{DM_PAD + L + 6:.1f}" y="{self.H - 13}">{lab}</text></g>')
+
+def _spread(slug, true, W, H, R=11, gap=25):
+    """Близкие номера раздвигаются; к настоящему положению ведёт тонкая линия."""
+    pos = [list(p) for p in true]; n = len(pos)
+    for _ in range(300):
+        moved = False
+        for a in range(n):
+            for b in range(a + 1, n):
+                vx, vy = pos[b][0] - pos[a][0], pos[b][1] - pos[a][1]; d = math.hypot(vx, vy)
+                if d < gap:
+                    if d < 1e-6: vx, vy, d = 1.0, 0.3 * (b - a), math.hypot(1.0, 0.3 * (b - a))
+                    s = (gap - d) / 2 / d
+                    pos[a][0] -= vx * s; pos[a][1] -= vy * s; pos[b][0] += vx * s; pos[b][1] += vy * s; moved = True
+        for p in pos:
+            p[0] = min(max(p[0], R + 2), W - R - 2); p[1] = min(max(p[1], R + 2), H - 30)
+        if not moved: break
+    for a in range(n):
+        for b in range(a + 1, n):
+            if math.hypot(pos[a][0] - pos[b][0], pos[a][1] - pos[b][1]) < 2 * R + 1:
+                print(f'ВНИМАНИЕ: {slug}: номера на схеме точек накладываются')
+    return pos
+
+def _marks(out, marks, true, pos, route):
+    """marks: [(текст, класс)]; route: [(откуда, куда, далеко)] — номера отметок по порядку маршрута."""
+    for a, b, far in route:
+        (x1, y1), (x2, y2) = true[a], true[b]
+        out.append(f'<line class="dm-route{" dm-far" if far else ""}" x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}"/>')
+    for (tx, ty), (x, y) in zip(true, pos):
+        if math.hypot(tx - x, ty - y) > 1:
+            out.append(f'<line class="dm-lead" x1="{tx:.1f}" y1="{ty:.1f}" x2="{x:.1f}" y2="{y:.1f}"/><circle class="dm-dot" cx="{tx:.1f}" cy="{ty:.1f}" r="2.5"/>')
+    for (t, cls), (x, y) in zip(marks, pos):
+        w = max(22, 8 + 7 * len(t))
+        shape = (f'<circle cx="{x:.1f}" cy="{y:.1f}" r="11"/>' if w <= 22 else
+                 f'<rect x="{x - w / 2:.1f}" y="{y - 11:.1f}" width="{w}" height="22" rx="11"/>')
+        out.append(f'<g class="dm-num{cls}">{shape}<text x="{x:.1f}" y="{y + 4.5:.1f}" text-anchor="middle">{t}</text></g>')
+
+def _shots(out, slug, F, rows, keep=lambda x, y, r: True):
+    if slug.startswith(NO_TRACK): return
+    for r in rows:
+        x, y = F.P(r['lat'], r['lon'])
+        if F.visible(x, y) and keep(x, y, r):
+            out.append(f'<circle class="dms-shot" cx="{x:.1f}" cy="{y:.1f}" r="3"/>')
+
+def _inset(slug, cname, cring):
+    """Врезка: маленький силуэт региона, точка столицы и рамка — где этот город."""
+    reg = _region_rings(slug)
+    if not reg: return '', None
+    S = 74; x0, y0 = DM_W - DM_PAD - S, DM_PAD
+    pts = [p for r in reg for p in r]
+    la0 = sum(p[1] for p in pts) / len(pts); k = math.cos(math.radians(la0))
+    xs = [p[0] * k for p in pts]; ys = [p[1] for p in pts]
+    s = max(max(xs) - min(xs), max(ys) - min(ys)) / (S - 10)
+    cx, cy = (max(xs) + min(xs)) / 2, (max(ys) + min(ys)) / 2
+    P = lambda la, lo: (x0 + S / 2 + (lo * k - cx) / s, y0 + S / 2 - (la - cy) / s)
+    o = [f'<g class="dms-inset"><rect class="dms-box" x="{x0}" y="{y0}" width="{S}" height="{S}" rx="6"/>']
+    o.append('<path class="dms-reg" d="' + ''.join('M' + ' L'.join(f'{x:.1f},{y:.1f}' for x, y in (P(la, lo) for lo, la in r)) + 'Z' for r in reg) + '"/>')
+    cap = _geo('capitals.json').get(_code(slug))
+    la, lo = _ring_center(cring); x, y = P(la, lo)
+    o.append(f'<rect class="dms-here" x="{x - 5:.1f}" y="{y - 5:.1f}" width="10" height="10" rx="2"/>')
+    if cap:
+        cxp, cyp = P(cap[0], cap[1])
+        o.append(f'<circle class="dms-cap" cx="{cxp:.1f}" cy="{cyp:.1f}" r="2.4"><title>{e(cap[2])} — столица региона</title></circle>')
+    o.append('</g>')
+    return ''.join(o), (x0, y0, x0 + S, y0 + S)
+
+def daymap_v2(slug, labels, ids=()):
+    if not labels: return ''
+    rows, _ = _gps_rows(slug)
+    n = len(labels)
+    counts = [0] * n; first = [None] * n
+    for r in rows:   # строки уже по времени: первый попавший кадр — самый ранний
+        d = [_km(r['lat'], r['lon'], la, lo) for la, lo, _ in labels]
+        i = min(range(n), key=d.__getitem__)
+        if d[i] > 15: continue
+        counts[i] += 1
+        if first[i] is None and r['id'] in ids: first[i] = r['id']
+    reg = _region_rings(slug)
+    if any(p[0] > 180 for r in reg for p in r):   # Чукотка за линией перемены дат: долготы в одну сторону
+        labels = [(la, lo + 360 if lo < 0 else lo, nm) for la, lo, nm in labels]
+        rows = [dict(r, lon=r['lon'] + 360 if r['lon'] < 0 else r['lon']) for r in rows]
+    cities = _city_rings(slug)
+    where = [next((ci for ci, (_, ring) in enumerate(cities) if _inside(ring, la, lo)), None) for la, lo, _ in labels]
+    main = (max(range(len(cities)), key=lambda ci: (where.count(ci), sum(_inside(cities[ci][1], r['lat'], r['lon']) for r in rows)))
+            if cities else None)
+    inc = [main is not None and w == main for w in where]
+    nin = sum(inc); nout = n - nin
+    # Город «весомый», если в нём два места или треть снимков (Анадырь: одно место, но две трети кадров).
+    # Мест в метке обычно 4–7, поэтому «от трёх в городе и за ним» почти не встречается — порог ниже.
+    in_shots = sum(_inside(cities[main][1], r['lat'], r['lon']) for r in rows) if nin else 0
+    rich = nin >= 2 or (in_shots >= 10 and in_shots >= len(rows) / 3)
+    kind = 'region' if not nin else 'city' if nout <= 1 else 'both' if rich else 'region'
+    if kind != 'city' and not reg: kind = 'city' if nin else 'region'
+    cname, cring = cities[main] if main is not None else ('', None)
+    name = next((nm for _, _, regs in D for _, nm, _, _, links in regs for _, sl in links
+                 if href(sl).split('/')[0] == slug), '')
+    svgs = []; dist = [''] * n
+
+    def city_svg(show_out):
+        H = 330
+        ins, box = _inset(slug, cname, cring)
+        pts = [(la, lo) for (la, lo, _), c in zip(labels, inc) if c]
+        F = _Frame(pts, [cring], H, box)
+        idx = [i for i in range(n) if inc[i] or show_out]
+        true = []
+        for i in idx:
+            la, lo, _ = labels[i]; x, y = F.P(la, lo)
+            if not inc[i] and not F.visible(x, y):
+                x, y = F.edge(la, lo, 12)
+                cla, clo = _ring_center(cring)
+                dist[i] = f' <span class="dm-n">· ≈{max(10, int(round(_km(la, lo, cla, clo), -1)))} км</span>'
+            true.append((x, y))
+        out = [f'<svg class="daymap-svg dms dms-city" viewBox="0 0 {DM_W} {H}" role="img" aria-label="Схема города {e(cname)}: '
+               f'{len(idx)} {plural(len(idx), "место", "места", "мест")} по порядку, названия — списком под схемой">',
+               f'<path class="dms-city" d="{F.path(cring)}"/>']
+        _shots(out, slug, F, rows)
+        pos = _spread(slug, true, DM_W, H)
+        route = [(j, j + 1, not inc[a] or not inc[b]) for j, (a, b) in enumerate(zip(idx, idx[1:]))]
+        _marks(out, [(str(i + 1), '' if inc[i] else ' dms-out') for i in idx], true, pos, route)
+        out += [ins, F.scale(), '</svg>']
+        return '\n'.join(out)
+
+    def region_svg():
+        H = 330
+        group = nin >= 2   # городские места — одна точка с их номерами
+        pts = [(la, lo) for la, lo, _ in labels]
+        F = _Frame(pts, reg, H)
+        marks, true, seq = [], [], []
+        gi = [i for i in range(n) if inc[i]]
+        g = None   # номер отметки города: маршрут возвращается на неё, если автор заезжал в город дважды
+        for i, (la, lo, _) in enumerate(labels):
+            if group and inc[i]:
+                if g is None:
+                    t = (f'{gi[0] + 1}–{gi[-1] + 1}' if gi == list(range(gi[0], gi[-1] + 1)) else
+                         ','.join(str(j + 1) for j in gi) if len(gi) <= 3 else f'{len(gi)} мест')
+                    cla, clo = _ring_center(cring); g = len(marks); marks.append((t, ' dms-group')); true.append(F.P(cla, clo))
+                if not seq or seq[-1] != g: seq.append(g)
+            else:
+                seq.append(len(marks)); marks.append((str(i + 1), '')); true.append(F.P(la, lo))
+        far = [(a, b, math.hypot(true[a][0] - true[b][0], true[a][1] - true[b][1]) * F.s * 111.2 > 50) for a, b in zip(seq, seq[1:])]
+        out = [f'<svg class="daymap-svg dms dms-region" viewBox="0 0 {DM_W} {H}" role="img" aria-label="Схема региона{(" — " + e(name)) if name else ""}: '
+               f'{n} {plural(n, "место", "места", "мест")} по порядку, названия — списком под схемой">',
+               '<path class="dms-reg" d="' + ''.join(F.path(r) for r in reg) + '"/>']
+        if cring and kind == 'both': out.append(f'<path class="dms-city" d="{F.path(cring)}"/>')
+        _shots(out, slug, F, rows)
+        pos = _spread(slug, true, DM_W, H)
+        _marks(out, marks, true, pos, far)
+        out += [F.scale(), '</svg>']
+        return '\n'.join(out)
+
+    if kind == 'city': svgs.append(city_svg(True)); leg = f'Схема города: {e(cname)}'
+    elif kind == 'both': svgs += [city_svg(False), region_svg()]; leg = f'Город и регион: {e(cname)}'
+    else: svgs.append(region_svg()); leg = 'Схема региона'
+    if kind != 'region': leg += ' <span class="dms-osm">· Контур города — © участники OpenStreetMap</span>'
+    li = []
+    for i, (_, _, nm) in enumerate(labels):
+        t = f'<a href="#{first[i]}">{e(nm)}</a>' if first[i] else e(nm)
+        c = f' <span class="dm-n">· {counts[i]} фото</span>' if counts[i] else ''
+        li.append(f'<li>{t}{dist[i]}{c}</li>')
+    return ('\n'.join(svgs) + f'\n<p class="dms-legend" data-kind="{kind}">{leg}</p>'
+            '\n<ol class="dm-list">' + ''.join(li) + '</ol>')
+
+
 def profile_svg(slug):
     rows, sel = _gps_rows(slug)
     rows = [r for r in rows if r['alt'] > 0]
@@ -551,7 +804,7 @@ def inject_data(slug, src):
             part = part.strip()
             mm = re.match(r'(-?\d+\.?\d*),\s*(-?\d+\.?\d*)\s+(.+)', part)
             if mm: labels.append((float(mm[1]), float(mm[2]), mm[3].strip()))
-        return daymap_svg(slug, labels, ids)
+        return (daymap_v2 if DAYMAP_MODE == 'v2' else daymap_svg)(slug, labels, ids)
     ids = set(re.findall(r'<figure[^>]* id="(P[0-9]+)"', src))
     src = src.replace('<figure class="wide daymap">', '<figure class="daymap">')   # в ширину колонки текста
     src = re.sub(r'<!--daymap:?(.*?)-->', dm, src, flags=re.S)
@@ -1104,6 +1357,8 @@ if __name__ == '__main__':
     import sys
     if '--local-video' in sys.argv:
         VIDEO_BASE = '../russia-video/'
+    if '--daymap-old' in sys.argv:   # прежняя карта мест вместо схемы точек съёмки
+        DAYMAP_MODE = None
     ok = build('--artifact' in sys.argv)
     if not ok and '--allow-missing-video' not in sys.argv:
         sys.exit(1)
