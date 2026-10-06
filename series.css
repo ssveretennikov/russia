@@ -512,3 +512,13 @@ details.more[open] summary{margin-bottom:.6rem}
   .under .route.at-end{--fr:#000}
   .under .route:focus-visible{outline-offset:-3px}
 }
+
+/* ---- Мелкие правки этапа 1 */
+/* 1. Вертикальные кадры и видео не выше окна: кадр виден целиком */
+.sec > .tall .ph img,.sec > .tall .ph video,.row.narrow .ph img,.row.narrow .ph video,.ph video{max-height:85vh;max-height:85svh;object-fit:contain;background:var(--surface)}
+/* 2. Рамка фокуса фото внутри .ph (overflow:hidden её обрезает): внутрь кадра, с белой подложкой для тёмных кадров */
+.ph img:focus-visible,.ph video:focus-visible{outline:3px solid var(--road);outline-offset:-6px;box-shadow:inset 0 0 0 6px #fff}
+/* 3. Рамка фокуса в синей шапке главной */
+.ix-head :focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+/* 4. Карточка региона на карте остаётся у нижнего края окна, пока карта на экране */
+.mapbox .mcard{position:sticky;bottom:.6rem;z-index:3;box-shadow:0 .2rem .9rem rgba(0,0,0,.22)}
