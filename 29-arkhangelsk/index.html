@@ -25,22 +25,25 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=f477f7da">
-
+<link rel="stylesheet" href="../series.css?v=690f2df7">
+<style>:root{--reg:#8D713A;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C7AB75;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C7AB75;--reg-ink:#14100A}</style>
 </head>
 <body>
-<div class="page">
+<div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
-<header class="reg-head">
-  <div class="reg-id">
-    <span class="code" aria-label="Код региона 29">29</span>
-    <div class="reg-name">
+<header class="reg-head cover-head">
+  <figure class="hero-ph cover" id="P029">
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1239" alt="Надпись «Счастье не за морями» из белых букв на песчаном берегу широкой реки под серым небом"></div>
+    <div class="reg-id" style="--nw:13">
+      <span class="code" aria-label="Код региона 29">29</span>
       <h1>Архангельская область</h1>
-      <div class="reg-places">Архангельск · Малые Корелы · Ягры, Белое море</div>
     </div>
-  </div>
-  <p class="hook">«Счастье не за морями» написано на песке у Двины. Я всё равно съездил к морю: проверить. Один день, три музея, два дождя и одно Белое море.</p>
-  <dl class="passport">
+    <figcaption><time>09:11</time>Пляж на Двине, девять утра, пасмурно. Надпись я принял как вызов.</figcaption>
+  </figure>
+  <div class="under">
+    <div class="reg-places">Архангельск · Малые Корелы · Ягры, Белое море</div>
+    <p class="hook">«Счастье не за морями» написано на песке у Двины. Я всё равно съездил к морю: проверить. Один день, три музея, два дождя и одно Белое море.</p>
+    <dl class="passport">
     <div><dt>Когда</dt><dd>31 мая – 1 июня 2023</dd></div>
     <div><dt>Сколько</dt><dd>1 день и ночь прилёта</dd></div>
     <div><dt>Время</dt><dd>МСК</dd></div>
@@ -48,13 +51,10 @@
     <div><dt>Снято</dt><dd>248 фото, 9 видео</dd></div>
     <div><dt>Оценка</dt><dd class="heart">❤</dd></div>
   </dl>
-  <ol class="route" aria-label="Маршрут дня">
+    <ol class="route" aria-label="Маршрут дня">
     <li class="here">Архангельск</li><li>Малые Корелы</li><li>Северный морской музей</li><li>Ягры</li><li>Чумбаровка</li>
   </ol>
-  <figure class="hero-ph" id="P029">
-    <div class="ph"><img src="media/hero.webp" width="2200" height="1239" alt="Надпись «Счастье не за морями» из белых букв на песчаном берегу широкой реки под серым небом"></div>
-    <figcaption><time>09:11</time>Пляж на Двине, девять утра, пасмурно. Надпись я принял как вызов.</figcaption>
-  </figure>
+  </div>
 </header>
 
 <article class="story">
@@ -106,11 +106,11 @@
   <p>Отоспался и пошёл по точкам, которые отметил себе на картах. Утро серое, у набережной ветер, Северная Двина широкая настолько, что другой берег считается условно. Главное открытие: вдоль воды расставлены фигурки «Кудесников — хранителей Севера», каждый хранит свой артефакт, связанный с городом.</p>
   <div class="row narrow">
     <figure id="P007">
-      <div class="ph"><img src="media/vseh-svyatyh.webp" width="788" height="1400" loading="lazy" alt="Жёлтая церковь с золотым куполом и колокольней, перед ней дорожка через газон"></div>
+      <div class="ph"><img src="media/vseh-svyatyh.webp" width="1400" height="2487" loading="lazy" alt="Жёлтая церковь с золотым куполом и колокольней, перед ней дорожка через газон"></div>
       <figcaption><time>08:20</time>Церковь Всех Святых. Первая точка в списке, потому что ближайшая к ночлегу.</figcaption>
     </figure>
     <figure id="P021">
-      <div class="ph"><img src="media/uspeniya.webp" width="788" height="1400" loading="lazy" alt="Белая церковь с колокольней и золотыми куполами под тёмными тучами, у дороги красная машина"></div>
+      <div class="ph"><img src="media/uspeniya.webp" width="1400" height="2487" loading="lazy" alt="Белая церковь с колокольней и золотыми куполами под тёмными тучами, у дороги красная машина"></div>
       <figcaption><time>08:59</time>Церковь Успения Пресвятой Богородицы. Тучи здесь — часть архитектуры.</figcaption>
     </figure>
   </div>
@@ -130,11 +130,11 @@
   </div>
   <div class="row narrow">
     <figure id="P022">
-      <div class="ph"><img src="media/samokaty.webp" width="788" height="1400" loading="lazy" alt="Два фиолетовых электросамоката стоят на пустой набережной"></div>
+      <div class="ph"><img src="media/samokaty.webp" width="1400" height="2487" loading="lazy" alt="Два фиолетовых электросамоката стоят на пустой набережной"></div>
       <figcaption><time>09:03</time>Какие-то местные самокаты с местными лозунгами. Прокатные сети сюда ещё не добрались, самокаты — да.</figcaption>
     </figure>
     <figure id="P032">
-      <div class="ph"><img src="media/konvoi.webp" width="788" height="1400" loading="lazy" alt="Бронзовый куб с прорывающимися сквозь него кораблями на гранитном постаменте у реки"></div>
+      <div class="ph"><img src="media/konvoi.webp" width="1400" height="2487" loading="lazy" alt="Бронзовый куб с прорывающимися сквозь него кораблями на гранитном постаменте у реки"></div>
       <figcaption><time>09:13</time>Северным конвоям. Корабли пробивают металл, как лёд.</figcaption>
     </figure>
   </div>
@@ -162,11 +162,11 @@
   <p>Атмосфера очень классная, умиротворённая. Людей мало. Ещё вчера три созвона, а сегодня я в другом регионе, да ещё в таком месте. Здесь я наснимал очень много красивых фото, выложу несколько.</p>
   <div class="row narrow">
     <figure id="P065">
-      <div class="ph"><img src="media/kolokolnya.webp" width="788" height="1400" loading="lazy" alt="Высокая бревенчатая колокольня с шатром на лугу, к ней ведёт тропа"></div>
+      <div class="ph"><img src="media/kolokolnya.webp" width="1400" height="2487" loading="lazy" alt="Высокая бревенчатая колокольня с шатром на лугу, к ней ведёт тропа"></div>
       <figcaption><time>11:49</time>Колокольня. Тропа к ней вытоптана ровно по ширине одного человека.</figcaption>
     </figure>
     <figure id="P067">
-      <div class="ph"><img src="media/chasovnya.webp" width="788" height="1400" loading="lazy" alt="Деревянная часовня с крыльцом и маленькой главкой среди высоких сосен"></div>
+      <div class="ph"><img src="media/chasovnya.webp" width="1400" height="2487" loading="lazy" alt="Деревянная часовня с крыльцом и маленькой главкой среди высоких сосен"></div>
       <figcaption><time>11:50</time>Часовня в соснах. Крыльцо выше, чем ожидаешь: снег здесь считают по-своему.</figcaption>
     </figure>
   </div>
@@ -208,11 +208,11 @@
   </figure>
   <div class="row narrow">
     <figure id="P110">
-      <div class="ph"><img src="media/melnica.webp" width="788" height="1400" loading="lazy" alt="Деревянная ветряная мельница с четырьмя крыльями на лугу у леса"></div>
+      <div class="ph"><img src="media/melnica.webp" width="1400" height="2487" loading="lazy" alt="Деревянная ветряная мельница с четырьмя крыльями на лугу у леса"></div>
       <figcaption><time>12:56</time>Мельница. Крылья на месте, ветер тоже, муки нет.</figcaption>
     </figure>
     <figure id="P112">
-      <div class="ph"><img src="media/shater.webp" width="788" height="1400" loading="lazy" alt="Деревянная церковь с высоким шатровым верхом под тяжёлыми облаками"></div>
+      <div class="ph"><img src="media/shater.webp" width="1400" height="2487" loading="lazy" alt="Деревянная церковь с высоким шатровым верхом под тяжёлыми облаками"></div>
       <figcaption><time>12:58</time>Шатровая церковь. Облака уже тяжелеют: это за час до дождя.</figcaption>
     </figure>
   </div>
@@ -223,12 +223,12 @@
       <figcaption><time>13:39</time>Вид с крыльца избы на излучину реки. Дома здесь ставили с расчётом на этот вид.</figcaption>
     </figure>
     <figure id="P138">
-      <div class="ph"><img src="media/krest.webp" width="788" height="1400" loading="lazy" alt="Деревянный поклонный крест с резным навершием на вершине холма, внизу долина"></div>
+      <div class="ph"><img src="media/krest.webp" width="1400" height="2487" loading="lazy" alt="Деревянный поклонный крест с резным навершием на вершине холма, внизу долина"></div>
       <figcaption><time>13:34</time>Поклонный крест на холме. Отсюда дождь был виден заранее, но я не поверил.</figcaption>
     </figure>
   </div>
   <figure class="tall" id="P146">
-    <div class="ph"><img src="media/dozhd.webp" width="788" height="1400" loading="lazy" alt="Длинные мокрые деревянные мостки уходят в лес, идёт дождь"></div>
+    <div class="ph"><img src="media/dozhd.webp" width="1400" height="2487" loading="lazy" alt="Длинные мокрые деревянные мостки уходят в лес, идёт дождь"></div>
     <figcaption><time>13:45</time>Мостки назад, уже под дождём. Атмосфернее, честно.</figcaption>
   </figure>
 </section>
@@ -242,7 +242,7 @@
   </figure>
   <div class="row narrow">
     <figure id="P165">
-      <div class="ph"><img src="media/parusnik.webp" width="788" height="1400" loading="lazy" alt="Модель парусного корабля с парусами, расписанными гербовым орлом, в витрине"></div>
+      <div class="ph"><img src="media/parusnik.webp" width="1400" height="2487" loading="lazy" alt="Модель парусного корабля с парусами, расписанными гербовым орлом, в витрине"></div>
       <figcaption><time>15:11</time>Парусник с орлом на парусах. Так в XVIII веке выглядел дорогой брендинг.</figcaption>
     </figure>
     <figure id="P168">
@@ -285,7 +285,7 @@
   <p>Вернулся в Архангельск. Музеи уже закрыты, но световой день длинный, и по городу ещё можно ходить. Проспект Чумбарова-Лучинского — пешеходная улица в центре, деревянные дома, бронзовые персонажи и суровые северные коты на заборе.</p>
   <div class="row narrow">
     <figure id="P228">
-      <div class="ph"><img src="media/sobor-vecher.webp" width="788" height="1400" loading="lazy" alt="Белый собор с золотыми куполами на фоне серого вечернего неба, перед ним газон"></div>
+      <div class="ph"><img src="media/sobor-vecher.webp" width="1400" height="2487" loading="lazy" alt="Белый собор с золотыми куполами на фоне серого вечернего неба, перед ним газон"></div>
       <figcaption><time>19:58</time>Собор ещё раз, уже пешком и без туч. Восемь вечера, светло как днём.</figcaption>
     </figure>
     <figure id="P235">
@@ -299,16 +299,16 @@
   </figure>
   <div class="row narrow">
     <figure id="P243">
-      <div class="ph"><img src="media/nalim.webp" width="788" height="1400" loading="lazy" alt="Бронзовая фигура человека с большой рыбой на пешеходной улице, вдоль улицы деревянные дома"></div>
+      <div class="ph"><img src="media/nalim.webp" width="1400" height="2487" loading="lazy" alt="Бронзовая фигура человека с большой рыбой на пешеходной улице, вдоль улицы деревянные дома"></div>
       <figcaption><time>20:11</time>Налим Малиныч, персонаж поморской сказки Писахова. Рыба здесь главный герой, человек второстепенный.</figcaption>
     </figure>
     <figure id="P246">
-      <div class="ph"><img src="media/pisahov.webp" width="788" height="1400" loading="lazy" alt="Бронзовый памятник мужчине в пальто и шляпе с чайкой на голове"></div>
+      <div class="ph"><img src="media/pisahov.webp" width="1400" height="2487" loading="lazy" alt="Бронзовый памятник мужчине в пальто и шляпе с чайкой на голове"></div>
       <figcaption><time>20:12</time>А вот и сам Писахов, автор этой и многих других сказок. Чайка на шляпе в комплекте.</figcaption>
     </figure>
   </div>
   <figure class="tall" id="P248">
-    <div class="ph"><img src="media/chasovnya-vecher.webp" width="788" height="1400" loading="lazy" alt="Деревянная часовня с золотой главой в конце площади, вечернее серое небо"></div>
+    <div class="ph"><img src="media/chasovnya-vecher.webp" width="1400" height="2487" loading="lazy" alt="Деревянная часовня с золотой главой в конце площади, вечернее серое небо"></div>
     <figcaption><time>20:28</time>Последний кадр, 20:28. На этом знакомство с городом завершаю и еду в Вологодскую область, которую называют душой Русского Севера.</figcaption>
   </figure>
   <div class="verdict">
@@ -333,6 +333,6 @@
 
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../index.html"><span>Все регионы</span></a></nav>
 </div>
-<script src="../series.js?v=491ada4f"></script>
+<script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>

@@ -25,22 +25,25 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=f477f7da">
-
+<link rel="stylesheet" href="../series.css?v=690f2df7">
+<style>:root{--reg:#162237;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#88A1CE;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#88A1CE;--reg-ink:#14100A}</style>
 </head>
 <body>
-<div class="page">
+<div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
-<header class="reg-head">
-  <div class="reg-id">
-    <span class="code" aria-label="Код региона 69">69</span>
-    <div class="reg-name">
+<header class="reg-head cover-head">
+  <figure class="hero-ph cover" id="P063">
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Сергей в синей куртке с капюшоном на крыше высотки, за ним зимний город и река"></div>
+    <div class="reg-id" style="--nw:8">
+      <span class="code" aria-label="Код региона 69">69</span>
       <h1>Тверская область</h1>
-      <div class="reg-places">Тверь · Музей козла · Крыша «Панорамы» · Морозовский городок</div>
     </div>
-  </div>
-  <p class="hook">Тверские — козлы. Это не ругань, а музейная табличка. Город, который спокойно живёт со своим прозвищем, своим вокзалом и казармами 1858 года.</p>
-  <dl class="passport">
+    <figcaption><time>15:59</time>Крыша торгового центра «Панорама». Самая высокая точка дня, и единственная, откуда Тверь выглядит целиком.</figcaption>
+  </figure>
+  <div class="under">
+    <div class="reg-places">Тверь · Музей козла · Крыша «Панорамы» · Морозовский городок</div>
+    <p class="hook">Тверские — козлы. Это не ругань, а музейная табличка. Город, который спокойно живёт со своим прозвищем, своим вокзалом и казармами 1858 года.</p>
+    <dl class="passport">
     <div><dt>Когда</dt><dd>27 февраля 2022</dd></div>
     <div><dt>Сколько</dt><dd>1 день</dd></div>
     <div><dt>Время</dt><dd>МСК</dd></div>
@@ -48,13 +51,10 @@
     <div><dt>Снято</dt><dd>71 фото, 7 видео</dd></div>
     <div><dt>Оценка</dt><dd>✓ был</dd></div>
   </dl>
-  <ol class="route" aria-label="Маршрут дня">
+    <ol class="route" aria-label="Маршрут дня">
     <li class="here">Вокзал</li><li>Набережная</li><li>Музей козла</li><li>Музей Плюшкина</li><li>Крыша «Панорамы»</li><li>Морозовский городок</li>
   </ol>
-  <figure class="hero-ph" id="P063">
-    <div class="ph"><img src="media/hero.webp" width="2200" height="1650" alt="Сергей в синей куртке с капюшоном на крыше высотки, за ним зимний город и река"></div>
-    <figcaption><time>15:59</time>Крыша торгового центра «Панорама». Самая высокая точка дня, и единственная, откуда Тверь выглядит целиком.</figcaption>
-  </figure>
+  </div>
 </header>
 
 <article class="story">
@@ -63,35 +63,7 @@
   <p class="lead">Скажу как есть, без прикрас. Тверь обычно проезжают между Москвой и Петербургом, а я вышел в половине пятого утра и ждал рассвета на вокзале. На вокзале много бомжей, они воняют, и их не гоняют ни работники, ни полиция. Есть попрошайки. Так город и начался.</p>
   <p class="lead">А дальше оказалось, что Тверь ничего не прячет. На стене музея висит список прозвищ регионов, и тверские там — козлы, и этому посвящён целый музей. В казармах 1858 года до сих пор живут люди. С крыши торгового центра видно всё сразу: Волгу во льду, телебашню, пятиэтажки. За один день я посмотрел на город с перрона, с набережной и с крыши, и ни один ракурс не был приукрашен.</p>
   <figure class="wide daymap">
-    <svg class="daymap-svg" viewBox="0 0 640 334" role="img" aria-label="Маршрут дня по точкам съёмки">
-<polyline class="dm-route" points="346.2,306.1 430.2,116.2 366.9,115.1 390.6,103.7 380.0,49.3 390.8,28.0 433.5,70.7 431.2,84.1 431.3,82.5 443.4,94.6 444.0,104.1 472.3,98.5 435.6,153.2 435.8,152.6 435.7,152.7 435.7,152.9 435.8,152.7 435.8,152.7 435.8,152.7 435.7,152.7 435.7,152.7 435.7,152.7 435.7,152.7 435.7,152.7 435.8,152.6 435.8,152.6 435.8,152.6 435.7,152.6 435.8,152.6 435.8,152.6 435.7,152.6 435.7,152.7 435.7,152.7 435.7,152.7 473.5,126.7 473.5,126.8 473.5,126.8 473.2,127.1 473.4,126.7 472.2,127.0 473.5,126.8 473.4,126.7 520.0,127.5 120.0,160.8 189.7,193.7 189.7,193.7 185.3,176.9 185.3,176.9"/>
-<g class="dm-label"><circle cx="390.8" cy="28.0" r="4"/><text x="398.8" y="32.0">Набережная, Пушкин</text></g>
-<g class="dm-label"><circle cx="520.0" cy="127.5" r="4"/><text x="512.0" y="131.5" text-anchor="end">«Рюмка»</text></g>
-<g class="dm-label"><circle cx="435.6" cy="153.2" r="4"/><text x="427.6" y="157.2" text-anchor="end">Музей козла</text></g>
-<g class="dm-label"><circle cx="189.7" cy="193.7" r="4"/><text x="197.7" y="197.7">Морозовский городок</text></g>
-<g class="dm-label"><circle cx="346.2" cy="306.1" r="4"/><text x="354.2" y="310.1">Вокзал</text></g>
-<a href="#P002" class="dm-pt"><circle cx="346.2" cy="306.1" r="6"><title>07:51</title></circle></a>
-<a href="#P006" class="dm-pt"><circle cx="390.6" cy="103.7" r="6"><title>10:08</title></circle></a>
-<a href="#P007" class="dm-pt"><circle cx="380.0" cy="49.3" r="6"><title>10:25</title></circle></a>
-<a href="#P008" class="dm-pt"><circle cx="390.8" cy="28.0" r="6"><title>10:46</title></circle></a>
-<a href="#P009" class="dm-pt"><circle cx="433.5" cy="70.7" r="6"><title>11:00</title></circle></a>
-<a href="#P010" class="dm-pt"><circle cx="431.2" cy="84.1" r="6"><title>11:20</title></circle></a>
-<a href="#P012" class="dm-pt"><circle cx="443.4" cy="94.6" r="6"><title>11:27</title></circle></a>
-<a href="#P014" class="dm-pt"><circle cx="472.3" cy="98.5" r="6"><title>12:12</title></circle></a>
-<a href="#P015" class="dm-pt"><circle cx="435.6" cy="153.2" r="6"><title>12:35</title></circle></a>
-<a href="#P021" class="dm-pt"><circle cx="435.8" cy="152.7" r="6"><title>12:49</title></circle></a>
-<a href="#P027" class="dm-pt"><circle cx="435.8" cy="152.6" r="6"><title>12:51</title></circle></a>
-<a href="#P031" class="dm-pt"><circle cx="435.8" cy="152.6" r="6"><title>12:53</title></circle></a>
-<a href="#P032" class="dm-pt"><circle cx="435.8" cy="152.6" r="6"><title>12:53</title></circle></a>
-<a href="#P047" class="dm-pt"><circle cx="473.5" cy="126.8" r="6"><title>14:58</title></circle></a>
-<a href="#P051" class="dm-pt"><circle cx="473.5" cy="126.8" r="6"><title>15:09</title></circle></a>
-<a href="#P052" class="dm-pt"><circle cx="473.4" cy="126.7" r="6"><title>15:18</title></circle></a>
-<a href="#P066" class="dm-pt"><circle cx="520.0" cy="127.5" r="6"><title>16:27</title></circle></a>
-<a href="#P067" class="dm-pt"><circle cx="120.0" cy="160.8" r="6"><title>18:06</title></circle></a>
-<a href="#P068" class="dm-pt"><circle cx="189.7" cy="193.7" r="6"><title>18:43</title></circle></a>
-<a href="#P069" class="dm-pt"><circle cx="189.7" cy="193.7" r="6"><title>18:43</title></circle></a>
-<a href="#P070" class="dm-pt"><circle cx="185.3" cy="176.9" r="6"><title>18:44</title></circle></a>
-</svg>
+    
     <figcaption>Маршрут дня по точкам съёмки. Кружки — фото из этого отчёта, по ним можно кликать.</figcaption>
   </figure>
 </section>
@@ -118,11 +90,11 @@
   <p>Поезд пришёл в 04:40. Светать начало около восьми, и первые три часа я провёл так, как описано выше. Первый кадр при свете — собор у вокзала. Потом завтрак, который я заслужил.</p>
   <div class="row narrow">
     <figure id="P001">
-      <div class="ph"><img src="media/vokzal.webp" width="1050" height="1400" loading="lazy" alt="Ночной перрон вокзала с надписью «Тверь», рядом стоит поезд"></div>
+      <div class="ph"><img src="media/vokzal.webp" width="1400" height="1867" loading="lazy" alt="Ночной перрон вокзала с надписью «Тверь», рядом стоит поезд"></div>
       <figcaption><time>04:40</time>Приехал. До рассвета три с лишним часа, и вокзал не то место, где их хочется провести.</figcaption>
     </figure>
     <figure id="P002">
-      <div class="ph"><img src="media/sobor.webp" width="1050" height="1400" loading="lazy" alt="Белый собор с золотыми куполами на фоне серого зимнего неба"></div>
+      <div class="ph"><img src="media/sobor.webp" width="1400" height="1867" loading="lazy" alt="Белый собор с золотыми куполами на фоне серого зимнего неба"></div>
       <figcaption><time>07:51</time>Собор Александра Невского. Рассвет, ради которого я ждал, выглядел примерно так: серый.</figcaption>
     </figure>
   </div>
@@ -138,36 +110,36 @@
   </figure>
   <div class="row narrow">
     <figure id="P006">
-      <div class="ph"><img src="media/semya.webp" width="1050" height="1400" loading="lazy" alt="Бронзовая скульптура семьи: родители с ребёнком на плечах и двое детей, вокруг снег"></div>
+      <div class="ph"><img src="media/semya.webp" width="1400" height="1867" loading="lazy" alt="Бронзовая скульптура семьи: родители с ребёнком на плечах и двое детей, вокруг снег"></div>
       <figcaption><time>10:08</time>Памятник семье. Пятеро, и младший, кажется, доволен больше всех.</figcaption>
     </figure>
     <figure id="P007">
-      <div class="ph"><img src="media/most.webp" width="1050" height="1400" loading="lazy" alt="Старый металлический мост через замёрзшую реку, у опор тёмная полоса воды"></div>
+      <div class="ph"><img src="media/most.webp" width="1400" height="1867" loading="lazy" alt="Старый металлический мост через замёрзшую реку, у опор тёмная полоса воды"></div>
       <figcaption><time>10:25</time>Старый Волжский мост с земли. Подо льдом у опор ещё течёт.</figcaption>
     </figure>
   </div>
   <div class="row narrow">
     <figure id="P008">
-      <div class="ph"><img src="media/pushkin.webp" width="1050" height="1400" loading="lazy" alt="Памятник Пушкину у ограды набережной, за ним замёрзшая река"></div>
+      <div class="ph"><img src="media/pushkin.webp" width="1400" height="1867" loading="lazy" alt="Памятник Пушкину у ограды набережной, за ним замёрзшая река"></div>
       <figcaption><time>10:46</time>А. С. Пушкин. Облокотился на ограду и смотрит на лёд. В феврале больше смотреть не на что.</figcaption>
     </figure>
     <figure id="P009">
-      <div class="ph"><img src="media/nikitin.webp" width="1050" height="1400" loading="lazy" alt="Памятник на постаменте с носом ладьи, за ним церковь с золотым куполом"></div>
+      <div class="ph"><img src="media/nikitin.webp" width="1400" height="1867" loading="lazy" alt="Памятник на постаменте с носом ладьи, за ним церковь с золотым куполом"></div>
       <figcaption><time>11:00</time>Афанасий Никитин, мореплаватель и путешественник XV века, тверчанин. Ладья под ним — единственное, что в этом городе сейчас плывёт.</figcaption>
     </figure>
   </div>
   <div class="row narrow">
     <figure id="P010">
-      <div class="ph"><img src="media/ulica.webp" width="1050" height="1400" loading="lazy" alt="Табличка «ул. Вольного Новгорода» на фасаде"></div>
+      <div class="ph"><img src="media/ulica.webp" width="1400" height="1867" loading="lazy" alt="Табличка «ул. Вольного Новгорода» на фасаде"></div>
       <figcaption><time>11:20</time>Снова необычное название улицы. Вольного Новгорода, в Твери. Ещё одно будет вечером. Был здесь и уличный арт, но мотоциклист на глобусе не поместился в отбор.</figcaption>
     </figure>
     <figure id="P012">
-      <div class="ph"><img src="media/lenin.webp" width="1050" height="1400" loading="lazy" alt="Памятник Ленину на постаменте перед зданием с колоннами, серое небо"></div>
+      <div class="ph"><img src="media/lenin.webp" width="1400" height="1867" loading="lazy" alt="Памятник Ленину на постаменте перед зданием с колоннами, серое небо"></div>
       <figcaption><time>11:27</time>Ленина всё достало :) Цитата из оригинала, менять не буду.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P014">
-      <div class="ph"><img src="media/knyaz.webp" width="1050" height="1400" loading="lazy" alt="Конный памятник на высоком постаменте на площади, вокруг невысокие дома"></div>
+      <div class="ph"><img src="media/knyaz.webp" width="1400" height="1867" loading="lazy" alt="Конный памятник на высоком постаменте на площади, вокруг невысокие дома"></div>
       <figcaption><time>12:12</time>Тверской князь Михаил Ярославич. Про него стоит почитать, я себе это тоже пометил.</figcaption>
     </figure>
 </section>
@@ -181,26 +153,26 @@
   </figure>
   <div class="row narrow">
     <figure id="P015">
-      <div class="ph"><img src="media/chuchela.webp" width="1050" height="1400" loading="lazy" alt="Чучела козла и барана и мягкие игрушки-козы у окна музея"></div>
+      <div class="ph"><img src="media/chuchela.webp" width="1400" height="1867" loading="lazy" alt="Чучела козла и барана и мягкие игрушки-козы у окна музея"></div>
       <figcaption><time>12:35</time>Первый зал. Козёл и баран стоят рядом, разницу в музее объясняют.</figcaption>
     </figure>
     <figure id="P021">
-      <div class="ph"><img src="media/medal.webp" width="1050" height="1400" loading="lazy" alt="Металлическая медаль с надписью «Козёл-неудачник» на подставке в витрине"></div>
+      <div class="ph"><img src="media/medal.webp" width="1400" height="1867" loading="lazy" alt="Металлическая медаль с надписью «Козёл-неудачник» на подставке в витрине"></div>
       <figcaption><time>12:49</time>Медаль «Козёл-неудачник» для игры в домино. Украинская ССР, 1960-е. Выдавали, я так понимаю, проигравшему.</figcaption>
     </figure>
   </div>
   <div class="row narrow">
     <figure id="P027">
-      <div class="ph"><img src="media/nozhnicy.webp" width="1050" height="1400" loading="lazy" alt="Ножницы с гравировкой в витрине и табличка с пояснением"></div>
+      <div class="ph"><img src="media/nozhnicy.webp" width="1400" height="1867" loading="lazy" alt="Ножницы с гравировкой в витрине и табличка с пояснением"></div>
       <figcaption><time>12:51</time>Ножницы из колонии строгого режима, начало 1960-х. Табличка называет их редким свидетелем криминализации слова «козёл».</figcaption>
     </figure>
     <figure id="P031">
-      <div class="ph"><img src="media/prozvishcha.webp" width="1050" height="1400" loading="lazy" alt="Табличка в рамке «Региональные прозвища в России» со списком по областям"></div>
+      <div class="ph"><img src="media/prozvishcha.webp" width="1400" height="1867" loading="lazy" alt="Табличка в рамке «Региональные прозвища в России» со списком по областям"></div>
       <figcaption><time>12:53</time>Региональные прозвища в России. Тверские — козлы. Вологодские — толоконники, пермские — солёные уши. Искал свои.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P032">
-      <div class="ph"><img src="media/s-kozoy.webp" width="1050" height="1400" loading="lazy" alt="Сергей в медицинской маске рядом с фигурой козла в шляпе и пиджаке, на стене гербы"></div>
+      <div class="ph"><img src="media/s-kozoy.webp" width="1400" height="1867" loading="lazy" alt="Сергей в медицинской маске рядом с фигурой козла в шляпе и пиджаке, на стене гербы"></div>
       <figcaption><time>12:53</time>С главным экспонатом. Он в шляпе и галстуке, я в маске: февраль 2022.</figcaption>
     </figure>
 </section>
@@ -210,16 +182,16 @@
   <p>Далее на очереди музей Плюшкина. У меня с этим словом ассоциировался только персонаж «Мёртвых душ». Однако Фёдор Михайлович Плюшкин — реальный человек, и музей собран по его принципу: здесь много разных советских вещей, некоторые в рабочем состоянии, и всё можно брать в руки.</p>
   <div class="row narrow">
     <figure id="P047">
-      <div class="ph"><img src="media/pult.webp" width="1050" height="1400" loading="lazy" alt="Проводной пульт «Рекорд» в руке на фоне полок со старой техникой"></div>
+      <div class="ph"><img src="media/pult.webp" width="1400" height="1867" loading="lazy" alt="Проводной пульт «Рекорд» в руке на фоне полок со старой техникой"></div>
       <figcaption><time>14:58</time>Пульт «Рекорд». Проводной, восемь кнопок, и всё равно пульт.</figcaption>
     </figure>
     <figure id="P051">
-      <div class="ph"><img src="media/feldzeitung.webp" width="1050" height="1400" loading="lazy" alt="Немецкая газета «Feldzeitung» с листовкой в руках над столом"></div>
+      <div class="ph"><img src="media/feldzeitung.webp" width="1400" height="1867" loading="lazy" alt="Немецкая газета «Feldzeitung» с листовкой в руках над столом"></div>
       <figcaption><time>15:09</time>Говорят, оригинал агитки для немцев во время войны: «Немецкий солдат! Сдавайся в плен с этим пропуском в руке или паролем „Прощай, Москва! Долой Гитлера!“». Обещали жизнь, хорошее обращение и возвращение домой.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P052">
-    <div class="ph"><img src="media/plyushkin.webp" width="1050" height="1400" loading="lazy" alt="Стенд с портретом мужчины в костюме и текстом о Фёдоре Михайловиче Плюшкине"></div>
+    <div class="ph"><img src="media/plyushkin.webp" width="1400" height="1867" loading="lazy" alt="Стенд с портретом мужчины в костюме и текстом о Фёдоре Михайловиче Плюшкине"></div>
     <figcaption><time>15:18</time>Фёдор Михайлович Плюшкин. Вот откуда название. Гоголь тут ни при чём, но ассоциацию музей использует.</figcaption>
   </figure>
 </section>
@@ -229,7 +201,7 @@
   <p>Забрался повыше: торговый центр «Панорама», на крышу пускают. Отсюда Волга видна во всю ширину, телебашня в конце проспекта, и дрон впервые за день взлетел выше меня, а не вместо.</p>
   <div class="row narrow">
     <figure id="P057">
-      <div class="ph"><img src="media/telebashnya.webp" width="1050" height="1400" loading="lazy" alt="Вид с крыши вдоль улицы к телебашне, внизу перила и крыши домов"></div>
+      <div class="ph"><img src="media/telebashnya.webp" width="1400" height="1867" loading="lazy" alt="Вид с крыши вдоль улицы к телебашне, внизу перила и крыши домов"></div>
       <figcaption><time>15:57</time>Проспект упирается в телебашню. Внизу перила, за ними ничего, и это чувствуется.</figcaption>
     </figure>
     <figure class="tall">
@@ -246,7 +218,7 @@
     <figcaption><time>≈15:59</time>Дрон над «Панорамой»: река, телебашня, потом буквы на крыше и фигурка в синей куртке у перил. Это я.</figcaption>
   </figure>
   <figure class="mid" id="P066">
-    <div class="ph"><img src="media/ryumka.webp" width="1050" height="1400" loading="lazy" alt="Высокое здание гостиницы с узким основанием и расширяющимся кверху корпусом, зима"></div>
+    <div class="ph"><img src="media/ryumka.webp" width="1400" height="1867" loading="lazy" alt="Высокое здание гостиницы с узким основанием и расширяющимся кверху корпусом, зима"></div>
     <figcaption><time>16:27</time>Он же — «рюмка». Снизу уже, сверху шире, стоит и не падает.</figcaption>
   </figure>
 </section>
@@ -256,21 +228,21 @@
   <h2>Морозовский городок</h2>
   <p>Вечер закончился в Морозовском городке. Двор Пролетарки, Морозовские казармы, 1858 год постройки: первая попытка создать микрорайон в России. Кирпич, заколоченные входы, провода, и в окнах свет: тут до сих пор живут люди. Это главное, что я увёз из Твери.</p>
   <figure class="mid" id="P067">
-    <div class="ph"><img src="media/gorobec.webp" width="1050" height="1400" loading="lazy" alt="Чёрный памятник «Легендарному экипажу Степана Горобца» с барельефом танкистов, у подножия цветы"></div>
+    <div class="ph"><img src="media/gorobec.webp" width="1400" height="1867" loading="lazy" alt="Чёрный памятник «Легендарному экипажу Степана Горобца» с барельефом танкистов, у подножия цветы"></div>
     <figcaption><time>18:06</time>Легендарному экипажу Степана Горобца. Почитать про подвиг. Я почитал.</figcaption>
   </figure>
   <div class="row narrow">
     <figure id="P068">
-      <div class="ph"><img src="media/kazarmy.webp" width="1050" height="1400" loading="lazy" alt="Старое кирпичное здание в сумерках, заколоченный вход, фонарь"></div>
+      <div class="ph"><img src="media/kazarmy.webp" width="1400" height="1867" loading="lazy" alt="Старое кирпичное здание в сумерках, заколоченный вход, фонарь"></div>
       <figcaption><time>18:43</time>Морозовские казармы. Вход заколочен, но это только один из входов.</figcaption>
     </figure>
     <figure id="P069">
-      <div class="ph"><img src="media/proletarki.webp" width="1050" height="1400" loading="lazy" alt="Синяя табличка «Двор Пролетарки 48» на кирпичной стене"></div>
+      <div class="ph"><img src="media/proletarki.webp" width="1400" height="1867" loading="lazy" alt="Синяя табличка «Двор Пролетарки 48» на кирпичной стене"></div>
       <figcaption><time>18:43</time>И снова необычное название улицы. Не улица, а двор. Пролетарки, 48.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P070">
-    <div class="ph"><img src="media/gorodok.webp" width="1050" height="1400" loading="lazy" alt="Кирпичные корпуса казарм на фоне синего вечернего неба, снег во дворе"></div>
+    <div class="ph"><img src="media/gorodok.webp" width="1400" height="1867" loading="lazy" alt="Кирпичные корпуса казарм на фоне синего вечернего неба, снег во дворе"></div>
     <figcaption><time>18:44</time>1858 год, и в окнах горит свет. Микрорайон, которому скоро сто семьдесят.</figcaption>
   </figure>
   <div class="verdict">
@@ -295,6 +267,6 @@
 
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../index.html"><span>Все регионы</span></a></nav>
 </div>
-<script src="../series.js?v=491ada4f"></script>
+<script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>

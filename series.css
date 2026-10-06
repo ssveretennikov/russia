@@ -240,12 +240,10 @@ body:has(.ix-page){background:var(--sky-bg)}
 .mth{width:6rem;aspect-ratio:4/3;object-fit:cover;border-radius:.55rem;flex:none;background:var(--line)}
 .ix-page .reg{grid-template-columns:auto minmax(0,1fr) auto}
 .reg .th{width:4rem;aspect-ratio:4/3;height:auto;object-fit:cover;border-radius:.45rem;background:var(--sky-bg)}
-/* поиск и подсказка к сердечку — над списком */
+/* поиск — над лентой и списком */
 .ix-find{max-width:var(--wide);margin:clamp(2rem,5vw,3rem) auto 0;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem}
 .ix-find input{flex:1 1 16rem;font:inherit;font-size:1rem;padding:.7rem 1rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);min-width:0}
 .ix-find input:focus-visible{outline:3px solid var(--sky);outline-offset:1px}
-.hrt-key{font-size:.9rem;color:var(--soft);white-space:nowrap}
-.hrt-key .hrt{color:var(--heart)}
 .ix-none{max-width:var(--wide);margin:1.5rem auto 0;color:var(--soft)}
 .ix-page .ix-find + .ix-none + .fo{margin-top:1.2rem}
 .ix-page .fo.ahead{background:transparent;border:2px dashed var(--line)}
@@ -386,3 +384,131 @@ figure[id]{scroll-margin-top:4rem}
 details.more{border-top:1px solid var(--line);padding-top:.6rem}
 details.more summary{cursor:pointer;font-family:var(--sign);letter-spacing:.06em;text-transform:uppercase;font-size:.9rem;color:var(--soft)}
 details.more[open] summary{margin-bottom:.6rem}
+
+/* ===== Главная: лента и списки (макет Б «Карта первой», решение автора 06.10.2026) ===== */
+/* --- лента «Любимые»: сразу после карты и поиска, перед списками округов --- */
+.fav{max-width:var(--wide);margin:clamp(1.6rem,4vw,2.4rem) auto 0;display:flex;flex-direction:column;gap:.9rem}
+.fav-h{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:2.6rem}
+.fav-h h2{margin:0;font-size:clamp(1.15rem,2.8vw,1.5rem);color:var(--sky-deep)}
+.fav-nav{display:flex;gap:.4rem}
+.fav-nav button{width:2.6rem;height:2.6rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
+.fav-nav button:hover{border-color:var(--sky)}
+.fav-nav button:disabled{opacity:.4;cursor:default}
+.fav-nav button:disabled:hover{border-color:var(--line)}
+.fav-nav svg{width:1.1rem;height:1.1rem;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+@media (hover:none){.fav-nav{display:none}}   /* на телефоне ленту листают пальцем, кнопки не нужны */
+.fav-row{list-style:none;margin:0;padding:0;display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.fav-row::-webkit-scrollbar{display:none}
+.fc{flex:0 0 min(19rem,78vw);min-width:0;display:flex;scroll-snap-align:start}
+/* планшет и компьютер: в ленте помещается ровно две или три карточки, ничего не обрезано; дальше — кнопками или прокруткой */
+@media (min-width:641px){.fc{flex-basis:calc((100% - 1rem)/2)}}
+@media (min-width:900px){.fc{flex-basis:calc((100% - 2rem)/3)}}
+.fc a{display:flex;flex-direction:column;width:100%;background:var(--surface);border-radius:1.1rem;overflow:hidden;color:var(--ink);text-decoration:none}
+.fc a:focus-visible{outline-offset:-3px}
+.fc-ph{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:var(--line)}
+.fc-ph img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+.fc a:hover .fc-ph img{transform:scale(1.04)}
+/* код на фото: тот же синий кружок, что в списках; белое кольцо отделяет его от любого кадра */
+.fc-ph .code{position:absolute;left:.75rem;top:.75rem;font-size:1.1rem;box-shadow:0 0 0 2px #fff}
+.fc-t{display:flex;flex-direction:column;gap:.45rem;flex:1;padding:.95rem 1.1rem 1.1rem}
+.fc-nm{font-family:var(--display);font-weight:700;font-size:1.02rem;line-height:1.2;letter-spacing:-.01em;text-wrap:balance}
+.fc a:hover .fc-nm{text-decoration:underline;text-underline-offset:.18em}
+.fc-meta{font-family:var(--sign);font-size:.84rem;letter-spacing:.07em;text-transform:uppercase;color:var(--soft);line-height:1.3}
+.fc-hook{font-size:.95rem;line-height:1.45}
+.fc-go{margin-top:auto;padding-top:.6rem;font-weight:600;font-size:.92rem;color:var(--road)}
+@media (max-width:640px){
+  /* лента идёт от края до края экрана: следующая карточка выглядывает справа и подсказывает, что листается */
+  .fav-row{gap:.75rem;margin-inline:calc(-1*var(--gutter));padding-inline:var(--gutter);scroll-padding-inline:var(--gutter)}
+  .fav-h{min-height:0}
+  .fav-nav{display:none}
+}
+@media (prefers-reduced-motion:reduce){.fc-ph img{transition:none}.fc a:hover .fc-ph img{transform:none}}
+.ix-page .fav + .fo{margin-top:clamp(1.8rem,4vw,2.6rem)}
+.ix-page .fav[hidden] + .fo{margin-top:1.2rem}   /* лента скрыта (поиск, фильтр, хронология) — список сразу под поиском */
+
+/* --- списки округов: миниатюра 96×72 слева, код — кружком на её углу, под названием «табличка» и строка крючка --- */
+.ix-page .fo:not(.ahead) .regs{grid-template-columns:minmax(0,1fr);gap:1.15rem}
+@media (min-width:760px){.ix-page .fo:not(.ahead) .regs{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem 2.2rem}}
+.ix-page .fo:not(.ahead) .reg{position:relative;grid-template-columns:6rem minmax(0,1fr);column-gap:.9rem;align-items:start}
+.ix-page .fo:not(.ahead) .reg .th-a{grid-column:1;grid-row:1;display:block;line-height:0}
+.ix-page .fo:not(.ahead) .reg .th{width:6rem;border-radius:.6rem}
+.ix-page .fo:not(.ahead) .reg > .code{grid-column:1;grid-row:1;justify-self:start;align-self:start;margin:-.4rem 0 0 -.4rem;z-index:2;font-size:.95rem;box-shadow:0 0 0 2px var(--surface)}
+.ix-page .fo:not(.ahead) .reg-t{grid-column:2;grid-row:1;align-self:center;gap:.2rem}
+.ix-page .fo:not(.ahead) .reg-t small{font-family:var(--sign);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;line-height:1.35}
+.hk{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--soft);font-size:.9rem;line-height:1.35}
+/* вся строка — одна большая ссылка на отчёт: нажимается и миниатюра, и крючок */
+.ix-page .fo:not(.ahead) .reg-t > div > a::after{content:"";position:absolute;inset:0;z-index:1}
+.ix-page .fo:not(.ahead) .reg-t small a{position:relative;z-index:2;white-space:nowrap}
+/* телефон: название чуть мельче и зазор уже — так в одну строку помещается больше названий */
+@media (max-width:640px){
+  .ix-page .fo:not(.ahead) .reg{column-gap:.75rem}
+  .ix-page .fo:not(.ahead) .reg-t > div{font-size:1rem}
+}
+
+/* ===== Шапка-обложка страницы региона (решение автора 06.10.2026, вариант А) =====
+   Собирается в build.py (cover_head): главный кадр первым во всю ширину экрана, код и название поверх нижней
+   части кадра на затемнении, места, крючок, паспорт и маршрут — под кадром. Цвет региона — --reg / --reg-ink. */
+.page-cover{position:relative;--inner:calc(var(--wide) + 2 * var(--gutter))}
+/* верхняя полоса лежит на кадре: ссылка и кнопка темы — на тёмных подложках, чтобы читались на любом небе */
+.page-cover .topbar{position:absolute;z-index:3;top:0;left:0;right:0;max-width:var(--inner);padding-inline:var(--gutter);padding-block:.8rem}
+.page-cover .topbar a{color:#fff;background:rgba(10,12,16,.62);padding:.5rem .75rem .55rem;line-height:1}
+.page-cover .topbar a:hover{text-decoration:none;background:rgba(10,12,16,.85)}
+.page-cover .theme-btn{background:rgba(10,12,16,.62);color:#fff;border-color:rgba(255,255,255,.45)}
+.page-cover .theme-btn:hover{border-color:#fff}
+.page-cover .topbar :focus-visible{outline-color:#fff}
+/* шапка: кадр от края до края экрана, остальное — по общей колонке страницы */
+.cover-head{max-width:none;margin-inline:calc(-1 * var(--gutter));padding-top:0;gap:0}
+.cover{display:grid;grid-template-columns:minmax(0,1fr)}
+/* высота полосы: на телефоне почти квадрат, но не выше ~2/3 экрана; на компьютере — так, чтобы под кадром
+   на экране 1440×900 поместились места, крючок, паспорт и маршрут */
+.cover .ph{grid-area:1/1;position:relative;width:100%;max-width:120rem;margin-inline:auto;background:#1B2430;
+  height:max(17rem,min(125vw,64vh,46rem));height:max(17rem,min(125vw,64svh,46rem))}
+/* общее правило обрезки для 90 разных кадров: середина кадра; ручных точек нет */
+.cover .ph img{position:relative;z-index:1;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:50% 50%}
+/* вертикальный кадр в полосу не режется: он целиком, поля по бокам — его же размытая копия (img.cover-bg ставит сборка) */
+.cover.portrait .ph img{object-fit:contain}
+.cover .ph img.cover-bg{position:absolute;inset:0;z-index:0;object-fit:cover;filter:blur(1.4rem) brightness(.55);transform:scale(1.12)}
+/* затемнение: сверху лёгкое под полосу навигации, снизу плотное под название */
+.cover .ph::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:
+  linear-gradient(to bottom,rgba(8,10,14,.24) 0,rgba(8,10,14,0) 5.5rem),
+  linear-gradient(to top,rgba(8,10,14,.88) 0,rgba(8,10,14,.62) 5rem,rgba(8,10,14,0) 64%)}
+/* плашка с кодом и название — поверх нижней части кадра; щелчок проходит сквозь них к фото (лайтбокс) */
+.cover .reg-id{grid-area:1/1;align-self:end;z-index:3;pointer-events:none;width:100%;max-width:var(--inner);margin-inline:auto;
+  padding:0 var(--gutter) clamp(1rem,2.4vw,1.7rem);display:flex;flex-direction:column;align-items:flex-start;flex-wrap:nowrap;gap:clamp(.6rem,1.3vw,.9rem)}
+.cover .reg-id .code{font-size:clamp(2.2rem,5vw,3.2rem);box-shadow:0 2px 16px rgba(0,0,0,.35)}
+.cover h1{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.55),0 2px 24px rgba(0,0,0,.5)}
+/* узкий телефон (320–400 px): длинное слово («Калининградская») рвалось посреди — кегль уменьшается, чтобы самое
+   длинное слово названия (--nw букв, ставит сборка; ≈.83 em на букву в Unbounded) встало в строку целиком */
+@media (max-width:400px){.cover h1{font-size:min(1.7rem,calc((100vw - 2 * var(--gutter)) / (var(--nw,10) * .83)))}}
+.cover figcaption{grid-row:2;width:100%;max-width:var(--inner);margin-inline:auto;padding:.55rem var(--gutter) 0}
+.cover:target .ph{outline-offset:-.25rem}
+/* под кадром: места, крючок, паспорт, маршрут */
+.under{width:100%;max-width:var(--inner);margin-inline:auto;padding:1.15rem var(--gutter) 0;display:grid;grid-template-columns:minmax(0,1fr);gap:1rem}
+.under .hook::before{margin-bottom:.8rem}
+/* компьютер: слева места и крючок, справа паспорт столбиком — всё помещается на первый экран */
+@media (min-width:900px){
+  .cover .ph{height:max(20rem,min(56vh,44rem));height:max(20rem,min(56svh,44rem))}
+  .under{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"places pass" "hook pass" "route route";column-gap:clamp(2rem,5vw,4rem);row-gap:.9rem;padding-top:1.5rem}
+  .under .reg-places{grid-area:places}
+  .under .hook{grid-area:hook}
+  .under .route{grid-area:route;padding-top:.9rem;border-top:1px solid var(--line)}
+  /* паспорт не шире 22rem: длинное «как» (Карелия) иначе отжимало крючок в узкий столбик на шесть строк */
+  .under .passport{grid-area:pass;max-width:22rem;display:grid;grid-template-columns:auto auto;align-content:start;gap:.3rem 1.1rem;border-block:0;border-left:1px solid var(--line);padding:.15rem 0 .15rem clamp(1.2rem,2.4vw,2rem)}
+  .under .passport div{display:contents}
+}
+/* телефон: паспорт плотнее, маршрут — одной строкой с прокруткой вбок; прозрачный край строки значит «там есть ещё» */
+@media (max-width:640px){
+  .under{padding-top:.95rem;gap:.85rem}
+  .under .reg-places{font-size:.95rem;line-height:1.35}
+  .under .passport{font-size:.95rem;gap:.25rem 1.3rem;padding:.6rem 0}
+  .under .route{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;
+    margin-inline:calc(-1 * var(--gutter));padding:.1rem var(--gutter) .3rem;scroll-padding-inline:var(--gutter);
+    --fl:#000;--fr:transparent;
+    -webkit-mask-image:linear-gradient(to right,var(--fl) 0,#000 2rem,#000 calc(100% - 3rem),var(--fr) 100%);
+    mask-image:linear-gradient(to right,var(--fl) 0,#000 2rem,#000 calc(100% - 3rem),var(--fr) 100%)}
+  .under .route::-webkit-scrollbar{display:none}
+  .under .route li{flex:none;white-space:nowrap}
+  .under .route.scrolled{--fl:transparent}
+  .under .route.at-end{--fr:#000}
+  .under .route:focus-visible{outline-offset:-3px}
+}

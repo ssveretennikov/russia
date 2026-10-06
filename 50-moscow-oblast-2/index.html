@@ -25,22 +25,25 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=f477f7da">
-
+<link rel="stylesheet" href="../series.css?v=690f2df7">
+<style>:root{--reg:#8A6E38;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C7AC75;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C7AC75;--reg-ink:#14100A}</style>
 </head>
 <body>
-<div class="page">
+<div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
-<header class="reg-head">
-  <div class="reg-id">
-    <span class="code" aria-label="Код региона 50">50</span>
-    <div class="reg-name">
+<header class="reg-head cover-head">
+  <figure class="hero-ph cover" id="P206">
+    <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Мужчина в кадре, за ним вертолёт Ми-26 с красной звездой на открытой площадке"></div>
+    <div class="reg-id" style="--nw:10">
+      <span class="code" aria-label="Код региона 50">50</span>
       <h1>Московская область</h1>
-      <div class="reg-places">Кубинка · парк «Патриот»</div>
     </div>
-  </div>
-  <p class="hook">Храм с витражами, музей с тёмными залами, немецкие танки в павильоне и вертолёт Ми-26 на открытой площадке. Всё в одном парке, за один день.</p>
-  <dl class="passport">
+    <figcaption><time>17:40</time>Рядом с Ми-26. Он крупнее всего, что стоит вокруг.</figcaption>
+  </figure>
+  <div class="under">
+    <div class="reg-places">Кубинка · парк «Патриот»</div>
+    <p class="hook">Храм с витражами, музей с тёмными залами, немецкие танки в павильоне и вертолёт Ми-26 на открытой площадке. Всё в одном парке, за один день.</p>
+    <dl class="passport">
     <div><dt>Когда</dt><dd>23 апреля 2023</dd></div>
     <div><dt>Сколько</dt><dd>1 день</dd></div>
     <div><dt>Время</dt><dd>МСК</dd></div>
@@ -48,13 +51,10 @@
     <div><dt>Снято</dt><dd>126 фото, 8 видео</dd></div>
     <div><dt>Оценка</dt><dd>✓ был</dd></div>
   </dl>
-  <ol class="route" aria-label="Маршрут дня">
+    <ol class="route" aria-label="Маршрут дня">
     <li>Подольск</li><li class="here">Парк «Патриот»</li>
   </ol>
-  <figure class="hero-ph" id="P206">
-    <div class="ph"><img src="media/hero.webp" width="2200" height="1650" alt="Мужчина в кадре, за ним вертолёт Ми-26 с красной звездой на открытой площадке"></div>
-    <figcaption><time>17:40</time>Рядом с Ми-26. Он крупнее всего, что стоит вокруг.</figcaption>
-  </figure>
+  </div>
 </header>
 
 <article class="story">
@@ -78,21 +78,21 @@
   <h2>Храм и площадь</h2>
   <p>Съёмка начинается со смотровой площадки в 11:52. Внизу Главный храм Вооружённых сил, справа в кадр попал ствол орудия.</p>
   <figure class="wide" id="P092">
-    <div class="ph"><img src="media/patriot-hram-sverhu.webp" width="2000" height="1126" loading="lazy" alt="Главный храм Вооружённых сил с золотыми куполами за дорожками парка, справа ствол орудия"></div>
+    <div class="ph"><img src="media/patriot-hram-sverhu.webp" width="2000" height="1125" loading="lazy" alt="Главный храм Вооружённых сил с золотыми куполами за дорожками парка, справа ствол орудия"></div>
     <figcaption><time>11:52</time>Главный храм Вооружённых сил с площадки. Дорожки сходятся к нему, как спицы.</figcaption>
   </figure>
   <div class="row narrow">
     <figure id="P100">
-      <div class="ph"><img src="media/patriot-klyk.webp" width="788" height="1400" loading="lazy" alt="Тёмная вытянутая стела над ступенями и клумбами"></div>
+      <div class="ph"><img src="media/patriot-klyk.webp" width="1400" height="2489" loading="lazy" alt="Тёмная вытянутая стела над ступенями и клумбами"></div>
       <figcaption><time>12:01</time>Стела над ступенями. Подписи в кадре нет.</figcaption>
     </figure>
     <figure id="P106">
-      <div class="ph"><img src="media/patriot-vhod.webp" width="788" height="1400" loading="lazy" alt="Главный вход храма с широкой лестницей, облака"></div>
+      <div class="ph"><img src="media/patriot-vhod.webp" width="1400" height="2489" loading="lazy" alt="Главный вход храма с широкой лестницей, облака"></div>
       <figcaption><time>12:10</time>Вход в храм снизу.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P110">
-    <div class="ph"><img src="media/patriot-vitrazh.webp" width="901" height="1600" loading="lazy" alt="Витражный купол внутри храма, внизу посетители"></div>
+    <div class="ph"><img src="media/patriot-vitrazh.webp" width="1400" height="2489" loading="lazy" alt="Витражный купол внутри храма, внизу посетители"></div>
     <figcaption><time>12:20</time>Внутри храма витражи прямо в сводах. Внизу люди кажутся мелкими.</figcaption>
   </figure>
   <figure class="wide">
@@ -100,7 +100,7 @@
     <figcaption><time>≈12:21</time>В храме поёт хор, вокруг стоят зрители. Дальше камера уходит вверх, к куполам.</figcaption>
   </figure>
   <figure class="mid" id="P114">
-    <div class="ph"><img src="media/patriot-mozaika.webp" width="1600" height="901" loading="lazy" alt="Мозаика с группой бойцов в тёмной раме"></div>
+    <div class="ph"><img src="media/patriot-mozaika.webp" width="1600" height="900" loading="lazy" alt="Мозаика с группой бойцов в тёмной раме"></div>
     <figcaption><time>12:24</time>Мозаика с бойцами. Под ней ряд мелкого текста, прочесть его с места не вышло.</figcaption>
   </figure>
 </section>
@@ -110,11 +110,11 @@
   <p>С 13 до 15 часов я ходил по музейному комплексу «Дорога памяти». Экспозиция тёмная, свет сине-красный, много диорам и личных вещей. Об оккупации и лагерях там говорят без шуток, и я их тоже не добавляю.</p>
   <div class="row">
     <figure id="P122">
-      <div class="ph"><img src="media/patriot-diorama.webp" width="1600" height="901" loading="lazy" alt="Диорама: разбитая техника среди руин в красном свете"></div>
+      <div class="ph"><img src="media/patriot-diorama.webp" width="1600" height="900" loading="lazy" alt="Диорама: разбитая техника среди руин в красном свете"></div>
       <figcaption><time>13:14</time>Диорама с разбитой техникой.</figcaption>
     </figure>
     <figure id="P123">
-      <div class="ph"><img src="media/patriot-hleb.webp" width="1600" height="901" loading="lazy" alt="Кусок тёмного хлеба на сковороде, нож, гирьки и карточки на доске"></div>
+      <div class="ph"><img src="media/patriot-hleb.webp" width="1600" height="900" loading="lazy" alt="Кусок тёмного хлеба на сковороде, нож, гирьки и карточки на доске"></div>
       <figcaption><time>13:28</time>Хлеб, гирьки и карточки. Витрина про блокаду.</figcaption>
     </figure>
   </div>
@@ -123,29 +123,29 @@
     <figcaption><time>≈13:59</time>Мастер печатает плакаты на старом станке, вокруг школьники. Оттиски снимают со станка по одному.</figcaption>
   </figure>
   <figure class="mid" id="P142">
-    <div class="ph"><img src="media/patriot-vhod-russkim.webp" width="1600" height="901" loading="lazy" alt="Деревянная табличка «Вход русским воспрещается» в витрине с землёй"></div>
+    <div class="ph"><img src="media/patriot-vhod-russkim.webp" width="1600" height="900" loading="lazy" alt="Деревянная табличка «Вход русским воспрещается» в витрине с землёй"></div>
     <figcaption><time>14:15</time>Табличка «Вход русским воспрещается» в витрине об оккупации.</figcaption>
   </figure>
   <div class="row narrow">
     <figure id="P149">
-      <div class="ph"><img src="media/patriot-tablo.webp" width="788" height="1400" loading="lazy" alt="Тёмное табло с крупными красными и белыми цифрами потерь"></div>
+      <div class="ph"><img src="media/patriot-tablo.webp" width="1400" height="2489" loading="lazy" alt="Тёмное табло с крупными красными и белыми цифрами потерь"></div>
       <figcaption><time>14:19</time>Табло с цифрами. Первая из них: более 65 млн человек.</figcaption>
     </figure>
     <figure id="P153">
-      <div class="ph"><img src="media/patriot-koridor.webp" width="788" height="1400" loading="lazy" alt="Коридор с красным полом, красные флаги, идут посетители"></div>
+      <div class="ph"><img src="media/patriot-koridor.webp" width="1400" height="2489" loading="lazy" alt="Коридор с красным полом, красные флаги, идут посетители"></div>
       <figcaption><time>14:25</time>Коридор с красным полом.</figcaption>
     </figure>
   </div>
   <figure class="wide" id="P164">
-    <div class="ph"><img src="media/patriot-portrety.webp" width="2000" height="1126" loading="lazy" alt="Тоннель со стенами из портретов, внутри двое посетителей"></div>
+    <div class="ph"><img src="media/patriot-portrety.webp" width="2000" height="1125" loading="lazy" alt="Тоннель со стенами из портретов, внутри двое посетителей"></div>
     <figcaption><time>15:09</time>Зал с портретами на стенах и потолке. Двое посетителей смотрят вверх.</figcaption>
   </figure>
   <figure class="mid" id="P165">
-    <div class="ph"><img src="media/patriot-1418.webp" width="1600" height="901" loading="lazy" alt="Надпись на стене: «Музейный комплекс Дорога памяти, 1418 шагов к Победе»"></div>
+    <div class="ph"><img src="media/patriot-1418.webp" width="1600" height="900" loading="lazy" alt="Надпись на стене: «Музейный комплекс Дорога памяти, 1418 шагов к Победе»"></div>
     <figcaption><time>15:18</time>Табличка на стене: «1418 шагов к Победе».</figcaption>
   </figure>
   <figure class="wide" id="P166">
-    <div class="ph"><img src="media/patriot-arka.webp" width="2000" height="1126" loading="lazy" alt="Триумфальная арка, сквозь неё виден храм"></div>
+    <div class="ph"><img src="media/patriot-arka.webp" width="2000" height="1125" loading="lazy" alt="Триумфальная арка, сквозь неё виден храм"></div>
     <figcaption><time>15:47</time>Триумфальная арка. Храм виден сквозь неё.</figcaption>
   </figure>
 </section>
@@ -155,28 +155,28 @@
   <p>Немецкая стоит в павильоне, наша на открытой площадке. В павильоне у каждой машины своя табличка на стенде.</p>
   <div class="row">
     <figure id="P176">
-      <div class="ph"><img src="media/patriot-pantera.webp" width="1600" height="901" loading="lazy" alt="Два камуфлированных немецких танка в павильоне, перед ними таблички"></div>
+      <div class="ph"><img src="media/patriot-pantera.webp" width="1600" height="900" loading="lazy" alt="Два камуфлированных немецких танка в павильоне, перед ними таблички"></div>
       <figcaption><time>16:44</time>Два танка в павильоне, слева «Пантера».</figcaption>
     </figure>
     <figure id="P179">
-      <div class="ph"><img src="media/patriot-katyusha.webp" width="1600" height="901" loading="lazy" alt="«Катюша» на шасси ЗИС-151 в павильоне"></div>
+      <div class="ph"><img src="media/patriot-katyusha.webp" width="1600" height="900" loading="lazy" alt="«Катюша» на шасси ЗИС-151 в павильоне"></div>
       <figcaption><time>16:45</time>«Катюша» на ЗИС-151.</figcaption>
     </figure>
   </div>
   <figure class="mid" id="P181">
-    <div class="ph"><img src="media/patriot-tigr.webp" width="1600" height="901" loading="lazy" alt="Танк «Тигр» в павильоне, рядом стенд с табличкой"></div>
+    <div class="ph"><img src="media/patriot-tigr.webp" width="1600" height="900" loading="lazy" alt="Танк «Тигр» в павильоне, рядом стенд с табличкой"></div>
     <figcaption><time>16:46</time>«Тигр» с табличкой на стенде.</figcaption>
   </figure>
   <figure class="wide" id="P197">
-    <div class="ph"><img src="media/patriot-bmp.webp" width="1600" height="901" loading="lazy" alt="Мужчина сидит на башне БМП, позади другая техника и самолёты"></div>
+    <div class="ph"><img src="media/patriot-bmp.webp" width="1600" height="900" loading="lazy" alt="Мужчина сидит на башне БМП, позади другая техника и самолёты"></div>
     <figcaption><time>17:20</time>Я на БМП на открытой площадке.</figcaption>
   </figure>
   <figure class="wide" id="P200">
-    <div class="ph"><img src="media/patriot-istrebiteli.webp" width="2000" height="1126" loading="lazy" alt="Ряд истребителей на открытой площадке, позади деревья"></div>
+    <div class="ph"><img src="media/patriot-istrebiteli.webp" width="2000" height="1125" loading="lazy" alt="Ряд истребителей на открытой площадке, позади деревья"></div>
     <figcaption><time>17:29</time>Истребители в ряд. Людей рядом почти нет.</figcaption>
   </figure>
   <figure class="tall" id="P214">
-    <div class="ph"><img src="media/patriot-apparat.webp" width="788" height="1400" loading="lazy" alt="Спускаемый аппарат на четырёх опорах в синем свете, на стене текст"></div>
+    <div class="ph"><img src="media/patriot-apparat.webp" width="1400" height="2500" loading="lazy" alt="Спускаемый аппарат на четырёх опорах в синем свете, на стене текст"></div>
     <figcaption><time>17:58</time>Спускаемый аппарат под синей подсветкой.</figcaption>
   </figure>
 </section>
@@ -189,7 +189,7 @@
     <figcaption><time>≈18:36</time>Крупная птица в вольере. После музея это неожиданно.</figcaption>
   </figure>
   <figure class="mid" id="P216">
-    <div class="ph"><img src="media/patriot-les.webp" width="1600" height="901" loading="lazy" alt="Лес, дорожка из камня, вышка вдали, жёлтый знак на траве"></div>
+    <div class="ph"><img src="media/patriot-les.webp" width="1600" height="900" loading="lazy" alt="Лес, дорожка из камня, вышка вдали, жёлтый знак на траве"></div>
     <figcaption><time>18:45</time>Лес на территории. Последний кадр дня.</figcaption>
   </figure>
   <div class="verdict">
@@ -212,6 +212,6 @@
 
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../50-moscow-oblast/index.html"><span class="code">50</span><span><small>Предыдущая часть</small>Московская область · Подольск</span></a><a class="next" href="../index.html"><span>Все регионы</span></a></nav>
 </div>
-<script src="../series.js?v=491ada4f"></script>
+<script src="../series.js?v=56f60dbb"></script>
 </body>
 </html>
