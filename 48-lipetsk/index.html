@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#1A60D1;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#74A0E7;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#74A0E7;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P004">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Высотная гостиница с красной башней над низким павильоном, у дороги жёлтый автобус, снег и синее небо"></div>
@@ -82,8 +83,21 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Липецк</span></a></li>
+    <li><a href="#g2"><span class="toc-d">19 февраля · суббота · утро</span><span class="toc-t">От вокзала до самолёта</span></a></li>
+    <li><a href="#g3"><span class="toc-d">19 февраля · день</span><span class="toc-t">Площадь у комбината</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Зоопарк и лигрица</span></a></li>
+    <li><a href="#g5"><span class="toc-d">19 февраля · после обеда</span><span class="toc-t">Серый Липецк с земли и с воздуха</span></a></li>
+    <li><a href="#g6"><span class="toc-d">19 февраля · 17:45</span><span class="toc-t">Соборная площадь и автобус</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Липецк</h2>
+  <h2 id="g1">Три вещи про Липецк</h2>
   <ul class="facts">
     <li>здесь стоит Государственный центр подготовки авиационного персонала и войсковых испытаний Минобороны. Памятник погибшим лётчикам авиацентра С.М. Шерстобитову и Л.А. Кривенкову — настоящий самолёт на постаменте</li>
     <li>НЛМК, Новолипецкий металлургический комбинат, и есть причина, по которой город полон металлических инсталляций. Их замечаешь уже на вокзале</li>
@@ -100,7 +114,7 @@
 
 <section class="sec">
   <div class="day">19 февраля · суббота · утро</div>
-  <h2>От вокзала до самолёта</h2>
+  <h2 id="g2">От вокзала до самолёта</h2>
   <p>С поезда и сразу в город, пока солнце. Первое, что встречает на вокзале, — металл: фигуры на постаменте и композиция на фасаде. Дальше по дороге военные плакаты, поверх которых кто-то расписался баллончиком, и самолёт на постаменте у авиацентра.</p>
   <div class="row narrow">
     <figure id="P001">
@@ -124,7 +138,7 @@
 
 <section class="sec">
   <div class="day">19 февраля · день</div>
-  <h2>Площадь у комбината</h2>
+  <h2 id="g3">Площадь у комбината</h2>
   <p>Отсюда видно главное предприятие города. НЛМК — это не завод за окраиной, это здание на площади, напротив памятника с большой цифрой 50. Рядом гитарист на коне, уже из металла, и новогодняя ёлка, которая в середине февраля ещё стоит.</p>
   <div class="row narrow">
     <figure id="P013">
@@ -153,7 +167,7 @@
 </section>
 
 <section class="sec">
-  <h2>Зоопарк и лигрица</h2>
+  <h2 id="g4">Зоопарк и лигрица</h2>
   <p>Я как любитель зоопарков не мог не посетить липецкий. Тем более тут должна быть лигрица, гибрид льва и тигрицы. На входе лев на крыше, внутри лемуры, носухи, ягуар, пантера с табличкой «Чёрная» и лев с табличкой «Лев». Лигрицы в кадрах нет. Или она была, но не подписана.</p>
   <figure class="tall" id="P023">
     <div class="ph"><img src="media/zoopark.webp" width="1050" height="1400" loading="lazy" alt="Вход в зоопарк: разноцветное здание с вывеской «Зоопарк» и фигурой льва на крыше"></div>
@@ -191,7 +205,7 @@
 
 <section class="sec">
   <div class="day">19 февраля · после обеда</div>
-  <h2>Серый Липецк с земли и с воздуха</h2>
+  <h2 id="g5">Серый Липецк с земли и с воздуха</h2>
   <p>К половине первого небо закрылось, и дальше город был серым. Зато серый Липецк оказался добрее к дрону: ветра нет, солнца нет, снимать можно. Внизу тем временем всё смешалось в доме Облонских: Чеширский кот с мухоморами, дама с собачкой на скамейке, учительница с ученицей, собачки и «38 попугаев». Все, кроме кота, из металла.</p>
   <figure class="mid" id="P046">
     <div class="ph"><img src="media/zabroshka.webp" width="1050" height="1400" loading="lazy" alt="Серое пятиэтажное здание с выбитыми окнами"></div>
@@ -233,7 +247,7 @@
 
 <section class="sec">
   <div class="day">19 февраля · 17:45</div>
-  <h2>Соборная площадь и автобус</h2>
+  <h2 id="g6">Соборная площадь и автобус</h2>
   <p>Сумерки, мокрая площадь, администрация с флагом, собор и памятник на 300 лет городу. Три эпохи на одном снимке, если встать правильно. Обратно в автобусе, где водитель слушал то, чего я в общественном транспорте не ожидал.</p>
   <div class="row narrow">
     <figure id="P063">
@@ -253,6 +267,11 @@
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-avtobus.jpg" src="https://ssveretennikov.github.io/russia-video/48-lipetsk/v-avtobus.mp4" width="720" height="1280"></video></div>
     <figcaption><time>≈17:54</time>Неожиданный репертуар в общественном транспорте. Слушайте со звуком, иначе это просто пустой автобус.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Самолёт, комбинат, зоопарк и парк металлических зверей за один день — для субботы достаточно. Не хватило лигрицы и солнца после полудня, и оба вопроса не ко мне.</p>
@@ -275,6 +294,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../36-voronezh/index.html"><span><small>Дальше по маршруту</small>Воронежская область</span><span class="code">36</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

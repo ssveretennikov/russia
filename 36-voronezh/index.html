@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#3954B2;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#8B9DDA;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#8B9DDA;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: трёхмачтовый парусник вмёрз в лёд водохранилища у набережной, за ним церковь и дома города на холме"></div>
@@ -84,8 +85,21 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Воронеж</span></a></li>
+    <li><a href="#g2"><span class="toc-d">20 февраля · воскресенье · утро</span><span class="toc-t">Смешарики и кошки</span></a></li>
+    <li><a href="#g3"><span class="toc-d">20 февраля · день</span><span class="toc-t">Корабль во льду</span></a></li>
+    <li><a href="#g4"><span class="toc-d">20 февраля · после обеда</span><span class="toc-t">Пешком по центру</span></a></li>
+    <li><a href="#g5"><span class="toc-d">20 февраля · вечер</span><span class="toc-t">Сектор газа</span></a></li>
+    <li><a href="#g6"><span class="toc-d">24 февраля · четверг</span><span class="toc-t">Воронежская красавица</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Воронеж</h2>
+  <h2 id="g1">Три вещи про Воронеж</h2>
   <ul class="facts">
     <li>на набережной стоит «Гото Предестинация» — корабль-музей петровской эпохи. Рядом копии пушек того же времени, внутри экскурсия по каютам, палубе и трюму</li>
     <li>Воронежу не дали звание города-героя. Почему — объясняют в музее «Арсенал»; я сходил почитать</li>
@@ -103,7 +117,7 @@
 
 <section class="sec">
   <div class="day">20 февраля · воскресенье · утро</div>
-  <h2>Смешарики и кошки</h2>
+  <h2 id="g2">Смешарики и кошки</h2>
   <p>Утро началось в жилом районе, у белой церкви Ксении Петербургской. Первое, что я снял в Воронеже, была не церковь, а детская площадка рядом: в снегу стояли смешарики. Прикольная площадка, как я тогда записал.</p>
   <figure class="mid" id="P001">
     <div class="ph"><img src="media/smeshariki.webp" width="1600" height="1200" loading="lazy" alt="Детская площадка с цветными круглыми фигурами в снегу, слева белый храм, позади многоэтажки"></div>
@@ -145,7 +159,7 @@
 
 <section class="sec">
   <div class="day">20 февраля · день</div>
-  <h2>Корабль во льду</h2>
+  <h2 id="g3">Корабль во льду</h2>
   <p>Спуск к набережной, и там «Гото Предестинация». Галеон в полном такелаже стоит в водохранилище, а водохранилище — лёд до горизонта. Перед ним копии пушек петровской эпохи, стволами в сторону города. Дрон я запустил прямо с набережной: сверху видно, что корабль вмёрз в лёд как игрушка в стекло.</p>
   <figure class="tall" id="P014">
     <div class="ph"><img src="media/korma.webp" width="1050" height="1400" loading="lazy" alt="Корма трёхмачтового парусного корабля с резными золотыми украшениями стоит у заснеженной набережной во льду"></div>
@@ -188,7 +202,7 @@
 
 <section class="sec">
   <div class="day">20 февраля · после обеда</div>
-  <h2>Пешком по центру</h2>
+  <h2 id="g4">Пешком по центру</h2>
   <p>От набережной наверх по спуску и дальше по центру пешком. Собор Покрова с голубыми стенами, бронзовый Бим у площади, Высоцкий с гитарой, киоск с граффити и Благовещенский собор, у которого купола чёрные. В пасмурный день всё это получается строгим, и дрон строгости только добавляет.</p>
   <div class="row narrow">
     <figure id="P045">
@@ -230,7 +244,7 @@
 
 <section class="sec">
   <div class="day">20 февраля · вечер</div>
-  <h2>Сектор газа</h2>
+  <h2 id="g5">Сектор газа</h2>
   <p>Как поклонник творчества группы «Сектор газа» не смог не съездить на кладбище. Могила Хоя стоит у бетонной стены, и стена исписана целиком: тексты песен, города, имена. Цветов много, живых и искусственных, а снег вокруг утоптан не хуже, чем у петровских пушек.</p>
   <div class="row narrow">
     <figure id="P057">
@@ -251,11 +265,16 @@
 
 <section class="sec">
   <div class="day">24 февраля · четверг</div>
-  <h2>Воронежская красавица</h2>
+  <h2 id="g6">Воронежская красавица</h2>
   <figure class="mid" id="P065">
     <div class="ph"><img src="media/matreshka.webp" width="1200" height="1600" loading="lazy" alt="Расписная деревянная матрёшка-неваляшка в форме яйца с надписью «Воронежская красавица» в ладони"></div>
     <figcaption><time>13:07</time>Не мог не купить сувенир из этого прекрасного города. Это воронежская матрёшка, в виде яйца. Подпись на ней решает спор про воронежку и воронеженку: красавица.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>За день: корабль во льду с пушками, рынок, два стула, Бим, собор с чёрными куполами с воздуха и Хой. Не хватило лета: хочется увидеть, как «Гото Предестинация» выглядит на воде, а не в стекле.</p>
@@ -278,6 +297,6 @@
 <nav class="pager" aria-label="Читать дальше"><a class="prev" href="../48-lipetsk/index.html"><span class="code">48</span><span><small>Раньше по маршруту</small>Липецкая область</span></a><a class="next" href="../46-kursk/index.html"><span><small>Следующий отчёт</small>Курская область</span><span class="code">46</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

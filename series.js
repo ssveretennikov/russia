@@ -131,3 +131,33 @@
   window.addEventListener('resize', sync);
   sync();
 })();
+
+/* Оглавление страницы региона: подсветка текущей главы, строка с её названием на телефоне
+   и боковое оглавление на широком экране — оба появляются, когда шапка-обложка ушла вверх. */
+(function () {
+  var toc = document.getElementById('toc'), bar = document.getElementById('chapBar');
+  if (!toc || !('IntersectionObserver' in window)) return;
+  var links = [].slice.call(toc.querySelectorAll('a'));
+  var heads = links.map(function (a) { return document.getElementById(a.hash.slice(1)); });
+  var title = bar && bar.querySelector('.cb-t'), head = document.querySelector('.reg-head');
+  function pick() {                                    // текущая — последняя глава, чей заголовок выше трети экрана
+    var k = -1, lim = innerHeight * 0.35;
+    heads.forEach(function (h, i) { if (h && h.getBoundingClientRect().top < lim) k = i; });
+    links.forEach(function (a, i) {
+      a.classList.toggle('on', i === k);
+      if (i === k) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+    if (title) title.textContent = k < 0 ? 'Главы' : links[k].querySelector('.toc-t').textContent;
+  }
+  var io = new IntersectionObserver(pick, { rootMargin: '0px 0px -65% 0px' });
+  heads.forEach(function (h) { if (h) io.observe(h); });
+  if (head) {
+    toc.classList.add('off');
+    new IntersectionObserver(function (es) {
+      var past = !es[0].isIntersecting && es[0].boundingClientRect.top < 0;
+      toc.classList.toggle('off', !past);
+      if (bar) { bar.hidden = false; bar.classList.toggle('show', past); }
+    }).observe(head);
+  }
+  pick();
+})();

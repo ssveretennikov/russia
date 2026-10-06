@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#162237;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#88A1CE;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#88A1CE;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P063">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Сергей в синей куртке с капюшоном на крыше высотки, за ним зимний город и река"></div>
@@ -80,8 +81,22 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Тверь</span></a></li>
+    <li><a href="#g2"><span class="toc-d">27 февраля · воскресенье · утро</span><span class="toc-t">Вокзал и рассвет</span></a></li>
+    <li><a href="#g3"><span class="toc-d">27 февраля · день</span><span class="toc-t">Набережная и памятники</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Музей козла</span></a></li>
+    <li><a href="#g5"><span class="toc-t">Музей Плюшкина</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Крыша «Панорамы»</span></a></li>
+    <li><a href="#g7"><span class="toc-d">27 февраля · вечер</span><span class="toc-t">Морозовский городок</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Тверь</h2>
+  <h2 id="g1">Три вещи про Тверь</h2>
   <ul class="facts">
     <li>Афанасий Никитин, мореплаватель и путешественник XV века, — тверчанин. Памятник ему стоит на набережной, с носом ладьи</li>
     <li>Двор Пролетарки, он же Морозовский городок, он же Морозовские казармы, построен в 1858 году. Это первая попытка создать микрорайон в России, и там до сих пор живут люди</li>
@@ -98,7 +113,7 @@
 
 <section class="sec">
   <div class="day">27 февраля · воскресенье · утро</div>
-  <h2>Вокзал и рассвет</h2>
+  <h2 id="g2">Вокзал и рассвет</h2>
   <p>Поезд пришёл в 04:40. Светать начало около восьми, и первые три часа я провёл так, как описано выше. Первый кадр при свете — собор у вокзала. Потом завтрак, который я заслужил.</p>
   <div class="row narrow">
     <figure id="P001">
@@ -114,7 +129,7 @@
 
 <section class="sec">
   <div class="day">27 февраля · день</div>
-  <h2>Набережная и памятники</h2>
+  <h2 id="g3">Набережная и памятники</h2>
   <p>Центр Твери — это набережная Волги и ряд памятников вдоль неё. Волга стояла во льду, дрон поднялся над дворцом и мостом, и сверху стало понятно, где я вообще нахожусь.</p>
   <figure class="wide">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-dvorets.jpg" src="https://ssveretennikov.github.io/russia-video/69-tver/v-dron-dvorets.mp4" width="1280" height="720"></video></div>
@@ -157,7 +172,7 @@
 </section>
 
 <section class="sec">
-  <h2>Музей козла</h2>
+  <h2 id="g4">Музей козла</h2>
   <p>Потом я пошёл в музей козла. Рекомендовано к посещению! Козлы здесь во всех видах: чучела, игрушки, медали, ножницы и список региональных прозвищ, в котором тверские значатся как козлы. Музей этого не стесняется, он на этом построен.</p>
   <figure class="tall">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-kozel.jpg" src="https://ssveretennikov.github.io/russia-video/69-tver/v-kozel.mp4" width="720" height="1280"></video></div>
@@ -190,7 +205,7 @@
 </section>
 
 <section class="sec">
-  <h2>Музей Плюшкина</h2>
+  <h2 id="g5">Музей Плюшкина</h2>
   <p>Далее на очереди музей Плюшкина. У меня с этим словом ассоциировался только персонаж «Мёртвых душ». Однако Фёдор Михайлович Плюшкин — реальный человек, и музей собран по его принципу: здесь много разных советских вещей, некоторые в рабочем состоянии, и всё можно брать в руки.</p>
   <div class="row narrow">
     <figure id="P047">
@@ -209,7 +224,7 @@
 </section>
 
 <section class="sec">
-  <h2>Крыша «Панорамы»</h2>
+  <h2 id="g6">Крыша «Панорамы»</h2>
   <p>Забрался повыше: торговый центр «Панорама», на крышу пускают. Отсюда Волга видна во всю ширину, телебашня в конце проспекта, и дрон впервые за день взлетел выше меня, а не вместо.</p>
   <div class="row narrow">
     <figure id="P057">
@@ -237,7 +252,7 @@
 
 <section class="sec">
   <div class="day">27 февраля · вечер</div>
-  <h2>Морозовский городок</h2>
+  <h2 id="g7">Морозовский городок</h2>
   <p>Вечер закончился в Морозовском городке. Двор Пролетарки, Морозовские казармы, 1858 год постройки: первая попытка создать микрорайон в России. Кирпич, заколоченные входы, провода, и в окнах свет: тут до сих пор живут люди. Это главное, что я увёз из Твери.</p>
   <figure class="mid" id="P067">
     <div class="ph"><img src="media/gorobec.webp" width="1050" height="1400" loading="lazy" alt="Чёрный памятник «Легендарному экипажу Степана Горобца» с барельефом танкистов, у подножия цветы"></div>
@@ -257,6 +272,11 @@
     <div class="ph"><img src="media/gorodok.webp" width="1050" height="1400" loading="lazy" alt="Кирпичные корпуса казарм на фоне синего вечернего неба, снег во дворе"></div>
     <figcaption><time>18:44</time>1858 год, и в окнах горит свет. Микрорайон, которому скоро сто семьдесят.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Музей козла, крыша «Панорамы» и Морозовский городок стоили того, чтобы выйти из поезда. Вокзал и три часа в нём — нет, и в следующий раз я приеду днём.</p>
@@ -280,6 +300,6 @@
 <nav class="pager" aria-label="Читать дальше"><a class="prev" href="../46-kursk/index.html"><span class="code">46</span><span><small>Раньше по маршруту</small>Курская область</span></a><a class="next" href="../30-astrakhan/index.html"><span><small>Следующий отчёт</small>Астраханская область</span><span class="code">30</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

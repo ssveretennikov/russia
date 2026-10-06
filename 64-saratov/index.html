@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#3A69B1;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#7C9FD4;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#7C9FD4;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P047">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: три высокие колонны мемориала со звездой и летящими птицами над заснеженным склоном с лестницей, внизу город"></div>
@@ -82,8 +83,23 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Саратов</span></a></li>
+    <li><a href="#g2"><span class="toc-d">8 марта · вторник · утро</span><span class="toc-t">Каша на завтрак — это святое</span></a></li>
+    <li><a href="#g3"><span class="toc-d">8 марта · день</span><span class="toc-t">Купола и минареты</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Бронзовые саратовцы</span></a></li>
+    <li><a href="#g5"><span class="toc-t">Волга и мост в Энгельс</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Парк Победы, 193 метра</span></a></li>
+    <li><a href="#g7"><span class="toc-d">8 марта · вечер</span><span class="toc-t">Энгельс за десять минут</span></a></li>
+    <li><a href="#g8"><span class="toc-t">Лимонарий</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Саратов</h2>
+  <h2 id="g1">Три вещи про Саратов</h2>
   <ul class="facts">
     <li>Пётр Столыпин был здесь губернатором, до того как стал премьер-министром. Памятник ему стоит в центре, и в Саратове это не формальность, а биография</li>
     <li>25 октября 1954 года Юрий Гагарин впервые пришёл в Саратовский аэроклуб ДОСААФ. В 1955-м он окончил учёбу с отличием и совершил на аэродроме Дубки первый самостоятельный полёт на Як-18. Приземлился после полёта в космос он тоже в Саратовской области</li>
@@ -100,7 +116,7 @@
 
 <section class="sec">
   <div class="day">8 марта · вторник · утро</div>
-  <h2>Каша на завтрак — это святое</h2>
+  <h2 id="g2">Каша на завтрак — это святое</h2>
   <p>Саратов встретил нормальным, даже комфортным вокзалом, что само по себе редкость. А дальше была «Кашебарня». Кашу в коробке навынос я до этого не встречал, но принцип остался прежним: без каши город не осматривают.</p>
   <div class="row">
     <figure id="P004">
@@ -116,7 +132,7 @@
 
 <section class="sec">
   <div class="day">8 марта · день</div>
-  <h2>Купола и минареты</h2>
+  <h2 id="g3">Купола и минареты</h2>
   <p>Я человек простой: вижу высокое здание — фоткаю. В Саратове с низкой застройкой этот принцип работает особенно хорошо: храмы и мечети видно за квартал, идёшь на них, как на маяки.</p>
   <div class="row narrow">
     <figure id="P009">
@@ -145,7 +161,7 @@
 </section>
 
 <section class="sec">
-  <h2>Бронзовые саратовцы</h2>
+  <h2 id="g4">Бронзовые саратовцы</h2>
   <p>Памятников в Саратове столько, что к обеду я перестал их считать. Они стоят на снегу, сидят на скамейках, ждут под часами. Губернатор, гармонист, мальчишки, космонавт. Город будто населён дважды: живыми и бронзовыми.</p>
   <figure class="wide" id="P015">
     <div class="ph"><img src="media/stolypin.webp" width="1200" height="1600" loading="lazy" alt="Памятник мужчине на высоком постаменте, вокруг четыре фигуры, за ним здание с флагом"></div>
@@ -174,7 +190,7 @@
 </section>
 
 <section class="sec">
-  <h2>Волга и мост в Энгельс</h2>
+  <h2 id="g5">Волга и мост в Энгельс</h2>
   <p>К половине третьего я дошёл до набережной. Волга подо льдом, а над льдом — мост в Энгельс, который уходит в туман и там, кажется, заканчиваться не собирается. Здесь же стоит Гагарин: в Саратове он научился летать, и сюда же вернулся с орбиты.</p>
   <figure class="wide" id="P037">
     <div class="ph"><img src="media/most.webp" width="2000" height="1500" loading="lazy" alt="Заснеженная набережная, замёрзшая Волга и длинный арочный мост, уходящий в туман"></div>
@@ -193,7 +209,7 @@
 </section>
 
 <section class="sec">
-  <h2>Парк Победы, 193 метра</h2>
+  <h2 id="g6">Парк Победы, 193 метра</h2>
   <p>Со смотровой в Парке Победы виден весь город, мост и Волга, если туман позволяет. Туман позволял наполовину. Зато мемориал «Журавли» с дрона получился так, как с земли не получится: три колонны, звезда и стая, которая летит над крышами.</p>
   <figure class="wide">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-zhuravli.jpg" src="https://ssveretennikov.github.io/russia-video/64-saratov/v-dron-zhuravli.mp4" width="1280" height="720"></video></div>
@@ -221,7 +237,7 @@
 
 <section class="sec">
   <div class="day">8 марта · вечер</div>
-  <h2>Энгельс за десять минут</h2>
+  <h2 id="g7">Энгельс за десять минут</h2>
   <p>Переехал мост. Заметил, что эта часть города отличается от основной, но ничего интересного в ней не нашёл. Поэтому вот памятник Энгельсу.</p>
   <figure class="mid" id="P049">
     <div class="ph"><img src="media/engels.webp" width="1050" height="1400" loading="lazy" alt="Памятник мужчине на гранитном постаменте, за ним многоэтажка и здание с башенками"></div>
@@ -230,7 +246,7 @@
 </section>
 
 <section class="sec">
-  <h2>Лимонарий</h2>
+  <h2 id="g8">Лимонарий</h2>
   <p>Финал дня, который всё оправдал. Саратовский лимонарий — оранжерея, где растут лимоны и бананы, а между ними ходят фазаны, золотой и красный. После восьми часов серого это как войти в другой климат, и в общем так и есть.</p>
   <div class="row">
     <figure id="P051">
@@ -262,6 +278,11 @@
       <figcaption><time>17:26</time>Единственный мой кадр за день. Выбрал место, где зелёного больше всего.</figcaption>
     </figure>
   </div>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Саратов оказался городом, который умеет быть цветным даже в мартовскую серость: купола, бронза, мост и лимонарий с фазанами. Не хватило неба и места приземления Гагарина, но то и другое зависело не от города.</p>
@@ -285,6 +306,6 @@
 <nav class="pager" aria-label="Читать дальше"><a class="prev" href="../30-astrakhan/index.html"><span class="code">30</span><span><small>Раньше по маршруту</small>Астраханская область</span></a><a class="next" href="../10-karelia/index.html"><span><small>Следующий отчёт</small>Республика Карелия</span><span class="code">10</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

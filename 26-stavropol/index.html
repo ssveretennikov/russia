@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#5E6F2E;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#B1C775;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#B1C775;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P053">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1239" alt="Пятигорск с холма: крыши и зелень до горизонта, над городом облака"></div>
@@ -76,8 +77,22 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Ставропольский край</span></a></li>
+    <li><a href="#g2"><span class="toc-d">18 июня 2022 · суббота · вечер</span><span class="toc-t">Часть первая. Ставрополь с автобусом</span></a></li>
+    <li><a href="#g3"><span class="toc-d">19 июня 2022 · утро</span><span class="toc-t">Град Креста за полтора часа</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Стена памяти и борщ</span></a></li>
+    <li><a href="#g5"><span class="toc-d">11 июня 2023 · воскресенье · 07:29</span><span class="toc-t">Часть вторая. Провал и бесстыжие ванны</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Остановки, которые говорят</span></a></li>
+    <li><a href="#g7"><span class="toc-d">11 июня 2023 · 08:44</span><span class="toc-t">Цветник и Лермонтов</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Ставропольский край</h2>
+  <h2 id="g1">Три вещи про Ставропольский край</h2>
   <ul class="facts">
     <li>одна из улиц Ставрополя проходит точно по 45-й параллели северной широты. Улица так и называется: 45 Параллель</li>
     <li>Ставрополь в переводе с греческого — Град Креста. Крестоград, кстати, звучало бы лучше</li>
@@ -95,7 +110,7 @@
 
 <section class="sec">
   <div class="day">18 июня 2022 · суббота · вечер</div>
-  <h2>Часть первая. Ставрополь с автобусом</h2>
+  <h2 id="g2">Часть первая. Ставрополь с автобусом</h2>
   <p>Ехали под вечер. По пути встретили воздушный шар, и внутри появилось какое-то ощущение детской радости. Снимал через стекло, поэтому фонарь получился резче, чем шар.</p>
   <figure class="wide" id="P102">
     <div class="ph"><img src="media/shar.webp" width="2000" height="1500" alt="Воздушный шар в цветах российского флага над лесистой горой, на переднем плане дорога и фонарь"></div>
@@ -117,7 +132,7 @@
 
 <section class="sec">
   <div class="day">19 июня 2022 · утро</div>
-  <h2>Град Креста за полтора часа</h2>
+  <h2 id="g3">Град Креста за полтора часа</h2>
   <p>В восемь утра нас выгрузили из автобуса в центре. Экскурсия была пешая, компактная, по GPS весь круг уложился в несколько сотен метров. Весь центр стоит на высоте около шестисот метров, но этого не чувствуешь: город плоский.</p>
   <figure class="wide" id="P001">
     <div class="ph"><img src="media/gruppa-avtobus.webp" width="1600" height="1200" loading="lazy" alt="Группа людей стоит на тротуаре у синего туристического автобуса"></div>
@@ -180,7 +195,7 @@
 </section>
 
 <section class="sec">
-  <h2>Стена памяти и борщ</h2>
+  <h2 id="g4">Стена памяти и борщ</h2>
   <p>Закончили у мемориала. Вечный огонь, три лица на стене, противотанковый ёж, на котором растут красные листья. А потом автобус и обед, и на этом Ставрополь для меня закончился: дальше была дорога.</p>
   <figure class="wide" id="P124">
     <div class="ph"><img src="media/memorial.webp" width="2000" height="1500" loading="lazy" alt="Мемориал: три лица на серой стене, вечный огонь, противотанковый ёж с красными металлическими листьями"></div>
@@ -200,7 +215,7 @@
 
 <section class="sec">
   <div class="day">11 июня 2023 · воскресенье · 07:29</div>
-  <h2>Часть вторая. Провал и бесстыжие ванны</h2>
+  <h2 id="g5">Часть вторая. Провал и бесстыжие ванны</h2>
   <p>Через год я вернулся в край один, на обратном пути с Эльбруса. В Пятигорске был недолго, но часть достопримечательностей успел. Начал, конечно, с Провала: колодец, он же озеро, в горе, со входом через каменный тоннель. Внутри аудиосопровождение, так что идти молча не получится.</p>
   <div class="row">
     <figure id="P032">
@@ -232,7 +247,7 @@
 </section>
 
 <section class="sec">
-  <h2>Остановки, которые говорят</h2>
+  <h2 id="g6">Остановки, которые говорят</h2>
   <p>Вокруг Провала несколько санаториев, и под них устроен весь район: остановки озвучены, расписание продублировано Брайлем. Я живу в большом городе и такого там не видел.</p>
   <figure class="wide">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-ostanovka.jpg" src="https://ssveretennikov.github.io/russia-video/26-stavropol/v-ostanovka.mp4" width="1280" height="720"></video></div>
@@ -260,7 +275,7 @@
 
 <section class="sec">
   <div class="day">11 июня 2023 · 08:44</div>
-  <h2>Цветник и Лермонтов</h2>
+  <h2 id="g7">Цветник и Лермонтов</h2>
   <p>Давно видел на картинке одно архитектурное чудо, голубое, резное, с витражами, но не запомнил город. И тут оно мне встретилось. Это Лермонтовская галерея, 1901 год, и парк Цветник вокруг неё тоже симпатичный: солнечные часы, фонтаны, бронзовые фигуры, арки над аллеей.</p>
   <figure class="wide" id="P061">
     <div class="ph"><img src="media/galereya-sverhu.webp" width="2000" height="1126" loading="lazy" alt="Голубое резное здание с башенками и витражами среди зелени, вид сверху"></div>
@@ -319,6 +334,11 @@
       <figcaption><time>09:42</time>Последний кадр Пятигорска. Дальше снова Кабардино-Балкария, но теперь уже не Эльбрус, а Нальчик.</figcaption>
     </figure>
   </div>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>Ставрополь дал компанию и полтора часа города, Пятигорск — горячую минеральную воду, в которой сидишь и смотришь на город. Не хватило Кисловодска, Железноводска и Ессентуков: край курортный, а я видел пока только два города из списка.</p>
@@ -341,6 +361,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../01-adygeya/index.html"><span class="code">1</span><span><small>Раньше по маршруту</small>Республика Адыгея</span></a><a class="next" href="../08-kalmykia/index.html"><span><small>Дальше по маршруту</small>Республика Калмыкия</span><span class="code">8</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

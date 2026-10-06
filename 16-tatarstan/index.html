@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#292B12;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#BEC775;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#BEC775;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P013">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Вид со стены кремля: мечеть Кул-Шариф с голубыми куполами, за ней река и облачное небо"></div>
@@ -85,8 +86,21 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Казань</span></a></li>
+    <li><a href="#g2"><span class="toc-d">2 мая · понедельник · день</span><span class="toc-t">Кремль и то, что вокруг</span></a></li>
+    <li><a href="#g3"><span class="toc-t">Муса Джалиль, метро и кофе</span></a></li>
+    <li><a href="#g4"><span class="toc-d">2 мая · вечер</span><span class="toc-t">Храм всех религий</span></a></li>
+    <li><a href="#g5"><span class="toc-d">2 мая · ночь</span><span class="toc-t">Колесо, две любви и мост</span></a></li>
+    <li><a href="#g6"><span class="toc-d">2 мая · 23:42, и чуть-чуть 3 мая</span><span class="toc-t">Зелёное дерево и «Доверие»</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Казань</h2>
+  <h2 id="g1">Три вещи про Казань</h2>
   <ul class="facts">
     <li>башня Сююмбике в кремле действительно наклонная. Нет, это не я такой фотограф, она правда «пизанская»</li>
     <li>Храм всех религий на окраине ещё строится. Внутри это лабиринт: где-то оформленные залы, где-то неосвещённый чердак с котами, а за одной из дверей оказалась целая группа, занимавшаяся йогой</li>
@@ -104,7 +118,7 @@
 
 <section class="sec">
   <div class="day">2 мая · понедельник · день</div>
-  <h2>Кремль и то, что вокруг</h2>
+  <h2 id="g2">Кремль и то, что вокруг</h2>
   <p>Начал с того, что попадает на все открытки. Оригинальный торговый центр в виде пирамиды, дракон, за ним белые стены кремля. Дракона зовут Зилант, он на гербе, и на открытках его не меньше, чем мечети.</p>
   <div class="row">
     <figure id="P001">
@@ -152,7 +166,7 @@
 </section>
 
 <section class="sec">
-  <h2>Муса Джалиль, метро и кофе</h2>
+  <h2 id="g3">Муса Джалиль, метро и кофе</h2>
   <p>Солнце к пяти опустилось за кремль, и памятник Мусе Джалилю превратился в силуэт. Это ему идёт: поэт, рвущий колючую проволоку, лучше смотрится против света. Рядом плита со стихами на двух языках.</p>
   <div class="row narrow">
     <figure id="P041">
@@ -197,7 +211,7 @@
 
 <section class="sec">
   <div class="day">2 мая · вечер</div>
-  <h2>Храм всех религий</h2>
+  <h2 id="g4">Храм всех религий</h2>
   <p>Вот сюда стоило ехать. Семь километров от центра, берег, посёлок, железная дорога, и над всем этим разноцветные купола: православные, мусульманские, буддийские, все сразу. Храм всех религий. Довольно интересное место, и это я ещё сдержанно.</p>
   <figure class="wide">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-hram.jpg" src="https://ssveretennikov.github.io/russia-video/16-tatarstan/v-dron-hram.mp4" width="1280" height="720"></video></div>
@@ -250,7 +264,7 @@
 
 <section class="sec">
   <div class="day">2 мая · ночь</div>
-  <h2>Колесо, две любви и мост</h2>
+  <h2 id="g5">Колесо, две любви и мост</h2>
   <p>Вернулся в город и сразу поехал на другой берег, к колесу обозрения. Кабина закрытая, стекло отражает всё, что внутри, и в основном оно отражало меня. Но с верхней точки ночной город наконец выглядел так, как обещали знакомые.</p>
   <div class="row">
     <figure id="P074">
@@ -308,7 +322,7 @@
 
 <section class="sec">
   <div class="day">2 мая · 23:42, и чуть-чуть 3 мая</div>
-  <h2>Зелёное дерево и «Доверие»</h2>
+  <h2 id="g6">Зелёное дерево и «Доверие»</h2>
   <p>Последняя остановка — здание, которое тоже есть на многих фотках города. Дворец земледельцев: белый, с колоннами и с бронзовым деревом в арке, которое ночью подсвечивают зелёным. Днём я видел его со стены кремля, ночью подошёл вплотную.</p>
   <figure class="wide" id="P112">
     <div class="ph"><img src="media/dvorets.webp" width="2000" height="1500" loading="lazy" alt="Белое здание с колоннами и куполом, в центральной арке дерево с зелёной подсветкой, ночь"></div>
@@ -333,6 +347,11 @@
       <div class="ph"><img src="media/doverie.webp" width="1050" height="1400" loading="lazy" alt="Бронзовая скульптура: мальчик на стене тянет за руку девочку, внизу собака"></div>
       <figcaption><time>00:07</time>«Доверие». Собака, по-моему, доверяет меньше всех.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Хорошо было там, где не ждал: в тёмном недостроенном храме с котами и йогой, в кабине колеса и на пустой ночной набережной с дроном. Не хватило самой Казани: кремль, мечеть и открыточные виды оказались ровно такими, как на открытках, а от «вау» я ждал чего-то сверх.</p>
@@ -356,6 +375,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../18-udmurtia/index.html"><span class="code">18</span><span><small>Раньше по маршруту</small>Удмуртская Республика</span></a><a class="next" href="../73-ulyanovsk/index.html"><span><small>Дальше по маршруту</small>Ульяновская область</span><span class="code">73</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

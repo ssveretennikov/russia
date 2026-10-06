@@ -544,3 +544,46 @@ details.more[open] summary{margin-bottom:.6rem}
 .dm-list li::marker{font-family:var(--sign);font-weight:700}
 .dm-list a{color:var(--ink)}
 .dm-n{color:var(--soft);white-space:nowrap}
+
+/* ---------- Оглавление и финал страницы региона ----------
+   Разметку ставит build.py (chapters_and_final): nav.toc после вводки, якоря g1, g2… у h2,
+   section.sec.final с оценкой и счётом, div.chap-bar — строка текущей главы на телефоне. */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.story h2[id],.final{scroll-margin-top:3.6rem}
+.toc{border-block:1px solid var(--line);padding:.9rem 0 1rem}
+.toc-h{font-family:var(--sign);font-weight:600;font-size:.9rem;letter-spacing:.09em;text-transform:uppercase;color:var(--soft);margin-bottom:.5rem}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc li{counter-increment:toc}
+.toc a{display:grid;grid-template-columns:2rem minmax(0,1fr);column-gap:.2rem;padding:.38rem 0;color:var(--ink);text-decoration:none;line-height:1.3}
+.toc a::before{content:counter(toc);grid-row:1/span 2;font-family:var(--sign);font-weight:600;color:var(--soft);font-variant-numeric:tabular-nums;padding-top:.05em}
+.toc a[href="#final"]::before{content:"·"}
+.toc-d{grid-column:2;font-family:var(--sign);font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--soft)}
+.toc-t{grid-column:2;font-weight:500}
+.toc a:hover .toc-t{text-decoration:underline;text-decoration-color:var(--reg);text-underline-offset:.2em}
+.toc a.on .toc-t{font-weight:700}
+.toc a.on::before{color:var(--reg)}
+.toc a:focus-visible{outline:2px solid var(--reg);outline-offset:2px}
+/* финал: метка «Итого» тем же почерком, что дата главы; сверху черта, чтобы блок не читался продолжением главы */
+.final-h{letter-spacing:.12em;border-top:1px solid var(--line);padding-top:clamp(1.6rem,4vw,2.4rem)}
+/* телефон и планшет: строка с названием текущей главы, пока шапка-обложка ушла вверх */
+.chap-bar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;gap:1rem;
+  padding:.45rem var(--gutter);padding-top:calc(.45rem + env(safe-area-inset-top));background:var(--bg);border-bottom:1px solid var(--line);
+  font-family:var(--sign);font-size:.9rem;letter-spacing:.05em;text-transform:uppercase;
+  transform:translateY(-100%);opacity:0;visibility:hidden;transition:transform .2s ease,opacity .2s ease,visibility 0s .2s}
+.chap-bar.show{transform:none;opacity:1;visibility:visible;transition:transform .2s ease,opacity .2s ease}
+.chap-bar a{color:var(--ink);text-decoration:none}
+.cb-t{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chap-bar .cb-up{flex:none;color:var(--soft)}
+@media (prefers-reduced-motion:reduce){.chap-bar,.chap-bar.show{transition:none}}
+/* широкий экран: оглавление липнет слева, в поле рядом с широкими кадрами (62rem) и не заходит на них */
+@media (min-width:1360px){
+  .chap-bar{display:none}
+  .toc-sec{display:contents}
+  .toc{position:fixed;top:5rem;left:1.5rem;width:calc((100vw - var(--wide)) / 2 - 3rem);max-height:calc(100vh - 7rem);overflow-y:auto;
+    border:0;padding:0;font-size:.9rem;transition:opacity .2s ease}
+  .toc.off{opacity:0;pointer-events:none}
+  .toc a{grid-template-columns:1.6rem minmax(0,1fr);padding:.3rem 0}
+  .toc-d{font-size:.72rem}
+}
+@media (min-width:1360px) and (prefers-reduced-motion:reduce){.toc{transition:none}}
