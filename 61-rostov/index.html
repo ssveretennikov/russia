@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#867137;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C7B175;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C7B175;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P016">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1239" alt="Морда лежащего носорога крупно, рог в пыли, за ним деревянная ограда"></div>
@@ -64,8 +65,22 @@
   <p class="lead">И этот день я начал не с собора, не с Дона и не с Шолохова, а с зоопарка. Потому что в Ростове живут носороги, а я давно хотел увидеть, как их кормят. Так что ниже сначала мечта, потом город. Город, надо сказать, не обиделся: у него нашлись подземные переходы с мультфильмами, лифт на мост и розовый «Москвич».</p>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Ростов</span></a></li>
+    <li><a href="#g2"><span class="toc-d">16 июня · пятница · вечер</span><span class="toc-t">Купе</span></a></li>
+    <li><a href="#g3"><span class="toc-d">17 июня · суббота · утро</span><span class="toc-t">Навстречу мечте</span></a></li>
+    <li><a href="#g4"><span class="toc-d">17 июня · 13:04</span><span class="toc-t">Счастье</span></a></li>
+    <li><a href="#g5"><span class="toc-d">17 июня · день</span><span class="toc-t">Переходы и собор</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Набережная Дона</span></a></li>
+    <li><a href="#g7"><span class="toc-d">17 июня · вечер</span><span class="toc-t">Центр до темноты</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Ростов</h2>
+  <h2 id="g1">Три вещи про Ростов</h2>
   <ul class="facts">
     <li>Ростов-на-Дону — миллионник, и для меня предпоследний: после него в списке остался один</li>
     <li>в ростовском зоопарке в 2020 году родился белый медвежонок Айка. Сейчас он живёт в Москве: с родителями в одном вольере стало тесно</li>
@@ -83,7 +98,7 @@
 
 <section class="sec">
   <div class="day">16 июня · пятница · вечер</div>
-  <h2>Купе</h2>
+  <h2 id="g2">Купе</h2>
   <p>Про дорогу у меня одно слово: комфортная. Новый вагон, своя полка, шторка, столик. Сфотографировал на память, потому что бывает и иначе.</p>
   <figure class="mid" id="P001">
     <div class="ph"><img src="media/kupe.webp" width="1600" height="901" loading="lazy" alt="Купе поезда: красная спинка нижней полки, верхняя полка с постелью, шторка на окне"></div>
@@ -93,7 +108,7 @@
 
 <section class="sec">
   <div class="day">17 июня · суббота · утро</div>
-  <h2>Навстречу мечте</h2>
+  <h2 id="g3">Навстречу мечте</h2>
   <p>С вокзала сразу в зоопарк. У входа схема «Зоо-метро» с линиями и станциями, по ней видно, что территория большая и просто так её не обойти. Я сверился с расписанием: кормление носорогов через два часа. Значит, сначала всё остальное, потом вернусь.</p>
   <div class="row">
     <figure id="P006">
@@ -151,7 +166,7 @@
 
 <section class="sec">
   <div class="day">17 июня · 13:04</div>
-  <h2>Счастье</h2>
+  <h2 id="g4">Счастье</h2>
   <p>Два часа прошли, иду обратно к носорогам. По дороге встретил капибару с капибарёнком, но это потом. Носорог ест траву с морковкой, я стою в метре и снимаю. Ну разве не красавец?</p>
   <figure class="wide">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-nosorog.jpg" src="https://ssveretennikov.github.io/russia-video/61-rostov/v-nosorog.mp4" width="1280" height="720"></video></div>
@@ -192,7 +207,7 @@
 
 <section class="sec">
   <div class="day">17 июня · день</div>
-  <h2>Переходы и собор</h2>
+  <h2 id="g5">Переходы и собор</h2>
   <p>Из зоопарка пешком в центр. Первое, что в Ростове отличается от других городов, находится под землёй: подземные переходы выложены мозаикой, и сюжеты там из советских мультфильмов и казачьей жизни. Очень мило, и никто это не закрасил.</p>
   <div class="row">
     <figure id="P054">
@@ -215,7 +230,7 @@
 </section>
 
 <section class="sec">
-  <h2>Набережная Дона</h2>
+  <h2 id="g6">Набережная Дона</h2>
   <p>От собора спускаюсь к реке. Набережная длинная и вся в скульптурах: Шолохов, Ростовчанка, Григорий с Аксиньей в лодке, Дон-батюшка, рак, рыбак, художник с рамой. Я их не считал, но хватило бы на отдельный зоопарк. Из полезного, что узнал с таблички уже на месте: вечером здесь шоу. Иногда полезно читать сразу всю информацию.</p>
   <div class="row">
     <figure id="P069">
@@ -253,7 +268,7 @@
 
 <section class="sec">
   <div class="day">17 июня · вечер</div>
-  <h2>Центр до темноты</h2>
+  <h2 id="g7">Центр до темноты</h2>
   <p>Снова еду в центр, и дальше всё подряд: стела воинам-освободителям, парк с колесом обозрения, Пётр и Феврония, Высоцкий, основатели города, Елизавета у Покровской церкви, греческий храм, библиотека. По пути розовый «Москвич» на газоне у кафе. Лет двадцать не видел.</p>
   <div class="row">
     <figure id="P114">
@@ -308,6 +323,11 @@
     </figure>
   </div>
   <p>Окончание знакомства с городом случилось на нулевом километре. На этом мой длинный июньский отпуск закончился, следующий в конце лета. А сейчас на вокзал, ждать поезд в Москву.</p>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>Носорогов покормили при мне, мозаики в переходах целы, на мост возит лифт со стеклянным полом. Не хватило второго дня: вечернее шоу на набережной, пляж на другом берегу и колесо обозрения остались в расписании, а не в кадрах.</p>
@@ -330,6 +350,6 @@
 <nav class="pager" aria-label="Читать дальше"><a class="prev" href="../05-dagestan/index.html"><span class="code">5</span><span><small>Раньше по маршруту</small>Республика Дагестан</span></a><a class="next" href="../89-yamal/index.html"><span><small>Следующий отчёт</small>Ямало-Ненецкий АО</span><span class="code">89</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

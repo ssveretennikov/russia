@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#9B692C;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#D4A368;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#D4A368;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover portrait" id="P137">
     <div class="ph"><img class="cover-bg" src="media/hero.webp" alt="" aria-hidden="true"><img fetchpriority="high" src="media/hero.webp" width="1650" height="2200" alt="Излучина Енисея с вершины холма, справа скальный обрыв, на краю стоит человек"></div>
@@ -85,8 +86,22 @@
   <p>Ночной автобус из Красноярска останавливается не на автовокзале, а у какой-то гостиницы, и делает это рано. Так что город я начал изучать, когда в нём ещё никого не было.</p>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Тыву</span></a></li>
+    <li><a href="#g2"><span class="toc-d">4 июня · суббота · утро</span><span class="toc-t">Цеченлинг</span></a></li>
+    <li><a href="#g3"><span class="toc-t">Набережная и Центр Азии</span></a></li>
+    <li><a href="#g4"><span class="toc-d">4 июня · день</span><span class="toc-t">Город и самый большой барабан</span></a></li>
+    <li><a href="#g5"><span class="toc-t">Национальный музей</span></a></li>
+    <li><a href="#g6"><span class="toc-d">4 июня · вечер</span><span class="toc-t">Алдын-Булак, 40 км</span></a></li>
+    <li><a href="#g7"><span class="toc-t">Будда</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Тыву</h2>
+  <h2 id="g1">Три вещи про Тыву</h2>
   <ul class="facts">
     <li>в Кызыле стоит «Центр Азии». Что на самом деле считать центром Азии, доподлинно неизвестно, и каждая спорящая сторона выдаёт за него свои земли. Российская версия — вот этот обелиск на набережной</li>
     <li>Будда на противоположном берегу Енисея — самая высокая статуя Будды в России. Открыли её за неделю до моего приезда, лодка от парка туда и обратно стоила 300 рублей</li>
@@ -104,7 +119,7 @@
 
 <section class="sec">
   <div class="day">4 июня · суббота · утро</div>
-  <h2>Цеченлинг</h2>
+  <h2 id="g2">Цеченлинг</h2>
   <p>Вход в парк был похож на случайные тропинки через лес, внутри оказалось нормально: дворник и пара бегунов. Парк упирается в Цеченлинг, и это первый буддийский храм, который я увидел вживую.</p>
   <figure class="wide" id="P009">
     <div class="ph"><img src="media/khuree.webp" width="2000" height="1500" loading="lazy" alt="Белый буддийский храм с красной дверью и лестницей, по бокам ступеней два раскрашенных льва, вверху флажки"></div>
@@ -137,7 +152,7 @@
 </section>
 
 <section class="sec">
-  <h2>Набережная и Центр Азии</h2>
+  <h2 id="g3">Набережная и Центр Азии</h2>
   <p>Что в Кызыле действительно классное — набережная и вид на Енисей. За рекой горы, на одной из них надпись, до которой я собирался доехать на велосипеде. Не доехал, и ниже понятно почему.</p>
   <figure class="wide" id="P027">
     <div class="ph"><img src="media/enisei.webp" width="2000" height="1500" loading="lazy" alt="Широкая река, за ней низкие горы, над ними синее небо с перистыми облаками"></div>
@@ -171,7 +186,7 @@
 
 <section class="sec">
   <div class="day">4 июня · день</div>
-  <h2>Город и самый большой барабан</h2>
+  <h2 id="g4">Город и самый большой барабан</h2>
   <p>Просто несколько фото города. Деревянные дома старого центра, граффити, театр, в который я не попал, и площадь с молитвенным барабаном, самым большим в городе.</p>
   <div class="row">
     <figure id="P047">
@@ -208,7 +223,7 @@
 </section>
 
 <section class="sec">
-  <h2>Национальный музей</h2>
+  <h2 id="g5">Национальный музей</h2>
   <p>Раз в театр не попал, пошёл в музей. При входе древние каменные изваяния, внутри юрта, которую я уже не надеялся увидеть вживую: до деревни Алдын-Булак общественным транспортом не доехать, групповые экскурсии по записи, индивидуальные дорого, такси обратно может не приехать. Я смирился и смотрел на юрту в музее.</p>
   <figure class="wide" id="P069">
     <div class="ph"><img src="media/muzei.webp" width="2000" height="1500" loading="lazy" alt="Белое здание музея с золотой эмблемой, перед ним бронзовая скульптура лучника верхом на быке"></div>
@@ -238,7 +253,7 @@
 
 <section class="sec">
   <div class="day">4 июня · вечер</div>
-  <h2>Алдын-Булак, 40 км</h2>
+  <h2 id="g6">Алдын-Булак, 40 км</h2>
   <p>Зашёл в магазин за едой. Увидел бананы по 170 рублей, сфотографировал. Ко мне подошёл местный парнишка: зачем снимаю? Понял, что я путешествую, и ему явно захотелось показать город с лучшей стороны, раз весь ютуб показывает с худшей. Я спросил про Алдын-Булак, и он попросил брата меня отвезти. По деньгам вышло сильно дешевле тура.</p>
   <p>После пары пересадок между машинами на заднее сиденье подсели ещё двое, и по манерам это была местная шпана. Ну, думаю, приплыли. Прикинул: максимум грабёж, ценного у меня только телефон, будь что будет. Водитель спросил, не против ли я. Я не против. Ехать 40 километров, по-русски водитель говорил средне, парни сзади лучше, и разговор пошёл. К концу дороги я понял: поехали за компанию, им самим было интересно. Злых помыслов не было изначально.</p>
   <figure class="wide" id="P095">
@@ -281,7 +296,7 @@
 </section>
 
 <section class="sec">
-  <h2>Будда</h2>
+  <h2 id="g7">Будда</h2>
   <p>Моторная лодка от парка у Центра Азии, 300 рублей туда и обратно. Статуя стоит там, где сливаются истоки Енисея, открыли её на той же неделе. Барабанов здесь больше, чем в городском храме, а на холм за статуей мне не лень было подняться.</p>
   <figure class="tall">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-lodka.jpg" src="https://ssveretennikov.github.io/russia-video/17-tuva/v-lodka.mp4" width="720" height="1280"></video></div>
@@ -323,6 +338,11 @@
     <div class="ph"><img src="media/budda-zakat.webp" width="1050" height="1400" loading="lazy" alt="Золотая статуя Будды сбоку, рука поднята в жесте, закатный свет"></div>
     <figcaption><time>19:11</time>Последний кадр дня. Приехал с нервами, уехал вот с этим.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>Город самобытный, природа серьёзная, и за один день мне показали больше, чем я собирался увидеть, причём показали люди, которых ютуб советовал бояться. Не хватило театра, горы с надписью и возможности остаться на ночь; статистику из начала при этом забывать не стоит.</p>
@@ -346,6 +366,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../19-khakassia/index.html"><span class="code">19</span><span><small>Раньше по маршруту</small>Республика Хакасия</span></a><a class="next" href="../54-novosibirsk/index.html"><span><small>Дальше по маршруту</small>Новосибирская область</span><span class="code">54</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

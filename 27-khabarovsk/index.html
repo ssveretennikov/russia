@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#202B12;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#A2C775;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#A2C775;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P056">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: золотые купола собора, за ними крыши города, Амур и дальний берег"></div>
@@ -86,8 +87,20 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Хабаровский край</span></a></li>
+    <li><a href="#g2"><span class="toc-d">16 июля · суббота · день</span><span class="toc-t">Музей истории Амурского моста</span></a></li>
+    <li><a href="#g3"><span class="toc-d">16 июля · вечер</span><span class="toc-t">Собор и набережная</span></a></li>
+    <li><a href="#g4"><span class="toc-d">17 июля · воскресенье</span><span class="toc-t">Лотосы</span></a></li>
+    <li><a href="#g5"><span class="toc-d">17 июля · вечер</span><span class="toc-t">Перед поездом</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Хабаровский край</h2>
+  <h2 id="g1">Три вещи про Хабаровский край</h2>
   <ul class="facts">
     <li>в состав края входят несколько островов, самые крупные — Шантарские. Район дикий, труднодоступный и красивый, туда возят на очень, очень дорогие туры: посмотреть китов и понырять</li>
     <li>Сахалин в ближайшей точке находится всего в 7 км от Хабаровского края</li>
@@ -103,7 +116,7 @@
 
 <section class="sec">
   <div class="day">16 июля · суббота · день</div>
-  <h2>Музей истории Амурского моста</h2>
+  <h2 id="g2">Музей истории Амурского моста</h2>
   <p>Музей под открытым небом стоит на берегу у самого моста. Главный экспонат — старый пролёт, который сняли при реконструкции и поставили на землю, а под ним и вокруг расставили паровозы, вагоны и всё, что ездит по рельсам. По пролёту можно ходить.</p>
   <figure class="wide" id="P004">
     <div class="ph"><img src="media/parovoz-zelenyi.webp" width="2000" height="1500" loading="lazy" alt="Зелёный паровоз с красной звездой стоит под серебристой аркой моста"></div>
@@ -170,7 +183,7 @@
 
 <section class="sec">
   <div class="day">16 июля · вечер</div>
-  <h2>Собор и набережная</h2>
+  <h2 id="g3">Собор и набережная</h2>
   <p>Спасо-Преображенский кафедральный собор — третий по величине православный храм в России после Храма Христа Спасителя и Исаакиевского. Стоит на высоком берегу, и из-за этого кажется ещё больше, чем есть.</p>
   <figure class="mid" id="P053">
     <div class="ph"><img src="media/sobor.webp" width="1050" height="1400" loading="lazy" alt="Светлый собор с золотыми куполами снизу, над ним облачное небо"></div>
@@ -223,7 +236,7 @@
 
 <section class="sec">
   <div class="day">17 июля · воскресенье</div>
-  <h2>Лотосы</h2>
+  <h2 id="g4">Лотосы</h2>
   <p>С середины июля в крае начинают цвести лотосы. Конечно, я не упустил возможности на это посмотреть. Добирался на обычном пригородном автобусе, маршрут 17, до остановки «Хутор Галкино»: расписание висит на дереве, билет печатает кассовый аппарат, цена не запомнилась, но чек остался.</p>
   <div class="row">
     <figure id="P087">
@@ -290,7 +303,7 @@
 
 <section class="sec">
   <div class="day">17 июля · вечер</div>
-  <h2>Перед поездом</h2>
+  <h2 id="g5">Перед поездом</h2>
   <p>Вернулся в город, добил остатки списка: памятник Хабарову и скульптура с музыкальным инструментом в парке. Хабаров — человек один, а станций в его честь две: вторая так и называется, Ерофей Павлович. Это необычное название я запомнил ещё по работе над софтом для РЖД.</p>
   <div class="row narrow">
     <figure id="P130">
@@ -306,6 +319,11 @@
     <div class="ph"><img src="media/lapsha.webp" width="1200" height="1600" loading="lazy" alt="Полки магазина, заставленные стаканчиками и пачками лапши быстрого приготовления"></div>
     <figcaption><time>20:26</time>Перед поездом во Владивосток зашёл за перекусом в дорогу. Разнообразие лапши быстрого приготовления такое, что выбор занял дольше, чем сама лапша.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Хорошо было всё, что связано с Амуром: музей под мостом, дрон над рекой в сумерках и озеро с лотосами в часе езды на автобусе. Не хватило самого города: промзона в центре и пересадки на каждом маршруте не располагают к прогулкам, и второй день я бы охотнее отдал Владивостоку.</p>
@@ -329,6 +347,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../14-mirny/index.html"><span class="code">14</span><span><small>Раньше по маршруту</small>Мирный</span></a><a class="next" href="../28-amur/index.html"><span><small>Дальше по маршруту</small>Амурская область</span><span class="code">28</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

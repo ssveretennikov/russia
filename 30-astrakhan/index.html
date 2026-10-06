@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#3566B6;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#7CA0D9;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#7CA0D9;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover portrait" id="P005">
     <div class="ph"><img class="cover-bg" src="media/hero.webp" alt="" aria-hidden="true"><img fetchpriority="high" src="media/hero.webp" width="1650" height="2200" alt="Белая многоярусная колокольня кремля с арочным проходом внизу на фоне синего неба с облаками"></div>
@@ -82,8 +83,21 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Астрахань</span></a></li>
+    <li><a href="#g2"><span class="toc-d">6 марта · воскресенье · обед</span><span class="toc-t">Начнём сразу с еды</span></a></li>
+    <li><a href="#g3"><span class="toc-d">6 марта · день</span><span class="toc-t">Кремль, пока светит солнце</span></a></li>
+    <li><a href="#g4"><span class="toc-d">6 марта · после трёх</span><span class="toc-t">Город в дождь</span></a></li>
+    <li><a href="#g5"><span class="toc-t">Пётр и Волга</span></a></li>
+    <li><a href="#g6"><span class="toc-d">6 марта · 16:08</span><span class="toc-t">Итого</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Астрахань</h2>
+  <h2 id="g1">Три вещи про Астрахань</h2>
   <ul class="facts">
     <li>Астраханская губерния стала отдельной от Казанской указом Петра I. Текст указа отлит в бронзе у памятника на набережной, с монетой на плите</li>
     <li>вход на территорию кремля свободный, даже в выходной день. Я проверял в воскресенье</li>
@@ -93,7 +107,7 @@
 
 <section class="sec">
   <div class="day">6 марта · воскресенье · обед</div>
-  <h2>Начнём сразу с еды</h2>
+  <h2 id="g2">Начнём сразу с еды</h2>
   <p>Кафе «Онегин». Лепнина, люстры, портреты на стенах, официанты в белых фартуках. Еда, интерьер и сервис на мой вкус на пять звёзд, и это первая и последняя оценка на пять за этот день. Дальше я буду придираться.</p>
   <div class="row narrow">
     <figure id="P002">
@@ -113,7 +127,7 @@
 
 <section class="sec">
   <div class="day">6 марта · день</div>
-  <h2>Кремль, пока светит солнце</h2>
+  <h2 id="g3">Кремль, пока светит солнце</h2>
   <p>К кремлю я подошёл в тот момент, когда только что прошёл дождь и вышло солнце. Площадь перед воротами блестела как каток, а колокольня над ней белая настолько, что телефон не знал, на что экспонировать. Вход свободный, никаких касс, идёшь прямо в Пречистенские ворота под колокольней.</p>
   <figure class="tall">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-kolokolnya.jpg" src="https://ssveretennikov.github.io/russia-video/30-astrakhan/v-kolokolnya.mp4" width="720" height="1280"></video></div>
@@ -176,7 +190,7 @@
 
 <section class="sec">
   <div class="day">6 марта · после трёх</div>
-  <h2>Город в дождь</h2>
+  <h2 id="g4">Город в дождь</h2>
   <p>От кремля пошёл в сторону Волги. По дороге театр с бронзовым кентавром у входа, колоннада на площади, Триумфальная арка с лужами под ней и аллея с бюстами, где плита перечисляет славных людей Астраханской земли. Дождь к этому времени уже не прекращался, просто менял силу.</p>
   <div class="row narrow">
     <figure id="P018">
@@ -199,7 +213,7 @@
 </section>
 
 <section class="sec">
-  <h2>Пётр и Волга</h2>
+  <h2 id="g5">Пётр и Волга</h2>
   <p>Набережная начинается с Петра I. Он стоит на высоком постаменте и смотрит на реку, а на плите под ним отлит его указ о выделении Астраханской губернии в отдельную от Казанской. Волга в этот день серая, с белыми гребнями, на том берегу порт с кранами. Состояние самой набережной тоже оставляет желать лучшего: ступени к воде в соли и грязи, плитка местами разошлась.</p>
   <div class="row narrow">
     <figure id="P026">
@@ -239,8 +253,13 @@
 
 <section class="sec">
   <div class="day">6 марта · 16:08</div>
-  <h2>Итого</h2>
+  <h2 id="g6">Итого</h2>
   <p>Последний кадр дня — торговый центр «Экстра» на парковке, под дождём, в четыре часа. На этом Астрахань для меня закончилась: три часа, один кремль, одна река и вся погода, какая есть.</p>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Кремль белый и бесплатный, обед на пять звёзд, грачи в начале марта. Не хватило погоды, которая бы постояла на месте хотя бы час, и набережной, по которой хочется гулять, а не проверять ступени.</p>
@@ -263,6 +282,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../index.html"><span>Все регионы</span></a><a class="next" href="../64-saratov/index.html"><span><small>Дальше по маршруту</small>Саратовская область</span><span class="code">64</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

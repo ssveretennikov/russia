@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#696A2C;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C4C775;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C4C775;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P027">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1238" alt="Вид с дрона: белая ротонда-смотровая над рекой, от неё уходит центральная улица с памятником и старыми зданиями"></div>
@@ -84,8 +85,21 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Оренбургскую область</span></a></li>
+    <li><a href="#g2"><span class="toc-d">5 мая · четверг · вечер</span><span class="toc-t">Родина с высоты, на которой я её никогда не видел</span></a></li>
+    <li><a href="#g3"><span class="toc-d">7 мая · суббота</span><span class="toc-t">Оренбург пешком: Советская</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Урал и мост Европа — Азия</span></a></li>
+    <li><a href="#g5"><span class="toc-d">7 мая · вечер</span><span class="toc-t">Башня, будильник и стихи на стене</span></a></li>
+    <li><a href="#g6"><span class="toc-d">8 мая · воскресенье</span><span class="toc-t">СВ за баллы</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Оренбургскую область</h2>
+  <h2 id="g1">Три вещи про Оренбургскую область</h2>
   <ul class="facts">
     <li>в Оренбурге туристско-информационный центр появился до того, как их стали развивать по регионам. Так и остался, новый организовывать не стали, и он в лучшую сторону отличается от ТИЦ в других местах. Например, двором</li>
     <li>Владимир Даль прожил в Оренбурге восемь лет, а после знакомства с Пушкиным сопровождал его в поездке по пугачёвским местам края. Памятник его толковому словарю стоит у библиотеки имени Крупской</li>
@@ -101,7 +115,7 @@
 
 <section class="sec">
   <div class="day">5 мая · четверг · вечер</div>
-  <h2>Родина с высоты, на которой я её никогда не видел</h2>
+  <h2 id="g2">Родина с высоты, на которой я её никогда не видел</h2>
   <p>Дрон поднялся в сумерках, после девяти вечера. Я знал тут каждую улицу ногами, а сверху увидел впервые: крыши, огороды, пойма с водой за околицей. Людей в кадре нет, и это правильно, они все дома.</p>
   <figure class="wide">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-derevnya.jpg" src="https://ssveretennikov.github.io/russia-video/56-orenburg/v-dron-derevnya.mp4" width="1280" height="720"></video></div>
@@ -121,7 +135,7 @@
 
 <section class="sec">
   <div class="day">7 мая · суббота</div>
-  <h2>Оренбург пешком: Советская</h2>
+  <h2 id="g3">Оренбург пешком: Советская</h2>
   <p>Утро началось на вокзале, где за ограждением стоял паровоз и целая платформа народу на него смотрела. Дальше пешком по центру. Двор ТИЦ, граффити, карты на стенах и бесконечная Советская, на которой памятники стоят через каждые сто метров.</p>
   <figure class="mid" id="P011">
     <div class="ph"><img src="media/parovoz.webp" width="1600" height="1200" loading="lazy" alt="Чёрный паровоз за белым ограждением на платформе, перед ним толпа зрителей"></div>
@@ -170,7 +184,7 @@
 </section>
 
 <section class="sec">
-  <h2>Урал и мост Европа — Азия</h2>
+  <h2 id="g4">Урал и мост Европа — Азия</h2>
   <p>Набережная, ротонда, лестница вниз и пешеходный мост через Урал с двумя стелами по краям: на одном берегу Европа, на другом Азия. Здесь я и запустил дрон, потому что с земли мост выглядит как мост, а с высоты видно, что это граница частей света.</p>
   <figure class="wide">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-dron-ural.jpg" src="https://ssveretennikov.github.io/russia-video/56-orenburg/v-dron-ural.mp4" width="1280" height="720"></video></div>
@@ -194,7 +208,7 @@
 
 <section class="sec">
   <div class="day">7 мая · вечер</div>
-  <h2>Башня, будильник и стихи на стене</h2>
+  <h2 id="g5">Башня, будильник и стихи на стене</h2>
   <p>Вечером центр с другой стороны. Водонапорная башня, которую с земли не обойти, с дрона складывается в один кадр с перекрёстком. По дороге попались стихи на стене и памятник будильнику: местное уличное творчество, как я это назвал в статье, и менять не буду.</p>
   <figure class="mid" id="P041">
     <div class="ph"><img src="media/stihi.webp" width="1600" height="1200" loading="lazy" alt="Жёлтая стена с написанным чёрным маркером стихотворением про апрель и солнце"></div>
@@ -222,7 +236,7 @@
 
 <section class="sec">
   <div class="day">8 мая · воскресенье</div>
-  <h2>СВ за баллы</h2>
+  <h2 id="g6">СВ за баллы</h2>
   <p>Накопил много баллов РЖД в этом году и решил потратить их на поездку в СВ. Классно, что ещё и не было попутчика: два места, красные шторы, зеркало и кнопка вызова проводника, которой я так и не воспользовался.</p>
   <div class="row narrow">
     <figure id="P054">
@@ -234,6 +248,11 @@
       <figcaption><time>12:02</time>То же купе при свете. Полдень, а полки всё ещё обе мои.</figcaption>
     </figure>
   </div>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Родину с дрона и Советскую пешком я получил, а ещё Урал, который можно перейти из Европы в Азию за две минуты. Не хватило дня на Национальную деревню внутри ворот и хотя бы одного кадра с людьми, ради которых я сюда вообще езжу.</p>
@@ -257,6 +276,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../73-ulyanovsk/index.html"><span class="code">73</span><span><small>Раньше по маршруту</small>Ульяновская область</span></a><a class="next" href="../63-samara/index.html"><span><small>Дальше по маршруту</small>Самарская область</span><span class="code">63</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>

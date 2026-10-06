@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=f44bf987">
 <style>:root{--reg:#8D6D3A;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C7A775;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C7A775;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P055">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1239" alt="Сергей стоит в каменном дверном проёме древней стены, за ним море"></div>
@@ -80,8 +81,21 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Севастополь</span></a></li>
+    <li><a href="#g2"><span class="toc-d">16 августа · пятница</span><span class="toc-t">Вечер с богомолом</span></a></li>
+    <li><a href="#g3"><span class="toc-d">17 августа · суббота</span><span class="toc-t">Музей, которому восемнадцать дней</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Херсонес: проём, колонна и инжир</span></a></li>
+    <li><a href="#g5"><span class="toc-t">Шторм, в котором никто не намок</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Памятник с трёх сторон и мурена в амфоре</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Севастополь</h2>
+  <h2 id="g1">Три вещи про Севастополь</h2>
   <ul class="facts">
     <li>«Новый Херсонес» строили с 2022 года и открыли 30 июля 2024-го: три музея, амфитеатр на 1200 мест, около 24 гектаров. Я пришёл на восемнадцатый день его жизни</li>
     <li>у туманного колокола в Херсонесе две биографии. По табличке его отлили в Таганроге в 1778 году из турецких пушек, историки называют и другую дату, около 1890 года. Разница больше века</li>
@@ -100,7 +114,7 @@
 
 <section class="sec">
   <div class="day">16 августа · пятница</div>
-  <h2>Вечер с богомолом</h2>
+  <h2 id="g2">Вечер с богомолом</h2>
   <p>Из <a href="../91-krym/index.html">Бахчисарая</a> автобус привёз нас к вечеру: первый кадр в городе снят в 18:29, и это Покровский собор. Дальше центр пешком. Меньше чем через час я уже фотографировал витрину кафе с вывеской «Дорогой, скинь на чебуреки». Не «добро пожаловать», а сразу к делу.</p>
   <div class="row">
     <figure id="P002">
@@ -142,7 +156,7 @@
 
 <section class="sec">
   <div class="day">17 августа · суббота</div>
-  <h2>Музей, которому восемнадцать дней</h2>
+  <h2 id="g3">Музей, которому восемнадцать дней</h2>
   <p>Утро начали с нового. «Новый Херсонес» строили с 2022 года и открыли 30 июля 2024-го, а я попал туда 17 августа. Три музея, амфитеатр, античные кварталы, всё светлое, чистое, на стенах ни трещины. Первым делом сфотографировал схему: территория около 24 гектаров, и без схемы там непонятно, куда идти. В 09:27 над головой прошёл вертолёт, у музея с колоннадой уже стояла очередь на вход. На первый заход у нас было меньше получаса: набережная, арки, аллея, флаг. И дальше, к древнему.</p>
   <figure class="wide">
     <div class="ph"><video controls playsinline preload="metadata" poster="media/v-novy.jpg" src="https://ssveretennikov.github.io/russia-video/92-sevastopol/v-novy.mp4" width="1280" height="720"></video></div>
@@ -171,7 +185,7 @@
 </section>
 
 <section class="sec">
-  <h2>Херсонес: проём, колонна и инжир</h2>
+  <h2 id="g4">Херсонес: проём, колонна и инжир</h2>
   <p>Старый Херсонес начинается в полукилометре, и там всё наоборот. Греки основали город в 420-х годах до нашей эры. Сейчас это камни, полынь и раскопы до самого моря, с 2013 года в списке ЮНЕСКО. Экскурсионных групп в субботу хватало и без нашей: в древних воротах стояла пробка, как в метро.</p>
   <figure class="wide" id="P044">
     <div class="ph"><img src="media/ruiny.webp" width="1600" height="901" loading="lazy" alt="Руины древнего города, справа крепостная стена"></div>
@@ -227,7 +241,7 @@
 </section>
 
 <section class="sec">
-  <h2>Шторм, в котором никто не намок</h2>
+  <h2 id="g5">Шторм, в котором никто не намок</h2>
   <p>К полудню вернулись в «Новый Херсонес», и он оказался не только про колоннады. В античном квартале ходят люди в туниках, учат стрелять из лука и выкладывать мозаику, во дворе стоят длинные столы. Утром я видел, чем древний город закончился, а тут показывали, как он, по версии 2024 года, выглядел в рабочий день.</p>
   <div class="row narrow">
     <figure id="P090">
@@ -266,7 +280,7 @@
 </section>
 
 <section class="sec">
-  <h2>Памятник с трёх сторон и мурена в амфоре</h2>
+  <h2 id="g6">Памятник с трёх сторон и мурена в амфоре</h2>
   <p>Днём переехали в центр и вышли на катере в бухту. С воды набережную видно целиком: высотная гостиница, обелиск на мысе Хрустальном и памятник затопленным кораблям, который стоит прямо в воде. Его поставили в 1905 году, высота 16,7 метра. Накануне вечером я видел его через бухту, теперь с катера, а через полчаса уже с набережной. За сутки с трёх сторон: для памятника с герба, по-моему, достаточно.</p>
   <figure class="wide" id="P117">
     <div class="ph"><img src="media/bukhta.webp" width="1600" height="901" loading="lazy" alt="Набережная с воды: высотное здание и обелиск на мысе"></div>
@@ -317,6 +331,11 @@
     <figcaption><time>21:25</time>Последний кадр из Севастополя. После двух Херсонесов, ладьи и грифона чайник размером с дом уже не удивил, но вопросы остались.</figcaption>
   </figure>
   <p>Утром 18-го группа была уже на востоке Крыма, на Карадаге. Это в <a href="../91-krym/index.html">отчёте о Крыме</a>.</p>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>За полтора дня уместились закат над морем, город, которому две с половиной тысячи лет, музей, которому восемнадцать дней, бухта с воды и аквариум 1897 года. Не хватило времени на сам Севастополь: без музеев и экскурсий ему достался один вечер, и тот наполовину ушёл на богомола.</p>
@@ -340,6 +359,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../91-krym/index.html"><span class="code">91</span><span><small>Раньше по маршруту</small>Республика Крым</span></a><a class="next" href="../91-krym/index.html"><span><small>Дальше по маршруту</small>Республика Крым · Карадаг</span><span class="code">91</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=9da20290"></script>
 </body>
 </html>
