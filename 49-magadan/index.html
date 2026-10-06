@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#8D6F3A;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C7AA75;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C7AA75;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P622">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="2200" height="1650" alt="Сергей сидит на камнях на гребне и показывает рукой на рыже-жёлтые сопки под синим небом"></div>
@@ -86,8 +87,24 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Колыму</span></a></li>
+    <li><a href="#g2"><span class="toc-d">7 августа · четверг</span><span class="toc-t">Лодка, которая стоит не всегда</span></a></li>
+    <li><a href="#g3"><span class="toc-d">8 августа · пятница</span><span class="toc-t">Почём краб и почём гречка</span></a></li>
+    <li><a href="#g4"><span class="toc-d">9 августа · суббота</span><span class="toc-t">Четыре часа до сивучей</span></a></li>
+    <li><a href="#g5"><span class="toc-t">Остров, где грибы некому собирать</span></a></li>
+    <li><a href="#g6"><span class="toc-d">10 августа · воскресенье</span><span class="toc-t">Минус десять в августе</span></a></li>
+    <li><a href="#g7"><span class="toc-t">Сопки цвета горчицы и Корона</span></a></li>
+    <li><a href="#g8"><span class="toc-d">11 августа · понедельник</span><span class="toc-t">Маска Скорби</span></a></li>
+    <li><a href="#g9"><span class="toc-d">12 августа · вторник</span><span class="toc-t">Рыбы под потолком</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Колыму</h2>
+  <h2 id="g1">Три вещи про Колыму</h2>
   <ul class="facts">
     <li>железной дороги сюда нет. По суше ведёт одна трасса, Р504 «Колыма»: до Якутска 2032 км. Цифру я взял не из интернета, а из фотокниги о Магадане, которая лежала в кафе</li>
     <li>на 462 тысячи км² живёт 139 тысяч человек, и две трети из них в самом Магадане. На остальную область приходится примерно один небольшой город</li>
@@ -107,7 +124,7 @@
 
 <section class="sec">
   <div class="day">7 августа · четверг</div>
-  <h2>Лодка, которая стоит не всегда</h2>
+  <h2 id="g2">Лодка, которая стоит не всегда</h2>
   <p>С Камчатки в Магадан летает маленький винтовой самолёт, полный салон. Аэропорт называется Сокол, терминал у него новый и стеклянный, а из окна терминала первым делом виден рекламный щит: хостел, «перевахта, трансфер, питание, регистрация». Сразу понятно, кто сюда обычно летает и зачем. Я в эту картину не вписывался. До города автобус идёт около часа.</p>
   <figure class="mid" id="P002">
     <div class="ph"><img src="media/samolet.webp" width="1600" height="1200" loading="lazy" alt="Небольшой белый двухмоторный винтовой самолёт на перроне, на фоне сопки под облаками"></div>
@@ -137,7 +154,7 @@
 
 <section class="sec">
   <div class="day">8 августа · пятница</div>
-  <h2>Почём краб и почём гречка</h2>
+  <h2 id="g3">Почём краб и почём гречка</h2>
   <p>Пасмурно и мокро. Лучший план на такой день — пойти есть. Бар «Красная икра»: в аквариуме сидят живые крабы и гребешки, пол местами стеклянный, под ним изображено морское дно, счёт приносят в ракушке. Я заказал полный дальневосточный набор, раз уж доехал: краб в двух видах, строганина, по одной устрице каждого сорта.</p>
   <dl class="bill">
     <div class="bill-h">Бар «Красная икра» · 08.08.2025 · 14:03</div>
@@ -165,7 +182,7 @@
 
 <section class="sec">
   <div class="day">9 августа · суббота</div>
-  <h2>Четыре часа до сивучей</h2>
+  <h2 id="g4">Четыре часа до сивучей</h2>
   <p>Выход в 06:06. Про корабли в тумане я уже рассказал: минут десять катер шёл мимо них, как мимо декораций. Потом флот остался за кормой, из воды показалась голова тюленя, потом скала с бакланами, потом маяк на мысе, и началось Охотское море.</p>
   <p>До острова Завьялова 45 км. Быстрые катера идут туда два-три часа, наш шёл четыре. На <a href="../65-sakhalin/index.html">Сахалине</a> три года назад я два часа шёл на надувной лодке до маяка Анива и считал, что это далеко.</p>
   <div class="row">
@@ -201,7 +218,7 @@
 </section>
 
 <section class="sec">
-  <h2>Остров, где грибы некому собирать</h2>
+  <h2 id="g5">Остров, где грибы некому собирать</h2>
   <p>116 квадратных километров, постоянного населения нет. Есть тундра, и в тундре есть всё. Грибы тут никто не собирает, потому что некому: подберёзовики стоят прямо у тропы, сыроежки красные, как на картинке, и ещё какие-то чёрные, будто обгорелые, которые я трогать не стал. Морошка, шикша и голубика растут под ногами. Голубику собирали в пакет, морошку — по одной, её мало.</p>
   <div class="row">
     <figure id="P316">
@@ -250,7 +267,7 @@
 
 <section class="sec">
   <div class="day">10 августа · воскресенье</div>
-  <h2>Минус десять в августе</h2>
+  <h2 id="g6">Минус десять в августе</h2>
   <p>Сто с лишним километров по Колымской трассе на север, до Карамкена. Дальше пешком и в гору: лесная дорога, туннель из ольхи, осыпь. Нас семеро, восьмой — гид Денис. По дороге подбирали и разглядывали камни: белый кварц, куски руды с блёстками, чёрные кристаллы. Геолог из меня никакой, так что названия на этом заканчиваются.</p>
   <p>Первая остановка — заброшенная штольня Карамкенского комбината. Здесь добывали золото. Рельсы и деревянная крепь на месте, людей нет, а внутри мерзлота делает своё дело: минус десять и стены в ледяной шубе. Кристаллы размером с ладонь растут сами, прозрачные, с гранями. Если посветить синим фонариком, штольня превращается в декорацию к фильму про другую планету.</p>
   <div class="row narrow">
@@ -270,7 +287,7 @@
 </section>
 
 <section class="sec">
-  <h2>Сопки цвета горчицы и Корона</h2>
+  <h2 id="g7">Сопки цвета горчицы и Корона</h2>
   <p>Через час подъёма сопки становятся цветными. Сначала жёлтые, потом рыжие, дальше красные с зелёными полосами стланика. Выглядит так, будто кто-то выкрутил насыщенность, но это просто порода. Выше, на гребне, телефон показал 1383 метра.</p>
   <figure class="wide" id="P588">
     <div class="ph"><img src="media/flag.webp" width="1600" height="1200" loading="lazy" alt="Сергей держит на ветру российский флаг с гербом на фоне цветных сопок"></div>
@@ -317,7 +334,7 @@
 
 <section class="sec">
   <div class="day">11 августа · понедельник</div>
-  <h2>Маска Скорби</h2>
+  <h2 id="g8">Маска Скорби</h2>
   <p>Утром парк «Дюкча» в устье реки. Всё новое и деревянное: арка с названием, качели, чумы, медведь, мамонт. В реке стоят рыбаки.</p>
   <figure class="mid" id="P766">
     <div class="ph"><img src="media/idol.webp" width="1600" height="1200" loading="lazy" alt="Деревянная фигура с широкой улыбкой, за ней детская площадка"></div>
@@ -344,13 +361,18 @@
 
 <section class="sec">
   <div class="day">12 августа · вторник</div>
-  <h2>Рыбы под потолком</h2>
+  <h2 id="g9">Рыбы под потолком</h2>
   <p>Тот же новый терминал аэропорта Сокол. Под потолком плывут рыбы из проволочной сетки с синими огоньками. Первая рыба в Магадане лежала на асфальте, последняя висит в воздухе. Между ними были кит, сивучи и устрицы по семьсот рублей.</p>
   <figure class="tall" id="P873">
     <div class="ph"><img src="media/aeroport.webp" width="1050" height="1400" loading="lazy" alt="Под потолком терминала висят фигуры рыб из проволочной сетки с синими огоньками"></div>
     <figcaption><time>13:30</time>Последний кадр на Колыме.</figcaption>
   </figure>
   <p>Дальше Москва. Маршрут, который начался в <a href="../87-chukotka/index.html">Анадыре</a> и прошёл через <a href="../41-kamchatka/index.html">Петропавловск-Камчатский</a>, закрыт.</p>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">❤ Вернулся бы</div>
     <p>За шесть дней увидел город, один остров и одну сопку, и каждый раз мне показывали больше, чем я заказывал. Трасса уходит отсюда ещё на две тысячи километров, а я проехал по ней сто.</p>
@@ -374,6 +396,6 @@
 <nav class="pager" aria-label="Читать дальше"><a class="prev" href="../41-kamchatka/index.html"><span class="code">41</span><span><small>Раньше по маршруту</small>Камчатский край</span></a><a class="next" href="../48-lipetsk/index.html"><span><small>Следующий отчёт</small>Липецкая область</span><span class="code">48</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>

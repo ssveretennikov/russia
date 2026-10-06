@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#A2653E;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#C99473;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#C99473;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover" id="P136">
     <div class="ph"><img fetchpriority="high" src="media/hero.webp" width="732" height="569" alt="Сергей сидит в позе лотоса на песке перед храмом дацана с многоярусной крышей"></div>
@@ -115,8 +116,21 @@
   </figure>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Бурятию</span></a></li>
+    <li><a href="#g2"><span class="toc-d">6 июля · среда · утро</span><span class="toc-t">Вокзал и церковь с дроном</span></a></li>
+    <li><a href="#g3"><span class="toc-t">Дацан Ринпоче Багша</span></a></li>
+    <li><a href="#g4"><span class="toc-d">6 июля · день</span><span class="toc-t">Музей народов Забайкалья</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Иволгинский дацан</span></a></li>
+    <li><a href="#g7"><span class="toc-d">6 июля · вечер</span><span class="toc-t">V значит Владимир</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Бурятию</h2>
+  <h2 id="g1">Три вещи про Бурятию</h2>
   <ul class="facts">
     <li>Иволгинский дацан — крупнейший в России и один из крупнейших в мире центров буддизма. При нём работает музей истории российского буддизма</li>
     <li>часть республики лежит в зоне вечной мерзлоты. Иногда её слой начинается уже на глубине в полметра, а в некоторых точках уходит на 500–600 метров</li>
@@ -134,7 +148,7 @@
 
 <section class="sec">
   <div class="day">6 июля · среда · утро</div>
-  <h2>Вокзал и церковь с дроном</h2>
+  <h2 id="g2">Вокзал и церковь с дроном</h2>
   <p>Сошёл с поезда в половине восьмого. Пока город спал, поднял дрон над церковью Николая Чудотворца: белая, с золотым куполом, вокруг частный сектор, за ним многоэтажки и горы. Так Улан-Удэ выглядит целиком, и это единственный раз за день, когда я его видел.</p>
   <figure class="mid" id="P001">
     <div class="ph"><img src="media/vokzal.webp" width="1600" height="1200" loading="lazy" alt="Жёлтое здание вокзала Улан-Удэ с вывеской, перед ним машины и люди"></div>
@@ -147,7 +161,7 @@
 </section>
 
 <section class="sec">
-  <h2>Дацан Ринпоче Багша</h2>
+  <h2 id="g3">Дацан Ринпоче Багша</h2>
   <p>Первым делом поехал на окраину, на смотровую площадку, и к дацану Ринпоче Багша. Он стоит на холме, по GPS на двести метров выше вокзала, и город лежит под ним весь. Вокруг дацана эко-тропа, достаточно длинная и с перепадом высот. Классно было пройтись.</p>
   <div class="row narrow">
     <figure id="P003">
@@ -196,7 +210,7 @@
 
 <section class="sec">
   <div class="day">6 июля · день</div>
-  <h2>Музей народов Забайкалья</h2>
+  <h2 id="g4">Музей народов Забайкалья</h2>
   <p>Дальше поехал в этнографический музей народов Забайкалья, он относительно близко. Это лес, в котором расставлены жилища: чумы из коры и бересты, навесы, идолы с лентами. Табличка «Сойотский комплекс» объяснила, чьё это всё, табличка на столбе предупредила про змей. Змей не встретил, но шёл внимательно.</p>
   <div class="row narrow">
     <figure id="P032">
@@ -255,7 +269,7 @@
     <div class="ph"><img src="media/kon.webp" width="1600" height="1200" loading="lazy" alt="Инсталляция в форме коня из деревянных реек на опушке соснового леса"></div>
     <figcaption><time>11:29</time>«Мезенский конь», инсталляция из реек. Табличка говорит, что автор из Архангельска, а конь про диалог Севера и Востока.</figcaption>
   </figure>
-  <h2>Никольская церковь</h2>
+  <h2 id="g5">Никольская церковь</h2>
   <p>В конце музея стоит деревянная Никольская церковь с зелёными куполами. Для неё я снова достал дрон: с земли видно наличники, сверху — как купола сидят на срубе.</p>
   <figure class="wide" id="P084">
     <div class="ph"><img src="media/cerkov.webp" width="2000" height="1500" loading="lazy" alt="Деревянная церковь с зелёными куполами на лугу, к ней ведёт тропа, вокруг лес"></div>
@@ -272,7 +286,7 @@
 </section>
 
 <section class="sec">
-  <h2>Иволгинский дацан</h2>
+  <h2 id="g6">Иволгинский дацан</h2>
   <p>Иволгинский дацан находится довольно далеко: за такси отдал около тысячи рублей и ехал примерно час. Территория большая, здесь же живут ламы, есть оранжерея, свой стадион и даже вуз. Местный паренёк рассказал, что тут организуют соревнования с солидными призами, да и вообще управляющие — грамотные и богатые люди. Не проверял, но стадион видел своими глазами и дроном.</p>
   <figure class="wide" id="P088">
     <div class="ph"><img src="media/dacan-fasad.webp" width="2000" height="1500" loading="lazy" alt="Фасад храма дацана с трёхъярусной крышей, лестница с перилами и белые львы у входа"></div>
@@ -324,7 +338,7 @@
 
 <section class="sec">
   <div class="day">6 июля · вечер</div>
-  <h2>V значит Владимир</h2>
+  <h2 id="g7">V значит Владимир</h2>
   <p>Вернулся в город на последний час. Голова Ленина на площади, театр оперы и балета с фонтаном, Триумфальная арка «Царские ворота». Честно говоря, не понимаю я вот этих достопримечательностей: арки делали с одной целью, чтобы царские особы торжественно в них въезжали, и всё. Почему они должны иметь такое значение до сих пор? Сфоткал только из-за того, что на ней написано старое название города.</p>
   <div class="row">
     <figure id="P130">
@@ -340,6 +354,11 @@
     <div class="ph"><img src="media/arka.webp" width="1600" height="1200" loading="lazy" alt="Белая триумфальная арка с надписью «20–21 июня 1891 года», рядом деревянный дом"></div>
     <figcaption><time>16:01</time>Царские ворота. Дата, 1891 год, и старое имя города, Верхнеудинск. Только за имя и снято.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Два дацана, лес с чумами и Никольская церковь с дрона — впечатлений на день хватило с запасом. Не хватило самого Улан-Удэ: всё интересное оказалось далеко от города, а поезд до Читы ждать не стал.</p>
@@ -363,6 +382,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../38-irkutsk/index.html"><span class="code">38</span><span><small>Раньше по маршруту</small>Иркутская область</span></a><a class="next" href="../75-zabaykalsky/index.html"><span><small>Дальше по маршруту</small>Забайкальский край</span><span class="code">75</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>

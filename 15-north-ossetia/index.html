@@ -25,12 +25,13 @@
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
 <script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preload" href="../fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../series.css?v=5b3a898d">
+<link rel="stylesheet" href="../series.css?v=a6ece51b">
 <style>:root{--reg:#3D79A4;--reg-ink:#FFFFFF}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--reg:#72A6CB;--reg-ink:#14100A}}:root[data-theme="dark"]{--reg:#72A6CB;--reg-ink:#14100A}</style>
 </head>
 <body id="top">
 <div class="page page-cover">
 <nav class="topbar"><a href="../index.html">← Все регионы</a><div class="topbar-r"><button class="theme-btn" type="button" id="themeBtn" hidden>Тема</button><button class="draft-toggle" type="button" id="draftToggle" hidden>Пометки</button></div></nav>
+<div class="chap-bar" id="chapBar" hidden><a class="cb-t" href="#toc"></a><a class="cb-up" href="#top">Наверх ↑</a></div>
 <header class="reg-head cover-head">
   <figure class="hero-ph cover portrait" id="P030">
     <div class="ph"><img class="cover-bg" src="media/hero.webp" alt="" aria-hidden="true"><img fetchpriority="high" src="media/hero.webp" width="1239" height="2200" alt="Мечеть с двумя полосатыми минаретами и голубым куполом, у входа люди на скамейках"></div>
@@ -64,8 +65,24 @@
   <p class="lead">Зато два наблюдения из маршрутки сошлись оба раза: мужчины сразу уступают место женщинам, без просьб и пауз. Парни здесь по большей части здоровые, спокойные, немногословные, с раскачанной трапецией. Есть, конечно, и мелкие крикливые, но они в меньшинстве. Город по численности чуть больше Нальчика, и я за день прошёл его почти весь, от пешеходного проспекта до набережной и обратно к площади.</p>
 </section>
 
+<section class="sec toc-sec"><nav class="toc" id="toc" aria-label="Главы">
+  <div class="toc-h">Главы</div>
+  <ol>
+    <li><a href="#g1"><span class="toc-t">Три вещи про Осетию</span></a></li>
+    <li><a href="#g2"><span class="toc-d">12 июня · понедельник · утро</span><span class="toc-t">Проспект Мира и бронзовые жители</span></a></li>
+    <li><a href="#g3"><span class="toc-d">12 июня · день</span><span class="toc-t">Терек и набережная</span></a></li>
+    <li><a href="#g4"><span class="toc-t">Парк Хетагурова: черепаха, слон, жираф</span></a></li>
+    <li><a href="#g5"><span class="toc-t">Выставки, трамвай и нардисты</span></a></li>
+    <li><a href="#g6"><span class="toc-t">Вид сверху и Терек ещё раз</span></a></li>
+    <li><a href="#g7"><span class="toc-d">12 июня · вечер</span><span class="toc-t">Армянская церковь и кофе</span></a></li>
+    <li><a href="#g8"><span class="toc-d">12 июня · ночь</span><span class="toc-t">День России на площади</span></a></li>
+    <li><a href="#g9"><span class="toc-d">13 июня · вторник · утро</span><span class="toc-t">Чердак, выставка, машина</span></a></li>
+    <li><a href="#final"><span class="toc-t">Итого</span></a></li>
+  </ol>
+</nav></section>
+
 <section class="sec">
-  <h2>Три вещи про Осетию</h2>
+  <h2 id="g1">Три вещи про Осетию</h2>
   <ul class="facts">
     <li>большинство осетин — православные христиане. Я раньше ошибочно считал их мусульманами</li>
     <li>символ Северной Осетии — переднеазиатский леопард, он же кавказский барс. Он на гербе региона, а в Сочинском заповеднике этого зверя пытаются вернуть на российский Кавказ</li>
@@ -83,7 +100,7 @@
 
 <section class="sec">
   <div class="day">12 июня · понедельник · утро</div>
-  <h2>Проспект Мира и бронзовые жители</h2>
+  <h2 id="g2">Проспект Мира и бронзовые жители</h2>
   <p>Начал с главной пешеходной улицы, проспекта Мира. Кирпичные дома, трамвай посередине и памятники через каждые сто метров, причём не все они стоят на постаментах.</p>
   <div class="row">
     <figure id="P001">
@@ -129,7 +146,7 @@
 
 <section class="sec">
   <div class="day">12 июня · день</div>
-  <h2>Терек и набережная</h2>
+  <h2 id="g3">Терек и набережная</h2>
   <p>Терек во Владикавказе не река для прогулок, а река для того, чтобы стоять на берегу и смотреть. Мутный, быстрый, с порогами прямо в центре города. Рядом заброшенное место на набережной, про которое я спрашивал у местных, и, как это часто бывает, никто не мог сказать, что это.</p>
   <figure class="wide" id="P020">
     <div class="ph"><img src="media/terek.webp" width="2000" height="1126" loading="lazy" alt="Бурная мутная река с порогом, слева перила набережной и красный мостик"></div>
@@ -148,7 +165,7 @@
 </section>
 
 <section class="sec">
-  <h2>Парк Хетагурова: черепаха, слон, жираф</h2>
+  <h2 id="g4">Парк Хетагурова: черепаха, слон, жираф</h2>
   <p>Парк хороший, большой, уютный. И с зоологическими сюрпризами: в пруду плавает черепаха, откуда она здесь взялась, я не понял. Если приглядеться, тут и слона можно увидеть. А позже в старом дворе попался жираф. Как в Африку попал.</p>
   <div class="row">
     <figure id="P049">
@@ -177,7 +194,7 @@
 </section>
 
 <section class="sec">
-  <h2>Выставки, трамвай и нардисты</h2>
+  <h2 id="g5">Выставки, трамвай и нардисты</h2>
   <p>После парка пошли дела городские. Две фотовыставки под открытым небом, детский трамвай-кафе, Дом кино, который, что важно, работает, и целая серия бронзовых людей на скамейках.</p>
   <div class="row">
     <figure id="P062">
@@ -210,7 +227,7 @@
 </section>
 
 <section class="sec">
-  <h2>Вид сверху и Терек ещё раз</h2>
+  <h2 id="g6">Вид сверху и Терек ещё раз</h2>
   <p>Церковь Рождества Богородицы стоит на холме над каменной стеной, и оттуда открывается вид на город: крыши, антенны, а за ними горы, которые к четырём часам закрыло тучами. Потом спустился к мосту через Терек, к барсам и к крепости, от которой по сути осталась только стена.</p>
   <div class="row">
     <figure id="P099">
@@ -264,7 +281,7 @@
 
 <section class="sec">
   <div class="day">12 июня · вечер</div>
-  <h2>Армянская церковь и кофе</h2>
+  <h2 id="g7">Армянская церковь и кофе</h2>
   <p>К вечеру дошёл до армянской церкви Сурб Григор Лусаворич, а рядом нашёл самую, наверное, популярную здесь сеть кофеен. Кофе довольно неплохой. Вообще с кофе в городе проблем нет: если это не кафешка и не ларёчек, то кофеавтомат.</p>
   <div class="row narrow">
     <figure id="P140">
@@ -294,7 +311,7 @@
 
 <section class="sec">
   <div class="day">12 июня · ночь</div>
-  <h2>День России на площади</h2>
+  <h2 id="g8">День России на площади</h2>
   <p>Вечером пошёл на главную площадь слушать концерт. Приехал оркестр из Южного федерального округа, по-моему, из Ростова-на-Дону. Приходил и мэр города: люди подходили, жали руку и фотографировались. А больше всего мне понравился финал. Артисты начали исполнять гимн, и вся площадь, от детей до старшего поколения, подхватила. Дух патриотизма здесь чувствовался очень сильно. Мне даже стало неловко, что я не все слова знал.</p>
   <p>По дороге на площадь решился и завтрашний день. На «Трипстере» ничего подходящего в Горную Ингушетию не было, а тут в окне ТИЦ я увидел сотрудницу, которая задержалась на работе. Она согласилась помочь, нашла по своим связям группу, договорилась, и через пару часов я точно знал, что тур состоится и мне там есть место.</p>
   <figure class="wide">
@@ -309,7 +326,7 @@
 
 <section class="sec">
   <div class="day">13 июня · вторник · утро</div>
-  <h2>Чердак, выставка, машина</h2>
+  <h2 id="g9">Чердак, выставка, машина</h2>
   <p>Проснулся рано, погулял по хостелу, забрался на чердак в зону отдыха. Там плакаты со словами великих русских писателей. Потом подошёл к гостинице «Владикавказ» и в ожидании машины гулял по окрестностям. Во время моего приезда здесь проходила фотовыставка новорождённых, ко Дню защиты детей. Минут через десять машину подали, мы погрузились и поехали в соседний регион.</p>
   <div class="row narrow">
     <figure id="P155">
@@ -325,6 +342,11 @@
     <div class="ph"><img src="media/mozaika.webp" width="1600" height="901" loading="lazy" alt="Торец жилого дома с мозаикой на стене, перед ним парковка с машинами"></div>
     <figcaption><time>11:55</time>Последний кадр во Владикавказе. Через десять минут машина, через час Ингушетия.</figcaption>
   </figure>
+  
+</section>
+
+<section class="sec final" id="final" aria-labelledby="final-h">
+  <div class="day final-h" id="final-h">Итого</div>
   <div class="verdict">
     <div class="v-mark">✓ Галочка стоит</div>
     <p>Хороший спокойный город с Тереком посередине, барсами на каждом мосту и площадью, которая поёт гимн целиком. Не хватило гор: они были в кадре только на горизонте и под тучами, а за настоящими я на следующий день уехал в соседний регион.</p>
@@ -348,6 +370,6 @@
 <nav class="pager" aria-label="Соседние регионы по маршруту"><a class="prev" href="../07-kabardino-balkaria/index.html"><span class="code">7</span><span><small>Раньше по маршруту</small>Кабардино-Балкарская Республика</span></a><a class="next" href="../06-ingushetia/index.html"><span><small>Дальше по маршруту</small>Республика Ингушетия</span><span class="code">6</span></a></nav>
 </div>
 <footer class="site-foot" role="contentinfo"><div class="ft-in"><div class="ft-t"><a class="ft-name" href="../index.html">Россия: регион за регионом</a><p class="ft-who">Сергей Веретенников · отчёты о поездках</p><p class="ft-aim">Цель — побывать в каждом регионе России хотя бы раз.</p></div><a class="ft-top" href="#top">Наверх ↑</a></div></footer>
-<script src="../series.js?v=56f60dbb"></script>
+<script src="../series.js?v=e34bbd3c"></script>
 </body>
 </html>
