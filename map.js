@@ -5,6 +5,7 @@
   var card = document.getElementById('mcard');
   var hint = card.innerHTML;
   var paths = [].slice.call(svg.querySelectorAll('path'));
+  var caps = [].slice.call(svg.querySelectorAll('.cap'));    // точки столиц: видны у выделенного региона
   var items = [].slice.call(document.querySelectorAll('li.reg[data-code]'));
   var secs = [].slice.call(document.querySelectorAll('section.fo'));
   var byCode = {};
@@ -26,7 +27,7 @@
     var sub = li.querySelector('small');
     var cap = li.dataset.cap || '';
     var parts = sub ? [].slice.call(sub.querySelectorAll('a')) : [];
-    var date = li.dataset.home ? 'Дом — отсюда начинаются поездки'
+    var date = li.dataset.home && li.dataset.iso ? 'Первый визит: ' + li.dataset.iso.split('-').reverse().join('.')
       : li.dataset.date ? 'В отчёте: ' + li.dataset.date : 'Ещё впереди';
     var tr = TR[li.dataset.tr];
     if (tr) date += ' · ' + tr.icon + ' ' + tr.text;
@@ -75,6 +76,7 @@
   });
   function mark(code) {
     paths.forEach(function (p) { p.classList.toggle('on', p.dataset.code === code); });
+    caps.forEach(function (c) { c.classList.toggle('on', c.dataset.code === code); });
   }
   function go(code) {
     var href = linkOf(code);
@@ -108,7 +110,19 @@
     var w = Math.min(W, v[2]), h = Math.min(H, v[3]);
     return [Math.max(0, Math.min(W - w, v[0])), Math.max(0, Math.min(H - h, v[1])), w, h];
   }
-  function setView(v) { view = v; svg.setAttribute('viewBox', v.join(' ')); }
+  function setView(v) { view = v; svg.setAttribute('viewBox', v.join(' ')); sizeCaps(); }
+  // подписи столиц и точки держат один размер на экране, как бы ни был приближён вид
+  function sizeCaps() {
+    if (!caps.length) return;
+    var u = svgScale();
+    caps.forEach(function (g) {
+      var c = g.querySelector('circle'), t = g.querySelector('text');
+      c.setAttribute('r', (4 * u).toFixed(2));
+      c.setAttribute('stroke-width', (1.5 * u).toFixed(2));
+      t.setAttribute('font-size', (12 * u).toFixed(2));
+      t.setAttribute('stroke-width', (3 * u).toFixed(2));
+    });
+  }
   function zoomTo(target) {
     cancelAnimationFrame(anim);
     zoomed = target !== FULL;
@@ -129,7 +143,8 @@
   // Перетаскивание и щипок у увеличенной карты. Захват указателя — только когда палец уже сдвинулся:
   // иначе касание региона ушло бы самой карте, а не региону, и карточка не открылась бы.
   var ptrs = {}, drag = null, moved = false;
-  function svgScale() { return view[2] / svg.getBoundingClientRect().width; }   // единиц карты на пиксель
+  function svgScale() { return view[2] / svg.getBoundingClientRect().width; }
+  sizeCaps();   // единиц карты на пиксель
   function startDrag() {
     var ids = Object.keys(ptrs), a = ptrs[ids[0]], b = ptrs[ids[1]];
     drag = { v: view.slice(), a: { x: a.x, y: a.y }, b: b ? { x: b.x, y: b.y } : null, k: svgScale() };
@@ -305,6 +320,7 @@
   function fitRuler() { ruler.classList.toggle('short', ruler.clientWidth < 360); }
   fitRuler();
   window.addEventListener('resize', fitRuler);
+  window.addEventListener('resize', sizeCaps);
   var total = items.filter(function (li) { return li.dataset.iso; }).length;   // посещённые по списку, дом тоже
   function isOn(li, cur) { return !!li.dataset.iso && stepOf(li.dataset.code) <= cur; }
   function nameOf(code) { var li = byCode[code], n = li && li.querySelector('.nm, a:not(.code)'); return n ? n.textContent : code; }

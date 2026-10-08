@@ -33,6 +33,13 @@ VIDEO_BASE = VIDEO_SITE
 VIDEO_USED = []      # (slug, имя.mp4) — все ролики, на которые сослались страницы; сверяется с папкой russia-video в конце сборки
 INDEX_DESC ='Цель: побывать в каждом регионе России хотя бы раз. Отчёты по регионам, по федеральным округам.'
 SITE_NAME = 'Россия: регион за регионом'
+# Яндекс Метрика (решение автора 07.10.2026): счётчик 113573485, только статистика посещений, без вебвизора и карты кликов
+METRIKA_HEAD = ("<script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};"
+                "m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}"
+                "k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})"
+                "(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');"
+                "ym(113573485,'init',{ssr:false,webvisor:false,clickmap:false,trackLinks:false,accurateTrackBounce:true});</script>")
+METRIKA_BODY = '<noscript><div><img src="https://mc.yandex.ru/watch/113573485" style="position:absolute;left:-9999px" alt=""></div></noscript>'
 THEME_INIT = "<script>try{var t=localStorage.getItem('russia-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>"
 SHOW_COUNTS = False   # счётчики «посещено / всего» по округам; включить, когда будут готовы все отчёты
 
@@ -140,10 +147,10 @@ D = [
   ('87','Чукотский автономный округ','Анадырь','h',[('', 'LOCAL:87-chukotka/index.html')]),
  ]),
  ('', 'Пока вне федеральных округов', [
-  ('80','Донецкая Народная Республика','','n',[]),
-  ('81','Луганская Народная Республика','','n',[]),
-  ('84','Херсонская область','','n',[]),
-  ('85','Запорожская область','','n',[]),
+  ('80','Донецкая Народная Республика','Донецк','n',[]),
+  ('81','Луганская Народная Республика','Луганск','n',[]),
+  ('84','Херсонская область','Херсон','n',[]),
+  ('85','Запорожская область','Запорожье','n',[]),
  ]),
 ]
 
@@ -219,6 +226,13 @@ def index_body():
     mp = load_map()
     dates = {r['code']: r['date'] for r in mp['regions'] if r['date']}
     import json
+    caps = json.load(open(os.path.join(ROOT, 'data', 'capitals-xy.json'), encoding='utf-8'))   # код -> [x, y, название]; tools/capitals.py
+    def _cap(c, x, y, n):   # точка столицы с подписью; у правого края подпись уходит влево, чтобы не обрезаться
+        left = x > 850
+        tx, anchor = (x - 9, 'end') if left else (x + 9, 'start')
+        return (f'<g class="cap" data-code="{c}"><circle cx="{x:.1f}" cy="{y:.1f}" r="5"/>'
+                f'<text x="{tx:.1f}" y="{y + 7:.1f}" text-anchor="{anchor}">{e(n)}</text></g>')
+    caps_svg = '\n'.join(_cap(c, x, y, n) for c, (x, y, n) in caps.items())
     trans = json.load(open(os.path.join(ROOT, 'data', 'transport.json'), encoding='utf-8'))   # код -> car/bus/plane/train/other
     order = {c: i for i, c in enumerate(sorted(dates, key=lambda c: (dates[c], int(c))))}      # порядок для анимации
     info = {}                                    # код -> (ключ округа, посещён, ссылка на отчёт)
@@ -293,6 +307,7 @@ def index_body():
   <svg class="rumap" viewBox="0 0 {mp['w']} {mp['h']}" role="group" aria-label="Карта России, посещённые регионы">
 <defs><pattern id="hatch" class="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7"/><line x1="0" y1="0" x2="0" y2="7"/></pattern></defs>
 {chr(10).join(paths)}
+{caps_svg}
   </svg>
   <p class="mapdate" id="mapdate" aria-hidden="true" hidden></p>
   </div>
@@ -1112,7 +1127,7 @@ def doc(title, body, depth, inline, reg_color=None, meta=''):
         script += f'\n<script>\n{MAPJS}\n</script>' if inline else f'\n<script src="{up}map.js?v={VER["map"]}"></script>'
     return (f'<!doctype html>\n<html lang="ru">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-            f'<title>{e(title)}</title>\n{meta}\n{THEME_INIT}\n{fonts(up)}\n{style}\n{extra}\n</head>\n<body id="top">\n{body}\n{script}\n</body>\n</html>\n')
+            f'<title>{e(title)}</title>\n<meta name="robots" content="noindex, nofollow">\n{meta}\n{THEME_INIT}\n{fonts(up)}\n{style}\n{extra}\n{METRIKA_HEAD}\n</head>\n<body id="top">\n{body}\n{script}\n{METRIKA_BODY}\n</body>\n</html>\n')
 
 def fragment(title, body):
     """Главная страница артефакта: без doctype/html/head/body."""
@@ -1288,8 +1303,7 @@ def trips_body():
     ld = trip_days(longest['start'], longest['end'])
     n = len(trips)
     lead = (f'{n} {plural(n, "поездка", "поездки", "поездок")} с февраля 2022 года, в них '
-            f'{len(regs)} {plural(len(regs), "регион", "региона", "регионов")} — без Москвы и Подмосковья: это дом, '
-            f'отсюда поездки начинаются. Самая длинная — {ld} {plural(ld, "день", "дня", "дней")}, '
+            f'{len(regs)} {plural(len(regs), "регион", "региона", "регионов")}. Самая длинная — {ld} {plural(ld, "день", "дня", "дней")}, '
             f'{trip_dates(longest["start"], longest["end"])}. Поездки — по годам, регионы в каждой — по маршруту.')
     out = ['<div class="page tr-page">', _top('../'), '<header class="tr-head"><h1>Поездки</h1>',
            f'<p class="tr-lead">{e(lead)}</p></header>']
@@ -1346,21 +1360,18 @@ def write_extra_pages():
         print('готово:', slug + '/index.html')
 
 def write_service_files():
-    """404.html, sitemap.xml, robots.txt. На странице 404 пути абсолютные: она открывается по любому адресу."""
+    """404.html и robots.txt. На странице 404 пути абсолютные: она открывается по любому адресу.
+    Сайт закрыт от поисковиков (решение автора 07.10.2026): robots.txt запрещает обход, карты сайта нет."""
     base = '/' + SITE.split('/', 3)[3]
     page = (f'<div class="page"><div class="lost">'
             f'<span class="code">404</span><h1>Такой страницы нет</h1>'
             f'<p>Адрес мог устареть или в нём опечатка. Отчёты по регионам собраны на главной.</p>'
             f'<p><a href="{base}">← Все регионы</a></p></div></div>')
-    h = doc('Страница не найдена', page, 0, False, None, f'<link rel="icon" href="{base}favicon.png" type="image/png">\n<meta name="robots" content="noindex">')
+    h = doc('Страница не найдена', page, 0, False, None, f'<link rel="icon" href="{base}favicon.png" type="image/png">')
     h = (h.replace('href="series.css', f'href="{base}series.css').replace('src="series.js', f'src="{base}series.js')
           .replace('href="fonts/', f'href="{base}fonts/'))
     open(os.path.join(ROOT, '404.html'), 'w', encoding='utf-8').write(h)
-    urls = [SITE, SITE + 'trips/', SITE + 'about/'] + [SITE + pg['slug'] + '/' for pg in PAGES]
-    open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8').write(
-        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + ''.join(f'  <url><loc>{u}</loc></url>\n' for u in urls) + '</urlset>\n')
-    open(os.path.join(ROOT, 'robots.txt'), 'w', encoding='utf-8').write(f'User-agent: *\nAllow: /\nSitemap: {SITE}sitemap.xml\n')
+    open(os.path.join(ROOT, 'robots.txt'), 'w', encoding='utf-8').write('User-agent: *\nDisallow: /\n')
 
 def build(artifact=False):
     """Без аргументов собирает страницы на месте: index.html и <slug>/index.html рядом со скриптом.

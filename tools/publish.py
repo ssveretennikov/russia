@@ -66,7 +66,7 @@ def main():
         if subprocess.run(['git', 'diff', '--cached', '--quiet'], cwd=reg).returncode:
             subprocess.run(['git', 'commit', '-q', '-m', 'media.tsv: ' + ', '.join(done)], cwd=reg, check=True)
             subprocess.run(['git', 'push', 'origin', 'main'], cwd=reg)
-    paths = list(done) + ['index.html', 'sitemap.xml', '404.html']
+    paths = list(done) + ['index.html', '404.html', 'robots.txt']
     paths += [str(p.relative_to(ROOT)) for p in ROOT.glob('*/index.html') if (ROOT / 'src' / (p.parent.name + '.html')).exists()]
     run('git', 'add', *paths)
     if subprocess.run(['git', 'diff', '--cached', '--quiet'], cwd=ROOT).returncode == 0: print('нечего коммитить'); return

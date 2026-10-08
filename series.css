@@ -303,6 +303,9 @@ body:has(.ix-page){background:var(--sky-bg)}
 @media (hover:none){.h-mouse{display:none}.h-touch{display:inline}}
 [hidden]{display:none!important}
 .rumap .r:focus{outline:none}
+.rumap .cap{fill:var(--ink);stroke:var(--surface);stroke-width:2.5;paint-order:stroke;opacity:0;pointer-events:none}
+.rumap .cap.on{opacity:1}
+.rumap .cap text{font-weight:600;font-family:var(--font-sans,sans-serif);stroke:var(--surface);paint-order:stroke}
 
 .tl{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"ctl track" "read read" "all all";gap:.7rem 1rem;align-items:center;padding:.8rem;border-radius:.8rem;background:var(--sky-bg)}
 .tl-ctl{grid-area:ctl;display:flex;gap:.4rem}
